@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import OpenAI from '@lobehub/icons/es/OpenAI'
 import { cn } from '@/lib/utils'
 
@@ -73,17 +72,11 @@ export function DemoCTA({
                 Get a personalized demo of GE<OpenAI size={16} className="mx-0.5" />Alt and see how we can help your brand dominate AI search.
               </p>
               <div className="flex space-x-3">
-                <Link
-                  href="/demo"
-                  className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700 transition-colors"
-                >
-                  Book Demo
-                </Link>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="flex-1 border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700 transition-colors"
                 >
-                  Cancel
+                  Close
                 </button>
               </div>
             </div>
@@ -94,8 +87,7 @@ export function DemoCTA({
   }
 
   return (
-    <Link
-      href="/demo"
+    <button
       className={cn(
         baseClasses,
         variants[variant],
@@ -104,7 +96,7 @@ export function DemoCTA({
       )}
     >
       {text}
-    </Link>
+    </button>
   )
 }
 

@@ -20,6 +20,12 @@ const trustedBrands = [
   { label: 'Modo', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
 ]
 
+const CheckIcon = () => (
+  <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-white/40 text-white text-xs font-semibold">
+    ✓
+  </span>
+)
+
 export function HomePage() {
   const [isTextLoaded, setIsTextLoaded] = useState(false)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -70,7 +76,7 @@ export function HomePage() {
               height={720}
               priority
               sizes="(max-width: 1024px) 100vw, 1280px"
-              className="w-full h-auto object-contain"
+              className="w-[98.5%] sm:w-[99.5%] mx-auto h-auto object-contain"
             />
           </div>
         </div>
@@ -84,8 +90,8 @@ export function HomePage() {
               <div className="absolute w-40 h-40 bg-white/0 rounded-full blur-3xl -bottom-16 right-6" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(25,250,255,0.2),_transparent_55%)]" />
             </div>
-            <div className="relative flex flex-col items-center gap-8 sm:gap-12">
-              <p className="text-lg font-2xl  tracking-[0.6em] text-[#8c8c8c]">Trusted by</p>
+            <div className="relative flex flex-col items-center gap-6 sm:gap-10">
+              <p className="text-lg font-base tracking-wide text-white -mt-4">Trusted by</p>
               <div
                 className="w-full overflow-hidden"
                 style={{ maskImage: 'linear-gradient(90deg, transparent, rgba(0,0,0,0.9) 12%, rgba(0,0,0,0.9) 88%, transparent)' }}
@@ -98,6 +104,73 @@ export function HomePage() {
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="py-24 scroll-mt-16">
+        <div className="max-w-[1500px] mx-auto px-6 lg:px-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="hidden md:block" />
+          <div className="border-[0.5px] border-white/20 bg-white/10 rounded-t-[18px] px-12 py-4 text-base font-medium text-white text-center">
+            Recommended plan
+          </div>
+          <div className="hidden md:block" />
+        </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Basic Plan */}
+            <div className="bg-[#090909] border border-white/10 rounded-lg p-10 flex flex-col gap-8 text-white">
+              <div>
+                <p className="text-lg font-semibold mb-3">Basic</p>
+                <p className="text-[2.5rem] font-normal leading-none">$99<span className="text-lg font-light">/mo</span></p>
+              </div>
+              <p className="text-base text-white/70">For teams who want to run GEO in-house.</p>
+              <div className="flex flex-col gap-4 text-sm text-white/80">
+                {['Track 25 prompts', 'Access to all models (ChatGPT, Gemini, Perplexity, etc.)', 'Email support'].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <CheckIcon />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <button className="mt-auto w-full rounded-full bg-white text-black py-3 text-sm font-semibold">Start free trial</button>
+            </div>
+
+            {/* Pro Plan */}
+            <div className="bg-white/5 border border-white/20 rounded-b-lg p-10 flex flex-col gap-8 text-white shadow-2xl shadow-white/10">
+              <div>
+                <p className="text-lg font-semibold mb-3">Pro</p>
+                <p className="text-[2.5rem] font-normal leading-none">$299<span className="text-lg font-light">/mo</span></p>
+              </div>
+              <p className="text-base text-white/70">Everything in Basic, plus:</p>
+              <div className="flex flex-col gap-4 text-sm text-white/80">
+                {['Track 100 prompts', 'Access to all models (ChatGPT, Gemini, Perplexity, etc.)', '8 AI-optimized articles', 'Email and Slack Support'].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <CheckIcon />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <button className="mt-auto w-full rounded-full bg-white text-black py-3 text-sm font-semibold">Start free trial</button>
+            </div>
+
+            {/* Enterprise Plan */}
+            <div className="bg-[#090909] border border-white/10 rounded-lg p-10 flex flex-col gap-8 text-white">
+              <div>
+                <p className="text-lg font-semibold mb-3">Enterprise</p>
+                <p className="text-[2.5rem] font-normal leading-none">Custom</p>
+              </div>
+              <p className="text-base text-white/70">Everything in Pro, plus:</p>
+              <div className="flex flex-col gap-4 text-sm text-white/80">
+                {['Custom limits', 'White-glove onboarding', 'Enterprise support', 'SAML SSO'].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <CheckIcon />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <button className="mt-auto w-full rounded-full border border-white/40 text-white py-3 text-sm font-semibold">Contact Us</button>
             </div>
           </div>
         </div>

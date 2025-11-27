@@ -48,11 +48,6 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/pricing" className="text-sm hover:text-brand-white transition-colors" style={{color: '#898989'}}>
-                  Pricing
-                </Link>
-              </li>
-              <li>
                 <Link href="/api" className="text-sm hover:text-brand-white transition-colors" style={{color: '#898989'}}>
                   API
                 </Link>

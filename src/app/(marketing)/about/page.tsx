@@ -66,20 +66,6 @@ export default function AboutPage() {
           <p className="text-gray-400 mb-8">
             Join the businesses already optimizing their AI visibility with GEOAlt.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/demo"
-              className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-white/90 transition-colors"
-            >
-              Request a Demo
-            </a>
-            <a
-              href="/contact-sales"
-              className="border border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-black transition-colors"
-            >
-              Contact Sales
-            </a>
-          </div>
         </div>
       </div>
     </div>
