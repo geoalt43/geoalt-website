@@ -11,13 +11,13 @@ interface HeroSectionProps {
 
 export function HeroSection({ isTextLoaded }: HeroSectionProps) {
   return (
-    <section id="home" className="pt-32 pb-20 relative overflow-hidden">
+    <section id="home" className="pt-22 pb-20 relative overflow-hidden">
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="flex flex-col items-center text-center mt-8">
           <div className="max-w-4xl">
             <h1 
-              className={`text-6xl lg:text-6xl font-normal mb-0 leading-tight tracking-tighter transition-all duration-[3000ms] ease-out ${
+              className={`text-5xl lg:text-[3.5rem] font-normal mb-0 leading-tight tracking-tighter transition-all duration-[3000ms] ease-out ${
                 isTextLoaded ? 'blur-none opacity-100' : 'blur-lg opacity-100'
               }`}
               style={{
@@ -32,7 +32,7 @@ export function HeroSection({ isTextLoaded }: HeroSectionProps) {
             <div className="mt-0 flex justify-center">
               <AIPlatformRotator size="large" />
             </div>
-            <p className="text-xl mb-0 leading-relaxed mt-4 flex items-center justify-center" style={{color: '#878787'}}>
+            <p className="text-xl mb-0 leading-relaxed flex items-center justify-center" style={{color: '#878787'}}>
               GE<OpenAI size={20} className="mx-0.5" />Alt helps your business stand out across AI platforms
             </p>
             <p className="text-xl mb-8 leading-relaxed flex items-center justify-center" style={{color: '#878787'}}>

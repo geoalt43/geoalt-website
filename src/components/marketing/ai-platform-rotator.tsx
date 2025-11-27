@@ -21,8 +21,8 @@ export function AIPlatformRotator({ variant = 'default', size = 'default' }: AIP
   const [isBlurring, setIsBlurring] = useState(false)
 
   const iconColor = variant === 'muted' ? '#2b2b2b' : 'currentColor'
-  const iconSize = size === 'large' ? 1.2 : 1
-  const textSize = size === 'large' ? 'text-4xl lg:text-5xl' : 'text-4xl lg:text-5xl'
+  const iconSize = size === 'large' ? 0.9 : 1
+  const textSize = size === 'large' ? 'text-3xl lg:text-4xl' : 'text-4xl lg:text-5xl'
 
   const platforms = [
     {
