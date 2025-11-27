@@ -65,7 +65,7 @@ export function HomePage() {
 
       <section className="">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border border-white/15  p-4 sm:p-6 lg:p-8">
+          <div className="border border-white/8  p-4 sm:p-6 lg:p-8">
             <Image
               src="/images/img-1.jpeg"
               alt="GEOAlt analytics dashboard"
@@ -81,14 +81,14 @@ export function HomePage() {
 
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-[#f7f6ef] px-6 py-10 sm:px-10 sm:py-14">
+          <div className="relative overflow-hidden rounded-[0px] border-y border-white/10 bg-transparent px-6 py-10 sm:px-10 sm:py-14">
             <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute w-32 h-32 bg-white/40 rounded-full blur-3xl -top-10 -left-6" />
-              <div className="absolute w-40 h-40 bg-white/30 rounded-full blur-3xl -bottom-16 right-6" />
+              <div className="absolute w-32 h-32 bg-white/0 rounded-full blur-3xl -top-10 -left-6" />
+              <div className="absolute w-40 h-40 bg-white/0 rounded-full blur-3xl -bottom-16 right-6" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.3),_transparent_55%)]" />
             </div>
             <div className="relative flex flex-col items-center gap-8 sm:gap-12">
-              <p className="text-sm font-medium uppercase tracking-[0.6em] text-[#8c8c8c]">Trusted by</p>
+              <p className="text-lg font-2xl  tracking-[0.6em] text-[#8c8c8c]">Trusted by</p>
               <div
                 className="w-full overflow-hidden"
                 style={{ maskImage: 'linear-gradient(90deg, transparent, rgba(0,0,0,0.9) 12%, rgba(0,0,0,0.9) 88%, transparent)' }}
