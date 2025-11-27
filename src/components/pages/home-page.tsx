@@ -12,15 +12,12 @@ import OpenAI from '@lobehub/icons/es/OpenAI'
 import { Gemini } from '@lobehub/icons'
 
 const trustedBrands = [
-  { label: 'Flow', className: 'text-[2rem] sm:text-[2.5rem] font-semibold text-[#d1d1c7]' },
-  {
-    label: 'Flux',
-    className: 'text-[2rem] sm:text-[2.5rem] font-semibold bg-gradient-to-r from-[#76ffd4] via-[#44a5ff] to-[#8356ff] bg-clip-text text-transparent',
-  },
-  { label: 'Nex', className: 'text-[2rem] sm:text-[2.5rem] font-semibold text-[#6fb3ff]' },
-  { label: 'dabble', className: 'text-[2rem] sm:text-[2.5rem] font-semibold text-[#8a5dff]' },
-  { label: 'PEERSPACE', className: 'text-[2rem] sm:text-[2.5rem] font-black tracking-tight text-[#0f0f0f]' },
-  { label: 'Modo', className: 'text-[2rem] sm:text-[2.5rem] font-semibold text-[#6f6f6f]' },
+  { label: 'Flow', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
+  { label: 'Flux', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
+  { label: 'Nex', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
+  { label: 'dabble', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
+  { label: 'SuperPen', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
+  { label: 'Modo', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
 ]
 
 export function HomePage() {
@@ -65,7 +62,7 @@ export function HomePage() {
 
       <section className="">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border border-white/8  p-4 sm:p-6 lg:p-8">
+          <div className="border-[2px] border-white/10 p-4 sm:p-6 lg:p-8">
             <Image
               src="/images/img-1.jpeg"
               alt="GEOAlt analytics dashboard"
