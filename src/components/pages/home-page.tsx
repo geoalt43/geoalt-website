@@ -119,7 +119,6 @@ export function HomePage() {
           <div className="hidden md:block" />
         </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Basic Plan */}
             <div className="bg-[#090909] border border-white/10 rounded-lg p-10 flex flex-col gap-8 text-white">
               <div>
                 <p className="text-lg font-semibold mb-3">Basic</p>
@@ -134,10 +133,16 @@ export function HomePage() {
                   </div>
                 ))}
               </div>
-              <button className="mt-auto w-full rounded-full bg-white text-black py-3 text-sm font-semibold">Start free trial</button>
+              <a 
+                href="https://forms.gle/wLMpHeTqQogumFMK8" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="mt-auto w-full rounded-full bg-white text-black py-3 text-sm font-semibold text-center block hover:bg-white/90 transition-colors"
+              >
+                Start free trial
+              </a>
             </div>
 
-            {/* Pro Plan */}
             <div className="bg-white/5 border border-white/20 rounded-b-lg p-10 flex flex-col gap-8 text-white shadow-2xl shadow-white/10">
               <div>
                 <p className="text-lg font-semibold mb-3">Pro</p>
@@ -152,10 +157,16 @@ export function HomePage() {
                   </div>
                 ))}
               </div>
-              <button className="mt-auto w-full rounded-full bg-white text-black py-3 text-sm font-semibold">Start free trial</button>
+              <a 
+                href="https://forms.gle/wLMpHeTqQogumFMK8" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="mt-auto w-full rounded-full bg-white text-black py-3 text-sm font-semibold text-center block hover:bg-white/90 transition-colors"
+              >
+                Start free trial
+              </a>
             </div>
 
-            {/* Enterprise Plan */}
             <div className="bg-[#090909] border border-white/10 rounded-lg p-10 flex flex-col gap-8 text-white">
               <div>
                 <p className="text-lg font-semibold mb-3">Enterprise</p>
