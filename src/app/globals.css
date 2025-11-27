@@ -218,6 +218,21 @@
   }
 }
 
+@keyframes trusted-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@layer utilities {
+  .trusted-marquee {
+    animation: trusted-marquee 28s linear infinite;
+  }
+}
+
 /* Utility classes */
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out;
