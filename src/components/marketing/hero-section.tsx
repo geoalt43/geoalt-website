@@ -41,7 +41,7 @@ export function HeroSection({ isTextLoaded }: HeroSectionProps) {
           
             {/* Hero CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-              <Link href="/register" className="text-white px-5 py-2.5 rounded-lg text-sm font-semibold tracking-wide transition-colors" style={{backgroundColor: '#2b2b2b'}} onMouseEnter={(e) => e.target.style.backgroundColor = '#1a1a1a'} onMouseLeave={(e) => e.target.style.backgroundColor = '#2b2b2b'}>
+              <Link href="/register" className="text-white px-5 py-2.5 rounded-lg text-sm font-semibold tracking-wide transition-colors bg-[#2b2b2b] hover:bg-[#1a1a1a]">
                 Get Started
               </Link>
               <DemoCTA 

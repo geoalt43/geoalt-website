@@ -62,17 +62,17 @@ export function AIPlatformRotator({ variant = 'default', size = 'default' }: AIP
     {
       name: '',
       color: variant === 'muted' ? '#2b2b2b' : 'text-white',
-      icon: <DeepSeek.Combine size={64 * iconSize} type={'color'} style={{ color: iconColor }} />
+      icon: <DeepSeek.Combine size={64 * iconSize} style={{ color: iconColor }} />
     },
     {
       name: '',
       color: variant === 'muted' ? '#2b2b2b' : 'text-white',
-      icon: <MetaAI.Combine size={56 * iconSize} type={'color'} style={{ color: iconColor }} />
+      icon: <MetaAI.Combine size={56 * iconSize} style={{ color: iconColor }} />
     },
     {
       name: '',
       color: variant === 'muted' ? '#2b2b2b' : 'text-white',
-      icon: <Grok.Combine size={56 * iconSize} type={'color'} style={{ color: iconColor }} />
+      icon: <Grok.Combine size={56 * iconSize} style={{ color: iconColor }} />
     }
   ]
 

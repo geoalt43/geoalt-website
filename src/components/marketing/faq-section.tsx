@@ -27,8 +27,8 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
       answer: "Yes, you can customize and select specific prompts to simulate based on your industry, target audience, and business goals. This helps you understand exactly how AI models respond to your content."
     },
     {
-      question: "Have you increased someone's visibility on AI Search before?",
-      answer: "Yes, our clients have seen significant improvements in AI search visibility. We've helped businesses increase their AI mentions by up to 300% and improve their brand ranking in AI search results."
+      question: "Have you increased someone&apos;s visibility on AI Search before?",
+      answer: "Yes, our clients have seen significant improvements in AI search visibility. We&apos;ve helped businesses increase their AI mentions by up to 300% and improve their brand ranking in AI search results."
     },
     {
       question: "Do you offer free consultations?",
@@ -41,7 +41,7 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-20">
           <h2 className="text-6xl font-medium text-white mb-6 tracking-wide">FAQ</h2>
-          <p className="text-2xl" style={{color: '#898989'}}>Generative Engine Optimization is still very new. We've got you covered.</p>
+          <p className="text-2xl" style={{color: '#898989'}}>Generative Engine Optimization is still very new. We&apos;ve got you covered.</p>
         </div>
         
         <div ref={faqRef} className="space-y-4">

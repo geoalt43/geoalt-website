@@ -40,7 +40,6 @@ const config: Config = {
         'overlay': 'var(--color-overlay)',
         'overlay-light': 'var(--color-overlay-light)',
         // Shadcn/ui colors
-        border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',

@@ -154,7 +154,7 @@ export function HomePage() {
                           <path d="M8 12h8"/>
                           <path d="M8 16h5"/>
                         </svg>
-                        <span className="text-xs text-white">What's New?</span>
+                        <span className="text-xs text-white">What&apos;s New?</span>
                       </div>
                       <div className="flex items-center space-x-2 py-1.5 px-2">
                         <div className="w-6 h-6 bg-gray-600 rounded-full flex items-center justify-center">
@@ -413,7 +413,7 @@ export function HomePage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-4">Visibility Tracking</h3>
-                <p className="text-lg text-gray-400 font-normal">Monitor your brand's presence in AI-generated answers across various platforms.</p>
+                <p className="text-lg text-gray-400 font-normal">Monitor your brand&apos;s presence in AI-generated answers across various platforms.</p>
               </div>
 
               <div className="bg-black border border-gray-600 rounded-lg p-8">
@@ -457,7 +457,7 @@ export function HomePage() {
               ></div>
               <div>
                 <p className="text-white text-base font-medium leading-normal">Track your AI visibility</p>
-                <p className="text-white/70 text-sm font-normal leading-normal">Monitor your brand's presence in AI-generated answers across various platforms.</p>
+                <p className="text-white/70 text-sm font-normal leading-normal">Monitor your brand&apos;s presence in AI-generated answers across various platforms.</p>
               </div>
             </div>
             <div className="flex flex-col gap-3 pb-3">

@@ -188,7 +188,7 @@ export function DemoForm() {
           className="w-4 h-4 text-blue-600 bg-gray-800 border-gray-600 rounded focus:ring-blue-500"
         />
         <label htmlFor="newsletter" className="text-sm text-gray-300 flex items-center">
-          I'd like to receive updates about GE<OpenAI size={16} className="mx-0.5" />Alt and AI visibility trends
+          I&apos;d like to receive updates about GE<OpenAI size={16} className="mx-0.5" />Alt and AI visibility trends
         </label>
       </div>
 

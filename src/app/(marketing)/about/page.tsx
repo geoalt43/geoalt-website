@@ -14,7 +14,7 @@ export default function AboutPage() {
             About GEOAlt
           </h1>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            We're on a mission to help businesses thrive in the AI-driven future by optimizing their visibility across AI platforms.
+            We&apos;re on a mission to help businesses thrive in the AI-driven future by optimizing their visibility across AI platforms.
           </p>
         </div>
 
@@ -55,7 +55,7 @@ export default function AboutPage() {
               to help businesses adapt to this new landscape.
             </p>
             <p className="text-gray-300">
-              Today, we're proud to serve hundreds of businesses, from startups to Fortune 500 companies, 
+              Today, we&apos;re proud to serve hundreds of businesses, from startups to Fortune 500 companies, 
               helping them maintain and grow their visibility in the AI era.
             </p>
           </div>
