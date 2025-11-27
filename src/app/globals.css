@@ -229,7 +229,7 @@
 
 @layer utilities {
   .trusted-marquee {
-    animation: trusted-marquee 28s linear infinite;
+    animation: trusted-marquee 10s linear infinite;
   }
 }
 

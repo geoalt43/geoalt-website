@@ -79,13 +79,13 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-76">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-[0px] border-y border-white/10 bg-transparent px-6 py-10 sm:px-10 sm:py-14">
             <div className="absolute inset-0 pointer-events-none">
               <div className="absolute w-32 h-32 bg-white/0 rounded-full blur-3xl -top-10 -left-6" />
               <div className="absolute w-40 h-40 bg-white/0 rounded-full blur-3xl -bottom-16 right-6" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.3),_transparent_55%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(25,250,255,0.2),_transparent_55%)]" />
             </div>
             <div className="relative flex flex-col items-center gap-8 sm:gap-12">
               <p className="text-lg font-2xl  tracking-[0.6em] text-[#8c8c8c]">Trusted by</p>
@@ -93,7 +93,7 @@ export function HomePage() {
                 className="w-full overflow-hidden"
                 style={{ maskImage: 'linear-gradient(90deg, transparent, rgba(0,0,0,0.9) 12%, rgba(0,0,0,0.9) 88%, transparent)' }}
               >
-                <div className="trusted-marquee flex items-center gap-12 sm:gap-16">
+                <div className="trusted-marquee flex items-center gap-19 sm:gap-20">
                   {[...trustedBrands, ...trustedBrands].map((brand, index) => (
                     <span key={`${brand.label}-${index}`} className={`${brand.className} whitespace-nowrap`}>
                       {brand.label}
