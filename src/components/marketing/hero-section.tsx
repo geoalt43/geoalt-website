@@ -29,7 +29,7 @@ export function HeroSection({ isTextLoaded }: HeroSectionProps) {
             <p className="text-xl -mt-8 leading-relaxed flex items-center justify-center text-[#878787]">
               GE<OpenAI size={20} className="mx-0.5" />Alt helps your business stand out across AI platforms
             </p>
-            <p className="text-xl mb-8 leading-relaxed flex items-center justify-center text-[#878787]">
+            <p className="text-xl mb-8 pb-4 leading-relaxed flex items-center justify-center text-[#878787]">
               <em>— Turning AI visibility into traffic</em>
             </p>
           

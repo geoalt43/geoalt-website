@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 
 interface Testimonial {
@@ -50,21 +50,9 @@ const testimonials: Testimonial[] = [
 ]
 
 export function TestimonialsCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [failedImages, setFailedImages] = useState<Set<number>>(new Set())
-
-  useEffect(() => {
-    if (!isPaused) {
-      const interval = setInterval(() => {
-        setCurrentIndex((prev) => {
-          const next = prev + 1
-          return next >= testimonials.length ? 0 : next
-        })
-      }, 5000)
-      return () => clearInterval(interval)
-    }
-  }, [isPaused])
+  const duplicatedTestimonials = [...testimonials, ...testimonials]
 
   const handleCardClick = () => {
     setIsPaused(!isPaused)
@@ -80,7 +68,7 @@ export function TestimonialsCarousel() {
             </svg>
             <span className="text-sm font-medium text-gray-900">Testimonials</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-normal text-white mb-4 pb-8">
+          <h2 className="text-4xl md:text-4xl font-normal text-white mb-4 pb-13">
             See what industry leaders say about GEOAlt
           </h2>
         </div>
@@ -88,24 +76,23 @@ export function TestimonialsCarousel() {
         <div className="relative">
           <div className="overflow-hidden">
             <div 
-              className="flex gap-4 md:gap-6 carousel-track"
-              data-index={currentIndex}
+              className={`flex gap-4 md:gap-6 animate-testimonials-marquee ${isPaused ? 'animation-paused' : ''}`}
             >
-              {testimonials.map((testimonial, index) => (
+              {duplicatedTestimonials.map((testimonial, index) => (
                 <div
-                  key={index}
+                  key={`${testimonial.name}-${index}`}
                   className="flex-shrink-0 w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
                 >
                   <div
                     onClick={handleCardClick}
-                    className={`bg-white rounded-xl p-6 md:p-8 shadow-lg h-full cursor-pointer transition-all duration-300 ${
+                    className={`bg-[#181818] border border-[#363636] rounded-xl p-6 md:p-8 shadow-lg h-full flex flex-col cursor-pointer transition-all duration-300 ${
                       isPaused ? 'ring-2 ring-blue-500 shadow-xl' : 'hover:shadow-xl'
                     }`}
                   >
-                    <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-6">
+                    <p className="text-gray-100 text-sm md:text-base leading-relaxed mb-6">
                       &ldquo;{testimonial.quote}&rdquo;
                     </p>
-                    <div className="flex items-center gap-4">
+                    <div className="mt-auto flex items-center gap-4 pt-6">
                       <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden flex-shrink-0 bg-gray-200">
                         <Image
                           src={failedImages.has(index) 
@@ -120,8 +107,8 @@ export function TestimonialsCarousel() {
                         />
                       </div>
                       <div>
-                        <p className="font-semibold text-gray-900 text-sm md:text-base">{testimonial.name}</p>
-                        <p className="text-xs md:text-sm text-gray-600">{testimonial.designation}</p>
+                        <p className="font-semibold text-white text-sm md:text-base">{testimonial.name}</p>
+                        <p className="text-xs md:text-sm text-gray-300">{testimonial.designation}</p>
                       </div>
                     </div>
                   </div>

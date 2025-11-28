@@ -40,15 +40,15 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
     <section className="py-24">
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-20">
-          <h2 className="text-6xl font-medium text-white mb-6 tracking-wide">FAQ</h2>
-          <p className="text-2xl" style={{color: '#898989'}}>Generative Engine Optimization is still very new. We&apos;ve got you covered.</p>
+          <h2 className="text-5xl font-normal text-white mb-6">FAQ</h2>
+          <p className="text-2xl text-[#898989] font-light">Generative Engine Optimization is still very new.<br />We&apos;ve got you covered.</p>
         </div>
         
         <div ref={faqRef} className="space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className="bg-black rounded-2xl border border-[#656565] shadow-sm">
+            <div key={index} className="bg-black border-b border-[#656565] shadow-sm faq-card-partial-borders rounded-bl-2xl rounded-br-2xl">
               <button
-                className={`w-full px-8 py-4 text-left flex justify-between items-center transition-colors rounded-2xl ${
+                className={`w-full px-8 py-4 text-left flex justify-between items-center transition-colors ${
                   openFaq === index ? '' : 'hover:bg-[#656565]'
                 }`}
                 onClick={() => toggleFaq(index)}

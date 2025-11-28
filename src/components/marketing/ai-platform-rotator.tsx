@@ -21,8 +21,8 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
   const [isBlurring, setIsBlurring] = useState(false)
 
   const iconColor = variant === 'muted' ? '#2b2b2b' : 'currentColor'
-  const iconSize = size === 'large' ? 0.9 : 1
-  const textSize = size === 'large' ? 'text-3xl lg:text-4xl' : 'text-4xl lg:text-5xl'
+  const iconSize = size === 'large' ? 0.7 : 0.5
+  const textSize = size === 'large' ? 'text-2xl lg:text-2xl' : 'text-3xl lg:text-3xl'
 
   const platforms = [
     {
@@ -110,7 +110,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
       {/* Fixed width container to prevent shaking */}
       <div className="w-96 h-20 flex items-center justify-center">
         <div
-          className={`flex items-center justify-center space-x-3 transition-all duration-500 text-shadow-muted ${
+          className={`flex items-center justify-center space-x-3 transition-all duration-500 text-shadow-muted -ml-35 mt-10 ${
             isBlurring ? 'opacity-20' : 'opacity-100'
           } ${isVisible ? 'animate-fadeIn' : 'animate-fadeOut'} ${
             variant === 'muted'
