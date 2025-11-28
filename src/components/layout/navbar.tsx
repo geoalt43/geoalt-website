@@ -9,13 +9,22 @@ export function Navbar() {
   const pathname = usePathname()
 
   useEffect(() => {
-    if (pathname === '/' && window.location.hash === '#pricing') {
-      const element = document.getElementById('pricing')
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }, 100)
+    const handleHashScroll = () => {
+      if (pathname === '/' && window.location.hash === '#pricing') {
+        const element = document.getElementById('pricing')
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }, 100)
+        }
       }
+    }
+
+    handleHashScroll()
+    window.addEventListener('hashchange', handleHashScroll)
+    
+    return () => {
+      window.removeEventListener('hashchange', handleHashScroll)
     }
   }, [pathname])
 
@@ -39,7 +48,7 @@ export function Navbar() {
             </Link>
           </div>
 
-          <div className="hidden md:flex items-center justify-center space-x-4 absolute left-1/2 transform -translate-x-1/2">
+          <div className="hidden md:flex items-center justify-center space-x-0 absolute left-1/2 transform -translate-x-1/2">
             <Link href="/" className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out">
               Home
             </Link>

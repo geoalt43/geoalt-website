@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { DemoCTA } from './demo-cta'
 import { AIPlatformRotator } from './ai-platform-rotator'
 import OpenAI from '@lobehub/icons/es/OpenAI'
@@ -18,11 +17,16 @@ export function CTASection() {
               GE<OpenAI size={20} className="mx-0.5" />Alt helps you lead in AI search and scale your brand faster.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/register" className="bg-white text-black px-6 py-3 rounded-full text-sm font-semibold hover:bg-gray-100 transition-colors inline-block text-center">
-                Try for Free
-              </Link>
+              <a 
+                href="https://forms.google.com/YOUR_FORM_ID_HERE" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-white text-black px-6 py-3 rounded-full text-sm font-semibold hover:bg-gray-100 transition-colors inline-block text-center"
+              >
+                Start Free Trial
+              </a>
               <DemoCTA 
-                text="Get Demo" 
+                text="Contact Us" 
                 variant="outline" 
                 size="md"
                 showModal={false}

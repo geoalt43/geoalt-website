@@ -15,7 +15,7 @@ interface AIPlatformRotatorProps {
   size?: 'default' | 'large'
 }
 
-export function AIPlatformRotator({ variant = 'default', size = 'default' }: AIPlatformRotatorProps) {
+export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPlatformRotatorProps) {
   const [currentPlatform, setCurrentPlatform] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
   const [isBlurring, setIsBlurring] = useState(false)
@@ -98,18 +98,11 @@ export function AIPlatformRotator({ variant = 'default', size = 'default' }: AIP
         <div className="absolute inset-0 overflow-hidden -z-10">
           {/* Animated lines */}
           <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#828282] to-transparent opacity-30 animate-pulse"></div>
-          <div className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#828282] to-transparent opacity-25 animate-pulse" style={{animationDelay: '1.5s'}}></div>
+          <div className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#828282] to-transparent opacity-25 animate-pulse animation-delay-1500"></div>
           
           {/* Subtle grid pattern */}
           <div className="absolute inset-0 opacity-10">
-            <div className="w-full h-full" style={{
-              backgroundImage: `
-                linear-gradient(rgba(130, 130, 130, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(130, 130, 130, 0.1) 1px, transparent 1px)
-              `,
-              backgroundSize: '80px 80px',
-              animation: 'gridMove 20s linear infinite'
-            }}></div>
+            <div className="w-full h-full grid-overlay-muted"></div>
           </div>
         </div>
       )}
@@ -117,16 +110,17 @@ export function AIPlatformRotator({ variant = 'default', size = 'default' }: AIP
       {/* Fixed width container to prevent shaking */}
       <div className="w-96 h-20 flex items-center justify-center">
         <div
-          className={`flex items-center justify-center space-x-3 transition-all duration-500 ${
+          className={`flex items-center justify-center space-x-3 transition-all duration-500 text-shadow-muted ${
             isBlurring ? 'opacity-20' : 'opacity-100'
-          } ${isVisible ? 'animate-fadeIn' : 'animate-fadeOut'}`}
-          style={{ 
-            textShadow: '0 0 20px rgba(130, 130, 130, 0.3)',
-            color: variant === 'muted' ? '#2b2b2b' : 'white',
-            filter: variant === 'muted' 
-              ? (isBlurring ? 'brightness(0) saturate(100%) invert(17%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%) blur(15px)' : 'brightness(0) saturate(100%) invert(17%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)')
-              : (isBlurring ? 'blur(15px)' : 'none')
-          }}
+          } ${isVisible ? 'animate-fadeIn' : 'animate-fadeOut'} ${
+            variant === 'muted'
+              ? isBlurring
+                ? 'filter-muted-blur text-[#2b2b2b]'
+                : 'filter-muted-base text-[#2b2b2b]'
+              : isBlurring
+                  ? 'filter-default-blur text-white'
+                  : 'filter-none text-white'
+          }`}
         >
           {current.icon && (
             <div aria-hidden className="flex-shrink-0">
@@ -135,8 +129,9 @@ export function AIPlatformRotator({ variant = 'default', size = 'default' }: AIP
           )}
           {current.name && (
             <span 
-              className={`${textSize} ${current.weight || (size === 'large' ? 'font-medium' : 'font-semibold')} leading-tight tracking-tight whitespace-nowrap`}
-              style={{ color: variant === 'muted' ? '#2b2b2b' : 'white' }}
+              className={`${textSize} ${current.weight || (size === 'large' ? 'font-medium' : 'font-semibold')} leading-tight tracking-tight whitespace-nowrap ${
+                variant === 'muted' ? 'text-[#2b2b2b]' : 'text-white'
+              }`}
             >
               {current.name}
             </span>

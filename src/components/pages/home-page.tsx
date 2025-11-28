@@ -6,6 +6,7 @@ import { HeroSection } from '@/components/marketing/hero-section'
 import { FeaturesSection } from '@/components/marketing/features-section'
 import { FAQSection } from '@/components/marketing/faq-section'
 import { CTASection } from '@/components/marketing/cta-section'
+import { TestimonialsCarousel } from '@/components/marketing/testimonials-carousel'
 import { Footer } from '@/components/layout/footer'
 import { Navbar } from '@/components/layout/navbar'
 import OpenAI from '@lobehub/icons/es/OpenAI'
@@ -92,10 +93,7 @@ export function HomePage() {
             </div>
             <div className="relative flex flex-col items-center gap-6 sm:gap-10">
               <p className="text-lg font-base tracking-wide text-white -mt-4">Trusted by</p>
-              <div
-                className="w-full overflow-hidden"
-                style={{ maskImage: 'linear-gradient(90deg, transparent, rgba(0,0,0,0.9) 12%, rgba(0,0,0,0.9) 88%, transparent)' }}
-              >
+              <div className="w-full overflow-hidden mask-fade-horizontal">
                 <div className="trusted-marquee flex items-center gap-19 sm:gap-20">
                   {[...trustedBrands, ...trustedBrands].map((brand, index) => (
                     <span key={`${brand.label}-${index}`} className={`${brand.className} whitespace-nowrap`}>
@@ -187,6 +185,8 @@ export function HomePage() {
         </div>
       </section>
 
+      <TestimonialsCarousel />
+
       <section className="py-40">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center">
@@ -236,7 +236,7 @@ export function HomePage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mb-10 pb-32 text-center">
             <h2 className="text-5xl font-normal text-white mb-4 tracking-tight">Gain insights and optimize your strategy</h2>
-            <p className="text-lg mx-auto" style={{color: '#9b9b9b'}}>
+            <p className="text-lg mx-auto text-[#9b9b9b]">
               GEOAlt provides a comprehensive suite of tools to understand your AI visibility and improve your performance.
             </p>
           </div>
@@ -244,8 +244,7 @@ export function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="flex flex-col gap-3 pb-3">
               <div
-                className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-                style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCGTYqTXIxVx8NL4wys8TWMMh6G6eTmNOltncswi4UyZKhJAJctssowFdWs2LcP-9Rom8aQJ0qd0M_hFJnok26sfwwi_aK0Gl2USuxjpzWgg3oMekvW28bcWznoDPdL9YK7P047P3PDMeklFwgXJT8XeA2VR4xqg3R__9yj_vLVs5XE-AQwXACJro00t1DV0zgb5SGXkObWiIbdmpNCoq17YyxI5lu7V1vbU1E8KideA8kdr6Omc2plf1Vmz6dxtKsqjozBqiM2B4Ww")', filter: 'grayscale(100%) saturate(0%) contrast(115%)' }}
+                className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl resource-card-image-1"
               ></div>
               <div>
                 <p className="text-white text-base font-medium leading-normal">Track your AI visibility</p>
@@ -254,8 +253,7 @@ export function HomePage() {
             </div>
             <div className="flex flex-col gap-3 pb-3">
               <div
-                className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-                style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCq1kKt1NkGBd-mXYMUFS5H8FRuzUxcbgrr7JEUeDMn2L5uM_lANaIaNjEPrrx2vtRstRlxr1H4-F0Ncr-w_7A0v1uVn45qReeoyBY-SA390xaOEGII3Ygid8kmWH8WklWb0eCFi0dPteVG4zc_URFJz3Ia_yStFV8N092wZqKs--wd-YTFNC90zenax4_7ptlOKqwCjTLgiMFwkUJigVvHzwuElgBIAMhNLdiGstgAb0kCmnMlDoBX694qJQ4S7bQlasIm6mr32hmP")', filter: 'grayscale(100%) saturate(0%) contrast(115%)' }}
+                className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl resource-card-image-2"
               ></div>
               <div>
                 <p className="text-white text-base font-medium leading-normal">Analyze competitor strategies</p>
@@ -264,8 +262,7 @@ export function HomePage() {
             </div>
             <div className="flex flex-col gap-3 pb-3">
               <div
-                className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-                style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDAlnna6fqojRzee2a1Lbzv0S0vJh9qoFyujowjgP9WP8T3BiLf3pFO_x54yVx9xNx_LAkqRpZ6DvTiEpfXeZIM_OwVf3tgFoSaaz0wZ8rkbYuiO3QIK4SKQEAJN2WrsKp2ogGJxbSm0ZCzuq5kbWRPW-fQi81lbmB79mQCMFMSjgNgfEZz5Cvb8Zp7nwSScaS7DpA8EMPDQYgjM9OL_7OQpBpwvADJF7yruc_8G_FeOVgzrj6iVHe_YtHFhkUp_jnzXsge8Np-7k3K")', filter: 'grayscale(100%) saturate(0%) contrast(115%)' }}
+                className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl resource-card-image-3"
               ></div>
               <div>
                 <p className="text-white text-base font-medium leading-normal">Optimize your content</p>
@@ -280,7 +277,7 @@ export function HomePage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mb-12 pb-8 text-center">
             <h2 className="text-5xl font-normal text-white mb-4 tracking-tight">Empowering businesses of all sizes</h2>
-            <p className="text-lg" style={{color: '#9b9b9b'}}>
+            <p className="text-lg text-[#9b9b9b]">
               GEOAlt caters to a wide range of businesses, from startups to enterprises, seeking to
               enhance their AI visibility.
             </p>
@@ -297,7 +294,7 @@ export function HomePage() {
                 </svg>
               </div>
               <h3 className="text-[1.3rem] font-semibold text-white mb-3.5">Marketing Teams</h3>
-              <p className="text-base" style={{color: '#9b9b9b'}}>
+              <p className="text-base text-[#9b9b9b]">
                 Track campaign performance and optimize content for AI-driven search.
               </p>
             </div>
@@ -310,7 +307,7 @@ export function HomePage() {
                 </svg>
               </div>
               <h3 className="text-[1.3rem] font-semibold text-white mb-3.5">Content Creators</h3>
-              <p className="text-base" style={{color: '#9b9b9b'}}>
+              <p className="text-base text-[#9b9b9b]">
                 Create content that resonates with AI algorithms and drives organic traffic.
               </p>
             </div>
@@ -323,7 +320,7 @@ export function HomePage() {
                 </svg>
               </div>
               <h3 className="text-[1.3rem] font-semibold text-white mb-3.5">SEO Specialists</h3>
-              <p className="text-base" style={{color: '#9b9b9b'}}>
+              <p className="text-base text-[#9b9b9b]">
                 Adapt SEO strategies to the evolving landscape of AI-powered search.
               </p>
             </div>
