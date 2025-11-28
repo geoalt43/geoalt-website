@@ -110,7 +110,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
       {/* Fixed width container to prevent shaking */}
       <div className="w-96 h-20 flex items-center justify-center">
         <div
-          className={`flex items-center justify-center space-x-3 transition-all duration-500 text-shadow-muted -ml-35 mt-10 ${
+          className={`flex items-center justify-center space-x-3 transition-all duration-500 text-shadow-muted ${
             isBlurring ? 'opacity-20' : 'opacity-100'
           } ${isVisible ? 'animate-fadeIn' : 'animate-fadeOut'} ${
             variant === 'muted'

@@ -89,7 +89,7 @@ export function TestimonialsCarousel() {
                       isPaused ? 'ring-2 ring-blue-500 shadow-xl' : 'hover:shadow-xl'
                     }`}
                   >
-                    <p className="text-gray-100 text-sm md:text-base leading-relaxed mb-6">
+                    <p className="text-gray-100 text-sm md:text-base leading-relaxed mb-6 font-light">
                       &ldquo;{testimonial.quote}&rdquo;
                     </p>
                     <div className="mt-auto flex items-center gap-4 pt-6">
@@ -107,8 +107,8 @@ export function TestimonialsCarousel() {
                         />
                       </div>
                       <div>
-                        <p className="font-semibold text-white text-sm md:text-base">{testimonial.name}</p>
-                        <p className="text-xs md:text-sm text-gray-300">{testimonial.designation}</p>
+                        <p className="font-normal text-white text-sm md:text-base">{testimonial.name}</p>
+                        <p className="text-xs md:text-sm text-gray-300 font-light">{testimonial.designation}</p>
                       </div>
                     </div>
                   </div>

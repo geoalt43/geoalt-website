@@ -36,7 +36,7 @@ export function CTASection() {
           
           {/* Right Section - AI Platform Rotator */}
           <div className="flex-shrink-0 w-80 h-64 flex items-center justify-end">
-            <div className="cta-rotator-transform">
+            <div className="cta-rotator-transform -ml-[35px] mt-10">
               <AIPlatformRotator variant="muted" />
             </div>
           </div>
