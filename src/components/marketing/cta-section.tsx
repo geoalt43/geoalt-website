@@ -6,7 +6,7 @@ export function CTASection() {
   return (
     <section className="pt-24 pb-40  ">
       <div className="max-w-7xl mx-auto px-6 pt-3 pb-3  lg:px-8 border border-[#1d1d1d] rounded-2xl bg-[#0d0d0d] ">
-        <div className="bg-[#0d0d0d] rounded-2xl p-12 flex items-center">
+        <div className="bg-[#0d0d0d] rounded-2xl p-8 flex items-center">
           {/* Left Section - Text Content */}
           <div className="flex-1 pr-8">
             <h2 className="text-4xl font-normal text-white mb-4 leading-tight tracking-wide">

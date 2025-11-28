@@ -63,6 +63,12 @@ export function AISearchMetricsSection() {
           </p>
         </div>
 
+        <div className="max-w-3xl mx-auto mt-12">
+          <div className="bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white/70 text-center text-sm">
+            What are the best CRMs for Startups?
+          </div>
+        </div>
+
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {insightCards.map(card => (
             <div key={card.title} className="bg-[#0d0d0d] border border-white/10 rounded-xl p-6 text-white/80">
@@ -73,12 +79,6 @@ export function AISearchMetricsSection() {
               <p className="text-sm text-white/60 leading-relaxed">{card.description}</p>
             </div>
           ))}
-        </div>
-
-        <div className="max-w-3xl mx-auto mt-16">
-          <div className="bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white/70 text-center text-sm">
-            What are the best CRMs for Startups?
-          </div>
         </div>
 
         <div className="mt-10 bg-[#0d0d0d] border border-white/10 rounded-2xl shadow-2xl shadow-black/40 p-8">

@@ -70,40 +70,17 @@ export function HomePage() {
 
       <section className="">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border-[2px] border-white/10 p-4 sm:p-6 lg:p-8">
+          <div className="border-[2px] border-white/10 p-4 sm:p-6 lg:p-8 relative overflow-hidden dashboard-container">
+            <div className="absolute inset-0 dashboard-animation-bg pointer-events-none"></div>
             <Image
-              src="/images/img-1.jpeg"
+              src="/images/img-2.jpeg"
               alt="GEOAlt analytics dashboard"
               width={1280}
               height={720}
               priority
               sizes="(max-width: 1024px) 100vw, 1280px"
-              className="w-[98.5%] sm:w-[99.5%] mx-auto h-auto object-contain"
+              className="w-[98.5%] sm:w-[99.5%] mx-auto h-auto object-contain relative z-10"
             />
-          </div>
-        </div>
-      </section>
-
-      <section className="py-76">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-[0px] border-y border-white/10 bg-transparent px-6 py-10 sm:px-10 sm:py-14">
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute w-32 h-32 bg-white/0 rounded-full blur-3xl -top-10 -left-6" />
-              <div className="absolute w-40 h-40 bg-white/0 rounded-full blur-3xl -bottom-16 right-6" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(25,250,255,0.2),_transparent_55%)]" />
-            </div>
-            <div className="relative flex flex-col items-center gap-6 sm:gap-10">
-              <p className="text-lg font-base tracking-wide text-white -mt-4">Trusted by</p>
-              <div className="w-full overflow-hidden mask-fade-horizontal">
-                <div className="trusted-marquee flex items-center gap-19 sm:gap-20">
-                  {[...trustedBrands, ...trustedBrands].map((brand, index) => (
-                    <span key={`${brand.label}-${index}`} className={`${brand.className} whitespace-nowrap`}>
-                      {brand.label}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -331,6 +308,30 @@ export function HomePage() {
                 ))}
               </div>
               <button className="mt-auto w-full rounded-full border border-white/40 text-white py-3 text-sm font-semibold">Contact Us</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-46">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-[0px] border-y border-white/10 bg-transparent px-6 py-10 sm:px-10 sm:py-14">
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute w-32 h-32 bg-white/0 rounded-full blur-3xl -top-10 -left-6" />
+              <div className="absolute w-40 h-40 bg-white/0 rounded-full blur-3xl -bottom-16 right-6" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(25,250,255,0.2),_transparent_55%)]" />
+            </div>
+            <div className="relative flex flex-col items-center gap-6 sm:gap-10">
+              <p className="text-lg font-base tracking-wide text-white -mt-4">Trusted by</p>
+              <div className="w-full overflow-hidden mask-fade-horizontal">
+                <div className="trusted-marquee flex items-center gap-19 sm:gap-20">
+                  {[...trustedBrands, ...trustedBrands].map((brand, index) => (
+                    <span key={`${brand.label}-${index}`} className={`${brand.className} whitespace-nowrap`}>
+                      {brand.label}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
