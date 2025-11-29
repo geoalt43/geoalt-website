@@ -55,7 +55,7 @@ export function AISearchMetricsSection() {
             Understand how AI sees your brand
           </h2>
           <p className="mt-4 text-lg text-white/70">
-            Track the most critical signals across AI search platforms to understand your brand's visibility, 
+            Track the most critical signals across AI search platforms to understand your brand&apos;s visibility, 
             positioning, and sentiment—then take action to improve your AI presence.
           </p>
         </div>
@@ -83,7 +83,7 @@ export function AISearchMetricsSection() {
             <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center font-semibold">
               AI
             </div>
-            <span>Understanding your AI visibility requires tracking multiple signals across different platforms and models to get a complete picture of your brand's presence.</span>
+            <span>Understanding your AI visibility requires tracking multiple signals across different platforms and models to get a complete picture of your brand&apos;s presence.</span>
           </div>
           <div className="space-y-6">
             {highlights.map(item => (

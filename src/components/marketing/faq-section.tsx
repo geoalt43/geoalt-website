@@ -15,7 +15,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.15,
       delayChildren: 0.1,
     },
   },
@@ -47,7 +47,7 @@ interface FAQCardProps {
 
 function FAQCard({ faq, index, isOpen, onToggle }: FAQCardProps) {
   const cardRef = useRef(null)
-  const cardInView = useInView(cardRef, { once: true, margin: '-50px' })
+  const cardInView = useInView(cardRef, { once: true, margin: '-150px' })
 
   return (
     <motion.div

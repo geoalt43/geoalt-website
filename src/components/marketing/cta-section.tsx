@@ -118,7 +118,7 @@ function VerticalFlowingRotator() {
 
 export function CTASection() {
   const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+  const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -134,24 +134,32 @@ export function CTASection() {
   const itemVariants = {
     hidden: { 
       opacity: 0, 
-      y: 30,
+      y: 40,
       scale: 0.95,
     },
     visible: { 
       opacity: 1, 
       y: 0,
       scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut' as const,
+      },
     },
   }
 
   const textVariants = {
     hidden: { 
       opacity: 0, 
-      y: 20,
+      y: 30,
     },
     visible: { 
       opacity: 1, 
       y: 0,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut' as const,
+      },
     },
   }
 
@@ -178,17 +186,14 @@ export function CTASection() {
           {/* Left Section - Text Content */}
           <motion.div 
             variants={itemVariants}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
             className="flex-1 pr-8"
           >
             <motion.h2 
               variants={textVariants}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
               className="text-4xl font-normal text-white mb-4 leading-tight tracking-wide"
             >
               <motion.span 
                 variants={textVariants}
-                transition={{ duration: 0.5, ease: 'easeOut' }}
                 className="pb-2 inline-block"
               >
                 Start Growing Your
@@ -196,14 +201,12 @@ export function CTASection() {
               <br />
               <motion.span 
                 variants={textVariants}
-                transition={{ duration: 0.5, ease: 'easeOut' }}
               >
                 AI Visibility Today
               </motion.span>
             </motion.h2>
             <motion.p 
               variants={textVariants}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
               className="text-lg mb-8 leading-relaxed tracking-wide flex items-center text-[#898989]"
             >
               GE<OpenAI size={20} className="mx-0.5" />Alt helps you lead in AI search and scale your brand faster.
@@ -229,7 +232,6 @@ export function CTASection() {
           {/* Right Section - AI Platform Rotator */}
           <motion.div 
             variants={itemVariants}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
             className="flex-shrink-0 w-[450px] h-[350px] flex items-center justify-start -ml-24 -mr-9 relative overflow-visible"
           >
             <div className="relative w-full h-full">
@@ -237,7 +239,6 @@ export function CTASection() {
                 {/* Card Container */}
                 <motion.div 
                   variants={itemVariants}
-                  transition={{ duration: 0.6, ease: 'easeOut' }}
                   className="relative w-full h-full bg-[#0d0d0d] rounded-2xl pt-1 pb-1 pl-10 pr-0 mt-10 overflow-hidden"
                   style={{
                     backdropFilter: 'blur(10px)',

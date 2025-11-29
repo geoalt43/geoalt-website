@@ -52,14 +52,14 @@ const CheckIcon = () => (
 
 function EmpoweringBusinessesSection() {
   const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+  const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
         delayChildren: 0.1,
       },
     },
@@ -73,6 +73,10 @@ function EmpoweringBusinessesSection() {
     visible: { 
       opacity: 1, 
       y: 0,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut' as const,
+      },
     },
   }
 
@@ -86,6 +90,10 @@ function EmpoweringBusinessesSection() {
       opacity: 1, 
       y: 0,
       scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut' as const,
+      },
     },
   }
 
@@ -99,6 +107,10 @@ function EmpoweringBusinessesSection() {
       opacity: 1, 
       scale: 1,
       rotate: 0,
+      transition: {
+        duration: 0.4,
+        ease: 'easeOut' as const,
+      },
     },
   }
 
@@ -133,14 +145,12 @@ function EmpoweringBusinessesSection() {
         >
           <motion.h2 
             variants={headerVariants}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
             className="text-5xl font-normal text-white mb-4 tracking-tight"
           >
             Empowering businesses of all sizes
           </motion.h2>
           <motion.p 
             variants={headerVariants}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
             className="text-lg text-[#9b9b9b]"
           >
             GEOAlt caters to a wide range of businesses, from startups to enterprises,<br />
@@ -157,7 +167,6 @@ function EmpoweringBusinessesSection() {
           {/* Marketing Teams Card */}
           <motion.div
             variants={cardVariants}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
             className="bg-black/60 border border-[#3a3a3a] rounded-2xl p-12 relative overflow-hidden group"
             whileHover={{ 
               y: -8,
@@ -176,7 +185,6 @@ function EmpoweringBusinessesSection() {
                 variants={iconVariants}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
-                transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
               >
                 <svg className="w-9 h-9 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/>
@@ -196,7 +204,6 @@ function EmpoweringBusinessesSection() {
           {/* Content Creators Card */}
           <motion.div
             variants={cardVariants}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
             className="bg-black/60 border border-[#3a3a3a] rounded-2xl p-12 relative overflow-hidden group"
             whileHover={{ 
               y: -8,
@@ -215,7 +222,6 @@ function EmpoweringBusinessesSection() {
                 variants={iconVariants}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
-                transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
               >
                 <svg className="w-9 h-9 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 20h9"/>
@@ -233,7 +239,6 @@ function EmpoweringBusinessesSection() {
           {/* SEO Specialists Card */}
           <motion.div
             variants={cardVariants}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
             className="bg-black/60 border border-[#3a3a3a] rounded-2xl p-12 relative overflow-hidden group"
             whileHover={{ 
               y: -8,
@@ -252,7 +257,6 @@ function EmpoweringBusinessesSection() {
                 variants={iconVariants}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
-                transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
               >
                 <svg className="w-9 h-9 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="11" cy="11" r="8"/>

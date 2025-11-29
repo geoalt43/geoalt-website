@@ -53,7 +53,7 @@ const testimonials: Testimonial[] = [
 export function TestimonialsCarousel() {
   const [failedImages, setFailedImages] = useState<Set<number>>(new Set())
   const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+  const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -74,6 +74,10 @@ export function TestimonialsCarousel() {
     visible: { 
       opacity: 1, 
       y: 0,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut' as const,
+      },
     },
   }
 
@@ -100,6 +104,10 @@ export function TestimonialsCarousel() {
       opacity: 1, 
       y: 0,
       scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut' as const,
+      },
     },
   }
 
@@ -127,7 +135,7 @@ export function TestimonialsCarousel() {
         >
           <motion.div
             variants={badgeVariants}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
             className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-white/20 mb-14 shadow-sm"
           >
             <svg className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
@@ -137,13 +145,11 @@ export function TestimonialsCarousel() {
           </motion.div>
           <motion.h2
             variants={headerVariants}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
             className="text-5xl font-normal text-white pb-14"
           >
             See what industry leaders say<br />
             <motion.span
               variants={headerVariants}
-              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
               className="pt-2 inline-block"
             >
               about GEOAlt
@@ -161,7 +167,6 @@ export function TestimonialsCarousel() {
             <motion.div
               key={`${testimonial.name}-${index}`}
               variants={cardVariants}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
               className="bg-[#141414] border border-[#363636] rounded-xl p-6 md:p-8 shadow-lg h-full flex flex-col relative overflow-hidden group"
               whileHover={{ 
                 y: -3,

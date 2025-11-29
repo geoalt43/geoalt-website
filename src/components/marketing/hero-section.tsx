@@ -31,7 +31,7 @@ const wordVariants = {
     y: 0,
     rotateX: 0,
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       stiffness: 100,
       damping: 12,
       mass: 0.5,
@@ -63,7 +63,7 @@ const rotatorVariants = {
     scale: 1,
     filter: 'blur(0px)',
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       stiffness: 80,
       damping: 15,
       mass: 0.8,
@@ -83,7 +83,7 @@ const textVariants = {
     y: 0,
     clipPath: 'inset(0 0 0% 0)',
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       stiffness: 100,
       damping: 15,
       mass: 0.5,
@@ -113,7 +113,7 @@ const buttonVariants = {
     scale: 1,
     y: 0,
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       stiffness: 120,
       damping: 12,
       mass: 0.5,
@@ -122,7 +122,7 @@ const buttonVariants = {
   hover: {
     scale: 1.05,
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       stiffness: 400,
       damping: 17,
     },
