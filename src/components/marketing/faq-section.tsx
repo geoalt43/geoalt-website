@@ -1,11 +1,137 @@
 'use client'
 
 import { RefObject } from 'react'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 interface FAQSectionProps {
   openFaq: number | null
   toggleFaq: (index: number) => void
   faqRef: RefObject<HTMLDivElement | null>
+}
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+    scale: 0.95,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: 'easeOut' as const,
+    },
+  },
+}
+
+interface FAQCardProps {
+  faq: { question: string; answer: string }
+  index: number
+  isOpen: boolean
+  onToggle: () => void
+}
+
+function FAQCard({ faq, index, isOpen, onToggle }: FAQCardProps) {
+  const cardRef = useRef(null)
+  const cardInView = useInView(cardRef, { once: true, margin: '-50px' })
+
+  return (
+    <motion.div
+      ref={cardRef}
+      variants={cardVariants}
+      initial="hidden"
+      animate={cardInView ? 'visible' : 'hidden'}
+      className="bg-black border-b border-[#656565] shadow-sm faq-card-partial-borders rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl overflow-hidden relative"
+      whileHover={{
+        backgroundColor: 'rgba(20, 20, 20, 1)',
+        borderColor: 'rgba(120, 120, 120, 0.6)',
+        transition: { duration: 0.4, ease: 'easeInOut' }
+      }}
+    >
+      <motion.div
+        className="absolute inset-0 bg-white/[0.02] opacity-0 pointer-events-none rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl"
+        whileHover={{
+          opacity: 1,
+          transition: { duration: 0.3, ease: 'easeOut' }
+        }}
+      />
+      <motion.button
+        className="w-full pl-4 pr-8 py-4 text-left flex items-center gap-4"
+        onClick={onToggle}
+      >
+        <motion.span
+          className="text-white text-lg font-light inline-block flex-shrink-0"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ 
+            scale: 1,
+            opacity: 1,
+            rotate: isOpen ? 90 : 0,
+          }}
+          transition={{ duration: 0.2, ease: 'easeOut' }}
+        >
+          &gt;
+        </motion.span>
+        <span className="font-medium text-white text-lg">{faq.question}</span>
+      </motion.button>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ 
+              height: 'auto', 
+              opacity: 1,
+              transition: {
+                height: { duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] },
+                opacity: { duration: 0.3, ease: 'easeOut', delay: 0.1 }
+              }
+            }}
+            exit={{ 
+              height: 0, 
+              opacity: 0,
+              transition: {
+                height: { duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] },
+                opacity: { duration: 0.2, ease: 'easeIn' }
+              }
+            }}
+            className="overflow-hidden bg-transparent"
+          >
+            <div className="pl-[calc(1rem+1.5rem+1rem)] pr-8 pb-6 pt-0 bg-transparent">
+              <motion.p
+                initial={{ y: -10, opacity: 0 }}
+                animate={{ 
+                  y: 0, 
+                  opacity: 1,
+                  transition: { duration: 0.3, ease: 'easeOut', delay: 0.15 }
+                }}
+                exit={{ 
+                  y: -10, 
+                  opacity: 0,
+                  transition: { duration: 0.2, ease: 'easeIn' }
+                }}
+                className="text-gray-400 leading-relaxed text-base font-light bg-transparent"
+              >
+                {faq.answer}
+              </motion.p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  )
 }
 
 export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
@@ -36,36 +162,39 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
     }
   ]
 
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
+
   return (
     <section className="py-24">
-      <div className="max-w-4xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-20">
+      <div ref={sectionRef} className="max-w-4xl mx-auto px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+          className="text-center mb-20"
+        >
           <h2 className="text-5xl font-normal text-white mb-6">FAQ</h2>
           <p className="text-2xl text-[#898989] font-light">Generative Engine Optimization is still very new.<br />We&apos;ve got you covered.</p>
-        </div>
+        </motion.div>
         
-        <div ref={faqRef} className="space-y-4">
+        <motion.div
+          ref={faqRef}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="space-y-4"
+        >
           {faqs.map((faq, index) => (
-            <div key={index} className="bg-black border-b border-[#656565] shadow-sm faq-card-partial-borders rounded-bl-2xl rounded-br-2xl">
-              <button
-                className={`w-full px-8 py-4 text-left flex justify-between items-center transition-colors ${
-                  openFaq === index ? '' : 'hover:bg-[#656565]'
-                }`}
-                onClick={() => toggleFaq(index)}
-              >
-                <span className="font-medium text-white text-lg">{faq.question}</span>
-                <span className="text-white text-2xl font-light">
-                  {openFaq === index ? '−' : '+'}
-                </span>
-              </button>
-              {openFaq === index && (
-                <div className="px-8 pb-6">
-                  <p className="text-gray-400 leading-relaxed text-lg font-normal">{faq.answer}</p>
-                </div>
-              )}
-            </div>
+            <FAQCard
+              key={index}
+              faq={faq}
+              index={index}
+              isOpen={openFaq === index}
+              onToggle={() => toggleFaq(index)}
+            />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

@@ -1,5 +1,19 @@
+'use client'
+
 import Link from 'next/link'
 import OpenAI from '@lobehub/icons/es/OpenAI'
+
+// Helper function to scroll to hero section
+const scrollToHero = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  e.preventDefault()
+  const heroSection = document.getElementById('home')
+  if (heroSection) {
+    heroSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  } else {
+    // Fallback: scroll to top if hero section not found
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+}
 
 export function Footer() {
   return (
@@ -43,12 +57,12 @@ export function Footer() {
             </h3>
             <ul className="mt-4 space-y-3">
               <li>
-                <Link href="/features" className="text-sm hover:text-brand-white transition-colors" style={{color: '#898989'}}>
+                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Features
                 </Link>
               </li>
               <li>
-                <Link href="/api" className="text-sm hover:text-brand-white transition-colors" style={{color: '#898989'}}>
+                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   API
                 </Link>
               </li>
@@ -62,17 +76,17 @@ export function Footer() {
             </h3>
             <ul className="mt-4 space-y-3">
               <li>
-                <Link href="/about" className="text-sm hover:text-brand-white transition-colors" style={{color: '#898989'}}>
+                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-sm hover:text-brand-white transition-colors" style={{color: '#898989'}}>
+                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/careers" className="text-sm hover:text-brand-white transition-colors" style={{color: '#898989'}}>
+                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Careers
                 </Link>
               </li>
@@ -86,17 +100,17 @@ export function Footer() {
             </h3>
             <ul className="mt-4 space-y-3">
               <li>
-                <Link href="/docs" className="text-sm hover:text-brand-white transition-colors" style={{color: '#898989'}}>
+                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Documentation
                 </Link>
               </li>
               <li>
-                <Link href="/help" className="text-sm hover:text-brand-white transition-colors" style={{color: '#898989'}}>
+                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Help Center
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-sm hover:text-brand-white transition-colors" style={{color: '#898989'}}>
+                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Contact
                 </Link>
               </li>
@@ -110,17 +124,17 @@ export function Footer() {
             </h3>
             <ul className="mt-4 space-y-3">
               <li>
-                <Link href="/privacy" className="text-sm hover:text-brand-white transition-colors" style={{color: '#898989'}}>
+                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-sm hover:text-brand-white transition-colors" style={{color: '#898989'}}>
+                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="/cookies" className="text-sm hover:text-brand-white transition-colors" style={{color: '#898989'}}>
+                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Cookie Policy
                 </Link>
               </li>
@@ -139,16 +153,16 @@ export function Footer() {
             </p>
             <div className="mt-4 md:mt-0 flex space-x-6">
               <Link
-                href="/privacy"
-                className="text-sm hover:text-brand-white transition-colors"
-                style={{color: '#898989'}}
+                href="/#home"
+                onClick={scrollToHero}
+                className="text-sm text-[#898989] hover:text-white transition-none"
               >
                 Privacy Policy
               </Link>
               <Link
-                href="/terms"
-                className="text-sm hover:text-brand-white transition-colors"
-                style={{color: '#898989'}}
+                href="/#home"
+                onClick={scrollToHero}
+                className="text-sm text-[#898989] hover:text-white transition-none"
               >
                 Terms of Service
               </Link>

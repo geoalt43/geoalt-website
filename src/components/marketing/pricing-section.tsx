@@ -1,7 +1,13 @@
 'use client'
 
+import React from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { OpenAI } from '@lobehub/icons'
+import { Perplexity } from '@lobehub/icons'
+import { Grok } from '@lobehub/icons'
+import { Claude } from '@lobehub/icons'
+import { Gemini } from '@lobehub/icons'
 
 const CheckIcon = () => (
   <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-white/40 text-white text-xs font-semibold">
@@ -9,23 +15,150 @@ const CheckIcon = () => (
   </span>
 )
 
+// Helper function to get icon for AI platform
+const getPlatformIcon = (platformName: string, iconSize: number = 16) => {
+  const iconColor = 'currentColor'
+  
+  const normalizedName = platformName.toLowerCase().trim()
+  
+  if (normalizedName.includes('chatgpt') || normalizedName.includes('openai')) {
+    return <OpenAI size={iconSize} style={{ color: iconColor }} className="flex-shrink-0" />
+  }
+  if (normalizedName.includes('gemini') || normalizedName.includes('google')) {
+    return <Gemini.Color size={iconSize} style={{ color: iconColor }} className="flex-shrink-0" />
+  }
+  if (normalizedName.includes('perplexity')) {
+    return <Perplexity size={iconSize} style={{ color: iconColor }} className="flex-shrink-0" />
+  }
+  if (normalizedName.includes('grok')) {
+    return <Grok.Combine size={iconSize} style={{ color: iconColor }} className="flex-shrink-0" />
+  }
+  return null
+}
+
+// Component to render feature text with icons
+const FeatureText = ({ text }: { text: string }) => {
+  // Special handling for "Access to all models" - show icons only with blur effect
+  if (text === 'Access to all models') {
+    const iconSize = 18
+    
+    return (
+      <span className="flex items-center gap-2">
+        <span>Access to all models</span>
+        {/* Icons only - very small gap between them */}
+        <div className="flex items-center gap-0.5">
+          <OpenAI size={iconSize} className="opacity-80 hover:opacity-100 transition-opacity" />
+          <Perplexity size={iconSize} className="opacity-80 hover:opacity-100 transition-opacity" />
+          <Grok size={iconSize} className="opacity-80 hover:opacity-100 transition-opacity" />
+          <Claude.Color size={iconSize} className="opacity-80 hover:opacity-100 transition-opacity" />
+          <Gemini.Color size={iconSize} className="opacity-80 hover:opacity-100 transition-opacity" />
+          {/* 3+ text with blur effect only on the left side */}
+          <div className="relative flex items-center ml-0.5">
+            <div className="absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-white/35 to-transparent backdrop-blur-[6px] rounded-l" />
+            <span className="relative text-xs font-semibold text-white/90 z-10 pl-1">
+              3+
+            </span>
+          </div>
+        </div>
+      </span>
+    )
+  }
+  
+  // Special handling for "Access to 3 models (ChatGPT, Gemini, Perplexity)"
+  if (text.includes('Access to 3 models') && text.includes('ChatGPT') && text.includes('Gemini') && text.includes('Perplexity')) {
+    const match = text.match(/Access to 3 models\s*\(([^)]+)\)/)
+    if (match) {
+      const platformsText = match[1] // "ChatGPT, Gemini, Perplexity"
+      const platforms = platformsText.split(',').map(p => p.trim())
+      
+      return (
+        <span className="flex flex-col gap-1.5">
+          <span className="pb-1">Access to 3 models</span>
+          <span className="flex items-center flex-wrap gap-1.5">
+            {platforms.map((platform, idx) => {
+              const icon = getPlatformIcon(platform)
+              return (
+                <React.Fragment key={idx}>
+                  <span className="inline-flex items-center gap-1.5">
+                    {icon}
+                    <span>{platform}</span>
+                  </span>
+                  {idx < platforms.length - 1 && <span>,</span>}
+                </React.Fragment>
+              )
+            })}
+          </span>
+        </span>
+      )
+    }
+  }
+  
+  // Default handling for other features
+  // Split text by platform names (case-insensitive)
+  const platformRegex = /(ChatGPT|Gemini|Perplexity)/gi
+  const parts: (string | React.ReactElement)[] = []
+  let lastIndex = 0
+  let match
+  
+  // Reset regex
+  platformRegex.lastIndex = 0
+  
+  while ((match = platformRegex.exec(text)) !== null) {
+    // Add text before the match
+    if (match.index > lastIndex) {
+      parts.push(text.substring(lastIndex, match.index))
+    }
+    
+    // Add icon and platform name
+    const platformName = match[0]
+    const icon = getPlatformIcon(platformName)
+    
+    if (icon) {
+      parts.push(
+        <span key={`${match.index}-${platformName}`} className="inline-flex items-center gap-1.5">
+          {icon}
+          <span>{platformName}</span>
+        </span>
+      )
+    } else {
+      parts.push(platformName)
+    }
+    
+    lastIndex = match.index + match[0].length
+  }
+  
+  // Add remaining text
+  if (lastIndex < text.length) {
+    parts.push(text.substring(lastIndex))
+  }
+  
+  // If we found platforms, return the parts, otherwise return original text
+  return parts.length > 1 ? <span>{parts}</span> : <span>{text}</span>
+}
+
 const pricingPlans = [
   {
     name: 'Basic',
-    price: '$99',
-    period: '/mo',
+    price: '$79',
+    period: '/month',
     description: 'For teams who want to run GEO in-house.',
-    features: ['Track 25 prompts', 'Access to all models (ChatGPT, Gemini, Perplexity, etc.)', 'Email support'],
+    features: [
+      // 'Models: ChatGPT, Gemini, Perplexity',
+      'Access to 3 models (ChatGPT, Gemini, Perplexity)',
+      'Track 25 Prompts',
+      'Email Support',
+      'Unlimited Countries'
+    ],
     isRecommended: false,
     bgColor: 'bg-[#090909]',
     borderColor: 'border-white/10',
   },
   {
     name: 'Pro',
-    price: '$299',
-    period: '/mo',
-    description: 'Everything in Basic, plus:',
-    features: ['Track 100 prompts', 'Access to all models (ChatGPT, Gemini, Perplexity, etc.)', '8 AI-optimized articles', 'Email and Slack Support'],
+    price: '$199',
+    period: '/month',
+    description: 'For growing teams and businesses.',
+    features: ['Track 100 Prompts', 'Access to all models', 'Priority Support', 'Unlimited Countries'],
     isRecommended: true,
     bgColor: 'bg-white/5',
     borderColor: 'border-white/20',
@@ -35,7 +168,7 @@ const pricingPlans = [
     price: 'Custom',
     period: '',
     description: 'Everything in Pro, plus:',
-    features: ['Custom limits', 'White-glove onboarding', 'Enterprise support', 'SAML SSO'],
+    features: ['Custom limits', 'Dedicated GEO expert', 'Enterprise Support', 'Unlimited Countries'],
     isRecommended: false,
     bgColor: 'bg-[#090909]',
     borderColor: 'border-white/10',
@@ -93,7 +226,7 @@ function PricingCard({ plan, index }: { plan: typeof pricingPlans[0]; index: num
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       whileHover={{ 
-        y: -8,
+        y: -3,
         transition: { duration: 0.3, ease: 'easeOut' }
       }}
       className={`
@@ -131,7 +264,7 @@ function PricingCard({ plan, index }: { plan: typeof pricingPlans[0]; index: num
       
       <div className="p-10 flex flex-col gap-8 flex-1">
         <div>
-          <p className="text-lg font-semibold mb-3">{plan.name}</p>
+          <p className={`text-lg font-semibold mb-3 ${plan.name === 'Pro' ? 'pt-2' : ''}`}>{plan.name}</p>
           <p className="text-[2.5rem] font-normal leading-none">
             {plan.price}
             {plan.period && <span className="text-lg font-light">{plan.period}</span>}
@@ -146,10 +279,12 @@ function PricingCard({ plan, index }: { plan: typeof pricingPlans[0]; index: num
               variants={itemVariants}
               initial="hidden"
               animate={isInView ? 'visible' : 'hidden'}
-              className="flex items-start gap-3"
+              className="flex items-center gap-3"
             >
               <CheckIcon />
-              <span>{feature}</span>
+              <div className="flex-1">
+                <FeatureText text={feature} />
+              </div>
             </motion.div>
           ))}
         </div>
@@ -162,7 +297,7 @@ function PricingCard({ plan, index }: { plan: typeof pricingPlans[0]; index: num
             href="https://forms.gle/wLMpHeTqQogumFMK8"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-auto w-full rounded-full bg-white text-black py-3 text-sm font-semibold text-center block hover:bg-white/90 transition-colors"
+            className="mt-auto w-full rounded-full bg-white text-black py-3 text-sm font-semibold text-center block hover:bg-[#d4d4d4] transition-all duration-200 ease-in-out"
           >
             Start free trial
           </a>
@@ -177,20 +312,20 @@ export function PricingSection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
 
   return (
-    <section id="pricing" className="py-24 scroll-mt-16 relative overflow-hidden">
+    <section id="pricing" className="py-24 scroll-mt-16 relative overflow-hidden bg-brand-black">
       <div 
-        className="absolute inset-0 opacity-[0.015] pointer-events-none"
+        className="absolute inset-0 opacity-[0.02] pointer-events-none"
         style={{
           backgroundImage: `
             linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
           `,
-          backgroundSize: '50px 50px'
+          backgroundSize: '40px 40px'
         }}
       />
       
-      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-black via-black/30 to-transparent pointer-events-none z-10" />
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black via-black/30 to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/50 to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none z-10" />
 
       <div ref={sectionRef} className="max-w-[1500px] mx-auto px-6 lg:px-14 relative z-20">
         <motion.div

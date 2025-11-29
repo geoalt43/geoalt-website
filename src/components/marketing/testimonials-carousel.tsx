@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 
 interface Testimonial {
@@ -51,37 +52,56 @@ const testimonials: Testimonial[] = [
 
 export function TestimonialsCarousel() {
   const [failedImages, setFailedImages] = useState<Set<number>>(new Set())
-  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set())
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
-  useEffect(() => {
-    const observers: IntersectionObserver[] = []
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.1,
+      },
+    },
+  }
 
-    cardRefs.current.forEach((card, index) => {
-      if (!card) return
+  const headerVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30,
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+    },
+  }
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setTimeout(() => {
-                setVisibleCards((prev) => new Set(prev).add(index))
-              }, index * 80)
-              observer.unobserve(card)
-            }
-          })
-        },
-        { threshold: 0.15, rootMargin: '0px 0px -80px 0px' }
-      )
+  const badgeVariants = {
+    hidden: { 
+      opacity: 0, 
+      scale: 0.8,
+      y: -10,
+    },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      y: 0,
+    },
+  }
 
-      observer.observe(card)
-      observers.push(observer)
-    })
-
-    return () => {
-      observers.forEach((observer) => observer.disconnect())
-    }
-  }, [])
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 40,
+      scale: 0.95,
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+    },
+  }
 
   return (
     <section className="py-24 bg-brand-black relative overflow-hidden">
@@ -98,62 +118,77 @@ export function TestimonialsCarousel() {
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/50 to-transparent pointer-events-none z-10" />
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none z-10" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-white/20 mb-14 shadow-sm">
+      <div ref={sectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="text-center mb-12"
+        >
+          <motion.div
+            variants={badgeVariants}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-white/20 mb-14 shadow-sm"
+          >
             <svg className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
             <span className="text-sm font-medium text-gray-900">Testimonials</span>
-          </div>
-          <h2 className="text-3xl md:text-3xl font-light text-white mb-4 pb-13">
-            See what industry leaders say about GEOAlt
-          </h2>
-        </div>
+          </motion.div>
+          <motion.h2
+            variants={headerVariants}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className="text-5xl font-normal text-white pb-14"
+          >
+            See what industry leaders say<br />
+            <motion.span
+              variants={headerVariants}
+              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
+              className="pt-2 inline-block"
+            >
+              about GEOAlt
+            </motion.span>
+          </motion.h2>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3"
+        >
           {testimonials.map((testimonial, index) => (
-            <div
+            <motion.div
               key={`${testimonial.name}-${index}`}
-              ref={(el) => (cardRefs.current[index] = el)}
-              className={`
-                bg-[#181818] border border-[#363636] rounded-xl p-6 md:p-8 shadow-lg h-full flex flex-col
-                relative overflow-hidden
-                group
-                ${visibleCards.has(index) 
-                  ? 'opacity-100 translate-y-0 scale-100' 
-                  : 'opacity-0 translate-y-12 scale-95'
+              variants={cardVariants}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              className="bg-[#141414] border border-[#363636] rounded-xl p-6 md:p-8 shadow-lg h-full flex flex-col relative overflow-hidden group"
+              whileHover={{ 
+                y: -3,
+                boxShadow: '0 12px 25px rgba(0, 0, 0, 0.25), 0 0 0 0.5px rgba(255, 255, 255, 0.04)',
+                transition: { 
+                  duration: 0.4, 
+                  ease: [0.25, 0.1, 0.25, 1]
                 }
-              `}
-              style={{
-                transition: visibleCards.has(index) 
-                  ? `opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 80}ms, 
-                     transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 80}ms,
-                     box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                     border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1)`
-                  : 'opacity 0.3s ease-out, transform 0.3s ease-out'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)'
-                e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0) scale(1)'
-                e.currentTarget.style.boxShadow = ''
               }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              {/* Glow/Reflection Effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-transparent rounded-xl pointer-events-none"
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+              />
               
               <div className="relative flex-1 flex flex-col">
                 <div className="relative mb-3">
-                  <div className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-blue-500/8 via-purple-500/5 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                  <p className="text-gray-100 text-sm md:text-base leading-relaxed font-light relative z-10">
+                  <p className="text-gray-100 text-sm md:text-base leading-relaxed font-normal relative z-10">
                     &ldquo;{testimonial.quote}&rdquo;
                   </p>
                 </div>
                 
                 <div className="mt-auto flex items-center gap-3 pt-2 relative z-10">
-                  <div className="relative w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden flex-shrink-0 bg-gray-200 ring-2 ring-white/10 group-hover:ring-white/25 transition-all duration-500 shadow-lg group-hover:shadow-xl">
+                  <div className="relative w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden flex-shrink-0 bg-gray-200 ring-2 ring-white/10 shadow-lg">
                     <Image
                       src={failedImages.has(index) 
                         ? `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=random`
@@ -167,14 +202,14 @@ export function TestimonialsCarousel() {
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-normal text-white text-xs md:text-sm transition-colors duration-300 group-hover:text-white truncate">{testimonial.name}</p>
+                    <p className="font-normal text-white text-xs md:text-sm truncate">{testimonial.name}</p>
                     <p className="text-xs text-gray-300 font-light truncate">{testimonial.designation}</p>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

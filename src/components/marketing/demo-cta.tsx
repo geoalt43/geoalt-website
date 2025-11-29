@@ -26,7 +26,7 @@ export function DemoCTA({
   const variants = {
     primary: 'bg-blue-600 text-white hover:bg-blue-700',
     secondary: 'bg-gray-600 text-white hover:bg-gray-700',
-    outline: 'border-2 border-gray-600 text-white hover:bg-[#cecece] hover:text-black',
+    outline: 'border-2 border-gray-600 text-white hover:bg-[#d4d4d4] hover:text-black transition-all duration-200 ease-in-out',
     ghost: 'text-white hover:bg-gray-800',
   }
 
