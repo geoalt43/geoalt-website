@@ -1,27 +1,27 @@
 const highlights = [
   {
     rank: '#1',
-    brand: 'HubSpot',
+    brand: 'Your Brand',
     summary:
-      'HubSpot offers a strong free tier with contact management, email tracking, reporting, and integrations with many platforms. Paid plans can become expensive, and some advanced features stay locked behind higher tiers.',
-    positives: ['strong free tier', 'easily expands'],
-    cautions: ['can become expensive', 'advanced features are locked'],
+      'Your brand consistently appears in AI-generated responses with strong visibility across major AI platforms. You maintain a competitive position with positive sentiment and clear messaging that resonates with AI systems.',
+    positives: ['high visibility', 'positive sentiment', 'consistent presence'],
+    cautions: [],
   },
   {
     rank: '#2',
-    brand: 'Attio',
+    brand: 'Competitor A',
     summary:
-      'Attio is a flexible modern CRM that works like a relational database, letting you design pipelines, views, and workflows with tools like Slack, Notion, and Zapier. Offers transparent pricing.',
-    positives: ['flexible modern', 'works smoothly'],
-    cautions: [],
+      'This competitor shows strong performance in AI search results with frequent mentions and favorable positioning. They leverage strategic content optimization to maintain their ranking.',
+    positives: ['strong performance', 'frequent mentions'],
+    cautions: ['opportunity to outperform'],
   },
   {
     rank: '#3',
-    brand: 'Zero',
+    brand: 'Competitor B',
     summary:
-      'Zero is built for founders who want a streamlined CRM without the usual bloat. It focuses on speed, simplicity, and essential deal tracking while still offering automation and integrations with the tools teams already use.',
-    positives: ['streamlined CRM without the usual bloat'],
-    cautions: [],
+      'Competitor B appears less frequently in AI responses but shows potential for growth. Their current positioning suggests opportunities to improve visibility through targeted content strategies.',
+    positives: ['growth potential'],
+    cautions: ['lower visibility', 'needs optimization'],
   },
 ]
 
@@ -29,19 +29,19 @@ const insightCards = [
   {
     title: 'Visibility',
     description:
-      'See the share of chats mentioning your brand and learn how often you surface in AI conversations.',
+      'Track your brand\'s share of voice across AI conversations and measure how frequently you appear in AI-generated responses.',
     badge: '01',
   },
   {
     title: 'Position',
     description:
-      'Understand where you rank inside AI assistants and uncover openings to climb higher.',
+      'Discover your ranking position within AI assistant responses and identify strategic opportunities to improve your visibility.',
     badge: '02',
   },
   {
     title: 'Sentiment',
     description:
-      'Monitor how AI systems describe you, what resonates, and what requires improvement.',
+      'Analyze how AI systems characterize your brand, identify what messaging resonates, and pinpoint areas for optimization.',
     badge: '03',
   },
 ]
@@ -51,21 +51,18 @@ export function AISearchMetricsSection() {
     <section className="py-24 bg-[#090909]">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center px-4 py-2 rounded-full border border-white/15 bg-white/5 text-xs font-medium uppercase tracking-[0.2em] text-white/80 mb-6">
-            AI Search Metrics
-          </div>
           <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tight">
             Understand how AI sees your brand
           </h2>
           <p className="mt-4 text-lg text-white/70">
-            We track the most important signals inside AI search so you know where you rank, how you’re
-            described, and what to do next.
+            Track the most critical signals across AI search platforms to understand your brand's visibility, 
+            positioning, and sentiment—then take action to improve your AI presence.
           </p>
         </div>
 
         <div className="max-w-3xl mx-auto mt-12">
           <div className="bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white/70 text-center text-sm">
-            What are the best CRMs for Startups?
+            How does GEOAlt track AI visibility across different platforms?
           </div>
         </div>
 
@@ -86,7 +83,7 @@ export function AISearchMetricsSection() {
             <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center font-semibold">
               AI
             </div>
-            <span>Choosing the right CRM really comes down to how your startup sells, grows, and automates.</span>
+            <span>Understanding your AI visibility requires tracking multiple signals across different platforms and models to get a complete picture of your brand's presence.</span>
           </div>
           <div className="space-y-6">
             {highlights.map(item => (

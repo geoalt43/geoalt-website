@@ -12,14 +12,15 @@ import { Navbar } from '@/components/layout/navbar'
 import OpenAI from '@lobehub/icons/es/OpenAI'
 import { Gemini } from '@lobehub/icons'
 import { AISearchMetricsSection } from '@/components/marketing/ai-search-metrics'
+import { DashboardSection } from '@/components/marketing/dashboard-section'
 
 const trustedBrands = [
-  { label: 'Flow', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
-  { label: 'Flux', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
-  { label: 'Nex', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
-  { label: 'dabble', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
-  { label: 'SuperPen', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
-  { label: 'Modo', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
+  { label: 'Flow', initials: 'F', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
+  { label: 'Flux', initials: 'Fx', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
+  { label: 'Nex', initials: 'N', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
+  { label: 'dabble', initials: 'd', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
+  { label: 'SuperPen', initials: 'S', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
+  { label: 'Modo', initials: 'M', className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' },
 ]
 
 const CheckIcon = () => (
@@ -68,6 +69,8 @@ export function HomePage() {
 
       <HeroSection isTextLoaded={isTextLoaded} />
 
+     
+
       <section className="">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border-[2px] border-white/10 p-4 sm:p-6 lg:p-8 relative overflow-hidden dashboard-container">
@@ -85,95 +88,13 @@ export function HomePage() {
         </div>
       </section>
 
+      <DashboardSection />
+
       <AISearchMetricsSection />
 
-      <section className="py-40">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-[3.25rem] font-normal text-white mb-8 pt-4">Stay ahead in the AI-driven search landscape</h2>
-            <p className="text-xl text-gray-500 font-light mb-16 pb-12 tracking-wide">
-              Traditional SEO is losing ground as AI-powered search engines prioritize direct answers.
-              <br />
-              <span className="pb-4 inline-flex items-center justify-center">GE<OpenAI size={20} className="mx-0.5" />Alt helps you adapt and thrive.</span>
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-black border border-gray-600 rounded-lg p-8">
-                <div className="mb-6">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-4">Visibility Tracking</h3>
-                <p className="text-lg text-gray-400 font-normal">Monitor your brand&apos;s presence in AI-generated answers across various platforms.</p>
-              </div>
+      <FeaturesSection />
 
-              <div className="bg-black border border-gray-600 rounded-lg p-8">
-                <div className="mb-6">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-4">Competitor Analysis</h3>
-                <p className="text-lg text-gray-400 font-normal">Analyze competitor strategies and identify opportunities to gain an edge.</p>
-              </div>
-
-              <div className="bg-black border border-gray-600 rounded-lg p-8">
-                <div className="mb-6">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-4">Optimization Recommendations</h3>
-                <p className="text-lg text-gray-400 font-normal">Receive actionable recommendations to optimize your content for AI visibility.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="mb-10 pb-32 text-center">
-            <h2 className="text-5xl font-normal text-white mb-4 tracking-tight">Gain insights and optimize your strategy</h2>
-            <p className="text-lg mx-auto text-[#9b9b9b]">
-              GEOAlt provides a comprehensive suite of tools to understand your AI visibility and improve your performance.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="flex flex-col gap-3 pb-3">
-              <div
-                className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl resource-card-image-1"
-              ></div>
-              <div>
-                <p className="text-white text-base font-medium leading-normal">Track your AI visibility</p>
-                <p className="text-white/70 text-sm font-normal leading-normal">Monitor your brand&apos;s presence in AI-generated answers across various platforms.</p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-3 pb-3">
-              <div
-                className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl resource-card-image-2"
-              ></div>
-              <div>
-                <p className="text-white text-base font-medium leading-normal">Analyze competitor strategies</p>
-                <p className="text-white/70 text-sm font-normal leading-normal">Analyze competitor strategies and identify opportunities to gain an edge.</p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-3 pb-3">
-              <div
-                className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl resource-card-image-3"
-              ></div>
-              <div>
-                <p className="text-white text-base font-medium leading-normal">Optimize your content</p>
-                <p className="text-white/70 text-sm font-normal leading-normal">Receive actionable recommendations to optimize your content for AI visibility.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="pt-40 pb-48">
+      <section className="pt-40 pb-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mb-12 pb-8 text-center">
             <h2 className="text-5xl font-normal text-white mb-4 tracking-tight">Empowering businesses of all sizes</h2>
@@ -185,50 +106,57 @@ export function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4">
             <div className="bg-black/60 border border-[#3a3a3a] rounded-2xl p-12">
-              <div className="mb-5">
-                <svg className="w-9 h-9 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M22 21v-2a4 4 0 00-3-3.87"/>
-                  <path d="M16 3.13a4 4 0 010 7.75"/>
-                </svg>
+              <div className="flex items-center gap-4 mb-4">
+                <div>
+                  <svg className="w-9 h-9 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M22 21v-2a4 4 0 00-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 010 7.75"/>
+                  </svg>
+                </div>
+                <h3 className="text-[1.3rem] font-semibold text-white">Marketing Teams</h3>
               </div>
-              <h3 className="text-[1.3rem] font-semibold text-white mb-3.5">Marketing Teams</h3>
               <p className="text-base text-[#9b9b9b]">
-                Track campaign performance and optimize content for AI-driven search.
+                Track campaign performance and optimize content for AI-driven search across priority markets.  
+                Identify which campaigns influence AI-generated answers and reallocate spend toward the highest-impact initiatives.  
               </p>
             </div>
 
             <div className="bg-black/60 border border-[#3a3a3a] rounded-2xl p-12">
-              <div className="mb-5">
-                <svg className="w-9 h-9 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 20h9"/>
-                  <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/>
-                </svg>
+              <div className="flex items-center gap-4 mb-4">
+                <div>
+                  <svg className="w-9 h-9 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 20h9"/>
+                    <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/>
+                  </svg>
+                </div>
+                <h3 className="text-[1.3rem] font-semibold text-white">Content Creators</h3>
               </div>
-              <h3 className="text-[1.3rem] font-semibold text-white mb-3.5">Content Creators</h3>
               <p className="text-base text-[#9b9b9b]">
-                Create content that resonates with AI algorithms and drives organic traffic.
+                Create content that resonates with AI algorithms and drives qualified, organic pipeline.  
+                See which formats, topics, and angles AI prefers so every article, playbook, or landing page is built for discovery.  
               </p>
             </div>
 
             <div className="bg-black/60 border border-[#3a3a3a] rounded-2xl p-12">
-              <div className="mb-5">
-                <svg className="w-9 h-9 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="11" cy="11" r="8"/>
-                  <path d="M21 21l-4.3-4.3"/>
-                </svg>
+              <div className="flex items-center gap-4 mb-4">
+                <div>
+                  <svg className="w-9 h-9 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.3-4.3"/>
+                  </svg>
+                </div>
+                <h3 className="text-[1.3rem] font-semibold text-white">SEO Specialists</h3>
               </div>
-              <h3 className="text-[1.3rem] font-semibold text-white mb-3.5">SEO Specialists</h3>
               <p className="text-base text-[#9b9b9b]">
-                Adapt SEO strategies to the evolving landscape of AI-powered search.
+                Adapt SEO strategies to the evolving landscape of AI-powered search for complex B2B journeys.  
+                Understand which entities, sources, and citations AI trusts most in your category and markets.  
               </p>
             </div>
           </div>
         </div>
       </section>
-
-      <FeaturesSection />
 
       <TestimonialsCarousel />
 
@@ -319,14 +247,17 @@ export function HomePage() {
             <div className="absolute inset-0 pointer-events-none">
               <div className="absolute w-32 h-32 bg-white/0 rounded-full blur-3xl -top-10 -left-6" />
               <div className="absolute w-40 h-40 bg-white/0 rounded-full blur-3xl -bottom-16 right-6" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(25,250,255,0.2),_transparent_55%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(25,250,255,0.1),_transparent_55%)]" />
             </div>
             <div className="relative flex flex-col items-center gap-6 sm:gap-10">
               <p className="text-lg font-base tracking-wide text-white -mt-4">Trusted by</p>
               <div className="w-full overflow-hidden mask-fade-horizontal">
                 <div className="trusted-marquee flex items-center gap-19 sm:gap-20">
                   {[...trustedBrands, ...trustedBrands].map((brand, index) => (
-                    <span key={`${brand.label}-${index}`} className={`${brand.className} whitespace-nowrap`}>
+                    <span
+                      key={`${brand.label}-${index}`}
+                      className={`${brand.className} whitespace-nowrap`}
+                    >
                       {brand.label}
                     </span>
                   ))}
