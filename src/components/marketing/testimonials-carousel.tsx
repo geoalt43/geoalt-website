@@ -64,11 +64,14 @@ export function TestimonialsCarousel() {
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              setVisibleCards((prev) => new Set(prev).add(index))
+              setTimeout(() => {
+                setVisibleCards((prev) => new Set(prev).add(index))
+              }, index * 80)
+              observer.unobserve(card)
             }
           })
         },
-        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+        { threshold: 0.15, rootMargin: '0px 0px -80px 0px' }
       )
 
       observer.observe(card)
@@ -115,41 +118,58 @@ export function TestimonialsCarousel() {
               ref={(el) => (cardRefs.current[index] = el)}
               className={`
                 bg-[#181818] border border-[#363636] rounded-xl p-6 md:p-8 shadow-lg h-full flex flex-col
-                transition-all duration-500 ease-out
-                hover:shadow-2xl hover:border-[#4a4a4a] hover:-translate-y-1
+                relative overflow-hidden
+                group
                 ${visibleCards.has(index) 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-8'
+                  ? 'opacity-100 translate-y-0 scale-100' 
+                  : 'opacity-0 translate-y-12 scale-95'
                 }
               `}
               style={{
-                transitionDelay: visibleCards.has(index) ? `${index * 100}ms` : '0ms'
+                transition: visibleCards.has(index) 
+                  ? `opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 80}ms, 
+                     transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 80}ms,
+                     box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                     border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1)`
+                  : 'opacity 0.3s ease-out, transform 0.3s ease-out'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)'
+                e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0) scale(1)'
+                e.currentTarget.style.boxShadow = ''
               }}
             >
-              <div className="relative">
-                <div className="absolute -top-4 -left-4 w-20 h-20 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-full blur-2xl" />
-                <p className="text-gray-100 text-sm md:text-base leading-relaxed mb-3 font-light relative z-10">
-                  &ldquo;{testimonial.quote}&rdquo;
-                </p>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               
-              <div className="mt-auto flex items-center gap-3 pt-2 relative z-10">
-                <div className="relative w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden flex-shrink-0 bg-gray-200 ring-2 ring-white/10 transition-all duration-300 hover:ring-white/20">
-                  <Image
-                    src={failedImages.has(index) 
-                      ? `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=random`
-                      : testimonial.image}
-                    alt={testimonial.name}
-                    fill
-                    className="object-cover transition-transform duration-300 hover:scale-110"
-                    onError={() => {
-                      setFailedImages(prev => new Set(prev).add(index))
-                    }}
-                  />
+              <div className="relative flex-1 flex flex-col">
+                <div className="relative mb-3">
+                  <div className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-blue-500/8 via-purple-500/5 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <p className="text-gray-100 text-sm md:text-base leading-relaxed font-light relative z-10">
+                    &ldquo;{testimonial.quote}&rdquo;
+                  </p>
                 </div>
-                <div>
-                  <p className="font-normal text-white text-xs md:text-sm transition-colors duration-300">{testimonial.name}</p>
-                  <p className="text-xs text-gray-300 font-light">{testimonial.designation}</p>
+                
+                <div className="mt-auto flex items-center gap-3 pt-2 relative z-10">
+                  <div className="relative w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden flex-shrink-0 bg-gray-200 ring-2 ring-white/10 group-hover:ring-white/25 transition-all duration-500 shadow-lg group-hover:shadow-xl">
+                    <Image
+                      src={failedImages.has(index) 
+                        ? `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=random`
+                        : testimonial.image}
+                      alt={testimonial.name}
+                      fill
+                      className="object-cover"
+                      onError={() => {
+                        setFailedImages(prev => new Set(prev).add(index))
+                      }}
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-normal text-white text-xs md:text-sm transition-colors duration-300 group-hover:text-white truncate">{testimonial.name}</p>
+                    <p className="text-xs text-gray-300 font-light truncate">{testimonial.designation}</p>
+                  </div>
                 </div>
               </div>
             </div>
