@@ -490,3 +490,16 @@ html {
     display: none !important;
   }
 }
+
+/* 3D Transform Styles for Dashboard Images */
+.perspective-3d-container {
+  perspective: 1500px;
+  transform-style: preserve-3d;
+}
+
+.prompts-image-3d {
+  transform: rotateX(20deg) rotateY(0deg) translateZ(40px);
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-out;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3);
+}

@@ -207,21 +207,8 @@ export function DashboardSection() {
               </p>
             </div>
             
-            <div 
-              className="w-full rounded-lg overflow-visible"
-              style={{
-                perspective: '1500px',
-                transformStyle: 'preserve-3d',
-              }}
-            >
-              <div
-                style={{
-                  transform: 'rotateX(20deg) rotateY(0deg) translateZ(40px)',
-                  transformStyle: 'preserve-3d',
-                  transition: 'transform 0.3s ease-out',
-                  boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3)',
-                }}
-              >
+            <div className="w-full rounded-lg overflow-visible perspective-3d-container">
+              <div className="prompts-image-3d">
                 <Image
                   src="/images/Prompts_studio_.jpg"
                   alt="Prompt Studio interface"
