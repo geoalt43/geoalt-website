@@ -10,6 +10,8 @@ import { CompanyName } from './company-name'
 interface AIResponseCardProps {
   data: AIResponseData
   activeType: string
+  variants?: any
+  isInView?: boolean
 }
 
 function highlightText(
@@ -25,37 +27,51 @@ function highlightText(
   let highlightedText = text
   const parts: Array<{ text: string; type: 'positive' | 'negative' | 'normal' }> = []
 
+  // Process positive highlights first
   positives.forEach((phrase) => {
-    const regex = new RegExp(`\\*\\*${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\*\\*`, 'gi')
-    highlightedText = highlightedText.replace(regex, `__POSITIVE__${phrase}__/POSITIVE__`)
+    const escapedPhrase = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const regex = new RegExp(`\\*\\*(${escapedPhrase})\\*\\*`, 'gi')
+    highlightedText = highlightedText.replace(regex, '__POSITIVE__$1__/POSITIVE__')
   })
 
+  // Process negative highlights
   negatives.forEach((phrase) => {
-    const regex = new RegExp(`\\*\\*${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\*\\*`, 'gi')
-    highlightedText = highlightedText.replace(regex, `__NEGATIVE__${phrase}__/NEGATIVE__`)
+    const escapedPhrase = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const regex = new RegExp(`\\*\\*(${escapedPhrase})\\*\\*`, 'gi')
+    highlightedText = highlightedText.replace(regex, '__NEGATIVE__$1__/NEGATIVE__')
   })
 
+  // Remove any remaining ** markers from unhighlighted text
+  highlightedText = highlightedText.replace(/\*\*/g, '')
+
+  // Split into segments
   const segments = highlightedText.split(/(__POSITIVE__|__NEGATIVE__|__\/POSITIVE__|__\/NEGATIVE__)/)
 
+  let currentType: 'positive' | 'negative' | 'normal' = 'normal'
+  
   segments.forEach((segment) => {
-    if (segment.startsWith('__POSITIVE__')) {
-      const text = segment.replace('__POSITIVE__', '')
-      if (text) parts.push({ text, type: 'positive' })
-    } else if (segment.startsWith('__NEGATIVE__')) {
-      const text = segment.replace('__NEGATIVE__', '')
-      if (text) parts.push({ text, type: 'negative' })
+    if (segment === '__POSITIVE__') {
+      currentType = 'positive'
+    } else if (segment === '__NEGATIVE__') {
+      currentType = 'negative'
     } else if (segment === '__/POSITIVE__' || segment === '__/NEGATIVE__') {
+      currentType = 'normal'
     } else if (segment) {
-      parts.push({ text: segment, type: 'normal' })
+      parts.push({ text: segment, type: currentType })
     }
   })
 
-  return parts.length > 0 ? parts : [{ text: highlightedText.replace(/\*\*/g, ''), type: 'normal' as const }]
+  return parts.length > 0 ? parts : [{ text: highlightedText.replace(/__[A-Z_/]+__/g, ''), type: 'normal' as const }]
 }
 
-export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
+export function AIResponseCard({ data, activeType, variants, isInView }: AIResponseCardProps) {
   return (
-        <div className="bg-[#050505] border border-transparent rounded-2xl shadow-2xl shadow-black/40 p-8 mt-4 relative overflow-hidden">
+        <motion.div
+          variants={variants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="bg-[#050505] border border-transparent rounded-2xl shadow-2xl shadow-black/40 p-8 mt-4 relative overflow-hidden"
+        >
           {/* Animated Background Gradient */}
           <div className="absolute inset-0 opacity-30">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/10 to-transparent"></div>
@@ -126,18 +142,18 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
                     <span className="text-xs uppercase tracking-wide text-white/50 font-normal">#{company.rank}</span>
                   )}
                 </div>
-                <p className="text-sm text-white/70 leading-relaxed">
+                <p className="text-sm text-white/70 leading-relaxed font-normal">
                   {highlightedParts.map((part, i) => {
                     if (part.type === 'positive') {
                       return (
-                        <span key={i} className="text-green-300 font-medium">
+                        <span key={i} className="text-green-400 font-normal">
                           {part.text}
                         </span>
                       )
                     }
                     if (part.type === 'negative') {
                       return (
-                        <span key={i} className="text-rose-300 font-medium">
+                        <span key={i} className="text-red-400 font-normal">
                           {part.text}
                         </span>
                       )
@@ -151,7 +167,7 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
 
       </div>
           </div>
-        </div>
+        </motion.div>
   )
 }
 

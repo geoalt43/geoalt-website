@@ -12,6 +12,7 @@ import {
   subtitleVariants,
   cardContainerVariants,
   insightCardVariants,
+  aiResponseCardVariants,
 } from './ai-search-metrics/variants'
 import type { InsightType } from './ai-search-metrics/types'
 
@@ -100,7 +101,14 @@ export function AISearchMetricsSection() {
           ))}
         </motion.div>
 
-        <AIResponseCard data={currentData} activeType={activeType || 'sentiment'} />
+        {currentData && (
+          <AIResponseCard
+            data={currentData}
+            activeType={activeType || 'sentiment'}
+            variants={aiResponseCardVariants}
+            isInView={isInView}
+          />
+        )}
       </div>
     </section>
   )

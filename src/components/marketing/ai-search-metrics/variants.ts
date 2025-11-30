@@ -80,3 +80,25 @@ export const insightCardVariants = {
   },
 }
 
+export const aiResponseCardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+    scale: 0.95,
+    filter: 'blur(8px)',
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: 'blur(0px)',
+    transition: {
+      type: 'spring' as const,
+      stiffness: 100,
+      damping: 15,
+      mass: 0.7,
+      delay: 0.6,
+    },
+  },
+}
+
