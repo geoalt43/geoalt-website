@@ -199,7 +199,7 @@ export function DashboardSection() {
           className="grid grid-cols-1 lg:grid-cols-12 gap-2 mb-6"
         >
           {/* Container 1: Set up Prompts (reduced width - 6 columns) */}
-          <div className="lg:col-span-6 bg-black/60 border border-[#111111] rounded-2xl p-6 overflow-visible">
+          <div className="lg:col-span-6 bg-black/60 border border-[#111111] rounded-2xl p-6 overflow-visible ">
             <div className="mb-2">
               <h3 className="text-xl font-medium text-white mb-1">Customize Your Prompts</h3>
               <p className="text-sm text-gray-400 mb-1.5 pb-4">

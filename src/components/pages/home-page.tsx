@@ -28,8 +28,8 @@ const trustedBrands = [
     className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' 
   },
   { 
-    label: 'SuperPen.io', 
-    logo: '/images/logos/superpen.png',
+    label: 'SuperPen', 
+    logo: 'https://cdn.brandfetch.io/id92xaqjPM/w/192/h/192/theme/dark/logo.png?c=1bxid64Mup7aczewSAYMX&t=1764504957671',
     className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' 
   },
   { 
