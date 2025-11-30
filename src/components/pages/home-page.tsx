@@ -29,7 +29,7 @@ const trustedBrands = [
   },
   { 
     label: 'SuperPen', 
-    logo: 'https://cdn.brandfetch.io/id92xaqjPM/w/192/h/192/theme/dark/logo.png?c=1bxid64Mup7aczewSAYMX&t=1764504957671',
+    logo: '/images/logos/Superpen.png',
     className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' 
   },
   { 
@@ -435,10 +435,21 @@ export function HomePage() {
             <div className="absolute inset-0 pointer-events-none">
               <div className="absolute w-32 h-32 bg-white/0 rounded-full blur-3xl -top-10 -left-6" />
               <div className="absolute w-40 h-40 bg-white/0 rounded-full blur-3xl -bottom-16 right-6" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(25,250,255,0.1),_transparent_55%)]" />
             </div>
             <div className="relative flex flex-col items-center gap-6 sm:gap-10">
-              <p className="text-lg font-base tracking-wide text-white -mt-11">Trusted by</p>
+              <p 
+                className="text-lg font-base tracking-wide -mt-11 trusted-by-text"
+                style={{
+                  color: 'rgba(255, 255, 255, 0.5)',
+                  background: 'none',
+                  backgroundImage: 'none',
+                  WebkitBackgroundClip: 'unset',
+                  backgroundClip: 'unset',
+                  WebkitTextFillColor: 'rgba(255, 255, 255, 0.5)',
+                } as React.CSSProperties}
+              >
+                Trusted by
+              </p>
               <div className="w-full overflow-hidden mask-fade-horizontal">
                 <div className="trusted-marquee flex items-center gap-19 sm:gap-20">
                   {[...trustedBrands, ...trustedBrands].map((brand, index) => (
@@ -446,12 +457,13 @@ export function HomePage() {
                       key={`${brand.label}-${index}`}
                       className="flex items-center gap-3 whitespace-nowrap"
                     >
-                      <div className="relative h-[1rem] w-auto sm:h-[2.5rem] flex-shrink-0 aspect-square">
+                      <div className="relative h-[1rem] w-[1rem] sm:h-[2.5rem] sm:w-[2.5rem] flex-shrink-0">
                         <Image
                           src={brand.logo}
                           alt={`${brand.label} logo`}
                           fill
                           className="object-contain"
+                          unoptimized
                           onError={(e) => {
                             // Fallback: hide image if logo not found
                             e.currentTarget.style.display = 'none'

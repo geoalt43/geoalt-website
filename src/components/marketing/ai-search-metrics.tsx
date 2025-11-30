@@ -41,7 +41,7 @@ const insightCards = [
 ]
 
 export function AISearchMetricsSection() {
-  const [activeType, setActiveType] = useState<InsightType | null>(null)
+  const [activeType, setActiveType] = useState<InsightType | null>('visibility')
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
@@ -76,39 +76,49 @@ export function AISearchMetricsSection() {
           variants={cardContainerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="mt-12 max-w-7xl mx-auto grid gap-4 md:grid-cols-3"
+          className="mt-12 max-w-7xl mx-auto relative"
         >
-          {insightCards.map((card) => (
-            <InsightCard
-              key={card.id}
-              title={card.title}
-              description={card.description}
-              icon={card.icon}
-              isActive={activeType === card.id}
-              onClick={() => handleCardClick(card.id)}
-              variants={insightCardVariants}
-              type={card.id}
-              data={
-                activeType && currentData
-                  ? card.id === 'sentiment'
-                    ? currentData.sentiment
-                    : card.id === 'position'
-                      ? currentData.position
-                      : currentData.visibility
-                  : undefined
-              }
-            />
-          ))}
+          <div className="grid gap-4 md:grid-cols-3 relative overflow-hidden">
+            {/* Top horizontal line - aligned with card top */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-white/10 z-20"></div>
+            
+            {insightCards.map((card) => (
+              <InsightCard
+                key={card.id}
+                title={card.title}
+                description={card.description}
+                icon={card.icon}
+                isActive={activeType === card.id}
+                onClick={() => handleCardClick(card.id)}
+                variants={insightCardVariants}
+                type={card.id}
+                data={
+                  activeType && currentData
+                    ? card.id === 'sentiment'
+                      ? currentData.sentiment
+                      : card.id === 'position'
+                        ? currentData.position
+                        : currentData.visibility
+                    : undefined
+                }
+              />
+            ))}
+            
+            {/* Bottom horizontal line - aligned with card bottom */}
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10 z-20"></div>
+          </div>
         </motion.div>
 
-        {currentData && (
-          <AIResponseCard
-            data={currentData}
-            activeType={activeType || 'sentiment'}
-            variants={aiResponseCardVariants}
-            isInView={isInView}
-          />
-        )}
+        <div className="mt-8">
+          {currentData && (
+            <AIResponseCard
+              data={currentData}
+              activeType={activeType || 'sentiment'}
+              variants={aiResponseCardVariants}
+              isInView={isInView}
+            />
+          )}
+        </div>
       </div>
     </section>
   )

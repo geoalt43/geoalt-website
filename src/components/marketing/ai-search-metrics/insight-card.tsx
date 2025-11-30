@@ -35,15 +35,18 @@ export function InsightCard({
         },
       }}
       onClick={onClick}
-      className="rounded-lg p-4 text-white/80 cursor-pointer transition-all duration-300 border bg-[#050505] border-white/10 hover:border-white/20 h-[180px] flex flex-col overflow-hidden"
+      className={`rounded-lg p-4  text-white/80 cursor-pointer transition-all duration-300 h-[160px] flex flex-col overflow-hidden relative group ${
+        isActive ? 'border-l-2 border-white' : type === 'position' || type === 'sentiment' ? 'border-l border-white/20' : ''
+      }`}
     >
-      <div className="flex items-center gap-3 mb-2">
+      <div className="relative z-10 flex flex-col h-full">
+        <div className="flex items-center gap-3 mb-2">
         <div>
           <IconComponent />
         </div>
         <h3 className="text-base font-normal text-white">{title}</h3>
-      </div>
-      {!isActive ? (
+        </div>
+        {!isActive ? (
         <p className="text-sm text-white/60 leading-relaxed overflow-hidden">{description}</p>
       ) : (
         <div className="space-y-4 flex-1">
@@ -101,6 +104,7 @@ export function InsightCard({
           )}
         </div>
       )}
+      </div>
     </motion.div>
   )
 }
