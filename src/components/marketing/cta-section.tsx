@@ -132,7 +132,7 @@ export function CTASection() {
   }
 
   return (
-    <section ref={sectionRef} className="pt-24 pb-40">
+    <section ref={sectionRef} className="py-24">
       <motion.div
         variants={containerVariants}
         initial="hidden"

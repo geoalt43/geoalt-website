@@ -149,7 +149,7 @@ export function HeroSection() {
   const headingText = 'Get Your Brand Recommended by'
   const words = splitText(headingText)
   return (
-    <section ref={sectionRef} id="home" className="pt-22 pb-20 relative overflow-hidden">
+    <section ref={sectionRef} id="home" className="pt-24 relative overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"

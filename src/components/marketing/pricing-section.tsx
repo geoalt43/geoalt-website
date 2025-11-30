@@ -3,11 +3,7 @@
 import React from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { OpenAI } from '@lobehub/icons'
-import { Perplexity } from '@lobehub/icons'
-import { Grok } from '@lobehub/icons'
-import { Claude } from '@lobehub/icons'
-import { Gemini } from '@lobehub/icons'
+import Image from 'next/image'
 
 const CheckIcon = () => (
   <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-white/40 text-white text-xs font-semibold">
@@ -17,21 +13,67 @@ const CheckIcon = () => (
 
 // Helper function to get icon for AI platform
 const getPlatformIcon = (platformName: string, iconSize: number = 16) => {
-  const iconColor = 'currentColor'
-  
   const normalizedName = platformName.toLowerCase().trim()
   
   if (normalizedName.includes('chatgpt') || normalizedName.includes('openai')) {
-    return <OpenAI size={iconSize} style={{ color: iconColor }} className="flex-shrink-0" />
+    return (
+      <Image
+        src="/ai-icons/openai.svg"
+        alt="OpenAI"
+        width={iconSize}
+        height={iconSize}
+        className="flex-shrink-0"
+        unoptimized
+      />
+    )
   }
   if (normalizedName.includes('gemini') || normalizedName.includes('google')) {
-    return <Gemini.Color size={iconSize} style={{ color: iconColor }} className="flex-shrink-0" />
+    return (
+      <Image
+        src="/ai-icons/gemini-color.svg"
+        alt="Gemini"
+        width={iconSize}
+        height={iconSize}
+        className="flex-shrink-0"
+        unoptimized
+      />
+    )
   }
   if (normalizedName.includes('perplexity')) {
-    return <Perplexity size={iconSize} style={{ color: iconColor }} className="flex-shrink-0" />
+    return (
+      <Image
+        src="/ai-icons/perplexity.svg"
+        alt="Perplexity"
+        width={iconSize}
+        height={iconSize}
+        className="flex-shrink-0"
+        unoptimized
+      />
+    )
+  }
+  if (normalizedName.includes('claude')) {
+    return (
+      <Image
+        src="/ai-icons/claude-color.svg"
+        alt="Claude"
+        width={iconSize}
+        height={iconSize}
+        className="flex-shrink-0"
+        unoptimized
+      />
+    )
   }
   if (normalizedName.includes('grok')) {
-    return <Grok.Combine size={iconSize} style={{ color: iconColor }} className="flex-shrink-0" />
+    return (
+      <Image
+        src="/ai-icons/grok.svg"
+        alt="Grok"
+        width={iconSize}
+        height={iconSize}
+        className="flex-shrink-0"
+        unoptimized
+      />
+    )
   }
   return null
 }
@@ -47,11 +89,46 @@ const FeatureText = ({ text }: { text: string }) => {
         <span>Access to all models</span>
         {/* Icons only - very small gap between them */}
         <div className="flex items-center gap-0.5">
-          <OpenAI size={iconSize} className="opacity-80 hover:opacity-100 transition-opacity" />
-          <Perplexity size={iconSize} className="opacity-80 hover:opacity-100 transition-opacity" />
-          <Grok size={iconSize} className="opacity-80 hover:opacity-100 transition-opacity" />
-          <Claude.Color size={iconSize} className="opacity-80 hover:opacity-100 transition-opacity" />
-          <Gemini.Color size={iconSize} className="opacity-80 hover:opacity-100 transition-opacity" />
+          <Image
+            src="/ai-icons/openai.webp"
+            alt="OpenAI"
+            width={iconSize}
+            height={iconSize}
+            className="opacity-80 hover:opacity-100 transition-opacity"
+            unoptimized
+          />
+          <Image
+            src="/ai-icons/perplexity.webp"
+            alt="Perplexity"
+            width={iconSize}
+            height={iconSize}
+            className="opacity-80 hover:opacity-100 transition-opacity"
+            unoptimized
+          />
+          <Image
+            src="/ai-icons/grok.webp"
+            alt="Grok"
+            width={iconSize}
+            height={iconSize}
+            className="opacity-80 hover:opacity-100 transition-opacity"
+            unoptimized
+          />
+          <Image
+            src="/ai-icons/claude-color.svg"
+            alt="Claude"
+            width={iconSize}
+            height={iconSize}
+            className="opacity-80 hover:opacity-100 transition-opacity"
+            unoptimized
+          />
+          <Image
+            src="/ai-icons/gemini-color.svg"
+            alt="Gemini"
+            width={iconSize}
+            height={iconSize}
+            className="opacity-80 hover:opacity-100 transition-opacity"
+            unoptimized
+          />
           {/* 3+ text with blur effect only on the left side */}
           <div className="relative flex items-center ml-0.5">
             <div className="absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-white/35 to-transparent backdrop-blur-[6px] rounded-l mt-1 " />
@@ -66,31 +143,40 @@ const FeatureText = ({ text }: { text: string }) => {
   
   // Special handling for "Access to 3 models (ChatGPT, Gemini, Perplexity)"
   if (text.includes('Access to 3 models') && text.includes('ChatGPT') && text.includes('Gemini') && text.includes('Perplexity')) {
-    const match = text.match(/Access to 3 models\s*\(([^)]+)\)/)
-    if (match) {
-      const platformsText = match[1] // "ChatGPT, Gemini, Perplexity"
-      const platforms = platformsText.split(',').map(p => p.trim())
-      
-      return (
-        <span className="flex flex-col gap-1.5">
-          <span className="pb-1">Access to 3 models</span>
-          <span className="flex items-center flex-wrap gap-1.5">
-            {platforms.map((platform, idx) => {
-              const icon = getPlatformIcon(platform)
-              return (
-                <React.Fragment key={idx}>
-                  <span className="inline-flex items-center gap-1.5">
-                    {icon}
-                    <span>{platform}</span>
-                  </span>
-                  {idx < platforms.length - 1 && <span>,</span>}
-                </React.Fragment>
-              )
-            })}
-          </span>
-        </span>
-      )
-    }
+    const iconSize = 18
+    
+    return (
+      <span className="flex items-center gap-2">
+        <span>Access to 3 models</span>
+        {/* Icons only - same style as "Access to all models" */}
+        <div className="flex items-center gap-0.5">
+          <Image
+            src="/ai-icons/openai.webp"
+            alt="OpenAI"
+            width={iconSize}
+            height={iconSize}
+            className="opacity-80 hover:opacity-100 transition-opacity"
+            unoptimized
+          />
+          <Image
+            src="/ai-icons/gemini-color.svg"
+            alt="Gemini"
+            width={iconSize}
+            height={iconSize}
+            className="opacity-80 hover:opacity-100 transition-opacity"
+            unoptimized
+          />
+          <Image
+            src="/ai-icons/perplexity.webp"
+            alt="Perplexity"
+            width={iconSize}
+            height={iconSize}
+            className="opacity-80 hover:opacity-100 transition-opacity"
+            unoptimized
+          />
+        </div>
+      </span>
+    )
   }
   
   // Default handling for other features
@@ -215,7 +301,7 @@ const itemVariants = {
   }),
 }
 
-function PricingCard({ plan, index }: { plan: typeof pricingPlans[0]; index: number }) {
+function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
   const cardRef = useRef(null)
   const isInView = useInView(cardRef, { once: true, margin: '-100px' })
 
@@ -225,13 +311,10 @@ function PricingCard({ plan, index }: { plan: typeof pricingPlans[0]; index: num
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
-      whileHover={{ 
-        y: -3,
-        transition: { duration: 0.3, ease: 'easeOut' }
-      }}
       className={`
         ${plan.bgColor} ${plan.borderColor} border flex flex-col text-white
-        relative overflow-hidden group
+        relative overflow-hidden group transition-colors duration-300
+        hover:border-white/30
         ${plan.isRecommended ? 'shadow-2xl shadow-white/10 -mt-[4rem] border-b-0' : 'rounded-lg'}
       `}
       style={{
@@ -343,8 +426,8 @@ export function PricingSection() {
           animate={isInView ? 'visible' : 'hidden'}
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
-          {pricingPlans.map((plan, index) => (
-            <PricingCard key={plan.name} plan={plan} index={index} />
+          {pricingPlans.map((plan) => (
+            <PricingCard key={plan.name} plan={plan} />
           ))}
         </motion.div>
       </div>
