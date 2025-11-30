@@ -4,7 +4,7 @@ export const aiResponseData: Record<string, AIResponseData> = {
   sentiment: {
     question: 'What are the best project management tools for teams?',
     intro:
-      'The best project management tool depends on your team\'s size, workflow preferences, and specific needs. Here are three top options that work well for most teams:',
+      'Selecting the right project management tool depends on your team size, workflow style, and collaboration needs. Here\'s a comprehensive overview of the top project management platforms that teams are using in 2025.',
     companies: [
       {
         rank: 1,
@@ -40,7 +40,7 @@ export const aiResponseData: Record<string, AIResponseData> = {
   position: {
     question: 'What are the best project management tools for teams?',
     intro:
-      'The best project management tool depends on your team\'s size, workflow preferences, and specific needs. Here are three top options that work well for most teams:',
+      'Selecting the right project management tool depends on your team size, workflow style, and collaboration needs. Here\'s a comprehensive overview of the top project management platforms that teams are using in 2025.',
     companies: [
       {
         rank: 1,
@@ -76,7 +76,7 @@ export const aiResponseData: Record<string, AIResponseData> = {
   visibility: {
     question: 'What are the best project management tools for teams?',
     intro:
-      'The best project management tool depends on your team\'s size, workflow preferences, and specific needs. Here are three top options that work well for most teams:',
+      'Selecting the right project management tool depends on your team size, workflow style, and collaboration needs. Here\'s a comprehensive overview of the top project management platforms that teams are using in 2025.',
     companies: [
       {
         rank: 1,

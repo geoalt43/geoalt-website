@@ -41,12 +41,12 @@ export function InsightCard({
         <div>
           <IconComponent />
         </div>
-        <h3 className="text-lg font-semibold text-white">{title}</h3>
+        <h3 className="text-lg font-normal text-white">{title}</h3>
       </div>
       {!isActive ? (
         <p className="text-sm text-white/60 leading-relaxed overflow-hidden">{description}</p>
       ) : (
-        <div className="space-y-4 overflow-y-auto flex-1">
+        <div className="space-y-4 flex-1">
           {type === 'sentiment' && data && (
             <div>
               <div className="space-y-4">
@@ -79,9 +79,9 @@ export function InsightCard({
           )}
           {type === 'visibility' && data && (
             <div>
-              <div className="space-y-4 [&>*:first-child]:mt-0">
+              <div className="space-y-4">
                 {(data as VisibilityData[]).map((item, index) => (
-                  <div key={item.companyName} className="flex items-center justify-between">
+                  <div key={item.companyName} className={`flex items-center justify-between ${index === 0 ? 'mt-4' : ''}`}>
                     <CompanyName name={item.companyName} size="sm" />
                     <div className="flex items-center gap-2">
                       <div className="w-16 h-1.5 bg-white/10 rounded-full overflow-hidden">
