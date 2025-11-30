@@ -13,7 +13,20 @@ const config = [
   {
     ignores: ['.next/**', 'node_modules/**', 'playwright-report/**', 'test-results/**'],
   },
-  ...compat.extends('next', 'next/core-web-vitals'),
+  ...compat.extends(
+    'next',
+    'next/core-web-vitals',
+    'plugin:@typescript-eslint/recommended',
+    'prettier'
+  ),
+  {
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'error',
+      '@typescript-eslint/no-explicit-any': 'warn',
+      'prefer-const': 'error',
+      'no-var': 'error',
+    },
+  },
 ]
 
 export default config

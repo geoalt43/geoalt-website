@@ -10,8 +10,6 @@ import { CTASection } from '@/components/marketing/cta-section'
 import { TestimonialsCarousel } from '@/components/marketing/testimonials-carousel'
 import { Footer } from '@/components/layout/footer'
 import { Navbar } from '@/components/layout/navbar'
-import OpenAI from '@lobehub/icons/es/OpenAI'
-import { Gemini } from '@lobehub/icons'
 import { AISearchMetricsSection } from '@/components/marketing/ai-search-metrics'
 import { DashboardSection } from '@/components/marketing/dashboard-section'
 import { PricingSection } from '@/components/marketing/pricing-section'
@@ -43,12 +41,6 @@ const trustedBrands = [
     className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' 
   },
 ]
-
-const CheckIcon = () => (
-  <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-white/40 text-white text-xs font-semibold">
-    ✓
-  </span>
-)
 
 function EmpoweringBusinessesSection() {
   const sectionRef = useRef(null)
@@ -419,8 +411,6 @@ export function HomePage() {
 
       <HeroSection />
 
-     
-
       <DashboardImageSection />
 
       <DashboardSection />
@@ -431,7 +421,7 @@ export function HomePage() {
 
       <section className="py-25">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-[0px] border-t border-white/10 border-b border-transparent bg-transparent px-6 py-10 sm:px-10 sm:py-14">
+          <div className="relative overflow-hidden rounded-[0px] border-b border-white/10 bg-transparent px-6 py-10 sm:px-10 sm:py-14">
             <div className="absolute inset-0 pointer-events-none">
               <div className="absolute w-32 h-32 bg-white/0 rounded-full blur-3xl -top-10 -left-6" />
               <div className="absolute w-40 h-40 bg-white/0 rounded-full blur-3xl -bottom-16 right-6" />
@@ -440,12 +430,12 @@ export function HomePage() {
               <p 
                 className="text-lg font-base tracking-wide -mt-11 trusted-by-text"
                 style={{
-                  color: 'rgba(255, 255, 255, 0.5)',
+                  color: 'rgba(255, 255, 255, 1)',
                   background: 'none',
                   backgroundImage: 'none',
                   WebkitBackgroundClip: 'unset',
                   backgroundClip: 'unset',
-                  WebkitTextFillColor: 'rgba(255, 255, 255, 0.5)',
+                  WebkitTextFillColor: 'rgba(255, 255, 255, 1)',
                 } as React.CSSProperties}
               >
                 Trusted by

@@ -6,24 +6,6 @@ interface CompanyNameProps {
   showIcon?: boolean
 }
 
-const companyStyles: Record<string, { font: string; weight: string; tracking: string }> = {
-  Asana: {
-    font: 'font-sans',
-    weight: 'font-bold',
-    tracking: 'tracking-tight',
-  },
-  Trello: {
-    font: 'font-sans',
-    weight: 'font-extrabold',
-    tracking: 'tracking-wider',
-  },
-  'Monday.com': {
-    font: 'font-sans',
-    weight: 'font-semibold',
-    tracking: 'tracking-normal',
-  },
-}
-
 const sizeClasses = {
   sm: { icon: 65, text: 'text-lg' },
   md: { icon: 32, text: 'text-base' },
@@ -31,7 +13,6 @@ const sizeClasses = {
 }
 
 export function CompanyName({ name, size = 'md', showIcon = true }: CompanyNameProps) {
-  const style = companyStyles[name] || { font: 'font-sans', weight: 'font-medium', tracking: 'tracking-normal' }
   const sizeClass = sizeClasses[size]
 
   const getIcon = () => {

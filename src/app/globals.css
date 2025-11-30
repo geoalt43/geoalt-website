@@ -233,15 +233,15 @@
   }
 }
 
-/* Trusted by text - no gradient, solid white at 50% opacity */
+/* Trusted by text - no gradient, solid white */
 .trusted-by-text {
-  color: rgba(255, 255, 255, 0.5) !important;
+  color: rgba(255, 255, 255, 1) !important;
   background: none !important;
   background-image: none !important;
   -webkit-background-clip: unset !important;
   background-clip: unset !important;
-  -webkit-text-fill-color: rgba(255, 255, 255, 0.5) !important;
-  text-fill-color: rgba(255, 255, 255, 0.5) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 1) !important;
+  text-fill-color: rgba(255, 255, 255, 1) !important;
 }
 
 /* Utility classes */

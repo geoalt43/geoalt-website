@@ -125,52 +125,9 @@ export function CTASection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 40,
-      scale: 0.95,
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      transition: {
         duration: 0.6,
         ease: 'easeOut' as const,
       },
-    },
-  }
-
-  const textVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30,
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut' as const,
-      },
-    },
-  }
-
-  const buttonVariants = {
-    hidden: { 
-      opacity: 0, 
-      scale: 0.9,
-    },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
     },
   }
 
@@ -184,33 +141,19 @@ export function CTASection() {
       >
         <div className="bg-[#0d0d0d] rounded-2xl p-8 flex items-center">
           {/* Left Section - Text Content */}
-          <motion.div 
-            variants={itemVariants}
-            className="flex-1 pr-8"
-          >
-            <motion.h2 
-              variants={textVariants}
-              className="text-4xl font-normal text-white mb-4 leading-tight tracking-wide"
-            >
-              <motion.span 
-                variants={textVariants}
-                className="pb-2 inline-block"
-              >
+          <div className="flex-1 pr-8">
+            <h2 className="text-4xl font-normal text-white mb-4 leading-tight tracking-wide">
+              <span className="pb-2 inline-block">
                 Start Growing Your
-              </motion.span>
+              </span>
               <br />
-              <motion.span 
-                variants={textVariants}
-              >
+              <span>
                 AI Visibility Today
-              </motion.span>
-            </motion.h2>
-            <motion.p 
-              variants={textVariants}
-              className="text-lg mb-8 leading-relaxed tracking-wide flex items-center text-[#898989]"
-            >
+              </span>
+            </h2>
+            <p className="text-lg mb-8 leading-relaxed tracking-wide flex items-center text-[#898989]">
               GE<OpenAI size={20} className="mx-0.5" />Alt helps you lead in AI search and scale your brand faster.
-            </motion.p>
+            </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a 
                 href="https://forms.google.com/YOUR_FORM_ID_HERE" 
@@ -227,18 +170,14 @@ export function CTASection() {
                 showModal={false}
               />
             </div>
-          </motion.div>
+          </div>
           
           {/* Right Section - AI Platform Rotator */}
-          <motion.div 
-            variants={itemVariants}
-            className="flex-shrink-0 w-[450px] h-[350px] flex items-center justify-start -ml-24 -mr-9 relative overflow-visible"
-          >
+          <div className="flex-shrink-0 w-[450px] h-[350px] flex items-center justify-start -ml-24 -mr-9 relative overflow-visible">
             <div className="relative w-full h-full">
               <div className="relative w-full h-full">
                 {/* Card Container */}
-                <motion.div 
-                  variants={itemVariants}
+                <div 
                   className="relative w-full h-full bg-[#0d0d0d] rounded-2xl pt-1 pb-1 pl-10 pr-0 mt-10 overflow-hidden"
                   style={{
                     backdropFilter: 'blur(10px)',
@@ -251,10 +190,10 @@ export function CTASection() {
                   <div className="scale-[2] origin-left" style={{ height: '100%' }}>
                     <VerticalFlowingRotator />
                   </div>
-                </motion.div>
+                </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </motion.div>
     </section>
