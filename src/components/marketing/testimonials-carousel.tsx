@@ -167,7 +167,7 @@ export function TestimonialsCarousel() {
             <motion.div
               key={`${testimonial.name}-${index}`}
               variants={cardVariants}
-              className="bg-[#141414] border border-[#363636] rounded-xl p-6 md:p-8 shadow-lg h-full flex flex-col relative overflow-hidden group"
+              className="bg-[#0f0f0f] border border-[#363636] rounded-xl p-6 md:p-8 shadow-lg h-full flex flex-col relative overflow-hidden group"
               whileHover={{ 
                 y: -3,
                 boxShadow: '0 12px 25px rgba(0, 0, 0, 0.25), 0 0 0 0.5px rgba(255, 255, 255, 0.04)',

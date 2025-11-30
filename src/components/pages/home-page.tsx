@@ -132,7 +132,7 @@ function EmpoweringBusinessesSection() {
 
       {/* Subtle gradient overlays */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl opacity-20" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5  blur-3xl opacity-20" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl opacity-20" />
       </div>
 

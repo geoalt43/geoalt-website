@@ -1,3 +1,8 @@
+'use client'
+
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+
 const highlights = [
   {
     rank: '#1',
@@ -65,71 +70,391 @@ const insightCards = [
   },
 ]
 
+// Animation variants with modern spring physics
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+}
+
+const headerVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+    filter: 'blur(10px)',
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      type: 'spring' as const,
+      stiffness: 100,
+      damping: 15,
+      mass: 0.8,
+    },
+  },
+}
+
+const subtitleVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+    clipPath: 'inset(0 0 100% 0)',
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    clipPath: 'inset(0 0 0% 0)',
+    transition: {
+      type: 'spring' as const,
+      stiffness: 100,
+      damping: 15,
+      mass: 0.5,
+      delay: 0.3,
+    },
+  },
+}
+
+const cardContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.4,
+    },
+  },
+}
+
+const insightCardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+    scale: 0.95,
+    filter: 'blur(8px)',
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: 'blur(0px)',
+    transition: {
+      type: 'spring' as const,
+      stiffness: 100,
+      damping: 15,
+      mass: 0.7,
+    },
+  },
+}
+
+const iconVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.5,
+    rotate: -180,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    rotate: 0,
+    transition: {
+      type: 'spring' as const,
+      stiffness: 200,
+      damping: 12,
+      mass: 0.5,
+    },
+  },
+}
+
+const aiBoxVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+    scale: 0.98,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: 'spring' as const,
+      stiffness: 80,
+      damping: 15,
+      mass: 0.8,
+      delay: 0.6,
+    },
+  },
+}
+
+const highlightContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.8,
+    },
+  },
+}
+
+const highlightCardVariants = {
+  hidden: {
+    opacity: 0,
+    x: -30,
+    scale: 0.96,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: {
+      type: 'spring' as const,
+      stiffness: 100,
+      damping: 15,
+      mass: 0.7,
+    },
+  },
+}
+
+const badgeVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.8,
+    y: 10,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      type: 'spring' as const,
+      stiffness: 200,
+      damping: 12,
+    },
+  },
+}
+
+const badgeContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+      delayChildren: 0.2,
+    },
+  },
+}
+
 export function AISearchMetricsSection() {
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+
   return (
-    <section className="py-24 bg-[#090909]">
+    <section ref={sectionRef} className="py-24 bg-[#090909]">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-5xl font-normal text-white">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="text-center max-w-3xl mx-auto"
+        >
+          <motion.h2
+            variants={headerVariants}
+            className="text-5xl font-normal text-white"
+          >
             How AI actually sees your brand
-          </h2>
-          <p className="mt-4 text-lg text-white/70">
+          </motion.h2>
+          <motion.p
+            variants={subtitleVariants}
+            className="mt-4 text-lg text-white/70"
+          >
             Everything that matters in one place
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="max-w-3xl mx-auto mt-12">
-          <div className="bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white/70 text-center text-sm">
-            How does GEOAlt track AI visibility across different platforms?
-          </div>
-        </div>
-
-        <div className="mt-12 max-w-7xl mx-auto grid gap-4 md:grid-cols-3">
-          {insightCards.map(card => {
+        <motion.div
+          variants={cardContainerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="mt-12 max-w-7xl mx-auto grid gap-4 md:grid-cols-3"
+        >
+          {insightCards.map((card, index) => {
             const IconComponent = card.icon
             return (
-              <div key={card.title} className="bg-[#0d0d0d] border border-white/10 rounded-lg p-6 text-white/80">
+              <motion.div
+                key={card.title}
+                variants={insightCardVariants}
+                whileHover={{
+                  scale: 1.02,
+                  y: -4,
+                  transition: {
+                    type: 'spring' as const,
+                    stiffness: 300,
+                    damping: 20,
+                  },
+                }}
+                className="bg-[#050505] border border-white/10 rounded-lg p-6 text-white/80 cursor-pointer"
+              >
                 <div className="flex items-center gap-3 mb-4">
-                  <IconComponent />
+                  <motion.div variants={iconVariants}>
+                    <IconComponent />
+                  </motion.div>
                   <h3 className="text-lg font-semibold text-white">{card.title}</h3>
                 </div>
                 <p className="text-sm text-white/60 leading-relaxed">{card.description}</p>
-              </div>
+              </motion.div>
             )
           })}
-        </div>
+        </motion.div>
 
-        <div className="bg-[#0d0d0d] border border-white/10 rounded-2xl shadow-2xl shadow-black/40 p-8 mt-4">
+        <motion.div
+          variants={aiBoxVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="bg-[#050505] border border-white/10 rounded-2xl shadow-2xl shadow-black/40 p-8 mt-4"
+        >
           <div className="flex items-center gap-3 text-white/80 text-sm mb-6">
-            <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center font-semibold">
+            <motion.div
+              initial={{ scale: 0, rotate: -180 }}
+              animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
+              transition={{
+                type: 'spring' as const,
+                stiffness: 200,
+                damping: 15,
+                delay: 0.7,
+              }}
+              className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center font-semibold"
+            >
               AI
-            </div>
-            <span>Understanding your AI visibility requires tracking multiple signals across different platforms and models to get a complete picture of your brand&apos;s presence.</span>
+            </motion.div>
+            <motion.span
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+              transition={{
+                type: 'spring' as const,
+                stiffness: 100,
+                damping: 15,
+                delay: 0.8,
+              }}
+            >
+              Understanding your AI visibility requires tracking multiple signals across different platforms and models to get a complete picture of your brand&apos;s presence.
+            </motion.span>
           </div>
-          <div className="space-y-6">
-            {highlights.map(item => (
-              <div key={item.brand} className="bg-[#111111] border border-white/10 rounded-xl p-6 text-white/90">
+          <motion.div
+            variants={highlightContainerVariants}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+            className="space-y-6"
+          >
+            {highlights.map((item, index) => (
+              <motion.div
+                key={item.brand}
+                variants={highlightCardVariants}
+                whileHover={{
+                  x: 8,
+                  scale: 1.01,
+                  transition: {
+                    type: 'spring' as const,
+                    stiffness: 300,
+                    damping: 20,
+                  },
+                }}
+                className="bg-[#080808] border border-white/10 rounded-xl p-6 text-white/90 cursor-pointer"
+              >
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="text-xs uppercase tracking-wide text-white/50">{item.rank}</span>
-                  <p className="text-lg font-semibold text-white">{item.brand}</p>
+                  <motion.span
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+                    transition={{
+                      type: 'spring' as const,
+                      stiffness: 200,
+                      damping: 12,
+                      delay: 0.9 + index * 0.12,
+                    }}
+                    className="text-xs uppercase tracking-wide text-white/50"
+                  >
+                    {item.rank}
+                  </motion.span>
+                  <motion.p
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                    transition={{
+                      type: 'spring' as const,
+                      stiffness: 100,
+                      damping: 15,
+                      delay: 0.95 + index * 0.12,
+                    }}
+                    className="text-lg font-semibold text-white"
+                  >
+                    {item.brand}
+                  </motion.p>
                 </div>
-                <p className="text-sm text-white/70 leading-relaxed">{item.summary}</p>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {item.positives.map(text => (
-                    <span key={text} className="bg-green-500/15 text-green-300 text-xs font-medium px-3 py-1 rounded-full">
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                  transition={{
+                    type: 'spring' as const,
+                    stiffness: 100,
+                    damping: 15,
+                    delay: 1.0 + index * 0.12,
+                  }}
+                  className="text-sm text-white/70 leading-relaxed"
+                >
+                  {item.summary}
+                </motion.p>
+                <motion.div
+                  variants={badgeContainerVariants}
+                  initial="hidden"
+                  animate={isInView ? 'visible' : 'hidden'}
+                  className="flex flex-wrap gap-2 mt-4"
+                >
+                  {item.positives.map((text, badgeIndex) => (
+                    <motion.span
+                      key={text}
+                      variants={badgeVariants}
+                      custom={badgeIndex}
+                      whileHover={{
+                        scale: 1.1,
+                        transition: {
+                          type: 'spring' as const,
+                          stiffness: 400,
+                          damping: 15,
+                        },
+                      }}
+                      className="bg-green-500/15 text-green-300 text-xs font-medium px-3 py-1 rounded-full"
+                    >
                       {text}
-                    </span>
+                    </motion.span>
                   ))}
-                  {item.cautions.map(text => (
-                    <span key={text} className="bg-rose-500/15 text-rose-300 text-xs font-medium px-3 py-1 rounded-full">
+                  {item.cautions.map((text, badgeIndex) => (
+                    <motion.span
+                      key={text}
+                      variants={badgeVariants}
+                      custom={badgeIndex + item.positives.length}
+                      whileHover={{
+                        scale: 1.1,
+                        transition: {
+                          type: 'spring' as const,
+                          stiffness: 400,
+                          damping: 15,
+                        },
+                      }}
+                      className="bg-rose-500/15 text-rose-300 text-xs font-medium px-3 py-1 rounded-full"
+                    >
                       {text}
-                    </span>
+                    </motion.span>
                   ))}
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
       </div>
     </section>
