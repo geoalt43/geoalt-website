@@ -120,7 +120,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
       )}
       
       {/* Fixed width container to prevent shaking */}
-      <div className="w-full max-w-[280px] sm:max-w-[320px] md:w-80 lg:w-96 h-12 sm:h-16 md:h-18 lg:h-20 flex items-center justify-center">
+      <div className="w-full max-w-[280px] sm:max-w-[320px] md:w-80 lg:w-96 h-12 sm:h-16 md:h-[72px] lg:h-20 flex items-center justify-center">
         <div
           className={`flex items-center justify-center space-x-1.5 sm:space-x-2 md:space-x-3 transition-all duration-500 text-shadow-muted ${
             isBlurring ? 'opacity-20' : 'opacity-100'

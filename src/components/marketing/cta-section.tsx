@@ -65,7 +65,7 @@ export function CTASection() {
           </div>
           
           {/* Right Section - AI Platform Rotator */}
-          <div className="flex-shrink-0 w-full sm:w-auto sm:min-w-[280px] md:min-w-[320px] lg:w-[450px] h-[200px] xs:h-[220px] sm:h-[250px] md:h-[280px] lg:h-[350px] flex items-center justify-center lg:justify-end relative overflow-hidden">
+          <div className="flex-shrink-0 w-full sm:w-auto sm:min-w-[280px] md:min-w-[320px] lg:w-[450px] h-[200px] sm:h-[250px] md:h-[280px] lg:h-[350px] flex items-center justify-center lg:justify-end relative overflow-hidden">
             <div className="relative w-full h-full max-w-full">
               <div className="relative w-full h-full">
                 {/* Card Container */}
@@ -75,7 +75,7 @@ export function CTASection() {
                     backdropFilter: 'blur(10px)',
                   }}
                 >
-                  <div className="scale-[0.9] xs:scale-[1] sm:scale-[1.2] md:scale-[1.4] lg:scale-[1.8] xl:scale-[2] origin-center sm:origin-left overflow-hidden w-full h-full flex items-center justify-center" style={{ height: '100%', width: '100%' }}>
+                  <div className="scale-[0.85] sm:scale-[1.1] md:scale-[1.3] lg:scale-[1.7] xl:scale-[2] origin-center  overflow-hidden w-full h-full flex items-center justify-center" style={{ height: '100%', width: '100%' }}>
                     <AIPlatformRotator variant="muted" size="default" />
                   </div>
                 </div>
