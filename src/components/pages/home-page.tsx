@@ -107,7 +107,7 @@ function EmpoweringBusinessesSection() {
   }
 
   return (
-    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-24 relative overflow-hidden">
+    <section ref={sectionRef} className="pt-9 sm:pt-12 lg:pt-18 pb-9 sm:pb-12 lg:pb-[4.5rem] relative overflow-hidden">
       {/* Background Grid Effect */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]">
         <div 
@@ -338,7 +338,7 @@ function DashboardImageSection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-50px' })
 
   return (
-    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-24">
+    <section ref={sectionRef} className="pt-12 sm:pt-16 lg:pt-24 pb-10 sm:pb-14 lg:pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
@@ -406,7 +406,7 @@ export function HomePage() {
 
       <section className="py-12 sm:py-16 lg:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-[0px] border-b border-white/10 bg-transparent px-4 py-6 sm:px-6 sm:py-10 lg:px-10 lg:py-14">
+          <div className="relative overflow-hidden rounded-[0px] border-b border-white/10 bg-transparent px-4 pt-5 pb-5 sm:px-6 sm:pt-9 sm:pb-9 lg:px-10 lg:pt-12 lg:pb-12">
             <div className="absolute inset-0 pointer-events-none">
               <div className="absolute w-32 h-32 bg-white/0 rounded-full blur-3xl -top-10 -left-6" />
               <div className="absolute w-40 h-40 bg-white/0 rounded-full blur-3xl -bottom-16 right-6" />

@@ -56,7 +56,7 @@ function FeaturesSection() {
   }
 
   return (
-    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-24 relative overflow-hidden">
+    <section ref={sectionRef} className="pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-12 lg:pb-24 relative overflow-hidden">
       {/* Background Grid Effect */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]">
         <div 
@@ -82,7 +82,7 @@ function FeaturesSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="mb-8 sm:mb-12 pb-6 sm:pb-8 text-center"
+          className="mb-8 sm:mb-12 pb-[18px] sm:pb-6 text-center"
         >
           <motion.h2 
             variants={headerVariants}

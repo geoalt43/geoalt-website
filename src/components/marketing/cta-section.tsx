@@ -22,14 +22,14 @@ export function CTASection() {
   }
 
   return (
-    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-24">
+    <section ref={sectionRef} className="pt-6 sm:pt-8 lg:pt-12 pb-6 sm:pb-8 lg:pb-12">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
-        className="max-w-7xl mx-auto px-4 sm:px-6 pt-3 pb-3 lg:px-8 border border-[#1d1d1d] rounded-lg bg-[#0a0a0a]"
+          className="max-w-6xl mx-auto px-4 sm:px-6 pt-3 pb-3 lg:px-8 border border-[#1d1d1d] rounded-lg bg-[#0a0a0a]"
       >
-        <div className="bg-[#0a0a0a] rounded-lg p-4 sm:p-6 lg:p-8 flex flex-col lg:flex-row items-center lg:items-center gap-6 lg:gap-0">
+        <div className="bg-[#0a0a0a] rounded-lg p-4 sm:p-5 lg:p-7 flex flex-col lg:flex-row items-center lg:items-center gap-6 lg:gap-0">
           {/* Left Section - Text Content */}
           <div className="flex-1 lg:pr-8 w-full lg:w-auto text-center lg:text-left mb-4 sm:mb-6 lg:mb-0">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal text-white mb-3 sm:mb-4 leading-tight tracking-wide px-2 sm:px-0">
@@ -65,7 +65,7 @@ export function CTASection() {
           </div>
           
           {/* Right Section - AI Platform Rotator */}
-          <div className="flex-shrink-0 w-full sm:w-auto sm:min-w-[260px] md:min-w-[300px] lg:w-[400px] h-[190px] sm:h-[230px] md:h-[260px] lg:h-[320px] flex items-center justify-center lg:justify-end relative overflow-hidden">
+          <div className="flex-shrink-0 w-full sm:w-auto sm:min-w-[240px] md:min-w-[280px] lg:w-[380px] h-[180px] sm:h-[215px] md:h-[245px] lg:h-[300px] flex items-center justify-center lg:justify-end relative overflow-hidden">
             <div className="relative w-full h-full max-w-full">
               <div className="relative w-full h-full">
                 {/* Card Container */}

@@ -377,7 +377,7 @@ export function PricingSection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
 
   return (
-    <section id="pricing" className="py-12 sm:py-16 lg:py-24 scroll-mt-16 relative overflow-hidden bg-brand-black">
+    <section id="pricing" className="pt-6 sm:pt-8 lg:pt-12 pb-6 sm:pb-8 lg:pb-12 scroll-mt-16 relative overflow-hidden bg-brand-black">
       <div 
         className="absolute inset-0 opacity-[0.02] pointer-events-none"
         style={{

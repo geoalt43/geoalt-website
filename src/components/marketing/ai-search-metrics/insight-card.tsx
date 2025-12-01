@@ -35,7 +35,7 @@ export function InsightCard({
         <div>
           <IconComponent />
         </div>
-        <h3 className="text-xs sm:text-sm font-normal text-white">{title}</h3>
+        <h3 className="text-xs sm:text-sm lg:text-base font-normal text-white">{title}</h3>
         </div>
         {!isActive ? (
         <p className="text-[11px] sm:text-sm md:text-base text-white/60 leading-relaxed overflow-hidden line-clamp-2 sm:line-clamp-none">{description}</p>

@@ -53,7 +53,7 @@ export function AISearchMetricsSection() {
   }
 
   return (
-    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-24 bg-[#090909]">
+    <section ref={sectionRef} className="pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-12 lg:pb-24 bg-[#090909]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}

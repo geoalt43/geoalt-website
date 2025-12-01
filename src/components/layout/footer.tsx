@@ -59,17 +59,17 @@ export function Footer() {
 
           {/* Product Links */}
           <div className="ml-0 sm:ml-6 lg:ml-12">
-            <h3 className="text-xs sm:text-sm font-semibold text-brand-white uppercase tracking-wider">
+            <h3 className="text-[11px] sm:text-sm font-semibold text-brand-white uppercase tracking-wider">
               Product
             </h3>
             <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-[10px] sm:text-sm text-[#898989] hover:text-white transition-none">
                   Features
                 </Link>
               </li>
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-[10px] sm:text-sm text-[#898989] hover:text-white transition-none">
                   API
                 </Link>
               </li>
@@ -78,22 +78,22 @@ export function Footer() {
 
           {/* Company Links */}
           <div className="ml-0 sm:ml-6 lg:ml-12">
-            <h3 className="text-xs sm:text-sm font-semibold text-brand-white uppercase tracking-wider">
+            <h3 className="text-[11px] sm:text-sm font-semibold text-brand-white uppercase tracking-wider">
               Company
             </h3>
             <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-[10px] sm:text-sm text-[#898989] hover:text-white transition-none">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-[10px] sm:text-sm text-[#898989] hover:text-white transition-none">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-[10px] sm:text-sm text-[#898989] hover:text-white transition-none">
                   Careers
                 </Link>
               </li>
@@ -102,22 +102,22 @@ export function Footer() {
 
           {/* Resources Links */}
           <div className="ml-0 sm:ml-6 lg:ml-12">
-            <h3 className="text-xs sm:text-sm font-semibold text-brand-white uppercase tracking-wider">
+            <h3 className="text-[11px] sm:text-sm font-semibold text-brand-white uppercase tracking-wider">
               Resources
             </h3>
             <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-[10px] sm:text-sm text-[#898989] hover:text-white transition-none">
                   Documentation
                 </Link>
               </li>
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-[10px] sm:text-sm text-[#898989] hover:text-white transition-none">
                   Help Center
                 </Link>
               </li>
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-[10px] sm:text-sm text-[#898989] hover:text-white transition-none">
                   Contact
                 </Link>
               </li>
@@ -126,22 +126,22 @@ export function Footer() {
 
           {/* Legal Links */}
           <div className="ml-0 sm:ml-6 lg:ml-12">
-            <h3 className="text-xs sm:text-sm font-semibold text-brand-white uppercase tracking-wider">
+            <h3 className="text-[11px] sm:text-sm font-semibold text-brand-white uppercase tracking-wider">
               Legal
             </h3>
             <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-[10px] sm:text-sm text-[#898989] hover:text-white transition-none">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-[10px] sm:text-sm text-[#898989] hover:text-white transition-none">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/#home" onClick={scrollToHero} className="text-[10px] sm:text-sm text-[#898989] hover:text-white transition-none">
                   Cookie Policy
                 </Link>
               </li>

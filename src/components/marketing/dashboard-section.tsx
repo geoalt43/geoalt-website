@@ -141,7 +141,7 @@ export function DashboardSection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
   return (
-    <section id="features" ref={sectionRef} className="py-12 sm:py-16 lg:py-24 bg-black">
+    <section id="features" ref={sectionRef} className="pt-6 sm:pt-8 lg:pt-12 pb-12 sm:pb-16 lg:pb-24 bg-black">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={headingVariants}
@@ -150,8 +150,11 @@ export function DashboardSection() {
           className="mb-8 sm:mb-12 text-center"
         >
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal text-white mb-3 sm:mb-4 px-2 sm:px-0">
-          Unlock AI-driven search insights that bring <br className="hidden sm:block" /> 
-          <span className="pt-2 sm:pt-3 pb-4 sm:pb-6 lg:pb-9 block">customers to you — GeoAlt</span>
+            <span className="pt-[5%]">Unlock AI-driven search insights that bring</span>
+            <br />
+            <span className="pb-4 sm:pb-6 lg:pb-9 block">
+              customers to you — GeoAlt
+            </span>
           </h2>
         </motion.div>
 
@@ -201,9 +204,9 @@ export function DashboardSection() {
               </p>
             </motion.div>
             
-            <div className={` -bottom-[50px] sm:-bottom-[80px] lg:-bottom-[140px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[100%] pointer-events-none`}>
+            <div className={`absolute bottom-0 sm:-bottom-[80px] lg:-bottom-[140px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[128%] pointer-events-none`}>
               <div 
-                className={`${TRANSFORM_STYLE_3D} transition-transform duration-300 ease-out ${BOX_SHADOW_3D} w-full h-full [transform:rotateX(15deg)_rotateY(0deg)_translateZ(20px)_translateY(40px)] sm:[transform:rotateX(18deg)_rotateY(0deg)_translateZ(30px)_translateY(60px)] lg:[transform:rotateX(20deg)_rotateY(0deg)_translateZ(40px)_translateY(90px)]`}
+                className={`${TRANSFORM_STYLE_3D} transition-transform duration-300 ease-out ${BOX_SHADOW_3D} w-full h-full relative z-20 [transform:rotateX(15deg)_rotateY(0deg)_translateZ(20px)_translateY(40px)] sm:[transform:rotateX(18deg)_rotateY(0deg)_translateZ(30px)_translateY(60px)] lg:[transform:rotateX(20deg)_rotateY(0deg)_translateZ(40px)_translateY(90px)]`}
               >
                 <Image
                   src="/images/Competitor_.png"
