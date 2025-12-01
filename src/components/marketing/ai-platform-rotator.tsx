@@ -104,7 +104,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
   const current = platforms[currentPlatform]
 
   return (
-    <div className="relative flex items-center justify-center py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
+    <div className="relative flex items-center justify-center py-4 sm:py-8 md:py-12 lg:py-16 xl:py-20 px-2 sm:px-4 md:px-6">
       {/* Animated Background Elements (only for default variant) */}
       {variant === 'default' && (
         <div className="absolute inset-0 overflow-hidden -z-10">
@@ -120,9 +120,9 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
       )}
       
       {/* Fixed width container to prevent shaking */}
-      <div className="w-full sm:w-80 lg:w-96 h-16 sm:h-20 flex items-center justify-center">
+      <div className="w-full max-w-[280px] sm:max-w-[320px] md:w-80 lg:w-96 h-12 sm:h-16 md:h-18 lg:h-20 flex items-center justify-center">
         <div
-          className={`flex items-center justify-center space-x-2 sm:space-x-3 transition-all duration-500 text-shadow-muted ${
+          className={`flex items-center justify-center space-x-1.5 sm:space-x-2 md:space-x-3 transition-all duration-500 text-shadow-muted ${
             isBlurring ? 'opacity-20' : 'opacity-100'
           } ${isVisible ? 'animate-fadeIn' : 'animate-fadeOut'} ${
             variant === 'muted'
@@ -135,14 +135,14 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
           }`}
         >
           {current.icon && (
-            <div aria-hidden className="flex-shrink-0 flex items-center gap-2">
+            <div aria-hidden className="flex-shrink-0 flex items-center gap-1 sm:gap-1.5 md:gap-2">
               <Image
                 src={current.icon}
                 alt=""
                 width={iconWidth}
                 height={iconHeight}
-                className="object-contain"
-                style={{ height: `${iconHeight}px`, width: 'auto' }}
+                className="object-contain max-h-full"
+                style={{ height: `${iconHeight}px`, width: 'auto', maxWidth: '100%' }}
               />
               {current.hasText && current.text && (
                 <Image
@@ -150,15 +150,15 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
                   alt=""
                   width={textWidth}
                   height={textHeight}
-                  className="object-contain"
-                  style={{ height: `${textHeight}px`, width: 'auto' }}
+                  className="object-contain max-h-full"
+                  style={{ height: `${textHeight}px`, width: 'auto', maxWidth: '100%' }}
                 />
               )}
             </div>
           )}
           {current.name && !current.hasText && (
             <span 
-              className={`${size === 'large' ? 'text-2xl' : 'text-xl'} font-medium leading-tight tracking-tight whitespace-nowrap ${
+              className={`${size === 'large' ? 'text-lg sm:text-xl md:text-2xl' : 'text-base sm:text-lg md:text-xl'} font-medium leading-tight tracking-tight whitespace-nowrap ${
                 variant === 'muted' ? 'text-[#2b2b2b]' : 'text-white'
               }`}
               style={{ fontSize: `${baseTextHeight}px`, lineHeight: '1' }}
