@@ -1,8 +1,7 @@
 'use client'
 
-import React from 'react'
+import React, { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
 import Image from 'next/image'
 
 const CheckIcon = () => (
@@ -18,7 +17,7 @@ const getPlatformIcon = (platformName: string, iconSize: number = 16) => {
   if (normalizedName.includes('chatgpt') || normalizedName.includes('openai')) {
     return (
       <Image
-        src="/ai-icons/openai.svg"
+        src="/ai-icons/openai.webp"
         alt="OpenAI"
         width={iconSize}
         height={iconSize}
@@ -42,7 +41,7 @@ const getPlatformIcon = (platformName: string, iconSize: number = 16) => {
   if (normalizedName.includes('perplexity')) {
     return (
       <Image
-        src="/ai-icons/perplexity.svg"
+        src="/ai-icons/perplexity.webp"
         alt="Perplexity"
         width={iconSize}
         height={iconSize}
@@ -66,7 +65,7 @@ const getPlatformIcon = (platformName: string, iconSize: number = 16) => {
   if (normalizedName.includes('grok')) {
     return (
       <Image
-        src="/ai-icons/grok.svg"
+        src="/ai-icons/grok.webp"
         alt="Grok"
         width={iconSize}
         height={iconSize}
@@ -226,7 +225,6 @@ const pricingPlans = [
     period: '/month',
     description: 'For teams who want to run GEO in-house.',
     features: [
-      // 'Models: ChatGPT, Gemini, Perplexity',
       'Access to 3 models (ChatGPT, Gemini, Perplexity)',
       'Track 25 Prompts',
       'Email Support',

@@ -1,8 +1,7 @@
 'use client'
 
-import { RefObject } from 'react'
+import { RefObject, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
-import { useRef } from 'react'
 
 interface FAQSectionProps {
   openFaq: number | null
