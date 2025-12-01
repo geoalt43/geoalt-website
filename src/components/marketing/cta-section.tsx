@@ -3,7 +3,7 @@
 import { DemoCTA } from './demo-cta'
 import OpenAI from '@lobehub/icons/es/OpenAI'
 import { motion, useInView } from 'framer-motion'
-import { useEffect, useState, useRef } from 'react'
+import { useRef } from 'react'
 import Perplexity from '@lobehub/icons/es/Perplexity'
 import DeepSeek from '@lobehub/icons/es/DeepSeek'
 import Claude from '@lobehub/icons/es/Claude'
