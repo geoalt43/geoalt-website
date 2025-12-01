@@ -92,9 +92,9 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
-      className={`${CARD_BASE} p-0 min-h-[300px] sm:min-h-[350px] lg:min-h-[400px] overflow-hidden`}
+      className={`${CARD_BASE} p-0 min-h-[260px] sm:min-h-[330px] lg:min-h-[400px] overflow-hidden`}
     >
-      <div className="relative w-full h-[300px] sm:h-[350px] lg:h-[400px] rounded-lg overflow-hidden">
+          <div className="relative w-full h-[260px] sm:h-[330px] lg:h-[400px] rounded-lg overflow-hidden">
         <motion.div
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
@@ -162,10 +162,10 @@ export function DashboardSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-2 mb-6 sm:mb-8 lg:mb-6"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-5 lg:gap-2 mb-5 sm:mb-8 lg:mb-6"
         >
           {/* Container 1: Customize Your Prompts */}
-          <div className={`${CARD_BASE} p-4 sm:p-6 overflow-hidden relative min-h-[300px] sm:min-h-[350px] lg:min-h-[400px] pb-20 sm:pb-24 lg:pb-0`}>
+          <div className={`${CARD_BASE} p-3 sm:p-5 overflow-hidden relative min-h-[260px] sm:min-h-[330px] lg:min-h-[400px] pb-16 sm:pb-22 lg:pb-0`}>
             <div className="mb-2 relative z-10">
               <h3 className={`text-lg sm:text-xl font-medium text-white mb-1`}>Customize Your Prompts</h3>
               <p className={`text-xs sm:text-sm text-gray-400 mb-1.5 pb-3 sm:pb-4`}>
@@ -191,7 +191,7 @@ export function DashboardSection() {
           {/* Container 2: Add Business Competitors */}
           <motion.div 
             variants={cardVariants}
-            className={`${CARD_BASE} p-4 sm:p-6 overflow-hidden relative min-h-[300px] sm:min-h-[350px] lg:min-h-[400px] pb-24 sm:pb-28 lg:pb-0`}
+            className={`${CARD_BASE} p-3 sm:p-5 overflow-hidden relative min-h-[260px] sm:min-h-[330px] lg:min-h-[400px] pb-20 sm:pb-26 lg:pb-0`}
           >
             <motion.div 
               variants={headingVariants}
@@ -230,12 +230,12 @@ export function DashboardSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-2 mb-6 sm:mb-8 lg:mb-6"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-5 lg:gap-2 mb-5 sm:mb-8 lg:mb-6"
         >
           {/* Container 3: Pick Model and Region */}
           <motion.div 
             variants={cardVariants}
-            className={`${CARD_BASE} p-4 sm:p-6 overflow-hidden relative min-h-[300px] sm:min-h-[350px] lg:min-h-[400px] pb-24 sm:pb-28 lg:pb-0`}
+            className={`${CARD_BASE} p-3 sm:p-5 overflow-hidden relative min-h-[260px] sm:min-h-[330px] lg:min-h-[400px] pb-20 sm:pb-26 lg:pb-0`}
           >
             <motion.div 
               variants={headingVariants}

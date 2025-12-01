@@ -161,13 +161,13 @@ export function TestimonialsCarousel() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-3"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 lg:gap-6"
         >
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={`${testimonial.name}-${index}`}
               variants={cardVariants}
-              className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 md:p-8 shadow-lg h-full flex flex-col relative overflow-hidden group hover:border-white/25 transition-colors duration-300"
+              className="bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-7 shadow-lg h-full flex flex-col relative overflow-hidden group hover:border-white/25 transition-colors duration-300"
               style={{
                 boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
               }}
@@ -176,8 +176,8 @@ export function TestimonialsCarousel() {
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
               
               <div className="relative flex-1 flex flex-col">
-                <div className="relative mb-3">
-                  <p className="text-gray-100 text-xs sm:text-sm md:text-base leading-relaxed font-normal relative z-10">
+                <div className="relative mb-2.5 sm:mb-3">
+                  <p className="text-gray-100 text-[11px] sm:text-sm md:text-base leading-relaxed font-normal relative z-10">
                     &ldquo;{testimonial.quote}&rdquo;
                   </p>
                 </div>

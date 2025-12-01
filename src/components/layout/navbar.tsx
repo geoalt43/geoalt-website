@@ -75,7 +75,14 @@ export function Navbar() {
               onClick={handleHomeClick}
               className="flex items-center text-lg sm:text-xl font-semibold text-brand-white"
             >
-              GE<Image src="/ai-icons/openai.webp" alt="" width={18} height={18} className="mx-0.5 sm:w-5 sm:h-5 inline-block" />Alt
+              <Image
+                src="/logos/GeoAlt_Logo.png"
+                alt="GEOAlt logo"
+                width={100}
+                height={24}
+                className="h-[1em] sm:h-[1.1em] w-auto"
+                priority
+              />
             </Link>
           </div>
 

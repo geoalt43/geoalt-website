@@ -68,11 +68,11 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
         }}
       />
       <motion.button
-        className="w-full pl-3 sm:pl-4 pr-6 sm:pr-8 py-3 sm:py-4 text-left flex items-start sm:items-center gap-2 sm:gap-4"
+        className="w-full pl-3 sm:pl-4 pr-5 sm:pr-7 py-2.5 sm:py-3.5 text-left flex items-start sm:items-center gap-2 sm:gap-4"
         onClick={onToggle}
       >
         <motion.span
-          className="text-white text-base sm:text-lg font-light inline-block flex-shrink-0 mt-0.5 sm:mt-0"
+          className="text-white text-sm sm:text-base font-light inline-block flex-shrink-0 mt-0.5 sm:mt-0"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ 
             scale: 1,
@@ -83,7 +83,7 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
         >
           &gt;
         </motion.span>
-        <span className="font-medium text-white text-sm sm:text-base lg:text-lg leading-relaxed flex-1 text-left">{faq.question}</span>
+        <span className="font-medium text-white text-xs sm:text-sm lg:text-base leading-relaxed flex-1 text-left">{faq.question}</span>
       </motion.button>
       <AnimatePresence initial={false}>
         {isOpen && (
@@ -107,7 +107,7 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
             }}
             className="overflow-hidden bg-transparent"
           >
-            <div className="pl-[calc(0.75rem+1rem+0.75rem)] sm:pl-[calc(1rem+1.5rem+1rem)] pr-4 sm:pr-8 pb-4 sm:pb-6 pt-0 bg-transparent">
+            <div className="pl-[calc(0.75rem+1rem+0.75rem)] sm:pl-[calc(1rem+1.5rem+1rem)] pr-4 sm:pr-8 pb-3 sm:pb-5 pt-0 bg-transparent">
               <motion.p
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ 
@@ -120,7 +120,7 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
                   opacity: 0,
                   transition: { duration: 0.2, ease: 'easeIn' }
                 }}
-                className="text-gray-400 leading-relaxed text-sm sm:text-base font-light bg-transparent"
+                className="text-gray-400 leading-relaxed text-xs sm:text-sm font-light bg-transparent"
               >
                 {faq.answer}
               </motion.p>

@@ -30,7 +30,7 @@ export function DemoCTA({
 
   const sizes = {
     sm: 'h-8 px-3 text-sm',
-    md: 'h-10 px-4 sm:px-5 py-2.5 text-sm sm:text-base',
+    md: 'h-8 px-3.5 py-2 sm:h-10 sm:px-4 sm:py-2.5 md:px-5 text-xs sm:text-sm md:text-base',
     lg: 'h-12 px-8 text-lg',
   }
 
@@ -49,7 +49,7 @@ export function DemoCTA({
             baseClasses,
             variants[variant],
             sizes[size],
-            'w-full sm:w-auto text-center',
+            'text-center',
             className
           )}
         >
@@ -91,7 +91,7 @@ export function DemoCTA({
         baseClasses,
         variants[variant],
         sizes[size],
-        'w-full sm:w-auto text-center',
+        'text-center',
         className
       )}
     >

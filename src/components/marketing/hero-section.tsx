@@ -122,13 +122,13 @@ export function HeroSection() {
               variants={headingContainerVariants}
               initial="hidden"
               animate={controls}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal -mt-4 sm:-mt-6 mb-3 sm:mb-4 leading-tight tracking-tighter bg-gradient-to-r from-[#4285f4] via-[#9c27b0] to-[#ea4335] text-transparent bg-clip-text px-2 sm:px-0"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal -mt-4 sm:-mt-6 mb-3 sm:mb-4 leading-tight tracking-normal sm:tracking-tight bg-gradient-to-r from-[#4285f4] via-[#9c27b0] to-[#ea4335] text-transparent bg-clip-text px-2 sm:px-0"
             >
               {words.map((word, index) => (
                 <motion.span
                   key={index}
                   variants={wordVariants}
-                  className="inline-block mr-1 sm:mr-2"
+                  className="inline-block mr-2 sm:mr-3"
                   style={{ transformStyle: 'preserve-3d' }}
                 >
                   {word}
@@ -151,33 +151,42 @@ export function HeroSection() {
               variants={textVariants}
               initial="hidden"
               animate={controls}
-              className="text-base sm:text-lg text-center text-[#9b9b9b] px-4 sm:px-0"
+              className="text-xs sm:text-base md:text-lg text-center text-[#9b9b9b] px-4 sm:px-0 flex items-center justify-center gap-2 flex-wrap"
             >
-              GE<Image src="/ai-icons/openai.webp" alt="" width={18} height={18} className="mx-0.5 sm:w-5 sm:h-5 inline-block align-middle" />Alt helps your business stand out across AI platforms
+              <Image
+                src="/logos/GeoAlt_Logo.png"
+                alt="GEOAlt logo"
+                width={100}
+                height={24}
+                className="h-[1em] sm:h-[1.05em] w-auto align-middle"
+                priority
+              />
+              <span>helps your business stand out across AI platforms</span>
             </motion.p>
             <motion.p 
               variants={textVariants}
               initial="hidden"
               animate={controls}
-              className="text-base sm:text-lg mb-6 sm:mb-8 pb-2 sm:pb-4 text-center text-[#9b9b9b] px-4 sm:px-0"
+              className="text-xs sm:text-sm md:text-base mb-6 sm:mb-8 pb-2 sm:pb-4 text-center text-[#9b9b9b] px-4 sm:px-0"
             >
               <em>— Turning AI visibility into traffic</em>
             </motion.p>
           
             {/* Hero CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center px-4 sm:px-0 w-full sm:w-auto">
-              <Link href="/register" className="text-black px-5 py-2.5 rounded-lg text-sm sm:text-base font-semibold tracking-wide transition-all duration-200 ease-in-out bg-white hover:bg-[#d4d4d4] block w-full sm:w-auto text-center min-w-[140px]">
+            <div className="flex flex-row gap-2.5 sm:gap-4 items-center justify-center px-4 sm:px-0">
+              <Link
+                href="/register"
+                className="inline-flex items-center justify-center text-black px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm md:text-base font-semibold tracking-wide transition-all duration-200 ease-in-out bg-white hover:bg-[#d4d4d4] text-center min-w-[100px] sm:min-w-[120px]"
+              >
                 Get Started
               </Link>
-              <div className="w-full sm:w-auto">
-                <DemoCTA 
-                  text="Contact Us" 
-                  variant="outline" 
-                  size="md"
-                  showModal={false}
-                  className="w-full sm:w-auto min-w-[140px]"
-                />
-              </div>
+              <DemoCTA 
+                text="Contact Us" 
+                variant="outline" 
+                size="md"
+                showModal={false}
+                className="min-w-[100px] sm:min-w-[120px]"
+              />
             </div>
           </div>
         </div>

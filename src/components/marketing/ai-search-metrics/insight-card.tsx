@@ -26,19 +26,19 @@ export function InsightCard({
   return (
     <div
       onClick={onClick}
-      className={`rounded-lg p-3 sm:p-4 text-white/80 cursor-pointer transition-colors duration-300 h-auto flex flex-col overflow-hidden relative group ${
+      className={`rounded-lg p-2.5 sm:p-3.5 text-white/80 cursor-pointer transition-colors duration-300 h-auto flex flex-col overflow-hidden relative group ${
         isActive ? 'border-l-2 border-white' : type === 'position' || type === 'sentiment' ? 'border-l-2 border-white/5' : 'border-l-2 border-transparent'
       }`}
     >
       <div className="relative z-10 flex flex-col h-full">
-        <div className="flex items-center gap-2 sm:gap-3 mb-2">
+        <div className="flex items-center gap-2 sm:gap-3 mb-1.5 sm:mb-2">
         <div>
           <IconComponent />
         </div>
-        <h3 className="text-sm sm:text-base font-normal text-white">{title}</h3>
+        <h3 className="text-xs sm:text-sm font-normal text-white">{title}</h3>
         </div>
         {!isActive ? (
-        <p className="text-xs sm:text-sm text-white/60 leading-relaxed overflow-hidden line-clamp-2 sm:line-clamp-none">{description}</p>
+        <p className="text-[11px] sm:text-xs text-white/60 leading-relaxed overflow-hidden line-clamp-2 sm:line-clamp-none">{description}</p>
       ) : (
         <div className={`flex-1 ${type === 'sentiment' ? 'space-y-1 sm:space-y-1.5 lg:space-y-2' : 'space-y-2 sm:space-y-3 lg:space-y-4'}`}>
           {type === 'sentiment' && data && (

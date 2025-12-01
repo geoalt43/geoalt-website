@@ -304,13 +304,14 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
       `}
       style={{
         borderRadius: plan.isRecommended ? '0.89rem 0.89rem 0.5rem 0.5rem' : undefined,
-        transform: plan.isRecommended ? 'scale(1.05)' : undefined,
+        // Slight emphasis on recommended card, but avoid overly large scale on mobile
+        transform: plan.isRecommended ? 'scale(1.02)' : undefined,
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       
       {plan.isRecommended && (
-        <div className="bg-white/5 px-6 sm:px-8 lg:px-12 py-3 sm:py-4 text-sm sm:text-base font-medium text-white text-center rounded-t-[18px] flex-shrink-0 relative overflow-hidden">
+        <div className="bg-white/5 px-4 sm:px-6 lg:px-10 py-2.5 sm:py-3.5 text-xs sm:text-sm lg:text-base font-medium text-white text-center rounded-t-[18px] flex-shrink-0 relative overflow-hidden">
           <motion.div
             className="absolute top-0 left-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
             style={{
@@ -330,16 +331,16 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
         </div>
       )}
       
-      <div className="p-6 sm:p-8 lg:p-10 flex flex-col gap-6 sm:gap-8 flex-1">
+      <div className="p-4 sm:p-6 lg:p-8 flex flex-col gap-4 sm:gap-6 lg:gap-8 flex-1">
         <div>
-          <p className={`text-base sm:text-lg font-semibold mb-2 sm:mb-3 ${plan.name === 'Pro' ? 'pt-2' : ''}`}>{plan.name}</p>
-          <p className="text-3xl sm:text-4xl lg:text-[2.5rem] font-normal leading-none">
+          <p className={`text-sm sm:text-base font-semibold mb-1.5 sm:mb-2.5 ${plan.name === 'Pro' ? 'pt-1 sm:pt-2' : ''}`}>{plan.name}</p>
+          <p className="text-2xl sm:text-3xl lg:text-[2.3rem] font-normal leading-none">
             {plan.price}
-            {plan.period && <span className="text-base sm:text-lg font-light">{plan.period}</span>}
+            {plan.period && <span className="text-sm sm:text-base font-light">{plan.period}</span>}
           </p>
         </div>
-        <p className="text-sm sm:text-base text-white/70">{plan.description}</p>
-        <div className="flex flex-col gap-3 sm:gap-4 text-xs sm:text-sm text-white/80">
+        <p className="text-xs sm:text-sm text-white/70">{plan.description}</p>
+        <div className="flex flex-col gap-2.5 sm:gap-3.5 text-[11px] sm:text-xs text-white/80">
           {plan.features.map((feature, i) => (
             <div
               key={feature}

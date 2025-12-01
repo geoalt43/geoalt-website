@@ -22,8 +22,15 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="text-xl sm:text-2xl font-bold text-brand-white flex items-center">
-              GE<Image src="/ai-icons/openai.webp" alt="" width={20} height={20} className="mx-0.5 sm:w-6 sm:h-6 inline-block" />Alt
+            <div className="flex items-center text-xl sm:text-2xl font-bold text-brand-white">
+              <Image
+                src="/logos/GeoAlt_Logo.png"
+                alt="GEOAlt logo"
+                width={100}
+                height={24}
+                className="h-[1em] sm:h-[1.1em] w-auto"
+                priority
+              />
             </div>
             <p className="mt-3 sm:mt-4 text-xs sm:text-sm" style={{color: '#898989'}}>
               Turn AI mentions into traffic and customers. Dominate AI search and grow your brand faster.
@@ -148,8 +155,17 @@ export function Footer() {
       <div className="pt-6 sm:pt-8 pb-12 sm:pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-between items-center gap-4 sm:gap-6">
-            <p className="text-xs sm:text-sm flex items-center" style={{color: '#6d6264'}}>
-              &copy; 2025 GE<Image src="/ai-icons/openai.webp" alt="" width={14} height={14} className="mx-0.5 sm:w-4 sm:h-4 inline-block" />Alt
+            <p className="text-xs sm:text-sm flex items-center gap-2" style={{color: '#6d6264'}}>
+              <span>&copy; 2025</span>
+              <span className="inline-flex items-center leading-none">
+                <Image
+                  src="/logos/GeoAlt_Logo.png"
+                  alt="GEOAlt logo"
+                  width={80}
+                  height={18}
+                  className="h-[1em] w-auto align-middle"
+                />
+              </span>
             </p>
             <div className="flex items-center gap-1 sm:gap-3">
               <Link
