@@ -286,17 +286,6 @@ const cardVariants = {
   },
 }
 
-const itemVariants = {
-  hidden: { opacity: 0, x: -10 },
-  visible: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.4,
-    },
-  }),
-}
 
 function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
   const cardRef = useRef(null)
@@ -353,19 +342,15 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
         <p className="text-base text-white/70">{plan.description}</p>
         <div className="flex flex-col gap-4 text-sm text-white/80">
           {plan.features.map((feature, i) => (
-            <motion.div
+            <div
               key={feature}
-              custom={i}
-              variants={itemVariants}
-              initial="hidden"
-              animate={isInView ? 'visible' : 'hidden'}
               className="flex items-center gap-3"
             >
               <CheckIcon />
               <div className="flex-1">
                 <FeatureText text={feature} />
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
         {plan.price === 'Custom' ? (
