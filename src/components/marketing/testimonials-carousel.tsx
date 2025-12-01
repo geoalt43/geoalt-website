@@ -112,7 +112,7 @@ export function TestimonialsCarousel() {
   }
 
   return (
-    <section className="py-24 bg-brand-black relative overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-24 bg-brand-black relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none" 
         style={{
           backgroundImage: `
@@ -123,31 +123,31 @@ export function TestimonialsCarousel() {
         }}
       />
       
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/50 to-transparent pointer-events-none z-10" />
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 left-0 right-0 h-16 sm:h-24 lg:h-32 bg-gradient-to-b from-black via-black/50 to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 lg:h-32 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none z-10" />
 
       <div ref={sectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
           <motion.div
             variants={badgeVariants}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-white/20 mb-14 shadow-sm"
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-white rounded-lg border border-white/20 mb-8 sm:mb-12 lg:mb-14 shadow-sm"
           >
-            <svg className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
-            <span className="text-sm font-medium text-gray-900">Testimonials</span>
+            <span className="text-xs sm:text-sm font-medium text-gray-900">Testimonials</span>
           </motion.div>
           <motion.h2
             variants={headerVariants}
-            className="text-5xl font-normal text-white pb-14"
+            className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white pb-8 sm:pb-12 lg:pb-14 px-2 sm:px-0"
           >
-            See what industry leaders say<br />
+            See what industry leaders say<br className="hidden sm:block" />
             <motion.span
               variants={headerVariants}
               className="pt-2 inline-block"
@@ -161,13 +161,13 @@ export function TestimonialsCarousel() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-3"
         >
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={`${testimonial.name}-${index}`}
               variants={cardVariants}
-              className="bg-black/60 border border-white/10 rounded-lg p-6 md:p-8 shadow-lg h-full flex flex-col relative overflow-hidden group hover:border-white/25 transition-colors duration-300"
+              className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 md:p-8 shadow-lg h-full flex flex-col relative overflow-hidden group hover:border-white/25 transition-colors duration-300"
               style={{
                 boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
               }}
@@ -185,13 +185,13 @@ export function TestimonialsCarousel() {
               
               <div className="relative flex-1 flex flex-col">
                 <div className="relative mb-3">
-                  <p className="text-gray-100 text-sm md:text-base leading-relaxed font-normal relative z-10">
+                  <p className="text-gray-100 text-xs sm:text-sm md:text-base leading-relaxed font-normal relative z-10">
                     &ldquo;{testimonial.quote}&rdquo;
                   </p>
                 </div>
                 
-                <div className="mt-auto flex items-center gap-3 pt-2 relative z-10">
-                  <div className="relative w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden flex-shrink-0 bg-gray-200 ring-2 ring-white/10 shadow-lg">
+                <div className="mt-auto flex items-center gap-2 sm:gap-3 pt-2 relative z-10">
+                  <div className="relative w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full overflow-hidden flex-shrink-0 bg-gray-200 ring-2 ring-white/10 shadow-lg">
                     <Image
                       src={failedImages.has(index) 
                         ? `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=random`

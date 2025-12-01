@@ -1,14 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Perplexity from '@lobehub/icons/es/Perplexity'
-import OpenAI from '@lobehub/icons/es/OpenAI'
-import DeepSeek from '@lobehub/icons/es/DeepSeek'
-import Claude from '@lobehub/icons/es/Claude'
-import MetaAI from '@lobehub/icons/es/MetaAI'
-import Copilot from '@lobehub/icons/es/Copilot'
-import Grok from '@lobehub/icons/es/Grok'
-import Gemini from '@lobehub/icons/es/Gemini'
+import Image from 'next/image'
 
 interface AIPlatformRotatorProps {
   variant?: 'default' | 'muted'
@@ -20,59 +13,78 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
   const [isVisible, setIsVisible] = useState(true)
   const [isBlurring, setIsBlurring] = useState(false)
 
-  const iconColor = variant === 'muted' ? '#2b2b2b' : 'currentColor'
-  const iconSize = size === 'large' ? 0.7 : 0.5
-  const textSize = size === 'large' ? 'text-2xl lg:text-2xl' : 'text-3xl lg:text-3xl'
+  // Consistent sizing: text height is base, icon is 5% larger
+  const baseTextHeight = size === 'large' ? 40 : 22
+  const iconHeight = Math.round(baseTextHeight * 1.05) // 5% larger than text
+  const iconWidth = iconHeight // Square icons
+  const textHeight = baseTextHeight // Consistent text height
+  const textWidth = size === 'large' ? 140 : 110 // Proportional width for text images
 
   const platforms = [
     {
       name: 'ChatGPT',
       color: variant === 'muted' ? '#2b2b2b' : 'text-white',
       weight: 'font-medium',
-      icon: <OpenAI size={64 * iconSize} style={{ color: iconColor }} />
+      icon: '/ai-icons/openai.webp',
+      hasText: false
     },
     {
       name: 'Perplexity',
       color: variant === 'muted' ? '#2b2b2b' : 'text-white',
       weight: 'font-medium',
-      icon: <Perplexity size={56 * iconSize} style={{ color: iconColor }} />
+      icon: '/ai-icons/perplexity.webp',
+      text: '/ai-icons/perplexity-text.webp',
+      hasText: true
     },
     {
       name: 'Claude',
       color: variant === 'muted' ? '#2b2b2b' : 'text-white',
-      icon: <Claude.Color size={56 * iconSize} style={{ color: iconColor }} />
+      icon: '/ai-icons/claude-color.webp',
+      text: '/ai-icons/claude-text.webp',
+      hasText: true
     },
     {
       name: 'Gemini',
       color: variant === 'muted' ? '#2b2b2b' : 'text-white',
       weight: 'font-medium',
-      icon: <Gemini.Color size={56 * iconSize} style={{ color: iconColor }} />
+      icon: '/ai-icons/gemini-color.webp',
+      text: '/ai-icons/gemini-text.webp',
+      hasText: true
     },
     {
       name: 'Microsoft Copilot',
       color: variant === 'muted' ? '#2b2b2b' : 'text-white',
-      icon: <Copilot.Color size={56 * iconSize} style={{ color: iconColor }} />
+      icon: '/ai-icons/copilot-color.webp',
+      hasText: false
     },
     {
       name: 'Google AI Overviews',
       color: variant === 'muted' ? '#2b2b2b' : 'text-white',
       weight: 'font-medium',
-      icon: <Gemini.Color size={56 * iconSize} style={{ color: iconColor }} />
+      icon: '/ai-icons/gemini-color.webp',
+      text: '/ai-icons/gemini-text.webp',
+      hasText: true
     },
     {
       name: '',
       color: variant === 'muted' ? '#2b2b2b' : 'text-white',
-      icon: <DeepSeek.Combine size={64 * iconSize} style={{ color: iconColor }} />
+      icon: '/ai-icons/deepseek.webp',
+      text: '/ai-icons/deepseek-text.webp',
+      hasText: true
     },
     {
       name: '',
       color: variant === 'muted' ? '#2b2b2b' : 'text-white',
-      icon: <MetaAI.Combine size={56 * iconSize} style={{ color: iconColor }} />
+      icon: '/ai-icons/metaai-color.webp',
+      text: '/ai-icons/metaai-text.webp',
+      hasText: true
     },
     {
       name: '',
       color: variant === 'muted' ? '#2b2b2b' : 'text-white',
-      icon: <Grok.Combine size={56 * iconSize} style={{ color: iconColor }} />
+      icon: '/ai-icons/grok.webp',
+      text: '/ai-icons/grok-text.webp',
+      hasText: true
     }
   ]
 
@@ -92,7 +104,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
   const current = platforms[currentPlatform]
 
   return (
-    <div className="relative flex items-center justify-center py-20 px-6">
+    <div className="relative flex items-center justify-center py-12 sm:py-16 lg:py-20 px-4 sm:px-6">
       {/* Animated Background Elements (only for default variant) */}
       {variant === 'default' && (
         <div className="absolute inset-0 overflow-hidden -z-10">
@@ -108,9 +120,9 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
       )}
       
       {/* Fixed width container to prevent shaking */}
-      <div className="w-96 h-20 flex items-center justify-center">
+      <div className="w-full sm:w-80 lg:w-96 h-16 sm:h-20 flex items-center justify-center">
         <div
-          className={`flex items-center justify-center space-x-3 transition-all duration-500 text-shadow-muted ${
+          className={`flex items-center justify-center space-x-2 sm:space-x-3 transition-all duration-500 text-shadow-muted ${
             isBlurring ? 'opacity-20' : 'opacity-100'
           } ${isVisible ? 'animate-fadeIn' : 'animate-fadeOut'} ${
             variant === 'muted'
@@ -123,15 +135,33 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
           }`}
         >
           {current.icon && (
-            <div aria-hidden className="flex-shrink-0">
-              {current.icon}
+            <div aria-hidden className="flex-shrink-0 flex items-center gap-2">
+              <Image
+                src={current.icon}
+                alt=""
+                width={iconWidth}
+                height={iconHeight}
+                className="object-contain"
+                style={{ height: `${iconHeight}px`, width: 'auto' }}
+              />
+              {current.hasText && current.text && (
+                <Image
+                  src={current.text}
+                  alt=""
+                  width={textWidth}
+                  height={textHeight}
+                  className="object-contain"
+                  style={{ height: `${textHeight}px`, width: 'auto' }}
+                />
+              )}
             </div>
           )}
-          {current.name && (
+          {current.name && !current.hasText && (
             <span 
-              className={`${textSize} ${current.weight || (size === 'large' ? 'font-medium' : 'font-semibold')} leading-tight tracking-tight whitespace-nowrap ${
+              className={`${size === 'large' ? 'text-2xl' : 'text-xl'} font-medium leading-tight tracking-tight whitespace-nowrap ${
                 variant === 'muted' ? 'text-[#2b2b2b]' : 'text-white'
               }`}
+              style={{ fontSize: `${baseTextHeight}px`, lineHeight: '1' }}
             >
               {current.name}
             </span>

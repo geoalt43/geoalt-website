@@ -70,11 +70,11 @@ function FAQCard({ faq, index, isOpen, onToggle }: FAQCardProps) {
         }}
       />
       <motion.button
-        className="w-full pl-4 pr-8 py-4 text-left flex items-center gap-4"
+        className="w-full pl-3 sm:pl-4 pr-6 sm:pr-8 py-3 sm:py-4 text-left flex items-start sm:items-center gap-2 sm:gap-4"
         onClick={onToggle}
       >
         <motion.span
-          className="text-white text-lg font-light inline-block flex-shrink-0"
+          className="text-white text-base sm:text-lg font-light inline-block flex-shrink-0 mt-0.5 sm:mt-0"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ 
             scale: 1,
@@ -85,7 +85,7 @@ function FAQCard({ faq, index, isOpen, onToggle }: FAQCardProps) {
         >
           &gt;
         </motion.span>
-        <span className="font-medium text-white text-lg">{faq.question}</span>
+        <span className="font-medium text-white text-sm sm:text-base lg:text-lg leading-relaxed flex-1 text-left">{faq.question}</span>
       </motion.button>
       <AnimatePresence initial={false}>
         {isOpen && (
@@ -109,7 +109,7 @@ function FAQCard({ faq, index, isOpen, onToggle }: FAQCardProps) {
             }}
             className="overflow-hidden bg-transparent"
           >
-            <div className="pl-[calc(1rem+1.5rem+1rem)] pr-8 pb-6 pt-0 bg-transparent">
+            <div className="pl-[calc(0.75rem+1rem+0.75rem)] sm:pl-[calc(1rem+1.5rem+1rem)] pr-4 sm:pr-8 pb-4 sm:pb-6 pt-0 bg-transparent">
               <motion.p
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ 
@@ -122,7 +122,7 @@ function FAQCard({ faq, index, isOpen, onToggle }: FAQCardProps) {
                   opacity: 0,
                   transition: { duration: 0.2, ease: 'easeIn' }
                 }}
-                className="text-gray-400 leading-relaxed text-base font-light bg-transparent"
+                className="text-gray-400 leading-relaxed text-sm sm:text-base font-light bg-transparent"
               >
                 {faq.answer}
               </motion.p>
@@ -166,16 +166,16 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
 
   return (
-    <section className="py-24">
-      <div ref={sectionRef} className="max-w-4xl mx-auto px-6 lg:px-8">
+    <section className="py-12 sm:py-16 lg:py-24">
+      <div ref={sectionRef} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 lg:mb-20"
         >
-          <h2 className="text-5xl font-normal text-white mb-6">FAQ</h2>
-          <p className="text-2xl text-[#898989] font-light">Generative Engine Optimization is still very new.<br />We&apos;ve got you covered.</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white mb-4 sm:mb-6 px-2 sm:px-0">FAQ</h2>
+          <p className="text-lg sm:text-xl lg:text-2xl text-[#898989] font-light px-4 sm:px-0">Generative Engine Optimization is still very new.<br className="hidden sm:block" />We&apos;ve got you covered.</p>
         </motion.div>
         
         <motion.div

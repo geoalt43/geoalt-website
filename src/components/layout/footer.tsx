@@ -18,17 +18,17 @@ const scrollToHero = (e: React.MouseEvent<HTMLAnchorElement>) => {
 export function Footer() {
   return (
     <footer className="bg-brand-black">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 lg:pt-20 pb-8 sm:pb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="text-2xl font-bold text-brand-white flex items-center">
-              GE<OpenAI size={24} className="mx-0.5" />Alt
+            <div className="text-xl sm:text-2xl font-bold text-brand-white flex items-center">
+              GE<OpenAI size={20} className="mx-0.5 sm:w-6 sm:h-6" />Alt
             </div>
-            <p className="mt-4 text-sm" style={{color: '#898989'}}>
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm" style={{color: '#898989'}}>
               Turn AI mentions into traffic and customers. Dominate AI search and grow your brand faster.
             </p>
-            <div className="mt-6 flex space-x-4">
+            <div className="mt-4 sm:mt-6 flex space-x-3 sm:space-x-4">
               <a
                 href="#"
                 className="text-brand-gray-500 hover:text-brand-gray-300 transition-colors"
@@ -51,11 +51,11 @@ export function Footer() {
           </div>
 
           {/* Product Links */}
-          <div className="ml-12">
-            <h3 className="text-sm font-semibold text-brand-white uppercase tracking-wider">
+          <div className="ml-0 sm:ml-6 lg:ml-12">
+            <h3 className="text-xs sm:text-sm font-semibold text-brand-white uppercase tracking-wider">
               Product
             </h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
               <li>
                 <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Features
@@ -70,11 +70,11 @@ export function Footer() {
           </div>
 
           {/* Company Links */}
-          <div className="ml-12">
-            <h3 className="text-sm font-semibold text-brand-white uppercase tracking-wider">
+          <div className="ml-0 sm:ml-6 lg:ml-12">
+            <h3 className="text-xs sm:text-sm font-semibold text-brand-white uppercase tracking-wider">
               Company
             </h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
               <li>
                 <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   About
@@ -94,11 +94,11 @@ export function Footer() {
           </div>
 
           {/* Resources Links */}
-          <div className="ml-12">
-            <h3 className="text-sm font-semibold text-brand-white uppercase tracking-wider">
+          <div className="ml-0 sm:ml-6 lg:ml-12">
+            <h3 className="text-xs sm:text-sm font-semibold text-brand-white uppercase tracking-wider">
               Resources
             </h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
               <li>
                 <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Documentation
@@ -118,11 +118,11 @@ export function Footer() {
           </div>
 
           {/* Legal Links */}
-          <div className="ml-12">
-            <h3 className="text-sm font-semibold text-brand-white uppercase tracking-wider">
+          <div className="ml-0 sm:ml-6 lg:ml-12">
+            <h3 className="text-xs sm:text-sm font-semibold text-brand-white uppercase tracking-wider">
               Legal
             </h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
               <li>
                 <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Privacy Policy
@@ -144,14 +144,14 @@ export function Footer() {
       </div>
 
       {/* Bottom */}
-      <div className="w-full h-px mt-12" style={{backgroundColor: '#272324'}}></div>
-      <div className="pt-8 pb-16">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="w-full h-px mt-8 sm:mt-12" style={{backgroundColor: '#272324'}}></div>
+      <div className="pt-6 sm:pt-8 pb-12 sm:pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm flex items-center" style={{color: '#6d6264'}}>
-              &copy; 2025 GE<OpenAI size={16} className="mx-0.5" />Alt
+            <p className="text-xs sm:text-sm flex items-center" style={{color: '#6d6264'}}>
+              &copy; 2025 GE<OpenAI size={14} className="mx-0.5 sm:w-4 sm:h-4" />Alt
             </p>
-            <div className="mt-4 md:mt-0 flex space-x-6">
+            <div className="mt-4 md:mt-0 flex flex-wrap justify-center md:justify-end gap-4 sm:gap-6">
               <Link
                 href="/#home"
                 onClick={scrollToHero}

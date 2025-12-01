@@ -64,7 +64,7 @@ function highlightText(
 export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
   return (
         <div
-          className="bg-[#050505] border border-transparent rounded-lg shadow-2xl shadow-black/40 p-8 mt-4 relative overflow-hidden"
+          className="bg-[#050505] border border-transparent rounded-lg shadow-2xl shadow-black/40 p-4 sm:p-6 lg:p-8 mt-4 relative overflow-hidden"
         >
           {/* Animated Background Gradient */}
           <div className="absolute inset-0 opacity-30">
@@ -82,34 +82,37 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
           </div>
           <div className="relative z-10">
       {/* Question with AI Platform Icons */}
-      <div className="mb-8">
-        <div className="flex items-center gap-2 mb-3">
-          {/* Gemini Icon - Left */}
-          <div className="flex items-center justify-center">
-            <Gemini.Color size={20} style={{ color: 'currentColor' }} className="text-white/50" />
-          </div>
-          
-          {/* Perplexity Icon - Middle */}
-          <div className="flex items-center justify-center">
-            <Perplexity size={20} style={{ color: 'currentColor' }} className="text-white/50" />
-          </div>
-          
-          {/* ChatGPT Icon - Right (Larger with bubble) */}
-          <div className="flex items-center justify-center px-3 py-2 relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 rounded-full blur-sm"></div>
-            <div className="relative z-10">
-              <OpenAI size={28} style={{ color: 'currentColor' }} />
+      <div className="mb-6 sm:mb-8">
+        <div className="flex items-start sm:items-center gap-1 sm:gap-2 mb-3 sm:mb-3 flex-wrap">
+          {/* Icons Container */}
+          <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+            {/* Gemini Icon - Left */}
+            <div className="flex items-center justify-center">
+              <Gemini.Color size={16} className="sm:w-5 sm:h-5 text-white/50" style={{ color: 'currentColor' }} />
+            </div>
+            
+            {/* Perplexity Icon - Middle */}
+            <div className="flex items-center justify-center">
+              <Perplexity size={16} className="sm:w-5 sm:h-5 text-white/50" style={{ color: 'currentColor' }} />
+            </div>
+            
+            {/* ChatGPT Icon - Right (Larger with bubble) */}
+            <div className="flex items-center justify-center px-1.5 sm:px-2 lg:px-3 py-0.5 sm:py-1 lg:py-2 relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 rounded-full blur-sm"></div>
+              <div className="relative z-10">
+                <OpenAI size={18} className="sm:w-6 sm:h-6 lg:w-7 lg:h-7" style={{ color: 'currentColor' }} />
+              </div>
             </div>
           </div>
           
           {/* Question Text */}
-          <p className="text-white/70 text-2xl ml-2 min-w-0 flex-1">{data.question}</p>
+          <p className="text-white/70 text-base sm:text-lg lg:text-xl xl:text-2xl ml-0 sm:ml-1 lg:ml-2 min-w-0 flex-1 leading-tight sm:leading-normal">{data.question}</p>
         </div>
         
         {/* Intro Text - Aligned with question, same width */}
-        <div className="flex items-start gap-3">
-          <div className="flex-shrink-0 w-[124px]"></div>
-          <p className="text-white/70 leading-relaxed text-sm min-w-0 max-w-2xl whitespace-pre-line">{data.intro}</p>
+        <div className="flex items-start gap-2 sm:gap-3">
+          <div className="flex-shrink-0 w-[60px] sm:w-[80px] lg:w-[100px] xl:w-[124px]"></div>
+          <p className="text-white/70 leading-relaxed text-xs sm:text-sm min-w-0 max-w-2xl whitespace-pre-line">{data.intro}</p>
         </div>
       </div>
 
@@ -125,15 +128,17 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
           return (
             <div
               key={`${company.name}-${activeType}`}
-              className="rounded-xl px-6 pt-5 pb-5 text-white/90 relative mb-0"
+              className="rounded-xl px-4 sm:px-6 pt-4 sm:pt-5 pb-4 sm:pb-5 text-white/90 relative mb-0"
             >
-                <div className="flex items-center gap-3 mb-3">
-                  <CompanyName name={company.name} size="lg" />
+                <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 flex-wrap">
+                  <div className="flex-shrink-0 min-w-0">
+                    <CompanyName name={company.name} size="lg" />
+                  </div>
                   {activeType === 'position' && (
-                    <span className="text-xs uppercase tracking-wide text-white/50 font-normal">#{company.rank}</span>
+                    <span className="text-xs uppercase tracking-wide text-white/50 font-normal flex-shrink-0">#{company.rank}</span>
                   )}
                 </div>
-                <p className="text-sm text-white/70 leading-relaxed font-normal">
+                <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-normal break-words">
                   {highlightedParts.map((part, i) => {
                     if (part.type === 'positive') {
                       return (

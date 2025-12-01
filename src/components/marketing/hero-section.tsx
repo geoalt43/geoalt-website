@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { AIPlatformRotator } from './ai-platform-rotator'
 import { DemoCTA } from './demo-cta'
-import OpenAI from '@lobehub/icons/es/OpenAI'
+import Image from 'next/image'
 import { motion, useInView, useAnimation } from 'framer-motion'
 import { useRef, useEffect } from 'react'
 
@@ -149,27 +149,27 @@ export function HeroSection() {
   const headingText = 'Get Your Brand Recommended by'
   const words = splitText(headingText)
   return (
-    <section ref={sectionRef} id="home" className="pt-24 relative overflow-hidden">
+    <section ref={sectionRef} id="home" className="pt-16 sm:pt-20 lg:pt-24 relative overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate={controls}
-        className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
       >
-        <div className="flex flex-col items-center text-center mt-8">
+        <div className="flex flex-col items-center text-center mt-4 sm:mt-8">
           <div className="max-w-4xl">
             {/* Word-by-word animated heading */}
             <motion.h1 
               variants={headingContainerVariants}
               initial="hidden"
               animate={controls}
-              className="text-4xl lg:text-[3.3rem] font-normal -mt-6 mb-4 leading-tight tracking-tighter bg-gradient-to-r from-[#4285f4] via-[#9c27b0] to-[#ea4335] text-transparent bg-clip-text"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal -mt-4 sm:-mt-6 mb-3 sm:mb-4 leading-tight tracking-tighter bg-gradient-to-r from-[#4285f4] via-[#9c27b0] to-[#ea4335] text-transparent bg-clip-text px-2 sm:px-0"
             >
               {words.map((word, index) => (
                 <motion.span
                   key={index}
                   variants={wordVariants}
-                  className="inline-block mr-2"
+                  className="inline-block mr-1 sm:mr-2"
                   style={{ transformStyle: 'preserve-3d' }}
                 >
                   {word}
@@ -182,7 +182,7 @@ export function HeroSection() {
               variants={rotatorVariants}
               initial="hidden"
               animate={controls}
-              className="-mt-11 flex justify-center"
+              className="-mt-6 sm:-mt-8 lg:-mt-11 flex justify-center"
             >
               <AIPlatformRotator size="large" />
             </motion.div>
@@ -192,22 +192,22 @@ export function HeroSection() {
               variants={textVariants}
               initial="hidden"
               animate={controls}
-              className="text-xl -mt-8 leading-relaxed flex items-center justify-center text-[#878787]"
+              className="text-base sm:text-lg lg:text-xl -mt-6 sm:-mt-8 leading-relaxed text-center text-[#878787] px-4 sm:px-0"
             >
-              GE<OpenAI size={20} className="mx-0.5" />Alt helps your business stand out across AI platforms
+              GE<Image src="/ai-icons/openai.webp" alt="" width={18} height={18} className="mx-0.5 sm:w-5 sm:h-5 inline-block align-middle" />Alt helps your business stand out across AI platforms
             </motion.p>
             <motion.p 
               variants={textVariants}
               initial="hidden"
               animate={controls}
-              className="text-xl mb-8 pb-4 leading-relaxed flex items-center justify-center text-[#878787]"
+              className="text-base sm:text-lg lg:text-xl mb-6 sm:mb-8 pb-2 sm:pb-4 leading-relaxed text-center text-[#878787] px-4 sm:px-0"
             >
               <em>— Turning AI visibility into traffic</em>
             </motion.p>
           
             {/* Hero CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-              <Link href="/register" className="text-black px-5 py-2.5 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 ease-in-out bg-white hover:bg-[#d4d4d4] block">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center px-4 sm:px-0">
+              <Link href="/register" className="text-black px-5 py-2.5 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 ease-in-out bg-white hover:bg-[#d4d4d4] block w-full sm:w-auto text-center">
                 Get Started
               </Link>
               <DemoCTA 

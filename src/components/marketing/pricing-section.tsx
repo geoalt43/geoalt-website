@@ -301,17 +301,17 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
         ${plan.bgColor} ${plan.borderColor} border flex flex-col text-white
         relative overflow-hidden group transition-colors duration-300
         hover:border-white/25
-        ${plan.isRecommended ? 'shadow-2xl shadow-white/10 -mt-[4rem] border-b-0' : 'rounded-lg'}
+        ${plan.isRecommended ? 'shadow-2xl shadow-white/10 lg:-mt-[4rem] border-b-0' : 'rounded-lg'}
       `}
       style={{
         borderRadius: plan.isRecommended ? '0.89rem 0.89rem 0.5rem 0.5rem' : undefined,
-        minHeight: plan.isRecommended ? 'calc(100% + 4rem)' : undefined,
+        minHeight: plan.isRecommended ? 'auto' : undefined,
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       
       {plan.isRecommended && (
-        <div className="bg-white/5 px-12 py-4 text-base font-medium text-white text-center rounded-t-[18px] flex-shrink-0 relative overflow-hidden">
+        <div className="bg-white/5 px-6 sm:px-8 lg:px-12 py-3 sm:py-4 text-sm sm:text-base font-medium text-white text-center rounded-t-[18px] flex-shrink-0 relative overflow-hidden">
           <motion.div
             className="absolute top-0 left-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
             style={{
@@ -331,16 +331,16 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
         </div>
       )}
       
-      <div className="p-10 flex flex-col gap-8 flex-1">
+      <div className="p-6 sm:p-8 lg:p-10 flex flex-col gap-6 sm:gap-8 flex-1">
         <div>
-          <p className={`text-lg font-semibold mb-3 ${plan.name === 'Pro' ? 'pt-2' : ''}`}>{plan.name}</p>
-          <p className="text-[2.5rem] font-normal leading-none">
+          <p className={`text-base sm:text-lg font-semibold mb-2 sm:mb-3 ${plan.name === 'Pro' ? 'pt-2' : ''}`}>{plan.name}</p>
+          <p className="text-3xl sm:text-4xl lg:text-[2.5rem] font-normal leading-none">
             {plan.price}
-            {plan.period && <span className="text-lg font-light">{plan.period}</span>}
+            {plan.period && <span className="text-base sm:text-lg font-light">{plan.period}</span>}
           </p>
         </div>
-        <p className="text-base text-white/70">{plan.description}</p>
-        <div className="flex flex-col gap-4 text-sm text-white/80">
+        <p className="text-sm sm:text-base text-white/70">{plan.description}</p>
+        <div className="flex flex-col gap-3 sm:gap-4 text-xs sm:text-sm text-white/80">
           {plan.features.map((feature, i) => (
             <div
               key={feature}
@@ -377,7 +377,7 @@ export function PricingSection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
 
   return (
-    <section id="pricing" className="py-24 scroll-mt-16 relative overflow-hidden bg-brand-black">
+    <section id="pricing" className="py-12 sm:py-16 lg:py-24 scroll-mt-16 relative overflow-hidden bg-brand-black">
       <div 
         className="absolute inset-0 opacity-[0.02] pointer-events-none"
         style={{
@@ -389,24 +389,24 @@ export function PricingSection() {
         }}
       />
       
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/50 to-transparent pointer-events-none z-10" />
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 left-0 right-0 h-16 sm:h-24 lg:h-32 bg-gradient-to-b from-black via-black/50 to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 lg:h-32 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none z-10" />
 
-      <div ref={sectionRef} className="max-w-[1500px] mx-auto px-6 lg:px-14 relative z-20">
+      <div ref={sectionRef} className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-14 relative z-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-          className="text-center mb-8"
+          className="text-center mb-6 sm:mb-8"
         >
-          <h2 className="text-5xl font-normal text-white pb-24">Pricing</h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white pb-12 sm:pb-16 lg:pb-24">Pricing</h2>
         </motion.div>
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
         >
           {pricingPlans.map((plan) => (
             <PricingCard key={plan.name} plan={plan} />

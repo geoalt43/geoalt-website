@@ -93,9 +93,9 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
-      className={`${CARD_BASE} p-0 min-h-[400px] overflow-hidden`}
+      className={`${CARD_BASE} p-0 min-h-[300px] sm:min-h-[350px] lg:min-h-[400px] overflow-hidden`}
     >
-      <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
+      <div className="relative w-full h-[300px] sm:h-[350px] lg:h-[400px] rounded-lg overflow-hidden">
         <motion.div
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
@@ -110,12 +110,12 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
         >
           <motion.div 
             variants={headingVariants}
-            className="pt-6 px-6 mb-4"
+            className="pt-4 sm:pt-6 px-4 sm:px-6 mb-3 sm:mb-4"
           >
-            <h3 className={`${HEADING_TEXT} mb-2`}>
+            <h3 className={`text-lg sm:text-xl font-medium text-white mb-2`}>
               Analyze AI visibility scores
             </h3>
-            <p className={`${DESCRIPTION_TEXT} mb-4`}>
+            <p className={`text-xs sm:text-sm text-gray-400 mb-3 sm:mb-4`}>
               Track how often your brand appears in AI-generated answers, monitor visibility trends.
             </p>
           </motion.div>
@@ -144,17 +144,17 @@ export function DashboardSection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
   return (
-    <section ref={sectionRef} className="py-24 bg-black">
-      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-24 bg-black">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           variants={headingVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="mb-12 text-center"
+          className="mb-8 sm:mb-12 text-center"
         >
-          <h1 className="text-4xl md:text-4xl font-normal text-white mb-4 pt-9">
-          Unlock AI-driven search insights that bring <br  /> 
-          <span className="pt-3 pb-9 block">customers to you — GeoAlt</span>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white mb-3 sm:mb-4 pt-4 sm:pt-6 lg:pt-9 px-2 sm:px-0">
+          Unlock AI-driven search insights that bring <br className="hidden sm:block" /> 
+          <span className="pt-2 sm:pt-3 pb-4 sm:pb-6 lg:pb-9 block">customers to you — GeoAlt</span>
           </h1>
         </motion.div>
 
@@ -163,20 +163,20 @@ export function DashboardSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-2 mb-6"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-2 mb-6 sm:mb-8 lg:mb-6"
         >
           {/* Container 1: Customize Your Prompts */}
-          <div className={`${CARD_BASE} p-6 overflow-hidden relative min-h-[400px]`}>
-            <div className="mb-2">
-              <h3 className={`${HEADING_TEXT} mb-1`}>Customize Your Prompts</h3>
-              <p className={`${DESCRIPTION_TEXT} mb-1.5 pb-4`}>
+          <div className={`${CARD_BASE} p-4 sm:p-6 overflow-hidden relative min-h-[300px] sm:min-h-[350px] lg:min-h-[400px] pb-20 sm:pb-24 lg:pb-0`}>
+            <div className="mb-2 relative z-10">
+              <h3 className={`text-lg sm:text-xl font-medium text-white mb-1`}>Customize Your Prompts</h3>
+              <p className={`text-xs sm:text-sm text-gray-400 mb-1.5 pb-3 sm:pb-4`}>
                 Prompts are the foundation of your AI search strategy. 
               </p>
             </div>
             
-            <div className={`absolute -bottom-[90px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[100%]`}>
+            <div className={`absolute -bottom-[40px] sm:-bottom-[60px] lg:-bottom-[90px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[100%] pointer-events-none`}>
               <div 
-                className={`${TRANSFORM_STYLE_3D} transition-transform duration-300 ease-out ${BOX_SHADOW_3D} w-full h-full [transform:rotateX(20deg)_rotateY(0deg)_translateZ(40px)_translateY(90px)]`}
+                className={`${TRANSFORM_STYLE_3D} transition-transform duration-300 ease-out ${BOX_SHADOW_3D} w-full h-full [transform:rotateX(15deg)_rotateY(0deg)_translateZ(20px)_translateY(40px)] sm:[transform:rotateX(18deg)_rotateY(0deg)_translateZ(30px)_translateY(60px)] lg:[transform:rotateX(20deg)_rotateY(0deg)_translateZ(40px)_translateY(90px)]`}
               >
                 <Image
                   src="/images/Prompts_studio_.jpg"
@@ -192,25 +192,25 @@ export function DashboardSection() {
           {/* Container 2: Add Business Competitors */}
           <motion.div 
             variants={cardVariants}
-            className={`${CARD_BASE} p-6 overflow-hidden relative min-h-[400px]`}
+            className={`${CARD_BASE} p-4 sm:p-6 overflow-hidden relative min-h-[300px] sm:min-h-[350px] lg:min-h-[400px] pb-24 sm:pb-28 lg:pb-0`}
           >
             <motion.div 
               variants={headingVariants}
-              className="mb-2"
+              className="mb-2 relative z-10"
             >
-              <h3 className={`${HEADING_TEXT} mb-2`}>Add Business Competitors</h3>
-              <p className={`${DESCRIPTION_TEXT} mb-4`}>
+              <h3 className={`text-lg sm:text-xl font-medium text-white mb-2`}>Add Business Competitors</h3>
+              <p className={`text-xs sm:text-sm text-gray-400 mb-3 sm:mb-4`}>
               Add your competitors so GeoAlt can map the landscape and drive growth insights.
               </p>
             </motion.div>
             
             <motion.div 
               variants={imageVariants}
-              className={`absolute -bottom-[140px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[100%]`}
+              className={`absolute -bottom-[60px] sm:-bottom-[80px] lg:-bottom-[140px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[100%] pointer-events-none`}
             >
               <motion.div
                 initial={{ 
-                  transform: 'rotateX(20deg) rotateY(0deg) translateZ(100px)',
+                  transform: 'rotateX(15deg) rotateY(0deg) translateZ(50px)',
                 }}
                 className={`${TRANSFORM_STYLE_3D} ${BOX_SHADOW_3D} w-full h-full`}
               >
@@ -231,26 +231,26 @@ export function DashboardSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-2 mb-6"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-2 mb-6 sm:mb-8 lg:mb-6"
         >
           {/* Container 3: Pick Model and Region */}
           <motion.div 
             variants={cardVariants}
-            className={`${CARD_BASE} p-6 overflow-hidden relative min-h-[400px] `}
+            className={`${CARD_BASE} p-4 sm:p-6 overflow-hidden relative min-h-[300px] sm:min-h-[350px] lg:min-h-[400px] pb-24 sm:pb-28 lg:pb-0`}
           >
             <motion.div 
               variants={headingVariants}
-              className="mb-2"
+              className="mb-2 relative z-10"
             >
-              <h3 className={`${HEADING_TEXT} mb-2`}>Pick Model and Region</h3>
-              <p className={`${DESCRIPTION_TEXT} mb-4`}>
+              <h3 className={`text-lg sm:text-xl font-medium text-white mb-2`}>Pick Model and Region</h3>
+              <p className={`text-xs sm:text-sm text-gray-400 mb-3 sm:mb-4`}>
               Pick AI model and region to generate insights that help business grow
               </p>
             </motion.div>
             
             <motion.div 
               variants={imageVariants}
-              className={`absolute -bottom-[140px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[100%]`}
+              className={`absolute -bottom-[60px] sm:-bottom-[80px] lg:-bottom-[140px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[100%] pointer-events-none`}
             >
               <motion.div
                 initial={{ 

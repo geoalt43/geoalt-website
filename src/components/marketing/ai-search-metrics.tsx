@@ -53,24 +53,24 @@ export function AISearchMetricsSection() {
   }
 
   return (
-    <section ref={sectionRef} className="py-24 bg-[#090909]">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-24 bg-[#090909]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           className="text-center max-w-3xl mx-auto"
         >
-          <motion.h2 variants={headerVariants} className="text-5xl font-normal text-white">
+          <motion.h2 variants={headerVariants} className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white px-2 sm:px-0">
             How AI actually sees your brand
           </motion.h2>
-          <motion.p variants={subtitleVariants} className="mt-4 text-lg text-white/70">
+          <motion.p variants={subtitleVariants} className="mt-3 sm:mt-4 text-base sm:text-lg text-white/70 px-4 sm:px-0">
             Everything that matters in one place
           </motion.p>
         </motion.div>
 
-        <div className="mt-12 max-w-7xl mx-auto relative">
-          <div className="grid gap-4 md:grid-cols-3 relative overflow-hidden">
+        <div className="mt-8 sm:mt-12 max-w-7xl mx-auto relative">
+          <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 relative overflow-hidden">
             {/* Top horizontal line - aligned with card top */}
             <div className="absolute top-0 left-0 right-0 h-px bg-white/5 z-20"></div>
             

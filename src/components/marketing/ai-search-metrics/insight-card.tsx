@@ -25,29 +25,31 @@ export function InsightCard({
   return (
     <div
       onClick={onClick}
-      className={`rounded-lg p-4  text-white/80 cursor-pointer transition-colors duration-300 h-[160px] flex flex-col overflow-hidden relative group ${
+      className={`rounded-lg p-3 sm:p-4 text-white/80 cursor-pointer transition-colors duration-300 h-auto sm:h-[140px] lg:h-[160px] flex flex-col overflow-hidden relative group ${
         isActive ? 'border-l-2 border-white' : type === 'position' || type === 'sentiment' ? 'border-l-2 border-white/5' : 'border-l-2 border-transparent'
       }`}
     >
       <div className="relative z-10 flex flex-col h-full">
-        <div className="flex items-center gap-3 mb-2">
+        <div className="flex items-center gap-2 sm:gap-3 mb-2">
         <div>
           <IconComponent />
         </div>
-        <h3 className="text-base font-normal text-white">{title}</h3>
+        <h3 className="text-sm sm:text-base font-normal text-white">{title}</h3>
         </div>
         {!isActive ? (
-        <p className="text-sm text-white/60 leading-relaxed overflow-hidden">{description}</p>
+        <p className="text-xs sm:text-sm text-white/60 leading-relaxed overflow-hidden line-clamp-2 sm:line-clamp-none">{description}</p>
       ) : (
-        <div className="space-y-4 flex-1">
+        <div className="space-y-2 sm:space-y-3 lg:space-y-4 flex-1 overflow-y-auto">
           {type === 'sentiment' && data && (
             <div>
-              <div className="space-y-4">
+              <div className="space-y-2 sm:space-y-3 lg:space-y-4">
                 {(data as SentimentData[]).map((item, index) => (
-                  <div key={item.companyName} className={`flex items-center justify-between ${index === 0 ? 'mt-2' : ''}`}>
-                    <CompanyName name={item.companyName} size="sm" />
+                  <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index === 0 ? 'mt-1 sm:mt-2' : ''}`}>
+                    <div className="flex-shrink-0 min-w-0">
+                      <CompanyName name={item.companyName} size="sm" />
+                    </div>
                     <span
-                      className={`text-sm font-semibold ${
+                      className={`text-xs sm:text-sm font-semibold flex-shrink-0 ${
                         item.score >= 0 ? 'text-green-400' : 'text-red-400'
                       }`}
                     >
@@ -60,11 +62,13 @@ export function InsightCard({
           )}
           {type === 'position' && data && (
             <div>
-              <div className="space-y-4">
+              <div className="space-y-2 sm:space-y-3 lg:space-y-4">
                 {(data as PositionData[]).map((item, index) => (
-                  <div key={item.rank} className={`flex items-center justify-between ${index === 0 ? 'mt-2' : ''}`}>
-                    <CompanyName name={item.companyName} size="sm" />
-                    <span className="text-white/50 text-xs font-normal">#{item.rank}</span>
+                  <div key={item.rank} className={`flex items-center justify-between gap-2 ${index === 0 ? 'mt-1 sm:mt-2' : ''}`}>
+                    <div className="flex-shrink-0 min-w-0">
+                      <CompanyName name={item.companyName} size="sm" />
+                    </div>
+                    <span className="text-white/50 text-xs font-normal flex-shrink-0">#{item.rank}</span>
                   </div>
                 ))}
               </div>
@@ -72,18 +76,20 @@ export function InsightCard({
           )}
           {type === 'visibility' && data && (
             <div>
-              <div className="space-y-4">
+              <div className="space-y-2 sm:space-y-3 lg:space-y-4">
                 {(data as VisibilityData[]).map((item, index) => (
-                  <div key={item.companyName} className={`flex items-center justify-between ${index === 0 ? 'mt-2' : ''}`}>
-                    <CompanyName name={item.companyName} size="sm" />
-                    <div className="flex items-center gap-2">
-                      <div className="w-16 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                  <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index === 0 ? 'mt-1 sm:mt-2' : ''}`}>
+                    <div className="flex-shrink-0 min-w-0">
+                      <CompanyName name={item.companyName} size="sm" />
+                    </div>
+                    <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+                      <div className="w-12 sm:w-14 lg:w-16 h-1.5 bg-white/10 rounded-full overflow-hidden">
                         <div
                           style={{ width: `${item.percentage}%` }}
                           className="h-full bg-green-400 rounded-full"
                         />
                       </div>
-                      <span className="text-white/70 text-xs w-10 text-right">{item.percentage}%</span>
+                      <span className="text-white/70 text-xs w-8 sm:w-10 text-right">{item.percentage}%</span>
                     </div>
                   </div>
                 ))}

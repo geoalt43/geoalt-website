@@ -1,63 +1,75 @@
 'use client'
 
 import { DemoCTA } from './demo-cta'
-import OpenAI from '@lobehub/icons/es/OpenAI'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import Perplexity from '@lobehub/icons/es/Perplexity'
-import DeepSeek from '@lobehub/icons/es/DeepSeek'
-import Claude from '@lobehub/icons/es/Claude'
-import MetaAI from '@lobehub/icons/es/MetaAI'
-import Copilot from '@lobehub/icons/es/Copilot'
-import Grok from '@lobehub/icons/es/Grok'
-import Gemini from '@lobehub/icons/es/Gemini'
+import Image from 'next/image'
 
 // Vertical Flowing AI Platform Rotator for CTA Section
 function VerticalFlowingRotator() {
-  const iconColor = '#2b2b2b'
   const iconSize = 0.4
+  const iconWidth = Math.round(64 * iconSize)
+  const iconHeight = Math.round(64 * iconSize)
+  const textWidth = 80
+  const textHeight = 16
   const textSize = 'text-base'
 
   const platforms = [
     {
       name: 'ChatGPT',
-      icon: <OpenAI size={64 * iconSize} style={{ color: iconColor }} />,
+      icon: '/ai-icons/openai.webp',
+      hasText: false,
       weight: 'font-medium',
     },
     {
       name: 'Perplexity',
-      icon: <Perplexity size={56 * iconSize} style={{ color: iconColor }} />,
+      icon: '/ai-icons/perplexity.webp',
+      text: '/ai-icons/perplexity-text.webp',
+      hasText: true,
       weight: 'font-medium',
     },
     {
       name: 'Claude',
-      icon: <Claude.Color size={56 * iconSize} style={{ color: iconColor }} />,
+      icon: '/ai-icons/claude-color.webp',
+      text: '/ai-icons/claude-text.webp',
+      hasText: true,
     },
     {
       name: 'Gemini',
-      icon: <Gemini.Color size={56 * iconSize} style={{ color: iconColor }} />,
+      icon: '/ai-icons/gemini-color.webp',
+      text: '/ai-icons/gemini-text.webp',
+      hasText: true,
       weight: 'font-medium',
     },
     {
       name: 'Microsoft Copilot',
-      icon: <Copilot.Color size={56 * iconSize} style={{ color: iconColor }} />,
+      icon: '/ai-icons/copilot-color.webp',
+      hasText: false,
     },
     {
       name: 'Google AI Overviews',
-      icon: <Gemini.Color size={56 * iconSize} style={{ color: iconColor }} />,
+      icon: '/ai-icons/gemini-color.webp',
+      text: '/ai-icons/gemini-text.webp',
+      hasText: true,
       weight: 'font-medium',
     },
     {
       name: '',
-      icon: <DeepSeek.Combine size={64 * iconSize} style={{ color: iconColor }} />,
+      icon: '/ai-icons/deepseek.webp',
+      text: '/ai-icons/deepseek-text.webp',
+      hasText: true,
     },
     {
       name: '',
-      icon: <MetaAI.Combine size={56 * iconSize} style={{ color: iconColor }} />,
+      icon: '/ai-icons/metaai-color.webp',
+      text: '/ai-icons/metaai-text.webp',
+      hasText: true,
     },
     {
       name: '',
-      icon: <Grok.Combine size={56 * iconSize} style={{ color: iconColor }} />,
+      icon: '/ai-icons/grok.webp',
+      text: '/ai-icons/grok-text.webp',
+      hasText: true,
     }
   ]
 
@@ -100,11 +112,26 @@ function VerticalFlowingRotator() {
             }}
           >
             {platform.icon && (
-              <div className="flex-shrink-0 filter-muted-base">
-                {platform.icon}
+              <div className="flex-shrink-0 filter-muted-base flex items-center gap-2">
+                <Image
+                  src={platform.icon}
+                  alt=""
+                  width={iconWidth}
+                  height={iconHeight}
+                  className="object-contain"
+                />
+                {platform.hasText && platform.text && (
+                  <Image
+                    src={platform.text}
+                    alt=""
+                    width={textWidth}
+                    height={textHeight}
+                    className="object-contain"
+                  />
+                )}
               </div>
             )}
-            {platform.name && (
+            {platform.name && !platform.hasText && (
               <span className={`${textSize} ${platform.weight || 'font-medium'} text-[#2b2b2b] leading-tight tracking-tight whitespace-nowrap`}>
                 {platform.name}
               </span>
@@ -132,34 +159,34 @@ export function CTASection() {
   }
 
   return (
-    <section ref={sectionRef} className="py-24">
+    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-24">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
-        className="max-w-7xl mx-auto px-6 pt-3 pb-3 lg:px-8 border border-[#1d1d1d] rounded-lg bg-[#0a0a0a]"
+        className="max-w-7xl mx-auto px-4 sm:px-6 pt-3 pb-3 lg:px-8 border border-[#1d1d1d] rounded-lg bg-[#0a0a0a]"
       >
-        <div className="bg-[#0a0a0a] rounded-lg p-8 flex items-center">
+        <div className="bg-[#0a0a0a] rounded-lg p-4 sm:p-6 lg:p-8 flex flex-col lg:flex-row items-center lg:items-center">
           {/* Left Section - Text Content */}
-          <div className="flex-1 pr-8">
-            <h2 className="text-4xl font-normal text-white mb-4 leading-tight tracking-wide">
+          <div className="flex-1 lg:pr-8 w-full lg:w-auto text-center lg:text-left mb-6 lg:mb-0">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white mb-3 sm:mb-4 leading-tight tracking-wide">
               <span className="pb-2 inline-block">
                 Start Growing Your
               </span>
-              <br />
+              <br className="hidden sm:block" />
               <span>
                 AI Visibility Today
               </span>
             </h2>
-            <p className="text-lg mb-8 leading-relaxed tracking-wide flex items-center text-[#898989]">
-              GE<OpenAI size={20} className="mx-0.5" />Alt helps you lead in AI search and scale your brand faster.
+            <p className="text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed tracking-wide text-center lg:text-left text-[#898989]">
+              GE<Image src="/ai-icons/openai.webp" alt="" width={18} height={18} className="mx-0.5 sm:w-5 sm:h-5 inline-block align-middle" />Alt helps you lead in AI search and scale your brand faster.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
               <a 
                 href="https://forms.google.com/YOUR_FORM_ID_HERE" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-white text-black px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#d9d9d9] transition-all duration-200 ease-in-out inline-block text-center"
+                className="bg-white text-black px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#d9d9d9] transition-all duration-200 ease-in-out inline-block text-center w-full sm:w-auto"
               >
                 Start Free Trial
               </a>
@@ -173,12 +200,12 @@ export function CTASection() {
           </div>
           
           {/* Right Section - AI Platform Rotator */}
-          <div className="flex-shrink-0 w-[450px] h-[350px] flex items-center justify-start -ml-24 -mr-9 relative overflow-visible">
+          <div className="flex-shrink-0 w-full sm:w-[300px] lg:w-[450px] h-[250px] sm:h-[300px] lg:h-[350px] flex items-center justify-center lg:justify-start lg:-ml-24 lg:-mr-9 relative overflow-hidden lg:overflow-visible">
             <div className="relative w-full h-full">
               <div className="relative w-full h-full">
                 {/* Card Container */}
                 <div 
-                  className="relative w-full h-full bg-[#0a0a0a] rounded-lg pt-1 pb-1 pl-10 pr-0 mt-10 overflow-hidden"
+                  className="relative w-full h-full bg-[#0a0a0a] rounded-lg pt-1 pb-1 pl-4 sm:pl-6 lg:pl-10 pr-2 sm:pr-4 lg:pr-0 mt-4 sm:mt-6 lg:mt-10 overflow-hidden"
                   style={{
                     backdropFilter: 'blur(10px)',
                   }}
@@ -187,7 +214,7 @@ export function CTASection() {
                   <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-transparent z-10 pointer-events-none" />
                   <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-transparent to-transparent z-10 pointer-events-none" />
                   
-                  <div className="scale-[2] origin-left" style={{ height: '100%' }}>
+                  <div className="scale-[1.2] sm:scale-[1.5] lg:scale-[2] origin-left overflow-hidden" style={{ height: '100%', width: '100%' }}>
                     <VerticalFlowingRotator />
                   </div>
                 </div>
