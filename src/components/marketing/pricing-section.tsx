@@ -30,7 +30,7 @@ const getPlatformIcon = (platformName: string, iconSize: number = 16) => {
   if (normalizedName.includes('gemini') || normalizedName.includes('google')) {
     return (
       <Image
-        src="/ai-icons/gemini-color.svg"
+        src="/ai-icons/gemini-color.webp"
         alt="Gemini"
         width={iconSize}
         height={iconSize}
@@ -54,7 +54,7 @@ const getPlatformIcon = (platformName: string, iconSize: number = 16) => {
   if (normalizedName.includes('claude')) {
     return (
       <Image
-        src="/ai-icons/claude-color.svg"
+        src="/ai-icons/claude-color.webp"
         alt="Claude"
         width={iconSize}
         height={iconSize}
@@ -114,7 +114,7 @@ const FeatureText = ({ text }: { text: string }) => {
             unoptimized
           />
           <Image
-            src="/ai-icons/claude-color.svg"
+            src="/ai-icons/claude-color.webp"
             alt="Claude"
             width={iconSize}
             height={iconSize}
@@ -122,7 +122,7 @@ const FeatureText = ({ text }: { text: string }) => {
             unoptimized
           />
           <Image
-            src="/ai-icons/gemini-color.svg"
+            src="/ai-icons/gemini-color.webp"
             alt="Gemini"
             width={iconSize}
             height={iconSize}
@@ -156,7 +156,7 @@ const FeatureText = ({ text }: { text: string }) => {
             unoptimized
           />
           <Image
-            src="/ai-icons/gemini-color.svg"
+            src="/ai-icons/gemini-color.webp"
             alt="Gemini"
             width={iconSize}
             height={iconSize}
@@ -305,6 +305,7 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
       `}
       style={{
         borderRadius: plan.isRecommended ? '0.89rem 0.89rem 0.5rem 0.5rem' : undefined,
+        transform: plan.isRecommended ? 'scale(1.05)' : undefined,
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -398,7 +399,7 @@ export function PricingSection() {
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
           className="text-center mb-6 sm:mb-8"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white pb-12 sm:pb-16 lg:pb-24">Pricing</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white pb-12 sm:pb-16 lg:pb-24 px-2 sm:px-0">Pricing</h2>
         </motion.div>
 
         <motion.div

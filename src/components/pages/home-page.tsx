@@ -137,7 +137,7 @@ function EmpoweringBusinessesSection() {
         >
           <motion.h2 
             variants={headerVariants}
-            className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white mb-3 sm:mb-4 tracking-tight px-2 sm:px-0"
+            className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white mb-3 sm:mb-4 px-2 sm:px-0"
           >
             Empowering businesses of all sizes
           </motion.h2>

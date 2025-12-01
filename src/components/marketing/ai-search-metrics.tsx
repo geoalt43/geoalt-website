@@ -61,7 +61,7 @@ export function AISearchMetricsSection() {
           animate={isInView ? 'visible' : 'hidden'}
           className="text-center max-w-3xl mx-auto"
         >
-          <motion.h2 variants={headerVariants} className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white px-2 sm:px-0">
+          <motion.h2 variants={headerVariants} className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white mb-3 sm:mb-4 px-2 sm:px-0">
             How AI actually sees your brand
           </motion.h2>
           <motion.p variants={subtitleVariants} className="mt-3 sm:mt-4 text-base sm:text-lg text-white/70 px-4 sm:px-0">

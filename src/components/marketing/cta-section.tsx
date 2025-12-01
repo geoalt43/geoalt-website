@@ -135,8 +135,7 @@ function VerticalFlowingRotator() {
             )}
             {platform.name && !platform.hasText && (
               <span 
-                className="font-medium text-[#2b2b2b] leading-tight tracking-tight whitespace-nowrap"
-                style={{ fontSize: `${baseTextHeight}px`, lineHeight: '1' }}
+                className="font-medium text-[#2b2b2b] text-[18px] leading-[1] tracking-tight whitespace-nowrap"
               >
                 {platform.name}
               </span>
