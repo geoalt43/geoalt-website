@@ -112,7 +112,7 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
             <h3 className={`text-lg sm:text-xl font-medium text-white mb-2`}>
               Analyze AI visibility scores
             </h3>
-            <p className={`text-xs sm:text-sm text-gray-400 mb-3 sm:mb-4`}>
+            <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-3 sm:mb-4`}>
               Track how often your brand appears in AI-generated answers, monitor visibility trends.
             </p>
           </motion.div>
@@ -141,7 +141,7 @@ export function DashboardSection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
   return (
-    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-24 bg-black">
+    <section id="features" ref={sectionRef} className="py-12 sm:py-16 lg:py-24 bg-black">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={headingVariants}
@@ -166,7 +166,7 @@ export function DashboardSection() {
           <div className={`${CARD_BASE} p-3 sm:p-5 overflow-hidden relative min-h-[260px] sm:min-h-[330px] lg:min-h-[400px] pb-16 sm:pb-22 lg:pb-0`}>
             <div className="mb-2 relative z-10">
               <h3 className={`text-lg sm:text-xl font-medium text-white mb-1`}>Customize Your Prompts</h3>
-              <p className={`text-xs sm:text-sm text-gray-400 mb-1.5 pb-3 sm:pb-4`}>
+              <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-1.5 pb-3 sm:pb-4`}>
                 Prompts are the foundation of your AI search strategy. 
               </p>
             </div>
@@ -196,7 +196,7 @@ export function DashboardSection() {
               className="mb-2 relative z-10"
             >
               <h3 className={`text-lg sm:text-xl font-medium text-white mb-2`}>Add Business Competitors</h3>
-              <p className={`text-xs sm:text-sm text-gray-400 mb-3 sm:mb-4`}>
+              <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-3 sm:mb-4`}>
               Add your competitors so GeoAlt can map the landscape and drive growth insights.
               </p>
             </motion.div>
@@ -240,7 +240,7 @@ export function DashboardSection() {
               className="mb-2 relative z-10"
             >
               <h3 className={`text-lg sm:text-xl font-medium text-white mb-2`}>Pick Model and Region</h3>
-              <p className={`text-xs sm:text-sm text-gray-400 mb-3 sm:mb-4`}>
+              <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-3 sm:mb-4`}>
               Pick AI model and region to generate insights that help business grow
               </p>
             </motion.div>

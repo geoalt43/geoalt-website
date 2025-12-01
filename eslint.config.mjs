@@ -11,7 +11,7 @@ const compat = new FlatCompat({
 
 const config = [
   {
-    ignores: ['.next/**', 'node_modules/**', 'playwright-report/**', 'test-results/**'],
+    ignores: ['.next/**', 'node_modules/**'],
   },
   ...compat.extends(
     'next',

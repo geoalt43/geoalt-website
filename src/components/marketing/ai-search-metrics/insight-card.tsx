@@ -38,7 +38,7 @@ export function InsightCard({
         <h3 className="text-xs sm:text-sm font-normal text-white">{title}</h3>
         </div>
         {!isActive ? (
-        <p className="text-[11px] sm:text-xs text-white/60 leading-relaxed overflow-hidden line-clamp-2 sm:line-clamp-none">{description}</p>
+        <p className="text-[11px] sm:text-sm md:text-base text-white/60 leading-relaxed overflow-hidden line-clamp-2 sm:line-clamp-none">{description}</p>
       ) : (
         <div className={`flex-1 ${type === 'sentiment' ? 'space-y-1 sm:space-y-1.5 lg:space-y-2' : 'space-y-2 sm:space-y-3 lg:space-y-4'}`}>
           {type === 'sentiment' && data && (

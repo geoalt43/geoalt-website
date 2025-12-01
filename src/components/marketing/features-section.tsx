@@ -133,7 +133,7 @@ function FeaturesSection() {
               </motion.div>
               <h3 className="text-base sm:text-lg lg:text-[1.3rem] font-semibold text-white">Accurate Data</h3>
             </div>
-            <p className="text-xs sm:text-sm text-[#9b9b9b] relative z-10 pt-1.5 sm:pt-2">
+            <p className="text-xs sm:text-sm md:text-base text-[#9b9b9b] relative z-10 pt-1.5 sm:pt-2">
               Our advanced algorithms ensure precise tracking of your AI visibility.
               <br className="hidden sm:block" />
               Get reliable metrics that help you make data-driven decisions.
@@ -166,7 +166,7 @@ function FeaturesSection() {
               </motion.div>
               <h3 className="text-base sm:text-lg lg:text-[1.3rem] font-semibold text-white">Real-time Insights</h3>
             </div>
-            <p className="text-xs sm:text-sm text-[#9b9b9b] relative z-10 pt-1.5 sm:pt-2">
+            <p className="text-xs sm:text-sm md:text-base text-[#9b9b9b] relative z-10 pt-1.5 sm:pt-2">
               Stay ahead of the curve with up‑to‑the‑minute data on your performance.
               <br className="hidden sm:block" />
               Monitor changes as they happen and respond quickly to opportunities.
@@ -198,7 +198,7 @@ function FeaturesSection() {
               </motion.div>
               <h3 className="text-base sm:text-lg lg:text-[1.3rem] font-semibold text-white">Secure & Reliable</h3>
             </div>
-            <p className="text-xs sm:text-sm text-[#9b9b9b] relative z-10 pt-1.5 sm:pt-2">
+            <p className="text-xs sm:text-sm md:text-base text-[#9b9b9b] relative z-10 pt-1.5 sm:pt-2">
               We prioritize the security and confidentiality of your data.
               <br className="hidden sm:block" />
               Your information is protected with enterprise-grade security measures.

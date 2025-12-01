@@ -122,7 +122,7 @@ export function HeroSection() {
               variants={headingContainerVariants}
               initial="hidden"
               animate={controls}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal -mt-4 sm:-mt-6 mb-3 sm:mb-4 leading-tight tracking-normal sm:tracking-tight bg-gradient-to-r from-[#4285f4] via-[#9c27b0] to-[#ea4335] text-transparent bg-clip-text px-2 sm:px-0"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal mt-4 sm:mt-0 mb-3 sm:mb-4 leading-tight tracking-normal sm:tracking-tight bg-gradient-to-r from-[#4285f4] via-[#9c27b0] to-[#ea4335] text-transparent bg-clip-text px-2 sm:px-0"
             >
               {words.map((word, index) => (
                 <motion.span

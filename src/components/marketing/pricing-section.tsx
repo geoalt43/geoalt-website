@@ -340,7 +340,7 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
           </p>
         </div>
         <p className="text-xs sm:text-sm text-white/70">{plan.description}</p>
-        <div className="flex flex-col gap-2.5 sm:gap-3.5 text-[11px] sm:text-xs text-white/80">
+        <div className="flex flex-col gap-2.5 sm:gap-3.5 text-[11px] sm:text-xs md:text-sm text-white/80">
           {plan.features.map((feature) => (
             <div
               key={feature}

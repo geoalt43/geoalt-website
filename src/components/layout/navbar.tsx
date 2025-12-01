@@ -31,12 +31,23 @@ export function Navbar() {
     setIsMobileMenuOpen(false)
   }
 
+  const handleFeaturesClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === '/') {
+      e.preventDefault()
+      const element = document.getElementById('features')
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }
+    setIsMobileMenuOpen(false)
+  }
+
   const handleLinkClick = () => {
     setIsMobileMenuOpen(false)
   }
 
   return (
-    <nav className="bg-brand-black/90 backdrop-blur-sm border-b border-[#1d1d1d] sticky top-0 z-50 overflow-x-hidden">
+    <nav className="bg-brand-black/90 backdrop-blur-sm border-b border-[#1d1d1d] fixed top-0 left-0 right-0 z-50 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16 relative">
           <div className="flex items-center flex-shrink-0">
@@ -72,11 +83,12 @@ export function Navbar() {
             >
               Pricing
             </Link>
-            <Link href="/resources" className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out">
-              Resources
-            </Link>
-            <Link href="/about" className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out">
-              About
+            <Link 
+              href="/#features" 
+              onClick={handleFeaturesClick}
+              className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
+            >
+              Features
             </Link>
           </div>
 
@@ -133,18 +145,11 @@ export function Navbar() {
                 Pricing
               </Link>
               <Link 
-                href="/resources" 
-                onClick={handleLinkClick}
+                href="/#features" 
+                onClick={handleFeaturesClick}
                 className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
               >
-                Resources
-              </Link>
-              <Link 
-                href="/about" 
-                onClick={handleLinkClick}
-                className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
-              >
-                About
+                Features
               </Link>
               <Link
                 href="/register"
