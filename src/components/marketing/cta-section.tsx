@@ -7,12 +7,12 @@ import Image from 'next/image'
 
 // Vertical Flowing AI Platform Rotator for CTA Section
 function VerticalFlowingRotator() {
-  const iconSize = 0.4
-  const iconWidth = Math.round(64 * iconSize)
-  const iconHeight = Math.round(64 * iconSize)
-  const textWidth = 80
-  const textHeight = 16
-  const textSize = 'text-base'
+  // Consistent sizing: text height is base, icon is 5% larger
+  const baseTextHeight = 18
+  const iconHeight = Math.round(baseTextHeight * 1.05) // 5% larger than text
+  const iconWidth = iconHeight // Square icons
+  const textHeight = baseTextHeight // Consistent text height
+  const textWidth = 100 // Proportional width for text images
 
   const platforms = [
     {
@@ -119,6 +119,7 @@ function VerticalFlowingRotator() {
                   width={iconWidth}
                   height={iconHeight}
                   className="object-contain"
+                  style={{ height: `${iconHeight}px`, width: 'auto' }}
                 />
                 {platform.hasText && platform.text && (
                   <Image
@@ -127,12 +128,16 @@ function VerticalFlowingRotator() {
                     width={textWidth}
                     height={textHeight}
                     className="object-contain"
+                    style={{ height: `${textHeight}px`, width: 'auto' }}
                   />
                 )}
               </div>
             )}
             {platform.name && !platform.hasText && (
-              <span className={`${textSize} ${platform.weight || 'font-medium'} text-[#2b2b2b] leading-tight tracking-tight whitespace-nowrap`}>
+              <span 
+                className="font-medium text-[#2b2b2b] leading-tight tracking-tight whitespace-nowrap"
+                style={{ fontSize: `${baseTextHeight}px`, lineHeight: '1' }}
+              >
                 {platform.name}
               </span>
             )}

@@ -305,7 +305,6 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
       `}
       style={{
         borderRadius: plan.isRecommended ? '0.89rem 0.89rem 0.5rem 0.5rem' : undefined,
-        minHeight: plan.isRecommended ? 'auto' : undefined,
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />

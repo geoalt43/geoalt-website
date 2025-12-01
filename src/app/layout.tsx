@@ -71,8 +71,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning style={{ colorScheme: 'dark' }}>
-      <body className={inter.className}>
+    <html lang="en" className="dark overflow-x-hidden" suppressHydrationWarning style={{ colorScheme: 'dark' }}>
+      <body className={`${inter.className} overflow-x-hidden`}>
         <ErrorBoundary>
           <Providers>
             {children}

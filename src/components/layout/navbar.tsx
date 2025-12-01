@@ -11,12 +11,22 @@ export function Navbar() {
 
   useEffect(() => {
     const handleHashScroll = () => {
-      if (pathname === '/' && window.location.hash === '#pricing') {
-        const element = document.getElementById('pricing')
-        if (element) {
-          setTimeout(() => {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-          }, 100)
+      if (pathname === '/') {
+        const hash = window.location.hash
+        if (hash === '#pricing') {
+          const element = document.getElementById('pricing')
+          if (element) {
+            setTimeout(() => {
+              element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            }, 100)
+          }
+        } else if (hash === '#home' || hash === '') {
+          const element = document.getElementById('home')
+          if (element) {
+            setTimeout(() => {
+              element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            }, 100)
+          }
         }
       }
     }
@@ -28,6 +38,17 @@ export function Navbar() {
       window.removeEventListener('hashchange', handleHashScroll)
     }
   }, [pathname])
+
+  const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === '/') {
+      e.preventDefault()
+      const element = document.getElementById('home')
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }
+    setIsMobileMenuOpen(false)
+  }
 
   const handlePricingClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === '/') {
@@ -49,14 +70,22 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16 relative">
           <div className="flex items-center flex-shrink-0">
-            <Link href="/" className="flex items-center text-lg sm:text-xl font-semibold text-brand-white">
+            <Link 
+              href="/#home" 
+              onClick={handleHomeClick}
+              className="flex items-center text-lg sm:text-xl font-semibold text-brand-white"
+            >
               GE<OpenAI size={18} className="mx-0.5 sm:w-5 sm:h-5" />Alt
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center justify-center space-x-0 absolute left-1/2 transform -translate-x-1/2 z-10">
-            <Link href="/" className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out">
+            <Link 
+              href="/#home" 
+              onClick={handleHomeClick}
+              className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
+            >
               Home
             </Link>
             <Link 
@@ -113,8 +142,8 @@ export function Navbar() {
           <div className="md:hidden border-t border-[#1d1d1d] py-4">
             <div className="flex flex-col space-y-2">
               <Link 
-                href="/" 
-                onClick={handleLinkClick}
+                href="/#home" 
+                onClick={handleHomeClick}
                 className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
               >
                 Home
