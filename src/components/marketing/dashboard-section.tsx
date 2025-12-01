@@ -141,7 +141,7 @@ export function DashboardSection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
   return (
-    <section id="features" ref={sectionRef} className="pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16 lg:pb-24 bg-black">
+    <section id="features" ref={sectionRef} className="pt-6 sm:pt-8 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 lg:pb-[4vh] xl:pb-[6vh] bg-black">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={headingVariants}

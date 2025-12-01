@@ -18,7 +18,7 @@ const scrollToHero = (e: React.MouseEvent<HTMLAnchorElement>) => {
 export function Footer() {
   return (
     <footer className="bg-brand-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 lg:pt-20 pb-8 sm:pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 lg:pt-[4vh] xl:pt-[6vh] pb-8 sm:pb-12">
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
           {/* Brand */}
           <div className="col-span-2 sm:col-span-1 lg:col-span-1">

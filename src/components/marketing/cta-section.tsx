@@ -22,7 +22,7 @@ export function CTASection() {
   }
 
   return (
-    <section ref={sectionRef} className="pt-6 sm:pt-8 lg:pt-12 pb-6 sm:pb-8 lg:pb-12">
+    <section ref={sectionRef} className="pt-6 sm:pt-8 lg:pt-[4vh] xl:pt-[6vh] pb-6 sm:pb-8 lg:pb-[4vh] xl:pb-[6vh]">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -46,7 +46,7 @@ export function CTASection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-stretch sm:items-center">
               <a
-                href="https://forms.google.com/YOUR_FORM_ID_HERE"
+                href="https://forms.gle/wLMpHeTqQogumFMK8"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white text-black px-5 sm:px-6 py-2 sm:py-3 rounded-full text-[11px] sm:text-base font-semibold whitespace-nowrap hover:bg-[#a0a0a0] transition-all duration-200 ease-in-out inline-block text-center w-full max-w-[120px] mx-auto sm:w-auto sm:max-w-none sm:min-w-[140px] sm:mx-0"

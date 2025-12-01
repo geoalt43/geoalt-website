@@ -112,7 +112,7 @@ export function TestimonialsCarousel() {
   }
 
   return (
-    <section className="pt-9 sm:pt-12 lg:pt-[4.5rem] pb-6 sm:pb-8 lg:pb-12 bg-brand-black relative overflow-hidden">
+    <section className="pt-9 sm:pt-12 lg:pt-[4vh] xl:pt-[6vh] pb-6 sm:pb-8 lg:pb-[4vh] xl:pb-[6vh] bg-brand-black relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none" 
         style={{
           backgroundImage: `
