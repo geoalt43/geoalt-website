@@ -199,7 +199,7 @@ export function DashboardSection() {
           className="grid grid-cols-1 lg:grid-cols-12 gap-2 mb-6"
         >
           {/* Container 1: Customize Your Prompts */}
-          <div className={`${CARD_BASE} p-6 overflow-hidden relative`}>
+          <div className={`${CARD_BASE} p-6 overflow-hidden relative min-h-[400px]`}>
             <div className="mb-2">
               <h3 className={`${HEADING_TEXT} mb-1`}>Customize Your Prompts</h3>
               <p className={`${DESCRIPTION_TEXT} mb-1.5 pb-4`}>
@@ -207,16 +207,16 @@ export function DashboardSection() {
               </p>
             </div>
             
-            <div className={`w-full rounded-lg overflow-hidden ${PERSPECTIVE_3D} -mx-6 -mb-6`}>
+            <div className={`absolute -bottom-[90px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[100%]`}>
               <div 
-                className={`relative z-10 translate-x-2 px-6 pb-6 ${TRANSFORM_STYLE_3D} transition-transform duration-300 ease-out ${BOX_SHADOW_3D} [transform:rotateX(20deg)_rotateY(0deg)_translateZ(40px)_translateY(90px)]`}
+                className={`${TRANSFORM_STYLE_3D} transition-transform duration-300 ease-out ${BOX_SHADOW_3D} w-full h-full [transform:rotateX(20deg)_rotateY(0deg)_translateZ(40px)_translateY(90px)]`}
               >
                 <Image
                   src="/images/Prompts_studio_.jpg"
                   alt="Prompt Studio interface"
                   width={900}
                   height={600}
-                  className="w-full h-auto rounded-lg"
+                  className="w-full h-full object-cover rounded-lg object-[center_bottom]"
                 />
               </div>
             </div>
