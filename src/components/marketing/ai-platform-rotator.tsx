@@ -13,75 +13,82 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
   const [isVisible, setIsVisible] = useState(true)
   const [isBlurring, setIsBlurring] = useState(false)
 
-  // Consistent sizing: text height is base, icon is 5% larger
-  const baseTextHeight = size === 'large' ? 40 : 22
-  const iconHeight = Math.round(baseTextHeight * 1.05) // 5% larger than text
+  // Responsive sizing: scales down on mobile, medium on tablet, full on desktop
+  // Mobile: smaller sizes, Desktop: larger sizes
+  const getResponsiveSizes = () => {
+    if (size === 'large') {
+      // Mobile-first approach: smaller on mobile, larger on desktop
+      return {
+        baseTextHeight: 24, // Mobile base
+        iconHeight: 26, // Mobile icon
+        textWidth: 90, // Mobile text width
+        // These will be overridden by CSS classes for larger screens
+      }
+    } else {
+      return {
+        baseTextHeight: 18,
+        iconHeight: 19,
+        textWidth: 80,
+      }
+    }
+  }
+
+  const baseSizes = getResponsiveSizes()
+  const baseTextHeight = baseSizes.baseTextHeight
+  const iconHeight = baseSizes.iconHeight
   const iconWidth = iconHeight // Square icons
   const textHeight = baseTextHeight // Consistent text height
-  const textWidth = size === 'large' ? 140 : 110 // Proportional width for text images
+  const textWidth = baseSizes.textWidth // Proportional width for text images
 
   const platforms = [
     {
       name: 'ChatGPT',
-      color: variant === 'muted' ? '#2b2b2b' : 'text-white',
-      weight: 'font-medium',
       icon: '/ai-icons/openai.webp',
       hasText: false
     },
     {
       name: 'Perplexity',
-      color: variant === 'muted' ? '#2b2b2b' : 'text-white',
-      weight: 'font-medium',
       icon: '/ai-icons/perplexity.webp',
       text: '/ai-icons/perplexity-text.webp',
       hasText: true
     },
     {
       name: 'Claude',
-      color: variant === 'muted' ? '#2b2b2b' : 'text-white',
       icon: '/ai-icons/claude-color.webp',
       text: '/ai-icons/claude-text.webp',
       hasText: true
     },
     {
       name: 'Gemini',
-      color: variant === 'muted' ? '#2b2b2b' : 'text-white',
-      weight: 'font-medium',
       icon: '/ai-icons/gemini-color.webp',
       text: '/ai-icons/gemini-text.webp',
       hasText: true
     },
     {
       name: 'Microsoft Copilot',
-      color: variant === 'muted' ? '#2b2b2b' : 'text-white',
       icon: '/ai-icons/copilot-color.webp',
       hasText: false
     },
     {
       name: 'Google AI Overviews',
-      color: variant === 'muted' ? '#2b2b2b' : 'text-white',
-      weight: 'font-medium',
       icon: '/ai-icons/gemini-color.webp',
       text: '/ai-icons/gemini-text.webp',
       hasText: true
     },
     {
       name: '',
-      color: variant === 'muted' ? '#2b2b2b' : 'text-white',
       icon: '/ai-icons/deepseek.webp',
       text: '/ai-icons/deepseek-text.webp',
       hasText: true
     },
     {
       name: '',
-      color: variant === 'muted' ? '#2b2b2b' : 'text-white',
       icon: '/ai-icons/metaai-color.webp',
       text: '/ai-icons/metaai-text.webp',
       hasText: true
     },
     {
       name: '',
-      color: variant === 'muted' ? '#2b2b2b' : 'text-white',
       icon: '/ai-icons/grok.webp',
       text: '/ai-icons/grok-text.webp',
       hasText: true
@@ -119,10 +126,10 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
         </div>
       )}
       
-      {/* Fixed width container to prevent shaking */}
-      <div className="w-full max-w-[280px] sm:max-w-[320px] md:w-80 lg:w-96 h-12 sm:h-16 md:h-[72px] lg:h-20 flex items-center justify-center">
+      {/* Responsive width container to prevent shaking */}
+      <div className="w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px] xl:max-w-[380px] h-10 sm:h-12 md:h-14 lg:h-16 xl:h-20 flex items-center justify-center">
         <div
-          className={`flex items-center justify-center space-x-1.5 sm:space-x-2 md:space-x-3 transition-all duration-500 text-shadow-muted ${
+          className={`flex items-center justify-center space-x-1 sm:space-x-1.5 md:space-x-2 lg:space-x-3 transition-all duration-500 text-shadow-muted ${
             isBlurring ? 'opacity-20' : 'opacity-100'
           } ${isVisible ? 'animate-fadeIn' : 'animate-fadeOut'} ${
             variant === 'muted'
@@ -135,14 +142,14 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
           }`}
         >
           {current.icon && (
-            <div aria-hidden className="flex-shrink-0 flex items-center gap-1 sm:gap-1.5 md:gap-2">
+            <div aria-hidden className="flex-shrink-0 flex items-center gap-0.5 sm:gap-1 md:gap-1.5 lg:gap-2">
               <Image
                 src={current.icon}
                 alt=""
                 width={iconWidth}
                 height={iconHeight}
-                className="object-contain max-h-full"
-                style={{ height: `${iconHeight}px`, width: 'auto', maxWidth: '100%' }}
+                className="object-contain max-h-full w-auto h-[20px] sm:h-[24px] md:h-[28px] lg:h-[32px] xl:h-[42px]"
+                style={{ maxWidth: '100%' }}
               />
               {current.hasText && current.text && (
                 <Image
@@ -150,18 +157,17 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
                   alt=""
                   width={textWidth}
                   height={textHeight}
-                  className="object-contain max-h-full"
-                  style={{ height: `${textHeight}px`, width: 'auto', maxWidth: '100%' }}
+                  className="object-contain max-h-full w-auto h-[20px] sm:h-[24px] md:h-[28px] lg:h-[32px] xl:h-[40px]"
+                  style={{ maxWidth: '100%' }}
                 />
               )}
             </div>
           )}
           {current.name && !current.hasText && (
             <span 
-              className={`${size === 'large' ? 'text-lg sm:text-xl md:text-2xl' : 'text-base sm:text-lg md:text-xl'} font-medium leading-tight tracking-tight whitespace-nowrap ${
+              className={`${size === 'large' ? 'text-base sm:text-lg md:text-xl lg:text-2xl xl:text-[28px]' : 'text-sm sm:text-base md:text-lg lg:text-xl'} font-medium leading-tight tracking-tight whitespace-nowrap ${
                 variant === 'muted' ? 'text-[#2b2b2b]' : 'text-white'
               }`}
-              style={{ fontSize: `${baseTextHeight}px`, lineHeight: '1' }}
             >
               {current.name}
             </span>

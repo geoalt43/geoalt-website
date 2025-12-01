@@ -17,13 +17,6 @@ export default function NotFound() {
           >
             Go Home
           </Link>
-          <Link
-            href="/dashboard"
-            className="inline-flex items-center px-4 py-2 border border-gray-600 text-white rounded-lg hover:bg-gray-800 transition-colors"
-            aria-label="Go to dashboard"
-          >
-            Dashboard
-          </Link>
         </div>
       </div>
     </div>

@@ -165,16 +165,19 @@ export function HeroSection() {
             </motion.p>
           
             {/* Hero CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center px-4 sm:px-0">
-              <Link href="/register" className="text-black px-5 py-2.5 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 ease-in-out bg-white hover:bg-[#d4d4d4] block w-full sm:w-auto text-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center px-4 sm:px-0 w-full sm:w-auto">
+              <Link href="/register" className="text-black px-5 py-2.5 rounded-lg text-sm sm:text-base font-semibold tracking-wide transition-all duration-200 ease-in-out bg-white hover:bg-[#d4d4d4] block w-full sm:w-auto text-center min-w-[140px]">
                 Get Started
               </Link>
-              <DemoCTA 
-                text="Contact Us" 
-                variant="outline" 
-                size="md"
-                showModal={false}
-              />
+              <div className="w-full sm:w-auto">
+                <DemoCTA 
+                  text="Contact Us" 
+                  variant="outline" 
+                  size="md"
+                  showModal={false}
+                  className="w-full sm:w-auto min-w-[140px]"
+                />
+              </div>
             </div>
           </div>
         </div>

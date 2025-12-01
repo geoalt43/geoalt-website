@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 
 interface DemoCTAProps {
   text: string
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost'
+  variant?: 'outline' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   className?: string
   showModal?: boolean
@@ -14,7 +14,7 @@ interface DemoCTAProps {
 
 export function DemoCTA({ 
   text, 
-  variant = 'primary', 
+  variant = 'outline', 
   size = 'md', 
   className,
   showModal = true 
@@ -24,15 +24,13 @@ export function DemoCTA({
   const baseClasses = 'inline-flex items-center justify-center rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none'
 
   const variants = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700',
-    secondary: 'bg-gray-600 text-white hover:bg-gray-700',
     outline: 'border-2 border-gray-600 text-white hover:bg-[#d4d4d4] hover:text-black transition-all duration-200 ease-in-out',
     ghost: 'text-white hover:bg-gray-800',
   }
 
   const sizes = {
     sm: 'h-8 px-3 text-sm',
-    md: 'h-10 px-4 py-2',
+    md: 'h-10 px-4 sm:px-5 py-2.5 text-sm sm:text-base',
     lg: 'h-12 px-8 text-lg',
   }
 
@@ -51,6 +49,7 @@ export function DemoCTA({
             baseClasses,
             variants[variant],
             sizes[size],
+            'w-full sm:w-auto text-center',
             className
           )}
         >
@@ -92,6 +91,7 @@ export function DemoCTA({
         baseClasses,
         variants[variant],
         sizes[size],
+        'w-full sm:w-auto text-center',
         className
       )}
     >

@@ -147,7 +147,7 @@ export function Footer() {
       <div className="w-full h-px mt-8 sm:mt-12" style={{backgroundColor: '#272324'}}></div>
       <div className="pt-6 sm:pt-8 pb-12 sm:pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
+          <div className="flex flex-wrap justify-between items-center gap-4 sm:gap-6">
             <p className="text-xs sm:text-sm flex items-center" style={{color: '#6d6264'}}>
               &copy; 2025 GE<Image src="/ai-icons/openai.webp" alt="" width={14} height={14} className="mx-0.5 sm:w-4 sm:h-4 inline-block" />Alt
             </p>

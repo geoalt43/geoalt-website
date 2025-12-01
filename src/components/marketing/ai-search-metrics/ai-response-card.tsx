@@ -115,7 +115,7 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
       </div>
 
       <div className="space-y-0 relative">
-        {data.companies.map((company, index) => {
+        {data.companies.map((company) => {
           const highlightedParts = highlightText(
             company.description,
             company.positiveHighlights,

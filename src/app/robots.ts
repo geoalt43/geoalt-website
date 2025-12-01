@@ -9,8 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: '/',
         disallow: [
-          '/dashboard/*',
-          '/admin/*',
           '/api/*',
           '/_next/*',
           '/static/*',
@@ -20,8 +18,6 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: 'Googlebot',
         allow: '/',
         disallow: [
-          '/dashboard/*',
-          '/admin/*',
           '/api/*',
         ],
       },

@@ -39,12 +39,11 @@ const cardVariants = {
 
 interface FAQCardProps {
   faq: { question: string; answer: string }
-  index: number
   isOpen: boolean
   onToggle: () => void
 }
 
-function FAQCard({ faq, index, isOpen, onToggle }: FAQCardProps) {
+function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
   const cardRef = useRef(null)
   const cardInView = useInView(cardRef, { once: true, margin: '-150px' })
 
@@ -188,7 +187,6 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
             <FAQCard
               key={index}
               faq={faq}
-              index={index}
               isOpen={openFaq === index}
               onToggle={() => toggleFaq(index)}
             />
