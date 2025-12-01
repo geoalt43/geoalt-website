@@ -9,6 +9,14 @@ const visibilitySlides = [
   { id: 1, image: '/images/ShareOfVoice_.jpeg' },
 ]
 
+// Reusable Tailwind class constants
+const BOX_SHADOW_3D = '[box-shadow:0_20px_60px_rgba(0,0,0,0.4),0_10px_30px_rgba(0,0,0,0.3)]'
+const PERSPECTIVE_3D = '[perspective:1500px] [transform-style:preserve-3d]'
+const TRANSFORM_STYLE_3D = '[transform-style:preserve-3d]'
+const CARD_BASE = 'lg:col-span-6 bg-black/60 border border-[#111111] rounded-2xl'
+const HEADING_TEXT = 'text-xl font-medium text-white'
+const DESCRIPTION_TEXT = 'text-sm text-gray-400'
+
 // Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -93,7 +101,7 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
-      className="lg:col-span-6 bg-black/60 border border-[#111111] rounded-2xl p-0 h-full w-[113.5%] -ml-20 overflow-visible"
+      className={`${CARD_BASE} p-0 h-full w-[113.5%] -ml-20 overflow-visible`}
       whileHover={{ 
         y: -2,
         transition: { duration: 0.3 }
@@ -121,10 +129,10 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
                 variants={headingVariants}
                 className="pt-6 px-6 mb-4"
               >
-                <h3 className="text-xl font-medium text-white mb-2">
+                <h3 className={`${HEADING_TEXT} mb-2`}>
                   Analyze AI visibility scores to understand market performance
                 </h3>
-                <p className="text-sm text-gray-400 mb-4">
+                <p className={`${DESCRIPTION_TEXT} mb-4`}>
                   Track how often your brand appears in AI-generated answers, monitor visibility trends,
                   <br />
                   and compare rankings to uncover opportunities to strengthen your market position.
@@ -135,11 +143,7 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
 
               <motion.div 
                 variants={imageVariants}
-                className="w-full overflow-visible flex items-end -pb-34 -mb-25"
-                style={{
-                  perspective: '1500px',
-                  transformStyle: 'preserve-3d',
-                }}
+                className={`w-full overflow-visible flex items-end ${PERSPECTIVE_3D} -pb-[136px] -mb-[100px]`}
               >
                 <motion.div
                   initial={{ 
@@ -149,11 +153,7 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
                     transform: 'rotateX(-5deg) rotateY(-9deg) translateZ(50px)',
                     transition: { duration: 0.3 }
                   }}
-                  style={{
-                    transformStyle: 'preserve-3d',
-                    width: '100%',
-                    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3)',
-                  }}
+                  className={`${TRANSFORM_STYLE_3D} w-full ${BOX_SHADOW_3D}`}
                 >
                   <Image
                     src={slide.image}
@@ -191,24 +191,26 @@ export function DashboardSection() {
           </h1>
         </motion.div>
 
-        {/* First Row - 2 containers */}
+        {/* First Row */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           className="grid grid-cols-1 lg:grid-cols-12 gap-2 mb-6"
         >
-          {/* Container 1: Set up Prompts (reduced width - 6 columns) */}
-          <div className="lg:col-span-6 bg-black/60 border border-[#111111] rounded-2xl p-6 overflow-hidden relative">
+          {/* Container 1: Customize Your Prompts */}
+          <div className={`${CARD_BASE} p-6 overflow-hidden relative`}>
             <div className="mb-2">
-              <h3 className="text-xl font-medium text-white mb-1">Customize Your Prompts</h3>
-              <p className="text-sm text-gray-400 mb-1.5 pb-4">
+              <h3 className={`${HEADING_TEXT} mb-1`}>Customize Your Prompts</h3>
+              <p className={`${DESCRIPTION_TEXT} mb-1.5 pb-4`}>
                 Prompts are the foundation of your AI search strategy. 
               </p>
             </div>
             
-            <div className="w-full rounded-lg overflow-hidden perspective-3d-container -mx-6 -mb-6">
-              <div className="prompts-image-3d relative z-10 translate-x-2 px-6 pb-6">
+            <div className={`w-full rounded-lg overflow-hidden ${PERSPECTIVE_3D} -mx-6 -mb-6`}>
+              <div 
+                className={`relative z-10 translate-x-2 px-6 pb-6 ${TRANSFORM_STYLE_3D} transition-transform duration-300 ease-out ${BOX_SHADOW_3D} [transform:rotateX(20deg)_rotateY(0deg)_translateZ(40px)_translateY(90px)]`}
+              >
                 <Image
                   src="/images/Prompts_studio_.jpg"
                   alt="Prompt Studio interface"
@@ -220,33 +222,28 @@ export function DashboardSection() {
             </div>
           </div>
 
-          {/* Container 2: Use Data to Pick Winners (wider - 6 columns) */}
+          {/* Container 2: Add Business Competitors */}
           <motion.div 
             variants={cardVariants}
             whileHover={{ 
               y: -3,
               transition: { duration: 0.3 }
             }}
-            className="lg:col-span-6 bg-black/60 border border-[#111111] rounded-2xl p-6 overflow-hidden relative min-h-[400px]"
+            className={`${CARD_BASE} p-6 overflow-hidden relative min-h-[400px]`}
           >
             <motion.div 
               variants={headingVariants}
               className="mb-2 relative z-10"
             >
-              <h3 className="text-xl font-medium text-white mb-2">Add Business Competitors</h3>
-              <p className="text-sm text-gray-400 mb-4">
+              <h3 className={`${HEADING_TEXT} mb-2`}>Add Business Competitors</h3>
+              <p className={`${DESCRIPTION_TEXT} mb-4`}>
               Add your competitors so GeoAlt can map the landscape and drive growth insights.
               </p>
             </motion.div>
             
             <motion.div 
               variants={imageVariants}
-              className="absolute -bottom-35 left-0 right-0 rounded-lg overflow-hidden"
-              style={{
-                perspective: '1500px',
-                transformStyle: 'preserve-3d',
-                height: '85%',
-              }}
+              className={`absolute -bottom-[140px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[85%]`}
             >
               <motion.div
                 initial={{ 
@@ -256,61 +253,49 @@ export function DashboardSection() {
                   transform: 'rotateX(18deg) rotateY(2deg) translateZ(115px)',
                   transition: { duration: 0.3 }
                 }}
-                style={{
-                  transformStyle: 'preserve-3d',
-                  boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3)',
-                  width: '100%',
-                  height: '100%',
-                }}
+                className={`${TRANSFORM_STYLE_3D} ${BOX_SHADOW_3D} w-full h-full`}
               >
                 <Image
                   src="/images/Competitor_.png"
                   alt="Add competitors interface"
                   width={800}
                   height={600}
-                  className="w-full h-full object-cover rounded-lg"
-                  style={{
-                    objectPosition: 'center bottom',
-                  }}
+                  className="w-full h-full object-cover rounded-lg object-[center_bottom]"
                 />
               </motion.div>
             </motion.div>
           </motion.div>
         </motion.div>
 
-        {/* Second Row - Container 3 and 4 */}
+        {/* Second Row */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           className="grid grid-cols-1 lg:grid-cols-12 gap-2 mb-6"
         >
-          {/* Container 3: Add Brands (smaller - 6 columns) */}
+          {/* Container 3: Pick Model and Region */}
           <motion.div 
             variants={cardVariants}
             whileHover={{ 
               y: -3,
               transition: { duration: 0.3 }
             }}
-            className="lg:col-span-6 bg-black/60 border border-[#111111] rounded-2xl p-6 h-full w-[87%] overflow-visible"
+            className={`${CARD_BASE} p-6 h-full w-[87%] overflow-visible`}
           >
             <motion.div 
               variants={headingVariants}
               className="mb-4"
             >
-              <h3 className="text-xl font-medium text-white mb-2">Pick Model and Region</h3>
-              <p className="text-sm text-gray-400 mb-4">
+              <h3 className={`${HEADING_TEXT} mb-2`}>Pick Model and Region</h3>
+              <p className={`${DESCRIPTION_TEXT} mb-4`}>
               Pick AI model and region to generate insights that help business grow
               </p>
             </motion.div>
             
             <motion.div 
               variants={imageVariants}
-              className="w-full rounded-lg overflow-visible"
-              style={{
-                perspective: '1500px',
-                transformStyle: 'preserve-3d',
-              }}
+              className={`w-full rounded-lg overflow-visible ${PERSPECTIVE_3D}`}
             >
               <motion.div
                 initial={{ 
@@ -320,10 +305,7 @@ export function DashboardSection() {
                   transform: 'rotateX(-2deg) rotateY(-2deg) translateZ(15px)',
                   transition: { duration: 0.3 }
                 }}
-                style={{
-                  transformStyle: 'preserve-3d',
-                  boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3)',
-                }}
+                className={`${TRANSFORM_STYLE_3D} ${BOX_SHADOW_3D}`}
               >
                 <Image
                   src="/images/Region_Selector_.png"
@@ -336,11 +318,10 @@ export function DashboardSection() {
             </motion.div>
           </motion.div>
 
-          {/* Container 4: AI visibility carousel (2 slides) */}
+          {/* Container 4: AI visibility carousel */}
           <AIVisibilityCarousel isInView={isInView} />
         </motion.div>
 
-        {/* Third row (previously containers 5 and 6) has been removed */}
       </div>
     </section>
   )
