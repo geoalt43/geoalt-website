@@ -102,10 +102,6 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       className={`${CARD_BASE} p-0 h-full w-[113.5%] -ml-20 overflow-visible`}
-      whileHover={{ 
-        y: -2,
-        transition: { duration: 0.3 }
-      }}
     >
       <div className="relative w-full h-[500px] rounded-2xl overflow-visible">
         {visibilitySlides.map((slide, index) => {
@@ -148,10 +144,6 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
                 <motion.div
                   initial={{ 
                     transform: 'rotateX(-7deg) rotateY(-11deg) translateZ(35px)',
-                  }}
-                  whileHover={{
-                    transform: 'rotateX(-5deg) rotateY(-9deg) translateZ(50px)',
-                    transition: { duration: 0.3 }
                   }}
                   className={`${TRANSFORM_STYLE_3D} w-full ${BOX_SHADOW_3D}`}
                 >
@@ -225,10 +217,6 @@ export function DashboardSection() {
           {/* Container 2: Add Business Competitors */}
           <motion.div 
             variants={cardVariants}
-            whileHover={{ 
-              y: -3,
-              transition: { duration: 0.3 }
-            }}
             className={`${CARD_BASE} p-6 overflow-hidden relative min-h-[400px]`}
           >
             <motion.div 
@@ -243,15 +231,11 @@ export function DashboardSection() {
             
             <motion.div 
               variants={imageVariants}
-              className={`absolute -bottom-[140px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[85%]`}
+              className={`absolute -bottom-[140px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[100%]`}
             >
               <motion.div
                 initial={{ 
                   transform: 'rotateX(20deg) rotateY(0deg) translateZ(100px)',
-                }}
-                whileHover={{
-                  transform: 'rotateX(18deg) rotateY(2deg) translateZ(115px)',
-                  transition: { duration: 0.3 }
                 }}
                 className={`${TRANSFORM_STYLE_3D} ${BOX_SHADOW_3D} w-full h-full`}
               >
@@ -277,10 +261,6 @@ export function DashboardSection() {
           {/* Container 3: Pick Model and Region */}
           <motion.div 
             variants={cardVariants}
-            whileHover={{ 
-              y: -3,
-              transition: { duration: 0.3 }
-            }}
             className={`${CARD_BASE} p-6 h-full w-[87%] overflow-visible`}
           >
             <motion.div 
@@ -300,10 +280,6 @@ export function DashboardSection() {
               <motion.div
                 initial={{ 
                   transform: 'rotateX(0deg) rotateY(0deg) translateZ(0px)',
-                }}
-                whileHover={{
-                  transform: 'rotateX(-2deg) rotateY(-2deg) translateZ(15px)',
-                  transition: { duration: 0.3 }
                 }}
                 className={`${TRANSFORM_STYLE_3D} ${BOX_SHADOW_3D}`}
               >
