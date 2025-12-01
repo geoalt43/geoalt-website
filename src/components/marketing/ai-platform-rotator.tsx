@@ -27,7 +27,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
     } else {
       return {
         baseTextHeight: 18,
-        iconHeight: 19,
+        iconHeight: 20,
         textWidth: 80,
       }
     }
@@ -143,12 +143,13 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
         >
           {current.icon && (
             <div aria-hidden className="flex-shrink-0 flex items-center gap-0.5 sm:gap-1 md:gap-1.5 lg:gap-2">
+              {/* Icon: ~10% larger than text height */}
               <Image
                 src={current.icon}
                 alt=""
                 width={iconWidth}
                 height={iconHeight}
-                className="object-contain max-h-full w-auto h-[20px] sm:h-[24px] md:h-[28px] lg:h-[32px] xl:h-[42px]"
+                className="object-contain w-auto h-[21px] sm:h-[23px] md:h-[25px] lg:h-[28px] xl:h-[30px]"
                 style={{ maxWidth: '100%' }}
               />
               {current.hasText && current.text && (
@@ -157,15 +158,15 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
                   alt=""
                   width={textWidth}
                   height={textHeight}
-                  className="object-contain max-h-full w-auto h-[20px] sm:h-[24px] md:h-[28px] lg:h-[32px] xl:h-[40px]"
+                  className="object-contain w-auto h-[19px] sm:h-[21px] md:h-[23px] lg:h-[25px] xl:h-[28px]"
                   style={{ maxWidth: '100%' }}
                 />
               )}
             </div>
           )}
           {current.name && !current.hasText && (
-            <span 
-              className={`${size === 'large' ? 'text-base sm:text-lg md:text-xl lg:text-2xl xl:text-[28px]' : 'text-sm sm:text-base md:text-lg lg:text-xl'} font-medium leading-tight tracking-tight whitespace-nowrap ${
+            <span
+              className={`${size === 'large' ? 'text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl' : 'text-sm sm:text-base md:text-lg lg:text-xl'} font-medium leading-tight tracking-tight whitespace-nowrap ${
                 variant === 'muted' ? 'text-[#2b2b2b]' : 'text-white'
               }`}
             >
