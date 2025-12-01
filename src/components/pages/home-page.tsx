@@ -107,7 +107,7 @@ function EmpoweringBusinessesSection() {
   }
 
   return (
-    <section ref={sectionRef} className="pt-9 sm:pt-12 lg:pt-18 pb-9 sm:pb-12 lg:pb-[4.5rem] relative overflow-hidden">
+    <section ref={sectionRef} className="pt-[36.54px] sm:pt-[48.72px] lg:pt-[73.08px] pb-16 sm:pb-20 lg:pb-24 relative overflow-hidden">
       {/* Background Grid Effect */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]">
         <div 
@@ -133,7 +133,7 @@ function EmpoweringBusinessesSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="mb-8 sm:mb-12 pb-6 sm:pb-8 text-center"
+          className="pt-6 sm:pt-8 lg:pt-10 pb-6 sm:pb-8 text-center"
         >
           <motion.h2 
             variants={headerVariants}
@@ -404,7 +404,7 @@ export function HomePage() {
 
       <FeaturesSection />
 
-      <section className="py-12 sm:py-16 lg:py-24">
+      <section className="pt-[45.6px] pb-12 sm:pt-[60.8px] sm:pb-16 lg:pt-[91.2px] lg:pb-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-[0px] border-b border-white/10 bg-transparent px-4 pt-5 pb-5 sm:px-6 sm:pt-9 sm:pb-9 lg:px-10 lg:pt-12 lg:pb-12">
             <div className="absolute inset-0 pointer-events-none">

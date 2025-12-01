@@ -56,7 +56,7 @@ function FeaturesSection() {
   }
 
   return (
-    <section ref={sectionRef} className="pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-12 lg:pb-24 relative overflow-hidden">
+    <section ref={sectionRef} className="pt-6 pb-16 sm:pt-8 sm:pb-20 lg:pt-10 lg:pb-32 relative overflow-hidden">
       {/* Background Grid Effect */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]">
         <div 
