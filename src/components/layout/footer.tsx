@@ -64,12 +64,12 @@ export function Footer() {
             </h3>
             <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
               <li>
-                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Features
                 </Link>
               </li>
               <li>
-                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   API
                 </Link>
               </li>
@@ -83,17 +83,17 @@ export function Footer() {
             </h3>
             <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
               <li>
-                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Careers
                 </Link>
               </li>
@@ -107,17 +107,17 @@ export function Footer() {
             </h3>
             <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
               <li>
-                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Documentation
                 </Link>
               </li>
               <li>
-                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Help Center
                 </Link>
               </li>
               <li>
-                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Contact
                 </Link>
               </li>
@@ -131,12 +131,12 @@ export function Footer() {
             </h3>
             <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
               <li>
-                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/#home" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" onClick={scrollToHero} className="text-sm text-[#898989] hover:text-white transition-none">
                   Terms of Service
                 </Link>
               </li>

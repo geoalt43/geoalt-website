@@ -13,8 +13,6 @@ const BOX_SHADOW_3D = '[box-shadow:0_20px_60px_rgba(0,0,0,0.4),0_10px_30px_rgba(
 const PERSPECTIVE_3D = '[perspective:1500px] [transform-style:preserve-3d]'
 const TRANSFORM_STYLE_3D = '[transform-style:preserve-3d]'
 const CARD_BASE = 'lg:col-span-6 bg-black/60 border border-white/10 rounded-lg hover:border-white/25 transition-colors duration-300'
-const HEADING_TEXT = 'text-xl font-medium text-white'
-const DESCRIPTION_TEXT = 'text-sm text-gray-400'
 
 // Animation variants
 const containerVariants = {
@@ -145,13 +143,13 @@ export function DashboardSection() {
   return (
     <section ref={sectionRef} className="py-12 sm:py-16 lg:py-24 bg-black">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        <motion.div
           variants={headingVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           className="mb-8 sm:mb-12 text-center"
         >
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white mb-3 sm:mb-4 px-2 sm:px-0">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal text-white mb-3 sm:mb-4 px-2 sm:px-0">
           Unlock AI-driven search insights that bring <br className="hidden sm:block" /> 
           <span className="pt-2 sm:pt-3 pb-4 sm:pb-6 lg:pb-9 block">customers to you — GeoAlt</span>
           </h1>

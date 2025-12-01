@@ -2,42 +2,12 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 
 export function Navbar() {
   const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  useEffect(() => {
-    const handleHashScroll = () => {
-      if (pathname === '/') {
-        const hash = window.location.hash
-        if (hash === '#pricing') {
-          const element = document.getElementById('pricing')
-          if (element) {
-            setTimeout(() => {
-              element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-            }, 100)
-          }
-        } else if (hash === '#home' || hash === '') {
-          const element = document.getElementById('home')
-          if (element) {
-            setTimeout(() => {
-              element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-            }, 100)
-          }
-        }
-      }
-    }
-
-    handleHashScroll()
-    window.addEventListener('hashchange', handleHashScroll)
-    
-    return () => {
-      window.removeEventListener('hashchange', handleHashScroll)
-    }
-  }, [pathname])
 
   const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === '/') {
@@ -71,7 +41,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-14 sm:h-16 relative">
           <div className="flex items-center flex-shrink-0">
             <Link 
-              href="/#home" 
+              href="/" 
               onClick={handleHomeClick}
               className="flex items-center text-lg sm:text-xl font-semibold text-brand-white"
             >
@@ -80,7 +50,7 @@ export function Navbar() {
                 alt="GEOAlt logo"
                 width={100}
                 height={24}
-                className="h-[1em] sm:h-[1.1em] w-auto"
+                className="h-[0.9em] sm:h-[1em] w-auto"
                 priority
               />
             </Link>
@@ -89,7 +59,7 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center justify-center space-x-0 absolute left-1/2 transform -translate-x-1/2 z-10">
             <Link 
-              href="/#home" 
+              href="/" 
               onClick={handleHomeClick}
               className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
             >
@@ -149,7 +119,7 @@ export function Navbar() {
           <div className="md:hidden border-t border-[#1d1d1d] py-4">
             <div className="flex flex-col space-y-2">
               <Link 
-                href="/#home" 
+                  href="/" 
                 onClick={handleHomeClick}
                 className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
               >

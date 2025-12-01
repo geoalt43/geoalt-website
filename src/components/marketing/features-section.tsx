@@ -87,7 +87,7 @@ function FeaturesSection() {
           <motion.h2 
             variants={headerVariants}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white mb-3 sm:mb-4 px-2 sm:px-0"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal text-white mb-3 sm:mb-4 px-2 sm:px-0"
           >
             Own your visibility on AI Search
           </motion.h2>

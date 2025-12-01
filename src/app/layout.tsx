@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: 'GEOAlt',
     images: [
       {
-        url: '/images/og-image.jpg',
+        url: '/images/img-2.jpeg',
         width: 1200,
         height: 630,
         alt: 'GEOAlt - AI Visibility Platform',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'GEOAlt - Get Your Brand Recommended by AI',
     description: 'GEOAlt helps your business stand out across AI platforms. Turning AI visibility into traffic.',
-    images: ['/images/og-image.jpg'],
+    images: ['/images/img-2.jpeg'],
     creator: '@geoalt',
   },
   robots: {

@@ -82,8 +82,6 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, {
   error: Error | null
   retryCount: number
 }> {
-  private resetTimeoutId: number | null = null
-
   constructor(props: ErrorBoundaryProps) {
     super(props)
     this.state = {
@@ -129,17 +127,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, {
     }
   }
 
-  componentWillUnmount() {
-    if (this.resetTimeoutId) {
-      clearTimeout(this.resetTimeoutId)
-    }
-  }
-
   resetError = () => {
-    if (this.resetTimeoutId) {
-      clearTimeout(this.resetTimeoutId)
-    }
-
     this.setState(prevState => ({
       hasError: false,
       error: null,

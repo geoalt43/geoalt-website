@@ -32,7 +32,7 @@ export function CTASection() {
         <div className="bg-[#0a0a0a] rounded-lg p-4 sm:p-6 lg:p-8 flex flex-col lg:flex-row items-center lg:items-center gap-6 lg:gap-0">
           {/* Left Section - Text Content */}
           <div className="flex-1 lg:pr-8 w-full lg:w-auto text-center lg:text-left mb-4 sm:mb-6 lg:mb-0">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white mb-3 sm:mb-4 leading-tight tracking-wide px-2 sm:px-0">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal text-white mb-3 sm:mb-4 leading-tight tracking-wide px-2 sm:px-0">
               <span className="pb-2 inline-block">
                 Start Growing Your
               </span>

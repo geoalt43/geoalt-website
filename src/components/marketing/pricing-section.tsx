@@ -341,7 +341,7 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
         </div>
         <p className="text-xs sm:text-sm text-white/70">{plan.description}</p>
         <div className="flex flex-col gap-2.5 sm:gap-3.5 text-[11px] sm:text-xs text-white/80">
-          {plan.features.map((feature, i) => (
+          {plan.features.map((feature) => (
             <div
               key={feature}
               className="flex items-center gap-3"
@@ -354,7 +354,7 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
           ))}
         </div>
         {plan.price === 'Custom' ? (
-          <button className="mt-auto w-full rounded-full border border-white/40 text-white py-3 text-sm font-semibold">
+          <button className="mt-auto w-[50%] max-w-xs sm:w-full mx-auto sm:mx-0 rounded-full border border-white/40 text-white py-2.5 sm:py-3 text-xs sm:text-sm font-semibold">
             Contact Us
           </button>
         ) : (
@@ -362,7 +362,7 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
             href="https://forms.gle/wLMpHeTqQogumFMK8"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-auto w-full rounded-full bg-white text-black py-3 text-sm font-semibold text-center block hover:bg-[#d4d4d4] transition-all duration-200 ease-in-out"
+            className="mt-auto w-[50%] max-w-xs sm:w-full mx-auto sm:mx-0 rounded-full bg-white text-black py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-center block hover:bg-[#d4d4d4] transition-all duration-200 ease-in-out"
           >
             Start free trial
           </a>

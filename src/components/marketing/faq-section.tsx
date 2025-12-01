@@ -172,7 +172,7 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
           className="text-center mb-12 sm:mb-16 lg:mb-20"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white mb-4 sm:mb-6 px-2 sm:px-0">FAQ</h2>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal text-white mb-4 sm:mb-6 px-2 sm:px-0">FAQ</h2>
           <p className="text-lg sm:text-xl lg:text-2xl text-[#898989] font-light px-4 sm:px-0">Generative Engine Optimization is still very new.<br className="hidden sm:block" />We&apos;ve got you covered.</p>
         </motion.div>
         
