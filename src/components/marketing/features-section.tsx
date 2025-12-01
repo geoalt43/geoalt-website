@@ -96,7 +96,8 @@ function FeaturesSection() {
             transition={{ duration: 0.7, ease: 'easeOut' }}
             className="text-base sm:text-lg text-[#9b9b9b] px-4 sm:px-0"
           >
-            GEOAlt offers unparalleled accuracy, real-time insights, and a commitment to data security.
+            GEOAlt offers unparalleled accuracy, real-time insights,<br />
+            and a commitment to data security.
           </motion.p>
         </motion.div>
 

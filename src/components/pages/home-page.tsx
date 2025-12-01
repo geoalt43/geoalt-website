@@ -145,8 +145,8 @@ function EmpoweringBusinessesSection() {
             variants={headerVariants}
             className="text-base sm:text-lg text-[#9b9b9b] px-4 sm:px-0"
           >
-            GEOAlt caters to a wide range of businesses, from startups to enterprises,<br />
-            seeking to enhance their AI visibility.
+            GEOAlt caters to a wide range of businesses, from startups to<br />
+            enterprises, seeking to enhance their AI visibility.
           </motion.p>
         </motion.div>
 

@@ -147,22 +147,22 @@ export function Footer() {
       <div className="w-full h-px mt-8 sm:mt-12" style={{backgroundColor: '#272324'}}></div>
       <div className="pt-6 sm:pt-8 pb-12 sm:pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
             <p className="text-xs sm:text-sm flex items-center" style={{color: '#6d6264'}}>
               &copy; 2025 GE<Image src="/ai-icons/openai.webp" alt="" width={14} height={14} className="mx-0.5 sm:w-4 sm:h-4 inline-block" />Alt
             </p>
-            <div className="mt-4 md:mt-0 flex flex-wrap justify-center md:justify-end gap-4 sm:gap-6">
+            <div className="flex items-center gap-1 sm:gap-3">
               <Link
                 href="/#home"
                 onClick={scrollToHero}
-                className="text-sm text-[#898989] hover:text-white transition-none"
+                className="text-sm text-[#898989] hover:text-white transition-none whitespace-nowrap"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/#home"
                 onClick={scrollToHero}
-                className="text-sm text-[#898989] hover:text-white transition-none"
+                className="text-sm text-[#898989] hover:text-white transition-none whitespace-nowrap"
               >
                 Terms of Service
               </Link>
