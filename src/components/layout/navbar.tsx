@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import OpenAI from '@lobehub/icons/es/OpenAI'
+import Image from 'next/image'
 
 export function Navbar() {
   const pathname = usePathname()
@@ -75,7 +75,7 @@ export function Navbar() {
               onClick={handleHomeClick}
               className="flex items-center text-lg sm:text-xl font-semibold text-brand-white"
             >
-              GE<OpenAI size={18} className="mx-0.5 sm:w-5 sm:h-5" />Alt
+              GE<Image src="/ai-icons/openai.webp" alt="" width={18} height={18} className="mx-0.5 sm:w-5 sm:h-5 inline-block" />Alt
             </Link>
           </div>
 

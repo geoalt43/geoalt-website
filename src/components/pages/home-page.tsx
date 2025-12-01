@@ -145,7 +145,7 @@ function EmpoweringBusinessesSection() {
             variants={headerVariants}
             className="text-base sm:text-lg text-[#9b9b9b] px-4 sm:px-0"
           >
-            GEOAlt caters to a wide range of businesses, from startups to enterprises,<br className="hidden sm:block" />
+            GEOAlt caters to a wide range of businesses, from startups to enterprises,<br />
             seeking to enhance their AI visibility.
           </motion.p>
         </motion.div>
@@ -445,7 +445,7 @@ export function HomePage() {
                           }}
                         />
                       </div>
-                      <span className="text-sm sm:text-xl lg:text-[2.5rem] font-medium text-white">
+                      <span className="text-sm sm:text-xl lg:text-[2.1rem] font-normal text-white">
                         {brand.label}
                       </span>
                     </div>

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import OpenAI from '@lobehub/icons/es/OpenAI'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
 interface DemoCTAProps {
@@ -69,7 +69,7 @@ export function DemoCTA({
                 Schedule a Demo
               </h3>
               <p className="text-gray-600 mb-6 flex items-center">
-                Get a personalized demo of GE<OpenAI size={16} className="mx-0.5" />Alt and see how we can help your brand dominate AI search.
+                Get a personalized demo of GE<Image src="/ai-icons/openai.webp" alt="" width={16} height={16} className="mx-0.5 inline-block" />Alt and see how we can help your brand dominate AI search.
               </p>
               <div className="flex space-x-3">
                 <button

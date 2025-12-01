@@ -145,7 +145,7 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
       answer: "While some SEO principles apply, AI search engines have different ranking factors and content preferences. Our platform is specifically designed to help you understand and optimize for AI search behavior."
     },
     {
-      question: "How does GE<OpenAI size={16} className=\"mx-0.5\" />Alt get its data?",
+      question: "How does GEOAlt get its data?",
       answer: "We use advanced simulation techniques to test how AI models respond to different prompts and content. Our data comes from comprehensive testing across multiple AI platforms and search engines."
     },
     {
