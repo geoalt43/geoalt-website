@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState, useRef } from 'react'
+import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 const visibilitySlides = [
@@ -86,79 +86,54 @@ const headingVariants = {
 }
 
 function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
-  const [activeIndex, setActiveIndex] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % visibilitySlides.length)
-    }, 4000)
-
-    return () => clearInterval(interval)
-  }, [])
+  const secondSlide = visibilitySlides[1] // Only show the second slide (ShareOfVoice)
 
   return (
     <motion.div 
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
-      className={`${CARD_BASE} p-0 h-full w-[113.5%] -ml-20 overflow-visible`}
+      className={`${CARD_BASE} p-0 min-h-[400px] overflow-hidden`}
     >
-      <div className="relative w-full h-[500px] rounded-2xl overflow-visible">
-        {visibilitySlides.map((slide, index) => {
-          const isActive = index === activeIndex
+      <div className="relative w-full h-[400px] rounded-2xl overflow-hidden">
+        <motion.div
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { 
+              opacity: 1,
+              transition: { duration: 0.8, ease: 'easeInOut' }
+            },
+          }}
+          className="absolute inset-0 flex h-full flex-col"
+        >
+          <motion.div 
+            variants={headingVariants}
+            className="pt-6 px-6 mb-4"
+          >
+            <h3 className={`${HEADING_TEXT} mb-2`}>
+              Analyze AI visibility scores
+            </h3>
+            <p className={`${DESCRIPTION_TEXT} mb-4`}>
+              Track how often your brand appears in AI-generated answers, monitor visibility trends.
+            </p>
+          </motion.div>
 
-          return (
-            <motion.div
-              key={slide.id}
-              initial="hidden"
-              animate={isActive && isInView ? 'visible' : 'hidden'}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: { 
-                  opacity: 1,
-                  transition: { duration: 0.8, ease: 'easeInOut' }
-                },
-              }}
-              className="absolute inset-0 flex h-full flex-col"
-            >
-              <motion.div 
-                variants={headingVariants}
-                className="pt-6 px-6 mb-4"
-              >
-                <h3 className={`${HEADING_TEXT} mb-2`}>
-                  Analyze AI visibility scores to understand market performance
-                </h3>
-                <p className={`${DESCRIPTION_TEXT} mb-4`}>
-                  Track how often your brand appears in AI-generated answers, monitor visibility trends,
-                  <br />
-                  and compare rankings to uncover opportunities to strengthen your market position.
-                </p>
-              </motion.div>
+          <div className="flex-1" />
 
-              <div className="flex-1" />
-
-              <motion.div 
-                variants={imageVariants}
-                className={`w-full overflow-visible flex items-end ${PERSPECTIVE_3D} -pb-[136px] -mb-[100px]`}
-              >
-                <motion.div
-                  initial={{ 
-                    transform: 'rotateX(-7deg) rotateY(-11deg) translateZ(35px)',
-                  }}
-                  className={`${TRANSFORM_STYLE_3D} w-full ${BOX_SHADOW_3D}`}
-                >
-                  <Image
-                    src={slide.image}
-                    alt="AI visibility interface"
-                    width={800}
-                    height={1900}
-                    className="w-full object-contain"
-                  />
-                </motion.div>
-              </motion.div>
-            </motion.div>
-          )
-        })}
+          <div className="w-full overflow-hidden flex items-end">
+            <div className="w-full">
+              <Image
+                src={secondSlide.image}
+                alt="AI visibility interface"
+                width={800}
+                height={1900}
+                className="w-full object-contain"
+              />
+            </div>
+          </div>
+        </motion.div>
       </div>
     </motion.div>
   )
@@ -261,11 +236,11 @@ export function DashboardSection() {
           {/* Container 3: Pick Model and Region */}
           <motion.div 
             variants={cardVariants}
-            className={`${CARD_BASE} p-6 h-full w-[87%] overflow-visible`}
+            className={`${CARD_BASE} p-6 overflow-hidden relative min-h-[400px] `}
           >
             <motion.div 
               variants={headingVariants}
-              className="mb-4"
+              className="mb-2 relative z-10"
             >
               <h3 className={`${HEADING_TEXT} mb-2`}>Pick Model and Region</h3>
               <p className={`${DESCRIPTION_TEXT} mb-4`}>
@@ -275,20 +250,20 @@ export function DashboardSection() {
             
             <motion.div 
               variants={imageVariants}
-              className={`w-full rounded-lg overflow-visible ${PERSPECTIVE_3D}`}
+              className={`absolute -bottom-[140px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[100%]`}
             >
               <motion.div
                 initial={{ 
                   transform: 'rotateX(0deg) rotateY(0deg) translateZ(0px)',
                 }}
-                className={`${TRANSFORM_STYLE_3D} ${BOX_SHADOW_3D}`}
+                className={`${TRANSFORM_STYLE_3D} ${BOX_SHADOW_3D} w-full h-full`}
               >
                 <Image
                   src="/images/Region_Selector_.png"
                   alt="Region Selector interface"
                   width={800}
                   height={600}
-                  className="w-full h-auto rounded-lg"
+                  className="w-full h-full object-cover rounded-lg object-[center_bottom]"
                 />
               </motion.div>
             </motion.div>
