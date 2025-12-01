@@ -90,9 +90,9 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
-      className={`${CARD_BASE} p-0 min-h-[260px] sm:min-h-[330px] lg:min-h-[400px] overflow-hidden`}
+      className={`${CARD_BASE} p-0 min-h-[320px] sm:min-h-[330px] lg:min-h-[400px] overflow-hidden`}
     >
-          <div className="relative w-full h-[260px] sm:h-[330px] lg:h-[400px] rounded-lg overflow-hidden">
+          <div className="relative w-full h-[320px] sm:h-[330px] lg:h-[400px] rounded-lg overflow-hidden">
         <motion.div
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
@@ -149,9 +149,9 @@ export function DashboardSection() {
           animate={isInView ? 'visible' : 'hidden'}
           className="pt-[5%] mb-8 sm:mb-12 text-left sm:text-center"
         >
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal text-white mb-3 sm:mb-4 px-2 sm:px-0">
+          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal text-white mb-3 sm:mb-4 px-2 sm:px-0">
             {/* Mobile version */}
-            <div className="block sm:hidden">
+            <span className="block sm:hidden">
               <span className="pt-[5%] block text-center">Unlock AI-driven search insights</span>
               <span className="block text-center">
                 that bring customers to you
@@ -159,15 +159,15 @@ export function DashboardSection() {
               <span className="block text-center pb-4 sm:pb-6 lg:pb-9">
                 — GeoAlt
               </span>
-            </div>
+            </span>
             {/* Desktop version */}
-            <div className="hidden sm:block">
+            <span className="hidden sm:block">
               <span className="pt-[5%]">Unlock AI-driven search insights that bring</span>
               <br />
               <span className="pb-4 sm:pb-6 lg:pb-9 block">
                 customers to you — GeoAlt
               </span>
-            </div>
+            </span>
           </h2>
         </motion.div>
 
@@ -179,9 +179,9 @@ export function DashboardSection() {
           className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-5 lg:gap-2 mb-5 sm:mb-8 lg:mb-6"
         >
           {/* Container 1: Customize Your Prompts */}
-          <div className={`${CARD_BASE} p-3 sm:p-5 overflow-hidden relative min-h-[260px] sm:min-h-[330px] lg:min-h-[400px] pb-16 sm:pb-22 lg:pb-0`}>
+          <div className={`${CARD_BASE} p-2 sm:p-5 overflow-hidden relative min-h-[320px] sm:min-h-[330px] lg:min-h-[400px] max-w-[90%] sm:max-w-none mx-auto sm:mx-0 pb-16 sm:pb-22 lg:pb-0`}>
             <div className="mb-2 relative z-10">
-              <h3 className={`text-lg sm:text-xl font-medium text-white mb-1`}>Customize Your Prompts</h3>
+              <h3 className={`text-base sm:text-xl font-light sm:font-medium text-white mb-1`}>Customize Your Prompts</h3>
               <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-1.5 pb-3 sm:pb-4`}>
                 Prompts are the foundation of your AI search strategy. 
               </p>
@@ -205,13 +205,13 @@ export function DashboardSection() {
           {/* Container 2: Add Business Competitors */}
           <motion.div 
             variants={cardVariants}
-            className={`${CARD_BASE} p-3 sm:p-5 overflow-hidden relative min-h-[260px] sm:min-h-[330px] lg:min-h-[400px] pb-20 sm:pb-26 lg:pb-0`}
+            className={`${CARD_BASE} p-2 sm:p-5 overflow-hidden relative min-h-[320px] sm:min-h-[330px] lg:min-h-[400px] max-w-[90%] sm:max-w-none mx-auto sm:mx-0 pb-20 sm:pb-26 lg:pb-0`}
           >
             <motion.div 
               variants={headingVariants}
               className="mb-2 relative z-10"
             >
-              <h3 className={`text-lg sm:text-xl font-medium text-white mb-2`}>Add Business Competitors</h3>
+              <h3 className={`text-base sm:text-xl font-light sm:font-medium text-white mb-2`}>Add Business Competitors</h3>
               <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-3 sm:mb-4`}>
               Add your competitors so GeoAlt can map the landscape and drive growth insights.
               </p>
@@ -243,13 +243,13 @@ export function DashboardSection() {
           {/* Container 3: Pick Model and Region */}
           <motion.div 
             variants={cardVariants}
-            className={`${CARD_BASE} p-3 sm:p-5 overflow-hidden relative min-h-[260px] sm:min-h-[330px] lg:min-h-[400px] pb-20 sm:pb-26 lg:pb-0`}
+            className={`${CARD_BASE} p-2 sm:p-5 overflow-hidden relative min-h-[320px] sm:min-h-[330px] lg:min-h-[400px] max-w-[90%] sm:max-w-none mx-auto sm:mx-0 pb-20 sm:pb-26 lg:pb-0`}
           >
             <motion.div 
               variants={headingVariants}
               className="mb-2 relative z-10"
             >
-              <h3 className={`text-lg sm:text-xl font-medium text-white mb-2`}>Pick Model and Region</h3>
+              <h3 className={`text-base sm:text-xl font-light sm:font-medium text-white mb-2`}>Pick Model and Region</h3>
               <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-3 sm:mb-4`}>
               Pick AI model and region to generate insights that help business grow
               </p>

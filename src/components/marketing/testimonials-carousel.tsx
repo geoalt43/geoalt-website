@@ -145,7 +145,7 @@ export function TestimonialsCarousel() {
           </motion.div>
           <motion.h2
             variants={headerVariants}
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal text-white pb-4 sm:pb-6 lg:pb-8 px-2 sm:px-0"
+            className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal text-white pb-4 sm:pb-6 lg:pb-8 px-2 sm:px-0"
           >
             See what industry leaders say<br className="hidden sm:block" />
             <motion.span
