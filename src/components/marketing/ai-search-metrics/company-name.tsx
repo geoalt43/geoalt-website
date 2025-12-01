@@ -7,7 +7,7 @@ interface CompanyNameProps {
 }
 
 const sizeClasses = {
-  sm: { icon: 65 },
+  sm: { icon: 20 },
   md: { icon: 32 },
   lg: { icon: 70 },
 }
@@ -19,7 +19,7 @@ export function CompanyName({ name, size = 'md', showIcon = true }: CompanyNameP
     if (!showIcon) return null
     const iconProps = {
       size: sizeClass.icon,
-      className: 'flex-shrink-0',
+      className: 'flex-shrink-0 w-12 h-12 sm:w-7 sm:h-7 md:w-8 md:h-8',
     }
     switch (name) {
       case 'Asana':

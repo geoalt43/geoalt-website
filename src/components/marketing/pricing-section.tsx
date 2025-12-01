@@ -399,7 +399,7 @@ export function PricingSection() {
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
           className="text-center mb-6 sm:mb-8"
         >
-          <h2 className="text-lg sm:text-3xl lg:text-4xl font-light sm:font-normal text-white pb-12 sm:pb-16 lg:pb-24 px-2 sm:px-0">Pricing</h2>
+          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal text-white pb-4 sm:pb-16 lg:pb-24 px-2 sm:px-0">Pricing</h2>
         </motion.div>
 
         <motion.div

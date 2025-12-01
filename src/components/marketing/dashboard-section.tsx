@@ -90,9 +90,9 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
-      className={`${CARD_BASE} p-0 min-h-[320px] sm:min-h-[330px] lg:min-h-[400px] overflow-hidden`}
+      className={`${CARD_BASE} p-2 sm:p-0 overflow-hidden relative min-h-[320px] sm:min-h-[330px] lg:min-h-[400px] max-w-[90%] sm:max-w-none mx-auto sm:mx-0`}
     >
-          <div className="relative w-full h-[320px] sm:h-[330px] lg:h-[400px] rounded-lg overflow-hidden">
+      <div className="relative w-full h-full min-h-[320px] sm:min-h-[330px] lg:min-h-[400px] rounded-lg overflow-hidden">
         <motion.div
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
@@ -103,23 +103,23 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
               transition: { duration: 0.8, ease: 'easeInOut' }
             },
           }}
-          className="absolute inset-0 flex h-full flex-col"
+          className="relative w-full h-full flex flex-col"
         >
           <motion.div 
             variants={headingVariants}
-            className="pt-4 sm:pt-6 px-4 sm:px-6 mb-3 sm:mb-4"
+            className="pt-2 sm:pt-6 px-2 sm:px-6 mb-2 sm:mb-4 flex-shrink-0"
           >
-            <h3 className={`text-lg sm:text-xl font-medium text-white mb-2`}>
+            <h3 className={`text-base sm:text-xl font-light sm:font-medium text-white mb-1 sm:mb-2`}>
               Analyze AI visibility scores
             </h3>
-            <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-3 sm:mb-4`}>
+            <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-2 sm:mb-4`}>
               Track how often your brand appears in AI-generated answers, monitor visibility trends.
             </p>
           </motion.div>
 
-          <div className="flex-1" />
+          <div className="flex-1 min-h-0" />
 
-          <div className="w-full overflow-hidden flex items-end">
+          <div className="w-full overflow-hidden flex items-end flex-shrink-0">
             <div className="w-full">
               <Image
                 src={slide.image}

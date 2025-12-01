@@ -26,7 +26,7 @@ export function InsightCard({
   return (
     <div
       onClick={onClick}
-      className={`rounded-lg p-2.5 sm:p-3.5 text-white/80 cursor-pointer transition-colors duration-300 min-h-[140px] sm:min-h-[160px] md:min-h-[180px] flex flex-col overflow-hidden relative group ${
+      className={`rounded-lg p-2 ${isActive ? 'pb-3 sm:pb-3.5' : 'sm:p-3.5'} text-white/80 cursor-pointer transition-colors duration-300 ${isActive ? 'min-h-0 sm:min-h-[160px]' : 'min-h-[140px] sm:min-h-[160px]'} md:min-h-[180px] flex flex-col overflow-hidden relative group ${
         isActive ? 'border-l-2 border-white' : type === 'position' || type === 'sentiment' ? 'border-l-2 border-white/5' : 'border-l-2 border-transparent'
       }`}
     >
@@ -40,16 +40,16 @@ export function InsightCard({
         {!isActive ? (
         <p className="text-[11px] sm:text-sm md:text-base text-white/60 leading-relaxed overflow-hidden line-clamp-2 sm:line-clamp-none">{description}</p>
       ) : (
-        <div className={`flex-1 ${type === 'sentiment' ? 'space-y-1 sm:space-y-1.5 lg:space-y-2' : 'space-y-2 sm:space-y-3 lg:space-y-4'}`}>
+        <div className="mt-1 pb-2 sm:pb-0 sm:mt-0 sm:flex-1 space-y-0 sm:space-y-2 lg:space-y-3">
           {type === 'sentiment' && data && (
             <>
               {(data as SentimentData[]).map((item, index) => (
-                <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index === 0 ? 'mt-1 sm:mt-2' : ''}`}>
+                <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0' : ''}`}>
                   <div className="flex-shrink-0 min-w-0">
                     <CompanyName name={item.companyName} size="sm" />
                   </div>
                   <span
-                    className={`text-xs sm:text-sm font-semibold flex-shrink-0 ${
+                    className={`text-[10px] sm:text-xs md:text-sm font-semibold flex-shrink-0 ${
                       item.score >= 0 ? 'text-green-400' : 'text-red-400'
                     }`}
                   >
@@ -62,11 +62,11 @@ export function InsightCard({
           {type === 'position' && data && (
             <>
               {(data as PositionData[]).map((item, index) => (
-                <div key={item.rank} className={`flex items-center justify-between gap-2 ${index === 0 ? 'mt-1 sm:mt-2' : ''}`}>
+                <div key={item.rank} className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0' : ''}`}>
                   <div className="flex-shrink-0 min-w-0">
                     <CompanyName name={item.companyName} size="sm" />
                   </div>
-                  <span className="text-white/50 text-xs font-normal flex-shrink-0">#{item.rank}</span>
+                  <span className="text-white/50 text-[10px] sm:text-xs md:text-sm font-normal flex-shrink-0">#{item.rank}</span>
                 </div>
               ))}
             </>
@@ -74,18 +74,18 @@ export function InsightCard({
           {type === 'visibility' && data && (
             <>
               {(data as VisibilityData[]).map((item, index) => (
-                <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index === 0 ? 'mt-1 sm:mt-2' : ''}`}>
+                <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0' : ''}`}>
                   <div className="flex-shrink-0 min-w-0">
                     <CompanyName name={item.companyName} size="sm" />
                   </div>
-                  <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
-                    <div className="w-12 sm:w-14 lg:w-16 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                  <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+                    <div className="w-10 sm:w-14 lg:w-16 h-1 sm:h-1.5 bg-white/10 rounded-full overflow-hidden">
                       <div
                         style={{ width: `${item.percentage}%` }}
                         className="h-full bg-green-400 rounded-full"
                       />
                     </div>
-                    <span className="text-white/70 text-xs w-8 sm:w-10 text-right">{item.percentage}%</span>
+                    <span className="text-white/70 text-[10px] sm:text-xs w-7 sm:w-10 text-right">{item.percentage}%</span>
                   </div>
                 </div>
               ))}

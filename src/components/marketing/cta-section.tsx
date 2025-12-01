@@ -31,7 +31,7 @@ export function CTASection() {
       >
         <div className="bg-[#0a0a0a] rounded-lg p-4 sm:p-5 lg:p-7 flex flex-col lg:flex-row items-center lg:items-center gap-6 lg:gap-0">
           {/* Left Section - Text Content */}
-          <div className="flex-1 lg:pr-8 w-full lg:w-auto text-center lg:text-left mb-4 sm:mb-6 lg:mb-0">
+          <div className="w-full max-w-[320px] sm:flex-1 sm:max-w-none lg:pr-8 lg:w-auto text-center lg:text-left mb-4 sm:mb-6 lg:mb-0 mx-auto sm:mx-0">
             <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal text-white mb-3 sm:mb-4 leading-tight tracking-wide px-2 sm:px-0">
               <span className="pb-2 inline-block">
                 Start Growing Your
@@ -41,19 +41,21 @@ export function CTASection() {
                 AI Visibility Today
               </span>
             </h2>
-            <p className="text-base sm:text-lg text-[#9b9b9b] px-4 sm:px-0 text-center lg:text-left mb-4 sm:mb-6 lg:mb-8">
-              GE<Image src="/ai-icons/openai.webp" alt="" width={18} height={18} className="mx-0.5 sm:w-5 sm:h-5 inline-block align-middle" />Alt helps you lead in AI search and scale your brand faster.
+            <p className="text-sm sm:text-lg text-[#9b9b9b] px-4 sm:px-0 text-center lg:text-left mb-4 sm:mb-6 lg:mb-8">
+              <span className="block sm:inline">GeoAlt helps you lead in AI search</span>
+              <span className="block sm:inline">and scale your brand faster.</span>
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-stretch sm:items-center">
+            {/* Buttons - Hidden on mobile, shown on larger screens */}
+            <div className="hidden sm:flex flex-row gap-2 sm:gap-4 justify-center lg:justify-start items-center">
               <a
                 href="https://forms.gle/wLMpHeTqQogumFMK8"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white text-black px-5 sm:px-6 py-2 sm:py-3 rounded-full text-[11px] sm:text-base font-semibold whitespace-nowrap hover:bg-[#a0a0a0] transition-all duration-200 ease-in-out inline-block text-center w-full max-w-[120px] mx-auto sm:w-auto sm:max-w-none sm:min-w-[140px] sm:mx-0"
+                className="bg-white text-black px-4 sm:px-6 py-2 sm:py-3 rounded-full text-[11px] sm:text-base font-semibold whitespace-nowrap hover:bg-[#a0a0a0] transition-all duration-200 ease-in-out inline-block text-center flex-shrink-0 sm:min-w-[140px]"
               >
                 Start Free Trial
               </a>
-              <div className="w-full sm:w-auto">
+              <div className="flex-shrink-0">
                 <DemoCTA 
                   text="Contact Us" 
                   variant="outline" 
@@ -64,21 +66,42 @@ export function CTASection() {
             </div>
           </div>
           
-          {/* Right Section - AI Platform Rotator */}
-          <div className="flex-shrink-0 w-full sm:w-auto sm:min-w-[240px] md:min-w-[280px] lg:w-[380px] h-[180px] sm:h-[215px] md:h-[245px] lg:h-[300px] flex items-center justify-center lg:justify-end relative overflow-hidden">
-            <div className="relative w-full h-full max-w-full">
-              <div className="relative w-full h-full">
-                {/* Card Container */}
-                <div 
-                  className="relative w-full h-full bg-[#0a0a0a] rounded-lg pt-2 pb-2 pl-3 sm:pl-4 md:pl-6 lg:pl-10 pr-2 sm:pr-4 lg:pr-0 overflow-hidden flex items-center justify-center"
-                  style={{
-                    backdropFilter: 'blur(10px)',
-                  }}
-                >
-                  <div className="scale-[0.75] sm:scale-[0.9] md:scale-[1.0] lg:scale-[1.1] xl:scale-[1.2] origin-center overflow-hidden w-full h-full flex items-center justify-center" style={{ height: '100%', width: '100%' }}>
-                    <AIPlatformRotator variant="muted" size="default" />
+          {/* Right Section - AI Platform Rotator with Buttons on Mobile */}
+          <div className="flex-shrink-0 w-full sm:w-auto sm:min-w-[240px] md:min-w-[280px] lg:w-[380px] flex flex-col items-center gap-4 lg:gap-0">
+            <div className="h-[180px] sm:h-[215px] md:h-[245px] lg:h-[300px] w-full flex items-center justify-center lg:justify-end relative overflow-hidden">
+              <div className="relative w-full h-full max-w-full">
+                <div className="relative w-full h-full">
+                  {/* Card Container */}
+                  <div 
+                    className="relative w-full h-full bg-[#0a0a0a] rounded-lg pt-2 pb-2 pl-3 sm:pl-4 md:pl-6 lg:pl-10 pr-2 sm:pr-4 lg:pr-0 overflow-hidden flex items-center justify-center"
+                    style={{
+                      backdropFilter: 'blur(10px)',
+                    }}
+                  >
+                    <div className="scale-100 sm:scale-[0.9] md:scale-[1.0] lg:scale-[1.1] xl:scale-[1.2] origin-center overflow-hidden w-full h-full flex items-center justify-center" style={{ height: '100%', width: '100%' }}>
+                      <AIPlatformRotator variant="muted" size="default" />
+                    </div>
                   </div>
                 </div>
+              </div>
+            </div>
+            {/* Buttons - Shown on mobile only, below AI Platform Rotator */}
+            <div className="flex sm:hidden flex-row gap-2 justify-center items-center w-full">
+              <a
+                href="https://forms.gle/wLMpHeTqQogumFMK8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white text-black px-4 py-2 rounded-full text-[11px] font-semibold whitespace-nowrap hover:bg-[#a0a0a0] transition-all duration-200 ease-in-out inline-block text-center flex-shrink-0"
+              >
+                Start Free Trial
+              </a>
+              <div className="flex-shrink-0">
+                <DemoCTA 
+                  text="Contact Us" 
+                  variant="outline" 
+                  size="md"
+                  showModal={false}
+                />
               </div>
             </div>
           </div>

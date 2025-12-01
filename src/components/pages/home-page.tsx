@@ -180,7 +180,7 @@ function EmpoweringBusinessesSection() {
                   <path d="M16 3.13a4 4 0 010 7.75"/>
                 </svg>
               </motion.div>
-              <h3 className="text-lg sm:text-xl lg:text-[1.3rem] font-semibold text-white">Marketing Teams</h3>
+              <h3 className="text-base sm:text-xl font-light sm:font-medium text-white">Marketing Teams</h3>
             </div>
             <p className="text-sm sm:text-lg text-[#9b9b9b] relative z-10 pt-2">
               Track campaign performance and optimize content for AI-driven search across priority markets.  
@@ -210,7 +210,7 @@ function EmpoweringBusinessesSection() {
                   <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/>
                 </svg>
               </motion.div>
-              <h3 className="text-lg sm:text-xl lg:text-[1.3rem] font-semibold text-white">Content Creators</h3>
+              <h3 className="text-base sm:text-xl font-light sm:font-medium text-white">Content Creators</h3>
             </div>
             <p className="text-sm sm:text-lg text-[#9b9b9b] relative z-10 pt-2">
               Create content that resonates with AI algorithms and drives qualified, organic pipeline.  
@@ -240,7 +240,7 @@ function EmpoweringBusinessesSection() {
                   <path d="M21 21l-4.3-4.3"/>
                 </svg>
               </motion.div>
-              <h3 className="text-lg sm:text-xl lg:text-[1.3rem] font-semibold text-white">SEO Specialists</h3>
+              <h3 className="text-base sm:text-xl font-light sm:font-medium text-white">SEO Specialists</h3>
             </div>
             <p className="text-sm sm:text-lg text-[#9b9b9b] relative z-10 pt-2">
               Adapt SEO strategies to the evolving landscape of AI-powered search for complex B2B journeys.  

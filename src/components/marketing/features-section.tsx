@@ -111,7 +111,7 @@ function FeaturesSection() {
           <motion.div
             variants={cardVariants}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300"
+            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0"
             style={{
               boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
             }}
@@ -131,7 +131,7 @@ function FeaturesSection() {
                   <path d="M7 13l3-3 4 4 5-6" />
                 </svg>
               </motion.div>
-              <h3 className="text-base sm:text-lg lg:text-[1.3rem] font-semibold text-white">Accurate Data</h3>
+              <h3 className="text-base sm:text-xl font-light sm:font-medium text-white">Accurate Data</h3>
             </div>
             <p className="text-xs sm:text-sm md:text-base text-[#9b9b9b] relative z-10 pt-1.5 sm:pt-2">
               Our advanced algorithms ensure precise tracking of your AI visibility.
@@ -144,7 +144,7 @@ function FeaturesSection() {
           <motion.div
             variants={cardVariants}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300"
+            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0"
             style={{
               boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
             }}
@@ -164,7 +164,7 @@ function FeaturesSection() {
                   <path d="M12 6v6l4 2" />
                 </svg>
               </motion.div>
-              <h3 className="text-base sm:text-lg lg:text-[1.3rem] font-semibold text-white">Real-time Insights</h3>
+              <h3 className="text-base sm:text-xl font-light sm:font-medium text-white">Real-time Insights</h3>
             </div>
             <p className="text-xs sm:text-sm md:text-base text-[#9b9b9b] relative z-10 pt-1.5 sm:pt-2">
               Stay ahead of the curve with up‑to‑the‑minute data on your performance.
@@ -177,7 +177,7 @@ function FeaturesSection() {
           <motion.div
             variants={cardVariants}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300"
+            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0"
             style={{
               boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
             }}
@@ -196,7 +196,7 @@ function FeaturesSection() {
                   <path d="M12 22s8-4 8-10V7l-8-4-8 4v5c0 6 8 10 8 10z" />
                 </svg>
               </motion.div>
-              <h3 className="text-base sm:text-lg lg:text-[1.3rem] font-semibold text-white">Secure & Reliable</h3>
+              <h3 className="text-base sm:text-xl font-light sm:font-medium text-white">Secure & Reliable</h3>
             </div>
             <p className="text-xs sm:text-sm md:text-base text-[#9b9b9b] relative z-10 pt-1.5 sm:pt-2">
               We prioritize the security and confidentiality of your data.
