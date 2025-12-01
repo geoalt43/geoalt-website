@@ -79,22 +79,28 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
             <div className="absolute top-0 bottom-0 right-0 w-20 bg-gradient-to-l from-[#050505] to-transparent"></div>
           </div>
           <div className="relative z-10">
-      {/* Question with AI Platform Icons */}
+      {/* Question */}
       <div className="mb-6 sm:mb-8">
-        <div className="flex items-start sm:items-center gap-1 sm:gap-2 mb-3 sm:mb-3 flex-wrap">
-          {/* Icons Container */}
-          <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
-            {/* Gemini Icon - Left */}
+        <div className="mb-3 sm:mb-3">
+          {/* Question Text */}
+          <p className="text-white/70 text-sm sm:text-base lg:text-lg xl:text-xl min-w-0 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl leading-tight sm:leading-normal ml-[80px] sm:ml-[280px] md:ml-[360px] lg:ml-[440px] pb-2 sm:pb-3">{data.question}</p>
+        </div>
+        
+        {/* Intro Text with AI Platform Icons on the left */}
+        <div className="flex items-start gap-2 sm:gap-3 ml-1 sm:ml-16 md:ml-24 lg:ml-32">
+          {/* Icons Container - Left side of intro text */}
+          <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0 pt-1">
+            {/* Gemini Icon */}
             <div className="flex items-center justify-center">
               <Image src="/ai-icons/gemini-color.webp" alt="Gemini" width={16} height={16} className="sm:w-5 sm:h-5 opacity-50" />
             </div>
             
-            {/* Perplexity Icon - Middle */}
+            {/* Perplexity Icon */}
             <div className="flex items-center justify-center">
               <Image src="/ai-icons/perplexity.webp" alt="Perplexity" width={16} height={16} className="sm:w-5 sm:h-5 opacity-50" />
             </div>
             
-            {/* ChatGPT Icon - Right (Larger with bubble) */}
+            {/* ChatGPT Icon (Larger with bubble) */}
             <div className="flex items-center justify-center px-1.5 sm:px-2 lg:px-3 py-0.5 sm:py-1 lg:py-2 relative">
               <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 rounded-full blur-sm"></div>
               <div className="relative z-10">
@@ -103,14 +109,8 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
             </div>
           </div>
           
-          {/* Question Text */}
-          <p className="text-white/70 text-base sm:text-lg lg:text-xl xl:text-2xl ml-0 sm:ml-1 lg:ml-2 min-w-0 flex-1 leading-tight sm:leading-normal">{data.question}</p>
-        </div>
-        
-        {/* Intro Text - Aligned with question, same width */}
-        <div className="flex items-start gap-2 sm:gap-3">
-          <div className="flex-shrink-0 w-[60px] sm:w-[80px] lg:w-[100px] xl:w-[124px]"></div>
-          <p className="text-white/70 leading-relaxed text-xs sm:text-sm min-w-0 max-w-2xl whitespace-pre-line">{data.intro}</p>
+          {/* Intro Text */}
+          <p className="text-white/70 leading-relaxed text-xs sm:text-sm min-w-0 max-w-2xl whitespace-pre-line flex-1">{data.intro}</p>
         </div>
       </div>
 

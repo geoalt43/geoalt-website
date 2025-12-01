@@ -26,7 +26,7 @@ export function InsightCard({
   return (
     <div
       onClick={onClick}
-      className={`rounded-lg p-2.5 sm:p-3.5 text-white/80 cursor-pointer transition-colors duration-300 h-auto flex flex-col overflow-hidden relative group ${
+      className={`rounded-lg p-2.5 sm:p-3.5 text-white/80 cursor-pointer transition-colors duration-300 min-h-[140px] sm:min-h-[160px] md:min-h-[180px] flex flex-col overflow-hidden relative group ${
         isActive ? 'border-l-2 border-white' : type === 'position' || type === 'sentiment' ? 'border-l-2 border-white/5' : 'border-l-2 border-transparent'
       }`}
     >
