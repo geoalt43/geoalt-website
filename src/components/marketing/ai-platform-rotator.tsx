@@ -127,7 +127,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
       )}
       
       {/* Responsive width container to prevent shaking */}
-      <div className="w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[320px] xl:max-w-[380px] h-10 sm:h-12 md:h-14 lg:h-16 xl:h-20 flex items-center justify-center">
+      <div className="w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[400px] xl:max-w-[480px] h-10 sm:h-12 md:h-14 lg:h-20 xl:h-24 flex items-center justify-center">
         <div
           className={`flex items-center justify-center space-x-1 sm:space-x-1.5 md:space-x-2 lg:space-x-3 transition-all duration-500 text-shadow-muted ${
             isBlurring ? 'opacity-20' : 'opacity-100'
@@ -146,19 +146,19 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
               {/* Icon: ~10% larger than text height */}
               <Image
                 src={current.icon}
-                alt=""
+                alt={`${current.name || 'AI platform'} icon`}
                 width={iconWidth}
                 height={iconHeight}
-                className="object-contain w-auto h-[21px] sm:h-[23px] md:h-[25px] lg:h-[28px] xl:h-[30px]"
+                className="object-contain w-auto h-[21px] sm:h-[23px] md:h-[25px] lg:h-[36px] xl:h-[42px]"
                 style={{ maxWidth: '100%' }}
               />
               {current.hasText && current.text && (
                 <Image
                   src={current.text}
-                  alt=""
+                  alt={`${current.name || 'AI platform'} logo text`}
                   width={textWidth}
                   height={textHeight}
-                  className="object-contain w-auto h-[19px] sm:h-[21px] md:h-[23px] lg:h-[25px] xl:h-[28px]"
+                  className="object-contain w-auto h-[19px] sm:h-[21px] md:h-[23px] lg:h-[32px] xl:h-[38px]"
                   style={{ maxWidth: '100%' }}
                 />
               )}
@@ -166,7 +166,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
           )}
           {current.name && !current.hasText && (
             <span
-              className={`${size === 'large' ? 'text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl' : 'text-sm sm:text-base md:text-lg lg:text-xl'} font-medium leading-tight tracking-tight whitespace-nowrap ${
+              className={`${size === 'large' ? 'text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl' : 'text-sm sm:text-base md:text-lg lg:text-2xl xl:text-3xl'} font-medium leading-tight tracking-tight whitespace-nowrap ${
                 variant === 'muted' ? 'text-[#2b2b2b]' : 'text-white'
               }`}
             >

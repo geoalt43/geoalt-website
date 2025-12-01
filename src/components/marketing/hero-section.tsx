@@ -158,7 +158,7 @@ export function HeroSection() {
                 alt="GEOAlt logo"
                 width={100}
                 height={24}
-                className="h-[1em] sm:h-[1.05em] w-auto align-middle"
+                className="h-[0.75em] sm:h-[0.8em] w-auto align-middle"
                 priority
               />
               <span>helps your business stand out across AI platforms</span>

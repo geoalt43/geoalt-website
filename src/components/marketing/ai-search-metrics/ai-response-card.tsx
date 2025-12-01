@@ -91,20 +91,20 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
           {/* Icons Container - Left side of intro text */}
           <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0 pt-1">
             {/* Gemini Icon */}
-            <div className="flex items-center justify-center">
-              <Image src="/ai-icons/gemini-color.webp" alt="Gemini" width={16} height={16} className="sm:w-5 sm:h-5 opacity-50" />
+            <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5">
+              <Image src="/ai-icons/gemini-color.webp" alt="Gemini" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 opacity-50" unoptimized />
             </div>
             
             {/* Perplexity Icon */}
-            <div className="flex items-center justify-center">
-              <Image src="/ai-icons/perplexity.webp" alt="Perplexity" width={16} height={16} className="sm:w-5 sm:h-5 opacity-50" />
+            <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5">
+              <Image src="/ai-icons/perplexity.webp" alt="Perplexity" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 opacity-50" unoptimized />
             </div>
             
             {/* ChatGPT Icon (Larger with bubble) */}
             <div className="flex items-center justify-center px-1.5 sm:px-2 lg:px-3 py-0.5 sm:py-1 lg:py-2 relative">
               <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 rounded-full blur-sm"></div>
               <div className="relative z-10">
-                <Image src="/ai-icons/openai.webp" alt="OpenAI" width={18} height={18} className="sm:w-6 sm:h-6 lg:w-7 lg:h-7" />
+                <Image src="/ai-icons/openai.webp" alt="OpenAI" width={18} height={18} className="sm:w-6 sm:h-6 lg:w-7 lg:h-7" unoptimized />
               </div>
             </div>
           </div>

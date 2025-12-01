@@ -149,10 +149,10 @@ export function DashboardSection() {
           animate={isInView ? 'visible' : 'hidden'}
           className="mb-8 sm:mb-12 text-center"
         >
-          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal text-white mb-3 sm:mb-4 px-2 sm:px-0">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal text-white mb-3 sm:mb-4 px-2 sm:px-0">
           Unlock AI-driven search insights that bring <br className="hidden sm:block" /> 
           <span className="pt-2 sm:pt-3 pb-4 sm:pb-6 lg:pb-9 block">customers to you — GeoAlt</span>
-          </h1>
+          </h2>
         </motion.div>
 
         {/* First Row */}
@@ -201,15 +201,9 @@ export function DashboardSection() {
               </p>
             </motion.div>
             
-            <motion.div 
-              variants={imageVariants}
-              className={`absolute -bottom-[60px] sm:-bottom-[80px] lg:-bottom-[140px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[100%] pointer-events-none`}
-            >
-              <motion.div
-                initial={{ 
-                  transform: 'rotateX(15deg) rotateY(0deg) translateZ(50px)',
-                }}
-                className={`${TRANSFORM_STYLE_3D} ${BOX_SHADOW_3D} w-full h-full`}
+            <div className={` -bottom-[50px] sm:-bottom-[80px] lg:-bottom-[140px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[100%] pointer-events-none`}>
+              <div 
+                className={`${TRANSFORM_STYLE_3D} transition-transform duration-300 ease-out ${BOX_SHADOW_3D} w-full h-full [transform:rotateX(15deg)_rotateY(0deg)_translateZ(20px)_translateY(40px)] sm:[transform:rotateX(18deg)_rotateY(0deg)_translateZ(30px)_translateY(60px)] lg:[transform:rotateX(20deg)_rotateY(0deg)_translateZ(40px)_translateY(90px)]`}
               >
                 <Image
                   src="/images/Competitor_.png"
@@ -218,8 +212,8 @@ export function DashboardSection() {
                   height={600}
                   className="w-full h-full object-cover rounded-lg object-[center_bottom]"
                 />
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
 

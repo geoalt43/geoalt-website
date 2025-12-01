@@ -182,7 +182,7 @@ function EmpoweringBusinessesSection() {
               </motion.div>
               <h3 className="text-lg sm:text-xl lg:text-[1.3rem] font-semibold text-white">Marketing Teams</h3>
             </div>
-            <p className="text-sm sm:text-base text-[#9b9b9b] relative z-10 pt-2">
+            <p className="text-sm sm:text-lg text-[#9b9b9b] relative z-10 pt-2">
               Track campaign performance and optimize content for AI-driven search across priority markets.  
               Identify which campaigns influence AI-generated answers and reallocate spend toward the highest-impact initiatives.  
             </p>
@@ -212,7 +212,7 @@ function EmpoweringBusinessesSection() {
               </motion.div>
               <h3 className="text-lg sm:text-xl lg:text-[1.3rem] font-semibold text-white">Content Creators</h3>
             </div>
-            <p className="text-sm sm:text-base text-[#9b9b9b] relative z-10 pt-2">
+            <p className="text-sm sm:text-lg text-[#9b9b9b] relative z-10 pt-2">
               Create content that resonates with AI algorithms and drives qualified, organic pipeline.  
               See which formats, topics, and angles AI prefers so every article, playbook, or landing page is built for discovery.  
             </p>
@@ -242,7 +242,7 @@ function EmpoweringBusinessesSection() {
               </motion.div>
               <h3 className="text-lg sm:text-xl lg:text-[1.3rem] font-semibold text-white">SEO Specialists</h3>
             </div>
-            <p className="text-sm sm:text-base text-[#9b9b9b] relative z-10 pt-2">
+            <p className="text-sm sm:text-lg text-[#9b9b9b] relative z-10 pt-2">
               Adapt SEO strategies to the evolving landscape of AI-powered search for complex B2B journeys.  
               Understand which entities, sources, and citations AI trusts most in your category and markets.  
             </p>

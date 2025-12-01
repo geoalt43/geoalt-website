@@ -12,6 +12,9 @@ export default function robots(): MetadataRoute.Robots {
           '/api/*',
           '/_next/*',
           '/static/*',
+          '/admin/*',
+          '/dashboard/*',
+          '*.json',
         ],
       },
       {
@@ -19,6 +22,17 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: [
           '/api/*',
+          '/admin/*',
+          '/dashboard/*',
+        ],
+      },
+      {
+        userAgent: 'Bingbot',
+        allow: '/',
+        disallow: [
+          '/api/*',
+          '/admin/*',
+          '/dashboard/*',
         ],
       },
     ],

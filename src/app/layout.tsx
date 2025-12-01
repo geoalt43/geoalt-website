@@ -1,9 +1,10 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Providers } from '@/components/providers'
 import { ErrorBoundary } from '@/components/ui/error-boundary'
 import { Analytics } from '@vercel/analytics/react'
+import { OrganizationStructuredData, WebSiteStructuredData, SoftwareApplicationStructuredData } from '@/components/seo/structured-data'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -12,8 +13,23 @@ export const metadata: Metadata = {
     default: 'GEOAlt - Get Your Brand Recommended by AI',
     template: '%s | GEOAlt',
   },
-  description: 'GEOAlt helps your business stand out across AI platforms. Turning AI visibility into traffic.',
-  keywords: ['AI', 'SEO', 'GEO', 'Generative Engine Optimization', 'ChatGPT', 'Perplexity', 'Claude'],
+  description: 'GEOAlt helps your business stand out across AI platforms. Optimize your brand visibility on ChatGPT, Perplexity, Claude, and other AI platforms. Turn AI mentions into traffic and customers with Generative Engine Optimization (GEO).',
+  keywords: [
+    'AI visibility',
+    'Generative Engine Optimization',
+    'GEO',
+    'AI SEO',
+    'ChatGPT optimization',
+    'Perplexity optimization',
+    'Claude optimization',
+    'AI search optimization',
+    'brand visibility',
+    'AI recommendations',
+    'AI marketing',
+    'AI search engine optimization',
+    'GEOAlt',
+    'AI platform optimization',
+  ],
   authors: [{ name: 'GEOAlt Team' }],
   creator: 'GEOAlt',
   publisher: 'GEOAlt',
@@ -63,6 +79,22 @@ export const metadata: Metadata = {
   verification: {
     google: 'your-google-verification-code',
   },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/logos/GeoAlt_Logo.png',
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'GEOAlt',
+  },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#000000',
 }
 
 export default function RootLayout({
@@ -73,6 +105,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark overflow-x-hidden" suppressHydrationWarning style={{ colorScheme: 'dark' }}>
       <body className={`${inter.className} overflow-x-hidden`}>
+        <OrganizationStructuredData />
+        <WebSiteStructuredData />
+        <SoftwareApplicationStructuredData />
         <ErrorBoundary>
           <Providers>
             {children}

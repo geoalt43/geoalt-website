@@ -1,6 +1,6 @@
 'use client'
 
-import { RefObject, useRef } from 'react'
+import { RefObject, useRef, useEffect } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 
 interface FAQSectionProps {
@@ -162,6 +162,36 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
 
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
+
+  // Add FAQ structured data for SEO
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.id = 'faq-structured-data'
+    
+    const structuredData = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(faq => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    }
+    
+    script.text = JSON.stringify(structuredData)
+    document.head.appendChild(script)
+    
+    return () => {
+      const existingScript = document.getElementById('faq-structured-data')
+      if (existingScript) {
+        document.head.removeChild(existingScript)
+      }
+    }
+  }, [faqs])
 
   return (
     <section className="py-12 sm:py-16 lg:py-24">
