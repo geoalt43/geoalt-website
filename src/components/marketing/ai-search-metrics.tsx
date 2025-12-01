@@ -10,9 +10,6 @@ import {
   containerVariants,
   headerVariants,
   subtitleVariants,
-  cardContainerVariants,
-  insightCardVariants,
-  aiResponseCardVariants,
 } from './ai-search-metrics/variants'
 import type { InsightType } from './ai-search-metrics/types'
 
@@ -72,12 +69,7 @@ export function AISearchMetricsSection() {
           </motion.p>
         </motion.div>
 
-        <motion.div
-          variants={cardContainerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="mt-12 max-w-7xl mx-auto relative"
-        >
+        <div className="mt-12 max-w-7xl mx-auto relative">
           <div className="grid gap-4 md:grid-cols-3 relative overflow-hidden">
             {/* Top horizontal line - aligned with card top */}
             <div className="absolute top-0 left-0 right-0 h-px bg-white/10 z-20"></div>
@@ -90,7 +82,6 @@ export function AISearchMetricsSection() {
                 icon={card.icon}
                 isActive={activeType === card.id}
                 onClick={() => handleCardClick(card.id)}
-                variants={insightCardVariants}
                 type={card.id}
                 data={
                   activeType && currentData
@@ -107,15 +98,13 @@ export function AISearchMetricsSection() {
             {/* Bottom horizontal line - aligned with card bottom */}
             <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10 z-20"></div>
           </div>
-        </motion.div>
+        </div>
 
         <div className="mt-8">
           {currentData && (
             <AIResponseCard
               data={currentData}
               activeType={activeType || 'sentiment'}
-              variants={aiResponseCardVariants}
-              isInView={isInView}
             />
           )}
         </div>

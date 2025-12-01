@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { InsightType, SentimentData, PositionData, VisibilityData } from './types'
 import { CompanyName } from './company-name'
 
@@ -10,7 +9,6 @@ interface InsightCardProps {
   icon: React.ComponentType
   isActive: boolean
   onClick: () => void
-  variants: any
   type: InsightType
   data?: SentimentData[] | PositionData[] | VisibilityData[]
 }
@@ -21,19 +19,11 @@ export function InsightCard({
   icon: IconComponent,
   isActive,
   onClick,
-  variants,
   type,
   data,
 }: InsightCardProps) {
   return (
-    <motion.div
-      variants={variants}
-      whileHover={{
-        transition: {
-          duration: 0.3,
-          ease: 'easeOut',
-        },
-      }}
+    <div
       onClick={onClick}
       className={`rounded-lg p-4  text-white/80 cursor-pointer transition-all duration-300 h-[160px] flex flex-col overflow-hidden relative group ${
         isActive ? 'border-l-2 border-white' : type === 'position' || type === 'sentiment' ? 'border-l border-white/20' : ''
@@ -88,10 +78,8 @@ export function InsightCard({
                     <CompanyName name={item.companyName} size="sm" />
                     <div className="flex items-center gap-2">
                       <div className="w-16 h-1.5 bg-white/10 rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${item.percentage}%` }}
-                          transition={{ duration: 0.5, delay: 0.2 }}
+                        <div
+                          style={{ width: `${item.percentage}%` }}
                           className="h-full bg-green-400 rounded-full"
                         />
                       </div>
@@ -105,7 +93,7 @@ export function InsightCard({
         </div>
       )}
       </div>
-    </motion.div>
+    </div>
   )
 }
 

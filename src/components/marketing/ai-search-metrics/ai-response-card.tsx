@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import OpenAI from '@lobehub/icons/es/OpenAI'
 import Perplexity from '@lobehub/icons/es/Perplexity'
 import { Gemini } from '@lobehub/icons'
@@ -10,8 +9,6 @@ import { CompanyName } from './company-name'
 interface AIResponseCardProps {
   data: AIResponseData
   activeType: string
-  variants?: any
-  isInView?: boolean
 }
 
 function highlightText(
@@ -64,12 +61,9 @@ function highlightText(
   return parts.length > 0 ? parts : [{ text: highlightedText.replace(/__[A-Z_/]+__/g, ''), type: 'normal' as const }]
 }
 
-export function AIResponseCard({ data, activeType, variants, isInView }: AIResponseCardProps) {
+export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
   return (
-        <motion.div
-          variants={variants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
+        <div
           className="bg-[#050505] border border-transparent rounded-2xl shadow-2xl shadow-black/40 p-8 mt-4 relative overflow-hidden"
         >
           {/* Animated Background Gradient */}
@@ -129,11 +123,8 @@ export function AIResponseCard({ data, activeType, variants, isInView }: AIRespo
           )
 
           return (
-            <motion.div
+            <div
               key={`${company.name}-${activeType}`}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.3 }}
               className="rounded-xl px-6 pt-5 pb-5 text-white/90 relative mb-0"
             >
                 <div className="flex items-center gap-3 mb-3">
@@ -161,13 +152,13 @@ export function AIResponseCard({ data, activeType, variants, isInView }: AIRespo
                     return <span key={i}>{part.text}</span>
                   })}
                 </p>
-              </motion.div>
+              </div>
             )
           })}
 
       </div>
           </div>
-        </motion.div>
+        </div>
   )
 }
 
