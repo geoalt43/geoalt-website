@@ -17,27 +17,27 @@ import { PricingSection } from '@/components/marketing/pricing-section'
 const trustedBrands = [
   { 
     label: 'dabble', 
-    logo: '/images/logos/dabble.png',
+    logo: '/logos/dabble.png',
     className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' 
   },
   { 
     label: 'Modo', 
-    logo: '/images/logos/modo.png',
+    logo: '/logos/modo.png',
     className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' 
   },
   { 
     label: 'SuperPen', 
-    logo: '/images/logos/Superpen.png',
+    logo: '/logos/Superpen.png',
     className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' 
   },
   { 
     label: 'NimbleDesk', 
-    logo: '/images/logos/nimbledesk.png',
+    logo: '/logos/nimbledesk.png',
     className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' 
   },
   { 
     label: 'TreeTech Digi', 
-    logo: '/images/logos/treetechdigi.png',
+    logo: '/logos/treetechdigi.png',
     className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' 
   },
 ]

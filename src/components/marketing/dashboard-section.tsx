@@ -178,7 +178,7 @@ export function DashboardSection() {
 
   return (
     <section ref={sectionRef} className="py-24 bg-black">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <motion.div 
           variants={headingVariants}
           initial="hidden"
@@ -199,7 +199,7 @@ export function DashboardSection() {
           className="grid grid-cols-1 lg:grid-cols-12 gap-2 mb-6"
         >
           {/* Container 1: Set up Prompts (reduced width - 6 columns) */}
-          <div className="lg:col-span-6 bg-black/60 border border-[#111111] rounded-2xl p-6 overflow-visible ">
+          <div className="lg:col-span-6 bg-black/60 border border-[#111111] rounded-2xl p-6 overflow-hidden relative">
             <div className="mb-2">
               <h3 className="text-xl font-medium text-white mb-1">Customize Your Prompts</h3>
               <p className="text-sm text-gray-400 mb-1.5 pb-4">
@@ -207,8 +207,8 @@ export function DashboardSection() {
               </p>
             </div>
             
-            <div className="w-full rounded-lg overflow-visible perspective-3d-container">
-              <div className="prompts-image-3d">
+            <div className="w-full rounded-lg overflow-hidden perspective-3d-container -mx-6 -mb-6">
+              <div className="prompts-image-3d relative z-10 translate-x-2 px-6 pb-6">
                 <Image
                   src="/images/Prompts_studio_.jpg"
                   alt="Prompt Studio interface"

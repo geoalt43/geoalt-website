@@ -129,13 +129,10 @@ const FeatureText = ({ text }: { text: string }) => {
             className="opacity-80 hover:opacity-100 transition-opacity"
             unoptimized
           />
-          {/* 3+ text with blur effect only on the left side */}
-          <div className="relative flex items-center ml-0.5">
-            <div className="absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-white/35 to-transparent backdrop-blur-[6px] rounded-l mt-1 " />
-            <span className="relative text-xs font-semibold text-white/90 z-10 pl-1">
-              3+
-            </span>
-          </div>
+          {/* 3+ text */}
+          <span className="text-xs font-semibold text-white/90 ml-0.5">
+            3+
+          </span>
         </div>
       </span>
     )
