@@ -91,47 +91,6 @@ const textVariants = {
   },
 }
 
-const buttonContainerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 1.0,
-    },
-  },
-}
-
-const buttonVariants = {
-  hidden: {
-    opacity: 0,
-    scale: 0.8,
-    y: 20,
-  },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: {
-      type: 'spring' as const,
-      stiffness: 120,
-      damping: 12,
-      mass: 0.5,
-    },
-  },
-  hover: {
-    scale: 1.05,
-    transition: {
-      type: 'spring' as const,
-      stiffness: 400,
-      damping: 17,
-    },
-  },
-  tap: {
-    scale: 0.95,
-  },
-}
-
 // Split text into words for animation
 const splitText = (text: string) => text.split(' ')
 

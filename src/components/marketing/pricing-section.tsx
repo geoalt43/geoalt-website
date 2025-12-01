@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useRef } from 'react'
+import { useRef } from 'react'
+import type { ReactElement } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 
@@ -178,7 +179,7 @@ const FeatureText = ({ text }: { text: string }) => {
   // Default handling for other features
   // Split text by platform names (case-insensitive)
   const platformRegex = /(ChatGPT|Gemini|Perplexity)/gi
-  const parts: (string | React.ReactElement)[] = []
+  const parts: (string | ReactElement)[] = []
   let lastIndex = 0
   let match
   

@@ -214,9 +214,6 @@ export function CTASection() {
                     backdropFilter: 'blur(10px)',
                   }}
                 >
-                  {/* Gradient masks for fade effect at top and bottom */}
-                  <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-transparent z-10 pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-transparent to-transparent z-10 pointer-events-none" />
                   
                   <div className="scale-[1.2] sm:scale-[1.5] lg:scale-[2] origin-left overflow-hidden" style={{ height: '100%', width: '100%' }}>
                     <VerticalFlowingRotator />

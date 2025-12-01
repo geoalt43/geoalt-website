@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { InsightType, SentimentData, PositionData, VisibilityData } from './types'
 import { CompanyName } from './company-name'
 
@@ -39,62 +40,56 @@ export function InsightCard({
         {!isActive ? (
         <p className="text-xs sm:text-sm text-white/60 leading-relaxed overflow-hidden line-clamp-2 sm:line-clamp-none">{description}</p>
       ) : (
-        <div className="space-y-2 sm:space-y-3 lg:space-y-4 flex-1">
+        <div className={`flex-1 ${type === 'sentiment' ? 'space-y-1 sm:space-y-1.5 lg:space-y-2' : 'space-y-2 sm:space-y-3 lg:space-y-4'}`}>
           {type === 'sentiment' && data && (
-            <div>
-              <div className="space-y-2 sm:space-y-3 lg:space-y-4">
-                {(data as SentimentData[]).map((item, index) => (
-                  <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index === 0 ? 'mt-1 sm:mt-2' : ''}`}>
-                    <div className="flex-shrink-0 min-w-0">
-                      <CompanyName name={item.companyName} size="sm" />
-                    </div>
-                    <span
-                      className={`text-xs sm:text-sm font-semibold flex-shrink-0 ${
-                        item.score >= 0 ? 'text-green-400' : 'text-red-400'
-                      }`}
-                    >
-                      {item.score > 0 ? '+' : ''}{item.score}
-                    </span>
+            <>
+              {(data as SentimentData[]).map((item, index) => (
+                <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index === 0 ? 'mt-1 sm:mt-2' : ''}`}>
+                  <div className="flex-shrink-0 min-w-0">
+                    <CompanyName name={item.companyName} size="sm" />
                   </div>
-                ))}
-              </div>
-            </div>
+                  <span
+                    className={`text-xs sm:text-sm font-semibold flex-shrink-0 ${
+                      item.score >= 0 ? 'text-green-400' : 'text-red-400'
+                    }`}
+                  >
+                    {item.score > 0 ? '+' : ''}{item.score}
+                  </span>
+                </div>
+              ))}
+            </>
           )}
           {type === 'position' && data && (
-            <div>
-              <div className="space-y-2 sm:space-y-3 lg:space-y-4">
-                {(data as PositionData[]).map((item, index) => (
-                  <div key={item.rank} className={`flex items-center justify-between gap-2 ${index === 0 ? 'mt-1 sm:mt-2' : ''}`}>
-                    <div className="flex-shrink-0 min-w-0">
-                      <CompanyName name={item.companyName} size="sm" />
-                    </div>
-                    <span className="text-white/50 text-xs font-normal flex-shrink-0">#{item.rank}</span>
+            <>
+              {(data as PositionData[]).map((item, index) => (
+                <div key={item.rank} className={`flex items-center justify-between gap-2 ${index === 0 ? 'mt-1 sm:mt-2' : ''}`}>
+                  <div className="flex-shrink-0 min-w-0">
+                    <CompanyName name={item.companyName} size="sm" />
                   </div>
-                ))}
-              </div>
-            </div>
+                  <span className="text-white/50 text-xs font-normal flex-shrink-0">#{item.rank}</span>
+                </div>
+              ))}
+            </>
           )}
           {type === 'visibility' && data && (
-            <div>
-              <div className="space-y-2 sm:space-y-3 lg:space-y-4">
-                {(data as VisibilityData[]).map((item, index) => (
-                  <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index === 0 ? 'mt-1 sm:mt-2' : ''}`}>
-                    <div className="flex-shrink-0 min-w-0">
-                      <CompanyName name={item.companyName} size="sm" />
-                    </div>
-                    <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
-                      <div className="w-12 sm:w-14 lg:w-16 h-1.5 bg-white/10 rounded-full overflow-hidden">
-                        <div
-                          style={{ width: `${item.percentage}%` }}
-                          className="h-full bg-green-400 rounded-full"
-                        />
-                      </div>
-                      <span className="text-white/70 text-xs w-8 sm:w-10 text-right">{item.percentage}%</span>
-                    </div>
+            <>
+              {(data as VisibilityData[]).map((item, index) => (
+                <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index === 0 ? 'mt-1 sm:mt-2' : ''}`}>
+                  <div className="flex-shrink-0 min-w-0">
+                    <CompanyName name={item.companyName} size="sm" />
                   </div>
-                ))}
-              </div>
-            </div>
+                  <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+                    <div className="w-12 sm:w-14 lg:w-16 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                      <div
+                        style={{ width: `${item.percentage}%` }}
+                        className="h-full bg-green-400 rounded-full"
+                      />
+                    </div>
+                    <span className="text-white/70 text-xs w-8 sm:w-10 text-right">{item.percentage}%</span>
+                  </div>
+                </div>
+              ))}
+            </>
           )}
         </div>
       )}

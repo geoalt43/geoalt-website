@@ -5,7 +5,6 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 const visibilitySlides = [
-  { id: 0, image: '/images/visibility_score_.jpeg' },
   { id: 1, image: '/images/ShareOfVoice_.jpeg' },
 ]
 
@@ -86,7 +85,7 @@ const headingVariants = {
 }
 
 function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
-  const secondSlide = visibilitySlides[1] // Only show the second slide (ShareOfVoice)
+  const slide = visibilitySlides[0] // Only show the ShareOfVoice slide
 
   return (
     <motion.div 
@@ -125,7 +124,7 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
           <div className="w-full overflow-hidden flex items-end">
             <div className="w-full">
               <Image
-                src={secondSlide.image}
+                src={slide.image}
                 alt="AI visibility interface"
                 width={800}
                 height={1900}

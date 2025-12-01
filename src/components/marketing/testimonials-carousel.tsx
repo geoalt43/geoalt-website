@@ -171,14 +171,6 @@ export function TestimonialsCarousel() {
               style={{
                 boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
               }}
-              whileHover={{ 
-                y: -3,
-                boxShadow: '0 12px 25px rgba(0, 0, 0, 0.25), 0 0 0 0.5px rgba(255, 255, 255, 0.04)',
-                transition: { 
-                  duration: 0.4, 
-                  ease: [0.25, 0.1, 0.25, 1]
-                }
-              }}
             >
               {/* Background glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />

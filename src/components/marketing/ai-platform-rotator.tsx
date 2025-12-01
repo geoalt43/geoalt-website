@@ -168,14 +168,6 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
           )}
         </div>
       </div>
-      
-      {/* CSS for grid animation */}
-      <style jsx>{`
-        @keyframes gridMove {
-          0% { transform: translate(0, 0); }
-          100% { transform: translate(50px, 50px); }
-        }
-      `}</style>
     </div>
   )
 }

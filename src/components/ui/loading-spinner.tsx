@@ -53,44 +53,4 @@ const LoadingSpinner = React.forwardRef<HTMLDivElement, LoadingSpinnerProps>(
 
 LoadingSpinner.displayName = 'LoadingSpinner'
 
-export const LoadingPage = React.forwardRef<HTMLDivElement, Omit<LoadingSpinnerProps, 'size' | 'text'>>(
-  ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn('min-h-screen bg-page-background flex items-center justify-center', className)}
-      {...props}
-    >
-      <LoadingSpinner size="lg" text="Loading..." />
-    </div>
-  )
-)
-
-export const LoadingCard = React.forwardRef<HTMLDivElement, Omit<LoadingSpinnerProps, 'size' | 'text'>>(
-  ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn('bg-surface border border-border rounded-lg p-6 flex items-center justify-center', className)}
-      {...props}
-    >
-      <LoadingSpinner size="md" text="Loading..." />
-    </div>
-  )
-)
-
-export const LoadingButton = React.forwardRef<HTMLDivElement, Omit<LoadingSpinnerProps, 'size' | 'text'>>(
-  ({ className, ...props }, ref) => (
-    <LoadingSpinner
-      ref={ref}
-      size="sm"
-      text="Loading..."
-      className={cn('inline-flex', className)}
-      {...props}
-    />
-  )
-)
-
-LoadingPage.displayName = 'LoadingPage'
-LoadingCard.displayName = 'LoadingCard'
-LoadingButton.displayName = 'LoadingButton'
-
 export { LoadingSpinner }

@@ -165,39 +165,4 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, {
   }
 }
 
-export const useErrorHandler = () => {
-  const [error, setError] = React.useState<Error | null>(null)
-
-  const resetError = React.useCallback(() => {
-    setError(null)
-  }, [])
-
-  const throwError = React.useCallback((error: Error) => {
-    setError(error)
-  }, [])
-
-  React.useEffect(() => {
-    if (error) {
-      throw error
-    }
-  }, [error])
-
-  return { throwError, resetError }
-}
-
-export const withErrorBoundary = <P extends object>(
-  Component: React.ComponentType<P>,
-  errorBoundaryProps?: Omit<ErrorBoundaryProps, 'children'>
-) => {
-  const WrappedComponent = (props: P) => (
-    <ErrorBoundary {...errorBoundaryProps}>
-      <Component {...props} />
-    </ErrorBoundary>
-  )
-
-  WrappedComponent.displayName = `withErrorBoundary(${Component.displayName || Component.name})`
-  
-  return WrappedComponent
-}
-
 export { ErrorBoundary as default }
