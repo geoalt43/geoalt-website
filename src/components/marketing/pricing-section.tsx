@@ -354,7 +354,7 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
           ))}
         </div>
         {plan.price === 'Custom' ? (
-          <button className="mt-auto w-[50%] max-w-xs sm:w-full mx-auto sm:mx-0 rounded-full border border-white/40 text-white py-2.5 sm:py-3 text-xs sm:text-sm font-semibold">
+          <button className="mt-auto w-full max-w-[120px] sm:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full border border-white/40 text-white py-2 sm:py-3 text-[11px] sm:text-sm font-semibold whitespace-nowrap">
             Contact Us
           </button>
         ) : (
@@ -362,7 +362,7 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
             href="https://forms.gle/wLMpHeTqQogumFMK8"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-auto w-[50%] max-w-xs sm:w-full mx-auto sm:mx-0 rounded-full bg-white text-black py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-center block hover:bg-[#d4d4d4] transition-all duration-200 ease-in-out"
+            className="mt-auto w-full max-w-[120px] sm:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full bg-white text-black py-2 sm:py-3 text-[11px] sm:text-sm font-semibold text-center whitespace-nowrap block hover:bg-[#d4d4d4] transition-all duration-200 ease-in-out"
           >
             Start free trial
           </a>

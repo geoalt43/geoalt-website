@@ -45,11 +45,11 @@ export function CTASection() {
               GE<Image src="/ai-icons/openai.webp" alt="" width={18} height={18} className="mx-0.5 sm:w-5 sm:h-5 inline-block align-middle" />Alt helps you lead in AI search and scale your brand faster.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-stretch sm:items-center">
-              <a 
-                href="https://forms.google.com/YOUR_FORM_ID_HERE" 
-                target="_blank" 
+              <a
+                href="https://forms.google.com/YOUR_FORM_ID_HERE"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold hover:bg-[#a0a0a0] transition-all duration-200 ease-in-out inline-block text-center w-full sm:w-auto min-w-[140px] sm:min-w-auto"
+                className="bg-white text-black px-5 sm:px-6 py-2 sm:py-3 rounded-full text-[11px] sm:text-base font-semibold whitespace-nowrap hover:bg-[#a0a0a0] transition-all duration-200 ease-in-out inline-block text-center w-full max-w-[120px] mx-auto sm:w-auto sm:max-w-none sm:min-w-[140px] sm:mx-0"
               >
                 Start Free Trial
               </a>
@@ -65,7 +65,7 @@ export function CTASection() {
           </div>
           
           {/* Right Section - AI Platform Rotator */}
-          <div className="flex-shrink-0 w-full sm:w-auto sm:min-w-[280px] md:min-w-[320px] lg:w-[450px] h-[200px] sm:h-[250px] md:h-[280px] lg:h-[350px] flex items-center justify-center lg:justify-end relative overflow-hidden">
+          <div className="flex-shrink-0 w-full sm:w-auto sm:min-w-[260px] md:min-w-[300px] lg:w-[400px] h-[190px] sm:h-[230px] md:h-[260px] lg:h-[320px] flex items-center justify-center lg:justify-end relative overflow-hidden">
             <div className="relative w-full h-full max-w-full">
               <div className="relative w-full h-full">
                 {/* Card Container */}
@@ -75,7 +75,7 @@ export function CTASection() {
                     backdropFilter: 'blur(10px)',
                   }}
                 >
-                  <div className="scale-[0.85] sm:scale-[1.1] md:scale-[1.3] lg:scale-[1.7] xl:scale-[2] origin-center  overflow-hidden w-full h-full flex items-center justify-center" style={{ height: '100%', width: '100%' }}>
+                  <div className="scale-[0.75] sm:scale-[0.9] md:scale-[1.0] lg:scale-[1.1] xl:scale-[1.2] origin-center overflow-hidden w-full h-full flex items-center justify-center" style={{ height: '100%', width: '100%' }}>
                     <AIPlatformRotator variant="muted" size="default" />
                   </div>
                 </div>
