@@ -26,25 +26,25 @@ export function InsightCard({
   return (
     <div
       onClick={onClick}
-      className={`rounded-lg p-2 ${isActive ? 'pb-3 sm:pb-3.5' : 'sm:p-3.5'} text-white/80 cursor-pointer transition-colors duration-300 ${isActive ? 'min-h-0 sm:min-h-[160px]' : 'min-h-[140px] sm:min-h-[160px]'} md:min-h-[180px] flex flex-col overflow-hidden relative group ${
-        isActive ? 'border-l-2 border-white' : type === 'position' || type === 'sentiment' ? 'border-l-2 border-white/5' : 'border-l-2 border-transparent'
+      className={`rounded-lg p-2 sm:p-3.5 text-white/80 cursor-pointer transition-colors duration-300 h-[130px] sm:h-[150px] md:h-[170px] flex flex-col overflow-hidden relative group border-l-2 ${
+        isActive ? 'border-white' : type === 'position' || type === 'sentiment' ? 'border-white/5' : 'border-transparent'
       }`}
     >
       <div className="relative z-10 flex flex-col h-full">
-        <div className="flex items-center gap-2 sm:gap-3 mb-1.5 sm:mb-2">
-        <div>
+        <div className="flex items-center gap-2 sm:gap-3 mb-1.5 sm:mb-2 min-h-[24px] sm:min-h-[28px]">
+        <div className="flex-shrink-0">
           <IconComponent />
         </div>
-        <h3 className="text-xs sm:text-sm lg:text-base font-normal text-white">{title}</h3>
+        <h3 className="text-xs sm:text-sm lg:text-base font-normal text-white flex-shrink-0">{title}</h3>
         </div>
         {!isActive ? (
         <p className="text-[11px] sm:text-sm md:text-base text-white/60 leading-relaxed overflow-hidden line-clamp-2 sm:line-clamp-none">{description}</p>
       ) : (
-        <div className="mt-1 pb-2 sm:pb-0 sm:mt-0 sm:flex-1 space-y-0 sm:space-y-2 lg:space-y-3">
+        <div className="-mt-2 pb-2 sm:pb-0 sm:-mt-2 sm:flex-1 space-y-0 sm:space-y-2 lg:space-y-0">
           {type === 'sentiment' && data && (
             <>
               {(data as SentimentData[]).map((item, index) => (
-                <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0' : ''}`}>
+                <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0 lg:-mt-4' : ''} ${index === (data as SentimentData[]).length - 1 ? 'pb-2' : ''}`}>
                   <div className="flex-shrink-0 min-w-0">
                     <CompanyName name={item.companyName} size="sm" />
                   </div>
@@ -62,7 +62,7 @@ export function InsightCard({
           {type === 'position' && data && (
             <>
               {(data as PositionData[]).map((item, index) => (
-                <div key={item.rank} className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0' : ''}`}>
+                <div key={item.rank} className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0 lg:-mt-4' : ''} ${index === (data as PositionData[]).length - 1 ? 'pb-2' : ''}`}>
                   <div className="flex-shrink-0 min-w-0">
                     <CompanyName name={item.companyName} size="sm" />
                   </div>
@@ -74,7 +74,7 @@ export function InsightCard({
           {type === 'visibility' && data && (
             <>
               {(data as VisibilityData[]).map((item, index) => (
-                <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0' : ''}`}>
+                <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0 lg:-mt-4' : ''} ${index === (data as VisibilityData[]).length - 1 ? 'pb-2' : ''}`}>
                   <div className="flex-shrink-0 min-w-0">
                     <CompanyName name={item.companyName} size="sm" />
                   </div>
