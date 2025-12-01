@@ -64,7 +64,7 @@ function highlightText(
 export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
   return (
         <div
-          className="bg-[#050505] border border-transparent rounded-2xl shadow-2xl shadow-black/40 p-8 mt-4 relative overflow-hidden"
+          className="bg-[#050505] border border-transparent rounded-lg shadow-2xl shadow-black/40 p-8 mt-4 relative overflow-hidden"
         >
           {/* Animated Background Gradient */}
           <div className="absolute inset-0 opacity-30">

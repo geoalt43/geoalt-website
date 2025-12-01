@@ -159,18 +159,13 @@ function EmpoweringBusinessesSection() {
           {/* Marketing Teams Card */}
           <motion.div
             variants={cardVariants}
-            className="bg-black/60 border border-[#3a3a3a] rounded-2xl p-12 relative overflow-hidden group"
-            whileHover={{ 
-              y: -8,
-              borderColor: 'rgba(255, 255, 255, 0.2)',
-              transition: { duration: 0.3, ease: 'easeOut' }
-            }}
+            className="bg-black/60 border border-white/10 rounded-lg p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300"
             style={{
               boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
             }}
           >
-            {/* Hover glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-white/0 group-hover:from-white/5 group-hover:to-transparent transition-opacity duration-300 pointer-events-none" />
+            {/* Background glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
             
             <div className="flex items-center gap-4 mb-4 relative z-10">
               <motion.div
@@ -196,18 +191,13 @@ function EmpoweringBusinessesSection() {
           {/* Content Creators Card */}
           <motion.div
             variants={cardVariants}
-            className="bg-black/60 border border-[#3a3a3a] rounded-2xl p-12 relative overflow-hidden group"
-            whileHover={{ 
-              y: -8,
-              borderColor: 'rgba(255, 255, 255, 0.2)',
-              transition: { duration: 0.3, ease: 'easeOut' }
-            }}
+            className="bg-black/60 border border-white/10 rounded-lg p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300"
             style={{
               boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
             }}
           >
-            {/* Hover glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-white/0 group-hover:from-white/5 group-hover:to-transparent transition-opacity duration-300 pointer-events-none" />
+            {/* Background glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
             
             <div className="flex items-center gap-4 mb-4 relative z-10">
               <motion.div
@@ -231,18 +221,13 @@ function EmpoweringBusinessesSection() {
           {/* SEO Specialists Card */}
           <motion.div
             variants={cardVariants}
-            className="bg-black/60 border border-[#3a3a3a] rounded-2xl p-12 relative overflow-hidden group"
-            whileHover={{ 
-              y: -8,
-              borderColor: 'rgba(255, 255, 255, 0.2)',
-              transition: { duration: 0.3, ease: 'easeOut' }
-            }}
+            className="bg-black/60 border border-white/10 rounded-lg p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300"
             style={{
               boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
             }}
           >
-            {/* Hover glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-white/0 group-hover:from-white/5 group-hover:to-transparent transition-opacity duration-300 pointer-events-none" />
+            {/* Background glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
             
             <div className="flex items-center gap-4 mb-4 relative z-10">
               <motion.div

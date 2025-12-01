@@ -137,9 +137,9 @@ export function CTASection() {
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
-        className="max-w-7xl mx-auto px-6 pt-3 pb-3 lg:px-8 border border-[#1d1d1d] rounded-2xl bg-[#0d0d0d]"
+        className="max-w-7xl mx-auto px-6 pt-3 pb-3 lg:px-8 border border-[#1d1d1d] rounded-lg bg-[#0a0a0a]"
       >
-        <div className="bg-[#0d0d0d] rounded-2xl p-8 flex items-center">
+        <div className="bg-[#0a0a0a] rounded-lg p-8 flex items-center">
           {/* Left Section - Text Content */}
           <div className="flex-1 pr-8">
             <h2 className="text-4xl font-normal text-white mb-4 leading-tight tracking-wide">
@@ -178,7 +178,7 @@ export function CTASection() {
               <div className="relative w-full h-full">
                 {/* Card Container */}
                 <div 
-                  className="relative w-full h-full bg-[#0d0d0d] rounded-2xl pt-1 pb-1 pl-10 pr-0 mt-10 overflow-hidden"
+                  className="relative w-full h-full bg-[#0a0a0a] rounded-lg pt-1 pb-1 pl-10 pr-0 mt-10 overflow-hidden"
                   style={{
                     backdropFilter: 'blur(10px)',
                   }}

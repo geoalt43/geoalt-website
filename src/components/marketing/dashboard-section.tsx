@@ -13,7 +13,7 @@ const visibilitySlides = [
 const BOX_SHADOW_3D = '[box-shadow:0_20px_60px_rgba(0,0,0,0.4),0_10px_30px_rgba(0,0,0,0.3)]'
 const PERSPECTIVE_3D = '[perspective:1500px] [transform-style:preserve-3d]'
 const TRANSFORM_STYLE_3D = '[transform-style:preserve-3d]'
-const CARD_BASE = 'lg:col-span-6 bg-black/60 border border-[#111111] rounded-2xl'
+const CARD_BASE = 'lg:col-span-6 bg-black/60 border border-white/10 rounded-lg hover:border-white/25 transition-colors duration-300'
 const HEADING_TEXT = 'text-xl font-medium text-white'
 const DESCRIPTION_TEXT = 'text-sm text-gray-400'
 
@@ -95,7 +95,7 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
       animate={isInView ? 'visible' : 'hidden'}
       className={`${CARD_BASE} p-0 min-h-[400px] overflow-hidden`}
     >
-      <div className="relative w-full h-[400px] rounded-2xl overflow-hidden">
+      <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
         <motion.div
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
@@ -196,7 +196,7 @@ export function DashboardSection() {
           >
             <motion.div 
               variants={headingVariants}
-              className="mb-2 relative z-10"
+              className="mb-2"
             >
               <h3 className={`${HEADING_TEXT} mb-2`}>Add Business Competitors</h3>
               <p className={`${DESCRIPTION_TEXT} mb-4`}>
@@ -240,7 +240,7 @@ export function DashboardSection() {
           >
             <motion.div 
               variants={headingVariants}
-              className="mb-2 relative z-10"
+              className="mb-2"
             >
               <h3 className={`${HEADING_TEXT} mb-2`}>Pick Model and Region</h3>
               <p className={`${DESCRIPTION_TEXT} mb-4`}>

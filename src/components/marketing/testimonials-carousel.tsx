@@ -167,7 +167,7 @@ export function TestimonialsCarousel() {
             <motion.div
               key={`${testimonial.name}-${index}`}
               variants={cardVariants}
-              className="bg-[#0f0f0f] border border-[#363636] rounded-xl p-6 md:p-8 shadow-lg h-full flex flex-col relative overflow-hidden group"
+              className="bg-[#0f0f0f] border border-white/10 rounded-lg p-6 md:p-8 shadow-lg h-full flex flex-col relative overflow-hidden group hover:border-white/25 transition-colors duration-300"
               whileHover={{ 
                 y: -3,
                 boxShadow: '0 12px 25px rgba(0, 0, 0, 0.25), 0 0 0 0.5px rgba(255, 255, 255, 0.04)',
@@ -177,13 +177,8 @@ export function TestimonialsCarousel() {
                 }
               }}
             >
-              {/* Glow/Reflection Effect */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-transparent rounded-xl pointer-events-none"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-              />
+              {/* Background glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
               
               <div className="relative flex-1 flex flex-col">
                 <div className="relative mb-3">

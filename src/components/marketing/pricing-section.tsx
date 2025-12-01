@@ -300,7 +300,7 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
       className={`
         ${plan.bgColor} ${plan.borderColor} border flex flex-col text-white
         relative overflow-hidden group transition-colors duration-300
-        hover:border-white/30
+        hover:border-white/25
         ${plan.isRecommended ? 'shadow-2xl shadow-white/10 -mt-[4rem] border-b-0' : 'rounded-lg'}
       `}
       style={{
