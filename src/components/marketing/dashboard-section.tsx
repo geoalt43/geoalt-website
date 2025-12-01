@@ -147,14 +147,27 @@ export function DashboardSection() {
           variants={headingVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="pt-[5%] mb-8 sm:mb-12 text-center"
+          className="pt-[5%] mb-8 sm:mb-12 text-left sm:text-center"
         >
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal text-white mb-3 sm:mb-4 px-2 sm:px-0">
-            <span className="pt-[5%]">Unlock AI-driven search insights that bring</span>
-            <br />
-            <span className="pb-4 sm:pb-6 lg:pb-9 block">
-              customers to you — GeoAlt
-            </span>
+            {/* Mobile version */}
+            <div className="block sm:hidden">
+              <span className="pt-[5%] block text-center">Unlock AI-driven search insights</span>
+              <span className="block text-center">
+                that bring customers to you
+              </span>
+              <span className="block text-center pb-4 sm:pb-6 lg:pb-9">
+                — GeoAlt
+              </span>
+            </div>
+            {/* Desktop version */}
+            <div className="hidden sm:block">
+              <span className="pt-[5%]">Unlock AI-driven search insights that bring</span>
+              <br />
+              <span className="pb-4 sm:pb-6 lg:pb-9 block">
+                customers to you — GeoAlt
+              </span>
+            </div>
           </h2>
         </motion.div>
 
