@@ -1,9 +1,9 @@
 'use client'
 
-import { DemoCTA } from './demo-cta'
+import { DemoCTA } from '@/components/shared/demo-cta'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { AIPlatformRotator } from './ai-platform-rotator'
+import { AIPlatformRotator } from '@/components/shared/ai-platform-rotator'
 import { colorClasses } from '@/constants/colors'
 
 const containerVariantsSimple = {
@@ -73,7 +73,7 @@ export function CTASection() {
                 <div className="relative w-full h-full">
                   {/* Card Container */}
                   <div 
-                    className={`relative w-full h-full ${colorClasses.surfaceDarker} rounded-lg pt-2 pb-2 pl-3 sm:pl-4 md:pl-6 lg:pl-10 pr-2 sm:pr-4 lg:pr-0 overflow-hidden flex items-center justify-center backdrop-blur-10`}
+                    className={`relative w-full h-full ${colorClasses.surfaceDarker} rounded-lg pt-2 pb-2 pl-3 sm:pl-4 md:pl-6 lg:pl-10 pr-2 sm:pr-4 lg:pr-0 overflow-hidden flex items-center justify-center backdrop-blur-[10px]`}
                   >
                     <div className="scale-100 sm:scale-[0.9] md:scale-[1.0] lg:scale-[1.1] xl:scale-[1.2] origin-center overflow-hidden w-full h-full flex items-center justify-center">
                       <AIPlatformRotator variant="muted" size="default" />

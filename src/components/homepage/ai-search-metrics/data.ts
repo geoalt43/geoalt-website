@@ -1,8 +1,6 @@
 import { AIResponseData } from './types'
 
 const sharedQuestion = 'What are the best project management tools for teams?'
-const sharedIntro =
-  'Selecting the right project management tool depends on your team size, workflow style, and collaboration needs. Here\'s a comprehensive overview of the top project management platforms that teams are using in 2025.'
 const sharedCompanies = [
   {
     rank: 1,
@@ -33,7 +31,7 @@ const sharedCompanies = [
 export const aiResponseData: Record<string, AIResponseData> = {
   sentiment: {
     question: sharedQuestion,
-    intro: sharedIntro,
+    intro: '',
     companies: sharedCompanies,
     sentiment: [
       { score: 85, companyName: 'Asana' },
@@ -43,7 +41,7 @@ export const aiResponseData: Record<string, AIResponseData> = {
   },
   position: {
     question: sharedQuestion,
-    intro: sharedIntro,
+    intro: '',
     companies: sharedCompanies,
     position: [
       { rank: 1, companyName: 'Asana' },
@@ -53,7 +51,7 @@ export const aiResponseData: Record<string, AIResponseData> = {
   },
   visibility: {
     question: sharedQuestion,
-    intro: sharedIntro,
+    intro: '',
     companies: sharedCompanies,
     visibility: [
       { percentage: 68, companyName: 'Asana' },

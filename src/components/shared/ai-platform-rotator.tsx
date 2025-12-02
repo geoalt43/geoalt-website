@@ -149,8 +149,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
                 alt={`${current.name || 'AI platform'} icon`}
                 width={iconWidth}
                 height={iconHeight}
-                className="object-contain w-auto h-[30px] sm:h-[30px] md:h-[30px] lg:h-[36px] xl:h-[42px]"
-                style={{ maxWidth: '100%' }}
+                className="object-contain w-auto h-[30px] sm:h-[30px] md:h-[30px] lg:h-[36px] xl:h-[42px] max-w-full"
               />
               {current.hasText && current.text && (
                 <Image
@@ -158,8 +157,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
                   alt={`${current.name || 'AI platform'} logo text`}
                   width={textWidth}
                   height={textHeight}
-                  className="object-contain w-auto h-[30px] sm:h-[30px] md:h-[30px] lg:h-[36px] xl:h-[42px]"
-                  style={{ maxWidth: '100%' }}
+                  className="object-contain w-auto h-[30px] sm:h-[30px] md:h-[30px] lg:h-[36px] xl:h-[42px] max-w-full"
                 />
               )}
             </div>
@@ -178,5 +176,4 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
     </div>
   )
 }
-
 

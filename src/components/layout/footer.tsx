@@ -32,7 +32,7 @@ export function Footer() {
                 priority
               />
             </div>
-            <p className="mt-3 sm:mt-4 text-xs sm:text-sm" style={{color: '#898989'}}>
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-[#898989]">
               Turn AI mentions into traffic and customers. Dominate AI search and grow your brand faster.
             </p>
             <div className="mt-4 sm:mt-6 flex space-x-3 sm:space-x-4">
@@ -151,11 +151,11 @@ export function Footer() {
       </div>
 
       {/* Bottom */}
-      <div className="w-full h-px mt-8 sm:mt-12" style={{backgroundColor: '#272324'}}></div>
+      <div className="w-full h-px mt-8 sm:mt-12 bg-[#272324]"></div>
       <div className="pt-6 sm:pt-8 pb-12 sm:pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-between items-center gap-4 sm:gap-6">
-            <p className="text-xs sm:text-sm flex items-center gap-2" style={{color: '#6d6264'}}>
+            <p className="text-xs sm:text-sm flex items-center gap-2 text-[#6d6264]">
               <span>&copy; 2025</span>
               <span className="inline-flex items-center leading-none">
                 <Image

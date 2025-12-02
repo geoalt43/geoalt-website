@@ -56,7 +56,7 @@ function FeaturesSection() {
           <motion.div
             variants={cardVariantsSmooth}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 card-shadow"
+            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -86,7 +86,7 @@ function FeaturesSection() {
           <motion.div
             variants={cardVariantsSmooth}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 card-shadow"
+            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -116,7 +116,7 @@ function FeaturesSection() {
           <motion.div
             variants={cardVariantsSmooth}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 card-shadow"
+            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />

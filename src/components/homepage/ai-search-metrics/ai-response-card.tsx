@@ -82,35 +82,32 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
       {/* Question */}
       <div className="mb-6 sm:mb-8">
         <div className="mb-3 sm:mb-3">
-          {/* Question Text */}
-          <p className="text-white/70 text-sm sm:text-base lg:text-lg xl:text-xl min-w-0 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl leading-tight sm:leading-normal ml-[80px] sm:ml-[280px] md:ml-[360px] lg:ml-[440px] pb-2 sm:pb-3">{data.question}</p>
-        </div>
-        
-        {/* Intro Text with AI Platform Icons on the left */}
-        <div className="flex items-start gap-2 sm:gap-3 ml-1 sm:ml-16 md:ml-24 lg:ml-32">
-          {/* Icons Container - Left side of intro text */}
-          <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0 pt-1">
-            {/* Gemini Icon */}
-            <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5">
-              <Image src="/ai-icons/gemini-color.webp" alt="Gemini" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 opacity-50" unoptimized />
-            </div>
-            
-            {/* Perplexity Icon */}
-            <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5">
-              <Image src="/ai-icons/perplexity.webp" alt="Perplexity" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 opacity-50" unoptimized />
-            </div>
-            
-            {/* ChatGPT Icon (Larger with bubble) */}
-            <div className="flex items-center justify-center px-1.5 sm:px-2 lg:px-3 py-0.5 sm:py-1 lg:py-2 relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 rounded-full blur-sm"></div>
-              <div className="relative z-10">
-                <Image src="/ai-icons/openai.webp" alt="OpenAI" width={18} height={18} className="sm:w-6 sm:h-6 lg:w-7 lg:h-7" unoptimized />
+          {/* Question Text with AI Platform Icons */}
+          <div className="flex flex-row items-center gap-2 sm:gap-3 ml-[80px] sm:ml-[280px] md:ml-[360px] lg:ml-[440px] pb-2 sm:pb-3">
+            {/* Icons Container - Left side of question text */}
+            <div className="flex flex-row items-center gap-1 sm:gap-2 flex-shrink-0 -mt-0.5 sm:-mt-1">
+              {/* Gemini Icon */}
+              <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5">
+                <Image src="/ai-icons/gemini-color.webp" alt="Gemini" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 opacity-50" unoptimized />
+              </div>
+              
+              {/* Perplexity Icon */}
+              <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5">
+                <Image src="/ai-icons/perplexity.webp" alt="Perplexity" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 opacity-50" unoptimized />
+              </div>
+              
+              {/* ChatGPT Icon (Larger with bubble) */}
+              <div className="flex items-center justify-center px-1.5 sm:px-2 lg:px-3 py-0.5 sm:py-1 lg:py-2 relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 rounded-full blur-sm"></div>
+                <div className="relative z-10">
+                  <Image src="/ai-icons/openai.webp" alt="OpenAI" width={18} height={18} className="sm:w-6 sm:h-6 lg:w-7 lg:h-7" unoptimized />
+                </div>
               </div>
             </div>
+            
+            {/* Question Text */}
+            <span className="text-white/70 text-sm sm:text-base lg:text-lg xl:text-xl min-w-0 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl leading-tight sm:leading-normal">{data.question}</span>
           </div>
-          
-          {/* Intro Text */}
-          <p className="text-white/70 leading-relaxed text-xs sm:text-sm min-w-0 max-w-2xl whitespace-pre-line flex-1">{data.intro}</p>
         </div>
       </div>
 

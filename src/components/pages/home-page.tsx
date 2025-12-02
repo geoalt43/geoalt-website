@@ -5,42 +5,37 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { containerVariants, headerVariants, cardVariantsSmooth, iconVariantsSmooth } from '@/lib/animations/variants'
 import { colorClasses } from '@/constants/colors'
-import { HeroSection } from '@/components/marketing/hero-section'
-import { FeaturesSection } from '@/components/marketing/features-section'
-import { FAQSection } from '@/components/marketing/faq-section'
-import { CTASection } from '@/components/marketing/cta-section'
-import { TestimonialsCarousel } from '@/components/marketing/testimonials-carousel'
+import { HeroSection } from '@/components/homepage/hero-section'
+import { FeaturesSection } from '@/components/homepage/features-section'
+import { FAQSection } from '@/components/homepage/faq-section'
+import { CTASection } from '@/components/homepage/cta-section'
+import { TestimonialsCarousel } from '@/components/homepage/testimonials-carousel'
 import { Footer } from '@/components/layout/footer'
 import { Navbar } from '@/components/layout/navbar'
-import { AISearchMetricsSection } from '@/components/marketing/ai-search-metrics'
-import { DashboardSection } from '@/components/marketing/dashboard-section'
-import { PricingSection } from '@/components/marketing/pricing-section'
+import { AISearchMetricsSection } from '@/components/homepage/ai-search-metrics'
+import { DashboardSection } from '@/components/homepage/dashboard-section'
+import { PricingSection } from '@/components/homepage/pricing-section'
 
 const trustedBrands = [
   { 
     label: 'dabble', 
     logo: '/logos/dabble.png',
-    className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' 
   },
   { 
     label: 'Modo', 
     logo: '/logos/modo.png',
-    className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' 
   },
   { 
     label: 'SuperPen', 
     logo: '/logos/Superpen.png',
-    className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' 
   },
   { 
     label: 'NimbleDesk', 
     logo: '/logos/nimbledesk.png',
-    className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' 
   },
   { 
     label: 'TreeTech Digi', 
     logo: '/logos/treetechdigi.png',
-    className: 'text-[1rem] sm:text-[2.5rem] font-medium text-white' 
   },
 ]
 
@@ -92,7 +87,7 @@ function EmpoweringBusinessesSection() {
           {/* Marketing Teams Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 card-shadow"
+            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -121,7 +116,7 @@ function EmpoweringBusinessesSection() {
           {/* Content Creators Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 card-shadow"
+            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -148,7 +143,7 @@ function EmpoweringBusinessesSection() {
           {/* SEO Specialists Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 card-shadow"
+            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -336,17 +331,7 @@ export function HomePage() {
               <div className="absolute w-40 h-40 bg-white/0 rounded-full blur-3xl -bottom-16 right-6" />
             </div>
             <div className="relative flex flex-col items-center gap-4 sm:gap-6 lg:gap-10">
-              <p 
-                className="text-base sm:text-lg font-base tracking-wide -mt-6 sm:-mt-8 lg:-mt-11 trusted-by-text"
-                style={{
-                  color: 'rgba(255, 255, 255, 1)',
-                  background: 'none',
-                  backgroundImage: 'none',
-                  WebkitBackgroundClip: 'unset',
-                  backgroundClip: 'unset',
-                  WebkitTextFillColor: 'rgba(255, 255, 255, 1)',
-                } as React.CSSProperties}
-              >
+              <p className="text-base sm:text-lg font-base tracking-wide -mt-6 sm:-mt-8 lg:-mt-11 trusted-by-text">
                 Trusted by
               </p>
               <div className="w-full overflow-hidden mask-fade-horizontal">

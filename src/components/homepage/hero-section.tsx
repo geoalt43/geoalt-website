@@ -1,7 +1,7 @@
 'use client'
 
-import { AIPlatformRotator } from './ai-platform-rotator'
-import { DemoCTA } from './demo-cta'
+import { AIPlatformRotator } from '@/components/shared/ai-platform-rotator'
+import { DemoCTA } from '@/components/shared/demo-cta'
 import Image from 'next/image'
 import { motion, useInView, useAnimation } from 'framer-motion'
 import { useRef, useEffect } from 'react'
@@ -45,8 +45,7 @@ export function HeroSection() {
                 <motion.span
                   key={index}
                   variants={wordVariants}
-                  className="inline-block mr-2 sm:mr-3"
-                  style={{ transformStyle: 'preserve-3d' }}
+                  className="inline-block mr-2 sm:mr-3 [transform-style:preserve-3d]"
                 >
                   {word}
                 </motion.span>

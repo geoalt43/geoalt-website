@@ -64,24 +64,15 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
         ${plan.bgColor} ${plan.borderColor} border flex flex-col text-white
         relative overflow-hidden group transition-colors duration-300
         hover:border-white/25
-        ${plan.isRecommended ? 'shadow-2xl shadow-white/10 lg:-mt-[4rem] border-b-0' : 'rounded-lg'}
+        ${plan.isRecommended ? 'shadow-2xl shadow-white/10 lg:-mt-[4rem] border-b-0 rounded-[0.89rem_0.89rem_0.5rem_0.5rem] scale-[1.02]' : 'rounded-lg'}
       `}
-      style={{
-        borderRadius: plan.isRecommended ? '0.89rem 0.89rem 0.5rem 0.5rem' : undefined,
-        // Slight emphasis on recommended card, but avoid overly large scale on mobile
-        transform: plan.isRecommended ? 'scale(1.02)' : undefined,
-      }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       
       {plan.isRecommended && (
         <div className="bg-white/5 px-4 sm:px-6 lg:px-10 py-2.5 sm:py-3.5 text-xs sm:text-sm lg:text-base font-medium text-white text-center rounded-t-[18px] flex-shrink-0 relative overflow-hidden">
           <motion.div
-            className="absolute top-0 left-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-            style={{
-              width: '50%',
-              height: '100%',
-            }}
+            className="absolute top-0 left-0 bg-gradient-to-r from-transparent via-white/30 to-transparent w-1/2 h-full"
             animate={{
               x: ['-100%', '200%'],
             }}
