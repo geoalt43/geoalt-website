@@ -12,31 +12,33 @@ export function StructuredData({ type, data }: StructuredDataProps) {
     const script = document.createElement('script')
     script.type = 'application/ld+json'
     script.id = `structured-data-${type.toLowerCase()}`
-    
+
     const structuredData = {
       '@context': 'https://schema.org',
       '@type': type,
       ...data,
     }
-    
+
     script.text = JSON.stringify(structuredData)
     document.head.appendChild(script)
-    
+
     return () => {
-      const existingScript = document.getElementById(`structured-data-${type.toLowerCase()}`)
+      const existingScript = document.getElementById(
+        `structured-data-${type.toLowerCase()}`
+      )
       if (existingScript) {
         document.head.removeChild(existingScript)
       }
     }
   }, [type, data])
-  
+
   return null
 }
 
 // Pre-configured structured data components
 export function OrganizationStructuredData() {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://geoalt.com'
-  
+
   return (
     <StructuredData
       type="Organization"
@@ -44,7 +46,8 @@ export function OrganizationStructuredData() {
         name: 'GEOAlt',
         url: baseUrl,
         logo: `${baseUrl}/logos/GeoAlt_Logo.png`,
-        description: 'GEOAlt helps your business stand out across AI platforms. Turning AI visibility into traffic and customers.',
+        description:
+          'GEOAlt helps your business stand out across AI platforms. Turning AI visibility into traffic and customers.',
         sameAs: [
           'https://www.linkedin.com/company/geoalt',
           'https://twitter.com/geoalt',
@@ -63,14 +66,15 @@ export function OrganizationStructuredData() {
 
 export function WebSiteStructuredData() {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://geoalt.com'
-  
+
   return (
     <StructuredData
       type="WebSite"
       data={{
         name: 'GEOAlt',
         url: baseUrl,
-        description: 'Get your brand recommended by AI. GEOAlt helps businesses optimize their visibility across AI platforms like ChatGPT, Perplexity, and Claude.',
+        description:
+          'Get your brand recommended by AI. GEOAlt helps businesses optimize their visibility across AI platforms like ChatGPT, Perplexity, and Claude.',
         potentialAction: {
           '@type': 'SearchAction',
           target: {
@@ -85,8 +89,6 @@ export function WebSiteStructuredData() {
 }
 
 export function SoftwareApplicationStructuredData() {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://geoalt.com'
-  
   return (
     <StructuredData
       type="SoftwareApplication"
@@ -104,7 +106,8 @@ export function SoftwareApplicationStructuredData() {
           ratingValue: '4.8',
           ratingCount: '150',
         },
-        description: 'AI visibility optimization platform that helps businesses get recommended by AI platforms like ChatGPT, Perplexity, and Claude.',
+        description:
+          'AI visibility optimization platform that helps businesses get recommended by AI platforms like ChatGPT, Perplexity, and Claude.',
         featureList: [
           'AI Visibility Tracking',
           'Generative Engine Optimization',
@@ -116,7 +119,3 @@ export function SoftwareApplicationStructuredData() {
     />
   )
 }
-
-
-
-
