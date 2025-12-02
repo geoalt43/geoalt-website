@@ -50,7 +50,7 @@ function FeaturesSection() {
           variants={containerVariantsMedium}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 lg:gap-8 pt-3 sm:pt-4"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-8 pt-3 sm:pt-4"
         >
           {/* Accurate Data */}
           <motion.div
