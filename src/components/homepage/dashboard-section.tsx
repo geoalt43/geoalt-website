@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { containerVariants, cardVariants, imageVariants, headingVariants } from '@/lib/animations/variants'
-import { CARD_BASE, BOX_SHADOW_3D, PERSPECTIVE_3D, TRANSFORM_STYLE_3D } from '@/lib/styles/constants'
+import { CARD_BASE } from '@/lib/styles/constants'
 
 const visibilitySlides = [
   { id: 1, image: '/images/ShareOfVoice_.jpeg' },
@@ -37,25 +37,27 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
             variants={headingVariants}
             className="pt-2 sm:pt-6 md:pt-6 px-2 sm:px-6 md:px-6 mb-2 sm:mb-4 md:mb-4 flex-shrink-0"
           >
-            <h3 className={`text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-white mb-1 sm:mb-2 md:mb-2`}>
+            <h3 className={`text-base sm:text-xl md:text-xl font-light sm:font-normal md:font-normal text-white`}>
               Analyze AI visibility scores
             </h3>
-            <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-2 sm:mb-4 md:mb-4`}>
-              Track how often your brand appears in AI-generated answers, monitor visibility trends.
+            <p className={`text-xs sm:text-xs md:text-sm text-gray-400 mb-2 sm:mb-4 md:mb-4`}>
+              Track brand presence in AI answers and monitor visibility
             </p>
           </motion.div>
 
           <div className="flex-1 min-h-0" />
 
           <div className="w-full overflow-hidden flex items-end flex-shrink-0">
-            <div className="w-full">
+            <div className="w-full h-full relative">
               <Image
                 src={slide.image}
                 alt="AI visibility interface"
                 width={800}
                 height={1900}
-                className="w-full object-contain"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 50vw"
+                className="w-full h-full object-contain object-bottom"
+                sizes="(max-width: 375px) 100vw, (max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 90vw, (max-width: 1280px) 50vw, 800px"
+                priority={false}
+                loading="lazy"
               />
             </div>
           </div>
@@ -110,23 +112,23 @@ export function DashboardSection() {
           {/* Container 1: Customize Your Prompts */}
           <div className={`${CARD_BASE} p-2 sm:p-5 md:p-5 overflow-hidden relative min-h-[320px] sm:min-h-[330px] md:min-h-[380px] lg:min-h-[400px] max-w-[90%] sm:max-w-none mx-auto sm:mx-0`}>
             <div className="mb-2 relative z-10">
-              <h3 className={`text-base sm:text-xl font-light sm:font-medium text-white mb-1`}>Customize Your Prompts</h3>
-              <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-1.5 pb-3 sm:pb-4`}>
+              <h3 className={`text-base sm:text-xl font-light sm:font-normal text-white`}>Customize Your Prompts</h3>
+            <p className={`text-xs sm:text-xs md:text-sm text-gray-400 mb-1.5 pb-3 sm:pb-4`}>
                 Prompts are the foundation of your AI search strategy 
               </p>
             </div>
             
-            <div className={`absolute bottom-0 left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[200px] sm:h-[220px] md:h-[240px] lg:h-[300px] xl:h-[350px] pointer-events-none`}>
-              <div 
-                className={`${TRANSFORM_STYLE_3D} transition-transform duration-300 ease-out ${BOX_SHADOW_3D} w-full h-full dashboard-image-transform`}
-              >
+            <div className="absolute bottom-0 left-0 right-0 rounded-lg overflow-hidden h-[180px] sm:h-[200px] md:h-[240px] lg:h-[280px] xl:h-[330px] pointer-events-none flex justify-center items-end">
+              <div className="w-[98%] h-full relative">
                 <Image
-                  src="/images/Prompts_studio_.jpg"
+                  src="/images/Prompts_.jpg"
                   alt="Prompt Studio interface"
                   width={900}
                   height={600}
-                  className="w-full h-full object-cover object-[center_top] rounded-lg"
-                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 50vw"
+                  className="w-full h-full object-contain object-bottom rounded-lg"
+                  sizes="(max-width: 375px) 98vw, (max-width: 640px) 98vw, (max-width: 768px) 43vw, (max-width: 1024px) 43vw, (max-width: 1280px) 48vw, 588px"
+                  priority={false}
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -141,24 +143,31 @@ export function DashboardSection() {
               variants={headingVariants}
               className="mb-2 relative z-10"
             >
-              <h3 className={`text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-white mb-2`}>Add Business Competitors</h3>
-              <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-3 sm:mb-4`}>
-              <span className="whitespace-nowrap">Add competitors so GeoAlt can map landscape for growth</span>
+              <h3 className={`text-base sm:text-xl md:text-xl font-light sm:font-normal md:font-normal text-white`}>Add Business Competitors</h3>
+            <p className={`text-xs sm:text-xs md:text-sm text-gray-400 mb-3 sm:mb-4`}>
+                <span>Add competitors so GeoAlt can map landscape for growth</span>
               </p>
             </motion.div>
             
-            <div className={`absolute bottom-0 left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[200px] sm:h-[220px] md:h-[260px] lg:h-[300px] xl:h-[350px] pointer-events-none`}>
-              <div 
-                className={`${TRANSFORM_STYLE_3D} transition-transform duration-300 ease-out ${BOX_SHADOW_3D} w-full h-full relative z-20 dashboard-image-transform`}
-              >
+            {/* Flat image (3D tilt removed) */}
+            <div className="absolute bottom-0 left-0 right-0 rounded-lg overflow-hidden h-[180px] sm:h-[200px] md:h-[240px] lg:h-[280px] xl:h-[330px] pointer-events-none flex justify-center items-end">
+              <div className="w-[99%] h-full relative z-20">
                 <Image
-                  src="/images/Competitor_.png"
+                  src="/images/Competitor-.png"
                   alt="Add competitors interface"
                   width={800}
                   height={600}
-                  className="w-full h-full object-cover object-[center_top] rounded-lg"
-                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 50vw"
+                  className="w-full h-full object-contain object-bottom rounded-lg"
+                  sizes="(max-width: 375px) 99vw, (max-width: 640px) 99vw, (max-width: 768px) 43vw, (max-width: 1024px) 43vw, (max-width: 1280px) 48vw, 576px"
+                  priority={false}
+                  loading="lazy"
                 />
+                {/* Fade effect at top border */}
+                <div className="absolute top-0 left-0 right-0 h-12 sm:h-16 md:h-20 bg-gradient-to-b from-black/30 via-black/10 to-transparent pointer-events-none"></div>
+                {/* Fade effect at left border */}
+                <div className="absolute top-0 bottom-0 left-0 w-12 sm:w-16 md:w-20 bg-gradient-to-r from-black/30 via-black/10 to-transparent pointer-events-none"></div>
+                {/* Fade effect at right border */}
+                <div className="absolute top-0 bottom-0 right-0 w-12 sm:w-16 md:w-20 bg-gradient-to-l from-black/30 via-black/10 to-transparent pointer-events-none"></div>
               </div>
             </div>
           </motion.div>
@@ -180,30 +189,29 @@ export function DashboardSection() {
               variants={headingVariants}
               className="mb-2 relative z-10"
             >
-              <h3 className={`text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-white mb-2`}>Pick Model and Region</h3>
-              <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-3 sm:mb-4`}>
-              Pick AI model and region to generate insights that help business grow
-              </p>
+              <h3 className={`text-base sm:text-xl md:text-xl font-light sm:font-normal md:font-normal text-white`}>Pick Model and Region</h3>
+            <p className={`text-xs sm:text-xs md:text-sm text-gray-400 mb-3 sm:mb-4`}>
+              Pick model and region to get AI insights for growth...
+            </p>
             </motion.div>
             
+            {/* Flat image (3D tilt removed) */}
             <motion.div 
               variants={imageVariants}
-              className={`absolute bottom-0 left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[200px] sm:h-[220px] md:h-[260px] lg:h-[300px] xl:h-[350px] pointer-events-none`}
+              className="absolute bottom-0 left-0 right-0 rounded-lg overflow-hidden h-[180px] sm:h-[200px] md:h-[240px] lg:h-[280px] xl:h-[330px] pointer-events-none flex justify-center items-end"
             >
-              <motion.div
-                initial={{ 
-                  transform: 'rotateX(0deg) rotateY(0deg) translateZ(0px)',
-                }}
-                className={`${TRANSFORM_STYLE_3D} ${BOX_SHADOW_3D} w-full h-full dashboard-image-transform`}
-              >
+              <motion.div className="w-[99%] h-full relative">
                 <Image
-                  src="/images/Region_Selector_.png"
+                  src="/images/Region_Selector-1.png"
                   alt="Region Selector interface"
                   width={800}
                   height={600}
-                  className="w-full h-full object-cover object-[center_top] rounded-lg"
-                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 50vw"
+                  className="w-full h-full object-contain object-bottom rounded-lg"
+                  sizes="(max-width: 375px) 98vw, (max-width: 640px) 98vw, (max-width: 768px) 43vw, (max-width: 1024px) 43vw, (max-width: 1280px) 48vw, 588px"
+                  priority={false}
+                  loading="lazy"
                 />
+                <div className="absolute top-0 left-0 right-0 h-12 sm:h-16 md:h-20 bg-gradient-to-b from-black/60 via-black/30 to-transparent pointer-events-none z-10"></div>
               </motion.div>
             </motion.div>
           </motion.div>

@@ -85,7 +85,7 @@ export function WebSiteStructuredData() {
 }
 
 export function SoftwareApplicationStructuredData() {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://geoalt.com'
+  // const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://geoalt.com'
   
   return (
     <StructuredData
@@ -116,6 +116,8 @@ export function SoftwareApplicationStructuredData() {
     />
   )
 }
+
+
 
 
 
