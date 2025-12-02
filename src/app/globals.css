@@ -2,28 +2,6 @@
 
 @layer base {
   :root {
-    /* Shadcn/ui variables */
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-    
     /* Semantic theme tokens - single source of truth */
     --color-page-background: 0 0% 0%;
     --color-surface: 0 0% 3%;
@@ -83,27 +61,8 @@
     /* Tailwind v4 may not generate `border-border`; set color directly */
     border-color: hsl(var(--border));
   }
-  body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-  }
 }
 
-@layer components {
-  .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors;
-  }
-  .btn-secondary {
-    @apply bg-gray-800 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition-colors border border-gray-600;
-  }
-  .input-field {
-    @apply w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-black text-white placeholder-gray-500;
-    border-color: #1e1e1e;
-  }
-  .error-text {
-    @apply text-red-400 text-sm mt-1;
-  }
-}
 
 /* Force black background across the app and all sections */
 @layer base {
@@ -154,90 +113,32 @@
   100% { transform: translate(80px, 80px); }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
+@keyframes trusted-marquee {
+  0% {
     transform: translateX(0);
   }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
+@layer utilities {
+  .trusted-marquee {
+    animation: trusted-marquee 10s linear infinite;
   }
 }
 
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(-25%);
-    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-  }
-  50% {
-    transform: none;
-    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  }
+/* Trusted by text - no gradient, solid white */
+.trusted-by-text {
+  color: rgba(255, 255, 255, 1) !important;
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 1) !important;
 }
 
 /* Utility classes */
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.animate-fade-in-down {
-  animation: fadeInDown 0.6s ease-out;
-}
-
-.animate-slide-in-left {
-  animation: slideInLeft 0.6s ease-out;
-}
-
-.animate-slide-in-right {
-  animation: slideInRight 0.6s ease-out;
-}
-
-.animate-grid-move {
-  animation: gridMove 30s linear infinite;
-}
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -273,9 +174,106 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Print styles */
-@media print {
-  .no-print {
-    display: none !important;
+.mask-fade-horizontal {
+  -webkit-mask-image: linear-gradient(90deg, transparent, rgba(0,0,0,0.9) 12%, rgba(0,0,0,0.9) 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, rgba(0,0,0,0.9) 12%, rgba(0,0,0,0.9) 88%, transparent);
+}
+
+.animation-delay-1500 {
+  animation-delay: 1.5s;
+}
+
+.grid-overlay-muted {
+  background-image:
+    linear-gradient(rgba(130, 130, 130, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(130, 130, 130, 0.1) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: gridMove 20s linear infinite;
+}
+
+.text-shadow-muted {
+  text-shadow: 0 0 20px rgba(130, 130, 130, 0.3);
+}
+
+.filter-muted-base {
+  filter: brightness(0) saturate(100%) invert(17%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+.filter-muted-blur {
+  filter: brightness(0) saturate(100%) invert(17%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%) blur(15px);
+}
+
+.filter-default-blur {
+  filter: blur(15px);
+}
+
+.filter-none {
+  filter: none;
+}
+
+
+/* FAQ card with partial left and right borders */
+.faq-card-partial-borders {
+  position: relative;
+}
+
+.faq-card-partial-borders::before,
+.faq-card-partial-borders::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  bottom: 0;
+  width: 1px;
+  background-color: #656565;
+}
+
+.faq-card-partial-borders::before {
+  left: 0;
+}
+
+.faq-card-partial-borders::after {
+  right: 0;
+}
+
+/* Utility classes for inline styles - maintaining exact same output */
+@layer utilities {
+  /* Grid background patterns */
+  .bg-grid-pattern {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bg-grid-pattern-opacity-02 {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Fix for dashboard images - smooth transitions between breakpoints */
+  /* Mobile (<640px): exact original value */
+  .dashboard-image-transform {
+    transform: rotateX(15deg) rotateY(0deg) translateZ(20px) translateY(40px);
+  }
+
+  /* sm (640px+): exact original value - MUST match original sm: breakpoint */
+  @media (min-width: 640px) {
+    .dashboard-image-transform {
+      transform: rotateX(18deg) rotateY(0deg) translateZ(30px) translateY(60px);
+    }
+  }
+
+  /* md (768px): intermediate value for smooth transition - only affects tablet sizes */
+  @media (min-width: 768px) {
+    .dashboard-image-transform {
+      transform: rotateX(18.5deg) rotateY(0deg) translateZ(32px) translateY(70px);
+    }
+  }
+
+  /* lg (1024px+): exact original value - MUST match original lg: breakpoint */
+  @media (min-width: 1024px) {
+    .dashboard-image-transform {
+      transform: rotateX(20deg) rotateY(0deg) translateZ(40px) translateY(90px);
+    }
   }
 }

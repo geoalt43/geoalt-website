@@ -82,8 +82,6 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, {
   error: Error | null
   retryCount: number
 }> {
-  private resetTimeoutId: number | null = null
-
   constructor(props: ErrorBoundaryProps) {
     super(props)
     this.state = {
@@ -101,10 +99,6 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, {
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('ErrorBoundary caught an error:', error, errorInfo)
-    }
-
     this.props.onError?.(error, errorInfo)
   }
 
@@ -129,17 +123,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, {
     }
   }
 
-  componentWillUnmount() {
-    if (this.resetTimeoutId) {
-      clearTimeout(this.resetTimeoutId)
-    }
-  }
-
   resetError = () => {
-    if (this.resetTimeoutId) {
-      clearTimeout(this.resetTimeoutId)
-    }
-
     this.setState(prevState => ({
       hasError: false,
       error: null,
@@ -163,41 +147,6 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, {
 
     return children
   }
-}
-
-export const useErrorHandler = () => {
-  const [error, setError] = React.useState<Error | null>(null)
-
-  const resetError = React.useCallback(() => {
-    setError(null)
-  }, [])
-
-  const throwError = React.useCallback((error: Error) => {
-    setError(error)
-  }, [])
-
-  React.useEffect(() => {
-    if (error) {
-      throw error
-    }
-  }, [error])
-
-  return { throwError, resetError }
-}
-
-export const withErrorBoundary = <P extends object>(
-  Component: React.ComponentType<P>,
-  errorBoundaryProps?: Omit<ErrorBoundaryProps, 'children'>
-) => {
-  const WrappedComponent = (props: P) => (
-    <ErrorBoundary {...errorBoundaryProps}>
-      <Component {...props} />
-    </ErrorBoundary>
-  )
-
-  WrappedComponent.displayName = `withErrorBoundary(${Component.displayName || Component.name})`
-  
-  return WrappedComponent
 }
 
 export { ErrorBoundary as default }

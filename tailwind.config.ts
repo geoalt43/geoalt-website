@@ -1,5 +1,4 @@
 import type { Config } from 'tailwindcss'
-import { theme, cssVariables } from './src/lib/theme'
 
 const config: Config = {
   content: [
@@ -40,7 +39,6 @@ const config: Config = {
         'overlay': 'var(--color-overlay)',
         'overlay-light': 'var(--color-overlay-light)',
         // Shadcn/ui colors
-        border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
@@ -124,6 +122,10 @@ const config: Config = {
           '0%': { transform: 'translateX(100%)' },
           '100%': { transform: 'translateX(0)' },
         },
+        'shimmer': {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -134,6 +136,7 @@ const config: Config = {
         'slide-in-from-bottom': 'slide-in-from-bottom 0.3s ease-out',
         'slide-in-from-left': 'slide-in-from-left 0.3s ease-out',
         'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
+        'shimmer': 'shimmer 3s ease-in-out infinite',
       },
     },
   },
