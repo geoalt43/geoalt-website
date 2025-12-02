@@ -83,7 +83,7 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
       <div className="mb-6 sm:mb-8 md:mb-8">
         <div className="mb-3 sm:mb-3 md:mb-3">
           {/* Question Text with AI Platform Icons */}
-          <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-3 pl-0 sm:pl-0 md:pl-0 lg:pl-0 pb-2 sm:pb-3 md:pb-3">
+          <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-3 pl-0 sm:pl-0 md:pl-0 lg:pl-0 pb-2 sm:pb-3 md:pb-3 justify-end">
             {/* Icons Container - Left side of question text */}
             <div className="flex flex-row items-center gap-1 sm:gap-2 md:gap-2 flex-shrink-0 -mt-0.5 sm:-mt-1 md:-mt-1">
               {/* Gemini Icon */}
@@ -106,7 +106,7 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
             </div>
             
             {/* Question Text */}
-            <span className="text-white/70 text-sm sm:text-base md:text-base lg:text-lg xl:text-xl min-w-0 flex-1 leading-tight sm:leading-normal md:leading-normal break-words">{data.question}</span>
+            <span className="text-white/70 text-sm sm:text-base md:text-base lg:text-lg xl:text-xl min-w-0 leading-tight sm:leading-normal md:leading-normal break-words text-right">{data.question}</span>
           </div>
         </div>
       </div>
