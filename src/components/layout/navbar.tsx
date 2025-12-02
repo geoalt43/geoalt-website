@@ -94,22 +94,21 @@ export function Navbar() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center space-x-3 lg:space-x-4 flex-shrink-0 z-10">
-            <Link href="/login" className="text-white hover:text-brand-gray-300 hover:opacity-80 px-2 lg:px-3 py-2 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap">
+            <span className="text-white hover:text-brand-gray-300 hover:opacity-80 px-2 lg:px-3 py-2 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-default">
               Sign in
-            </Link>
-            <Link
-              href="/register"
-              className="bg-white text-black border border-white px-3 lg:px-3.5 py-1.5 rounded-full text-sm font-normal hover:bg-white/90 hover:opacity-90 transition-all duration-150 whitespace-nowrap"
+            </span>
+            <span
+              className="bg-white text-black border border-white px-3 lg:px-3.5 py-1.5 rounded-full text-sm font-normal hover:bg-white/90 hover:opacity-90 transition-all duration-150 whitespace-nowrap cursor-default"
             >
               Get Started
-            </Link>
+            </span>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-1.5 sm:space-x-2 flex-shrink-0">
-            <Link href="/login" className="text-white hover:text-brand-gray-300 hover:opacity-80 px-1.5 sm:px-2 py-1.5 text-xs sm:text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap">
+            <span className="text-white hover:text-brand-gray-300 hover:opacity-80 px-1.5 sm:px-2 py-1.5 text-xs sm:text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-default">
               Sign in
-            </Link>
+            </span>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-white p-2 focus:outline-none focus:ring-2 focus:ring-white/20 rounded-lg"
@@ -151,13 +150,12 @@ export function Navbar() {
               >
                 Features
               </Link>
-              <Link
-                href="/register"
+              <span
                 onClick={handleLinkClick}
-                className="mt-2 bg-white text-black border border-white px-4 py-2 rounded-full text-sm font-normal hover:bg-white/90 hover:opacity-90 transition-all duration-150 text-center"
+                className="mt-2 bg-white text-black border border-white px-4 py-2 rounded-full text-sm font-normal hover:bg-white/90 hover:opacity-90 transition-all duration-150 text-center cursor-default"
               >
                 Get Started
-              </Link>
+              </span>
             </div>
           </div>
         )}

@@ -174,12 +174,11 @@ export function HeroSection() {
           
             {/* Hero CTA Buttons */}
             <div className="flex flex-row gap-2.5 sm:gap-4 items-center justify-center px-4 sm:px-0">
-              <Link
-                href="/register"
-                className="inline-flex items-center justify-center text-black px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm md:text-base font-semibold tracking-wide transition-all duration-200 ease-in-out bg-white hover:bg-[#d4d4d4] text-center min-w-[100px] sm:min-w-[120px]"
+              <span
+                className="inline-flex items-center justify-center text-black px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm md:text-base font-semibold tracking-wide transition-all duration-200 ease-in-out bg-white hover:bg-[#d4d4d4] text-center min-w-[100px] sm:min-w-[120px] cursor-default"
               >
                 Get Started
-              </Link>
+              </span>
               <DemoCTA 
                 text="Contact Us" 
                 variant="outline" 

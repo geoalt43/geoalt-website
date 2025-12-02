@@ -183,7 +183,7 @@ export function DashboardSection() {
             <div className="mb-2 relative z-10">
               <h3 className={`text-base sm:text-xl font-light sm:font-medium text-white mb-1`}>Customize Your Prompts</h3>
               <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-1.5 pb-3 sm:pb-4`}>
-                Prompts are the foundation of your AI search strategy. 
+                Prompts are the foundation of your AI search strategy 
               </p>
             </div>
             
@@ -213,7 +213,7 @@ export function DashboardSection() {
             >
               <h3 className={`text-base sm:text-xl font-light sm:font-medium text-white mb-2`}>Add Business Competitors</h3>
               <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-3 sm:mb-4`}>
-              Add your competitors so GeoAlt can map the landscape and drive growth insights.
+              <span className="whitespace-nowrap">Add competitors so GeoAlt can map landscape for growth</span>
               </p>
             </motion.div>
             
