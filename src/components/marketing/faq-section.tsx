@@ -2,39 +2,13 @@
 
 import { RefObject, useRef, useEffect } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { containerVariants, cardVariantsSmooth } from '@/lib/animations/variants'
+import { colorClasses } from '@/constants/colors'
 
 interface FAQSectionProps {
   openFaq: number | null
   toggleFaq: (index: number) => void
   faqRef: RefObject<HTMLDivElement | null>
-}
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.1,
-    },
-  },
-}
-
-const cardVariants = {
-  hidden: {
-    opacity: 0,
-    y: 40,
-    scale: 0.95,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut' as const,
-    },
-  },
 }
 
 interface FAQCardProps {
@@ -50,10 +24,10 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
   return (
     <motion.div
       ref={cardRef}
-      variants={cardVariants}
+      variants={cardVariantsSmooth}
       initial="hidden"
       animate={cardInView ? 'visible' : 'hidden'}
-      className="bg-black border-b border-[#656565] shadow-sm faq-card-partial-borders rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl overflow-hidden relative"
+      className={`bg-black border-b ${colorClasses.borderGray} shadow-sm faq-card-partial-borders rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl overflow-hidden relative`}
       whileHover={{
         backgroundColor: 'rgba(20, 20, 20, 1)',
         borderColor: 'rgba(120, 120, 120, 0.6)',
@@ -203,7 +177,7 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
           className="text-center mb-8 sm:mb-12 lg:mb-16"
         >
           <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal text-white mb-2 sm:mb-6 px-2 sm:px-0">FAQ</h2>
-          <p className="text-sm sm:text-lg text-[#898989] font-light px-4 sm:px-0 pt-0">Generative Engine Optimization is still<br />very new. We&apos;ve got you covered.</p>
+          <p className={`text-sm sm:text-lg ${colorClasses.textMuted} font-light px-4 sm:px-0 pt-0`}>Generative Engine Optimization is still<br />very new. We&apos;ve got you covered.</p>
         </motion.div>
         
         <motion.div

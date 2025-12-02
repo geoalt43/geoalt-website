@@ -1,223 +1,16 @@
 'use client'
 
 import { useRef } from 'react'
-import type { ReactElement } from 'react'
 import { motion, useInView } from 'framer-motion'
-import Image from 'next/image'
+import { containerVariants, cardVariantsSmooth } from '@/lib/animations/variants'
+import { FeatureText } from './pricing-section/FeatureText'
+import { colorClasses } from '@/constants/colors'
 
 const CheckIcon = () => (
   <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-white/40 text-white text-xs font-semibold">
     ✓
   </span>
 )
-
-// Helper function to get icon for AI platform
-const getPlatformIcon = (platformName: string, iconSize: number = 16) => {
-  const normalizedName = platformName.toLowerCase().trim()
-  
-  if (normalizedName.includes('chatgpt') || normalizedName.includes('openai')) {
-    return (
-      <Image
-        src="/ai-icons/openai.webp"
-        alt="OpenAI"
-        width={iconSize}
-        height={iconSize}
-        className="flex-shrink-0"
-        unoptimized
-      />
-    )
-  }
-  if (normalizedName.includes('gemini') || normalizedName.includes('google')) {
-    return (
-      <Image
-        src="/ai-icons/gemini-color.webp"
-        alt="Gemini"
-        width={iconSize}
-        height={iconSize}
-        className="flex-shrink-0"
-        unoptimized
-      />
-    )
-  }
-  if (normalizedName.includes('perplexity')) {
-    return (
-      <Image
-        src="/ai-icons/perplexity.webp"
-        alt="Perplexity"
-        width={iconSize}
-        height={iconSize}
-        className="flex-shrink-0"
-        unoptimized
-      />
-    )
-  }
-  if (normalizedName.includes('claude')) {
-    return (
-      <Image
-        src="/ai-icons/claude-color.webp"
-        alt="Claude"
-        width={iconSize}
-        height={iconSize}
-        className="flex-shrink-0"
-        unoptimized
-      />
-    )
-  }
-  if (normalizedName.includes('grok')) {
-    return (
-      <Image
-        src="/ai-icons/grok.webp"
-        alt="Grok"
-        width={iconSize}
-        height={iconSize}
-        className="flex-shrink-0"
-        unoptimized
-      />
-    )
-  }
-  return null
-}
-
-// Component to render feature text with icons
-const FeatureText = ({ text }: { text: string }) => {
-  // Special handling for "Access to all models" - show icons only with blur effect
-  if (text === 'Access to all models') {
-    const iconSize = 18
-    
-    return (
-      <span className="flex items-center gap-2">
-        <span>Access to all models</span>
-        {/* Icons only - very small gap between them */}
-        <div className="flex items-center gap-0.5">
-          <Image
-            src="/ai-icons/openai.webp"
-            alt="OpenAI"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          <Image
-            src="/ai-icons/perplexity.webp"
-            alt="Perplexity"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          <Image
-            src="/ai-icons/grok.webp"
-            alt="Grok"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          <Image
-            src="/ai-icons/claude-color.webp"
-            alt="Claude"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          <Image
-            src="/ai-icons/gemini-color.webp"
-            alt="Gemini"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          {/* 3+ text */}
-          <span className="text-xs font-semibold text-white/90 ml-0.5">
-            3+
-          </span>
-        </div>
-      </span>
-    )
-  }
-  
-  // Special handling for "Access to 3 models (ChatGPT, Gemini, Perplexity)"
-  if (text.includes('Access to 3 models') && text.includes('ChatGPT') && text.includes('Gemini') && text.includes('Perplexity')) {
-    const iconSize = 18
-    
-    return (
-      <span className="flex items-center gap-2">
-        <span>Access to 3 models</span>
-        {/* Icons only - same style as "Access to all models" */}
-        <div className="flex items-center gap-0.5">
-          <Image
-            src="/ai-icons/openai.webp"
-            alt="OpenAI"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          <Image
-            src="/ai-icons/gemini-color.webp"
-            alt="Gemini"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          <Image
-            src="/ai-icons/perplexity.webp"
-            alt="Perplexity"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-        </div>
-      </span>
-    )
-  }
-  
-  // Default handling for other features
-  // Split text by platform names (case-insensitive)
-  const platformRegex = /(ChatGPT|Gemini|Perplexity)/gi
-  const parts: (string | ReactElement)[] = []
-  let lastIndex = 0
-  let match
-  
-  // Reset regex
-  platformRegex.lastIndex = 0
-  
-  while ((match = platformRegex.exec(text)) !== null) {
-    // Add text before the match
-    if (match.index > lastIndex) {
-      parts.push(text.substring(lastIndex, match.index))
-    }
-    
-    // Add icon and platform name
-    const platformName = match[0]
-    const icon = getPlatformIcon(platformName)
-    
-    if (icon) {
-      parts.push(
-        <span key={`${match.index}-${platformName}`} className="inline-flex items-center gap-1.5">
-          {icon}
-          <span>{platformName}</span>
-        </span>
-      )
-    } else {
-      parts.push(platformName)
-    }
-    
-    lastIndex = match.index + match[0].length
-  }
-  
-  // Add remaining text
-  if (lastIndex < text.length) {
-    parts.push(text.substring(lastIndex))
-  }
-  
-  // If we found platforms, return the parts, otherwise return original text
-  return parts.length > 1 ? <span>{parts}</span> : <span>{text}</span>
-}
 
 const pricingPlans = [
   {
@@ -232,7 +25,7 @@ const pricingPlans = [
       'Unlimited Countries'
     ],
     isRecommended: false,
-    bgColor: 'bg-[#090909]',
+    bgColor: colorClasses.surfaceDark,
     borderColor: 'border-white/10',
   },
   {
@@ -252,39 +45,10 @@ const pricingPlans = [
     description: 'Everything in Pro, plus:',
     features: ['Custom limits', 'Dedicated GEO expert', 'Enterprise Support', 'Unlimited Countries'],
     isRecommended: false,
-    bgColor: 'bg-[#090909]',
+    bgColor: colorClasses.surfaceDark,
     borderColor: 'border-white/10',
   },
 ]
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.1,
-    },
-  },
-}
-
-const cardVariants = {
-  hidden: {
-    opacity: 0,
-    y: 40,
-    scale: 0.95,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut' as const,
-    },
-  },
-}
-
 
 function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
   const cardRef = useRef(null)
@@ -293,7 +57,7 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
   return (
     <motion.div
       ref={cardRef}
-      variants={cardVariants}
+      variants={cardVariantsSmooth}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       className={`
@@ -362,7 +126,7 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
             href="https://forms.gle/wLMpHeTqQogumFMK8"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-auto w-full max-w-[120px] sm:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full bg-white text-black py-2 sm:py-3 text-[11px] sm:text-sm font-semibold text-center whitespace-nowrap block hover:bg-[#d4d4d4] transition-all duration-200 ease-in-out"
+            className={`mt-auto w-full max-w-[120px] sm:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full bg-white text-black py-2 sm:py-3 text-[11px] sm:text-sm font-semibold text-center whitespace-nowrap block ${colorClasses.hoverGray} transition-all duration-200 ease-in-out`}
           >
             Start free trial
           </a>
@@ -378,16 +142,7 @@ export function PricingSection() {
 
   return (
     <section id="pricing" className="pt-6 sm:pt-8 lg:pt-[4vh] xl:pt-[6vh] pb-6 sm:pb-8 lg:pb-[4vh] xl:pb-[6vh] scroll-mt-16 relative overflow-hidden bg-brand-black">
-      <div 
-        className="absolute inset-0 opacity-[0.02] pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '40px 40px'
-        }}
-      />
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-grid-pattern-opacity-02" />
       
       <div className="absolute top-0 left-0 right-0 h-16 sm:h-24 lg:h-32 bg-gradient-to-b from-black via-black/50 to-transparent pointer-events-none z-10" />
       <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 lg:h-32 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none z-10" />

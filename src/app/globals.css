@@ -61,9 +61,6 @@
     /* Tailwind v4 may not generate `border-border`; set color directly */
     border-color: hsl(var(--border));
   }
-  body {
-    /* Background and color are set via !important rules below */
-  }
 }
 
 
@@ -139,7 +136,6 @@
   -webkit-background-clip: unset !important;
   background-clip: unset !important;
   -webkit-text-fill-color: rgba(255, 255, 255, 1) !important;
-  text-fill-color: rgba(255, 255, 255, 1) !important;
 }
 
 /* Utility classes */
@@ -179,8 +175,8 @@ html {
 }
 
 .mask-fade-horizontal {
-  mask-image: linear-gradient(90deg, transparent, rgba(0,0,0,0.9) 12%, rgba(0,0,0,0.9) 88%, transparent);
   -webkit-mask-image: linear-gradient(90deg, transparent, rgba(0,0,0,0.9) 12%, rgba(0,0,0,0.9) 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, rgba(0,0,0,0.9) 12%, rgba(0,0,0,0.9) 88%, transparent);
 }
 
 .animation-delay-1500 {
@@ -240,4 +236,129 @@ html {
 
 .faq-card-partial-borders::after {
   right: 0;
+}
+
+/* Utility classes for inline styles - maintaining exact same output */
+@layer utilities {
+  /* Grid background patterns */
+  .bg-grid-pattern {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bg-grid-pattern-opacity-02 {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Transform style for 3D effects */
+  .transform-preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  /* Box shadow for 3D cards */
+  .shadow-3d {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Card box shadow */
+  .card-shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Backdrop filter */
+  .backdrop-blur-10 {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+
+  /* Responsive typography utilities - maintaining exact same output */
+  .text-responsive-heading {
+    @apply text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal text-white mb-3 sm:mb-4 px-2 sm:px-0;
+  }
+
+  .text-responsive-body {
+    @apply text-xs sm:text-sm md:text-base;
+  }
+
+  .text-responsive-caption {
+    @apply text-[11px] sm:text-xs md:text-sm;
+  }
+
+  /* Responsive spacing utilities - maintaining exact same output */
+  .padding-card {
+    @apply p-4 sm:p-6 lg:p-8;
+  }
+
+  .padding-card-sm {
+    @apply p-2 sm:p-5;
+  }
+
+  .padding-card-lg {
+    @apply p-6 sm:p-8 lg:p-12;
+  }
+
+  .margin-section {
+    @apply mb-3 sm:mb-4;
+  }
+
+  .margin-section-lg {
+    @apply mb-8 sm:mb-12;
+  }
+
+  /* Container utilities */
+  .container-base {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-medium {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-small {
+    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* 3D transform utilities for dashboard images - maintaining exact same output */
+  /* Added intermediate breakpoints to fix "cracking" on tablet sizes */
+  .transform-3d-mobile {
+    transform: rotateX(15deg) rotateY(0deg) translateZ(20px) translateY(40px);
+  }
+
+  .transform-3d-tablet {
+    transform: rotateX(18deg) rotateY(0deg) translateZ(30px) translateY(60px);
+  }
+
+  .transform-3d-desktop {
+    transform: rotateX(20deg) rotateY(0deg) translateZ(40px) translateY(90px);
+  }
+
+  /* Fix for dashboard images - smooth transitions between breakpoints */
+  /* Mobile (<640px): exact original value */
+  .dashboard-image-transform {
+    transform: rotateX(15deg) rotateY(0deg) translateZ(20px) translateY(40px);
+  }
+
+  /* sm (640px+): exact original value - MUST match original sm: breakpoint */
+  @media (min-width: 640px) {
+    .dashboard-image-transform {
+      transform: rotateX(18deg) rotateY(0deg) translateZ(30px) translateY(60px);
+    }
+  }
+
+  /* md (768px): intermediate value for smooth transition - only affects tablet sizes */
+  @media (min-width: 768px) {
+    .dashboard-image-transform {
+      transform: rotateX(18.5deg) rotateY(0deg) translateZ(32px) translateY(70px);
+    }
+  }
+
+  /* lg (1024px+): exact original value - MUST match original lg: breakpoint */
+  @media (min-width: 1024px) {
+    .dashboard-image-transform {
+      transform: rotateX(20deg) rotateY(0deg) translateZ(40px) translateY(90px);
+    }
+  }
 }

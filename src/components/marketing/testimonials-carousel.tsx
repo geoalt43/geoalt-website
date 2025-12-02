@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
+import { containerVariants, headerVariants, badgeVariants, cardVariantsSmooth } from '@/lib/animations/variants'
 
 interface Testimonial {
   quote: string
@@ -55,73 +56,9 @@ export function TestimonialsCarousel() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1,
-      },
-    },
-  }
-
-  const headerVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30,
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut' as const,
-      },
-    },
-  }
-
-  const badgeVariants = {
-    hidden: { 
-      opacity: 0, 
-      scale: 0.8,
-      y: -10,
-    },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      y: 0,
-    },
-  }
-
-  const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 40,
-      scale: 0.95,
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut' as const,
-      },
-    },
-  }
-
   return (
     <section className="pt-9 sm:pt-12 lg:pt-[4vh] xl:pt-[6vh] pb-6 sm:pb-8 lg:pb-[4vh] xl:pb-[6vh] bg-brand-black relative overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none" 
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '40px 40px'
-        }}
-      />
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-grid-pattern-opacity-02" />
       
       <div className="absolute top-0 left-0 right-0 h-16 sm:h-24 lg:h-32 bg-gradient-to-b from-black via-black/50 to-transparent pointer-events-none z-10" />
       <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 lg:h-32 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none z-10" />
@@ -166,11 +103,8 @@ export function TestimonialsCarousel() {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={`${testimonial.name}-${index}`}
-              variants={cardVariants}
-              className="bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-7 shadow-lg min-h-[168px] sm:min-h-0 sm:h-full flex flex-col relative overflow-hidden group hover:border-white/25 transition-colors duration-300"
-              style={{
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-              }}
+              variants={cardVariantsSmooth}
+              className="bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-7 shadow-lg min-h-[168px] sm:min-h-0 sm:h-full flex flex-col relative overflow-hidden group hover:border-white/25 transition-colors duration-300 card-shadow"
             >
               {/* Background glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />

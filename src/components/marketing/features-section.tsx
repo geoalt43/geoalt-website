@@ -2,73 +2,18 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { containerVariantsMedium, headerVariants, cardVariantsSmooth, iconVariantsSmooth } from '@/lib/animations/variants'
+import { colorClasses } from '@/constants/colors'
 
 function FeaturesSection() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
-  }
-
-  const headerVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30,
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-    },
-  }
-
-  const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 40,
-      scale: 0.95,
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-    },
-  }
-
-  const iconVariants = {
-    hidden: { 
-      opacity: 0, 
-      scale: 0.8,
-      rotate: -10,
-    },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      rotate: 0,
-    },
-  }
-
   return (
     <section ref={sectionRef} className="pt-6 sm:pt-8 lg:pt-[4vh] xl:pt-[6vh] pb-16 sm:pb-20 lg:pb-[4vh] xl:pb-[6vh] relative overflow-hidden">
       {/* Background Grid Effect */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]">
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)
-            `,
-            backgroundSize: '40px 40px',
-          }}
-        />
+        <div className="absolute inset-0 bg-grid-pattern" />
       </div>
 
       {/* Subtle gradient overlays */}
@@ -79,7 +24,7 @@ function FeaturesSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          variants={containerVariants}
+          variants={containerVariantsMedium}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           className="mb-8 sm:mb-12 pb-[18px] sm:pb-6 text-center"
@@ -94,7 +39,7 @@ function FeaturesSection() {
           <motion.p 
             variants={headerVariants}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="text-base sm:text-lg text-[#9b9b9b] px-4 sm:px-0"
+            className={`text-base sm:text-lg ${colorClasses.textSecondary} px-4 sm:px-0`}
           >
             GEOAlt offers unparalleled accuracy, real-time insights,<br />
             and a commitment to data security.
@@ -102,26 +47,23 @@ function FeaturesSection() {
         </motion.div>
 
           <motion.div
-          variants={containerVariants}
+          variants={containerVariantsMedium}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 lg:gap-8 pt-3 sm:pt-4"
         >
           {/* Accurate Data */}
           <motion.div
-            variants={cardVariants}
+            variants={cardVariantsSmooth}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0"
-            style={{
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-            }}
+            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 card-shadow"
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
             
             <div className="flex items-center gap-2.5 sm:gap-4 mb-2.5 sm:mb-4 relative z-10">
               <motion.div
-                variants={iconVariants}
+                variants={iconVariantsSmooth}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
                 transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
@@ -133,7 +75,7 @@ function FeaturesSection() {
               </motion.div>
               <h3 className="text-base sm:text-xl font-light sm:font-medium text-white">Accurate Data</h3>
             </div>
-            <p className="text-xs sm:text-sm md:text-base text-[#9b9b9b] relative z-10 pt-1.5 sm:pt-2">
+            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textSecondary} relative z-10 pt-1.5 sm:pt-2`}>
               Our advanced algorithms ensure precise tracking of your AI visibility.
               <br className="hidden sm:block" />
               Get reliable metrics that help you make data-driven decisions.
@@ -142,19 +84,16 @@ function FeaturesSection() {
 
           {/* Real-time Insights */}
           <motion.div
-            variants={cardVariants}
+            variants={cardVariantsSmooth}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0"
-            style={{
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-            }}
+            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 card-shadow"
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
             
             <div className="flex items-center gap-2.5 sm:gap-4 mb-2.5 sm:mb-4 relative z-10">
               <motion.div
-                variants={iconVariants}
+                variants={iconVariantsSmooth}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
                 transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
@@ -166,7 +105,7 @@ function FeaturesSection() {
               </motion.div>
               <h3 className="text-base sm:text-xl font-light sm:font-medium text-white">Real-time Insights</h3>
             </div>
-            <p className="text-xs sm:text-sm md:text-base text-[#9b9b9b] relative z-10 pt-1.5 sm:pt-2">
+            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textSecondary} relative z-10 pt-1.5 sm:pt-2`}>
               Stay ahead of the curve with up‑to‑the‑minute data on your performance.
               <br className="hidden sm:block" />
               Monitor changes as they happen and respond quickly to opportunities.
@@ -175,19 +114,16 @@ function FeaturesSection() {
 
           {/* Secure & Reliable */}
           <motion.div
-            variants={cardVariants}
+            variants={cardVariantsSmooth}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0"
-            style={{
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-            }}
+            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 card-shadow"
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
             
             <div className="flex items-center gap-2.5 sm:gap-4 mb-2.5 sm:mb-4 relative z-10">
               <motion.div
-                variants={iconVariants}
+                variants={iconVariantsSmooth}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
                 transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
@@ -198,7 +134,7 @@ function FeaturesSection() {
               </motion.div>
               <h3 className="text-base sm:text-xl font-light sm:font-medium text-white">Secure & Reliable</h3>
             </div>
-            <p className="text-xs sm:text-sm md:text-base text-[#9b9b9b] relative z-10 pt-1.5 sm:pt-2">
+            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textSecondary} relative z-10 pt-1.5 sm:pt-2`}>
               We prioritize the security and confidentiality of your data.
               <br className="hidden sm:block" />
               Your information is protected with enterprise-grade security measures.

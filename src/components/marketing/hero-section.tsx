@@ -1,95 +1,12 @@
 'use client'
 
-import Link from 'next/link'
 import { AIPlatformRotator } from './ai-platform-rotator'
 import { DemoCTA } from './demo-cta'
 import Image from 'next/image'
 import { motion, useInView, useAnimation } from 'framer-motion'
 import { useRef, useEffect } from 'react'
-
-// Industry-standard animation variants with spring physics
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.2,
-    },
-  },
-}
-
-// Word-by-word animation for heading
-const wordVariants = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-    rotateX: -90,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    rotateX: 0,
-    transition: {
-      type: 'spring' as const,
-      stiffness: 100,
-      damping: 12,
-      mass: 0.5,
-    },
-  },
-}
-
-const headingContainerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
-      delayChildren: 0.1,
-    },
-  },
-}
-
-const rotatorVariants = {
-  hidden: {
-    opacity: 0,
-    y: 30,
-    scale: 0.9,
-    filter: 'blur(10px)',
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    filter: 'blur(0px)',
-    transition: {
-      type: 'spring' as const,
-      stiffness: 80,
-      damping: 15,
-      mass: 0.8,
-      delay: 0.6,
-    },
-  },
-}
-
-const textVariants = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-    clipPath: 'inset(0 0 100% 0)',
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    clipPath: 'inset(0 0 0% 0)',
-    transition: {
-      type: 'spring' as const,
-      stiffness: 100,
-      damping: 15,
-      mass: 0.5,
-    },
-  },
-}
+import { containerVariantsFast, wordVariants, headingContainerVariants, rotatorVariants, textVariants } from '@/lib/animations/variants'
+import { colorClasses } from '@/constants/colors'
 
 // Split text into words for animation
 const splitText = (text: string) => text.split(' ')
@@ -110,7 +27,7 @@ export function HeroSection() {
   return (
     <section ref={sectionRef} id="home" className="pt-16 sm:pt-20 lg:pt-24 relative overflow-hidden">
       <motion.div
-        variants={containerVariants}
+        variants={containerVariantsFast}
         initial="hidden"
         animate={controls}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
@@ -151,7 +68,7 @@ export function HeroSection() {
               variants={textVariants}
               initial="hidden"
               animate={controls}
-              className="text-xs sm:text-base md:text-lg text-center text-[#9b9b9b] px-4 sm:px-0 flex items-center justify-center gap-2 flex-wrap"
+              className={`text-xs sm:text-base md:text-lg text-center ${colorClasses.textSecondary} px-4 sm:px-0 flex items-center justify-center gap-2 flex-wrap`}
             >
               <Image
                 src="/logos/GeoAlt_Logo.png"
@@ -160,6 +77,7 @@ export function HeroSection() {
                 height={24}
                 className="h-[0.75em] sm:h-[0.8em] w-auto align-middle"
                 priority
+                sizes="(max-width: 640px) 100px, 100px"
               />
               <span>helps your business stand out across AI platforms</span>
             </motion.p>
@@ -167,7 +85,7 @@ export function HeroSection() {
               variants={textVariants}
               initial="hidden"
               animate={controls}
-              className="text-xs sm:text-sm md:text-base mb-6 sm:mb-8 pb-2 sm:pb-4 text-center text-[#9b9b9b] px-4 sm:px-0"
+              className={`text-xs sm:text-sm md:text-base mb-6 sm:mb-8 pb-2 sm:pb-4 text-center ${colorClasses.textSecondary} px-4 sm:px-0`}
             >
               <em>— Turning AI visibility into traffic</em>
             </motion.p>

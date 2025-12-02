@@ -3,6 +3,8 @@
 import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { containerVariants, headerVariants, cardVariantsSmooth, iconVariantsSmooth } from '@/lib/animations/variants'
+import { colorClasses } from '@/constants/colors'
 import { HeroSection } from '@/components/marketing/hero-section'
 import { FeaturesSection } from '@/components/marketing/features-section'
 import { FAQSection } from '@/components/marketing/faq-section'
@@ -46,80 +48,11 @@ function EmpoweringBusinessesSection() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1,
-      },
-    },
-  }
-
-  const headerVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30,
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut' as const,
-      },
-    },
-  }
-
-  const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 40,
-      scale: 0.95,
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut' as const,
-      },
-    },
-  }
-
-  const iconVariants = {
-    hidden: { 
-      opacity: 0, 
-      scale: 0.8,
-      rotate: -10,
-    },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      rotate: 0,
-      transition: {
-        duration: 0.4,
-        ease: 'easeOut' as const,
-      },
-    },
-  }
-
   return (
     <section ref={sectionRef} className="pt-[36.54px] sm:pt-[48.72px] lg:pt-[4vh] xl:pt-[6vh] pb-16 sm:pb-20 lg:pb-[4vh] xl:pb-[6vh] relative overflow-hidden">
       {/* Background Grid Effect */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]">
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)
-            `,
-            backgroundSize: '40px 40px',
-          }}
-        />
+        <div className="absolute inset-0 bg-grid-pattern" />
       </div>
 
       {/* Subtle gradient overlays */}
@@ -143,7 +76,7 @@ function EmpoweringBusinessesSection() {
           </motion.h2>
           <motion.p 
             variants={headerVariants}
-            className="text-base sm:text-lg text-[#9b9b9b] px-4 sm:px-0"
+            className={`text-base sm:text-lg ${colorClasses.textSecondary} px-4 sm:px-0`}
           >
             GEOAlt caters to a wide range of businesses, from startups to<br />
             enterprises, seeking to enhance their AI visibility.
@@ -158,18 +91,15 @@ function EmpoweringBusinessesSection() {
         >
           {/* Marketing Teams Card */}
           <motion.div
-            variants={cardVariants}
-            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300"
-            style={{
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-            }}
+            variants={cardVariantsSmooth}
+            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 card-shadow"
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
             
             <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4 relative z-10">
               <motion.div
-                variants={iconVariants}
+                variants={iconVariantsSmooth}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
               >
@@ -182,7 +112,7 @@ function EmpoweringBusinessesSection() {
               </motion.div>
               <h3 className="text-base sm:text-xl font-light sm:font-medium text-white">Marketing Teams</h3>
             </div>
-            <p className="text-sm sm:text-lg text-[#9b9b9b] relative z-10 pt-2">
+            <p className={`text-sm sm:text-lg ${colorClasses.textSecondary} relative z-10 pt-2`}>
               Track campaign performance and optimize content for AI-driven search across priority markets.  
               Identify which campaigns influence AI-generated answers and reallocate spend toward the highest-impact initiatives.  
             </p>
@@ -190,18 +120,15 @@ function EmpoweringBusinessesSection() {
 
           {/* Content Creators Card */}
           <motion.div
-            variants={cardVariants}
-            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300"
-            style={{
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-            }}
+            variants={cardVariantsSmooth}
+            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 card-shadow"
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
             
             <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4 relative z-10">
               <motion.div
-                variants={iconVariants}
+                variants={iconVariantsSmooth}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
               >
@@ -212,7 +139,7 @@ function EmpoweringBusinessesSection() {
               </motion.div>
               <h3 className="text-base sm:text-xl font-light sm:font-medium text-white">Content Creators</h3>
             </div>
-            <p className="text-sm sm:text-lg text-[#9b9b9b] relative z-10 pt-2">
+            <p className={`text-sm sm:text-lg ${colorClasses.textSecondary} relative z-10 pt-2`}>
               Create content that resonates with AI algorithms and drives qualified, organic pipeline.  
               See which formats, topics, and angles AI prefers so every article, playbook, or landing page is built for discovery.  
             </p>
@@ -220,18 +147,15 @@ function EmpoweringBusinessesSection() {
 
           {/* SEO Specialists Card */}
           <motion.div
-            variants={cardVariants}
-            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300"
-            style={{
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-            }}
+            variants={cardVariantsSmooth}
+            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 card-shadow"
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
             
             <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4 relative z-10">
               <motion.div
-                variants={iconVariants}
+                variants={iconVariantsSmooth}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
               >
@@ -242,7 +166,7 @@ function EmpoweringBusinessesSection() {
               </motion.div>
               <h3 className="text-base sm:text-xl font-light sm:font-medium text-white">SEO Specialists</h3>
             </div>
-            <p className="text-sm sm:text-lg text-[#9b9b9b] relative z-10 pt-2">
+            <p className={`text-sm sm:text-lg ${colorClasses.textSecondary} relative z-10 pt-2`}>
               Adapt SEO strategies to the evolving landscape of AI-powered search for complex B2B journeys.  
               Understand which entities, sources, and citations AI trusts most in your category and markets.  
             </p>
