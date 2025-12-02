@@ -75,38 +75,38 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#050505] to-transparent"></div>
             <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#050505] to-transparent"></div>
-            <div className="absolute top-0 bottom-0 left-0 w-90 bg-gradient-to-r from-[#050505] to-transparent"></div>
+            <div className="absolute top-0 bottom-0 left-0 w-20 bg-gradient-to-r from-[#050505] to-transparent"></div>
             <div className="absolute top-0 bottom-0 right-0 w-20 bg-gradient-to-l from-[#050505] to-transparent"></div>
           </div>
           <div className="relative z-10">
       {/* Question */}
-      <div className="mb-6 sm:mb-8">
-        <div className="mb-3 sm:mb-3">
+      <div className="mb-6 sm:mb-8 md:mb-8">
+        <div className="mb-3 sm:mb-3 md:mb-3">
           {/* Question Text with AI Platform Icons */}
-          <div className="flex flex-row items-center gap-2 sm:gap-3 ml-[80px] sm:ml-[280px] md:ml-[360px] lg:ml-[440px] pb-2 sm:pb-3">
+          <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-3 pl-0 sm:pl-0 md:pl-0 lg:pl-0 pb-2 sm:pb-3 md:pb-3">
             {/* Icons Container - Left side of question text */}
-            <div className="flex flex-row items-center gap-1 sm:gap-2 flex-shrink-0 -mt-0.5 sm:-mt-1">
+            <div className="flex flex-row items-center gap-1 sm:gap-2 md:gap-2 flex-shrink-0 -mt-0.5 sm:-mt-1 md:-mt-1">
               {/* Gemini Icon */}
-              <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5">
-                <Image src="/ai-icons/gemini-color.webp" alt="Gemini" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 opacity-50" unoptimized />
+              <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5">
+                <Image src="/ai-icons/gemini-color.webp" alt="Gemini" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 opacity-50" unoptimized />
               </div>
               
               {/* Perplexity Icon */}
-              <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5">
-                <Image src="/ai-icons/perplexity.webp" alt="Perplexity" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 opacity-50" unoptimized />
+              <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5">
+                <Image src="/ai-icons/perplexity.webp" alt="Perplexity" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 opacity-50" unoptimized />
               </div>
               
               {/* ChatGPT Icon (Larger with bubble) */}
-              <div className="flex items-center justify-center px-1.5 sm:px-2 lg:px-3 py-0.5 sm:py-1 lg:py-2 relative">
+              <div className="flex items-center justify-center px-1.5 sm:px-2 md:px-2.5 lg:px-3 py-0.5 sm:py-1 md:py-1 lg:py-2 relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 rounded-full blur-sm"></div>
                 <div className="relative z-10">
-                  <Image src="/ai-icons/openai.webp" alt="OpenAI" width={18} height={18} className="sm:w-6 sm:h-6 lg:w-7 lg:h-7" unoptimized />
+                  <Image src="/ai-icons/openai.webp" alt="OpenAI" width={18} height={18} className="sm:w-6 sm:h-6 md:w-6 md:h-6 lg:w-7 lg:h-7" unoptimized />
                 </div>
               </div>
             </div>
             
             {/* Question Text */}
-            <span className="text-white/70 text-sm sm:text-base lg:text-lg xl:text-xl min-w-0 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl leading-tight sm:leading-normal">{data.question}</span>
+            <span className="text-white/70 text-sm sm:text-base md:text-base lg:text-lg xl:text-xl min-w-0 flex-1 leading-tight sm:leading-normal md:leading-normal break-words">{data.question}</span>
           </div>
         </div>
       </div>
@@ -123,9 +123,9 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
           return (
             <div
               key={`${company.name}-${activeType}`}
-              className="rounded-xl px-4 sm:px-6 pt-4 sm:pt-5 pb-4 sm:pb-5 text-white/90 relative mb-0"
+              className="rounded-xl px-4 sm:px-6 md:px-6 pt-4 sm:pt-5 md:pt-5 pb-4 sm:pb-5 md:pb-5 text-white/90 relative mb-0"
             >
-                <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 flex-wrap">
+                <div className="flex items-center gap-2 sm:gap-3 md:gap-3 mb-2 sm:mb-3 md:mb-3 flex-wrap">
                   <div className="flex-shrink-0 min-w-0">
                     <CompanyName name={company.name} size="lg" />
                   </div>
@@ -133,7 +133,7 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
                     <span className="text-xs uppercase tracking-wide text-white/50 font-normal flex-shrink-0">#{company.rank}</span>
                   )}
                 </div>
-                <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-normal break-words">
+                <p className="text-xs sm:text-sm md:text-sm text-white/70 leading-relaxed font-normal break-words">
                   {highlightedParts.map((part, i) => {
                     if (part.type === 'positive') {
                       return (

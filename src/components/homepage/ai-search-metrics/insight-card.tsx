@@ -31,20 +31,20 @@ export function InsightCard({
       }`}
     >
       <div className="relative z-10 flex flex-col h-full">
-        <div className="flex items-center gap-2 sm:gap-3 mb-1.5 sm:mb-2 min-h-[24px] sm:min-h-[28px]">
+        <div className="flex items-center gap-2 sm:gap-3 md:gap-3 mb-1.5 sm:mb-2 md:mb-2 min-h-[24px] sm:min-h-[28px] md:min-h-[28px]">
         <div className="flex-shrink-0">
           <IconComponent />
         </div>
-        <h3 className="text-xs sm:text-sm lg:text-base font-normal text-white flex-shrink-0">{title}</h3>
+        <h3 className="text-xs sm:text-sm md:text-sm lg:text-base font-normal text-white flex-shrink-0">{title}</h3>
         </div>
         {!isActive ? (
-        <p className="text-[11px] sm:text-sm md:text-base text-white/60 leading-relaxed overflow-hidden line-clamp-2 sm:line-clamp-none">{description}</p>
+        <p className="text-[11px] sm:text-sm md:text-base text-white/60 leading-relaxed overflow-hidden line-clamp-2 sm:line-clamp-none md:line-clamp-none">{description}</p>
       ) : (
-        <div className="-mt-2 pb-2 sm:pb-0 sm:-mt-2 sm:flex-1 space-y-0 sm:space-y-2 lg:space-y-0">
+        <div className="-mt-2 pb-2 sm:pb-0 md:pb-0 sm:-mt-2 md:-mt-2 sm:flex-1 md:flex-1 space-y-0 sm:space-y-2 md:space-y-2 lg:space-y-0">
           {type === 'sentiment' && data && (
             <>
               {(data as SentimentData[]).map((item, index) => (
-                <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0 lg:-mt-4' : ''} ${index === (data as SentimentData[]).length - 1 ? 'pb-2' : ''}`}>
+                <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0 md:mt-0 lg:-mt-4' : ''} ${index === (data as SentimentData[]).length - 1 ? 'pb-2' : ''}`}>
                   <div className="flex-shrink-0 min-w-0">
                     <CompanyName name={item.companyName} size="sm" />
                   </div>
@@ -62,7 +62,7 @@ export function InsightCard({
           {type === 'position' && data && (
             <>
               {(data as PositionData[]).map((item, index) => (
-                <div key={item.rank} className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0 lg:-mt-4' : ''} ${index === (data as PositionData[]).length - 1 ? 'pb-2' : ''}`}>
+                <div key={item.rank} className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0 md:mt-0 lg:-mt-4' : ''} ${index === (data as PositionData[]).length - 1 ? 'pb-2' : ''}`}>
                   <div className="flex-shrink-0 min-w-0">
                     <CompanyName name={item.companyName} size="sm" />
                   </div>
@@ -74,18 +74,18 @@ export function InsightCard({
           {type === 'visibility' && data && (
             <>
               {(data as VisibilityData[]).map((item, index) => (
-                <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0 lg:-mt-4' : ''} ${index === (data as VisibilityData[]).length - 1 ? 'pb-2' : ''}`}>
+                <div key={item.companyName} className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0 md:mt-0 lg:-mt-4' : ''} ${index === (data as VisibilityData[]).length - 1 ? 'pb-2' : ''}`}>
                   <div className="flex-shrink-0 min-w-0">
                     <CompanyName name={item.companyName} size="sm" />
                   </div>
-                  <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
-                    <div className="w-10 sm:w-14 lg:w-16 h-1 sm:h-1.5 bg-white/10 rounded-full overflow-hidden">
+                  <div className="flex items-center gap-1 sm:gap-2 md:gap-2 flex-shrink-0">
+                    <div className="w-10 sm:w-14 md:w-[3.5rem] lg:w-16 h-1 sm:h-1.5 md:h-1.5 bg-white/10 rounded-full overflow-hidden">
                       <div
                         style={{ width: `${item.percentage}%` }}
                         className="h-full bg-green-400 rounded-full"
                       />
                     </div>
-                    <span className="text-white/70 text-[10px] sm:text-xs w-7 sm:w-10 text-right">{item.percentage}%</span>
+                    <span className="text-white/70 text-[10px] sm:text-xs md:text-xs w-7 sm:w-10 md:w-10 text-right">{item.percentage}%</span>
                   </div>
                 </div>
               ))}

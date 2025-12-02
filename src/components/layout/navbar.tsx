@@ -48,20 +48,20 @@ export function Navbar() {
 
   return (
     <nav className="bg-brand-black/90 backdrop-blur-sm border-b border-[#1d1d1d] fixed top-0 left-0 right-0 z-50 overflow-x-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14 sm:h-16 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
+        <div className="flex items-center justify-between h-14 sm:h-16 md:h-16 relative">
           <div className="flex items-center flex-shrink-0">
             <Link 
               href="/" 
               onClick={handleHomeClick}
-              className="flex items-center text-lg sm:text-xl font-semibold text-brand-white"
+              className="flex items-center text-lg sm:text-xl md:text-xl font-semibold text-brand-white"
             >
               <Image
                 src="/logos/GeoAlt_Logo.png"
                 alt="GEOAlt logo"
                 width={100}
                 height={24}
-                className="h-[0.9em] sm:h-[1em] w-auto"
+                className="h-[0.9em] sm:h-[1em] md:h-[1em] w-auto"
                 priority
               />
             </Link>
@@ -93,12 +93,12 @@ export function Navbar() {
           </div>
 
           {/* Desktop CTA Buttons */}
-          <div className="hidden md:flex items-center space-x-3 lg:space-x-4 flex-shrink-0 z-10">
-            <span className="text-white hover:text-brand-gray-300 hover:opacity-80 px-2 lg:px-3 py-2 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-default">
+          <div className="hidden md:flex items-center space-x-3 md:space-x-3.5 lg:space-x-4 flex-shrink-0 z-10">
+            <span className="text-white hover:text-brand-gray-300 hover:opacity-80 px-2 md:px-2.5 lg:px-3 py-2 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-default">
               Sign in
             </span>
             <span
-              className="bg-white text-black border border-white px-3 lg:px-3.5 py-1.5 rounded-full text-sm font-normal hover:bg-white/90 hover:opacity-90 transition-all duration-150 whitespace-nowrap cursor-default"
+              className="bg-white text-black border border-white px-3 md:px-3.5 lg:px-3.5 py-1.5 rounded-full text-sm font-normal hover:bg-white/90 hover:opacity-90 transition-all duration-150 whitespace-nowrap cursor-default"
             >
               Get Started
             </span>

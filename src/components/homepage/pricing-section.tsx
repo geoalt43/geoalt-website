@@ -70,7 +70,7 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
       <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       
       {plan.isRecommended && (
-        <div className="bg-white/5 px-4 sm:px-6 lg:px-10 py-2.5 sm:py-3.5 text-xs sm:text-sm lg:text-base font-medium text-white text-center rounded-t-[18px] flex-shrink-0 relative overflow-hidden">
+        <div className="bg-white/5 px-4 sm:px-6 md:px-8 lg:px-10 py-2.5 sm:py-3.5 md:py-3.5 text-xs sm:text-sm md:text-sm lg:text-base font-medium text-white text-center rounded-t-[18px] flex-shrink-0 relative overflow-hidden">
           <motion.div
             className="absolute top-0 left-0 bg-gradient-to-r from-transparent via-white/30 to-transparent w-1/2 h-full"
             animate={{
@@ -86,16 +86,16 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
         </div>
       )}
       
-      <div className="p-4 sm:p-6 lg:p-8 flex flex-col gap-4 sm:gap-6 lg:gap-8 flex-1">
+      <div className="p-4 sm:p-6 md:p-7 lg:p-8 flex flex-col gap-4 sm:gap-6 md:gap-7 lg:gap-8 flex-1">
         <div>
-          <p className={`text-sm sm:text-base font-semibold mb-1.5 sm:mb-2.5 ${plan.name === 'Pro' ? 'pt-1 sm:pt-2' : ''}`}>{plan.name}</p>
-          <p className="text-2xl sm:text-3xl lg:text-[2.3rem] font-normal leading-none">
+          <p className={`text-sm sm:text-base md:text-base font-semibold mb-1.5 sm:mb-2.5 md:mb-2.5 ${plan.name === 'Pro' ? 'pt-1 sm:pt-2 md:pt-2' : ''}`}>{plan.name}</p>
+          <p className="text-2xl sm:text-3xl md:text-3xl lg:text-[2.3rem] font-normal leading-none">
             {plan.price}
-            {plan.period && <span className="text-sm sm:text-base font-light">{plan.period}</span>}
+            {plan.period && <span className="text-sm sm:text-base md:text-base font-light">{plan.period}</span>}
           </p>
         </div>
-        <p className="text-xs sm:text-sm text-white/70">{plan.description}</p>
-        <div className="flex flex-col gap-2.5 sm:gap-3.5 text-[11px] sm:text-xs md:text-sm text-white/80">
+        <p className="text-xs sm:text-sm md:text-sm text-white/70">{plan.description}</p>
+        <div className="flex flex-col gap-2.5 sm:gap-3.5 md:gap-3.5 text-[11px] sm:text-xs md:text-sm text-white/80">
           {plan.features.map((feature) => (
             <div
               key={feature}
@@ -109,7 +109,7 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
           ))}
         </div>
         {plan.price === 'Custom' ? (
-          <button className="mt-auto w-full max-w-[120px] sm:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full border border-white/40 text-white py-2 sm:py-3 text-[11px] sm:text-sm font-semibold whitespace-nowrap">
+          <button className="mt-auto w-full max-w-[120px] sm:max-w-none md:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full border border-white/40 text-white py-2 sm:py-3 md:py-3 text-[11px] sm:text-sm md:text-sm font-semibold whitespace-nowrap">
             Contact Us
           </button>
         ) : (
@@ -117,7 +117,7 @@ function PricingCard({ plan }: { plan: typeof pricingPlans[0] }) {
             href="https://forms.gle/wLMpHeTqQogumFMK8"
             target="_blank"
             rel="noopener noreferrer"
-            className={`mt-auto w-full max-w-[120px] sm:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full bg-white text-black py-2 sm:py-3 text-[11px] sm:text-sm font-semibold text-center whitespace-nowrap block ${colorClasses.hoverGray} transition-all duration-200 ease-in-out`}
+            className={`mt-auto w-full max-w-[120px] sm:max-w-none md:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full bg-white text-black py-2 sm:py-3 md:py-3 text-[11px] sm:text-sm md:text-sm font-semibold text-center whitespace-nowrap block ${colorClasses.hoverGray} transition-all duration-200 ease-in-out`}
           >
             Start free trial
           </a>
@@ -132,27 +132,27 @@ export function PricingSection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
 
   return (
-    <section id="pricing" className="pt-6 sm:pt-8 lg:pt-[4vh] xl:pt-[6vh] pb-6 sm:pb-8 lg:pb-[4vh] xl:pb-[6vh] scroll-mt-16 relative overflow-hidden bg-brand-black">
+    <section id="pricing" className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-6 sm:pb-8 md:pb-8 lg:pb-[4vh] xl:pb-[6vh] scroll-mt-16 relative overflow-hidden bg-brand-black">
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-grid-pattern-opacity-02" />
       
-      <div className="absolute top-0 left-0 right-0 h-16 sm:h-24 lg:h-32 bg-gradient-to-b from-black via-black/50 to-transparent pointer-events-none z-10" />
-      <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 lg:h-32 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 left-0 right-0 h-16 sm:h-24 md:h-28 lg:h-32 bg-gradient-to-b from-black via-black/50 to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 md:h-28 lg:h-32 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none z-10" />
 
-      <div ref={sectionRef} className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-14 relative z-20">
+      <div ref={sectionRef} className="max-w-[1500px] mx-auto px-4 sm:px-6 md:px-10 lg:px-14 relative z-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-          className="text-center mb-6 sm:mb-8"
+          className="text-center mb-6 sm:mb-8 md:mb-8"
         >
-          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal text-white pb-4 sm:pb-16 lg:pb-24 px-2 sm:px-0">Pricing</h2>
+          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white pb-4 sm:pb-16 md:pb-20 lg:pb-24 px-2 sm:px-0 md:px-0">Pricing</h2>
         </motion.div>
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-7 lg:gap-8"
         >
           {pricingPlans.map((plan) => (
             <PricingCard key={plan.name} plan={plan} />

@@ -25,27 +25,27 @@ export function HeroSection() {
   const headingText = 'Get Your Brand Recommended by'
   const words = splitText(headingText)
   return (
-    <section ref={sectionRef} id="home" className="pt-16 sm:pt-20 lg:pt-24 relative overflow-hidden">
+    <section ref={sectionRef} id="home" className="pt-16 sm:pt-20 md:pt-22 lg:pt-24 relative overflow-hidden">
       <motion.div
         variants={containerVariantsFast}
         initial="hidden"
         animate={controls}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8 relative z-10"
       >
-        <div className="flex flex-col items-center text-center mt-4 sm:mt-8">
+        <div className="flex flex-col items-center text-center mt-4 sm:mt-8 md:mt-8">
           <div className="max-w-4xl">
             {/* Word-by-word animated heading */}
             <motion.h1 
               variants={headingContainerVariants}
               initial="hidden"
               animate={controls}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal mt-4 sm:mt-0 mb-3 sm:mb-4 leading-tight tracking-normal sm:tracking-tight bg-gradient-to-r from-[#4285f4] via-[#9c27b0] to-[#ea4335] text-transparent bg-clip-text px-2 sm:px-0"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal mt-4 sm:mt-0 md:mt-0 mb-0 leading-tight tracking-normal sm:tracking-tight md:tracking-tight bg-gradient-to-r from-[#4285f4] via-[#9c27b0] to-[#ea4335] text-transparent bg-clip-text px-2 sm:px-0 md:px-0"
             >
               {words.map((word, index) => (
                 <motion.span
                   key={index}
                   variants={wordVariants}
-                  className="inline-block mr-2 sm:mr-3 [transform-style:preserve-3d]"
+                  className="inline-block mr-2 sm:mr-3 md:mr-3 [transform-style:preserve-3d]"
                 >
                   {word}
                 </motion.span>
@@ -57,7 +57,7 @@ export function HeroSection() {
               variants={rotatorVariants}
               initial="hidden"
               animate={controls}
-              className="-mt-6 sm:-mt-8 lg:-mt-11 flex justify-center"
+              className="flex justify-center"
             >
               <AIPlatformRotator size="large" />
             </motion.div>
@@ -67,14 +67,14 @@ export function HeroSection() {
               variants={textVariants}
               initial="hidden"
               animate={controls}
-              className={`text-xs sm:text-base md:text-lg text-center ${colorClasses.textSecondary} px-4 sm:px-0 flex items-center justify-center gap-2 flex-wrap`}
+              className={`text-xs sm:text-base md:text-lg text-center ${colorClasses.textSecondary} px-4 sm:px-0 md:px-0 flex items-center justify-center gap-2 flex-wrap mt-0`}
             >
               <Image
                 src="/logos/GeoAlt_Logo.png"
                 alt="GEOAlt logo"
                 width={100}
                 height={24}
-                className="h-[0.75em] sm:h-[0.8em] w-auto align-middle"
+                className="h-[0.75em] sm:h-[0.8em] md:h-[0.8em] w-auto align-middle"
                 priority
                 sizes="(max-width: 640px) 100px, 100px"
               />
@@ -84,15 +84,15 @@ export function HeroSection() {
               variants={textVariants}
               initial="hidden"
               animate={controls}
-              className={`text-xs sm:text-sm md:text-base mb-6 sm:mb-8 pb-2 sm:pb-4 text-center ${colorClasses.textSecondary} px-4 sm:px-0`}
+              className={`text-xs sm:text-sm md:text-base mb-6 sm:mb-8 md:mb-8 pb-2 sm:pb-4 md:pb-4 text-center ${colorClasses.textSecondary} px-4 sm:px-0 md:px-0`}
             >
               <em>— Turning AI visibility into traffic</em>
             </motion.p>
           
             {/* Hero CTA Buttons */}
-            <div className="flex flex-row gap-2.5 sm:gap-4 items-center justify-center px-4 sm:px-0">
+            <div className="flex flex-row gap-2.5 sm:gap-4 md:gap-4 items-center justify-center px-4 sm:px-0 md:px-0">
               <span
-                className="inline-flex items-center justify-center text-black px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm md:text-base font-semibold tracking-wide transition-all duration-200 ease-in-out bg-white hover:bg-[#d4d4d4] text-center min-w-[100px] sm:min-w-[120px] cursor-default"
+                className="inline-flex items-center justify-center text-black px-3.5 py-1.5 sm:px-4 sm:py-2 md:px-4 md:py-2 rounded-lg text-xs sm:text-sm md:text-base font-semibold tracking-wide transition-all duration-200 ease-in-out bg-white hover:bg-[#d4d4d4] text-center min-w-[100px] sm:min-w-[120px] md:min-w-[120px] cursor-default"
               >
                 Get Started
               </span>
@@ -101,7 +101,7 @@ export function HeroSection() {
                 variant="outline" 
                 size="md"
                 showModal={false}
-                className="min-w-[100px] sm:min-w-[120px]"
+                className="min-w-[100px] sm:min-w-[120px] md:min-w-[120px]"
               />
             </div>
           </div>

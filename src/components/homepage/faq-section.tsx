@@ -1,6 +1,6 @@
 'use client'
 
-import { RefObject, useRef, useEffect } from 'react'
+import { RefObject, useRef, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { containerVariants, cardVariantsSmooth } from '@/lib/animations/variants'
 import { colorClasses } from '@/constants/colors'
@@ -42,11 +42,11 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
         }}
       />
       <motion.button
-        className="w-full pl-3 sm:pl-4 pr-5 sm:pr-7 py-2.5 sm:py-3.5 text-left flex items-start sm:items-center gap-2 sm:gap-4"
+        className="w-full pl-3 sm:pl-4 md:pl-4 pr-5 sm:pr-7 md:pr-7 py-2.5 sm:py-3.5 md:py-3.5 text-left flex items-start sm:items-center md:items-center gap-2 sm:gap-4 md:gap-4"
         onClick={onToggle}
       >
         <motion.span
-          className="text-white text-sm sm:text-base font-light inline-block flex-shrink-0 mt-0.5 sm:mt-0"
+          className="text-white text-sm sm:text-base md:text-base font-light inline-block flex-shrink-0 mt-0.5 sm:mt-0 md:mt-0"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ 
             scale: 1,
@@ -57,7 +57,7 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
         >
           &gt;
         </motion.span>
-        <span className="font-medium text-white text-xs sm:text-sm lg:text-base leading-relaxed flex-1 text-left">{faq.question}</span>
+        <span className="font-medium text-white text-xs sm:text-sm md:text-sm lg:text-base leading-relaxed flex-1 text-left">{faq.question}</span>
       </motion.button>
       <AnimatePresence initial={false}>
         {isOpen && (
@@ -81,7 +81,7 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
             }}
             className="overflow-hidden bg-transparent"
           >
-            <div className="pl-[calc(0.75rem+1rem+0.75rem)] sm:pl-[calc(1rem+1.5rem+1rem)] pr-4 sm:pr-8 pb-3 sm:pb-5 pt-0 bg-transparent">
+            <div className="pl-[calc(0.75rem+1rem+0.75rem)] sm:pl-[calc(1rem+1.5rem+1rem)] md:pl-[calc(1rem+1.5rem+1rem)] pr-4 sm:pr-8 md:pr-8 pb-3 sm:pb-5 md:pb-5 pt-0 bg-transparent">
               <motion.p
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ 
@@ -94,7 +94,7 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
                   opacity: 0,
                   transition: { duration: 0.2, ease: 'easeIn' }
                 }}
-                className="text-gray-400 leading-relaxed text-xs sm:text-sm font-light bg-transparent"
+                className="text-gray-400 leading-relaxed text-xs sm:text-sm md:text-sm font-light bg-transparent"
               >
                 {faq.answer}
               </motion.p>
@@ -107,32 +107,32 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
 }
 
 export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
-  const faqs = [
+  const faqs = useMemo(() => [
     {
-      question: "How is Generative Engine Optimization any different to Search Engine Optimization?",
-      answer: "GEO focuses on optimizing content for AI search engines like ChatGPT, Perplexity, and Google AI, while traditional SEO targets human search engines. GEO requires understanding how AI models process and reference information differently."
+      question: "What does GeoAlt do?",
+      answer: "GeoAlt shows how your website appears in AI search, delivering insights and recommendations to improve visibility, credibility, and performance across generative engines effectively."
     },
     {
-      question: "Can I just use normal SEO to optimize for AI Search?",
-      answer: "While some SEO principles apply, AI search engines have different ranking factors and content preferences. Our platform is specifically designed to help you understand and optimize for AI search behavior."
+      question: "How does GeoAlt help my brand?",
+      answer: "GeoAlt analyzes your content's presence in AI answers, highlights missing visibility opportunities, and provides clear guidance to strengthen trust, authority, and competitive advantage across generative platforms."
     },
     {
-      question: "How does GEOAlt get its data?",
-      answer: "We use advanced simulation techniques to test how AI models respond to different prompts and content. Our data comes from comprehensive testing across multiple AI platforms and search engines."
+      question: "Who should use GeoAlt?",
+      answer: "Brands, marketers, founders, and SEO teams wanting stronger AI search presence benefit from GeoAlt's insights, optimization recommendations, competitive analysis, and structured visibility reporting across generative engines."
     },
     {
-      question: "Can you select prompts to simulate?",
-      answer: "Yes, you can customize and select specific prompts to simulate based on your industry, target audience, and business goals. This helps you understand exactly how AI models respond to your content."
+      question: "What data does GeoAlt analyze?",
+      answer: "GeoAlt scans website content, competitor pages, AI-generated answers, semantic patterns, and topic coverage to identify gaps, strengths, weaknesses, and actionable optimization steps for improved AI search visibility."
     },
     {
-      question: "Have you increased someone&apos;s visibility on AI Search before?",
-      answer: "Yes, our clients have seen significant improvements in AI search visibility. We&apos;ve helped businesses increase their AI mentions by up to 300% and improve their brand ranking in AI search results."
+      question: "How is GeoAlt different from SEO tools?",
+      answer: "GeoAlt focuses specifically on generative engines, evaluating AI summary visibility rather than traditional keyword rankings, offering intent-driven recommendations tailored for modern answer-engine ecosystems and behaviors."
     },
     {
-      question: "Do you offer free consultations?",
-      answer: "Yes, we offer free consultations to help you understand how GEO can benefit your business. Contact us to schedule a personalized demo and strategy session."
+      question: "Does GeoAlt work for any website?",
+      answer: "Yes, GeoAlt supports nearly all websites by analyzing content structure, clarity, authority, and relevance, offering optimization suggestions designed to improve AI search performance and generative visibility."
     }
-  ]
+  ], [])
 
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
@@ -168,16 +168,16 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
   }, [faqs])
 
   return (
-    <section className="pt-6 sm:pt-8 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 lg:pb-[4vh] xl:pb-[6vh]">
-      <div ref={sectionRef} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh]">
+      <div ref={sectionRef} className="max-w-4xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-          className="text-center mb-8 sm:mb-12 lg:mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-14 lg:mb-16"
         >
-          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal text-white mb-2 sm:mb-6 px-2 sm:px-0">FAQ</h2>
-          <p className={`text-sm sm:text-lg ${colorClasses.textMuted} font-light px-4 sm:px-0 pt-0`}>Generative Engine Optimization is still<br />very new. We&apos;ve got you covered.</p>
+          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0">FAQ</h2>
+          <p className={`text-sm sm:text-lg md:text-lg ${colorClasses.textMuted} font-light px-4 sm:px-0 md:px-0 pt-0`}>Generative Engine Optimization is still<br />very new. We&apos;ve got you covered.</p>
         </motion.div>
         
         <motion.div

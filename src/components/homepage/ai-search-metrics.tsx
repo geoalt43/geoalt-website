@@ -53,24 +53,24 @@ export function AISearchMetricsSection() {
   }
 
   return (
-    <section ref={sectionRef} className="pt-6 sm:pt-8 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 lg:pb-[4vh] xl:pb-[6vh] bg-[#090909]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={sectionRef} className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh] bg-[#090909]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           className="text-center max-w-3xl mx-auto"
         >
-          <motion.h2 variants={headerVariants} className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal text-white mb-3 sm:mb-4 px-2 sm:px-0">
+          <motion.h2 variants={headerVariants} className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-3 sm:mb-4 md:mb-4 px-2 sm:px-0 md:px-0">
             How AI actually sees your brand
           </motion.h2>
-          <motion.p variants={subtitleVariants} className="text-base sm:text-lg text-[#9b9b9b] px-4 sm:px-0">
+          <motion.p variants={subtitleVariants} className="text-base sm:text-lg md:text-lg text-[#9b9b9b] px-4 sm:px-0 md:px-0">
             Everything that matters in one place
           </motion.p>
         </motion.div>
 
-        <div className="mt-8 sm:mt-12 max-w-7xl mx-auto relative">
-          <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 relative overflow-hidden">
+        <div className="mt-8 sm:mt-12 md:mt-12 max-w-7xl mx-auto relative">
+          <div className="grid gap-3 sm:gap-4 md:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 relative overflow-hidden">
             {/* Top horizontal line - aligned with card top */}
             <div className="absolute top-0 left-0 right-0 h-px bg-white/5 z-20"></div>
             

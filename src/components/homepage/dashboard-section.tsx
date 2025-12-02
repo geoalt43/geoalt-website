@@ -18,9 +18,9 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
-      className={`${CARD_BASE} p-2 sm:p-0 overflow-hidden relative min-h-[320px] sm:min-h-[330px] lg:min-h-[400px] max-w-[90%] sm:max-w-none mx-auto sm:mx-0`}
+      className={`${CARD_BASE} p-2 sm:p-0 md:p-0 overflow-hidden relative min-h-[320px] sm:min-h-[330px] md:min-h-[365px] lg:min-h-[400px] max-w-[90%] sm:max-w-none mx-auto sm:mx-0`}
     >
-      <div className="relative w-full h-full min-h-[320px] sm:min-h-[330px] lg:min-h-[400px] rounded-lg overflow-hidden">
+      <div className="relative w-full h-full min-h-[320px] sm:min-h-[330px] md:min-h-[365px] lg:min-h-[400px] rounded-lg overflow-hidden">
         <motion.div
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
@@ -35,12 +35,12 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
         >
           <motion.div 
             variants={headingVariants}
-            className="pt-2 sm:pt-6 px-2 sm:px-6 mb-2 sm:mb-4 flex-shrink-0"
+            className="pt-2 sm:pt-6 md:pt-6 px-2 sm:px-6 md:px-6 mb-2 sm:mb-4 md:mb-4 flex-shrink-0"
           >
-            <h3 className={`text-base sm:text-xl font-light sm:font-medium text-white mb-1 sm:mb-2`}>
+            <h3 className={`text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-white mb-1 sm:mb-2 md:mb-2`}>
               Analyze AI visibility scores
             </h3>
-            <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-2 sm:mb-4`}>
+            <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-2 sm:mb-4 md:mb-4`}>
               Track how often your brand appears in AI-generated answers, monitor visibility trends.
             </p>
           </motion.div>
@@ -70,22 +70,22 @@ export function DashboardSection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
   return (
-    <section id="features" ref={sectionRef} className="pt-6 sm:pt-8 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 lg:pb-[4vh] xl:pb-[6vh] bg-black">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="features" ref={sectionRef} className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh] bg-black">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
         <motion.div
           variants={headingVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="pt-[5%] mb-8 sm:mb-12 text-left sm:text-center"
+          className="pt-[5%] mb-8 sm:mb-12 md:mb-12 text-left sm:text-center md:text-center"
         >
-          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal text-white mb-3 sm:mb-4 px-2 sm:px-0">
+          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-3 sm:mb-4 md:mb-4 px-2 sm:px-0 md:px-0">
             {/* Mobile version */}
             <span className="block sm:hidden">
               <span className="pt-[5%] block text-center">Unlock AI-driven search insights</span>
               <span className="block text-center">
                 that bring customers to you
               </span>
-              <span className="block text-center pb-4 sm:pb-6 lg:pb-9">
+              <span className="block text-center pb-4 sm:pb-6 md:pb-7 lg:pb-9">
                 — GeoAlt
               </span>
             </span>
@@ -93,7 +93,7 @@ export function DashboardSection() {
             <span className="hidden sm:block">
               <span className="pt-[5%]">Unlock AI-driven search insights that bring</span>
               <br />
-              <span className="pb-4 sm:pb-6 lg:pb-9 block">
+              <span className="pb-4 sm:pb-6 md:pb-7 lg:pb-9 block">
                 customers to you — GeoAlt
               </span>
             </span>
@@ -105,10 +105,10 @@ export function DashboardSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-5 lg:gap-2 mb-5 sm:mb-8 lg:mb-6"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-5 md:gap-5 lg:gap-2 mb-5 sm:mb-8 md:mb-8 lg:mb-6"
         >
           {/* Container 1: Customize Your Prompts */}
-          <div className={`${CARD_BASE} p-2 sm:p-5 overflow-hidden relative min-h-[320px] sm:min-h-[330px] lg:min-h-[400px] max-w-[90%] sm:max-w-none mx-auto sm:mx-0 pb-16 sm:pb-22 lg:pb-0`}>
+          <div className={`${CARD_BASE} p-2 sm:p-5 md:p-5 overflow-hidden relative min-h-[320px] sm:min-h-[330px] md:min-h-[380px] lg:min-h-[400px] max-w-[90%] sm:max-w-none mx-auto sm:mx-0`}>
             <div className="mb-2 relative z-10">
               <h3 className={`text-base sm:text-xl font-light sm:font-medium text-white mb-1`}>Customize Your Prompts</h3>
               <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-1.5 pb-3 sm:pb-4`}>
@@ -116,7 +116,7 @@ export function DashboardSection() {
               </p>
             </div>
             
-            <div className={`absolute -bottom-[40px] sm:-bottom-[60px] md:-bottom-[70px] lg:-bottom-[90px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[100%] pointer-events-none`}>
+            <div className={`absolute bottom-0 left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[200px] sm:h-[220px] md:h-[240px] lg:h-[300px] xl:h-[350px] pointer-events-none`}>
               <div 
                 className={`${TRANSFORM_STYLE_3D} transition-transform duration-300 ease-out ${BOX_SHADOW_3D} w-full h-full dashboard-image-transform`}
               >
@@ -125,7 +125,7 @@ export function DashboardSection() {
                   alt="Prompt Studio interface"
                   width={900}
                   height={600}
-                  className="w-full h-full object-cover rounded-lg object-[center_bottom]"
+                  className="w-full h-full object-cover object-[center_top] rounded-lg"
                   sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 50vw"
                 />
               </div>
@@ -135,19 +135,19 @@ export function DashboardSection() {
           {/* Container 2: Add Business Competitors */}
           <motion.div 
             variants={cardVariants}
-            className={`${CARD_BASE} p-2 sm:p-5 overflow-hidden relative min-h-[320px] sm:min-h-[330px] lg:min-h-[400px] max-w-[90%] sm:max-w-none mx-auto sm:mx-0 pb-20 sm:pb-26 lg:pb-0`}
+            className={`${CARD_BASE} p-2 sm:p-5 md:p-5 overflow-hidden relative min-h-[320px] sm:min-h-[330px] md:min-h-[400px] lg:min-h-[400px] max-w-[90%] sm:max-w-none mx-auto sm:mx-0`}
           >
             <motion.div 
               variants={headingVariants}
               className="mb-2 relative z-10"
             >
-              <h3 className={`text-base sm:text-xl font-light sm:font-medium text-white mb-2`}>Add Business Competitors</h3>
+              <h3 className={`text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-white mb-2`}>Add Business Competitors</h3>
               <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-3 sm:mb-4`}>
               <span className="whitespace-nowrap">Add competitors so GeoAlt can map landscape for growth</span>
               </p>
             </motion.div>
             
-            <div className={`absolute bottom-0 sm:-bottom-[80px] md:-bottom-[100px] lg:-bottom-[140px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[128%] pointer-events-none`}>
+            <div className={`absolute bottom-0 left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[200px] sm:h-[220px] md:h-[260px] lg:h-[300px] xl:h-[350px] pointer-events-none`}>
               <div 
                 className={`${TRANSFORM_STYLE_3D} transition-transform duration-300 ease-out ${BOX_SHADOW_3D} w-full h-full relative z-20 dashboard-image-transform`}
               >
@@ -156,7 +156,7 @@ export function DashboardSection() {
                   alt="Add competitors interface"
                   width={800}
                   height={600}
-                  className="w-full h-full object-cover rounded-lg object-[center_bottom]"
+                  className="w-full h-full object-cover object-[center_top] rounded-lg"
                   sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 50vw"
                 />
               </div>
@@ -169,18 +169,18 @@ export function DashboardSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-5 lg:gap-2 mb-5 sm:mb-8 lg:mb-6"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-5 md:gap-5 lg:gap-2 mb-5 sm:mb-8 md:mb-8 lg:mb-6"
         >
           {/* Container 3: Pick Model and Region */}
           <motion.div 
             variants={cardVariants}
-            className={`${CARD_BASE} p-2 sm:p-5 overflow-hidden relative min-h-[320px] sm:min-h-[330px] lg:min-h-[400px] max-w-[90%] sm:max-w-none mx-auto sm:mx-0 pb-20 sm:pb-26 lg:pb-0`}
+            className={`${CARD_BASE} p-2 sm:p-5 md:p-5 overflow-hidden relative min-h-[320px] sm:min-h-[330px] md:min-h-[400px] lg:min-h-[400px] max-w-[90%] sm:max-w-none mx-auto sm:mx-0`}
           >
             <motion.div 
               variants={headingVariants}
               className="mb-2 relative z-10"
             >
-              <h3 className={`text-base sm:text-xl font-light sm:font-medium text-white mb-2`}>Pick Model and Region</h3>
+              <h3 className={`text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-white mb-2`}>Pick Model and Region</h3>
               <p className={`text-xs sm:text-sm md:text-base text-gray-400 mb-3 sm:mb-4`}>
               Pick AI model and region to generate insights that help business grow
               </p>
@@ -188,7 +188,7 @@ export function DashboardSection() {
             
             <motion.div 
               variants={imageVariants}
-              className={`absolute -bottom-[60px] sm:-bottom-[80px] md:-bottom-[100px] lg:-bottom-[140px] left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[100%] pointer-events-none`}
+              className={`absolute bottom-0 left-0 right-0 rounded-lg overflow-hidden ${PERSPECTIVE_3D} h-[200px] sm:h-[220px] md:h-[260px] lg:h-[300px] xl:h-[350px] pointer-events-none`}
             >
               <motion.div
                 initial={{ 
@@ -201,7 +201,7 @@ export function DashboardSection() {
                   alt="Region Selector interface"
                   width={800}
                   height={600}
-                  className="w-full h-full object-cover rounded-lg object-[center_bottom]"
+                  className="w-full h-full object-cover object-[center_top] rounded-lg"
                   sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 50vw"
                 />
               </motion.div>
