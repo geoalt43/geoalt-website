@@ -4,12 +4,14 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: (config) => {
+  webpack: config => {
     // Silence Prisma/OpenTelemetry 'Critical dependency: the request of a dependency is an expression'
     config.ignoreWarnings = config.ignoreWarnings || []
     config.ignoreWarnings.push({
-      module: /@opentelemetry\/instrumentation\/build\/esm\/platform\/node\/instrumentation\.js/,
-      message: /Critical dependency: the request of a dependency is an expression/,
+      module:
+        /@opentelemetry\/instrumentation\/build\/esm\/platform\/node\/instrumentation\.js/,
+      message:
+        /Critical dependency: the request of a dependency is an expression/,
     })
     return config
   },
@@ -19,9 +21,18 @@ const nextConfig = {
         protocol: 'http',
         hostname: 'localhost',
       },
+
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: 'geoalt-website.vercel.app',
+      },
+      {
+        protocol: 'https',
+        hostname: 'geoalt.in',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.geoalt.in',
       },
     ],
     formats: ['image/avif', 'image/webp'],
