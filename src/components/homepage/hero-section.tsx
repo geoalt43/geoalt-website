@@ -35,7 +35,7 @@ export function HeroSection() {
         <div className="flex flex-col items-center text-center mt-4 sm:mt-8 md:mt-8">
           <div className="max-w-4xl">
             {/* Word-by-word animated heading */}
-            <motion.h1 
+            {/* <motion.h1 
               variants={headingContainerVariants}
               initial="hidden"
               animate={controls}
@@ -50,10 +50,36 @@ export function HeroSection() {
                   {word}
                 </motion.span>
               ))}
+            </motion.h1> */}
+            <motion.h1
+              variants={headingContainerVariants}
+              initial="hidden"
+              animate={controls}
+              className="
+    text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem]
+    font-normal mt-4 sm:mt-0 md:mt-0
+    leading-tight tracking-tight
+     bg-gradient-to-r from-[#4285f4] via-[#9c27b0] to-[#ea4335]
+        bg-clip-text text-transparent
+  "
+            >
+              {words.map((word, index) => (
+                <motion.span
+                  key={index}
+                  variants={wordVariants}
+                  className="
+        inline-block mr-2 sm:mr-3 md:mr-3
+       
+      "
+                >
+                  {word}
+                </motion.span>
+              ))}
             </motion.h1>
 
+
             {/* AI Platform Rotator with blur reveal */}
-            <motion.div 
+            <motion.div
               variants={rotatorVariants}
               initial="hidden"
               animate={controls}
@@ -63,7 +89,7 @@ export function HeroSection() {
             </motion.div>
 
             {/* Description text with clip-path reveal */}
-            <motion.p 
+            <motion.p
               variants={textVariants}
               initial="hidden"
               animate={controls}
@@ -80,7 +106,7 @@ export function HeroSection() {
               />
               <span>helps your business stand out across AI platforms</span>
             </motion.p>
-            <motion.p 
+            <motion.p
               variants={textVariants}
               initial="hidden"
               animate={controls}
@@ -88,7 +114,7 @@ export function HeroSection() {
             >
               <em>— Turning AI visibility into traffic</em>
             </motion.p>
-          
+
             {/* Hero CTA Buttons */}
             <div className="flex flex-row gap-2.5 sm:gap-4 md:gap-4 items-center justify-center px-4 sm:px-0 md:px-0">
               <span
@@ -96,9 +122,9 @@ export function HeroSection() {
               >
                 Get Started
               </span>
-              <DemoCTA 
-                text="Contact Us" 
-                variant="outline" 
+              <DemoCTA
+                text="Contact Us"
+                variant="outline"
                 size="md"
                 showModal={false}
                 className="min-w-[100px] sm:min-w-[120px] md:min-w-[120px]"
