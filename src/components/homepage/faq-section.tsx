@@ -168,7 +168,7 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
   }, [faqs])
 
   return (
-    <section className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh]">
+    <section className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh] bg-transparent-text bg-clip-text">
       <div ref={sectionRef} className="max-w-4xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

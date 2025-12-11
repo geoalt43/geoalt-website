@@ -132,7 +132,7 @@ export function PricingSection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
 
   return (
-    <section id="pricing" className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-6 sm:pb-8 md:pb-8 lg:pb-[4vh] xl:pb-[6vh] scroll-mt-16 relative overflow-hidden bg-brand-black">
+    <section id="pricing" className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-6 sm:pb-8 md:pb-8 lg:pb-[4vh] xl:pb-[6vh] scroll-mt-16 relative overflow-hidden  bg-transparent-text bg-clip-text">
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-grid-pattern-opacity-02" />
       
       <div className="absolute top-0 left-0 right-0 h-16 sm:h-24 md:h-28 lg:h-32 bg-gradient-to-b from-black via-black/50 to-transparent pointer-events-none z-10" />

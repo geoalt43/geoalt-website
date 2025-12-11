@@ -57,7 +57,7 @@ export function TestimonialsCarousel() {
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
 
   return (
-    <section className="pt-9 sm:pt-12 md:pt-13 lg:pt-[4vh] xl:pt-[6vh] pb-6 sm:pb-8 md:pb-8 lg:pb-[4vh] xl:pb-[6vh] bg-brand-black relative overflow-hidden">
+    <section className="pt-9 sm:pt-12 md:pt-13 lg:pt-[4vh] xl:pt-[6vh] pb-6 sm:pb-8 md:pb-8 lg:pb-[4vh] xl:pb-[6vh] bg-brand-black relative overflow-hidden bg-transparent-text bg-clip-text">
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-grid-pattern-opacity-02" />
       
       <div className="absolute top-0 left-0 right-0 h-16 sm:h-24 md:h-28 lg:h-32 bg-gradient-to-b from-black via-black/50 to-transparent pointer-events-none z-10" />

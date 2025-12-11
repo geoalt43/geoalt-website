@@ -22,7 +22,7 @@ export function CTASection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
 
   return (
-    <section ref={sectionRef} className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-6 sm:pb-8 md:pb-8 lg:pb-[4vh] xl:pb-[6vh]">
+    <section ref={sectionRef} className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-6 sm:pb-8 md:pb-8 lg:pb-[4vh] xl:pb-[6vh] bg-transparent-text bg-clip-text">
       <motion.div
         variants={containerVariantsSimple}
         initial="hidden"

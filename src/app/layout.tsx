@@ -102,6 +102,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark overflow-x-hidden" suppressHydrationWarning style={{ colorScheme: 'dark' }}>
       <body className={`${inter.className} overflow-x-hidden`}>
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
         <OrganizationStructuredData />
         <WebSiteStructuredData />
         <SoftwareApplicationStructuredData />
