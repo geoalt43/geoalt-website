@@ -10,7 +10,7 @@ function FeaturesSection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
   return (
-    <section ref={sectionRef} className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-16 sm:pb-20 md:pb-20 lg:pb-[4vh] xl:pb-[6vh] relative overflow-hidden">
+    <section ref={sectionRef} className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-16 sm:pb-20 md:pb-20 lg:pb-[4vh] xl:pb-[6vh] relative overflow-hidden bg-transparent-text bg-clip-text">
       {/* Background Grid Effect */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]">
         <div className="absolute inset-0 bg-grid-pattern" />
