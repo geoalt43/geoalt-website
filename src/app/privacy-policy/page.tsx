@@ -32,7 +32,7 @@ export default function PrivacyPolicyPage() {
               Overview
             </h2>
             <p className="text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
-              This Privacy Policy explains how GeoAlt collects, uses, stores, and protects personal and business information
+              This Privacy Policy explains how Geoalt collects, uses, stores, and protects personal and business information
               when you use our platform.
             </p>
           </section>
@@ -71,7 +71,7 @@ export default function PrivacyPolicyPage() {
               AI & Brand Data
             </h2>
             <p className="text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
-              Your brand data, prompts, and inputs remain your property. GeoAlt uses this data only to generate insights and
+              Your brand data, prompts, and inputs remain your property. Geoalt uses this data only to generate insights and
               does not sell or publicly train AI models on private customer data.
             </p>
           </section>
@@ -124,7 +124,7 @@ export default function PrivacyPolicyPage() {
               Children&apos;s Privacy
             </h2>
             <p className="text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
-              GeoAlt is not intended for individuals under the age of 18.
+              Geoalt is not intended for individuals under the age of 18.
             </p>
           </section>
 

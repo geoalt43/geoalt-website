@@ -15,10 +15,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'GEOAlt - Get Your Brand Recommended by AI',
-    template: '%s | GEOAlt',
+    default: 'Geoalt - Get Your Brand Recommended by AI',
+    template: '%s | Geoalt',
   },
-  description: 'GEOAlt helps your business stand out across AI platforms. Optimize your brand visibility on ChatGPT, Perplexity, Claude, and other AI platforms. Turn AI mentions into traffic and customers with Generative Engine Optimization (GEO).',
+  description: 'Geoalt helps your business stand out across AI platforms. Optimize your brand visibility on ChatGPT, Perplexity, Claude, and other AI platforms. Turn AI mentions into traffic and customers with Generative Engine Optimization (GEO).',
   keywords: [
     'AI visibility',
     'Generative Engine Optimization',
@@ -32,12 +32,12 @@ export const metadata: Metadata = {
     'AI recommendations',
     'AI marketing',
     'AI search engine optimization',
-    'GEOAlt',
+    'Geoalt',
     'AI platform optimization',
   ],
-  authors: [{ name: 'GEOAlt Team' }],
-  creator: 'GEOAlt',
-  publisher: 'GEOAlt',
+  authors: [{ name: 'Geoalt Team' }],
+  creator: 'Geoalt',
+  publisher: 'Geoalt',
   formatDetection: {
     email: false,
     address: false,
@@ -59,22 +59,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://geoalt.com',
-    title: 'GEOAlt - Get Your Brand Recommended by AI',
-    description: 'GEOAlt helps your business stand out across AI platforms. Turning AI visibility into traffic.',
-    siteName: 'GEOAlt',
+    title: 'Geoalt - Get Your Brand Recommended by AI',
+    description: 'Geoalt helps your business stand out across AI platforms. Turning AI visibility into traffic.',
+    siteName: 'Geoalt',
     images: [
       {
         url: '/images/img-2.jpeg',
         width: 1200,
         height: 630,
-        alt: 'GEOAlt - AI Visibility Platform',
+        alt: 'Geoalt - AI Visibility Platform',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GEOAlt - Get Your Brand Recommended by AI',
-    description: 'GEOAlt helps your business stand out across AI platforms. Turning AI visibility into traffic.',
+    title: 'Geoalt - Get Your Brand Recommended by AI',
+    description: 'Geoalt helps your business stand out across AI platforms. Turning AI visibility into traffic.',
     images: ['/images/img-2.jpeg'],
     creator: '@geoalt',
     site: '@geoalt',
@@ -107,7 +107,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'GEOAlt',
+    title: 'Geoalt',
   },
 }
 
@@ -129,10 +129,10 @@ export default function RootLayout({
   const organizationStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'GEOAlt',
+    name: 'Geoalt',
     url: baseUrl,
     logo: `${baseUrl}/logos/GeoAlt_Logo.png`,
-    description: 'GEOAlt helps your business stand out across AI platforms. Turning AI visibility into traffic and customers.',
+    description: 'Geoalt helps your business stand out across AI platforms. Turning AI visibility into traffic and customers.',
     sameAs: [
       'https://www.linkedin.com/company/geo-alt',
       'https://twitter.com/geoalt',
@@ -149,9 +149,9 @@ export default function RootLayout({
   const webSiteStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'GEOAlt',
+    name: 'Geoalt',
     url: baseUrl,
-    description: 'Get your brand recommended by AI. GEOAlt helps businesses optimize their visibility across AI platforms like ChatGPT, Perplexity, and Claude.',
+    description: 'Get your brand recommended by AI. Geoalt helps businesses optimize their visibility across AI platforms like ChatGPT, Perplexity, and Claude.',
     potentialAction: {
       '@type': 'SearchAction',
       target: {
@@ -165,7 +165,7 @@ export default function RootLayout({
   const softwareApplicationStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: 'GEOAlt',
+    name: 'Geoalt',
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web',
     offers: {

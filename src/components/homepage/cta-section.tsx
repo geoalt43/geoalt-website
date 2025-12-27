@@ -22,17 +22,17 @@ export function CTASection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
 
   return (
-    <section ref={sectionRef} className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-6 sm:pb-8 md:pb-8 lg:pb-[4vh] xl:pb-[6vh] bg-transparent-text bg-clip-text">
+    <section ref={sectionRef} className="pt-4 sm:pt-5 md:pt-6 lg:pt-[4vh] xl:pt-[6vh] pb-4 sm:pb-5 md:pb-6 lg:pb-[4vh] xl:pb-[6vh] bg-transparent-text bg-clip-text">
       <motion.div
         variants={containerVariantsSimple}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
           className={`max-w-6xl max-[1250px]:mx-4 min-[1251px]:mx-auto px-4 sm:px-6 md:px-7 pt-3 pb-3 md:pt-3 md:pb-3 lg:px-8 border ${colorClasses.borderDark} rounded-lg ${colorClasses.surfaceDarker}`}
       >
-        <div className={`${colorClasses.surfaceDarker} rounded-lg p-4 sm:p-5 md:p-6 lg:p-7 flex flex-col lg:flex-row items-center lg:items-center gap-6 md:gap-6 lg:gap-0`}>
+        <div className={`${colorClasses.surfaceDarker} rounded-lg p-3 sm:p-4 md:p-5 lg:p-7 flex flex-col lg:flex-row items-center lg:items-center gap-4 sm:gap-5 md:gap-5 lg:gap-0`}>
           {/* Left Section - Text Content */}
-          <div className="w-full max-w-[320px] sm:flex-1 sm:max-w-none md:flex-1 md:max-w-none lg:pr-8 lg:w-auto text-center lg:text-left mb-4 sm:mb-6 md:mb-6 lg:mb-0 mx-auto sm:mx-0">
-            <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-3 sm:mb-4 md:mb-4 leading-tight tracking-wide px-2 sm:px-0 md:px-0">
+          <div className="w-full max-w-[320px] sm:flex-1 sm:max-w-none md:flex-1 md:max-w-none lg:pr-8 lg:w-auto text-center lg:text-left mb-2 sm:mb-3 md:mb-4 lg:mb-0 mx-auto sm:mx-0">
+            <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-2 sm:mb-3 md:mb-4 leading-tight tracking-wide px-2 sm:px-0 md:px-0">
               <span className="pb-2 inline-block">
                 Start Growing Your
               </span>
@@ -41,8 +41,8 @@ export function CTASection() {
                 AI Visibility Today
               </span>
             </h2>
-            <p className={`text-sm sm:text-lg md:text-lg ${colorClasses.textSecondary} px-4 sm:px-0 md:px-0 text-center lg:text-left mb-4 sm:mb-6 md:mb-6 lg:mb-8`}>
-              <span className="block sm:inline">GeoAlt helps you lead in AI search</span>
+            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textSecondary} px-4 sm:px-0 md:px-0 text-center lg:text-left mb-3 sm:mb-4 md:mb-5 lg:mb-8`}>
+              <span className="block sm:inline">Geoalt helps you lead in AI search</span>
               <span className="block sm:inline">and scale your brand faster.</span>
             </p>
             {/* Buttons - Hidden on mobile, shown on larger screens */}
@@ -68,8 +68,8 @@ export function CTASection() {
           </div>
           
           {/* Right Section - AI Platform Rotator with Buttons on Mobile */}
-          <div className="flex-shrink-0 w-full sm:w-auto sm:min-w-[240px] md:min-w-[280px] lg:w-[380px] flex flex-col items-center gap-4 md:gap-4 lg:gap-0">
-            <div className="h-[180px] sm:h-[215px] md:h-[245px] lg:h-[300px] w-full flex items-center justify-center lg:justify-end relative overflow-hidden">
+          <div className="flex-shrink-0 w-full sm:w-auto sm:min-w-[240px] md:min-w-[280px] lg:w-[380px] flex flex-col items-center gap-3 sm:gap-3 md:gap-4 lg:gap-0">
+            <div className="h-[140px] sm:h-[170px] md:h-[200px] lg:h-[300px] w-full flex items-center justify-center lg:justify-end relative overflow-hidden">
               <div className="relative w-full h-full max-w-full">
                 <div className="relative w-full h-full">
                   {/* Card Container */}

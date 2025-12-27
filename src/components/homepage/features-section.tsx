@@ -53,10 +53,11 @@ function FeaturesSection() {
           <motion.p 
             variants={headerVariants}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className={`text-base sm:text-lg md:text-lg ${colorClasses.textSecondary} px-4 sm:px-0 md:px-0 leading-tight`}
+            className={`text-xs sm:text-sm md:text-base ${colorClasses.textSecondary} px-4 sm:px-0 md:px-0 leading-tight`}
           >
-            GEOAlt offers unparalleled accuracy, real-time insights,<br className="leading-none" />
-            <span className="block -mt-0.5">and a commitment to data security.</span>
+            Geoalt offers unparalleled accuracy,<br className="leading-none" />
+            <span className="block -mt-0.5">real-time insights, and a<br className="leading-none" /></span>
+            <span className="block -mt-0.5">commitment to data security.</span>
           </motion.p>
         </motion.div>
 
@@ -70,7 +71,7 @@ function FeaturesSection() {
           <motion.div
             variants={cardVariantsSmooth}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-[calc(50%-0.5rem)] max-w-none mx-auto' : ''}`}
+            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-[calc(50%-0.5rem)] max-w-none mx-auto' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -102,7 +103,7 @@ function FeaturesSection() {
           <motion.div
             variants={cardVariantsSmooth}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
+            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -132,7 +133,7 @@ function FeaturesSection() {
           <motion.div
             variants={cardVariantsSmooth}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
+            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />

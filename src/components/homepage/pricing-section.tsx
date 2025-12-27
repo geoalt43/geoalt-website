@@ -20,7 +20,7 @@ const pricingPlans = [
     description: '',
     features: [
       'Access to 1 model (ChatGPT)',
-      'Opportunities 30',
+      '30 Opportunities',
       'Track 25 Prompts',
       'Email Support',
       'Unlimited Countries'
@@ -34,7 +34,7 @@ const pricingPlans = [
     monthlyPrice: 199,
     yearlyPrice: 169, // 15% discount: 199 * 0.85 = 169.15, rounded to 169
     description: 'For growing teams and businesses.',
-    features: ['Track 100 Prompts', 'Opportunities 75', 'Access to 3 models', 'Priority Support', 'Unlimited Countries'],
+    features: ['Track 100 Prompts', '75 Opportunities', 'Access to 3 models', 'Priority Support', 'Unlimited Countries'],
     isRecommended: true,
     bgColor: 'bg-white/5',
     borderColor: 'border-white/10',

@@ -60,7 +60,7 @@ export function AISearchMetricsSection() {
           <motion.h2 variants={headerVariants} className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0">
             How AI actually sees your brand
           </motion.h2>
-          <motion.p variants={subtitleVariants} className="text-base sm:text-lg md:text-lg text-[#9b9b9b] px-4 sm:px-0 md:px-0">
+          <motion.p variants={subtitleVariants} className="text-xs sm:text-sm md:text-base text-[#9b9b9b] px-4 sm:px-0 md:px-0">
             Everything that matters in one place
           </motion.p>
         </motion.div>
