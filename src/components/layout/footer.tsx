@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 // Helper function to scroll to hero section
 const scrollToHero = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -17,10 +18,13 @@ const scrollToHero = (e: React.MouseEvent<HTMLAnchorElement>) => {
 }
 
 export function Footer() {
+  const pathname = usePathname()
+  const isPolicyPage = pathname?.includes('/privacy-policy') || pathname?.includes('/terms-of-service') || pathname?.includes('/cookie-policy')
+  
   return (
     <footer className="bg-black w-full text-white flex flex-col visible block relative z-10 min-h-[200px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-0 pb-8 sm:pb-12 md:pb-16 mt-16 sm:mt-20 md:mt-24 lg:mt-32 xl:mt-[8vh] 2xl:mt-[10vh]">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-6 md:gap-8 lg:gap-10">
+        <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-6 md:gap-8 lg:gap-10 ${isPolicyPage ? 'ml-8 sm:ml-10 md:ml-12' : 'ml-6 sm:ml-8 md:ml-10'}`}>
           {/* Brand */}
           <div className="col-span-2 md:col-span-1 lg:col-span-1">
               <div className="flex items-center text-lg sm:text-xl md:text-2xl font-bold text-white">
