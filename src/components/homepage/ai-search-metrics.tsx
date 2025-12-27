@@ -68,7 +68,7 @@ export function AISearchMetricsSection() {
         <div className="mt-8 sm:mt-12 md:mt-12 max-w-7xl mx-auto relative">
           <div className="grid gap-3 sm:gap-4 md:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 relative overflow-hidden">
             {/* Top horizontal line - aligned with card top */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-white/5 z-20"></div>
+            <div className="hidden lg:block absolute top-0 left-0 right-0 h-px bg-white/5 z-20"></div>
             
             {insightCards.map((card) => (
               <InsightCard
@@ -93,7 +93,7 @@ export function AISearchMetricsSection() {
             ))}
             
             {/* Bottom horizontal line - aligned with card bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-white/5 z-20"></div>
+            <div className="hidden lg:block absolute bottom-0 left-0 right-0 h-px bg-white/5 z-20"></div>
           </div>
         </div>
 

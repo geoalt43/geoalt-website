@@ -27,7 +27,7 @@ export function CTASection() {
         variants={containerVariantsSimple}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
-          className={`max-w-6xl mx-auto px-4 sm:px-6 md:px-7 pt-3 pb-3 md:pt-3 md:pb-3 lg:px-8 border ${colorClasses.borderDark} rounded-lg ${colorClasses.surfaceDarker}`}
+          className={`max-w-6xl max-[1250px]:mx-4 min-[1251px]:mx-auto px-4 sm:px-6 md:px-7 pt-3 pb-3 md:pt-3 md:pb-3 lg:px-8 border ${colorClasses.borderDark} rounded-lg ${colorClasses.surfaceDarker}`}
       >
         <div className={`${colorClasses.surfaceDarker} rounded-lg p-4 sm:p-5 md:p-6 lg:p-7 flex flex-col lg:flex-row items-center lg:items-center gap-6 md:gap-6 lg:gap-0`}>
           {/* Left Section - Text Content */}
