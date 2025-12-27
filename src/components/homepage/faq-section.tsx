@@ -45,8 +45,8 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
         className="w-full pl-3 sm:pl-4 md:pl-4 pr-5 sm:pr-7 md:pr-7 py-2.5 sm:py-3.5 md:py-3.5 text-left flex items-start sm:items-center md:items-center gap-2 sm:gap-4 md:gap-4 cursor-pointer"
         onClick={onToggle}
       >
-        <motion.span
-          className="text-white text-sm sm:text-base md:text-base font-light inline-block flex-shrink-0 mt-0.5 sm:mt-0 md:mt-0"
+        <motion.svg
+          className="text-white/60 w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 flex-shrink-0 mt-0.5 sm:mt-0 md:mt-0"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ 
             scale: 1,
@@ -54,9 +54,15 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
             rotate: isOpen ? 90 : 0,
           }}
           transition={{ duration: 0.2, ease: 'easeOut' }}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
-          &gt;
-        </motion.span>
+          <path d="M8 6l8 6-8 6" />
+        </motion.svg>
         <span className="font-medium text-white text-xs sm:text-sm md:text-sm lg:text-base leading-relaxed flex-1 text-left">{faq.question}</span>
       </motion.button>
       <AnimatePresence initial={false}>
@@ -177,7 +183,7 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
           className="text-center mb-8 sm:mb-12 md:mb-14 lg:mb-16"
         >
           <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0">FAQ</h2>
-          <p className={`text-sm sm:text-lg md:text-lg ${colorClasses.textMuted} font-light px-4 sm:px-0 md:px-0 pt-0`}>Generative Engine Optimization is still<br />very new. We&apos;ve got you covered.</p>
+          <p className={`text-sm sm:text-lg md:text-lg ${colorClasses.textMuted} font-light px-4 sm:px-0 md:px-0 pt-0`}>Generative Engine Optimization is still<br className="leading-none" /><span className="block -mt-2">very new. We&apos;ve got you covered.</span></p>
         </motion.div>
         
         <motion.div

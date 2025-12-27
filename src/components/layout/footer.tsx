@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -17,7 +18,7 @@ const scrollToHero = (e: React.MouseEvent<HTMLAnchorElement>) => {
 
 export function Footer() {
   return (
-    <footer className="bg-black w-full text-white flex flex-col" style={{ visibility: 'visible', display: 'block', position: 'relative', zIndex: 10, minHeight: '200px' }}>
+    <footer className="bg-black w-full text-white flex flex-col visible block relative z-10 min-h-[200px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-0 pb-8 sm:pb-12 md:pb-16 mt-16 sm:mt-20 md:mt-24 lg:mt-32 xl:mt-[8vh] 2xl:mt-[10vh]">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-6 md:gap-8 lg:gap-10">
           {/* Brand */}
