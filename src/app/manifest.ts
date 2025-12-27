@@ -13,7 +13,7 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: '#000000',
     icons: [
       {
-        src: '/logos/GeoAlt_Logo.png',
+        src: '/favicon.png',
         sizes: '512x512',
         type: 'image/png',
         purpose: 'any',

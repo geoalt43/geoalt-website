@@ -77,8 +77,18 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/logos/GeoAlt_Logo.png',
+    icon: [
+      { url: '/logos/Favicon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/logos/Favicon.png', sizes: '64x64', type: 'image/png' },
+      { url: '/logos/Favicon.png', sizes: '96x96', type: 'image/png' },
+      { url: '/logos/Favicon.png', sizes: '128x128', type: 'image/png' },
+      { url: '/logos/Favicon.png', sizes: '192x192', type: 'image/png' },
+      { url: '/logos/Favicon.png', sizes: '256x256', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/logos/Favicon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/logos/Favicon.png',
   },
   appleWebApp: {
     capable: true,
