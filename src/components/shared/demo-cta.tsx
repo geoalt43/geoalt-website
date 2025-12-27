@@ -10,6 +10,7 @@ interface DemoCTAProps {
   size?: 'sm' | 'md' | 'lg'
   className?: string
   showModal?: boolean
+  href?: string
 }
 
 export function DemoCTA({ 
@@ -17,7 +18,8 @@ export function DemoCTA({
   variant = 'outline', 
   size = 'md', 
   className,
-  showModal = true 
+  showModal = true,
+  href
 }: DemoCTAProps) {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -82,6 +84,23 @@ export function DemoCTA({
           </div>
         )}
       </>
+    )
+  }
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        className={cn(
+          baseClasses,
+          variants[variant],
+          sizes[size],
+          'text-center',
+          className
+        )}
+      >
+        {text}
+      </a>
     )
   }
 

@@ -1,6 +1,3 @@
-// Platform icon utility - extracted from pricing-section
-// Maintains exact same functionality and output
-
 import Image from 'next/image'
 import type { ReactElement } from 'react'
 
@@ -14,8 +11,7 @@ export function getPlatformIcon(platformName: string, iconSize: number = 16): Re
         alt="OpenAI"
         width={iconSize}
         height={iconSize}
-        className="flex-shrink-0"
-        unoptimized
+        className="w-full h-full flex-shrink-0"
       />
     )
   }
@@ -26,8 +22,7 @@ export function getPlatformIcon(platformName: string, iconSize: number = 16): Re
         alt="Gemini"
         width={iconSize}
         height={iconSize}
-        className="flex-shrink-0"
-        unoptimized
+        className="w-full h-full flex-shrink-0"
       />
     )
   }
@@ -38,8 +33,7 @@ export function getPlatformIcon(platformName: string, iconSize: number = 16): Re
         alt="Perplexity"
         width={iconSize}
         height={iconSize}
-        className="flex-shrink-0"
-        unoptimized
+        className="w-full h-full flex-shrink-0"
       />
     )
   }
@@ -50,8 +44,7 @@ export function getPlatformIcon(platformName: string, iconSize: number = 16): Re
         alt="Claude"
         width={iconSize}
         height={iconSize}
-        className="flex-shrink-0"
-        unoptimized
+        className="w-full h-full flex-shrink-0"
       />
     )
   }
@@ -62,8 +55,7 @@ export function getPlatformIcon(platformName: string, iconSize: number = 16): Re
         alt="Grok"
         width={iconSize}
         height={iconSize}
-        className="flex-shrink-0"
-        unoptimized
+        className="w-full h-full flex-shrink-0"
       />
     )
   }

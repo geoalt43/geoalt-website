@@ -37,10 +37,10 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
             variants={headingVariants}
             className="pt-2 sm:pt-6 md:pt-6 px-2 sm:px-6 md:px-6 mb-2 sm:mb-4 md:mb-4 flex-shrink-0"
           >
-            <h3 className={`text-base sm:text-xl md:text-xl font-light sm:font-normal md:font-normal text-white`}>
+            <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-normal md:font-normal text-white/80">
               Analyze AI visibility scores
             </h3>
-            <p className={`text-xs sm:text-xs md:text-sm text-gray-400 mb-2 sm:mb-4 md:mb-4`}>
+            <p className="text-xs sm:text-xs md:text-sm text-white/45 mb-2 sm:mb-4 md:mb-4">
               Track brand presence in AI answers and monitor visibility
             </p>
           </motion.div>
@@ -54,6 +54,7 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
                 alt="AI visibility interface"
                 width={800}
                 height={1900}
+                quality={85}
                 className="w-full h-full object-contain object-bottom"
                 sizes="(max-width: 375px) 100vw, (max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 90vw, (max-width: 1280px) 50vw, 800px"
                 priority={false}
@@ -80,23 +81,20 @@ export function DashboardSection() {
           animate={isInView ? 'visible' : 'hidden'}
           className="pt-[5%] mb-8 sm:mb-12 md:mb-12 text-left sm:text-center md:text-center"
         >
-          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-3 sm:mb-4 md:mb-4 px-2 sm:px-0 md:px-0">
+          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0">
             {/* Mobile version */}
             <span className="block sm:hidden">
-              <span className="pt-[5%] block text-center">Unlock AI-driven search insights</span>
+              <span className="block text-center">Unlock AI-powered search insights</span>
               <span className="block text-center">
-                that bring customers to you
-              </span>
-              <span className="block text-center pb-4 sm:pb-6 md:pb-7 lg:pb-9">
-                — GeoAlt
+                that bring the right customers to Geoalt
               </span>
             </span>
             {/* Desktop version */}
             <span className="hidden sm:block">
-              <span className="pt-[5%]">Unlock AI-driven search insights that bring</span>
+              <span>Unlock AI-powered search insights that bring</span>
               <br />
-              <span className="pb-4 sm:pb-6 md:pb-7 lg:pb-9 block">
-                customers to you — GeoAlt
+              <span className="block">
+                the right customers to Geoalt
               </span>
             </span>
           </h2>
@@ -112,8 +110,8 @@ export function DashboardSection() {
           {/* Container 1: Customize Your Prompts */}
           <div className={`${CARD_BASE} p-2 sm:p-5 md:p-5 overflow-hidden relative min-h-[320px] sm:min-h-[330px] md:min-h-[380px] lg:min-h-[400px] max-w-[90%] sm:max-w-none mx-auto sm:mx-0`}>
             <div className="mb-2 relative z-10">
-              <h3 className={`text-base sm:text-xl font-light sm:font-normal text-white`}>Customize Your Prompts</h3>
-            <p className={`text-xs sm:text-xs md:text-sm text-gray-400 mb-1.5 pb-3 sm:pb-4`}>
+              <h3 className="text-base sm:text-xl font-light sm:font-normal text-white/80">Customize Your Prompts</h3>
+            <p className="text-xs sm:text-xs md:text-sm text-white/45 mb-1.5 pb-3 sm:pb-4">
                 Prompts are the foundation of your AI search strategy 
               </p>
             </div>
@@ -143,8 +141,8 @@ export function DashboardSection() {
               variants={headingVariants}
               className="mb-2 relative z-10"
             >
-              <h3 className={`text-base sm:text-xl md:text-xl font-light sm:font-normal md:font-normal text-white`}>Add Business Competitors</h3>
-            <p className={`text-xs sm:text-xs md:text-sm text-gray-400 mb-3 sm:mb-4`}>
+              <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-normal md:font-normal text-white/80">Add Business Competitors</h3>
+            <p className="text-xs sm:text-xs md:text-sm text-white/45 mb-3 sm:mb-4">
                 <span>Add competitors so GeoAlt can map landscape for growth</span>
               </p>
             </motion.div>
@@ -189,8 +187,8 @@ export function DashboardSection() {
               variants={headingVariants}
               className="mb-2 relative z-10"
             >
-              <h3 className={`text-base sm:text-xl md:text-xl font-light sm:font-normal md:font-normal text-white`}>Pick Model and Region</h3>
-            <p className={`text-xs sm:text-xs md:text-sm text-gray-400 mb-3 sm:mb-4`}>
+              <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-normal md:font-normal text-white/80">Pick Model and Region</h3>
+            <p className="text-xs sm:text-xs md:text-sm text-white/45 mb-3 sm:mb-4">
               Pick model and region to get AI insights for growth...
             </p>
             </motion.div>
@@ -206,6 +204,7 @@ export function DashboardSection() {
                   alt="Region Selector interface"
                   width={800}
                   height={600}
+                  quality={85}
                   className="w-full h-full object-contain object-bottom rounded-lg"
                   sizes="(max-width: 375px) 98vw, (max-width: 640px) 98vw, (max-width: 768px) 43vw, (max-width: 1024px) 43vw, (max-width: 1280px) 48vw, 588px"
                   priority={false}

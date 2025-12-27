@@ -15,6 +15,7 @@ import { Navbar } from '@/components/layout/navbar'
 import { AISearchMetricsSection } from '@/components/homepage/ai-search-metrics'
 import { DashboardSection } from '@/components/homepage/dashboard-section'
 import { PricingSection } from '@/components/homepage/pricing-section'
+import { useScrollRestoration } from '@/app/hooks/use-scroll-restoration'
 
 const trustedBrands = [
   { 
@@ -42,6 +43,20 @@ const trustedBrands = [
 function EmpoweringBusinessesSection() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
+  const [isBelow1088, setIsBelow1088] = useState(false)
+  const [isBelow680, setIsBelow680] = useState(false)
+
+  useEffect(() => {
+    const checkWidth = () => {
+      setIsBelow1088(window.innerWidth < 1088)
+      setIsBelow680(window.innerWidth < 680)
+    }
+    
+    checkWidth()
+    window.addEventListener('resize', checkWidth)
+    
+    return () => window.removeEventListener('resize', checkWidth)
+  }, [])
 
   return (
     <section ref={sectionRef} className="pt-[36.54px] sm:pt-[48.72px] md:pt-[52px] lg:pt-[4vh] xl:pt-[6vh] pb-16 sm:pb-20 md:pb-20 lg:pb-[4vh] xl:pb-[6vh] relative overflow-hidden bg-transparent-text bg-clip-text">
@@ -65,16 +80,16 @@ function EmpoweringBusinessesSection() {
         >
           <motion.h2 
             variants={headerVariants}
-            className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-3 sm:mb-4 md:mb-4 px-2 sm:px-0 md:px-0"
+            className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0"
           >
             Empowering businesses of all sizes
           </motion.h2>
           <motion.p 
             variants={headerVariants}
-            className={`text-base sm:text-lg md:text-lg ${colorClasses.textSecondary} px-4 sm:px-0 md:px-0`}
+            className={`text-base sm:text-lg md:text-lg ${colorClasses.textSecondary} px-4 sm:px-0 md:px-0 leading-tight`}
           >
-            GEOAlt caters to a wide range of businesses, from startups to<br />
-            enterprises, seeking to enhance their AI visibility.
+            GEOAlt caters to a wide range of businesses, from startups to<br className="leading-none" />
+            <span className="block -mt-0.5">enterprises, seeking to enhance their AI visibility.</span>
           </motion.p>
         </motion.div>
 
@@ -82,12 +97,12 @@ function EmpoweringBusinessesSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-[1.625rem] lg:gap-8 pt-4"
+          className={`grid gap-4 sm:gap-6 md:gap-[1.625rem] lg:gap-8 pt-4 ${isBelow680 ? 'grid-cols-1' : isBelow1088 ? 'grid-cols-1 justify-items-center' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'}`}
         >
           {/* Marketing Teams Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 md:p-10 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
+            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-[calc(50%-0.5rem)] max-w-none mx-auto' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -107,16 +122,18 @@ function EmpoweringBusinessesSection() {
               </motion.div>
               <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-white">Marketing Teams</h3>
             </div>
-            <p className={`text-sm sm:text-lg md:text-lg ${colorClasses.textSecondary} relative z-10 pt-2`}>
+            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textMuted} relative z-10 pt-1.5 sm:pt-2 md:pt-2`}>
               Track campaign performance and optimize content for AI-driven search across priority markets.  
               Identify which campaigns influence AI-generated answers and reallocate spend toward the highest-impact initiatives.  
             </p>
           </motion.div>
 
+          {/* Wrapper for Content Creators and SEO Specialists - 2 columns below 1088px but above 680px */}
+          <div className={isBelow680 ? 'contents' : isBelow1088 ? 'grid grid-cols-2 gap-4 col-span-1 w-full max-w-full mx-auto' : 'contents'}>
           {/* Content Creators Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
+            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -134,7 +151,7 @@ function EmpoweringBusinessesSection() {
               </motion.div>
               <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-white">Content Creators</h3>
             </div>
-            <p className={`text-sm sm:text-lg md:text-lg ${colorClasses.textSecondary} relative z-10 pt-2`}>
+            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textMuted} relative z-10 pt-1.5 sm:pt-2 md:pt-2`}>
               Create content that resonates with AI algorithms and drives qualified, organic pipeline.  
               See which formats, topics, and angles AI prefers so every article, playbook, or landing page is built for discovery.  
             </p>
@@ -143,7 +160,7 @@ function EmpoweringBusinessesSection() {
           {/* SEO Specialists Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
+            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -161,18 +178,18 @@ function EmpoweringBusinessesSection() {
               </motion.div>
               <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-white">SEO Specialists</h3>
             </div>
-            <p className={`text-sm sm:text-lg md:text-lg ${colorClasses.textSecondary} relative z-10 pt-2`}>
+            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textMuted} relative z-10 pt-1.5 sm:pt-2 md:pt-2`}>
               Adapt SEO strategies to the evolving landscape of AI-powered search for complex B2B journeys.  
               Understand which entities, sources, and citations AI trusts most in your category and markets.  
             </p>
           </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
   )
 }
 
-// Static Grid Background Component for Dashboard Image Section
 function AnimatedGridBackground() {
   const gridSize = 40
   const lineThickness = 1 // Thickness of grid lines
@@ -275,6 +292,7 @@ function DashboardImageSection() {
             width={1280}
             height={720}
             priority
+            quality={90}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 88vw"
             className="w-full sm:w-[90%] md:w-[89%] lg:w-[88%] mx-auto h-auto object-contain relative z-10"
           />
@@ -287,6 +305,8 @@ function DashboardImageSection() {
 export function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const faqRef = useRef<HTMLDivElement>(null)
+  
+  useScrollRestoration()
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -347,9 +367,9 @@ export function HomePage() {
                           alt={`${brand.label} logo`}
                           fill
                           className="object-contain"
-                          unoptimized
+                          quality={90}
+                          sizes="(max-width: 640px) 1rem, (max-width: 768px) 1.5rem, (max-width: 1024px) 2rem, 2.5rem"
                           onError={(e) => {
-                            // Fallback: hide image if logo not found
                             e.currentTarget.style.display = 'none'
                           }}
                         />

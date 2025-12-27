@@ -6,23 +6,20 @@ import Image from 'next/image'
 interface AIPlatformRotatorProps {
   variant?: 'default' | 'muted'
   size?: 'default' | 'large'
+  copilotNameOverride?: string
 }
 
-export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPlatformRotatorProps) {
+export function AIPlatformRotator({ variant = 'default', size = 'large', copilotNameOverride }: AIPlatformRotatorProps) {
   const [currentPlatform, setCurrentPlatform] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
   const [isBlurring, setIsBlurring] = useState(false)
 
-  // Responsive sizing: scales down on mobile, medium on tablet, full on desktop
-  // Mobile: smaller sizes, Desktop: larger sizes
   const getResponsiveSizes = () => {
     if (size === 'large') {
-      // Mobile-first approach: smaller on mobile, larger on desktop
       return {
-        baseTextHeight: 32, // Mobile base - increased
-        iconHeight: 36, // Mobile icon - increased
-        textWidth: 120, // Mobile text width - increased
-        // These will be overridden by CSS classes for larger screens
+        baseTextHeight: 32,
+        iconHeight: 36,
+        textWidth: 120,
       }
     } else {
       return {
@@ -65,7 +62,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
       hasText: true
     },
     {
-      name: 'Microsoft Copilot',
+      name: copilotNameOverride || 'Microsoft Copilot',
       icon: '/ai-icons/copilot-color.webp',
       hasText: false
     },

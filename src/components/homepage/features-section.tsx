@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { containerVariantsMedium, headerVariants, cardVariantsSmooth, iconVariantsSmooth } from '@/lib/animations/variants'
 import { colorClasses } from '@/constants/colors'
@@ -8,6 +8,20 @@ import { colorClasses } from '@/constants/colors'
 function FeaturesSection() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+  const [isBelow1088, setIsBelow1088] = useState(false)
+  const [isBelow680, setIsBelow680] = useState(false)
+
+  useEffect(() => {
+    const checkWidth = () => {
+      setIsBelow1088(window.innerWidth < 1088)
+      setIsBelow680(window.innerWidth < 680)
+    }
+    
+    checkWidth()
+    window.addEventListener('resize', checkWidth)
+    
+    return () => window.removeEventListener('resize', checkWidth)
+  }, [])
 
   return (
     <section ref={sectionRef} className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-16 sm:pb-20 md:pb-20 lg:pb-[4vh] xl:pb-[6vh] relative overflow-hidden bg-transparent-text bg-clip-text">
@@ -32,17 +46,17 @@ function FeaturesSection() {
           <motion.h2 
             variants={headerVariants}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-3 sm:mb-4 md:mb-4 px-2 sm:px-0 md:px-0"
+            className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0"
           >
             Own your visibility on AI Search
           </motion.h2>
           <motion.p 
             variants={headerVariants}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className={`text-base sm:text-lg md:text-lg ${colorClasses.textSecondary} px-4 sm:px-0 md:px-0`}
+            className={`text-base sm:text-lg md:text-lg ${colorClasses.textSecondary} px-4 sm:px-0 md:px-0 leading-tight`}
           >
-            GEOAlt offers unparalleled accuracy, real-time insights,<br />
-            and a commitment to data security.
+            GEOAlt offers unparalleled accuracy, real-time insights,<br className="leading-none" />
+            <span className="block -mt-0.5">and a commitment to data security.</span>
           </motion.p>
         </motion.div>
 
@@ -50,13 +64,13 @@ function FeaturesSection() {
           variants={containerVariantsMedium}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 md:gap-[1.625rem] lg:gap-8 pt-3 sm:pt-4 md:pt-4"
+          className={`grid gap-3 sm:gap-5 md:gap-[1.625rem] lg:gap-8 pt-3 sm:pt-4 md:pt-4 ${isBelow680 ? 'grid-cols-1' : isBelow1088 ? 'grid-cols-1 justify-items-center' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'}`}
         >
           {/* Accurate Data */}
           <motion.div
             variants={cardVariantsSmooth}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 md:p-8 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
+            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-[calc(50%-0.5rem)] max-w-none mx-auto' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -82,11 +96,13 @@ function FeaturesSection() {
             </p>
           </motion.div>
 
+          {/* Wrapper for Real-time Insights and Secure & Reliable - 2 columns below 1088px but above 680px */}
+          <div className={isBelow680 ? 'contents' : isBelow1088 ? 'grid grid-cols-2 gap-4 col-span-1 w-full max-w-full mx-auto' : 'contents'}>
           {/* Real-time Insights */}
           <motion.div
             variants={cardVariantsSmooth}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
+            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -116,7 +132,7 @@ function FeaturesSection() {
           <motion.div
             variants={cardVariantsSmooth}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="bg-black/60 border border-white/10 rounded-lg p-4 sm:p-6 lg:p-10 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
+            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 max-w-[90%] sm:max-w-none mx-auto sm:mx-0 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -140,6 +156,7 @@ function FeaturesSection() {
               Your information is protected with enterprise-grade security measures.
             </p>
           </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
