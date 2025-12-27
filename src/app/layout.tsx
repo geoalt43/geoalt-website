@@ -6,7 +6,7 @@ import { ErrorBoundary } from '@/components/ui/error-boundary'
 import { Analytics } from '@vercel/analytics/react'
 import { ScrollRestorationScript } from '@/components/scroll-restoration-script'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   preload: true,
@@ -204,12 +204,16 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationStructuredData) }}
         />
         <ScrollRestorationScript />
-        <div id='stars'></div>
-        <div id='stars2'></div>
-        <div id='stars3'></div>
+        <div className='h-full w-full overflow-hidden fixed z-0'>
+          <div id='stars'></div>
+          <div id='stars2'></div>
+          <div id='stars3'></div>
+        </div>
         <ErrorBoundary>
           <Providers>
-            {children}
+            <div className='z-10'>
+              {children}
+            </div>
           </Providers>
         </ErrorBoundary>
         <Analytics />
