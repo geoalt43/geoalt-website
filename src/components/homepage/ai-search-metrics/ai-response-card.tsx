@@ -1,6 +1,8 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { motion, AnimatePresence } from 'framer-motion'
 import { AIResponseData } from './types'
 import { CompanyName } from './company-name'
 
@@ -59,11 +61,96 @@ function highlightText(
   return parts.length > 0 ? parts : [{ text: highlightedText.replace(/__[A-Z_/]+__/g, ''), type: 'normal' as const }]
 }
 
+// AI Platform icons for bubbles
+const aiPlatforms = [
+  { icon: '/ai-icons/openai.webp', alt: 'OpenAI' },
+  { icon: '/ai-icons/gemini-color.webp', alt: 'Gemini' },
+  { icon: '/ai-icons/perplexity.webp', alt: 'Perplexity' },
+  { icon: '/ai-icons/claude-color.webp', alt: 'Claude' },
+  { icon: '/ai-icons/grok.webp', alt: 'Grok' },
+  { icon: '/ai-icons/copilot-color.webp', alt: 'Copilot' },
+]
+
+function FloatingBubble({ icon, alt, left, delay, drift }: { icon: string; alt: string; left: number; delay: number; drift: number }) {
+  return (
+    <motion.div
+      className="absolute pointer-events-none"
+      style={{ left: `${left}%`, bottom: 0 }}
+      initial={{ y: 0, opacity: 0, scale: 0.6, x: 0 }}
+      animate={{ 
+        y: -600,
+        opacity: [0, 0.7, 0.9, 0.7, 0],
+        scale: [0.6, 0.9, 1.1, 1, 0.8],
+        x: [0, drift, 0]
+      }}
+      transition={{
+        duration: 12,
+        delay: delay,
+        repeat: Infinity,
+        ease: 'easeOut'
+      }}
+    >
+      <div className="relative">
+        <div className="absolute inset-0 bg-white/10 rounded-full blur-lg"></div>
+        <Image
+          src={icon}
+          alt={alt}
+          width={40}
+          height={40}
+          className="relative z-10"
+          unoptimized
+        />
+      </div>
+    </motion.div>
+  )
+}
+
 export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
+  const [bubbles, setBubbles] = useState<Array<{ icon: string; alt: string; left: number; delay: number; drift: number; id: number }>>([])
+
+  useEffect(() => {
+    const createBubble = () => {
+      const platform = aiPlatforms[Math.floor(Math.random() * aiPlatforms.length)]
+      const newBubble = {
+        icon: platform.icon,
+        alt: platform.alt,
+        left: 10 + Math.random() * 80,
+        delay: 0,
+        drift: Math.random() * 20 - 10, // Horizontal drift -10 to 10
+        id: Date.now() + Math.random()
+      }
+      setBubbles(prev => [...prev, newBubble])
+      
+      setTimeout(() => {
+        setBubbles(prev => prev.filter(b => b.id !== newBubble.id))
+      }, 12000)
+    }
+
+    // Create initial bubbles
+    for (let i = 0; i < 3; i++) {
+      setTimeout(() => createBubble(), i * 2000)
+    }
+
+    // Continuously create bubbles
+    const interval = setInterval(() => {
+      createBubble()
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
         <div
           className="bg-[#050505] border border-transparent rounded-lg shadow-2xl shadow-black/40 p-4 sm:p-6 lg:p-8 mt-4 relative overflow-hidden"
         >
+          {/* Floating AI Platform Bubbles */}
+          <div className="absolute inset-0 pointer-events-none z-[5] overflow-hidden">
+            <AnimatePresence>
+              {bubbles.map((bubble) => (
+                <FloatingBubble key={bubble.id} {...bubble} />
+              ))}
+            </AnimatePresence>
+          </div>
           {/* Animated Background Gradient */}
           <div className="absolute inset-0 opacity-30">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/10 to-transparent"></div>
@@ -78,7 +165,7 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
             <div className="absolute top-0 bottom-0 left-0 w-20 bg-gradient-to-r from-[#050505] to-transparent"></div>
             <div className="absolute top-0 bottom-0 right-0 w-20 bg-gradient-to-l from-[#050505] to-transparent"></div>
           </div>
-          <div className="relative z-10">
+          <div className="relative z-20">
       {/* Question */}
       <div className="mb-3 sm:mb-4 md:mb-4">
         <div className="mb-2 sm:mb-2 md:mb-2">
@@ -107,7 +194,7 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
               </div>
               
               {/* Question Text */}
-              <span className="text-white/70 text-xs sm:text-sm md:text-sm min-w-0 leading-tight sm:leading-normal md:leading-normal break-words text-right border border-white/20 rounded-full px-3 sm:px-4 md:px-4 py-2 sm:py-2.5 md:py-2.5">{data.question}</span>
+              <span className="text-[#9b9b9b] text-xs sm:text-sm md:text-sm min-w-0 leading-tight sm:leading-normal md:leading-normal break-words text-right border border-white/20 rounded-full px-3 sm:px-4 md:px-4 py-2 sm:py-2.5 md:py-2.5">{data.question}</span>
             </div>
           </div>
         </div>
@@ -132,10 +219,10 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
                     <CompanyName name={company.name} size="lg" />
                   </div>
                   {activeType === 'position' && (
-                    <span className="text-xs uppercase tracking-wide text-white/50 font-normal flex-shrink-0">#{company.rank}</span>
+                    <span className="text-xs uppercase tracking-wide text-[#898989] font-normal flex-shrink-0">#{company.rank}</span>
                   )}
                 </div>
-                <p className="text-xs sm:text-sm md:text-sm text-white/70 leading-relaxed font-normal break-words">
+                <p className="text-xs sm:text-sm md:text-sm text-[#898989] leading-relaxed font-normal break-words">
                   {highlightedParts.map((part, i) => {
                     if (part.type === 'positive') {
                       return (
