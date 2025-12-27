@@ -1,7 +1,6 @@
 import { PolicyFooter } from '@/components/policy-pages/policy-footer'
 import { PolicyPageClient } from '@/components/policy-pages/policy-page-client'
 
-// Calculate date on server for better performance
 function getLastUpdated() {
   return new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
 }

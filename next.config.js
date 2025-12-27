@@ -16,13 +16,16 @@ const nextConfig = {
     return config
   },
   images: {
-    unoptimized: true,
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    qualities: [75, 85, 90, 100],
+    minimumCacheTTL: 31536000,
     remotePatterns: [
       {
         protocol: 'http',
         hostname: 'localhost',
       },
-
       {
         protocol: 'https',
         hostname: 'geoalt-website.vercel.app',
@@ -35,11 +38,19 @@ const nextConfig = {
         protocol: 'https',
         hostname: '*.geoalt.in',
       },
+      {
+        protocol: 'https',
+        hostname: 'i.pravatar.cc',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ui-avatars.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.brandfetch.io',
+      },
     ],
-    formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60,
   },
   async headers() {
     return [
@@ -68,7 +79,23 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: `default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' ${process.env.NODE_ENV === 'development' ? 'http://localhost:5000 ws://localhost:5000' : 'https://your-api-domain.com'} https://api.sentry.io https://vitals.vercel-insights.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';`,
+            value: `default-src 'self'; script-src 'self' 'unsafe-inline' https://vercel.live https://vitals.vercel-insights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' ${process.env.NODE_ENV === 'development' ? 'http://localhost:5000 ws://localhost:5000 ws://localhost:3000' : 'https://your-api-domain.com'} https://api.sentry.io https://vitals.vercel-insights.com https://*.vercel-insights.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;`,
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+          },
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
+          },
+          {
+            key: 'X-Download-Options',
+            value: 'noopen',
+          },
+          {
+            key: 'X-Permitted-Cross-Domain-Policies',
+            value: 'none',
           },
         ],
       },
@@ -94,9 +121,7 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   generateEtags: true,
-  // SEO and Performance optimizations
   reactStrictMode: true,
-  // Optimize for SEO
   trailingSlash: false,
   onDemandEntries: {
     maxInactiveAge: 25 * 1000,

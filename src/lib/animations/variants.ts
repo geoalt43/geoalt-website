@@ -1,6 +1,3 @@
-// Centralized animation variants - extracted from components
-// All values kept exactly the same to maintain identical animations
-
 export const containerVariants = {
   hidden: { opacity: 0 },
   visible: {

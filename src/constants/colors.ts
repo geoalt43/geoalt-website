@@ -1,7 +1,3 @@
-// Color constants - extracted from hardcoded values throughout codebase
-// All values kept exactly the same to maintain identical styling
-
-// Tailwind class equivalents for easy replacement
 export const colorClasses = {
   surfaceDark: 'bg-[#090909]',
   surfaceDarker: 'bg-[#0a0a0a]',
