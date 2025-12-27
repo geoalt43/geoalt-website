@@ -223,7 +223,6 @@ export function PricingSection() {
           className={`grid gap-4 sm:gap-6 md:gap-7 lg:gap-8 mt-4 sm:mt-6 md:mt-6 lg:mt-8 xl:mt-10 items-start ${isBelow680 ? 'grid-cols-1' : isBelow1088 ? 'grid-cols-1 justify-items-center' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'}`}
         >
           {isBelow680 ? (
-            // Below 680px: Stack vertically in order (Pro, Basic, Enterprise) without expanding width
             <>
               <PricingCard 
                 plan={pricingPlans.find(p => p.isRecommended)!} 
