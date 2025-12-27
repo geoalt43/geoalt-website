@@ -46,7 +46,7 @@ export function OrganizationStructuredData() {
         logo: `${baseUrl}/logos/GeoAlt_Logo.png`,
         description: 'GEOAlt helps your business stand out across AI platforms. Turning AI visibility into traffic and customers.',
         sameAs: [
-          'https://www.linkedin.com/company/geoalt',
+          'https://www.linkedin.com/company/geo-alt',
           'https://twitter.com/geoalt',
         ],
         contactPoint: {
