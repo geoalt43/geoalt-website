@@ -95,10 +95,10 @@ export function Footer() {
                 </a>
               </div>
               <a
-                href="mailto:Contact@geoalt.in"
+                href="mailto:contact@geoalt.in"
                 className="mt-3 sm:mt-4 md:mt-5 text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none block break-all"
               >
-                Contact@geoalt.in
+                contact@geoalt.in
               </a>
             </div>
 
@@ -200,7 +200,7 @@ export function Footer() {
         <div className="pt-6 sm:pt-8 md:pt-10 pb-5 sm:pb-6 md:pb-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 xl:px-10">
             <div className="flex flex-wrap justify-between items-center gap-4 sm:gap-6 md:gap-8">
-              <p className="text-[10px] sm:text-xs md:text-sm flex items-center gap-2 text-[#6d6264]">
+              <p className="text-[9px] sm:text-xs md:text-sm flex items-center gap-2 text-[#6d6264]">
                 <span>&copy; 2025</span>
                 <span className="inline-flex items-center leading-none">
                   <Image
@@ -215,13 +215,13 @@ export function Footer() {
               <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
                 <Link
                   href="/privacy-policy"
-                  className="text-xs sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none whitespace-nowrap"
+                  className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none whitespace-nowrap"
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   href="/terms-of-service"
-                  className="text-xs sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none whitespace-nowrap"
+                  className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none whitespace-nowrap"
                 >
                   Terms of Service
                 </Link>
