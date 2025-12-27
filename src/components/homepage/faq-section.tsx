@@ -143,7 +143,6 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
 
-  // Add FAQ structured data for SEO
   useEffect(() => {
     const script = document.createElement('script')
     script.type = 'application/ld+json'

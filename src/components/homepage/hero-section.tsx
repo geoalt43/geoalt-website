@@ -8,7 +8,6 @@ import { useRef, useEffect } from 'react'
 import { containerVariantsFast, wordVariants, headingContainerVariants, rotatorVariants, textVariants } from '@/lib/animations/variants'
 import { colorClasses } from '@/constants/colors'
 
-// Split text into words for animation
 const splitText = (text: string) => text.split(' ')
 
 export function HeroSection() {
@@ -34,51 +33,23 @@ export function HeroSection() {
       >
         <div className="flex flex-col items-center text-center mt-4 sm:mt-8 md:mt-8">
           <div className="max-w-4xl">
-            {/* Word-by-word animated heading */}
-            {/* <motion.h1 
-              variants={headingContainerVariants}
-              initial="hidden"
-              animate={controls}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal mt-4 sm:mt-0 md:mt-0 mb-0 leading-tight tracking-normal sm:tracking-tight md:tracking-tight bg-gradient-to-r from-[#4285f4] via-[#9c27b0] to-[#ea4335] text-transparent bg-clip-text px-2 sm:px-0 md:px-0"
-            >
-              {words.map((word, index) => (
-                <motion.span
-                  key={index}
-                  variants={wordVariants}
-                  className="inline-block mr-2 sm:mr-3 md:mr-3 [transform-style:preserve-3d]"
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </motion.h1> */}
             <motion.h1
               variants={headingContainerVariants}
               initial="hidden"
               animate={controls}
-              className="
-    text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem]
-    font-normal mt-4 sm:mt-0 md:mt-0
-    leading-tight tracking-tight
-     bg-gradient-to-r from-[#4285f4] via-[#9c27b0] to-[#ea4335]
-        bg-clip-text text-transparent
-  "
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal mt-4 sm:mt-0 md:mt-0 leading-tight tracking-tight bg-gradient-to-r from-[#4285f4] via-[#9c27b0] to-[#ea4335] bg-clip-text text-transparent"
             >
               {words.map((word, index) => (
                 <motion.span
                   key={index}
                   variants={wordVariants}
-                  className="
-        inline-block mr-2 sm:mr-3 md:mr-3
-       
-      "
+                  className="inline-block mr-2 sm:mr-3 md:mr-3"
                 >
                   {word}
                 </motion.span>
               ))}
             </motion.h1>
 
-
-            {/* AI Platform Rotator with blur reveal */}
             <motion.div
               variants={rotatorVariants}
               initial="hidden"
@@ -88,7 +59,6 @@ export function HeroSection() {
               <AIPlatformRotator size="large" />
             </motion.div>
 
-            {/* Description text with clip-path reveal */}
             <motion.p
               variants={textVariants}
               initial="hidden"
@@ -100,6 +70,7 @@ export function HeroSection() {
                 alt="GEOAlt logo"
                 width={100}
                 height={24}
+                quality={90}
                 className="h-[0.75em] sm:h-[0.8em] md:h-[0.8em] w-auto align-middle"
                 priority
                 sizes="(max-width: 640px) 100px, 100px"
@@ -115,7 +86,6 @@ export function HeroSection() {
               <em>— Turning AI visibility into traffic</em>
             </motion.p>
 
-            {/* Hero CTA Buttons */}
             <div className="flex flex-row gap-2.5 sm:gap-4 md:gap-4 items-center justify-center px-4 sm:px-0 md:px-0">
               <span
                 className="inline-flex items-center justify-center text-black px-3.5 py-1.5 sm:px-4 sm:py-2 md:px-4 md:py-2 rounded-lg text-xs sm:text-sm md:text-base font-semibold tracking-wide transition-all duration-200 ease-in-out bg-white hover:bg-[#d4d4d4] text-center min-w-[100px] sm:min-w-[120px] md:min-w-[120px] cursor-default"
