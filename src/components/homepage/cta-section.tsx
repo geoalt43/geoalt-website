@@ -76,7 +76,7 @@ export function CTASection() {
                     className={`relative w-full h-full ${colorClasses.surfaceDarker} rounded-lg pt-2 pb-2 pl-3 sm:pl-4 md:pl-6 lg:pl-10 pr-2 sm:pr-4 md:pr-4 lg:pr-0 overflow-hidden flex items-center justify-center backdrop-blur-[10px]`}
                   >
                     <div className="scale-100 sm:scale-[0.9] md:scale-[1.0] lg:scale-[1.1] xl:scale-[1.2] origin-center overflow-hidden w-full h-full flex items-center justify-center">
-                      <AIPlatformRotator variant="muted" size="default" />
+                      <AIPlatformRotator variant="muted" size="default" copilotNameOverride="Copilot" />
                     </div>
                   </div>
                 </div>

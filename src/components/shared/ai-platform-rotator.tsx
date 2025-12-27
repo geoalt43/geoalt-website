@@ -6,9 +6,10 @@ import Image from 'next/image'
 interface AIPlatformRotatorProps {
   variant?: 'default' | 'muted'
   size?: 'default' | 'large'
+  copilotNameOverride?: string
 }
 
-export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPlatformRotatorProps) {
+export function AIPlatformRotator({ variant = 'default', size = 'large', copilotNameOverride }: AIPlatformRotatorProps) {
   const [currentPlatform, setCurrentPlatform] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
   const [isBlurring, setIsBlurring] = useState(false)
@@ -65,7 +66,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large' }: AIPla
       hasText: true
     },
     {
-      name: 'Microsoft Copilot',
+      name: copilotNameOverride || 'Microsoft Copilot',
       icon: '/ai-icons/copilot-color.webp',
       hasText: false
     },

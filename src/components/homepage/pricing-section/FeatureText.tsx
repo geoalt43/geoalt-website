@@ -12,13 +12,13 @@ interface FeatureTextProps {
 }
 
 export function FeatureText({ text }: FeatureTextProps) {
-  // Special handling for "Access to all models" - show icons only with blur effect
-  if (text === 'Access to all models') {
+  // Special handling for "Access to 3 models" - Pro card: show OpenAI, Perplexity, Gemini icons
+  if (text === 'Access to 3 models') {
     const iconSize = 18
     
     return (
       <span className="flex items-center gap-2">
-        <span>Access to all models</span>
+        <span>Access to 3 models</span>
         {/* Icons only - very small gap between them */}
         <div className="flex items-center gap-0.5">
           <Image
@@ -38,22 +38,6 @@ export function FeatureText({ text }: FeatureTextProps) {
             unoptimized
           />
           <Image
-            src="/ai-icons/grok.webp"
-            alt="Grok"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          <Image
-            src="/ai-icons/claude-color.webp"
-            alt="Claude"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          <Image
             src="/ai-icons/gemini-color.webp"
             alt="Gemini"
             width={iconSize}
@@ -61,43 +45,24 @@ export function FeatureText({ text }: FeatureTextProps) {
             className="opacity-80 hover:opacity-100 transition-opacity"
             unoptimized
           />
-          {/* 3+ text */}
-          <span className="text-xs font-semibold text-white/90 ml-0.5">
-            3+
-          </span>
         </div>
       </span>
     )
   }
   
-  // Special handling for "Access to 3 models (ChatGPT, Gemini, Perplexity)"
-  if (text.includes('Access to 3 models') && text.includes('ChatGPT') && text.includes('Gemini') && text.includes('Perplexity')) {
+  // Special handling for "Access to 1 model (ChatGPT)"
+  // Basic card: only show ChatGPT icon
+  if (text.includes('Access to 1 model') && text.includes('ChatGPT')) {
     const iconSize = 18
     
     return (
       <span className="flex items-center gap-2">
-        <span>Access to 3 models</span>
-        {/* Icons only - same style as "Access to all models" */}
+        <span>Access to 1 model</span>
+        {/* Icons only - same style as "Access to 3 models" */}
         <div className="flex items-center gap-0.5">
           <Image
             src="/ai-icons/openai.webp"
             alt="OpenAI"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          <Image
-            src="/ai-icons/gemini-color.webp"
-            alt="Gemini"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          <Image
-            src="/ai-icons/perplexity.webp"
-            alt="Perplexity"
             width={iconSize}
             height={iconSize}
             className="opacity-80 hover:opacity-100 transition-opacity"
