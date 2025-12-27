@@ -63,7 +63,31 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="min-h-screen bg-brand-black flex flex-col">
             <Navbar />
 
-            <main className="flex-grow pt-[120px] pb-20">
+            <header className="mb-10 text-center max-w-2xl mx-auto pt-[120px]">
+                <div className="flex items-center justify-center gap-3 text-sm text-gray-400 mb-6">
+                    <span className="bg-white/10 px-3 py-1 rounded-full text-xs uppercase tracking-wider text-white">
+                        {post.tags?.[0] || 'Article'}
+                    </span>
+                    <span>{format(new Date(post.date), 'MMMM d, yyyy')}</span>
+                </div>
+
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-6 leading-tight">
+                    {post.title}
+                </h1>
+
+                <div className="flex items-center justify-center gap-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                        {post.author.charAt(0)}
+                    </div>
+                    <div className="text-left">
+                        <p className="text-white font-medium">{post.author}</p>
+                        <p className="text-xs text-gray-400">Author</p>
+                    </div>
+                </div>
+            </header>
+
+
+            <main className="flex-grow pb-20 bg-black z-10 pt-8 border-t border-[#1e1e1e]">
                 <article className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8">
                     <Link
                         href="/blog"
@@ -79,30 +103,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         </svg>
                         Back to Blog
                     </Link>
-
-                    <header className="mb-10 text-center">
-                        <div className="flex items-center justify-center gap-3 text-sm text-gray-400 mb-6">
-                            <span className="bg-white/10 px-3 py-1 rounded-full text-xs uppercase tracking-wider text-white">
-                                {post.tags?.[0] || 'Article'}
-                            </span>
-                            <span>{format(new Date(post.date), 'MMMM d, yyyy')}</span>
-                        </div>
-
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-6 leading-tight">
-                            {post.title}
-                        </h1>
-
-                        <div className="flex items-center justify-center gap-3">
-                            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                                {post.author.charAt(0)}
-                            </div>
-                            <div className="text-left">
-                                <p className="text-white font-medium">{post.author}</p>
-                                <p className="text-xs text-gray-400">Author</p>
-                            </div>
-                        </div>
-                    </header>
-
                     {post.image && (
                         <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-12 border border-white/10 shadow-2xl">
                             <Image

@@ -136,7 +136,7 @@ export default function BlogPage() {
                                 </svg>
                             </div>
                             <p className="text-white text-xl font-medium mb-2">No posts found</p>
-                            <p className="text-gray-400">We're working on some fresh content. Check back soon!</p>
+                            <p className="text-gray-400">We&apos;re working on some fresh content. Check back soon!</p>
                         </div>
                     )}
                 </div>
