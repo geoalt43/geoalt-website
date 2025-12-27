@@ -14,37 +14,37 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    quote: "GEOAlt offers key insights on AI visibility, helping brands stay at the forefront of discovery in the age of AI and generative search. As ChatGPT, Perplexity, and Deepseek drive traffic and conversions, GEOAlt measures the growth.",
+    quote: "Geoalt offers key insights on AI visibility, helping brands stay at the forefront of discovery in the age of AI and generative search. As ChatGPT, Perplexity, and Deepseek drive traffic and conversions, Geoalt measures the growth.",
     name: "Crystal Carter",
     designation: "Head of SEO Comms, Wix",
     image: "https://i.pravatar.cc/150?img=1"
   },
   {
-    quote: "GEOAlt avoids the issues we see with other SEO/AEO platforms, where there's often an overload of features and information that isn't of primary importance. It keeps things simple - set up your prompts, see your AI visibility, and act on top citations.",
+    quote: "Geoalt avoids the issues we see with other SEO/AEO platforms, where there's often an overload of features and information that isn't of primary importance. It keeps things simple - set up your prompts, see your AI visibility, and act on top citations.",
     name: "Ethan Smith",
     designation: "CEO, Graphite",
     image: "https://i.pravatar.cc/150?img=2"
   },
   {
-    quote: "As European leaders in travel and search innovation for the vacation rental industry, staying ahead is crucial - GEOAlt empowers our team to proactively manage & enhance our visibility across emerging search platforms.",
+    quote: "As European leaders in travel and search innovation for the vacation rental industry, staying ahead is crucial - Geoalt empowers our team to proactively manage & enhance our visibility across emerging search platforms.",
     name: "Felix Welckenbach",
     designation: "Director Organic Growth, HomeToGo",
     image: "https://i.pravatar.cc/150?img=3"
   },
   {
-    quote: "GEOAlt allows us to pinpoint the exact types of content that are surfaced in specific LLMs. With that visibility, we've been able to prioritize our content strategy and drive a 5x year-over-year increase in traffic and demo requests from LLMs.",
+    quote: "Geoalt allows us to pinpoint the exact types of content that are surfaced in specific LLMs. With that visibility, we've been able to prioritize our content strategy and drive a 5x year-over-year increase in traffic and demo requests from LLMs.",
     name: "Jon Gitlin",
     designation: "SEO Strategist, Merge",
     image: "https://i.pravatar.cc/150?img=4"
   },
   {
-    quote: "GEOAlt gave us a data-informed view of our LLMO strategy at Glide - virtually overnight. With its insights, our blog posts started ranking for targeted ChatGPT and Perplexity prompts within 24 hours. I am really impressed with the platform, and the exceptional support from the team.",
+    quote: "Geoalt gave us a data-informed view of our LLMO strategy at Glide - virtually overnight. With its insights, our blog posts started ranking for targeted ChatGPT and Perplexity prompts within 24 hours. I am really impressed with the platform, and the exceptional support from the team.",
     name: "Sepy Bazzazi",
     designation: "Head of Marketing, Glide",
     image: "https://i.pravatar.cc/150?img=5"
   },
   {
-    quote: "As search marketers, our decisions should always be driven by data. GEOAlt provides exactly the critical insights we need to stay competitive in the ever-evolving world of search.",
+    quote: "As search marketers, our decisions should always be driven by data. Geoalt provides exactly the critical insights we need to stay competitive in the ever-evolving world of search.",
     name: "Artur Kosch",
     designation: "General Manager, KKP",
     image: "https://i.pravatar.cc/150?img=6"
@@ -82,14 +82,14 @@ export function TestimonialsCarousel() {
           </motion.div>
           <motion.h2
             variants={headerVariants}
-            className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white pb-4 sm:pb-6 md:pb-7 lg:pb-8 px-2 sm:px-0 md:px-0"
+            className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0"
           >
             See what industry leaders say<br className="hidden sm:block" />
             <motion.span
               variants={headerVariants}
-              className="pt-0 sm:pt-2 md:pt-2 inline-block"
+              className="inline-block"
             >
-              about GEOAlt
+              about Geoalt
             </motion.span>
           </motion.h2>
         </motion.div>
@@ -111,7 +111,7 @@ export function TestimonialsCarousel() {
               
               <div className="relative flex-1 flex flex-col">
                 <div className="relative mb-2.5 sm:mb-3 md:mb-3">
-                  <p className="text-gray-100 text-sm sm:text-sm md:text-base leading-relaxed font-normal relative z-10">
+                  <p className="text-[#898989] text-xs sm:text-sm md:text-base leading-relaxed font-normal relative z-10">
                     &ldquo;{testimonial.quote}&rdquo;
                   </p>
                 </div>

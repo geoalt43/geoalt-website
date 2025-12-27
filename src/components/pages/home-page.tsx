@@ -65,16 +65,16 @@ function EmpoweringBusinessesSection() {
         >
           <motion.h2 
             variants={headerVariants}
-            className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-3 sm:mb-4 md:mb-4 px-2 sm:px-0 md:px-0"
+            className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0"
           >
             Empowering businesses of all sizes
           </motion.h2>
           <motion.p 
             variants={headerVariants}
-            className={`text-base sm:text-lg md:text-lg ${colorClasses.textSecondary} px-4 sm:px-0 md:px-0`}
+            className={`text-base sm:text-lg md:text-lg ${colorClasses.textSecondary} px-4 sm:px-0 md:px-0 leading-tight`}
           >
-            GEOAlt caters to a wide range of businesses, from startups to<br />
-            enterprises, seeking to enhance their AI visibility.
+            GEOAlt caters to a wide range of businesses, from startups to<br className="leading-none" />
+            <span className="block -mt-0.5">enterprises, seeking to enhance their AI visibility.</span>
           </motion.p>
         </motion.div>
 
@@ -87,7 +87,7 @@ function EmpoweringBusinessesSection() {
           {/* Marketing Teams Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 md:p-10 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
+            className="bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -107,7 +107,7 @@ function EmpoweringBusinessesSection() {
               </motion.div>
               <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-white">Marketing Teams</h3>
             </div>
-            <p className={`text-sm sm:text-lg md:text-lg ${colorClasses.textSecondary} relative z-10 pt-2`}>
+            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textMuted} relative z-10 pt-1.5 sm:pt-2 md:pt-2`}>
               Track campaign performance and optimize content for AI-driven search across priority markets.  
               Identify which campaigns influence AI-generated answers and reallocate spend toward the highest-impact initiatives.  
             </p>
@@ -116,7 +116,7 @@ function EmpoweringBusinessesSection() {
           {/* Content Creators Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
+            className="bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -134,7 +134,7 @@ function EmpoweringBusinessesSection() {
               </motion.div>
               <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-white">Content Creators</h3>
             </div>
-            <p className={`text-sm sm:text-lg md:text-lg ${colorClasses.textSecondary} relative z-10 pt-2`}>
+            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textMuted} relative z-10 pt-1.5 sm:pt-2 md:pt-2`}>
               Create content that resonates with AI algorithms and drives qualified, organic pipeline.  
               See which formats, topics, and angles AI prefers so every article, playbook, or landing page is built for discovery.  
             </p>
@@ -143,7 +143,7 @@ function EmpoweringBusinessesSection() {
           {/* SEO Specialists Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className="bg-black/60 border border-white/10 rounded-lg p-6 sm:p-8 lg:p-12 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
+            className="bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -161,7 +161,7 @@ function EmpoweringBusinessesSection() {
               </motion.div>
               <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-white">SEO Specialists</h3>
             </div>
-            <p className={`text-sm sm:text-lg md:text-lg ${colorClasses.textSecondary} relative z-10 pt-2`}>
+            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textMuted} relative z-10 pt-1.5 sm:pt-2 md:pt-2`}>
               Adapt SEO strategies to the evolving landscape of AI-powered search for complex B2B journeys.  
               Understand which entities, sources, and citations AI trusts most in your category and markets.  
             </p>
