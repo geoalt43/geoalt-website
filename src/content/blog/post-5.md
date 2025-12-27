@@ -2,7 +2,7 @@
 title: 'The Future of AI Visibility: Generative Engine Optimization'
 date: '2024-03-15'
 description: 'How to optimize your brand for the new era of AI-powered search engines like chatGPT, Perplexity and Claude.'
-author: 'GEOAlt Team'
+author: 'Sri Niwas'
 image: '/images/img-2.jpeg'
 tags: ['GEO', 'AI Search', 'Marketing']
 ---
