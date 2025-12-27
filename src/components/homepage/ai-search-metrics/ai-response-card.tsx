@@ -80,33 +80,35 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
           </div>
           <div className="relative z-10">
       {/* Question */}
-      <div className="mb-6 sm:mb-8 md:mb-8">
-        <div className="mb-3 sm:mb-3 md:mb-3">
+      <div className="mb-3 sm:mb-4 md:mb-4">
+        <div className="mb-2 sm:mb-2 md:mb-2">
           {/* Question Text with AI Platform Icons */}
-          <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-3 pl-0 sm:pl-0 md:pl-0 lg:pl-0 pb-2 sm:pb-3 md:pb-3 justify-end">
-            {/* Icons Container - Left side of question text */}
-            <div className="flex flex-row items-center gap-1 sm:gap-2 md:gap-2 flex-shrink-0 -mt-0.5 sm:-mt-1 md:-mt-1">
-              {/* Gemini Icon */}
-              <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5">
-                <Image src="/ai-icons/gemini-color.webp" alt="Gemini" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 opacity-50" unoptimized />
-              </div>
-              
-              {/* Perplexity Icon */}
-              <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5">
-                <Image src="/ai-icons/perplexity.webp" alt="Perplexity" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 opacity-50" unoptimized />
-              </div>
-              
-              {/* ChatGPT Icon (Larger with bubble) */}
-              <div className="flex items-center justify-center px-1.5 sm:px-2 md:px-2.5 lg:px-3 py-0.5 sm:py-1 md:py-1 lg:py-2 relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 rounded-full blur-sm"></div>
-                <div className="relative z-10">
-                  <Image src="/ai-icons/openai.webp" alt="OpenAI" width={18} height={18} className="sm:w-6 sm:h-6 md:w-6 md:h-6 lg:w-7 lg:h-7" unoptimized />
+          <div className="flex flex-col items-end">
+            <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-3 pl-0 sm:pl-0 md:pl-0 lg:pl-0 pb-2 sm:pb-3 md:pb-3 justify-end">
+              {/* Icons Container - Left side of question text */}
+              <div className="flex flex-row items-center gap-1 sm:gap-2 md:gap-2 flex-shrink-0 -mt-0.5 sm:-mt-1 md:-mt-1">
+                {/* Gemini Icon */}
+                <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5">
+                  <Image src="/ai-icons/gemini-color.webp" alt="Gemini" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 opacity-50" unoptimized />
+                </div>
+                
+                {/* Perplexity Icon */}
+                <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5">
+                  <Image src="/ai-icons/perplexity.webp" alt="Perplexity" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 opacity-50" unoptimized />
+                </div>
+                
+                {/* ChatGPT Icon (Larger with bubble) */}
+                <div className="flex items-center justify-center px-1.5 sm:px-2 md:px-2.5 lg:px-3 py-0.5 sm:py-1 md:py-1 lg:py-2 relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 rounded-full blur-sm"></div>
+                  <div className="relative z-10">
+                    <Image src="/ai-icons/openai.webp" alt="OpenAI" width={18} height={18} className="sm:w-6 sm:h-6 md:w-6 md:h-6 lg:w-7 lg:h-7" unoptimized />
+                  </div>
                 </div>
               </div>
+              
+              {/* Question Text */}
+              <span className="text-white/70 text-xs sm:text-sm md:text-sm min-w-0 leading-tight sm:leading-normal md:leading-normal break-words text-right border border-white/20 rounded-full px-3 sm:px-4 md:px-4 py-2 sm:py-2.5 md:py-2.5">{data.question}</span>
             </div>
-            
-            {/* Question Text */}
-            <span className="text-white/70 text-sm sm:text-base md:text-base lg:text-lg xl:text-xl min-w-0 leading-tight sm:leading-normal md:leading-normal break-words text-right">{data.question}</span>
           </div>
         </div>
       </div>
