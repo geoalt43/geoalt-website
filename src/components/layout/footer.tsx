@@ -5,15 +5,45 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
-// Helper function to scroll to hero section
 const scrollToHero = (e: React.MouseEvent<HTMLAnchorElement>) => {
   e.preventDefault()
   const heroSection = document.getElementById('home')
   if (heroSection) {
-    heroSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const html = document.documentElement
+    const body = document.body
+    const originalScrollBehavior = html.style.scrollBehavior
+    
+    html.style.scrollBehavior = 'auto'
+    body.style.scrollBehavior = 'auto'
+    
+    requestAnimationFrame(() => {
+      heroSection.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'start' })
+      
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          html.style.scrollBehavior = originalScrollBehavior || ''
+          body.style.scrollBehavior = ''
+        })
+      })
+    })
   } else {
-    // Fallback: scroll to top if hero section not found
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    const html = document.documentElement
+    const body = document.body
+    const originalScrollBehavior = html.style.scrollBehavior
+    
+    html.style.scrollBehavior = 'auto'
+    body.style.scrollBehavior = 'auto'
+    
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
+      
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          html.style.scrollBehavior = originalScrollBehavior || ''
+          body.style.scrollBehavior = ''
+        })
+      })
+    })
   }
 }
 

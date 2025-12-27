@@ -14,7 +14,23 @@ export function Navbar() {
       e.preventDefault()
       const element = document.getElementById('home')
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        const html = document.documentElement
+        const body = document.body
+        const originalScrollBehavior = html.style.scrollBehavior
+        
+        html.style.scrollBehavior = 'auto'
+        body.style.scrollBehavior = 'auto'
+        
+        requestAnimationFrame(() => {
+          element.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'start' })
+          
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              html.style.scrollBehavior = originalScrollBehavior || ''
+              body.style.scrollBehavior = ''
+            })
+          })
+        })
       }
     }
     setIsMobileMenuOpen(false)
@@ -25,7 +41,23 @@ export function Navbar() {
       e.preventDefault()
       const element = document.getElementById('pricing')
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        const html = document.documentElement
+        const body = document.body
+        const originalScrollBehavior = html.style.scrollBehavior
+        
+        html.style.scrollBehavior = 'auto'
+        body.style.scrollBehavior = 'auto'
+        
+        requestAnimationFrame(() => {
+          element.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'start' })
+          
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              html.style.scrollBehavior = originalScrollBehavior || ''
+              body.style.scrollBehavior = ''
+            })
+          })
+        })
       }
     }
     setIsMobileMenuOpen(false)
@@ -36,7 +68,23 @@ export function Navbar() {
       e.preventDefault()
       const element = document.getElementById('features')
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        const html = document.documentElement
+        const body = document.body
+        const originalScrollBehavior = html.style.scrollBehavior
+        
+        html.style.scrollBehavior = 'auto'
+        body.style.scrollBehavior = 'auto'
+        
+        requestAnimationFrame(() => {
+          element.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'start' })
+          
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              html.style.scrollBehavior = originalScrollBehavior || ''
+              body.style.scrollBehavior = ''
+            })
+          })
+        })
       }
     }
     setIsMobileMenuOpen(false)
@@ -61,8 +109,10 @@ export function Navbar() {
                 alt="GEOAlt logo"
                 width={100}
                 height={24}
+                quality={90}
                 className="h-[0.9em] sm:h-[1em] md:h-[1em] w-auto"
                 priority
+                sizes="(max-width: 640px) 80px, 100px"
               />
             </Link>
           </div>
@@ -111,16 +161,23 @@ export function Navbar() {
             </span>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-white p-2 focus:outline-none focus:ring-2 focus:ring-white/20 rounded-lg"
+              className="relative w-6 h-6 flex flex-col justify-center items-center focus:outline-none group"
               aria-label="Toggle menu"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {isMobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
+              <span
+                className={`absolute block w-5 h-[2px] bg-white rounded-full transition-all duration-300 ease-in-out origin-center ${
+                  isMobileMenuOpen
+                    ? 'rotate-45 translate-y-0'
+                    : '-translate-y-1.5'
+                }`}
+              />
+              <span
+                className={`absolute block w-5 h-[2px] bg-white rounded-full transition-all duration-300 ease-in-out origin-center ${
+                  isMobileMenuOpen
+                    ? '-rotate-45 translate-y-0'
+                    : 'translate-y-1.5'
+                }`}
+              />
             </button>
           </div>
         </div>
@@ -132,21 +189,21 @@ export function Navbar() {
               <Link 
                   href="/" 
                 onClick={handleHomeClick}
-                className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
+                className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white active:bg-[#5a5a5a] active:border-[#5a5a5a] active:text-white transition-all duration-150 ease-out"
               >
                 Home
               </Link>
               <Link 
                 href="/#pricing" 
                 onClick={handlePricingClick}
-                className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
+                className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white active:bg-[#5a5a5a] active:border-[#5a5a5a] active:text-white transition-all duration-150 ease-out"
               >
                 Pricing
               </Link>
               <Link 
                 href="/#features" 
                 onClick={handleFeaturesClick}
-                className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
+                className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white active:bg-[#5a5a5a] active:border-[#5a5a5a] active:text-white transition-all duration-150 ease-out"
               >
                 Features
               </Link>
