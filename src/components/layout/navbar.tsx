@@ -144,11 +144,11 @@ export function Navbar() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center space-x-3 md:space-x-3.5 lg:space-x-4 flex-shrink-0 z-10">
-            <span className="text-white hover:text-brand-gray-300 hover:opacity-80 px-2 md:px-2.5 lg:px-3 py-2 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-default">
+            <span className="text-white hover:text-brand-gray-300 hover:opacity-80 px-2 md:px-2.5 lg:px-3 py-2 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer">
               Sign in
             </span>
             <span
-              className="bg-white text-black border border-white px-3 md:px-3.5 lg:px-3.5 py-1.5 rounded-full text-sm font-normal hover:bg-white/90 hover:opacity-90 transition-all duration-150 whitespace-nowrap cursor-default"
+              className="bg-white text-black border border-white px-3 md:px-3.5 lg:px-3.5 py-1.5 rounded-full text-sm font-normal hover:bg-white/90 hover:opacity-90 transition-all duration-150 whitespace-nowrap cursor-pointer"
             >
               Get Started
             </span>
@@ -156,7 +156,7 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-1.5 sm:space-x-2 flex-shrink-0">
-            <span className="text-white hover:text-brand-gray-300 hover:opacity-80 px-1.5 sm:px-2 py-1.5 text-xs sm:text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-default">
+            <span className="text-white hover:text-brand-gray-300 hover:opacity-80 px-1.5 sm:px-2 py-1.5 text-xs sm:text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer">
               Sign in
             </span>
             <button
@@ -209,7 +209,7 @@ export function Navbar() {
               </Link>
               <span
                 onClick={handleLinkClick}
-                className="mt-2 bg-white text-black border border-white px-4 py-2 rounded-full text-sm font-normal hover:bg-white/90 hover:opacity-90 transition-all duration-150 text-center cursor-default"
+                className="mt-2 bg-white text-black border border-white px-4 py-2 rounded-full text-sm font-normal hover:bg-white/90 hover:opacity-90 transition-all duration-150 text-center cursor-pointer"
               >
                 Get Started
               </span>

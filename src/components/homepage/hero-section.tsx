@@ -88,7 +88,7 @@ export function HeroSection() {
 
             <div className="flex flex-row gap-2.5 sm:gap-4 md:gap-4 items-center justify-center px-4 sm:px-0 md:px-0">
               <span
-                className="inline-flex items-center justify-center text-black px-3.5 py-1.5 sm:px-4 sm:py-2 md:px-4 md:py-2 rounded-lg text-xs sm:text-sm md:text-base font-semibold tracking-wide transition-all duration-200 ease-in-out bg-white hover:bg-[#d4d4d4] text-center min-w-[100px] sm:min-w-[120px] md:min-w-[120px] cursor-default"
+                className="inline-flex items-center justify-center text-black px-3.5 py-1.5 sm:px-4 sm:py-2 md:px-4 md:py-2 rounded-lg text-xs sm:text-sm md:text-base font-semibold tracking-wide transition-all duration-200 ease-in-out bg-white hover:bg-[#d4d4d4] text-center min-w-[100px] sm:min-w-[120px] md:min-w-[120px] cursor-pointer"
               >
                 Get Started
               </span>
