@@ -22,27 +22,23 @@ function highlightText(
   }
 
   let highlightedText = text
-  const parts: Array<{ text: string; type: 'positive' | 'negative' | 'normal' }> = []
+          const parts: Array<{ text: string; type: 'positive' | 'negative' | 'normal' }> = []
 
-  // Process positive highlights first
-  positives.forEach((phrase) => {
-    const escapedPhrase = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    const regex = new RegExp(`\\*\\*(${escapedPhrase})\\*\\*`, 'gi')
-    highlightedText = highlightedText.replace(regex, '__POSITIVE__$1__/POSITIVE__')
-  })
+          positives.forEach((phrase) => {
+            const escapedPhrase = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+            const regex = new RegExp(`\\*\\*(${escapedPhrase})\\*\\*`, 'gi')
+            highlightedText = highlightedText.replace(regex, '__POSITIVE__$1__/POSITIVE__')
+          })
 
-  // Process negative highlights
-  negatives.forEach((phrase) => {
-    const escapedPhrase = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    const regex = new RegExp(`\\*\\*(${escapedPhrase})\\*\\*`, 'gi')
-    highlightedText = highlightedText.replace(regex, '__NEGATIVE__$1__/NEGATIVE__')
-  })
+          negatives.forEach((phrase) => {
+            const escapedPhrase = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+            const regex = new RegExp(`\\*\\*(${escapedPhrase})\\*\\*`, 'gi')
+            highlightedText = highlightedText.replace(regex, '__NEGATIVE__$1__/NEGATIVE__')
+          })
 
-  // Remove any remaining ** markers from unhighlighted text
-  highlightedText = highlightedText.replace(/\*\*/g, '')
+          highlightedText = highlightedText.replace(/\*\*/g, '')
 
-  // Split into segments
-  const segments = highlightedText.split(/(__POSITIVE__|__NEGATIVE__|__\/POSITIVE__|__\/NEGATIVE__)/)
+          const segments = highlightedText.split(/(__POSITIVE__|__NEGATIVE__|__\/POSITIVE__|__\/NEGATIVE__)/)
 
   let currentType: 'positive' | 'negative' | 'normal' = 'normal'
   
@@ -61,7 +57,6 @@ function highlightText(
   return parts.length > 0 ? parts : [{ text: highlightedText.replace(/__[A-Z_/]+__/g, ''), type: 'normal' as const }]
 }
 
-// AI Platform icons for bubbles
 const aiPlatforms = [
   { icon: '/ai-icons/openai.webp', alt: 'OpenAI' },
   { icon: '/ai-icons/gemini-color.webp', alt: 'Gemini' },
@@ -97,8 +92,8 @@ function FloatingBubble({ icon, alt, left, delay, drift }: { icon: string; alt: 
           alt={alt}
           width={40}
           height={40}
+          quality={85}
           className="relative z-10"
-          unoptimized
         />
       </div>
     </motion.div>
@@ -116,7 +111,7 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
         alt: platform.alt,
         left: 10 + Math.random() * 80,
         delay: 0,
-        drift: Math.random() * 20 - 10, // Horizontal drift -10 to 10
+        drift: Math.random() * 20 - 10,
         id: Date.now() + Math.random()
       }
       setBubbles(prev => [...prev, newBubble])
@@ -126,12 +121,10 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
       }, 12000)
     }
 
-    // Create initial bubbles
     for (let i = 0; i < 3; i++) {
       setTimeout(() => createBubble(), i * 2000)
     }
 
-    // Continuously create bubbles
     const interval = setInterval(() => {
       createBubble()
     }, 3000)
@@ -143,7 +136,6 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
         <div
           className="bg-[#050505] border border-transparent rounded-lg shadow-2xl shadow-black/40 p-4 sm:p-6 lg:p-8 mt-4 relative overflow-hidden"
         >
-          {/* Floating AI Platform Bubbles */}
           <div className="absolute inset-0 pointer-events-none z-[5] overflow-hidden">
             <AnimatePresence>
               {bubbles.map((bubble) => (
@@ -151,7 +143,6 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
               ))}
             </AnimatePresence>
           </div>
-          {/* Animated Background Gradient */}
           <div className="absolute inset-0 opacity-30">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/10 to-transparent"></div>
             <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-cyan-500/10 to-blue-500/20 animate-pulse"></div>
@@ -176,19 +167,19 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
               <div className="flex flex-row items-center gap-1 sm:gap-2 md:gap-2 flex-shrink-0 -mt-0.5 sm:-mt-1 md:-mt-1">
                 {/* Gemini Icon */}
                 <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5">
-                  <Image src="/ai-icons/gemini-color.webp" alt="Gemini" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 opacity-50" unoptimized />
+                  <Image src="/ai-icons/gemini-color.webp" alt="Gemini" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 opacity-50" />
                 </div>
                 
                 {/* Perplexity Icon */}
                 <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5">
-                  <Image src="/ai-icons/perplexity.webp" alt="Perplexity" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 opacity-50" unoptimized />
+                  <Image src="/ai-icons/perplexity.webp" alt="Perplexity" width={16} height={16} className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 opacity-50" />
                 </div>
                 
                 {/* ChatGPT Icon (Larger with bubble) */}
                 <div className="flex items-center justify-center px-1.5 sm:px-2 md:px-2.5 lg:px-3 py-0.5 sm:py-1 md:py-1 lg:py-2 relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 rounded-full blur-sm"></div>
                   <div className="relative z-10">
-                    <Image src="/ai-icons/openai.webp" alt="OpenAI" width={18} height={18} className="sm:w-6 sm:h-6 md:w-6 md:h-6 lg:w-7 lg:h-7" unoptimized />
+                    <Image src="/ai-icons/openai.webp" alt="OpenAI" width={18} height={18} className="sm:w-6 sm:h-6 md:w-6 md:h-6 lg:w-7 lg:h-7" />
                   </div>
                 </div>
               </div>
