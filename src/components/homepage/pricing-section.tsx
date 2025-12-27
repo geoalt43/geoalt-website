@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { containerVariants, cardVariantsSmooth } from '@/lib/animations/variants'
 import { FeatureText } from './pricing-section/FeatureText'
@@ -53,7 +53,7 @@ const pricingPlans = [
   },
 ]
 
-function PricingCard({ plan, isYearly }: { plan: typeof pricingPlans[0]; isYearly: boolean }) {
+function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingPlans[0]; isYearly: boolean; className?: string }) {
   const cardRef = useRef(null)
   const isInView = useInView(cardRef, { once: true, margin: '-100px' })
 
@@ -78,6 +78,7 @@ function PricingCard({ plan, isYearly }: { plan: typeof pricingPlans[0]; isYearl
         relative overflow-hidden group transition-colors duration-300
         hover:border-white/25
         ${plan.isRecommended ? 'lg:-mt-[3.5rem] rounded-[0.89rem_0.89rem_0.5rem_0.5rem] scale-[1.02]' : 'rounded-lg'}
+        ${className}
       `}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -146,6 +147,22 @@ export function PricingSection() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
   const [isYearly, setIsYearly] = useState(true)
+  const [isBelow1360, setIsBelow1360] = useState(false)
+  const [isBelow1088, setIsBelow1088] = useState(false)
+  const [isBelow680, setIsBelow680] = useState(false)
+
+  useEffect(() => {
+    const checkWidth = () => {
+      setIsBelow1360(window.innerWidth < 1360)
+      setIsBelow1088(window.innerWidth < 1088)
+      setIsBelow680(window.innerWidth < 680)
+    }
+    
+    checkWidth()
+    window.addEventListener('resize', checkWidth)
+    
+    return () => window.removeEventListener('resize', checkWidth)
+  }, [])
 
   return (
     <section id="pricing" className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-6 sm:pb-8 md:pb-8 lg:pb-[6vh] xl:pb-[8vh] min-h-[90vh] sm:min-h-[95vh] md:min-h-[100vh] scroll-mt-16 relative overflow-hidden  bg-transparent-text bg-clip-text">
@@ -164,7 +181,10 @@ export function PricingSection() {
           <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-2 sm:px-0 md:px-0">Pricing</h2>
           
           {/* Payment Frequency Toggle */}
-          <div className="flex flex-col items-center justify-center mb-2 sm:mb-3 md:mb-2 lg:mb-3 xl:mb-4 mt-2 sm:mt-3 md:mt-3 w-full">
+          <div 
+            className="flex flex-col items-center justify-center mb-2 sm:mb-3 md:mb-2 lg:mb-3 xl:mb-4 mt-2 sm:mt-3 md:mt-3 w-full"
+            style={isBelow1360 ? { marginBottom: '0.9rem' } : {}}
+          >
             <div className="flex items-center bg-white/5 rounded-full p-0.5 border border-white/10 flex-shrink-0 relative z-10">
               <button
                 onClick={() => setIsYearly(false)}
@@ -187,7 +207,10 @@ export function PricingSection() {
                 Pay yearly
               </button>
             </div>
-            <span className="mt-1 sm:mt-1.5 md:mt-1.5 mb-2 sm:mb-2.5 md:mb-2.5 text-[10px] sm:text-xs md:text-xs text-white/90 whitespace-nowrap text-center">
+            <span 
+              className="mt-1 sm:mt-1.5 md:mt-1.5 mb-2 sm:mb-2.5 md:mb-2.5 text-[10px] sm:text-xs md:text-xs text-white/90 whitespace-nowrap text-center"
+              style={isBelow1360 ? { marginBottom: '1.8rem' } : {}}
+            >
               Save up to 15% with yearly
             </span>
           </div>
@@ -197,11 +220,51 @@ export function PricingSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-7 lg:gap-8 mt-4 sm:mt-6 md:mt-6 lg:mt-8 xl:mt-10 items-start"
+          className={`grid gap-4 sm:gap-6 md:gap-7 lg:gap-8 mt-4 sm:mt-6 md:mt-6 lg:mt-8 xl:mt-10 items-start ${isBelow680 ? 'grid-cols-1' : isBelow1088 ? 'grid-cols-1 justify-items-center' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'}`}
         >
-          {pricingPlans.map((plan) => (
-            <PricingCard key={plan.name} plan={plan} isYearly={isYearly} />
-          ))}
+          {isBelow680 ? (
+            // Below 680px: Stack vertically in order (Pro, Basic, Enterprise) without expanding width
+            <>
+              <PricingCard 
+                plan={pricingPlans.find(p => p.isRecommended)!} 
+                isYearly={isYearly}
+              />
+              <PricingCard 
+                plan={pricingPlans.find(p => p.name === 'Basic')!} 
+                isYearly={isYearly}
+              />
+              <PricingCard 
+                plan={pricingPlans.find(p => p.name === 'Enterprise')!} 
+                isYearly={isYearly}
+              />
+            </>
+          ) : isBelow1088 ? (
+            <>
+              {/* Pro Card - Centered */}
+              <PricingCard 
+                plan={pricingPlans.find(p => p.isRecommended)!} 
+                isYearly={isYearly}
+                className="w-[calc(50%-0.5rem)]"
+              />
+              {/* Wrapper for Basic and Enterprise - 2 columns below 1088px */}
+              <div className="grid grid-cols-2 gap-4 col-span-1 w-full max-w-full mx-auto">
+                <PricingCard 
+                  plan={pricingPlans.find(p => p.name === 'Basic')!} 
+                  isYearly={isYearly}
+                  className="w-full"
+                />
+                <PricingCard 
+                  plan={pricingPlans.find(p => p.name === 'Enterprise')!} 
+                  isYearly={isYearly}
+                  className="w-full"
+                />
+              </div>
+            </>
+          ) : (
+            pricingPlans.map((plan) => (
+              <PricingCard key={plan.name} plan={plan} isYearly={isYearly} />
+            ))
+          )}
         </motion.div>
       </div>
     </section>
