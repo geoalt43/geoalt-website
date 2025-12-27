@@ -27,7 +27,7 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
       variants={cardVariantsSmooth}
       initial="hidden"
       animate={cardInView ? 'visible' : 'hidden'}
-      className={`bg-black border-b ${colorClasses.borderGray} shadow-sm faq-card-partial-borders rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl overflow-hidden relative`}
+      className={`bg-black border-b ${colorClasses.borderGray} shadow-sm faq-card-partial-borders rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl overflow-hidden relative cursor-pointer`}
       whileHover={{
         backgroundColor: 'rgba(20, 20, 20, 1)',
         borderColor: 'rgba(120, 120, 120, 0.6)',
@@ -42,7 +42,7 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
         }}
       />
       <motion.button
-        className="w-full pl-3 sm:pl-4 md:pl-4 pr-5 sm:pr-7 md:pr-7 py-2.5 sm:py-3.5 md:py-3.5 text-left flex items-start sm:items-center md:items-center gap-2 sm:gap-4 md:gap-4"
+        className="w-full pl-3 sm:pl-4 md:pl-4 pr-5 sm:pr-7 md:pr-7 py-2.5 sm:py-3.5 md:py-3.5 text-left flex items-start sm:items-center md:items-center gap-2 sm:gap-4 md:gap-4 cursor-pointer"
         onClick={onToggle}
       >
         <motion.span
@@ -67,16 +67,16 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
               height: 'auto', 
               opacity: 1,
               transition: {
-                height: { duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] },
-                opacity: { duration: 0.3, ease: 'easeOut', delay: 0.1 }
+                height: { duration: 0.2, ease: [0.04, 0.62, 0.23, 0.98] },
+                opacity: { duration: 0.15, ease: 'easeOut' }
               }
             }}
             exit={{ 
               height: 0, 
               opacity: 0,
               transition: {
-                height: { duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] },
-                opacity: { duration: 0.2, ease: 'easeIn' }
+                height: { duration: 0.15, ease: [0.04, 0.62, 0.23, 0.98] },
+                opacity: { duration: 0.1, ease: 'easeIn' }
               }
             }}
             className="overflow-hidden bg-transparent"
@@ -87,12 +87,12 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
                 animate={{ 
                   y: 0, 
                   opacity: 1,
-                  transition: { duration: 0.3, ease: 'easeOut', delay: 0.15 }
+                  transition: { duration: 0.15, ease: 'easeOut' }
                 }}
                 exit={{ 
                   y: -10, 
                   opacity: 0,
-                  transition: { duration: 0.2, ease: 'easeIn' }
+                  transition: { duration: 0.1, ease: 'easeIn' }
                 }}
                 className="text-gray-400 leading-relaxed text-xs sm:text-sm md:text-sm font-light bg-transparent"
               >
