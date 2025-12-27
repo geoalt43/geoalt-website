@@ -15,6 +15,7 @@ import { Navbar } from '@/components/layout/navbar'
 import { AISearchMetricsSection } from '@/components/homepage/ai-search-metrics'
 import { DashboardSection } from '@/components/homepage/dashboard-section'
 import { PricingSection } from '@/components/homepage/pricing-section'
+import { useScrollRestoration } from '@/app/hooks/use-scroll-restoration'
 
 const trustedBrands = [
   { 
@@ -189,7 +190,6 @@ function EmpoweringBusinessesSection() {
   )
 }
 
-// Static Grid Background Component for Dashboard Image Section
 function AnimatedGridBackground() {
   const gridSize = 40
   const lineThickness = 1 // Thickness of grid lines
@@ -292,6 +292,7 @@ function DashboardImageSection() {
             width={1280}
             height={720}
             priority
+            quality={90}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 88vw"
             className="w-full sm:w-[90%] md:w-[89%] lg:w-[88%] mx-auto h-auto object-contain relative z-10"
           />
@@ -304,6 +305,8 @@ function DashboardImageSection() {
 export function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const faqRef = useRef<HTMLDivElement>(null)
+  
+  useScrollRestoration()
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -364,9 +367,9 @@ export function HomePage() {
                           alt={`${brand.label} logo`}
                           fill
                           className="object-contain"
-                          unoptimized
+                          quality={90}
+                          sizes="(max-width: 640px) 1rem, (max-width: 768px) 1.5rem, (max-width: 1024px) 2rem, 2.5rem"
                           onError={(e) => {
-                            // Fallback: hide image if logo not found
                             e.currentTarget.style.display = 'none'
                           }}
                         />
