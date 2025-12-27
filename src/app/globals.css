@@ -2,7 +2,6 @@
 
 @layer base {
   :root {
-    /* Semantic theme tokens - single source of truth */
     --color-page-background: 0 0% 0%;
     --color-surface: 0 0% 3%;
     --color-surface-elevated: 0 0% 6%;
@@ -33,7 +32,6 @@
   }
 
   .dark {
-    /* Shadcn/ui dark mode variables */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
@@ -58,13 +56,10 @@
 
 @layer base {
   * {
-    /* Tailwind v4 may not generate `border-border`; set color directly */
     border-color: hsl(var(--border));
   }
 }
 
-
-/* Force black background across the app and all sections */
 @layer base {
   html, body, section {
     background-color: #000 !important;
@@ -74,7 +69,6 @@
   }
 }
 
-/* Restored legacy animations/utilities used in the original React app */
 @layer utilities {
   @keyframes fadeIn {
     from {
@@ -107,7 +101,6 @@
   }
 }
 
-/* Custom animations */
 @keyframes gridMove {
   0% { transform: translate(0, 0); }
   100% { transform: translate(80px, 80px); }
@@ -128,7 +121,6 @@
   }
 }
 
-/* Trusted by text - no gradient, solid white */
 .trusted-by-text {
   color: rgba(255, 255, 255, 1) !important;
   background: none !important;
@@ -138,9 +130,6 @@
   -webkit-text-fill-color: rgba(255, 255, 255, 1) !important;
 }
 
-/* Utility classes */
-
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -158,20 +147,19 @@
   background: #6b7280;
 }
 
-/* Focus styles */
 .focus-visible:focus {
   outline: 2px solid hsl(var(--ring));
   outline-offset: 2px;
 }
 
-/* Selection styles */
 ::selection {
   background: hsl(var(--primary) / 0.2);
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scroll-padding-top: 0;
 }
 
 .mask-fade-horizontal {
@@ -211,8 +199,6 @@ html {
   filter: none;
 }
 
-
-/* FAQ card with partial left and right borders */
 .faq-card-partial-borders {
   position: relative;
 }
@@ -235,9 +221,7 @@ html {
   right: 0;
 }
 
-/* Utility classes for inline styles - maintaining exact same output */
 @layer utilities {
-  /* Grid background patterns */
   .bg-grid-pattern {
     background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
@@ -250,40 +234,28 @@ html {
     background-size: 40px 40px;
   }
 
-  /* Fix for dashboard images - smooth transitions between breakpoints */
-  /* Mobile (<640px): exact original value */
   .dashboard-image-transform {
     transform: rotateX(15deg) rotateY(0deg) translateZ(20px) translateY(40px);
   }
 
-  /* sm (640px+): exact original value - MUST match original sm: breakpoint */
   @media (min-width: 640px) {
     .dashboard-image-transform {
       transform: rotateX(18deg) rotateY(0deg) translateZ(30px) translateY(60px);
     }
   }
 
-  /* md (768px): intermediate value for smooth transition - only affects tablet sizes */
   @media (min-width: 768px) {
     .dashboard-image-transform {
       transform: rotateX(18.5deg) rotateY(0deg) translateZ(32px) translateY(70px);
     }
   }
 
-  /* lg (1024px+): exact original value - MUST match original lg: breakpoint */
   @media (min-width: 1024px) {
     .dashboard-image-transform {
       transform: rotateX(20deg) rotateY(0deg) translateZ(40px) translateY(90px);
     }
   }
 }
-
-
-
-
-
-
-
 
 html {
   height: 100%;
@@ -349,6 +321,3 @@ html {
     transform: translateY(-800vh);
   }
 }
-
-
-
