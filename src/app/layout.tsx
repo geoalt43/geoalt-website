@@ -4,9 +4,14 @@ import './globals.css'
 import { Providers } from '@/components/providers'
 import { ErrorBoundary } from '@/components/ui/error-boundary'
 import { Analytics } from '@vercel/analytics/react'
-import { OrganizationStructuredData, WebSiteStructuredData, SoftwareApplicationStructuredData } from '@/components/seo/structured-data'
+import { ScrollRestorationScript } from '@/components/scroll-restoration-script'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+  variable: '--font-inter',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -42,6 +47,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
+    yahoo: process.env.NEXT_PUBLIC_YAHOO_VERIFICATION,
+    other: {
+      'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFICATION || '',
+    },
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -64,6 +77,7 @@ export const metadata: Metadata = {
     description: 'GEOAlt helps your business stand out across AI platforms. Turning AI visibility into traffic.',
     images: ['/images/img-2.jpeg'],
     creator: '@geoalt',
+    site: '@geoalt',
   },
   robots: {
     index: true,
@@ -102,6 +116,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   themeColor: '#000000',
+  colorScheme: 'dark',
 }
 
 export default function RootLayout({
@@ -109,15 +124,89 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://geoalt.com'
+
+  const organizationStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'GEOAlt',
+    url: baseUrl,
+    logo: `${baseUrl}/logos/GeoAlt_Logo.png`,
+    description: 'GEOAlt helps your business stand out across AI platforms. Turning AI visibility into traffic and customers.',
+    sameAs: [
+      'https://www.linkedin.com/company/geo-alt',
+      'https://twitter.com/geoalt',
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'Customer Service',
+      availableLanguage: 'English',
+    },
+    foundingDate: '2024',
+    areaServed: 'Worldwide',
+  }
+
+  const webSiteStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'GEOAlt',
+    url: baseUrl,
+    description: 'Get your brand recommended by AI. GEOAlt helps businesses optimize their visibility across AI platforms like ChatGPT, Perplexity, and Claude.',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${baseUrl}/search?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  }
+
+  const softwareApplicationStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'GEOAlt',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      ratingCount: '150',
+    },
+    description: 'AI visibility optimization platform that helps businesses get recommended by AI platforms like ChatGPT, Perplexity, and Claude.',
+    featureList: [
+      'AI Visibility Tracking',
+      'Generative Engine Optimization',
+      'Competitor Analysis',
+      'Real-time Insights',
+      'Multi-platform Support',
+    ],
+  }
+
   return (
-    <html lang="en" className="dark overflow-x-hidden" suppressHydrationWarning style={{ colorScheme: 'dark' }}>
+    <html lang="en" className="dark overflow-x-hidden" suppressHydrationWarning>
       <body className={`${inter.className} overflow-x-hidden`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationStructuredData) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteStructuredData) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationStructuredData) }}
+        />
+        <ScrollRestorationScript />
         <div id='stars'></div>
         <div id='stars2'></div>
         <div id='stars3'></div>
-        <OrganizationStructuredData />
-        <WebSiteStructuredData />
-        <SoftwareApplicationStructuredData />
         <ErrorBoundary>
           <Providers>
             {children}

@@ -1,8 +1,6 @@
 import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
-  // const baseUrl = process.env.NEXT_PUBLIC_APP_URL || ''
-  
   return {
     name: 'GEOAlt - AI Visibility Optimization Platform',
     short_name: 'GEOAlt',

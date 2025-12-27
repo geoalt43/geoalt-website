@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 
 interface StructuredDataProps {
   type: 'Organization' | 'WebSite' | 'BreadcrumbList' | 'SoftwareApplication'
-  data: Record<string, any>
+  data: Record<string, unknown>
 }
 
 export function StructuredData({ type, data }: StructuredDataProps) {
@@ -33,7 +33,6 @@ export function StructuredData({ type, data }: StructuredDataProps) {
   return null
 }
 
-// Pre-configured structured data components
 export function OrganizationStructuredData() {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://geoalt.com'
   
@@ -85,7 +84,6 @@ export function WebSiteStructuredData() {
 }
 
 export function SoftwareApplicationStructuredData() {
-  // const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://geoalt.com'
   
   return (
     <StructuredData
@@ -116,9 +114,4 @@ export function SoftwareApplicationStructuredData() {
     />
   )
 }
-
-
-
-
-
 
