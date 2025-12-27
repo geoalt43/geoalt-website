@@ -127,17 +127,17 @@ export function PolicyFooter() {
             </h3>
             <ul className="mt-3 sm:mt-4 md:mt-5 space-y-2 sm:space-y-3 md:space-y-4">
               <li>
-                <Link href="/privacy-policy" className="text-sm sm:text-xs text-[#898989] hover:text-white transition-none">
+                <Link href="/privacy-policy" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms-of-service" className="text-sm sm:text-xs text-[#898989] hover:text-white transition-none">
+                <Link href="/terms-of-service" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="/cookie-policy" className="text-sm sm:text-xs text-[#898989] hover:text-white transition-none">
+                <Link href="/cookie-policy" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
                   Cookie Policy
                 </Link>
               </li>
@@ -166,13 +166,13 @@ export function PolicyFooter() {
             <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
               <Link
                 href="/privacy-policy"
-                className="text-sm sm:text-xs text-[#898989] hover:text-white transition-none whitespace-nowrap"
+                className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none whitespace-nowrap"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms-of-service"
-                className="text-sm sm:text-xs text-[#898989] hover:text-white transition-none whitespace-nowrap"
+                className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none whitespace-nowrap"
               >
                 Terms of Service
               </Link>
