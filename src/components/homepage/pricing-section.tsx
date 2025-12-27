@@ -124,9 +124,12 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
         </div>
         {(plan.monthlyPrice === null || plan.price === 'Custom') ? (
           <div className="mt-auto pt-1">
-            <button className="w-full max-w-[120px] sm:max-w-none md:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full border border-white/10 text-white py-2 sm:py-3 md:py-3 text-[11px] sm:text-sm md:text-sm font-semibold whitespace-nowrap">
+            <a 
+              href="mailto:Contact@geoalt.in"
+              className="w-full max-w-[120px] sm:max-w-none md:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full border border-white/10 text-white py-2 sm:py-3 md:py-3 text-[11px] sm:text-sm md:text-sm font-semibold whitespace-nowrap block text-center transition-all duration-200 ease-in-out hover:border-white/20 hover:bg-white/5"
+            >
               Contact Us
-            </button>
+            </a>
           </div>
         ) : (
           <a

@@ -97,6 +97,7 @@ export function HeroSection() {
                 variant="outline"
                 size="md"
                 showModal={false}
+                href="mailto:Contact@geoalt.in"
                 className="min-w-[100px] sm:min-w-[120px] md:min-w-[120px]"
               />
             </div>

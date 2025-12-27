@@ -11,6 +11,7 @@ interface InsightCardProps {
   icon: React.ComponentType
   isActive: boolean
   onHover: () => void
+  onClick?: () => void
   type: InsightType
   data?: SentimentData[] | PositionData[] | VisibilityData[]
 }
@@ -21,17 +22,28 @@ export function InsightCard({
   icon: IconComponent,
   isActive,
   onHover,
+  onClick,
   type,
   data,
 }: InsightCardProps) {
+  const handleInteraction = () => {
+    if (onClick) {
+      onClick()
+    } else {
+      onHover()
+    }
+  }
+
   return (
     <motion.div
       onMouseEnter={onHover}
-      className={`rounded-lg p-2 sm:p-3.5 text-white/80 h-[130px] sm:h-[150px] md:h-[170px] flex flex-col overflow-hidden relative group border-l-2 cursor-pointer ${
+      onClick={handleInteraction}
+      whileTap={{ scale: 0.98 }}
+      className={`rounded-lg p-2 sm:p-3.5 text-white/80 h-[130px] sm:h-[150px] md:h-[170px] flex flex-col overflow-hidden relative group border-l-2 cursor-pointer active:opacity-80 ${
         isActive ? 'border-white' : type === 'position' || type === 'sentiment' ? 'border-white/5' : 'border-transparent'
       }`}
       animate={{
-        borderLeftColor: isActive ? 'rgba(255, 255, 255, 1)' : type === 'position' || type === 'sentiment' ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
+        borderLeftColor: isActive ? 'rgba(255, 255, 255, 1)' : type === 'position' || type === 'sentiment' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0)',
       }}
       transition={{
         duration: 0.3,

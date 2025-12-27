@@ -78,6 +78,7 @@ export function AISearchMetricsSection() {
                 icon={card.icon}
                 isActive={activeType === card.id}
                 onHover={() => handleCardHover(card.id)}
+                onClick={() => handleCardHover(card.id)}
                 type={card.id}
                 data={
                   activeType && currentData

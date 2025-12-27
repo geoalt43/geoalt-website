@@ -61,6 +61,7 @@ export function CTASection() {
                   variant="outline" 
                   size="md"
                   showModal={false}
+                  href="mailto:Contact@geoalt.in"
                 />
               </div>
             </div>
@@ -98,6 +99,7 @@ export function CTASection() {
                   variant="outline" 
                   size="md"
                   showModal={false}
+                  href="mailto:Contact@geoalt.in"
                 />
               </div>
             </div>
