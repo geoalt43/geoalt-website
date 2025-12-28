@@ -176,6 +176,18 @@ export function PolicyFooter() {
               >
                 Terms of Service
               </Link>
+              <Link
+                href="/refund-policy"
+                className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none whitespace-nowrap"
+              >
+                Refund Policy
+              </Link>
+              <Link
+                href="/cookie-policy"
+                className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none whitespace-nowrap"
+              >
+                Cookie Policy
+              </Link>
             </div>
           </div>
         </div>
