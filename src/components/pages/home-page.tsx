@@ -86,10 +86,11 @@ function EmpoweringBusinessesSection() {
           </motion.h2>
           <motion.p 
             variants={headerVariants}
-            className={`text-base sm:text-lg md:text-lg ${colorClasses.textSecondary} px-4 sm:px-0 md:px-0 leading-tight`}
+            className={`text-xs sm:text-sm md:text-base ${colorClasses.textSecondary} px-4 sm:px-0 md:px-0 leading-tight`}
           >
-            GEOAlt caters to a wide range of businesses, from startups to<br className="leading-none" />
-            <span className="block -mt-0.5">enterprises, seeking to enhance their AI visibility.</span>
+            Geoalt caters to a wide range of businesses,<br className="leading-none" />
+            <span className="block -mt-0.5">from startups to enterprises, seeking<br className="leading-none" /></span>
+            <span className="block -mt-0.5">to enhance their AI visibility.</span>
           </motion.p>
         </motion.div>
 
@@ -288,7 +289,7 @@ function DashboardImageSection() {
           {/* Image */}
           <Image
             src="/images/img-2.jpeg"
-            alt="GEOAlt analytics dashboard"
+            alt="Geoalt analytics dashboard"
             width={1280}
             height={720}
             priority

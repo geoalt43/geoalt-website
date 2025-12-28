@@ -1,5 +1,6 @@
 import { PolicyFooter } from '@/components/policy-pages/policy-footer'
 import { PolicyPageClient } from '@/components/policy-pages/policy-page-client'
+import { Navbar } from '@/components/layout/navbar'
 
 function getEffectiveDate() {
   return new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
@@ -10,11 +11,12 @@ export default function PrivacyPolicyPage() {
 
   return (
     <div className="bg-black text-white w-full min-h-screen flex flex-col">
+      <Navbar />
       <main className="flex-1">
         <div className="max-w-4xl mx-auto px-3 xs:px-4 sm:px-6 md:px-8 py-6 xs:py-8 sm:py-12 md:py-16 relative z-10">
           {/* Header */}
         <div className="mb-4 xs:mb-6 sm:mb-8 md:mb-10 mt-1 xs:mt-2 sm:mt-2 md:mt-1">
-          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-normal mt-4 xs:mt-6 sm:mt-8 md:mt-10 mb-10 xs:mb-12 sm:mb-10 md:mb-16 text-white text-center">
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-normal mt-4 xs:mt-6 sm:mt-8 md:mt-10 max-[680px]:mt-20 mb-10 xs:mb-12 sm:mb-10 md:mb-16 text-white text-center">
             Privacy Policy
           </h1>
             <div className="text-xs xs:text-sm sm:text-base text-white/70 space-y-1 xs:space-y-0">
@@ -30,7 +32,7 @@ export default function PrivacyPolicyPage() {
               Overview
             </h2>
             <p className="text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
-              This Privacy Policy explains how GeoAlt collects, uses, stores, and protects personal and business information
+              This Privacy Policy explains how Geoalt collects, uses, stores, and protects personal and business information
               when you use our platform.
             </p>
           </section>
@@ -69,7 +71,7 @@ export default function PrivacyPolicyPage() {
               AI & Brand Data
             </h2>
             <p className="text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
-              Your brand data, prompts, and inputs remain your property. GeoAlt uses this data only to generate insights and
+              Your brand data, prompts, and inputs remain your property. Geoalt uses this data only to generate insights and
               does not sell or publicly train AI models on private customer data.
             </p>
           </section>
@@ -122,7 +124,7 @@ export default function PrivacyPolicyPage() {
               Children&apos;s Privacy
             </h2>
             <p className="text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
-              GeoAlt is not intended for individuals under the age of 18.
+              Geoalt is not intended for individuals under the age of 18.
             </p>
           </section>
 

@@ -143,7 +143,7 @@ export function DashboardSection() {
             >
               <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-normal md:font-normal text-white/80">Add Business Competitors</h3>
             <p className="text-xs sm:text-xs md:text-sm text-white/45 mb-3 sm:mb-4">
-                <span>Add competitors so GeoAlt can map landscape for growth</span>
+                <span>Add competitors so Geoalt can map landscape for growth</span>
               </p>
             </motion.div>
             

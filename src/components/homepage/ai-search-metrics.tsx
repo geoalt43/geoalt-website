@@ -60,7 +60,7 @@ export function AISearchMetricsSection() {
           <motion.h2 variants={headerVariants} className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0">
             How AI actually sees your brand
           </motion.h2>
-          <motion.p variants={subtitleVariants} className="text-base sm:text-lg md:text-lg text-[#9b9b9b] px-4 sm:px-0 md:px-0">
+          <motion.p variants={subtitleVariants} className="text-xs sm:text-sm md:text-base text-[#9b9b9b] px-4 sm:px-0 md:px-0">
             Everything that matters in one place
           </motion.p>
         </motion.div>
@@ -68,7 +68,7 @@ export function AISearchMetricsSection() {
         <div className="mt-8 sm:mt-12 md:mt-12 max-w-7xl mx-auto relative">
           <div className="grid gap-3 sm:gap-4 md:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 relative overflow-hidden">
             {/* Top horizontal line - aligned with card top */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-white/5 z-20"></div>
+            <div className="hidden lg:block absolute top-0 left-0 right-0 h-px bg-white/5 z-20"></div>
             
             {insightCards.map((card) => (
               <InsightCard
@@ -93,7 +93,7 @@ export function AISearchMetricsSection() {
             ))}
             
             {/* Bottom horizontal line - aligned with card bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-white/5 z-20"></div>
+            <div className="hidden lg:block absolute bottom-0 left-0 right-0 h-px bg-white/5 z-20"></div>
           </div>
         </div>
 

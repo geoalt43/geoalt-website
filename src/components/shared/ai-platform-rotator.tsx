@@ -108,7 +108,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
   const current = platforms[currentPlatform]
 
   return (
-    <div className="relative flex items-center justify-center py-4 sm:py-8 md:py-12 lg:py-16 xl:py-20 px-2 sm:px-4 md:px-6">
+    <div className="relative flex items-center justify-center py-2 sm:py-4 md:py-6 lg:py-16 xl:py-20 px-2 sm:px-4 md:px-6 mt-4 sm:mt-6 md:mt-8 lg:mt-0 mb-4 sm:mb-6 md:mb-8 lg:mb-0">
       {/* Animated Background Elements (only for default variant) */}
       {variant === 'default' && (
         <div className="absolute inset-0 overflow-hidden -z-10">
@@ -124,7 +124,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
       )}
       
       {/* Responsive width container to prevent shaking */}
-      <div className="w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[400px] xl:max-w-[480px] h-12 sm:h-12 md:h-14 lg:h-20 xl:h-24 flex items-center justify-center">
+      <div className="w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[400px] xl:max-w-[480px] h-8 sm:h-10 md:h-12 lg:h-20 xl:h-24 flex items-center justify-center">
         <div
           className={`flex items-center justify-center space-x-1 sm:space-x-1.5 md:space-x-2 lg:space-x-3 transition-all duration-500 text-shadow-muted ${
             isBlurring ? 'opacity-20' : 'opacity-100'
@@ -146,7 +146,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
                 alt={`${current.name || 'AI platform'} icon`}
                 width={iconWidth}
                 height={iconHeight}
-                className="object-contain w-auto h-[30px] sm:h-[30px] md:h-[30px] lg:h-[36px] xl:h-[42px] max-w-full"
+                className="object-contain w-auto h-[20px] sm:h-[24px] md:h-[26px] lg:h-[36px] xl:h-[42px] max-w-full"
               />
               {current.hasText && current.text && (
                 <Image
@@ -154,14 +154,14 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
                   alt={`${current.name || 'AI platform'} logo text`}
                   width={textWidth}
                   height={textHeight}
-                  className="object-contain w-auto h-[30px] sm:h-[30px] md:h-[30px] lg:h-[36px] xl:h-[42px] max-w-full"
+                  className="object-contain w-auto h-[20px] sm:h-[24px] md:h-[26px] lg:h-[36px] xl:h-[42px] max-w-full"
                 />
               )}
             </div>
           )}
           {current.name && !current.hasText && (
             <span
-              className={`h-[30px] flex items-center text-base sm:text-base md:text-base lg:text-3xl xl:text-4xl font-medium leading-tight tracking-tight whitespace-nowrap ${
+              className={`h-[20px] sm:h-[24px] md:h-[26px] lg:h-[30px] flex items-center text-sm sm:text-base md:text-lg lg:text-3xl xl:text-4xl font-medium leading-tight tracking-tight whitespace-nowrap ${
                 variant === 'muted' ? 'text-[#2b2b2b]' : 'text-white'
               }`}
             >

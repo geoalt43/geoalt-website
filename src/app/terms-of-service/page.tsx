@@ -1,5 +1,6 @@
 import { PolicyFooter } from '@/components/policy-pages/policy-footer'
 import { PolicyPageClient } from '@/components/policy-pages/policy-page-client'
+import { Navbar } from '@/components/layout/navbar'
 
 function getLastUpdated() {
   return new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
@@ -10,11 +11,12 @@ export default function TermsOfServicePage() {
 
   return (
     <div className="bg-black text-white w-full min-h-screen flex flex-col">
+      <Navbar />
       <main className="flex-1">
         <div className="max-w-4xl mx-auto px-3 xs:px-4 sm:px-6 md:px-8 py-6 xs:py-8 sm:py-12 md:py-16 relative z-10">
         {/* Header */}
         <div className="mb-4 xs:mb-6 sm:mb-8 md:mb-10">
-          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-normal mt-4 xs:mt-6 sm:mt-8 md:mt-10 mb-10 xs:mb-12 sm:mb-10 md:mb-16 text-white text-center">
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-normal mt-4 xs:mt-6 sm:mt-8 md:mt-10 max-[680px]:mt-20 mb-10 xs:mb-12 sm:mb-10 md:mb-16 text-white text-center">
             Terms of Service
           </h1>
           <div className="text-xs xs:text-sm sm:text-base text-white/70 space-y-1">
@@ -31,12 +33,12 @@ export default function TermsOfServicePage() {
             </h2>
             <div className="space-y-2 xs:space-y-0 text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-snug mt-1 xs:mt-0.5 sm:mt-0.5">
               <p>
-                Welcome to GeoAlt (&quot;Company&quot;, &quot;we&quot;, &quot;our&quot;, &quot;us&quot;). As you have just clicked our Terms of Service, please take a
+                Welcome to Geoalt (&quot;Company&quot;, &quot;we&quot;, &quot;our&quot;, &quot;us&quot;). As you have just clicked our Terms of Service, please take a
                 moment to carefully read the following sections. It should take approximately 5–7 minutes to review.
               </p>
               <p>
                 These Terms of Service (&quot;Terms&quot;) govern your access to and use of our website located at <a href="https://geoalt.in" className="text-blue-400 hover:text-blue-300 underline transition-colors break-all">https://geoalt.in</a> and
-                the GeoAlt platform operated by the Company.
+                the Geoalt platform operated by the Company.
               </p>
               <p>
                 Our Privacy Policy also governs your use of the Service and explains how we collect, use, safeguard, and disclose
@@ -75,7 +77,7 @@ export default function TermsOfServicePage() {
                 represent that you are authorized to use the payment method provided and that all information is accurate.
               </p>
               <p>
-                Payments are processed via third-party providers. GeoAlt does not store full payment card details. We reserve the
+                Payments are processed via third-party providers. Geoalt does not store full payment card details. We reserve the
                 right to refuse or cancel orders in cases of error, fraud, or unauthorized activity.
               </p>
             </div>
@@ -87,7 +89,7 @@ export default function TermsOfServicePage() {
               Usage Limits & Service Modifications
             </h2>
             <p className="text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-snug mt-1 xs:mt-0.5 sm:mt-0.5">
-              GeoAlt may modify usage limits, feature access, or service capacity to ensure fairness, system stability, and
+              Geoalt may modify usage limits, feature access, or service capacity to ensure fairness, system stability, and
               service quality, even if prior limits were communicated.
             </p>
           </section>
@@ -109,7 +111,7 @@ export default function TermsOfServicePage() {
               Free Trial
             </h2>
             <p className="text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-snug mt-1 xs:mt-0.5 sm:mt-0.5">
-              GeoAlt may offer a free trial at its discretion. Billing information may be required. If not cancelled before the trial
+              Geoalt may offer a free trial at its discretion. Billing information may be required. If not cancelled before the trial
               ends, the subscription converts to a paid plan automatically.
             </p>
           </section>
