@@ -17,13 +17,13 @@ export function Navbar() {
         const html = document.documentElement
         const body = document.body
         const originalScrollBehavior = html.style.scrollBehavior
-        
+
         html.style.scrollBehavior = 'auto'
         body.style.scrollBehavior = 'auto'
-        
+
         requestAnimationFrame(() => {
           element.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'start' })
-          
+
           requestAnimationFrame(() => {
             requestAnimationFrame(() => {
               html.style.scrollBehavior = originalScrollBehavior || ''
@@ -44,13 +44,13 @@ export function Navbar() {
         const html = document.documentElement
         const body = document.body
         const originalScrollBehavior = html.style.scrollBehavior
-        
+
         html.style.scrollBehavior = 'auto'
         body.style.scrollBehavior = 'auto'
-        
+
         requestAnimationFrame(() => {
           element.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'start' })
-          
+
           requestAnimationFrame(() => {
             requestAnimationFrame(() => {
               html.style.scrollBehavior = originalScrollBehavior || ''
@@ -71,13 +71,13 @@ export function Navbar() {
         const html = document.documentElement
         const body = document.body
         const originalScrollBehavior = html.style.scrollBehavior
-        
+
         html.style.scrollBehavior = 'auto'
         body.style.scrollBehavior = 'auto'
-        
+
         requestAnimationFrame(() => {
           element.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'start' })
-          
+
           requestAnimationFrame(() => {
             requestAnimationFrame(() => {
               html.style.scrollBehavior = originalScrollBehavior || ''
@@ -99,8 +99,8 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16 md:h-16 relative">
           <div className="flex items-center flex-shrink-0">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               onClick={handleHomeClick}
               className="flex items-center text-lg sm:text-xl md:text-xl font-semibold text-brand-white"
             >
@@ -119,33 +119,39 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center justify-center space-x-0 absolute left-1/2 transform -translate-x-1/2 z-10">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               onClick={handleHomeClick}
               className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
             >
               Home
             </Link>
-            <Link 
-              href="/#pricing" 
+            <Link
+              href="/pricing"
               onClick={handlePricingClick}
               className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
             >
               Pricing
             </Link>
-            <Link 
-              href="/#features" 
+            <Link
+              href="/#features"
               onClick={handleFeaturesClick}
               className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
             >
               Features
             </Link>
+            {/* <Link
+              href="/blog"
+              className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
+            >
+              Blog
+            </Link> */}
           </div>
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center space-x-3 md:space-x-3.5 lg:space-x-4 flex-shrink-0 z-10">
-            <a 
-              href="https://app.geoalt.in/login" 
+            <a
+              href="https://app.geoalt.in/login"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-brand-gray-300 hover:opacity-80 px-2 md:px-2.5 lg:px-3 py-2 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer"
@@ -164,8 +170,8 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-1.5 sm:space-x-2 flex-shrink-0">
-            <a 
-              href="https://app.geoalt.in/login" 
+            <a
+              href="https://app.geoalt.in/login"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-brand-gray-300 hover:opacity-80 px-1.5 sm:px-2 py-1.5 text-xs sm:text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer"
@@ -178,18 +184,16 @@ export function Navbar() {
               aria-label="Toggle menu"
             >
               <span
-                className={`absolute block w-5 h-[2px] bg-white rounded-full transition-all duration-300 ease-in-out origin-center ${
-                  isMobileMenuOpen
-                    ? 'rotate-45 translate-y-0'
-                    : '-translate-y-1.5'
-                }`}
+                className={`absolute block w-5 h-[2px] bg-white rounded-full transition-all duration-300 ease-in-out origin-center ${isMobileMenuOpen
+                  ? 'rotate-45 translate-y-0'
+                  : '-translate-y-1.5'
+                  }`}
               />
               <span
-                className={`absolute block w-5 h-[2px] bg-white rounded-full transition-all duration-300 ease-in-out origin-center ${
-                  isMobileMenuOpen
-                    ? '-rotate-45 translate-y-0'
-                    : 'translate-y-1.5'
-                }`}
+                className={`absolute block w-5 h-[2px] bg-white rounded-full transition-all duration-300 ease-in-out origin-center ${isMobileMenuOpen
+                  ? '-rotate-45 translate-y-0'
+                  : 'translate-y-1.5'
+                  }`}
               />
             </button>
           </div>
@@ -199,22 +203,22 @@ export function Navbar() {
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-[#1d1d1d] py-4">
             <div className="flex flex-col space-y-2">
-              <Link 
-                  href="/" 
+              <Link
+                href="/"
                 onClick={handleHomeClick}
                 className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white active:bg-[#5a5a5a] active:border-[#5a5a5a] active:text-white transition-all duration-150 ease-out"
               >
                 Home
               </Link>
-              <Link 
-                href="/#pricing" 
+              <Link
+                href="/#pricing"
                 onClick={handlePricingClick}
                 className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white active:bg-[#5a5a5a] active:border-[#5a5a5a] active:text-white transition-all duration-150 ease-out"
               >
                 Pricing
               </Link>
-              <Link 
-                href="/#features" 
+              <Link
+                href="/#features"
                 onClick={handleFeaturesClick}
                 className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white active:bg-[#5a5a5a] active:border-[#5a5a5a] active:text-white transition-all duration-150 ease-out"
               >
