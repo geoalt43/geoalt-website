@@ -1,15 +1,15 @@
+import { TableOfContents } from '@/components/blog/TableOfContents'
+import { Footer } from '@/components/layout/footer'
+import { Navbar } from '@/components/layout/navbar'
+import { getAllPosts, getPostBySlug } from '@/lib/blog'
+import { extractHeadings } from '@/lib/toc'
+import { format } from 'date-fns'
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { Children, isValidElement, ReactNode } from 'react'
+import { isValidElement } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { getAllPosts, getPostBySlug } from '@/lib/blog'
-import { extractHeadings } from '@/lib/toc'
-import { Navbar } from '@/components/layout/navbar'
-import { Footer } from '@/components/layout/footer'
-import { TableOfContents } from '@/components/blog/TableOfContents'
-import { format } from 'date-fns'
 
 function getText(children: any): string {
     if (typeof children === 'string') return children

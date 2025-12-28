@@ -127,7 +127,7 @@ export function Navbar() {
               Home
             </Link>
             <Link
-              href="/#pricing"
+              href="/pricing"
               onClick={handlePricingClick}
               className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
             >
@@ -140,18 +140,18 @@ export function Navbar() {
             >
               Features
             </Link>
-            <Link
+            {/* <Link
               href="/blog"
               className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
             >
               Blog
-            </Link>
+            </Link> */}
           </div>
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center space-x-3 md:space-x-3.5 lg:space-x-4 flex-shrink-0 z-10">
-            <a 
-              href="https://app.geoalt.in/login" 
+            <a
+              href="https://app.geoalt.in/login"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-brand-gray-300 hover:opacity-80 px-2 md:px-2.5 lg:px-3 py-2 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer"
@@ -170,8 +170,8 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-1.5 sm:space-x-2 flex-shrink-0">
-            <a 
-              href="https://app.geoalt.in/login" 
+            <a
+              href="https://app.geoalt.in/login"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-brand-gray-300 hover:opacity-80 px-1.5 sm:px-2 py-1.5 text-xs sm:text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer"
