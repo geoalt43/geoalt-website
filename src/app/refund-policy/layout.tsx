@@ -1,15 +1,15 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy',
-  description: 'Geoalt Cookie Policy - Learn about how we use cookies on our website.',
+  title: 'Refunds Policy',
+  description: 'Geoalt Refunds Policy - Learn how we handle refunds and returns.',
   robots: {
     index: true,
     follow: true,
   },
 }
 
-export default function CookiePolicyLayout({
+export default function RefundsPolicyLayout({
   children,
 }: {
   children: React.ReactNode

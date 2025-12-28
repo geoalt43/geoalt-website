@@ -71,11 +71,11 @@ function FloatingBubble({ icon, alt, left, delay, drift }: { icon: string; alt: 
     <motion.div
       className="absolute pointer-events-none"
       style={{ left: `${left}%`, bottom: 0 }}
-      initial={{ y: 0, opacity: 0, scale: 0.6, x: 0 }}
+      initial={{ y: 0, opacity: 0, scale: 0.4, x: 0 }}
       animate={{ 
         y: -600,
         opacity: [0, 0.7, 0.9, 0.7, 0],
-        scale: [0.6, 0.9, 1.1, 1, 0.8],
+        scale: [0.4, 0.6, 0.8, 0.7, 0.5],
         x: [0, drift, 0]
       }}
       transition={{
@@ -86,14 +86,14 @@ function FloatingBubble({ icon, alt, left, delay, drift }: { icon: string; alt: 
       }}
     >
       <div className="relative">
-        <div className="absolute inset-0 bg-white/10 rounded-full blur-lg"></div>
+        <div className="absolute inset-0 bg-white/10 rounded-full blur-md sm:blur-lg"></div>
         <Image
           src={icon}
           alt={alt}
           width={40}
           height={40}
           quality={85}
-          className="relative z-10"
+          className="relative z-10 w-6 h-6 sm:w-10 sm:h-10"
         />
       </div>
     </motion.div>

@@ -39,7 +39,7 @@ export function InsightCard({
       onMouseEnter={onHover}
       onClick={handleInteraction}
       whileTap={{ scale: 0.98 }}
-      className={`rounded-lg p-2 sm:p-3.5 text-white/80 h-[130px] sm:h-[150px] md:h-[170px] flex flex-col overflow-hidden relative group border-l-2 cursor-pointer active:opacity-80 ${
+      className={`mx-4 sm:mx-0 rounded-lg p-2 sm:p-3.5 text-white/80 h-[150px] sm:h-[150px] md:h-[170px] flex flex-col overflow-hidden relative group border-l-2 cursor-pointer active:opacity-80 ${
         isActive ? 'border-white' : type === 'position' || type === 'sentiment' ? 'border-white/5' : 'border-transparent'
       }`}
       animate={{

@@ -150,21 +150,34 @@ export function Navbar() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center space-x-3 md:space-x-3.5 lg:space-x-4 flex-shrink-0 z-10">
-            <span className="text-white hover:text-brand-gray-300 hover:opacity-80 px-2 md:px-2.5 lg:px-3 py-2 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer">
+            <a 
+              href="https://app.geoalt.in/login" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-brand-gray-300 hover:opacity-80 px-2 md:px-2.5 lg:px-3 py-2 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer"
+            >
               Sign in
-            </span>
-            <span
+            </a>
+            <a
+              href="https://app.geoalt.in/register"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-white text-black border border-white px-3 md:px-3.5 lg:px-3.5 py-1.5 rounded-full text-sm font-normal hover:bg-white/90 hover:opacity-90 transition-all duration-150 whitespace-nowrap cursor-pointer"
             >
               Get Started
-            </span>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-1.5 sm:space-x-2 flex-shrink-0">
-            <span className="text-white hover:text-brand-gray-300 hover:opacity-80 px-1.5 sm:px-2 py-1.5 text-xs sm:text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer">
+            <a 
+              href="https://app.geoalt.in/login" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-brand-gray-300 hover:opacity-80 px-1.5 sm:px-2 py-1.5 text-xs sm:text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer"
+            >
               Sign in
-            </span>
+            </a>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="relative w-6 h-6 flex flex-col justify-center items-center focus:outline-none group"
@@ -211,12 +224,15 @@ export function Navbar() {
               >
                 Features
               </Link>
-              <span
+              <a
+                href="https://app.geoalt.in/register"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={handleLinkClick}
                 className="mt-2 bg-white text-black border border-white px-4 py-2 rounded-full text-sm font-normal hover:bg-white/90 hover:opacity-90 transition-all duration-150 text-center cursor-pointer"
               >
                 Get Started
-              </span>
+              </a>
             </div>
           </div>
         )}

@@ -40,10 +40,10 @@ export function OrganizationStructuredData() {
     <StructuredData
       type="Organization"
       data={{
-        name: 'GEOAlt',
+        name: 'Geoalt',
         url: baseUrl,
         logo: `${baseUrl}/logos/GeoAlt_Logo.png`,
-        description: 'GEOAlt helps your business stand out across AI platforms. Turning AI visibility into traffic and customers.',
+        description: 'Geoalt helps your business stand out across AI platforms. Turning AI visibility into traffic and customers.',
         sameAs: [
           'https://www.linkedin.com/company/geo-alt',
           'https://twitter.com/geoalt',
@@ -67,9 +67,9 @@ export function WebSiteStructuredData() {
     <StructuredData
       type="WebSite"
       data={{
-        name: 'GEOAlt',
+        name: 'Geoalt',
         url: baseUrl,
-        description: 'Get your brand recommended by AI. GEOAlt helps businesses optimize their visibility across AI platforms like ChatGPT, Perplexity, and Claude.',
+        description: 'Get your brand recommended by AI. Geoalt helps businesses optimize their visibility across AI platforms like ChatGPT, Perplexity, and Claude.',
         potentialAction: {
           '@type': 'SearchAction',
           target: {
@@ -89,7 +89,7 @@ export function SoftwareApplicationStructuredData() {
     <StructuredData
       type="SoftwareApplication"
       data={{
-        name: 'GEOAlt',
+        name: 'Geoalt',
         applicationCategory: 'BusinessApplication',
         operatingSystem: 'Web',
         offers: {
