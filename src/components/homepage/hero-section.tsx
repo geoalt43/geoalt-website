@@ -96,11 +96,11 @@ export function HeroSection() {
                 Get Started
               </a>
               <DemoCTA
-                text="Contact Us"
+                text="Book a Demo"
                 variant="outline"
                 size="md"
                 showModal={false}
-                href="mailto:contact@geoalt.in"
+                href="https://calendly.com/geoalt43/30min"
                 className="min-w-[100px] sm:min-w-[120px] md:min-w-[120px]"
               />
             </div>

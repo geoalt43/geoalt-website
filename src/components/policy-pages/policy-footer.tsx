@@ -84,7 +84,7 @@ export function PolicyFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/blog" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
                   Blog
                 </Link>
               </li>

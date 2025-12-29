@@ -5,6 +5,7 @@ import { Providers } from '@/components/providers'
 import { ErrorBoundary } from '@/components/ui/error-boundary'
 import { Analytics } from '@vercel/analytics/react'
 import { ScrollRestorationScript } from '@/components/scroll-restoration-script'
+import MixpanelProvider from '@/components/MixpanelProvider'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -187,7 +188,6 @@ export default function RootLayout({
       'Multi-platform Support',
     ],
   }
-
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body className={`${inter.className}`}>
@@ -204,6 +204,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationStructuredData) }}
         />
         <ScrollRestorationScript />
+        <MixpanelProvider />
         <div className='h-full w-full overflow-hidden fixed z-0'>
           <div id='stars'></div>
           <div id='stars2'></div>

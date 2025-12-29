@@ -109,7 +109,7 @@ export function Footer() {
             </h3>
             <ul className="mt-3 sm:mt-4 md:mt-5 space-y-2 sm:space-y-3 md:space-y-4">
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/#features" onClick={scrollToHero} className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
                   Features
                 </Link>
               </li>
@@ -128,12 +128,12 @@ export function Footer() {
             </h3>
             <ul className="mt-3 sm:mt-4 md:mt-5 space-y-2 sm:space-y-3 md:space-y-4">
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/about" onClick={scrollToHero} className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/blog" onClick={scrollToHero} className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
                   Blog
                 </Link>
               </li>

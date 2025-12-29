@@ -5,6 +5,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { AIPlatformRotator } from '@/components/shared/ai-platform-rotator'
 import { colorClasses } from '@/constants/colors'
+import { triggerStartTrialEvent } from '@/lib/mixpanel'
 
 const containerVariantsSimple = {
   hidden: { opacity: 0 },
@@ -51,6 +52,7 @@ export function CTASection() {
                 href="https://app.geoalt.in/"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => triggerStartTrialEvent('cta-section')}
                 className={`bg-white text-black px-4 sm:px-6 md:px-6 py-2 sm:py-3 md:py-3 rounded-full text-[11px] sm:text-base md:text-base font-semibold whitespace-nowrap ${colorClasses.hoverGrayLight} transition-all duration-200 ease-in-out inline-block text-center flex-shrink-0 sm:min-w-[140px] md:min-w-[140px]`}
               >
                 Start Free Trial
@@ -89,6 +91,7 @@ export function CTASection() {
                 href="https://app.geoalt.in/"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => triggerStartTrialEvent('cta-section')}
                 className={`bg-white text-black px-4 py-2 rounded-full text-[11px] font-semibold whitespace-nowrap ${colorClasses.hoverGrayLight} transition-all duration-200 ease-in-out inline-block text-center flex-shrink-0`}
               >
                 Start Free Trial

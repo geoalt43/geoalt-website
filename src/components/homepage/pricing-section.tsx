@@ -5,6 +5,7 @@ import { motion, useInView } from 'framer-motion'
 import { containerVariants, cardVariantsSmooth } from '@/lib/animations/variants'
 import { FeatureText } from './pricing-section/FeatureText'
 import { colorClasses } from '@/constants/colors'
+import { triggerStartTrialEvent } from '@/lib/mixpanel'
 
 const CheckIcon = () => (
   <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-white/40 text-white text-xs font-semibold">
@@ -136,6 +137,7 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
             href="https://app.geoalt.in/"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => triggerStartTrialEvent('pricing-section')}
             className={`${plan.isRecommended ? '' : 'mt-auto'} w-full max-w-[120px] sm:max-w-none md:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full bg-white text-black py-2 sm:py-3 md:py-3 text-[11px] sm:text-sm md:text-sm font-semibold text-center whitespace-nowrap block transition-all duration-200 ease-in-out hover:bg-gray-100`}
           >
             Start free trial
@@ -193,8 +195,8 @@ export function PricingSection() {
               <button
                 onClick={() => setIsYearly(false)}
                 className={`px-2.5 sm:px-3.5 md:px-4 py-1 sm:py-1.5 md:py-1.5 rounded-full text-[10px] sm:text-xs md:text-xs font-medium transition-all duration-300 cursor-pointer ${!isYearly
-                    ? 'bg-white text-black'
-                    : 'text-white/70 hover:text-white'
+                  ? 'bg-white text-black'
+                  : 'text-white/70 hover:text-white'
                   }`}
               >
                 Pay monthly
@@ -202,8 +204,8 @@ export function PricingSection() {
               <button
                 onClick={() => setIsYearly(true)}
                 className={`px-2.5 sm:px-3.5 md:px-4 py-1 sm:py-1.5 md:py-1.5 rounded-full text-[10px] sm:text-xs md:text-xs font-medium transition-all duration-300 cursor-pointer ${isYearly
-                    ? 'bg-white text-black'
-                    : 'text-white/70 hover:text-white'
+                  ? 'bg-white text-black'
+                  : 'text-white/70 hover:text-white'
                   }`}
               >
                 Pay yearly
