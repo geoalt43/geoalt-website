@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import Image from 'next/image'
+import { triggerSignUpInitiatedEvent } from '@/lib/mixpanel'
 
 export function Navbar() {
   const pathname = usePathname()
@@ -153,6 +154,7 @@ export function Navbar() {
               href="https://app.geoalt.in/login"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => triggerSignUpInitiatedEvent("navbar-sign-in")}
               className="text-white hover:text-brand-gray-300 hover:opacity-80 px-2 md:px-2.5 lg:px-3 py-2 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer"
             >
               Sign in
@@ -160,6 +162,7 @@ export function Navbar() {
             <a
               href="https://app.geoalt.in/register"
               target="_blank"
+              onClick={() => triggerSignUpInitiatedEvent("navbar-get-started")}
               rel="noopener noreferrer"
               className="bg-white text-black border border-white px-3 md:px-3.5 lg:px-3.5 py-1.5 rounded-full text-sm font-normal hover:bg-white/90 hover:opacity-90 transition-all duration-150 whitespace-nowrap cursor-pointer"
             >
@@ -173,6 +176,7 @@ export function Navbar() {
               href="https://app.geoalt.in/login"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => triggerSignUpInitiatedEvent("navbar-sign-in-mobile")}
               className="text-white hover:text-brand-gray-300 hover:opacity-80 px-1.5 sm:px-2 py-1.5 text-xs sm:text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer"
             >
               Sign in
@@ -227,7 +231,11 @@ export function Navbar() {
                 href="https://app.geoalt.in/register"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={handleLinkClick}
+
+                onClick={() => {
+                  handleLinkClick()
+                  triggerSignUpInitiatedEvent("navbar-get-started")
+                }}
                 className="mt-2 bg-white text-black border border-white px-4 py-2 rounded-full text-sm font-normal hover:bg-white/90 hover:opacity-90 transition-all duration-150 text-center cursor-pointer"
               >
                 Get Started
