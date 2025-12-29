@@ -140,12 +140,12 @@ export function Navbar() {
             >
               Features
             </Link>
-            {/* <Link
+            <Link
               href="/blog"
               className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
             >
               Blog
-            </Link> */}
+            </Link>
           </div>
 
           {/* Desktop CTA Buttons */}

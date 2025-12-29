@@ -70,7 +70,16 @@ export default function BlogPage() {
                                             {post.description}
                                         </p>
                                         <div className="mt-6 pt-6 border-t border-white/5 flex items-center justify-between">
-                                            <span className="text-sm font-medium text-gray-300">{post.author}</span>
+                                            <div className="flex items-center gap-3">
+                                                <Image
+                                                    src={post.authorImage}
+                                                    alt={post.author}
+                                                    width={40}
+                                                    height={40}
+                                                    className="rounded-full"
+                                                />
+                                                <span className="text-sm font-medium text-gray-300">{post.author}</span>
+                                            </div>
                                             <span className="flex items-center gap-2 text-sm font-semibold text-white group-hover:text-blue-400 transition-colors">
                                                 Read Article
                                                 <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

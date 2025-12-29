@@ -90,7 +90,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
                 <div className="flex items-center justify-center gap-3">
                     <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                        {post.author.charAt(0)}
+                        <Image
+                            src={post.authorImage}
+                            alt={post.author}
+                            width={40}
+                            height={40}
+                            className="rounded-full"
+                        />
                     </div>
                     <div className="text-left">
                         <p className="text-white font-medium">{post.author}</p>
@@ -172,6 +178,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                         },
                                         blockquote: ({ children }) => {
                                             return <blockquote className='my-4 border-l-blue-500 border-l-4 p-4'>{children}</blockquote>
+                                        },
+                                        img: ({ src, alt }) => {
+                                            return <Image src={src as string} alt={alt as string} width={1000} height={1000} className='w-full h-auto' />
                                         },
                                     }}
                                 >
