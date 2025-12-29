@@ -109,25 +109,47 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <main className="flex-grow pb-20 bg-black z-10 pt-8 border-t border-[#1e1e1e]">
                 <div className="max-w-[70rem] mx-auto px-4 sm:px-6 md:px-8 flex lg:gap-12 relative">
 
-                    <Link
-                        href="/blog"
-                        className="inline-flex items-center text-gray-400 hover:text-white mb-8 transition-colors group"
-                    >
-                        <svg
-                            className="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
+                    <div className="lg:hidden">
+                        <Link
+                            href="/blog"
+                            className="inline-flex items-center text-gray-400 hover:text-white mb-8 transition-colors group"
                         >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                        </svg>
-                        Back to Blog
-                    </Link>
+                            <svg
+                                className="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                            Back to Blog
+                        </Link>
+                    </div>
 
                 </div>
                 <div className="max-w-[70rem] mx-auto px-4 sm:px-6 md:px-8 flex lg:gap-12 relative">
 
-                    <TableOfContents headings={headings} />
+                    {/* Sticky Sidebar */}
+                    <aside
+                        className="hidden lg:flex flex-col gap-8 shrink-0 w-64 sticky h-[calc(100vh-120px)] overflow-y-auto pb-8 self-start"
+                        style={{ top: '100px' }}
+                    >
+                        <Link
+                            href="/blog"
+                            className="inline-flex items-center text-gray-400 hover:text-white transition-colors group"
+                        >
+                            <svg
+                                className="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                            Back to Blog
+                        </Link>
+                        <TableOfContents headings={headings} />
+                    </aside>
 
                     <div className="min-w-0 flex-1 mx-auto">
                         <article className="mb-20">

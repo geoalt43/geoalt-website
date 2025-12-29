@@ -128,7 +128,6 @@ export function Navbar() {
             </Link>
             <Link
               href="/pricing"
-              onClick={handlePricingClick}
               className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
             >
               Pricing
@@ -211,7 +210,7 @@ export function Navbar() {
                 Home
               </Link>
               <Link
-                href="/#pricing"
+                href="/pricing"
                 onClick={handlePricingClick}
                 className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white active:bg-[#5a5a5a] active:border-[#5a5a5a] active:text-white transition-all duration-150 ease-out"
               >

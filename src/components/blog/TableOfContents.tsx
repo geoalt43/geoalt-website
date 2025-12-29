@@ -43,7 +43,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
     if (headings.length === 0) return null
 
     return (
-        <nav className="sticky top-[140px] hidden lg:block shrink-0 self-start max-h-[calc(100vh-160px)] overflow-y-auto border p-6 rounded-xl border-[#1e1e1e] pr-8">
+        <nav className="border p-6 rounded-xl border-[#1e1e1e] pr-8">
             <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
                 On this page
             </h4>
