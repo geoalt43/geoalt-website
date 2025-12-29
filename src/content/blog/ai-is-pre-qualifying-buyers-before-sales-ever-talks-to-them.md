@@ -4,7 +4,7 @@ date: '2025-09-23'
 description: 'AI systems filter options before the buyer reaches your website.'
 author: 'Aniket Nagar'
 authorImage: '/users/aniket.jpeg'
-image: '/images/img-2.jpeg'
+image: '/images/post-2.jpeg'
 tags: ['AI', 'Sales', 'Marketing']
 ---
 

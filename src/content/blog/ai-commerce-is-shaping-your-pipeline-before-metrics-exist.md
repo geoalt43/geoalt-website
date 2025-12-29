@@ -4,7 +4,7 @@ date: '2025-11-23'
 description: 'AI Commerce Is Shaping Your Pipeline Before Metrics Exist'
 author: 'Sri Niwas'
 authorImage: '/users/sri.jpeg'
-image: '/images/img-2.jpeg'
+image: '/images/post-1.jpeg'
 tags: ['Sales', 'GEO', 'Marketing']
 ---
 

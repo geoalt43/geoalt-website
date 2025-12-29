@@ -4,7 +4,7 @@ date: '2025-09-15'
 description: 'When a buyer asks ChatGPT for product recommendations the decision making process begins before your sales team ever enters the conversation.'
 author: 'Sri Niwas'
 authorImage: '/users/sri.jpeg'
-image: '/images/img-2.jpeg'
+image: '/images/post-3.jpeg'
 tags: ['GEO', 'AI Search', 'Marketing']
 ---
 

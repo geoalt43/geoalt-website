@@ -41,12 +41,12 @@ export default function BlogPage() {
                     </div>
 
                     {/* Featured Posts - Top 2 */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-                        {posts.slice(0, 2).map((post) => (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                        {posts.slice(0, 3).map((post) => (
                             <Link key={post.slug} href={`/blog/${post.slug}`} className="group relative">
                                 <div className="relative bg-zinc-900 border border-white/10 rounded-2xl overflow-hidden h-full flex flex-col hover:border-white/20 transition-all duration-300">
                                     {post.image && (
-                                        <div className="relative w-full h-64 md:h-80 overflow-hidden">
+                                        <div className="relative w-full h-48 md:h-48 overflow-hidden">
                                             <Image
                                                 src={post.image}
                                                 alt={post.title}
@@ -63,13 +63,13 @@ export default function BlogPage() {
                                             </span>
                                             <span className="text-gray-400">{format(new Date(post.date), 'MMMM d, yyyy')}</span>
                                         </div>
-                                        <h2 className="font-bold text-white mb-4 group-hover:text-blue-400 transition-colors text-2xl md:text-3xl">
+                                        <h2 className="font-bold text-white mb-4 group-hover:text-blue-400 transition-colors text-xl md:text-2xl">
                                             {post.title}
                                         </h2>
                                         <p className={`${colorClasses.textMuted} flex-grow leading-relaxed text-base md:text-lg line-clamp-3`}>
                                             {post.description}
                                         </p>
-                                        <div className="mt-6 pt-6 border-t border-white/5 flex items-center justify-between">
+                                        <div className="mt-2 pt-2 border-t border-white/5 flex items-center justify-between">
                                             <div className="flex items-center gap-3">
                                                 <Image
                                                     src={post.authorImage}
