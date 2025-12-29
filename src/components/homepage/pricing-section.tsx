@@ -59,11 +59,11 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
 
   const isCustom = plan.monthlyPrice === null || plan.price === 'Custom'
   const displayPrice = isCustom
-    ? 'Custom' 
-    : isYearly 
-      ? `$${plan.yearlyPrice}` 
+    ? 'Custom'
+    : isYearly
+      ? `$${plan.yearlyPrice}`
       : `$${plan.monthlyPrice}`
-  
+
   const period = isCustom ? '' : isYearly ? '/month' : '/month'
   const billingNote = ''
 
@@ -82,7 +82,7 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
       `}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-      
+
       {plan.isRecommended && (
         <div className="bg-white/5 px-4 sm:px-6 md:px-8 lg:px-10 pt-3 sm:pt-4 md:pt-4 pb-4 sm:pb-5 md:pb-5 text-xs sm:text-sm md:text-sm lg:text-base font-medium text-white text-center rounded-t-[18px] flex-shrink-0 relative overflow-hidden -mx-[1px] -mt-[2px] border-t-[2px] border-l border-r border-white/5">
           <motion.div
@@ -99,7 +99,7 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
           <span className="relative z-10">Recommended plan</span>
         </div>
       )}
-      
+
       <div className={`${plan.isRecommended ? 'p-4 sm:p-6 md:p-[1.75rem] lg:p-[2rem] pt-3.5 sm:pt-5 md:pt-[1.5rem] lg:pt-[1.75rem]' : 'p-4 sm:p-6 md:p-[2rem] lg:p-[2.25rem]'} flex flex-col ${plan.isRecommended ? 'gap-4 sm:gap-6 md:gap-[1.75rem] lg:gap-[2rem]' : 'gap-4 sm:gap-6 md:gap-[2rem] lg:gap-[2.25rem]'} ${plan.isRecommended ? '' : 'flex-1'}`}>
         <div className={plan.isRecommended ? 'mt-auto' : ''}>
           <p className={`text-sm sm:text-base md:text-base font-semibold ${plan.isRecommended ? 'mb-1.5 sm:mb-2.5 md:mb-2.5' : 'mb-1.5 sm:mb-2.5 md:mb-2.5'}`}>{plan.name}</p>
@@ -124,7 +124,7 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
         </div>
         {(plan.monthlyPrice === null || plan.price === 'Custom') ? (
           <div className="mt-auto pt-1">
-            <a 
+            <a
               href="mailto:contact@geoalt.in"
               className="w-full max-w-[120px] sm:max-w-none md:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full border border-white/10 text-white py-2 sm:py-3 md:py-3 text-[11px] sm:text-sm md:text-sm font-semibold whitespace-nowrap block text-center transition-all duration-200 ease-in-out hover:border-white/20 hover:bg-white/5"
             >
@@ -133,7 +133,7 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
           </div>
         ) : (
           <a
-            href="https://forms.gle/wLMpHeTqQogumFMK8"
+            href="https://app.geoalt.in/"
             target="_blank"
             rel="noopener noreferrer"
             className={`${plan.isRecommended ? '' : 'mt-auto'} w-full max-w-[120px] sm:max-w-none md:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full bg-white text-black py-2 sm:py-3 md:py-3 text-[11px] sm:text-sm md:text-sm font-semibold text-center whitespace-nowrap block transition-all duration-200 ease-in-out hover:bg-gray-100`}
@@ -161,17 +161,17 @@ export function PricingSection() {
       setIsBelow680(width < 680)
       setIsBetween1080And1350(width >= 1080 && width <= 1350)
     }
-    
+
     checkWidth()
     window.addEventListener('resize', checkWidth)
-    
+
     return () => window.removeEventListener('resize', checkWidth)
   }, [])
 
   return (
     <section id="pricing" className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-6 sm:pb-8 md:pb-8 lg:pb-[6vh] xl:pb-[8vh] min-h-[90vh] sm:min-h-[95vh] md:min-h-[100vh] scroll-mt-16 relative overflow-hidden  bg-transparent-text bg-clip-text">
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-grid-pattern-opacity-02" />
-      
+
       <div className="absolute top-0 left-0 right-0 h-16 sm:h-24 md:h-28 lg:h-32 bg-gradient-to-b from-black via-black/50 to-transparent pointer-events-none z-10" />
       <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 md:h-28 lg:h-32 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none z-10" />
 
@@ -183,35 +183,33 @@ export function PricingSection() {
           className="text-center mb-0 sm:mb-0 md:mb-0 lg:mb-12 xl:mb-16"
         >
           <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-2 sm:px-0 md:px-0">Pricing</h2>
-          
+
           {/* Payment Frequency Toggle */}
-          <div 
+          <div
             className="flex flex-col items-center justify-center mb-2 sm:mb-3 md:mb-2 lg:mb-3 xl:mb-4 mt-2 sm:mt-3 md:mt-3 w-full"
             style={isBetween1080And1350 ? { paddingBottom: '2.5rem' } : {}}
           >
             <div className="flex items-center bg-white/5 rounded-full p-0.5 border border-white/10 flex-shrink-0 relative z-10">
               <button
                 onClick={() => setIsYearly(false)}
-                className={`px-2.5 sm:px-3.5 md:px-4 py-1 sm:py-1.5 md:py-1.5 rounded-full text-[10px] sm:text-xs md:text-xs font-medium transition-all duration-300 cursor-pointer ${
-                  !isYearly
+                className={`px-2.5 sm:px-3.5 md:px-4 py-1 sm:py-1.5 md:py-1.5 rounded-full text-[10px] sm:text-xs md:text-xs font-medium transition-all duration-300 cursor-pointer ${!isYearly
                     ? 'bg-white text-black'
                     : 'text-white/70 hover:text-white'
-                }`}
+                  }`}
               >
                 Pay monthly
               </button>
               <button
                 onClick={() => setIsYearly(true)}
-                className={`px-2.5 sm:px-3.5 md:px-4 py-1 sm:py-1.5 md:py-1.5 rounded-full text-[10px] sm:text-xs md:text-xs font-medium transition-all duration-300 cursor-pointer ${
-                  isYearly
+                className={`px-2.5 sm:px-3.5 md:px-4 py-1 sm:py-1.5 md:py-1.5 rounded-full text-[10px] sm:text-xs md:text-xs font-medium transition-all duration-300 cursor-pointer ${isYearly
                     ? 'bg-white text-black'
                     : 'text-white/70 hover:text-white'
-                }`}
+                  }`}
               >
                 Pay yearly
               </button>
             </div>
-            <span 
+            <span
               className="my-1 sm:my-1.5 md:my-1.5 lg:my-2.5 pt-3 sm:pt-4 md:pt-4 lg:pt-0 text-[10px] sm:text-xs md:text-xs text-white/90 whitespace-nowrap text-center"
             >
               Save up to 15% with yearly
@@ -227,18 +225,18 @@ export function PricingSection() {
         >
           {isBelow680 ? (
             <>
-              <PricingCard 
-                plan={pricingPlans.find(p => p.isRecommended)!} 
+              <PricingCard
+                plan={pricingPlans.find(p => p.isRecommended)!}
                 isYearly={isYearly}
                 className="w-full"
               />
-              <PricingCard 
-                plan={pricingPlans.find(p => p.name === 'Basic')!} 
+              <PricingCard
+                plan={pricingPlans.find(p => p.name === 'Basic')!}
                 isYearly={isYearly}
                 className="w-full"
               />
-              <PricingCard 
-                plan={pricingPlans.find(p => p.name === 'Enterprise')!} 
+              <PricingCard
+                plan={pricingPlans.find(p => p.name === 'Enterprise')!}
                 isYearly={isYearly}
                 className="w-full"
               />
@@ -247,21 +245,21 @@ export function PricingSection() {
             <>
               {/* Pro Card - Equal margins using same grid structure */}
               <div className="grid grid-cols-2 gap-4 w-full">
-                <PricingCard 
-                  plan={pricingPlans.find(p => p.isRecommended)!} 
+                <PricingCard
+                  plan={pricingPlans.find(p => p.isRecommended)!}
                   isYearly={isYearly}
                   className="w-full col-span-2"
                 />
               </div>
               {/* Wrapper for Basic and Enterprise - 2 columns below 1088px */}
               <div className="grid grid-cols-2 gap-4 w-full">
-                <PricingCard 
-                  plan={pricingPlans.find(p => p.name === 'Basic')!} 
+                <PricingCard
+                  plan={pricingPlans.find(p => p.name === 'Basic')!}
                   isYearly={isYearly}
                   className="w-full"
                 />
-                <PricingCard 
-                  plan={pricingPlans.find(p => p.name === 'Enterprise')!} 
+                <PricingCard
+                  plan={pricingPlans.find(p => p.name === 'Enterprise')!}
                   isYearly={isYearly}
                   className="w-full"
                 />

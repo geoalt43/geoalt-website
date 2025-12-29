@@ -27,7 +27,7 @@ export function CTASection() {
         variants={containerVariantsSimple}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
-          className={`max-w-6xl max-[1250px]:mx-4 min-[1251px]:mx-auto px-4 sm:px-6 md:px-7 pt-3 pb-3 md:pt-3 md:pb-3 lg:px-8 border ${colorClasses.borderDark} rounded-lg ${colorClasses.surfaceDarker}`}
+        className={`max-w-6xl max-[1250px]:mx-4 min-[1251px]:mx-auto px-4 sm:px-6 md:px-7 pt-3 pb-3 md:pt-3 md:pb-3 lg:px-8 border ${colorClasses.borderDark} rounded-lg ${colorClasses.surfaceDarker}`}
       >
         <div className={`${colorClasses.surfaceDarker} rounded-lg p-3 sm:p-4 md:p-5 lg:p-7 flex flex-col lg:flex-row items-center lg:items-center gap-4 sm:gap-5 md:gap-5 lg:gap-0`}>
           {/* Left Section - Text Content */}
@@ -48,7 +48,7 @@ export function CTASection() {
             {/* Buttons - Hidden on mobile, shown on larger screens */}
             <div className="hidden sm:flex flex-row gap-2 sm:gap-4 md:gap-4 justify-center lg:justify-start items-center">
               <a
-                href="https://forms.gle/wLMpHeTqQogumFMK8"
+                href="https://app.geoalt.in/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`bg-white text-black px-4 sm:px-6 md:px-6 py-2 sm:py-3 md:py-3 rounded-full text-[11px] sm:text-base md:text-base font-semibold whitespace-nowrap ${colorClasses.hoverGrayLight} transition-all duration-200 ease-in-out inline-block text-center flex-shrink-0 sm:min-w-[140px] md:min-w-[140px]`}
@@ -56,9 +56,9 @@ export function CTASection() {
                 Start Free Trial
               </a>
               <div className="flex-shrink-0">
-                <DemoCTA 
-                  text="Contact Us" 
-                  variant="outline" 
+                <DemoCTA
+                  text="Contact Us"
+                  variant="outline"
                   size="md"
                   showModal={false}
                   href="mailto:contact@geoalt.in"
@@ -66,14 +66,14 @@ export function CTASection() {
               </div>
             </div>
           </div>
-          
+
           {/* Right Section - AI Platform Rotator with Buttons on Mobile */}
           <div className="flex-shrink-0 w-full sm:w-auto sm:min-w-[240px] md:min-w-[280px] lg:w-[380px] flex flex-col items-center gap-3 sm:gap-3 md:gap-4 lg:gap-0">
             <div className="h-[140px] sm:h-[170px] md:h-[200px] lg:h-[300px] w-full flex items-center justify-center lg:justify-end relative overflow-hidden">
               <div className="relative w-full h-full max-w-full">
                 <div className="relative w-full h-full">
                   {/* Card Container */}
-                  <div 
+                  <div
                     className={`relative w-full h-full ${colorClasses.surfaceDarker} rounded-lg pt-2 pb-2 pl-3 sm:pl-4 md:pl-6 lg:pl-10 pr-2 sm:pr-4 md:pr-4 lg:pr-0 overflow-hidden flex items-center justify-center backdrop-blur-[10px]`}
                   >
                     <div className="scale-100 sm:scale-[0.9] md:scale-[1.0] lg:scale-[1.1] xl:scale-[1.2] origin-center overflow-hidden w-full h-full flex items-center justify-center">
@@ -86,7 +86,7 @@ export function CTASection() {
             {/* Buttons - Shown on mobile only, below AI Platform Rotator */}
             <div className="flex sm:hidden flex-row gap-2 justify-center items-center w-full">
               <a
-                href="https://forms.gle/wLMpHeTqQogumFMK8"
+                href="https://app.geoalt.in/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`bg-white text-black px-4 py-2 rounded-full text-[11px] font-semibold whitespace-nowrap ${colorClasses.hoverGrayLight} transition-all duration-200 ease-in-out inline-block text-center flex-shrink-0`}
@@ -94,9 +94,9 @@ export function CTASection() {
                 Start Free Trial
               </a>
               <div className="flex-shrink-0">
-                <DemoCTA 
-                  text="Contact Us" 
-                  variant="outline" 
+                <DemoCTA
+                  text="Contact Us"
+                  variant="outline"
                   size="md"
                   showModal={false}
                   href="mailto:contact@geoalt.in"
