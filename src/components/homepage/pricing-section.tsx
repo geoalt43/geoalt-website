@@ -5,7 +5,7 @@ import { motion, useInView } from 'framer-motion'
 import { containerVariants, cardVariantsSmooth } from '@/lib/animations/variants'
 import { FeatureText } from './pricing-section/FeatureText'
 import { colorClasses } from '@/constants/colors'
-import { triggerStartTrialEvent } from '@/lib/mixpanel'
+import { triggerBookDemoEvent, triggerStartTrialEvent } from '@/lib/mixpanel'
 
 const CheckIcon = () => (
   <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-white/40 text-white text-xs font-semibold">
@@ -126,7 +126,9 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
         {(plan.monthlyPrice === null || plan.price === 'Custom') ? (
           <div className="mt-auto pt-1">
             <a
-              href="mailto:contact@geoalt.in"
+              href="https://calendly.com/geoalt43/30min"
+              onClick={() => triggerBookDemoEvent('pricing-section')}
+              target="_blank"
               className="w-full max-w-[120px] sm:max-w-none md:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full border border-white/10 text-white py-2 sm:py-3 md:py-3 text-[11px] sm:text-sm md:text-sm font-semibold whitespace-nowrap block text-center transition-all duration-200 ease-in-out hover:border-white/20 hover:bg-white/5"
             >
               Contact Us

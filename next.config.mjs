@@ -81,7 +81,37 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: `default-src 'self'; script-src 'self' 'unsafe-inline' ${process.env.NODE_ENV === 'development' ? "'unsafe-eval'" : ''} https://vercel.live https://vitals.vercel-insights.com https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' ${process.env.NODE_ENV === 'development' ? 'http://localhost:5000 ws://localhost:5000 ws://localhost:3000' : 'https://your-api-domain.com'} https://api.sentry.io https://vitals.vercel-insights.com https://*.vercel-insights.com https://va.vercel-scripts.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;`,
+            value: `
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' ${process.env.NODE_ENV === 'development' ? "'unsafe-eval'" : ''
+              }
+    https://cdn.mxpnl.com
+    https://vercel.live
+    https://vitals.vercel-insights.com
+    https://va.vercel-scripts.com;
+
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com data:;
+    img-src 'self' data: https: blob:;
+
+    connect-src 'self'
+    ${process.env.NODE_ENV === 'development'
+                ? 'http://localhost:5000 ws://localhost:5000 ws://localhost:3000'
+                : 'https://your-api-domain.com'
+              }
+    https://api.mixpanel.com
+    https://api-eu.mixpanel.com
+    https://api.sentry.io
+    https://vitals.vercel-insights.com
+    https://*.vercel-insights.com
+    https://va.vercel-scripts.com;
+
+    frame-src 'none';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    upgrade-insecure-requests;
+  `.replace(/\s{2,}/g, ' ').trim(),
           },
           {
             key: 'Permissions-Policy',

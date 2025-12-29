@@ -7,6 +7,7 @@ import { motion, useInView, useAnimation } from 'framer-motion'
 import { useRef, useEffect } from 'react'
 import { containerVariantsFast, wordVariants, headingContainerVariants, rotatorVariants, textVariants } from '@/lib/animations/variants'
 import { colorClasses } from '@/constants/colors'
+import { triggerBookDemoEvent, triggerSignUpInitiatedEvent } from '@/lib/mixpanel'
 
 const splitText = (text: string) => text.split(' ')
 
@@ -91,6 +92,7 @@ export function HeroSection() {
                 href="https://app.geoalt.in/register"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => triggerSignUpInitiatedEvent('hero-section')}
                 className="inline-flex items-center justify-center text-black px-3.5 py-2 sm:px-4 sm:py-2 md:px-4 md:py-3 rounded-full text-xs sm:text-sm md:text-base font-semibold tracking-wide transition-all duration-200 ease-in-out bg-white hover:bg-[#d4d4d4] text-center min-w-[100px] sm:min-w-[120px] md:min-w-[120px] cursor-pointer"
               >
                 Get Started
@@ -99,6 +101,7 @@ export function HeroSection() {
                 text="Book a Demo"
                 variant="outline"
                 size="md"
+                onClick={() => triggerBookDemoEvent('hero-section')}
                 showModal={false}
                 href="https://calendly.com/geoalt43/30min"
                 className="min-w-[100px] sm:min-w-[120px] md:min-w-[120px]"

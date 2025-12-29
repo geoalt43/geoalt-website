@@ -5,7 +5,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { AIPlatformRotator } from '@/components/shared/ai-platform-rotator'
 import { colorClasses } from '@/constants/colors'
-import { triggerStartTrialEvent } from '@/lib/mixpanel'
+import { triggerBookDemoEvent, triggerStartTrialEvent } from '@/lib/mixpanel'
 
 const containerVariantsSimple = {
   hidden: { opacity: 0 },
@@ -61,6 +61,7 @@ export function CTASection() {
                 <DemoCTA
                   text="Book a Demo"
                   variant="outline"
+                  onClick={() => triggerBookDemoEvent('cta-section')}
                   size="md"
                   showModal={false}
                   href="https://calendly.com/geoalt43/30min"
@@ -100,6 +101,7 @@ export function CTASection() {
                 <DemoCTA
                   text="Book a Demo"
                   variant="outline"
+                  onClick={() => triggerBookDemoEvent('cta-section')}
                   size="md"
                   showModal={false}
                   href="https://calendly.com/geoalt43/30min"

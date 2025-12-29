@@ -9,6 +9,7 @@ interface DemoCTAProps {
   variant?: 'outline' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   className?: string
+  onClick?: () => void
   showModal?: boolean
   href?: string
 }
@@ -18,6 +19,7 @@ export function DemoCTA({
   variant = 'outline',
   size = 'md',
   className,
+  onClick,
   showModal = true,
   href
 }: DemoCTAProps) {
@@ -92,6 +94,7 @@ export function DemoCTA({
       <a
         href={href}
         target='_blank'
+        onClick={onClick}
         className={cn(
           baseClasses,
           variants[variant],

@@ -5,3 +5,15 @@ export function triggerStartTrialEvent(location: string = "website") {
         location
     })
 }
+
+export function triggerBookDemoEvent(location: string = "website") {
+    mixpanel.track('Book a Demo', {
+        location
+    })
+}
+
+export function triggerSignUpInitiatedEvent(location: string = "website") {
+    mixpanel.track('Sign Up Initiated', {
+        location
+    })
+}
