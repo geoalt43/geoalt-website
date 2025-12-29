@@ -13,10 +13,10 @@ interface DemoCTAProps {
   href?: string
 }
 
-export function DemoCTA({ 
-  text, 
-  variant = 'outline', 
-  size = 'md', 
+export function DemoCTA({
+  text,
+  variant = 'outline',
+  size = 'md',
   className,
   showModal = true,
   href
@@ -32,7 +32,7 @@ export function DemoCTA({
 
   const sizes = {
     sm: 'h-8 px-3 text-sm',
-    md: 'h-8 px-3.5 py-2 sm:h-10 sm:px-4 sm:py-2.5 md:px-5 text-xs sm:text-sm md:text-base',
+    md: 'h-8 px-3.5 py-4 sm:h-10 sm:px-4 sm:py-6 rounded-full md:px-5 text-xs sm:text-sm md:text-base',
     lg: 'h-12 px-8 text-lg',
   }
 
@@ -61,7 +61,7 @@ export function DemoCTA({
         {/* Demo Modal */}
         {isOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center">
-            <div 
+            <div
               className="absolute inset-0 bg-black/50 backdrop-blur-sm"
               onClick={() => setIsOpen(false)}
             />
@@ -91,6 +91,7 @@ export function DemoCTA({
     return (
       <a
         href={href}
+        target='_blank'
         className={cn(
           baseClasses,
           variants[variant],

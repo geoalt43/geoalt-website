@@ -29,7 +29,7 @@ export function CTASection() {
         animate={isInView ? 'visible' : 'hidden'}
         className={`max-w-6xl max-[1250px]:mx-4 min-[1251px]:mx-auto px-4 sm:px-6 md:px-7 pt-3 pb-3 md:pt-3 md:pb-3 lg:px-8 border ${colorClasses.borderDark} rounded-lg ${colorClasses.surfaceDarker}`}
       >
-        <div className={`${colorClasses.surfaceDarker} rounded-lg p-3 sm:p-4 md:p-5 lg:p-7 flex flex-col lg:flex-row items-center lg:items-center gap-4 sm:gap-5 md:gap-5 lg:gap-0`}>
+        <div className={`${colorClasses.surfaceDarker} relative z-20 rounded-lg p-3 sm:p-4 md:p-5 lg:p-7 flex flex-col lg:flex-row items-center lg:items-center gap-4 sm:gap-5 md:gap-5 lg:gap-0`}>
           {/* Left Section - Text Content */}
           <div className="w-full max-w-[320px] sm:flex-1 sm:max-w-none md:flex-1 md:max-w-none lg:pr-8 lg:w-auto text-center lg:text-left mb-2 sm:mb-3 md:mb-4 lg:mb-0 mx-auto sm:mx-0">
             <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-2 sm:mb-3 md:mb-4 leading-tight tracking-wide px-2 sm:px-0 md:px-0">
@@ -57,11 +57,11 @@ export function CTASection() {
               </a>
               <div className="flex-shrink-0">
                 <DemoCTA
-                  text="Contact Us"
+                  text="Book a Demo"
                   variant="outline"
                   size="md"
                   showModal={false}
-                  href="mailto:contact@geoalt.in"
+                  href="https://calendly.com/geoalt43/30min"
                 />
               </div>
             </div>
@@ -95,11 +95,11 @@ export function CTASection() {
               </a>
               <div className="flex-shrink-0">
                 <DemoCTA
-                  text="Contact Us"
+                  text="Book a Demo"
                   variant="outline"
                   size="md"
                   showModal={false}
-                  href="mailto:contact@geoalt.in"
+                  href="https://calendly.com/geoalt43/30min"
                 />
               </div>
             </div>
