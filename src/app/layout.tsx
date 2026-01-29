@@ -44,12 +44,12 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://geoalt.com'),
+  metadataBase: new URL('https://www.geoalt.in'),
   alternates: {
     canonical: '/',
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    google: 'JpEm31MndXatk-tntHUwEl6zCu51029QkImRWoJQOFM',
     yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
     yahoo: process.env.NEXT_PUBLIC_YAHOO_VERIFICATION,
     other: {
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://geoalt.com',
+    url: 'https://www.geoalt.in',
     title: 'Geoalt - Get Your Brand Recommended by AI',
     description: 'Geoalt helps your business stand out across AI platforms. Turning AI visibility into traffic.',
     siteName: 'Geoalt',
@@ -125,7 +125,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://geoalt.com'
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.geoalt.in'
 
   const organizationStructuredData = {
     '@context': 'https://schema.org',
