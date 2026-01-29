@@ -1,51 +1,10 @@
 'use client'
 
-import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
-const scrollToHero = (e: React.MouseEvent<HTMLAnchorElement>) => {
-  e.preventDefault()
-  const heroSection = document.getElementById('home')
-  if (heroSection) {
-    const html = document.documentElement
-    const body = document.body
-    const originalScrollBehavior = html.style.scrollBehavior
-
-    html.style.scrollBehavior = 'auto'
-    body.style.scrollBehavior = 'auto'
-
-    requestAnimationFrame(() => {
-      heroSection.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'start' })
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          html.style.scrollBehavior = originalScrollBehavior || ''
-          body.style.scrollBehavior = ''
-        })
-      })
-    })
-  } else {
-    const html = document.documentElement
-    const body = document.body
-    const originalScrollBehavior = html.style.scrollBehavior
-
-    html.style.scrollBehavior = 'auto'
-    body.style.scrollBehavior = 'auto'
-
-    requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          html.style.scrollBehavior = originalScrollBehavior || ''
-          body.style.scrollBehavior = ''
-        })
-      })
-    })
-  }
-}
+import { HashLink } from '@/components/ui/hash-link'
 
 export function Footer() {
   const pathname = usePathname()
@@ -58,14 +17,19 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1 lg:col-span-1">
             <div className="flex items-center text-lg sm:text-xl md:text-2xl font-bold text-white">
-              <Image
-                src="/logos/GeoAlt_Logo.png"
-                alt="GEOAlt logo"
-                width={100}
-                height={24}
-                className="h-[1em] sm:h-[1.1em] md:h-[1.1em] w-auto"
-                priority
-              />
+              <HashLink
+                href="/#home"
+                className="flex items-center"
+              >
+                <Image
+                  src="/logos/GeoAlt_Logo.png"
+                  alt="GEOAlt logo"
+                  width={100}
+                  height={24}
+                  className="h-[1em] sm:h-[1.1em] md:h-[1.1em] w-auto"
+                  priority
+                />
+              </HashLink>
             </div>
             <p className="mt-3 sm:mt-4 md:mt-5 text-[10px] sm:text-xs md:text-sm text-[#898989] leading-relaxed">
               Turn AI mentions into traffic and customers. Dominate AI search and grow your brand faster.
@@ -109,14 +73,14 @@ export function Footer() {
             </h3>
             <ul className="mt-3 sm:mt-4 md:mt-5 space-y-2 sm:space-y-3 md:space-y-4">
               <li>
-                <Link href="/#features" onClick={scrollToHero} className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <HashLink href="/#features" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
                   Features
-                </Link>
+                </HashLink>
               </li>
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <HashLink href="/#home" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
                   API
-                </Link>
+                </HashLink>
               </li>
             </ul>
           </div>
@@ -128,19 +92,19 @@ export function Footer() {
             </h3>
             <ul className="mt-3 sm:mt-4 md:mt-5 space-y-2 sm:space-y-3 md:space-y-4">
               <li>
-                <Link href="/about" onClick={scrollToHero} className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/about" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/blog" onClick={scrollToHero} className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/blog" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <HashLink href="/#home" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
                   Careers
-                </Link>
+                </HashLink>
               </li>
             </ul>
           </div>
@@ -152,19 +116,19 @@ export function Footer() {
             </h3>
             <ul className="mt-3 sm:mt-4 md:mt-5 space-y-2 sm:space-y-3 md:space-y-4">
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <HashLink href="/#home" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
                   Documentation
-                </Link>
+                </HashLink>
               </li>
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <HashLink href="/#home" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
                   Help Center
-                </Link>
+                </HashLink>
               </li>
               <li>
-                <Link href="/" onClick={scrollToHero} className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <HashLink href="/#home" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
                   Contact
-                </Link>
+                </HashLink>
               </li>
             </ul>
           </div>

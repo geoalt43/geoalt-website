@@ -1,33 +1,29 @@
 import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://geoalt.com'
-  
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.geoalt.in'
+
   return {
     rules: [
       {
         userAgent: '*',
-        allow: '/',
+        allow: [
+          '/',
+          '/_next/static/css/',
+          '/_next/static/chunks/',
+          '/_next/static/media/',
+        ],
         disallow: [
           '/api/*',
-          '/_next/*',
-          '/static/*',
+          '/_next/data/*',
           '/admin/*',
           '/dashboard/*',
+          '/privacy/*',
           '*.json',
         ],
       },
       {
-        userAgent: 'Googlebot',
-        allow: '/',
-        disallow: [
-          '/api/*',
-          '/admin/*',
-          '/dashboard/*',
-        ],
-      },
-      {
-        userAgent: 'Bingbot',
+        userAgent: ['Googlebot', 'Bingbot', 'Applebot'],
         allow: '/',
         disallow: [
           '/api/*',
@@ -36,7 +32,12 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: [
+      `${baseUrl}/sitemap.xml`,
+      `${baseUrl}/sitemap/core.xml`,
+      `${baseUrl}/sitemap/content.xml`,
+      `${baseUrl}/sitemap/legal.xml`,
+    ],
     host: baseUrl,
   }
 }

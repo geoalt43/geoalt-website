@@ -11,6 +11,7 @@ export default function MixpanelProvider() {
             record_sessions_percent: 100,
             debug: process.env.NODE_ENV !== 'production',
             persistence: 'localStorage',
+            ignore_dnt: true,
         })
 
 

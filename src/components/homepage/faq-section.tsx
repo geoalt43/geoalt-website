@@ -1,15 +1,9 @@
 'use client'
 
-import { RefObject, useRef, useEffect, useMemo } from 'react'
+import { useRef, useEffect, useMemo, useState } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { containerVariants, cardVariantsSmooth } from '@/lib/animations/variants'
 import { colorClasses } from '@/constants/colors'
-
-interface FAQSectionProps {
-  openFaq: number | null
-  toggleFaq: (index: number) => void
-  faqRef: RefObject<HTMLDivElement | null>
-}
 
 interface FAQCardProps {
   faq: { question: string; answer: string }
@@ -112,7 +106,30 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
   )
 }
 
-export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
+export function FAQSection() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const faqRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (faqRef.current && !faqRef.current.contains(event.target as Node)) {
+        setOpenFaq(null)
+      }
+    }
+
+    if (openFaq !== null) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [openFaq])
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index)
+  }
+
   const faqs = useMemo(() => [
     {
       question: "What does Geoalt do?",
@@ -143,34 +160,6 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
 
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.type = 'application/ld+json'
-    script.id = 'faq-structured-data'
-    
-    const structuredData = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: faqs.map(faq => ({
-        '@type': 'Question',
-        name: faq.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: faq.answer,
-        },
-      })),
-    }
-    
-    script.text = JSON.stringify(structuredData)
-    document.head.appendChild(script)
-    
-    return () => {
-      const existingScript = document.getElementById('faq-structured-data')
-      if (existingScript) {
-        document.head.removeChild(existingScript)
-      }
-    }
-  }, [faqs])
 
   return (
     <section className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh] bg-transparent-text bg-clip-text">

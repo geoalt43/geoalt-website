@@ -1,17 +1,14 @@
-import { PolicyFooter } from '@/components/policy-pages/policy-footer'
 import { PolicyPageClient } from '@/components/policy-pages/policy-page-client'
-import { Navbar } from '@/components/layout/navbar'
 
 function getEffectiveDate() {
-  return new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+  return "January 20, 2025"
 }
 
 export default function CookiePolicyPage() {
   const effectiveDate = getEffectiveDate()
 
   return (
-    <div className="bg-black text-white w-full min-h-screen flex flex-col">
-      <Navbar />
+    <div className="bg-black text-white w-full px-2">
       <main className="flex-1">
         <div className="max-w-4xl mx-auto px-3 xs:px-4 sm:px-6 md:px-8 py-6 xs:py-8 sm:py-12 md:py-16 relative z-10">
         {/* Header */}
@@ -92,8 +89,6 @@ export default function CookiePolicyPage() {
         </div>
         </div>
       </main>
-      
-      <PolicyFooter />
       <PolicyPageClient />
     </div>
   )

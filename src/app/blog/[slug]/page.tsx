@@ -1,6 +1,4 @@
 import { TableOfContents } from '@/components/blog/TableOfContents'
-import { Footer } from '@/components/layout/footer'
-import { Navbar } from '@/components/layout/navbar'
 import { getAllPosts, getPostBySlug } from '@/lib/blog'
 import { extractHeadings } from '@/lib/toc'
 import { format } from 'date-fns'
@@ -49,7 +47,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
             title: post.title,
             description: post.description,
             type: 'article',
-            url: `https://geoalt.com/blog/${slug}`,
+            url: `https://www.geoalt.in/blog/${slug}`,
             images: [
                 {
                     url: post.image || '/images/img-2.jpeg',
@@ -59,6 +57,9 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
                 },
             ],
         },
+        alternates: {
+            canonical: `https://www.geoalt.in/blog/${slug}`,
+        }
     }
 }
 
@@ -70,11 +71,73 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         notFound()
     }
 
+    const baseUrl = 'https://www.geoalt.in'
+    
+    // SEO Architecture: JSON-LD Structured Data
+    const articleSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.description,
+        image: post.image ? `${baseUrl}${post.image}` : `${baseUrl}/images/img-2.jpeg`,
+        datePublished: post.date,
+        dateModified: post.date,
+        author: {
+            '@type': 'Person',
+            name: post.author,
+        },
+        publisher: {
+            '@type': 'Organization',
+            name: 'Geoalt',
+            logo: {
+                '@type': 'ImageObject',
+                url: `${baseUrl}/logos/Favicon.png`,
+            },
+        },
+        mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `${baseUrl}/blog/${slug}`,
+        },
+    }
+
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: baseUrl,
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Blog',
+                item: `${baseUrl}/blog`,
+            },
+            {
+                '@type': 'ListItem',
+                position: 3,
+                name: post.title,
+                item: `${baseUrl}/blog/${slug}`,
+            },
+        ],
+    }
+
     const headings = extractHeadings(post.content)
 
     return (
-        <div className="min-h-screen bg-brand-black flex flex-col">
-            <Navbar />
+        <div className="bg-brand-black flex flex-col">
+            {/* Structured Data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
 
             <header className="mb-10 text-center max-w-2xl mx-auto pt-[120px]">
                 <div className="flex items-center justify-center gap-3 text-sm text-gray-400 mb-6">
@@ -259,8 +322,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     </div>
                 </div>
             </main>
-
-            <Footer />
         </div>
     )
 }

@@ -80,6 +80,13 @@ const config: Config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        'brand-black': '#000000',
+        'brand-white': '#ffffff',
+        'brand-gray': {
+          300: '#d1d5db',
+          500: '#6b7280',
+          700: '#374151',
+        },
       },
       fontFamily: {
         'sans': ['Inter', 'system-ui', 'sans-serif'],

@@ -6,6 +6,8 @@ import { ErrorBoundary } from '@/components/ui/error-boundary'
 import { Analytics } from '@vercel/analytics/react'
 import { ScrollRestorationScript } from '@/components/scroll-restoration-script'
 import MixpanelProvider from '@/components/MixpanelProvider'
+import { Navbar } from '@/components/layout/navbar'
+import { Footer } from '@/components/layout/footer'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -44,7 +46,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://geoalt.com'),
+  metadataBase: new URL('https://www.geoalt.in'),
   alternates: {
     canonical: '/',
   },
@@ -59,7 +61,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://geoalt.com',
+    url: 'https://www.geoalt.in',
     title: 'Geoalt - Get Your Brand Recommended by AI',
     description: 'Geoalt helps your business stand out across AI platforms. Turning AI visibility into traffic.',
     siteName: 'Geoalt',
@@ -125,7 +127,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://geoalt.com'
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.geoalt.in'
 
   const organizationStructuredData = {
     '@context': 'https://schema.org',
@@ -189,7 +191,7 @@ export default function RootLayout({
     ],
   }
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning data-scroll-behavior="smooth">
       <body className={`${inter.className}`}>
         <script
           type="application/ld+json"
@@ -212,8 +214,12 @@ export default function RootLayout({
         </div>
         <ErrorBoundary>
           <Providers>
-            <div className='z-10'>
-              {children}
+            <div className="flex flex-col min-h-screen relative z-10 transition-opacity duration-300">
+              <Navbar />
+              <main className="flex-grow">
+                {children}
+              </main>
+              <Footer />
             </div>
           </Providers>
         </ErrorBoundary>

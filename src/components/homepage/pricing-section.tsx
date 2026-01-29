@@ -37,7 +37,7 @@ const pricingPlans = [
     description: 'For growing teams and businesses.',
     features: ['Track 100 Prompts', '75 Opportunities', 'Access to 3 models', 'Priority Support', 'Unlimited Countries'],
     isRecommended: true,
-    bgColor: 'bg-white/5',
+    bgColor: colorClasses.surfaceDark,
     borderColor: 'border-white/10',
   },
   {

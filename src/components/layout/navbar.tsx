@@ -1,108 +1,22 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import Image from 'next/image'
 import { triggerSignUpInitiatedEvent } from '@/lib/mixpanel'
 
+import { HashLink } from '@/components/ui/hash-link'
+
 export function Navbar() {
-  const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (pathname === '/') {
-      e.preventDefault()
-      const element = document.getElementById('home')
-      if (element) {
-        const html = document.documentElement
-        const body = document.body
-        const originalScrollBehavior = html.style.scrollBehavior
-
-        html.style.scrollBehavior = 'auto'
-        body.style.scrollBehavior = 'auto'
-
-        requestAnimationFrame(() => {
-          element.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'start' })
-
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              html.style.scrollBehavior = originalScrollBehavior || ''
-              body.style.scrollBehavior = ''
-            })
-          })
-        })
-      }
-    }
-    setIsMobileMenuOpen(false)
-  }
-
-  const handlePricingClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (pathname === '/') {
-      e.preventDefault()
-      const element = document.getElementById('pricing')
-      if (element) {
-        const html = document.documentElement
-        const body = document.body
-        const originalScrollBehavior = html.style.scrollBehavior
-
-        html.style.scrollBehavior = 'auto'
-        body.style.scrollBehavior = 'auto'
-
-        requestAnimationFrame(() => {
-          element.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'start' })
-
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              html.style.scrollBehavior = originalScrollBehavior || ''
-              body.style.scrollBehavior = ''
-            })
-          })
-        })
-      }
-    }
-    setIsMobileMenuOpen(false)
-  }
-
-  const handleFeaturesClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (pathname === '/') {
-      e.preventDefault()
-      const element = document.getElementById('features')
-      if (element) {
-        const html = document.documentElement
-        const body = document.body
-        const originalScrollBehavior = html.style.scrollBehavior
-
-        html.style.scrollBehavior = 'auto'
-        body.style.scrollBehavior = 'auto'
-
-        requestAnimationFrame(() => {
-          element.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'start' })
-
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              html.style.scrollBehavior = originalScrollBehavior || ''
-              body.style.scrollBehavior = ''
-            })
-          })
-        })
-      }
-    }
-    setIsMobileMenuOpen(false)
-  }
-
-  const handleLinkClick = () => {
-    setIsMobileMenuOpen(false)
-  }
 
   return (
     <nav className="bg-brand-black/90 backdrop-blur-sm border-b border-[#1d1d1d] fixed top-0 left-0 right-0 z-50 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16 md:h-16 relative">
           <div className="flex items-center flex-shrink-0">
-            <Link
-              href="/"
-              onClick={handleHomeClick}
+            <HashLink
+              href="/#home"
               className="flex items-center text-lg sm:text-xl md:text-xl font-semibold text-brand-white"
             >
               <Image
@@ -110,36 +24,34 @@ export function Navbar() {
                 alt="GEOAlt logo"
                 width={100}
                 height={24}
-                quality={90}
+                quality={75}
                 className="h-[0.9em] sm:h-[1em] md:h-[1em] w-auto"
                 priority
                 sizes="(max-width: 640px) 80px, 100px"
               />
-            </Link>
+            </HashLink>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center justify-center space-x-0 absolute left-1/2 transform -translate-x-1/2 z-10">
-            <Link
-              href="/"
-              onClick={handleHomeClick}
+            <HashLink
+              href="/#home"
               className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
             >
               Home
-            </Link>
+            </HashLink>
             <Link
               href="/pricing"
               className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
             >
               Pricing
             </Link>
-            <Link
+            <HashLink
               href="/#features"
-              onClick={handleFeaturesClick}
               className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
             >
               Features
-            </Link>
+            </HashLink>
             <Link
               href="/blog"
               className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
@@ -206,34 +118,34 @@ export function Navbar() {
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-[#1d1d1d] py-4">
             <div className="flex flex-col space-y-2">
-              <Link
-                href="/"
-                onClick={handleHomeClick}
+              <HashLink
+                href="/#home"
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white active:bg-[#5a5a5a] active:border-[#5a5a5a] active:text-white transition-all duration-150 ease-out"
               >
                 Home
-              </Link>
-              <Link
-                href="/pricing"
-                onClick={handlePricingClick}
+              </HashLink>
+              <HashLink
+                href="/#pricing"
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white active:bg-[#5a5a5a] active:border-[#5a5a5a] active:text-white transition-all duration-150 ease-out"
               >
                 Pricing
-              </Link>
-              <Link
+              </HashLink>
+              <HashLink
                 href="/#features"
-                onClick={handleFeaturesClick}
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white active:bg-[#5a5a5a] active:border-[#5a5a5a] active:text-white transition-all duration-150 ease-out"
               >
                 Features
-              </Link>
+              </HashLink>
               <a
                 href="https://app.geoalt.in/register"
                 target="_blank"
                 rel="noopener noreferrer"
 
                 onClick={() => {
-                  handleLinkClick()
+                  setIsMobileMenuOpen(false)
                   triggerSignUpInitiatedEvent("navbar-get-started")
                 }}
                 className="mt-2 bg-white text-black border border-white px-4 py-2 rounded-full text-sm font-normal hover:bg-white/90 hover:opacity-90 transition-all duration-150 text-center cursor-pointer"

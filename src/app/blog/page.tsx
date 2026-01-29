@@ -2,8 +2,6 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { getAllPosts } from '@/lib/blog'
-import { Navbar } from '@/components/layout/navbar'
-import { Footer } from '@/components/layout/footer'
 import { colorClasses } from '@/constants/colors'
 import { format } from 'date-fns'
 
@@ -16,8 +14,7 @@ export default function BlogPage() {
     const posts = getAllPosts()
 
     return (
-        <div className="bg-brand-black min-h-screen flex flex-col relative overflow-hidden">
-            <Navbar />
+        <div className="bg-brand-black flex flex-col relative overflow-hidden">
 
             {/* Background Decorations */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-blue-500/20 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
@@ -35,7 +32,7 @@ export default function BlogPage() {
                         <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white mb-6 tracking-tight">
                             Latest <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">Insights</span>
                         </h1>
-                        <p className={`text-lg sm:text-x l ${colorClasses.textSecondary} max-w-2xl mx-auto leading-relaxed`}>
+                        <p className={`text-lg sm:text-xl ${colorClasses.textSecondary} max-w-2xl mx-auto leading-relaxed`}>
                             Expert analysis on Generative Engine Optimization, AI search trends, and the future of digital visibility.
                         </p>
                     </div>
@@ -150,8 +147,6 @@ export default function BlogPage() {
                     )}
                 </div>
             </main>
-
-            <Footer />
         </div>
     )
 }
