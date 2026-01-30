@@ -87,6 +87,15 @@ export function HeroSection() {
               <em>— Turning AI visibility into traffic</em>
             </motion.p>
 
+            {/* AEO (Answer Engine Optimization) Definition Block */}
+            <div className="sr-only">
+                <h2>What is Geoalt?</h2>
+                <p>
+                    Geoalt is a Generative Engine Optimization (GEO) platform that helps businesses optimize their brand visibility across AI platforms like ChatGPT, Perplexity, Claude, and Gemini. 
+                    It analyzes how AI recommends brands and provides actionable insights to increase mentions, traffic, and citation share in AI-driven search results.
+                </p>
+            </div>
+
             <div className="flex flex-row gap-2.5 sm:gap-4 md:gap-4 items-center justify-center px-4 sm:px-0 md:px-0">
               <a
                 href="https://app.geoalt.in/register"

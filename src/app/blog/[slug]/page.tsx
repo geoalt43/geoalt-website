@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
             title: post.title,
             description: post.description,
             type: 'article',
-            url: `https://geoalt.com/blog/${slug}`,
+            url: `https://www.geoalt.in/blog/${slug}`,
             images: [
                 {
                     url: post.image || '/images/img-2.jpeg',
@@ -59,6 +59,9 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
                 },
             ],
         },
+        alternates: {
+            canonical: `https://www.geoalt.in/blog/${slug}`,
+        }
     }
 }
 
@@ -70,10 +73,68 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         notFound()
     }
 
+    const articleSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.description,
+        image: post.image || 'https://www.geoalt.in/images/img-2.jpeg',
+        datePublished: post.date,
+        author: {
+            '@type': 'Person',
+            name: post.author || 'Geoalt Team',
+        },
+        publisher: {
+            '@type': 'Organization',
+            name: 'Geoalt',
+            logo: {
+                '@type': 'ImageObject',
+                url: 'https://www.geoalt.in/logos/GeoAlt_Logo.png',
+            },
+        },
+        mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `https://www.geoalt.in/blog/${slug}`,
+        },
+    }
+
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://www.geoalt.in',
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Blog',
+                item: 'https://www.geoalt.in/blog',
+            },
+            {
+                '@type': 'ListItem',
+                position: 3,
+                name: post.title,
+                item: `https://www.geoalt.in/blog/${slug}`,
+            },
+        ],
+    }
+
     const headings = extractHeadings(post.content)
 
     return (
         <div className="min-h-screen bg-brand-black flex flex-col">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
             <Navbar />
 
             <header className="mb-10 text-center max-w-2xl mx-auto pt-[120px]">

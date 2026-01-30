@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     images: ['/images/img-2.jpeg'],
   },
   alternates: {
-    canonical: 'https://geoalt.com',
+    canonical: 'https://www.geoalt.in',
   },
   robots: {
     index: true,
@@ -59,8 +59,35 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
+  const faqStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What is Geoalt?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Geoalt is a Generative Engine Optimization (GEO) platform that helps businesses optimize their brand visibility across AI search engines like ChatGPT, Perplexity, and Claude.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How does Generative Engine Optimization work?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'GEO involves technical and semantic adjustments to content to improve how AI models understand, cite, and recommend your brand in generated answers.',
+        },
+      },
+    ],
+  }
+
   return (
     <Suspense fallback={<LoadingSpinner />}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+      />
       <HomePage />
     </Suspense>
   )
