@@ -108,7 +108,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
   const current = platforms[currentPlatform]
 
   return (
-    <div className="relative flex items-center justify-center py-2 sm:py-4 md:py-6 lg:py-16 xl:py-20 px-2 sm:px-4 md:px-6 mt-4 sm:mt-6 md:mt-8 lg:mt-0 mb-4 sm:mb-6 md:mb-8 lg:mb-0">
+    <div className="relative flex items-center justify-center py-2 sm:py-4 md:py-6 lg:py-16 xl:py-7 px-2 sm:px-4 md:px-6 mt-4 sm:mt-6 md:mt-8 lg:mt-0 mb-4 sm:mb-6 md:mb-8 lg:mb-0">
       {/* Animated Background Elements (only for default variant) */}
       {variant === 'default' && (
         <div className="absolute inset-0 overflow-hidden -z-10">

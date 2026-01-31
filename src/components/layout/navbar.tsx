@@ -2,13 +2,45 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { triggerSignUpInitiatedEvent } from '@/lib/mixpanel'
 
 export function Navbar() {
   const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolledPastRotator, setIsScrolledPastRotator] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (pathname !== '/') {
+        setIsScrolledPastRotator(true)
+        return
+      }
+
+      const rotator = document.getElementById('navbar-trigger')
+      if (rotator) {
+        const rotatorTop = rotator.getBoundingClientRect().top
+        const navHeight = 64 // Approximation of h-16
+        setIsScrolledPastRotator(rotatorTop <= navHeight)
+      } else {
+        // Fallback if rotator not found (e.g. before mount)
+        setIsScrolledPastRotator(window.scrollY > 100)
+      }
+    }
+
+    // Initial check
+    handleScroll()
+    
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    // Secondary check after a short delay to ensure elements are rendered
+    const timeoutId = setTimeout(handleScroll, 100)
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      clearTimeout(timeoutId)
+    }
+  }, [pathname])
 
   const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === '/') {
@@ -95,9 +127,24 @@ export function Navbar() {
     setIsMobileMenuOpen(false)
   }
 
+  const isHome = pathname === '/'
+  const showDots = isHome && !isScrolledPastRotator
+
   return (
-    <nav className="bg-brand-black/90 backdrop-blur-sm border-b border-[#1d1d1d] fixed top-0 left-0 right-0 z-50 overflow-x-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
+    <nav 
+      className={`fixed top-0 left-0 right-0 z-50 overflow-x-hidden transition-all duration-300 ${
+        !isScrolledPastRotator && isHome
+          ? 'bg-transparent border-b border-transparent' 
+          : 'bg-brand-black/90 backdrop-blur-sm border-b border-[#1d1d1d]'
+      }`}
+    >
+      {showDots && (
+        <div 
+          className="absolute inset-0 z-0 bg-dot-grid mask-fade-out pointer-events-none" 
+          aria-hidden="true" 
+        />
+      )}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-14 sm:h-16 md:h-16 relative">
           <div className="flex items-center flex-shrink-0">
             <Link

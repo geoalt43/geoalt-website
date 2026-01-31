@@ -16,7 +16,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Geoalt - Get Your Brand Recommended by AI',
+    default: 'Geoalt - Get Your Brand Visible Across AI Search Engines',
     template: '%s | Geoalt',
   },
   description: 'Geoalt helps your business stand out across AI platforms. Optimize your brand visibility on ChatGPT, Perplexity, Claude, and other AI platforms. Turn AI mentions into traffic and customers with Generative Engine Optimization (GEO).',
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://www.geoalt.in',
-    title: 'Geoalt - Get Your Brand Recommended by AI',
+    title: 'Geoalt - Get Your Brand Visible Across AI Search Engines',
     description: 'Geoalt helps your business stand out across AI platforms. Turning AI visibility into traffic.',
     siteName: 'Geoalt',
     images: [
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Geoalt - Get Your Brand Recommended by AI',
+    title: 'Geoalt - Get Your Brand Visible Across AI Search Engines',
     description: 'Geoalt helps your business stand out across AI platforms. Turning AI visibility into traffic.',
     images: ['/images/img-2.jpeg'],
     creator: '@geoalt',
@@ -152,7 +152,7 @@ export default function RootLayout({
     '@type': 'WebSite',
     name: 'Geoalt',
     url: baseUrl,
-    description: 'Get your brand recommended by AI. Geoalt helps businesses optimize their visibility across AI platforms like ChatGPT, Perplexity, and Claude.',
+    description: 'Get your brand visible across AI search engines. Geoalt helps businesses optimize their visibility across AI platforms like ChatGPT, Perplexity, and Claude.',
     potentialAction: {
       '@type': 'SearchAction',
       target: {
@@ -205,11 +205,6 @@ export default function RootLayout({
         />
         <ScrollRestorationScript />
         <MixpanelProvider />
-        <div className='h-full w-full overflow-hidden fixed z-0'>
-          <div id='stars'></div>
-          <div id='stars2'></div>
-          <div id='stars3'></div>
-        </div>
         <ErrorBoundary>
           <Providers>
             <div className='z-10'>

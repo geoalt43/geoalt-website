@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'Geoalt - Get Your Brand Recommended by AI'
+export const alt = 'Geoalt - Get Your Brand Visible Across AI Search Engines'
 export const size = {
   width: 1200,
   height: 630,
@@ -28,8 +28,8 @@ export default async function Image() {
         }}
       >
         <div style={{ fontSize: 64, marginBottom: 20 }}>Geoalt</div>
-        <div style={{ fontSize: 32, opacity: 0.8 }}>
-          Get Your Brand Recommended by AI
+        <div style={{ fontSize: 32, opacity: 0.8, textAlign: 'center', padding: '0 40px' }}>
+          Get Your Brand Visible Across AI Search Engines and Control How It Appears on Leading LLMs
         </div>
       </div>
     ),

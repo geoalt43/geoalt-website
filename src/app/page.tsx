@@ -4,8 +4,8 @@ import { HomePage } from '@/components/pages/home-page'
 import { LoadingSpinner } from '@/components/ui/loading-spinner'
 
 export const metadata: Metadata = {
-  title: 'Geoalt - Get Your Brand Recommended by AI | AI Visibility Optimization',
-  description: 'Optimize your brand visibility across AI platforms like ChatGPT, Perplexity, and Claude. Geoalt helps businesses get recommended by AI, turning AI mentions into traffic and customers. Start your free trial today.',
+  title: 'Geoalt - Get Your Brand Visible Across AI Search Engines | AI Visibility Optimization',
+  description: 'Optimize your brand visibility across AI search engines like ChatGPT, Perplexity, and Claude. Geoalt helps businesses get visible on leading LLMs, turning AI mentions into traffic and customers. Start your free trial today.',
   keywords: [
     'AI visibility',
     'Generative Engine Optimization',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     'AI search engine optimization',
   ],
   openGraph: {
-    title: 'Geoalt - Get Your Brand Recommended by AI',
+    title: 'Geoalt - Get Your Brand Visible Across AI Search Engines',
     description: 'Optimize your brand visibility across AI platforms. Turn AI mentions into traffic and customers with Geoalt.',
     url: 'https://geoalt.com',
     siteName: 'Geoalt',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Geoalt - Get Your Brand Recommended by AI',
+    title: 'Geoalt - Get Your Brand Visible Across AI Search Engines',
     description: 'Optimize your brand visibility across AI platforms. Turn AI mentions into traffic and customers.',
     images: ['/images/img-2.jpeg'],
   },
