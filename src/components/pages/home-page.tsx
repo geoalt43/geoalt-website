@@ -275,7 +275,7 @@ function DashboardImageSection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-50px' })
 
   return (
-    <section ref={sectionRef} className="pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh]">
+    <section ref={sectionRef} className="mt-0 sm:mt-0 md:mt-0 lg:mt-0 pt-6 sm:pt-8 md:pt-10 lg:pt-12 pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}

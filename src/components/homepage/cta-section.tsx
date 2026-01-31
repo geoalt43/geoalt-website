@@ -53,9 +53,26 @@ export function CTASection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => triggerStartTrialEvent('cta-section')}
-                className={`bg-white text-black px-4 sm:px-6 md:px-6 py-2 sm:py-3 md:py-3 rounded-full text-[11px] sm:text-base md:text-base font-semibold whitespace-nowrap ${colorClasses.hoverGrayLight} transition-all duration-200 ease-in-out inline-block text-center flex-shrink-0 sm:min-w-[140px] md:min-w-[140px]`}
+                className={`group bg-white text-black px-4 sm:pl-6 sm:pr-4 md:pl-6 md:pr-4 py-2 sm:py-3 md:py-3 rounded-full text-[11px] sm:text-base md:text-base font-semibold whitespace-nowrap ${colorClasses.hoverGrayLight} transition-all duration-200 ease-in-out inline-flex items-center justify-center text-center flex-shrink-0 sm:min-w-[160px] md:min-w-[160px] cursor-pointer`}
               >
-                Start Free Trial
+                <span>Start Free Trial</span>
+                <div className="relative flex items-center justify-center w-5 h-5 ml-1 sm:ml-1.5 md:ml-1.5 overflow-hidden">
+                  {/* Chevron Icon - Default */}
+                  <svg 
+                    className="absolute transition-all duration-300 transform opacity-100 group-hover:opacity-0 group-hover:translate-x-4" 
+                    width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
+                  >
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                  {/* Arrow Icon - Hover */}
+                  <svg 
+                    className="absolute transition-all duration-300 transform -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5" 
+                    width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </div>
               </a>
               <div className="flex-shrink-0">
                 <DemoCTA
@@ -93,9 +110,26 @@ export function CTASection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => triggerStartTrialEvent('cta-section')}
-                className={`bg-white text-black px-4 py-2 rounded-full text-[11px] font-semibold whitespace-nowrap ${colorClasses.hoverGrayLight} transition-all duration-200 ease-in-out inline-block text-center flex-shrink-0`}
+                className={`group bg-white text-black pl-3.5 pr-2.5 py-2 rounded-full text-[11px] font-semibold whitespace-nowrap ${colorClasses.hoverGrayLight} transition-all duration-200 ease-in-out inline-flex items-center justify-center text-center flex-shrink-0 cursor-pointer`}
               >
-                Start Free Trial
+                <span>Start Free Trial</span>
+                <div className="relative flex items-center justify-center w-4 h-4 ml-1 overflow-hidden">
+                  {/* Chevron Icon - Default */}
+                  <svg 
+                    className="absolute transition-all duration-300 transform opacity-100 group-hover:opacity-0 group-hover:translate-x-4" 
+                    width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
+                  >
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                  {/* Arrow Icon - Hover */}
+                  <svg 
+                    className="absolute transition-all duration-300 transform -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5" 
+                    width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </div>
               </a>
               <div className="flex-shrink-0">
                 <DemoCTA

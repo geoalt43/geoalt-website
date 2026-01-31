@@ -205,11 +205,6 @@ export default function RootLayout({
         />
         <ScrollRestorationScript />
         <MixpanelProvider />
-        <div className='h-full w-full overflow-hidden fixed z-0'>
-          <div id='stars'></div>
-          <div id='stars2'></div>
-          <div id='stars3'></div>
-        </div>
         <ErrorBoundary>
           <Providers>
             <div className='z-10'>

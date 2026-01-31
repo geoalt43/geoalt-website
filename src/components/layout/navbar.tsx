@@ -2,13 +2,46 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { triggerSignUpInitiatedEvent } from '@/lib/mixpanel'
 
 export function Navbar() {
   const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    // On pages other than home, always show the solid background
+    if (pathname !== '/') {
+      setIsScrolled(true)
+      return
+    }
+
+    // Reset scroll state when transitioning back to home
+    setIsScrolled(false)
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsScrolled(!entry.isIntersecting)
+      },
+      {
+        threshold: 0,
+        rootMargin: '-10px 0px 0px 0px' // Trigger slightly before it hits the top
+      }
+    )
+
+    const trigger = document.getElementById('navbar-trigger')
+    if (trigger) {
+      observer.observe(trigger)
+    }
+
+    return () => {
+      if (trigger) {
+        observer.unobserve(trigger)
+      }
+    }
+  }, [pathname])
 
   const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === '/') {
@@ -96,7 +129,14 @@ export function Navbar() {
   }
 
   return (
-    <nav className="bg-brand-black/90 backdrop-blur-sm border-b border-[#1d1d1d] fixed top-0 left-0 right-0 z-50 overflow-x-hidden">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 overflow-x-hidden ${
+      isScrolled 
+        ? "bg-brand-black/90 backdrop-blur-sm border-b border-[#1d1d1d]" 
+        : "bg-transparent border-b border-transparent"
+    }`}>
+      {!isScrolled && (
+        <div className="absolute inset-0 z-0 bg-dot-grid mask-fade-out pointer-events-none" aria-hidden="true" />
+      )}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16 md:h-16 relative">
           <div className="flex items-center flex-shrink-0">
