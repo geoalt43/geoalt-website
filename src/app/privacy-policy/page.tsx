@@ -10,13 +10,13 @@ export default function PrivacyPolicyPage() {
   const effectiveDate = getEffectiveDate()
 
   return (
-    <div className="bg-black text-white w-full min-h-screen flex flex-col">
+    <div className="bg-[var(--color-ref-001)] text-[var(--color-ref-026)] w-full min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-1">
         <div className="max-w-4xl mx-auto px-3 xs:px-4 sm:px-6 md:px-8 py-6 xs:py-8 sm:py-12 md:py-16 relative z-10">
           {/* Header */}
         <div className="mb-4 xs:mb-6 sm:mb-8 md:mb-10 mt-1 xs:mt-2 sm:mt-2 md:mt-1">
-          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-normal mt-4 xs:mt-6 sm:mt-8 md:mt-10 max-[680px]:mt-20 mb-10 xs:mb-12 sm:mb-10 md:mb-16 text-white text-center">
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-normal mt-4 xs:mt-6 sm:mt-8 md:mt-10 max-[680px]:mt-20 mb-10 xs:mb-12 sm:mb-10 md:mb-16 text-[var(--color-ref-026)] text-center">
             Privacy Policy
           </h1>
             <div className="text-xs xs:text-sm sm:text-base text-white/70 space-y-1 xs:space-y-0">
@@ -31,7 +31,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl font-normal mb-1 xs:mb-0.5 sm:mb-0.5 text-white/90 leading-tight">
               Overview
             </h2>
-            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
+            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[var(--color-ref-019)] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
               This Privacy Policy explains how Geoalt collects, uses, stores, and protects personal and business information
               when you use our platform.
             </p>
@@ -42,12 +42,12 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl font-normal mb-1 xs:mb-0.5 sm:mb-0.5 text-white/90 leading-tight">
               Information We Collect
             </h2>
-            <div className="space-y-2 xs:space-y-0 text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
-              <p>
+              <div className="space-y-2 xs:space-y-0 text-xs xs:text-sm sm:text-base md:text-base text-[var(--color-ref-019)] md:leading-normal xs:leading-snug mt-1 xs:mt-0.5 sm:mt-0.5">
+              <p className="mb-2 xs:mb-3 sm:mb-4 md:mb-4">
                 We collect information you provide directly, such as your name, email address, company name, account details,
                 and support communications.
               </p>
-              <p>
+              <p className="mb-2 xs:mb-3 sm:mb-4 md:mb-4">
                 We also collect technical and usage data including IP address, browser type, device data, logs, and analytics
                 information.
               </p>
@@ -59,7 +59,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl font-normal mb-1 xs:mb-0.5 sm:mb-0.5 text-white/90 leading-tight">
               How We Use Information
             </h2>
-            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
+            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[var(--color-ref-019)] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
               We use collected information to operate the platform, manage subscriptions and free trials, process payments and
               refunds, improve product performance, and provide customer support.
             </p>
@@ -70,7 +70,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl font-normal mb-1 xs:mb-0.5 sm:mb-0.5 text-white/90 leading-tight">
               AI & Brand Data
             </h2>
-            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
+            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[var(--color-ref-019)] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
               Your brand data, prompts, and inputs remain your property. Geoalt uses this data only to generate insights and
               does not sell or publicly train AI models on private customer data.
             </p>
@@ -81,7 +81,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl font-normal mb-1 xs:mb-0.5 sm:mb-0.5 text-white/90 leading-tight">
               Data Sharing
             </h2>
-            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
+            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[var(--color-ref-019)] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
               We may share limited data with trusted third-party providers for payment processing, analytics, and infrastructure
               services, under confidentiality obligations.
             </p>
@@ -92,7 +92,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl font-normal mb-1 xs:mb-0.5 sm:mb-0.5 text-white/90 leading-tight">
               Data Security
             </h2>
-            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
+            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[var(--color-ref-019)] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
               We use reasonable technical and organizational safeguards to protect your data. No system can be guaranteed
               100% secure.
             </p>
@@ -103,7 +103,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl font-normal mb-1 xs:mb-0.5 sm:mb-0.5 text-white/90 leading-tight">
               Data Retention
             </h2>
-            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
+            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[var(--color-ref-019)] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
               We retain data only for as long as your account is active or as required by law.
             </p>
           </section>
@@ -113,7 +113,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl font-normal mb-1 xs:mb-0.5 sm:mb-0.5 text-white/90 leading-tight">
               Your Rights
             </h2>
-            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
+            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[var(--color-ref-019)] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
               You may request access, correction, or deletion of your data by contacting <a href="mailto:contact@geoalt.in" className="text-white hover:text-white/80 underline break-all">contact@geoalt.in</a>.
             </p>
           </section>
@@ -123,7 +123,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl font-normal mb-1 xs:mb-0.5 sm:mb-0.5 text-white/90 leading-tight">
               Children&apos;s Privacy
             </h2>
-            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
+            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[var(--color-ref-019)] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
               Geoalt is not intended for individuals under the age of 18.
             </p>
           </section>
@@ -133,7 +133,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl font-normal mb-1 xs:mb-0.5 sm:mb-0.5 text-white/90 leading-tight">
               Policy Updates
             </h2>
-            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[#898989] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
+            <p className="text-xs xs:text-sm sm:text-base md:text-base text-[var(--color-ref-019)] md:leading-normal xs:leading-[1.2] mt-1 xs:mt-0.5 sm:mt-0.5 mb-2 xs:mb-3 sm:mb-4 md:mb-4">
               We may update this Privacy Policy from time to time. Continued use of the Service means acceptance of the
               updated policy.
             </p>

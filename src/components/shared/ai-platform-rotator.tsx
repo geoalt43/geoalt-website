@@ -115,8 +115,8 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
       } ${isVisible ? 'animate-fadeIn' : 'animate-fadeOut'} ${
         variant === 'muted'
           ? isBlurring
-            ? 'filter-muted-blur text-[#2b2b2b]'
-            : 'filter-muted-base text-[#2b2b2b]'
+            ? 'filter-muted-blur text-[var(--color-ref-010)]'
+            : 'filter-muted-base text-[var(--color-ref-010)]'
           : isBlurring
               ? 'filter-default-blur text-white'
               : 'filter-none text-white'
@@ -146,7 +146,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
       {current.name && !current.hasText && (
         <span
           className={`h-[20px] sm:h-[24px] md:h-[26px] lg:h-[30px] flex items-center text-sm sm:text-base md:text-lg lg:text-3xl xl:text-4xl font-medium leading-tight tracking-tight whitespace-nowrap ${
-            variant === 'muted' ? 'text-[#2b2b2b]' : 'text-white'
+            variant === 'muted' ? 'text-[var(--color-ref-010)]' : 'text-white'
           }`}
         >
           {current.name}
@@ -162,8 +162,8 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
         <div className="absolute inset-0 overflow-hidden -z-10">
           {/* Animated lines */}
           <div className="absolute inset-0 flex flex-col items-center pointer-events-none">
-            {/* <div className="absolute top-[0%] w-full max-w-[100px] sm:max-w-[140px] md:max-w-[160px] lg:max-w-[240px] xl:max-w-[300px] h-px bg-gradient-to-r from-transparent via-[#828282] to-transparent opacity-30 animate-pulse"></div> */}
-            {/* <div className="absolute top-[37%] w-full max-w-[100px] sm:max-w-[140px] md:max-w-[160px] lg:max-w-[240px] xl:max-w-[300px] h-px bg-gradient-to-r from-transparent via-[#828282] to-transparent opacity-25 animate-pulse animation-delay-1500"></div> */}
+            {/* <div className="absolute top-[0%] w-full max-w-[100px] sm:max-w-[140px] md:max-w-[160px] lg:max-w-[240px] xl:max-w-[300px] h-px bg-gradient-to-r from-transparent via-[var(--color-ref-018)] to-transparent opacity-30 animate-pulse"></div> */}
+            {/* <div className="absolute top-[37%] w-full max-w-[100px] sm:max-w-[140px] md:max-w-[160px] lg:max-w-[240px] xl:max-w-[300px] h-px bg-gradient-to-r from-transparent via-[var(--color-ref-018)] to-transparent opacity-25 animate-pulse animation-delay-1500"></div> */}
           </div>
           
           {/* Subtle grid pattern */}

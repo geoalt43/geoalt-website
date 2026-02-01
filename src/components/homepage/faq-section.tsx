@@ -27,10 +27,10 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
       variants={cardVariantsSmooth}
       initial="hidden"
       animate={cardInView ? 'visible' : 'hidden'}
-      className={`bg-black border-b ${colorClasses.borderGray} shadow-sm faq-card-partial-borders rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl overflow-hidden relative cursor-pointer`}
+      className={`bg-[var(--color-ref-001)] border-b ${colorClasses.borderGray} shadow-sm faq-card-partial-borders rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl overflow-hidden relative cursor-pointer`}
       whileHover={{
-        backgroundColor: 'rgba(20, 20, 20, 1)',
-        borderColor: 'rgba(120, 120, 120, 0.6)',
+        backgroundColor: 'var(--color-ref-005)',
+        borderColor: 'var(--color-ref-031)',
         transition: { duration: 0.4, ease: 'easeInOut' }
       }}
     >

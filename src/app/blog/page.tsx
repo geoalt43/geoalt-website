@@ -16,7 +16,7 @@ export default function BlogPage() {
     const posts = getAllPosts()
 
     return (
-        <div className="bg-brand-black min-h-screen flex flex-col relative overflow-hidden">
+        <div className="bg-[var(--color-ref-001)] min-h-screen flex flex-col relative overflow-hidden">
             <Navbar />
 
             {/* Background Decorations */}
@@ -27,15 +27,15 @@ export default function BlogPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
                     {/* Hero Section */}
                     <div className="text-center mb-20 relative">
-                        <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
+                        <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/10 bg-[var(--color-ref-008)] backdrop-blur-md">
                             <span className="text-sm font-medium bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                                 The GEOAlt Blog
                             </span>
                         </div>
-                        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+                        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-[var(--color-ref-026)] mb-6 tracking-tight">
                             Latest <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">Insights</span>
                         </h1>
-                        <p className={`text-lg sm:text-x l ${colorClasses.textSecondary} max-w-2xl mx-auto leading-relaxed`}>
+                        <p className={`text-lg sm:text-xl ${colorClasses.textSecondary} max-w-2xl mx-auto leading-relaxed`}>
                             Expert analysis on Generative Engine Optimization, AI search trends, and the future of digital visibility.
                         </p>
                     </div>
@@ -63,7 +63,7 @@ export default function BlogPage() {
                                             </span>
                                             <span className="text-gray-400">{format(new Date(post.date), 'MMMM d, yyyy')}</span>
                                         </div>
-                                        <h2 className="font-bold text-white mb-4 group-hover:text-blue-400 transition-colors text-xl md:text-2xl">
+                                        <h2 className="font-bold text-[var(--color-ref-026)] mb-4 group-hover:text-blue-400 transition-colors text-xl md:text-2xl">
                                             {post.title}
                                         </h2>
                                         <p className={`${colorClasses.textMuted} flex-grow leading-relaxed text-base md:text-lg line-clamp-3`}>
@@ -80,7 +80,7 @@ export default function BlogPage() {
                                                 />
                                                 <span className="text-sm font-medium text-gray-300">{post.author}</span>
                                             </div>
-                                            <span className="flex items-center gap-2 text-sm font-semibold text-white group-hover:text-blue-400 transition-colors">
+                                            <span className="flex items-center gap-2 text-sm font-semibold text-[var(--color-ref-026)] group-hover:text-blue-400 transition-colors">
                                                 Read Article
                                                 <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -138,13 +138,13 @@ export default function BlogPage() {
                     )}
 
                     {posts.length === 0 && (
-                        <div className="col-span-full text-center py-32 bg-white/5 rounded-3xl border border-white/10 backdrop-blur-sm">
+                        <div className="col-span-full text-center py-32 bg-[var(--color-ref-008)] rounded-3xl border border-white/10 backdrop-blur-sm">
                             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 mb-4">
                                 <svg className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                                 </svg>
                             </div>
-                            <p className="text-white text-xl font-medium mb-2">No posts found</p>
+                            <p className="text-[var(--color-ref-026)] text-xl font-medium mb-2">No posts found</p>
                             <p className="text-gray-400">We&apos;re working on some fresh content. Check back soon!</p>
                         </div>
                     )}

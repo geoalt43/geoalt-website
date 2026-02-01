@@ -104,14 +104,14 @@ export function TestimonialsCarousel() {
             <motion.div
               key={`${testimonial.name}-${index}`}
               variants={cardVariantsSmooth}
-              className="bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 shadow-lg min-h-[168px] sm:min-h-0 sm:h-full flex flex-col relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
+              className="bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 shadow-lg min-h-[168px] sm:min-h-0 sm:h-full flex flex-col relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)]"
             >
               {/* Background glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
               
               <div className="relative flex-1 flex flex-col">
                 <div className="relative mb-2.5 sm:mb-3 md:mb-3">
-                  <p className="text-[#898989] text-xs sm:text-sm md:text-base leading-relaxed font-normal relative z-10">
+                  <p className="text-[var(--color-ref-019)] text-xs sm:text-sm md:text-base leading-relaxed font-normal relative z-10">
                     &ldquo;{testimonial.quote}&rdquo;
                   </p>
                 </div>

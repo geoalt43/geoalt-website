@@ -1,7 +1,6 @@
 'use client'
 
 import { AIPlatformRotator } from '@/components/shared/ai-platform-rotator'
-import { DemoCTA } from '@/components/shared/demo-cta'
 import Image from 'next/image'
 import { motion, useInView, useAnimation } from 'framer-motion'
 import { useRef, useEffect } from 'react'
@@ -41,7 +40,7 @@ export function HeroSection() {
               variants={headingContainerVariants}
               initial="hidden"
               animate={controls}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal mt-4 sm:mt-0 md:mt-0 leading-tight tracking-tight bg-gradient-to-r from-[#4285f4] via-[#9c27b0] to-[#ea4335] bg-clip-text text-transparent"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal mt-4 sm:mt-0 md:mt-0 leading-tight tracking-tight bg-gradient-to-r from-[var(--color-ref-011)] via-[var(--color-ref-021)] to-[var(--color-ref-025)] bg-clip-text text-transparent"
             >
               {words.map((word, index) => (
                 <motion.span

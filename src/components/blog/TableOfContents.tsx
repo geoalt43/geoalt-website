@@ -43,7 +43,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
     if (headings.length === 0) return null
 
     return (
-        <nav className="border p-6 rounded-xl border-[#1e1e1e] pr-8">
+        <nav className="border p-6 rounded-xl border-[var(--color-ref-007)] pr-8">
             <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
                 On this page
             </h4>

@@ -28,7 +28,7 @@ export function DemoCTA({
   const baseClasses = 'inline-flex items-center justify-center rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none'
 
   const variants = {
-    outline: 'border-2 border-gray-600 text-white hover:bg-[#d4d4d4] hover:text-black transition-all duration-200 ease-in-out',
+    outline: 'border-2 border-gray-600 text-white hover:bg-[var(--color-ref-024)] hover:text-black transition-all duration-200 ease-in-out',
     ghost: 'text-white hover:bg-gray-800',
   }
 

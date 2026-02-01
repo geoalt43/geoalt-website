@@ -131,7 +131,7 @@ export function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 overflow-x-hidden ${
       isScrolled 
-        ? "bg-brand-black/90 backdrop-blur-sm border-b border-[#1d1d1d]" 
+        ? "bg-brand-black/90 backdrop-blur-sm border-b border-[var(--color-ref-006)]" 
         : "bg-transparent border-b border-transparent"
     }`}>
       {!isScrolled && (
@@ -163,26 +163,26 @@ export function Navbar() {
             <Link
               href="/"
               onClick={handleHomeClick}
-              className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
+              className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[var(--color-ref-023)] hover:border-[var(--color-ref-012)] hover:bg-[var(--color-ref-012)] hover:text-white transition-all duration-150 ease-out"
             >
               Home
             </Link>
             <Link
               href="/pricing"
-              className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
+              className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[var(--color-ref-023)] hover:border-[var(--color-ref-012)] hover:bg-[var(--color-ref-012)] hover:text-white transition-all duration-150 ease-out"
             >
               Pricing
             </Link>
             <Link
               href="/#features"
               onClick={handleFeaturesClick}
-              className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
+              className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[var(--color-ref-023)] hover:border-[var(--color-ref-012)] hover:bg-[var(--color-ref-012)] hover:text-white transition-all duration-150 ease-out"
             >
               Features
             </Link>
             <Link
               href="/blog"
-              className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white transition-all duration-150 ease-out"
+              className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[var(--color-ref-023)] hover:border-[var(--color-ref-012)] hover:bg-[var(--color-ref-012)] hover:text-white transition-all duration-150 ease-out"
             >
               Blog
             </Link>
@@ -244,26 +244,26 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-[#1d1d1d] py-4">
+          <div className="md:hidden border-t border-[var(--color-ref-006)] py-4">
             <div className="flex flex-col space-y-2">
               <Link
                 href="/"
                 onClick={handleHomeClick}
-                className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white active:bg-[#5a5a5a] active:border-[#5a5a5a] active:text-white transition-all duration-150 ease-out"
+                className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[var(--color-ref-023)] hover:border-[var(--color-ref-012)] hover:bg-[var(--color-ref-012)] hover:text-white active:bg-[var(--color-ref-014)] active:border-[var(--color-ref-014)] active:text-white transition-all duration-150 ease-out"
               >
                 Home
               </Link>
               <Link
                 href="/pricing"
                 onClick={handlePricingClick}
-                className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white active:bg-[#5a5a5a] active:border-[#5a5a5a] active:text-white transition-all duration-150 ease-out"
+                className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[var(--color-ref-023)] hover:border-[var(--color-ref-012)] hover:bg-[var(--color-ref-012)] hover:text-white active:bg-[var(--color-ref-014)] active:border-[var(--color-ref-014)] active:text-white transition-all duration-150 ease-out"
               >
                 Pricing
               </Link>
               <Link
                 href="/#features"
                 onClick={handleFeaturesClick}
-                className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[#afafaf] hover:border-[#4b4b4b] hover:bg-[#4b4b4b] hover:text-white active:bg-[#5a5a5a] active:border-[#5a5a5a] active:text-white transition-all duration-150 ease-out"
+                className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[var(--color-ref-023)] hover:border-[var(--color-ref-012)] hover:bg-[var(--color-ref-012)] hover:text-white active:bg-[var(--color-ref-014)] active:border-[var(--color-ref-014)] active:text-white transition-all duration-150 ease-out"
               >
                 Features
               </Link>

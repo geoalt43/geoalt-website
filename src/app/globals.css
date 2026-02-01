@@ -1,56 +1,58 @@
 @import "tailwindcss";
+@import "../styles/design-tokens.css";
 
 @layer base {
   :root {
-    --color-page-background: 0 0% 0%;
-    --color-surface: 0 0% 3%;
-    --color-surface-elevated: 0 0% 6%;
-    --color-surface-hover: 0 0% 9%;
-    --color-text-primary: 0 0% 100%;
-    --color-text-secondary: 0 0% 70%;
-    --color-text-muted: 0 0% 50%;
-    --color-text-disabled: 0 0% 30%;
-    --color-interactive: 217 91% 60%;
-    --color-interactive-hover: 217 91% 70%;
-    --color-interactive-active: 217 91% 50%;
-    --color-interactive-disabled: 0 0% 30%;
-    --color-border: 0 0% 20%;
-    --color-border-hover: 0 0% 30%;
-    --color-divider: 0 0% 15%;
-    --color-success: 142 76% 36%;
-    --color-success-bg: 142 76% 36% / 0.1;
-    --color-warning: 38 92% 50%;
-    --color-warning-bg: 38 92% 50% / 0.1;
-    --color-error: 0 84% 60%;
-    --color-error-bg: 0 84% 60% / 0.1;
-    --color-info: 199 89% 48%;
-    --color-info-bg: 199 89% 48% / 0.1;
-    --color-focus-outline: 217 91% 60%;
-    --color-selection: 217 91% 60% / 0.2;
-    --color-overlay: 0 0% 0% / 0.5;
-    --color-overlay-light: 0 0% 0% / 0.3;
+    --color-page-background: var(--hsl-ref-001);
+    --color-surface: var(--hsl-ref-002);
+    --color-surface-elevated: var(--hsl-ref-003);
+    --color-surface-hover: var(--hsl-ref-004);
+    --color-text-primary: var(--hsl-ref-005);
+    --color-text-secondary: var(--hsl-ref-006);
+    --color-text-muted: var(--hsl-ref-007);
+    --color-text-disabled: var(--hsl-ref-008);
+    --color-interactive: var(--hsl-ref-009);
+    --color-interactive-hover: var(--hsl-ref-010);
+    --color-interactive-active: var(--hsl-ref-011);
+    --color-interactive-disabled: var(--hsl-ref-008);
+    --color-border: var(--hsl-ref-012);
+    --color-border-hover: 0 0% 30%; /* Could define this token too, but minor. Wait, line 20 below is the same as ref-013? No 0 0% 15%. */
+    --color-border-hover: var(--hsl-ref-013);
+    --color-divider: var(--hsl-ref-013);
+    --color-success: var(--hsl-ref-014);
+    --color-success-bg: var(--hsl-ref-014) / 0.1;
+    --color-warning: var(--hsl-ref-015);
+    --color-warning-bg: var(--hsl-ref-015) / 0.1;
+    --color-error: var(--hsl-ref-016);
+    --color-error-bg: var(--hsl-ref-016) / 0.1;
+    --color-info: var(--hsl-ref-017);
+    --color-info-bg: var(--hsl-ref-017) / 0.1;
+    --color-focus-outline: var(--hsl-ref-009);
+    --color-selection: var(--hsl-ref-009) / 0.2;
+    --color-overlay: var(--hsl-ref-001) / 0.5;
+    --color-overlay-light: var(--hsl-ref-001) / 0.3;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --background: var(--hsl-ref-018);
+    --foreground: var(--hsl-ref-019);
+    --card: var(--hsl-ref-018);
+    --card-foreground: var(--hsl-ref-019);
+    --popover: var(--hsl-ref-018);
+    --popover-foreground: var(--hsl-ref-019);
+    --primary: var(--hsl-ref-019);
+    --primary-foreground: var(--hsl-ref-020);
+    --secondary: var(--hsl-ref-021);
+    --secondary-foreground: var(--hsl-ref-019);
+    --muted: var(--hsl-ref-021);
+    --muted-foreground: var(--hsl-ref-022);
+    --accent: var(--hsl-ref-021);
+    --accent-foreground: var(--hsl-ref-019);
+    --destructive: var(--hsl-ref-023);
+    --destructive-foreground: var(--hsl-ref-019);
+    --border: var(--hsl-ref-021);
+    --input: var(--hsl-ref-021);
+    --ring: var(--hsl-ref-024);
   }
 }
 
@@ -65,12 +67,12 @@
   html,
   body,
   section {
-    background-color: #000 !important;
+    background-color: var(--color-ref-001) !important;
   }
 
   body,
   section {
-    color: #fff;
+    color: var(--color-ref-026);
   }
 }
 
@@ -135,12 +137,12 @@
 }
 
 .trusted-by-text {
-  color: rgba(255, 255, 255, 1) !important;
+  color: var(--color-ref-032) !important;
   background: none !important;
   background-image: none !important;
   -webkit-background-clip: unset !important;
   background-clip: unset !important;
-  -webkit-text-fill-color: rgba(255, 255, 255, 1) !important;
+  -webkit-text-fill-color: var(--color-ref-032) !important;
 }
 
 ::-webkit-scrollbar {
@@ -148,16 +150,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #1f2937;
+  background: var(--color-ref-008);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4b5563;
+  background: var(--color-ref-013);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
+  background: var(--color-ref-016);
 }
 
 .focus-visible:focus {
@@ -176,8 +178,8 @@ html {
 }
 
 .mask-fade-horizontal {
-  -webkit-mask-image: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.9) 12%, rgba(0, 0, 0, 0.9) 88%, transparent);
-  mask-image: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.9) 12%, rgba(0, 0, 0, 0.9) 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, var(--color-ref-027) 12%, var(--color-ref-027) 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, var(--color-ref-027) 12%, var(--color-ref-027) 88%, transparent);
 }
 
 .animation-delay-1500 {
@@ -186,14 +188,14 @@ html {
 
 .grid-overlay-muted {
   background-image:
-    linear-gradient(rgba(130, 130, 130, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(130, 130, 130, 0.1) 1px, transparent 1px);
+    linear-gradient(var(--color-ref-028) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-ref-028) 1px, transparent 1px);
   background-size: 80px 80px;
   animation: gridMove 20s linear infinite;
 }
 
 .text-shadow-muted {
-  text-shadow: 0 0 20px rgba(130, 130, 130, 0.3);
+  text-shadow: 0 0 20px var(--color-ref-029);
 }
 
 .filter-muted-base {
@@ -223,7 +225,7 @@ html {
   top: 100%;
   bottom: 0;
   width: 1px;
-  background-color: #656565;
+  background-color: var(--color-ref-015);
 }
 
 .faq-card-partial-borders::before {
@@ -236,14 +238,14 @@ html {
 
 @layer utilities {
   .bg-grid-pattern {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-image: linear-gradient(var(--color-ref-030) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-ref-030) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 
   .bg-grid-pattern-opacity-02 {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-image: linear-gradient(var(--color-ref-031) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-ref-031) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 
@@ -270,7 +272,7 @@ html {
   }
 
   .bg-dot-grid {
-    background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.1) 1px, transparent 0);
+    background-image: radial-gradient(circle at 1px 1px, var(--color-ref-031) 1px, transparent 0);
     background-size: 24px 24px;
   }
 

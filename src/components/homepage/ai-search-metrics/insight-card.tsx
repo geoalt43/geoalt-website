@@ -43,7 +43,7 @@ export function InsightCard({
         isActive ? 'border-white' : type === 'position' || type === 'sentiment' ? 'border-white/5' : 'border-transparent'
       }`}
       animate={{
-        borderLeftColor: isActive ? 'rgba(255, 255, 255, 1)' : type === 'position' || type === 'sentiment' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0)',
+        borderLeftColor: isActive ? 'var(--color-ref-014)' : type === 'position' || type === 'sentiment' ? 'var(--color-ref-008)' : 'var(--color-ref-011)',
       }}
       transition={{
         duration: 0.3,

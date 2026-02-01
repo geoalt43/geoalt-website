@@ -1,0 +1,72 @@
+:root {
+  /* Hex Colors */
+  --color-ref-001: #000;
+  --color-ref-002: #000000;
+  --color-ref-003: #090909;
+  --color-ref-004: #0a0a0a;
+  --color-ref-005: #1a1a1a;
+  --color-ref-006: #1d1d1d;
+  --color-ref-007: #1e1e1e;
+  --color-ref-008: #1f2937;
+  --color-ref-009: #272324;
+  --color-ref-010: #2b2b2b;
+  --color-ref-011: #4285f4;
+  --color-ref-012: #4b4b4b;
+  --color-ref-013: #4b5563;
+  --color-ref-014: #5a5a5a;
+  --color-ref-015: #656565;
+  --color-ref-016: #6b7280;
+  --color-ref-017: #6d6264;
+  --color-ref-018: #828282;
+  --color-ref-019: #898989;
+  --color-ref-020: #9b9b9b;
+  --color-ref-021: #9c27b0;
+  --color-ref-022: #a0a0a0;
+  --color-ref-023: #afafaf;
+  --color-ref-024: #d4d4d4;
+  --color-ref-025: #ea4335;
+  --color-ref-026: #fff;
+  
+  /* RGBA Colors */
+  --color-ref-027: rgba(0, 0, 0, 0.9);
+  --color-ref-028: rgba(130, 130, 130, 0.1);
+  --color-ref-029: rgba(130, 130, 130, 0.3);
+  --color-ref-030: rgba(255, 255, 255, 0.03);
+  --color-ref-031: rgba(255, 255, 255, 0.1);
+  --color-ref-032: rgba(255, 255, 255, 1);
+
+  /* HSL Values (for Semantic Tokens) */
+  --hsl-ref-001: 0 0% 0%;
+  --hsl-ref-002: 0 0% 3%;
+  --hsl-ref-003: 0 0% 6%;
+  --hsl-ref-004: 0 0% 9%;
+  --hsl-ref-005: 0 0% 100%;
+  --hsl-ref-006: 0 0% 70%;
+  --hsl-ref-007: 0 0% 50%;
+  --hsl-ref-008: 0 0% 30%;
+  --hsl-ref-009: 217 91% 60%;
+  --hsl-ref-010: 217 91% 70%;
+  --hsl-ref-011: 217 91% 50%;
+  --hsl-ref-012: 0 0% 20%;
+  --hsl-ref-013: 0 0% 15%;
+  --hsl-ref-014: 142 76% 36%;
+  --hsl-ref-015: 38 92% 50%;
+  --hsl-ref-016: 0 84% 60%;
+  --hsl-ref-017: 199 89% 48%;
+  --hsl-ref-018: 222.2 84% 4.9%;
+  --hsl-ref-019: 210 40% 98%;
+  --hsl-ref-020: 222.2 47.4% 11.2%;
+  --hsl-ref-021: 217.2 32.6% 17.5%;
+  --hsl-ref-022: 215 20.2% 65.1%;
+  --hsl-ref-023: 0 62.8% 30.6%;
+  --hsl-ref-024: 212.7 26.8% 83.9%;
+  
+  /* Shadow Colors */
+  --color-ref-033: rgba(0, 0, 0, 0.4);
+  --color-ref-034: rgba(0, 0, 0, 0.3);
+  --color-ref-035: rgba(0, 0, 0, 0.1);
+  --color-ref-036: rgba(0, 0, 0, 0.06);
+
+  /* Raw RGB Values (for dynamic alpha) */
+  --rgb-ref-001: 255, 255, 255;
+}

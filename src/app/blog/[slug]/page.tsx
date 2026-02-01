@@ -167,7 +167,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </header>
 
 
-            <main className="flex-grow pb-20 bg-black z-10 pt-8 border-t border-[#1e1e1e]">
+            <main className="flex-grow pb-20 bg-black z-10 pt-8 border-t border-[var(--color-ref-007)]">
                 <div className="max-w-[70rem] mx-auto px-4 sm:px-6 md:px-8 flex lg:gap-12 relative">
 
                     <div className="lg:hidden">
@@ -275,7 +275,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </div>
 
             </main>
-            <main className="flex-grow pb-20 backdrop-blur-xs z-10 pt-8 border-t border-[#1e1e1e]">
+            <main className="flex-grow pb-20 backdrop-blur-xs z-10 pt-8 border-t border-[var(--color-ref-007)]">
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
                     <div className="flex items-center gap-4 mb-12">

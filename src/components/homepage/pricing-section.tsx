@@ -8,7 +8,7 @@ import { colorClasses } from '@/constants/colors'
 import { triggerBookDemoEvent, triggerStartTrialEvent } from '@/lib/mixpanel'
 
 const CheckIcon = () => (
-  <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-white/40 text-white text-xs font-semibold">
+  <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-white/40 text-[var(--color-ref-026)] text-xs font-semibold">
     ✓
   </span>
 )
@@ -197,7 +197,7 @@ export function PricingSection() {
               <button
                 onClick={() => setIsYearly(false)}
                 className={`px-2.5 sm:px-3.5 md:px-4 py-1 sm:py-1.5 md:py-1.5 rounded-full text-[10px] sm:text-xs md:text-xs font-medium transition-all duration-300 cursor-pointer ${!isYearly
-                  ? 'bg-white text-black'
+                  ? 'bg-[var(--color-ref-026)] text-[var(--color-ref-002)]'
                   : 'text-white/70 hover:text-white'
                   }`}
               >
@@ -206,7 +206,7 @@ export function PricingSection() {
               <button
                 onClick={() => setIsYearly(true)}
                 className={`px-2.5 sm:px-3.5 md:px-4 py-1 sm:py-1.5 md:py-1.5 rounded-full text-[10px] sm:text-xs md:text-xs font-medium transition-all duration-300 cursor-pointer ${isYearly
-                  ? 'bg-white text-black'
+                  ? 'bg-[var(--color-ref-026)] text-[var(--color-ref-002)]'
                   : 'text-white/70 hover:text-white'
                   }`}
               >

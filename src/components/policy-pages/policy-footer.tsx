@@ -18,7 +18,7 @@ export function PolicyFooter() {
                 priority
               />
             </div>
-            <p className="mt-3 sm:mt-4 md:mt-5 text-[10px] sm:text-xs md:text-sm text-[#898989] leading-relaxed">
+            <p className="mt-3 sm:mt-4 md:mt-5 text-[10px] sm:text-xs md:text-sm text-[var(--color-ref-020)] leading-relaxed">
               Turn AI mentions into traffic and customers. Dominate AI search and grow your brand faster.
             </p>
             <div className="mt-4 sm:mt-6 md:mt-7 flex space-x-3 sm:space-x-4 md:space-x-5">
@@ -26,7 +26,7 @@ export function PolicyFooter() {
                 href="https://www.linkedin.com/company/geo-alt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#898989] hover:text-white transition-colors"
+                className="text-[var(--color-ref-020)] hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
                 <svg className="h-4 w-4 sm:h-4 sm:w-4 md:h-5 md:w-5" fill="currentColor" viewBox="0 0 20 20">
@@ -37,7 +37,7 @@ export function PolicyFooter() {
                 href="https://x.com/geoalt_official"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#898989] hover:text-white transition-colors"
+                className="text-[var(--color-ref-020)] hover:text-white transition-colors"
                 aria-label="Twitter"
               >
                 <svg className="h-4 w-4 sm:h-4 sm:w-4 md:h-5 md:w-5" fill="currentColor" viewBox="0 0 20 20">
@@ -47,7 +47,7 @@ export function PolicyFooter() {
             </div>
             <a
               href="mailto:contact@geoalt.in"
-              className="mt-3 sm:mt-4 md:mt-5 text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none block break-all"
+              className="mt-3 sm:mt-4 md:mt-5 text-[9px] sm:text-xs md:text-sm text-[var(--color-ref-020)] hover:text-white transition-none block break-all"
             >
               contact@geoalt.in
             </a>
@@ -60,12 +60,12 @@ export function PolicyFooter() {
             </h3>
             <ul className="mt-3 sm:mt-4 md:mt-5 space-y-2 sm:space-y-3 md:space-y-4">
               <li>
-                <Link href="/#features" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/#features" className="text-[9px] sm:text-xs md:text-sm text-[var(--color-ref-019)] hover:text-white transition-none">
                   Features
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" className="text-[9px] sm:text-xs md:text-sm text-[var(--color-ref-019)] hover:text-white transition-none">
                   API
                 </Link>
               </li>
@@ -79,17 +79,17 @@ export function PolicyFooter() {
             </h3>
             <ul className="mt-3 sm:mt-4 md:mt-5 space-y-2 sm:space-y-3 md:space-y-4">
               <li>
-                <Link href="/" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" className="text-[9px] sm:text-xs md:text-sm text-[var(--color-ref-019)] hover:text-white transition-none">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/blog" className="text-[9px] sm:text-xs md:text-sm text-[var(--color-ref-019)] hover:text-white transition-none">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" className="text-[9px] sm:text-xs md:text-sm text-[var(--color-ref-019)] hover:text-white transition-none">
                   Careers
                 </Link>
               </li>
@@ -103,17 +103,17 @@ export function PolicyFooter() {
             </h3>
             <ul className="mt-3 sm:mt-4 md:mt-5 space-y-2 sm:space-y-3 md:space-y-4">
               <li>
-                <Link href="/" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" className="text-[9px] sm:text-xs md:text-sm text-[var(--color-ref-019)] hover:text-white transition-none">
                   Documentation
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" className="text-[9px] sm:text-xs md:text-sm text-[var(--color-ref-019)] hover:text-white transition-none">
                   Help Center
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/" className="text-[9px] sm:text-xs md:text-sm text-[var(--color-ref-019)] hover:text-white transition-none">
                   Contact
                 </Link>
               </li>
@@ -127,17 +127,17 @@ export function PolicyFooter() {
             </h3>
             <ul className="mt-3 sm:mt-4 md:mt-5 space-y-2 sm:space-y-3 md:space-y-4">
               <li>
-                <Link href="/privacy-policy" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/privacy-policy" className="text-[9px] sm:text-xs md:text-sm text-[var(--color-ref-019)] hover:text-white transition-none">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms-of-service" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/terms-of-service" className="text-[9px] sm:text-xs md:text-sm text-[var(--color-ref-020)] hover:text-white transition-none">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="/cookie-policy" className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none">
+                <Link href="/cookie-policy" className="text-[9px] sm:text-xs md:text-sm text-[var(--color-ref-020)] hover:text-white transition-none">
                   Cookie Policy
                 </Link>
               </li>
@@ -147,11 +147,11 @@ export function PolicyFooter() {
       </div>
 
       {/* Bottom */}
-      <div className="w-full h-px bg-[#272324]"></div>
+      <div className="w-full h-px bg-[var(--color-ref-010)]"></div>
       <div className="pt-6 sm:pt-8 md:pt-10 pb-5 sm:pb-6 md:pb-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 xl:px-10">
           <div className="flex flex-wrap justify-between items-center gap-4 sm:gap-6 md:gap-8">
-            <p className="text-[9px] sm:text-xs md:text-sm flex items-center gap-2 text-[#6d6264]">
+            <p className="text-[9px] sm:text-xs md:text-sm flex items-center gap-2 text-[var(--color-ref-018)]">
               <span>&copy; 2025</span>
               <span className="inline-flex items-center leading-none">
                 <Image
@@ -166,25 +166,25 @@ export function PolicyFooter() {
             <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
               <Link
                 href="/privacy-policy"
-                className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none whitespace-nowrap"
+                className="text-[9px] sm:text-xs md:text-sm text-[var(--color-ref-020)] hover:text-white transition-none whitespace-nowrap"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms-of-service"
-                className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none whitespace-nowrap"
+                className="text-[9px] sm:text-xs md:text-sm text-[var(--color-ref-020)] hover:text-white transition-none whitespace-nowrap"
               >
                 Terms of Service
               </Link>
               <Link
                 href="/refund-policy"
-                className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none whitespace-nowrap"
+                className="text-[9px] sm:text-xs md:text-sm text-[var(--color-ref-020)] hover:text-white transition-none whitespace-nowrap"
               >
                 Refund Policy
               </Link>
               <Link
                 href="/cookie-policy"
-                className="text-[9px] sm:text-xs md:text-sm text-[#898989] hover:text-white transition-none whitespace-nowrap"
+                className="text-[9px] sm:text-xs md:text-sm text-[var(--color-ref-020)] hover:text-white transition-none whitespace-nowrap"
               >
                 Cookie Policy
               </Link>

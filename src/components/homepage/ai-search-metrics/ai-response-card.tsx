@@ -134,7 +134,7 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
 
   return (
         <div
-          className="bg-[#050505] border border-transparent rounded-lg shadow-2xl shadow-black/40 p-4 sm:p-6 lg:p-8 mt-4 relative overflow-hidden"
+          className="bg-[var(--color-ref-003)] border border-transparent rounded-lg shadow-2xl shadow-[var(--color-ref-036)] p-4 sm:p-6 lg:p-8 mt-4 relative overflow-hidden"
         >
           <div className="absolute inset-0 pointer-events-none z-[5] overflow-hidden">
             <AnimatePresence>
@@ -151,10 +151,10 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
           </div>
           {/* Fade Effects on Edges */}
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[#050505] to-transparent"></div>
-            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#050505] to-transparent"></div>
-            <div className="absolute top-0 bottom-0 left-0 w-20 bg-gradient-to-r from-[#050505] to-transparent"></div>
-            <div className="absolute top-0 bottom-0 right-0 w-20 bg-gradient-to-l from-[#050505] to-transparent"></div>
+            <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-[var(--color-ref-003)] to-transparent"></div>
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[var(--color-ref-003)] to-transparent"></div>
+            <div className="absolute top-0 bottom-0 left-0 w-20 bg-gradient-to-r from-[var(--color-ref-003)] to-transparent"></div>
+            <div className="absolute top-0 bottom-0 right-0 w-20 bg-gradient-to-l from-[var(--color-ref-003)] to-transparent"></div>
           </div>
           <div className="relative z-20">
       {/* Question */}
@@ -185,7 +185,7 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
               </div>
               
               {/* Question Text */}
-              <span className="text-[#9b9b9b] text-xs sm:text-sm md:text-sm min-w-0 leading-tight sm:leading-normal md:leading-normal break-words text-right border border-white/20 rounded-full px-3 sm:px-4 md:px-4 py-2 sm:py-2.5 md:py-2.5">{data.question}</span>
+              <span className="text-[var(--color-ref-021)] text-xs sm:text-sm md:text-sm min-w-0 leading-tight sm:leading-normal md:leading-normal break-words text-right border border-white/20 rounded-full px-3 sm:px-4 md:px-4 py-2 sm:py-2.5 md:py-2.5">{data.question}</span>
             </div>
           </div>
         </div>
@@ -210,10 +210,10 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
                     <CompanyName name={company.name} size="lg" />
                   </div>
                   {activeType === 'position' && (
-                    <span className="text-xs uppercase tracking-wide text-[#898989] font-normal flex-shrink-0">#{company.rank}</span>
+                    <span className="text-xs uppercase tracking-wide text-[var(--color-ref-020)] font-normal flex-shrink-0">#{company.rank}</span>
                   )}
                 </div>
-                <p className="text-xs sm:text-sm md:text-sm text-[#898989] leading-relaxed font-normal break-words">
+                <p className="text-xs sm:text-sm md:text-sm text-[var(--color-ref-020)] leading-relaxed font-normal break-words">
                   {highlightedParts.map((part, i) => {
                     if (part.type === 'positive') {
                       return (

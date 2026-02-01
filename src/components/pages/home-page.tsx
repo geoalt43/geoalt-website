@@ -103,7 +103,7 @@ function EmpoweringBusinessesSection() {
           {/* Marketing Teams Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-[calc(50%-0.5rem)] max-w-none mx-auto' : ''}`}
+            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-[calc(50%-0.5rem)] max-w-none mx-auto' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -134,7 +134,7 @@ function EmpoweringBusinessesSection() {
           {/* Content Creators Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
+            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -161,7 +161,7 @@ function EmpoweringBusinessesSection() {
           {/* SEO Specialists Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
+            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
@@ -203,8 +203,8 @@ function AnimatedGridBackground() {
         className="absolute inset-0"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(255, 255, 255, ${lineOpacity}) ${lineThickness}px, transparent ${lineThickness}px),
-            linear-gradient(90deg, rgba(255, 255, 255, ${lineOpacity}) ${lineThickness}px, transparent ${lineThickness}px)
+            linear-gradient(rgba(var(--rgb-ref-001), ${lineOpacity}) ${lineThickness}px, transparent ${lineThickness}px),
+            linear-gradient(90deg, rgba(var(--rgb-ref-001), ${lineOpacity}) ${lineThickness}px, transparent ${lineThickness}px)
           `,
           backgroundSize: `${gridSize}px ${gridSize}px`,
         }}
@@ -215,8 +215,8 @@ function AnimatedGridBackground() {
         className="absolute inset-0"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(255, 255, 255, ${lineOpacity * 0.58}) ${lineThickness}px, transparent ${lineThickness}px),
-            linear-gradient(90deg, rgba(255, 255, 255, ${lineOpacity * 0.48}) ${lineThickness}px, transparent ${lineThickness}px)
+            linear-gradient(rgba(var(--rgb-ref-001), ${lineOpacity * 0.58}) ${lineThickness}px, transparent ${lineThickness}px),
+            linear-gradient(90deg, rgba(var(--rgb-ref-001), ${lineOpacity * 0.48}) ${lineThickness}px, transparent ${lineThickness}px)
           `,
           backgroundSize: `${gridSize * 10}px ${gridSize * 10}px`,
         }}
