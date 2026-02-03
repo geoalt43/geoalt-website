@@ -3,37 +3,132 @@
 
 @layer base {
   :root {
-    --color-page-background: var(--hsl-ref-001);
-    --color-surface: var(--hsl-ref-002);
-    --color-surface-elevated: var(--hsl-ref-003);
-    --color-surface-hover: var(--hsl-ref-004);
-    --color-text-primary: var(--hsl-ref-005);
-    --color-text-secondary: var(--hsl-ref-006);
-    --color-text-muted: var(--hsl-ref-007);
-    --color-text-disabled: var(--hsl-ref-008);
-    --color-interactive: var(--hsl-ref-009);
-    --color-interactive-hover: var(--hsl-ref-010);
-    --color-interactive-active: var(--hsl-ref-011);
-    --color-interactive-disabled: var(--hsl-ref-008);
-    --color-border: var(--hsl-ref-012);
-    --color-border-hover: 0 0% 30%; /* Could define this token too, but minor. Wait, line 20 below is the same as ref-013? No 0 0% 15%. */
-    --color-border-hover: var(--hsl-ref-013);
-    --color-divider: var(--hsl-ref-013);
-    --color-success: var(--hsl-ref-014);
-    --color-success-bg: var(--hsl-ref-014) / 0.1;
-    --color-warning: var(--hsl-ref-015);
-    --color-warning-bg: var(--hsl-ref-015) / 0.1;
-    --color-error: var(--hsl-ref-016);
-    --color-error-bg: var(--hsl-ref-016) / 0.1;
-    --color-info: var(--hsl-ref-017);
-    --color-info-bg: var(--hsl-ref-017) / 0.1;
-    --color-focus-outline: var(--hsl-ref-009);
-    --color-selection: var(--hsl-ref-009) / 0.2;
-    --color-overlay: var(--hsl-ref-001) / 0.5;
-    --color-overlay-light: var(--hsl-ref-001) / 0.3;
+    /* ========================================
+       DEFAULT THEME (Dark Mode)
+       These are the fallback values when no theme class is applied.
+       ======================================== */
+    
+    /* Page & Surface Colors */
+    --color-page-background: hsl(var(--hsl-ref-001));
+    --color-surface: hsl(var(--hsl-ref-002));
+    --color-surface-elevated: hsl(var(--hsl-ref-003));
+    --color-surface-hover: hsl(var(--hsl-ref-004));
+    --color-card-bg: rgba(0, 0, 0, 0.6); /* Dark theme card background */
+    --color-button-bg: #ffffff; /* Dark theme button/card accent background */
+    --color-footer-bg: hsl(var(--hsl-ref-001)); /* Dark theme footer background */
+    --color-faq-card-hover: hsl(var(--hsl-ref-004)); /* Dark theme FAQ card hover */
+    --color-recommended-bg: hsl(var(--hsl-ref-004)); /* Dark theme recommended banner bg */
+    --color-recommended-text: hsl(var(--hsl-ref-005)); /* Dark theme recommended banner text */
+    --color-pricing-toggle-bg: #0a0a0a; /* Dark theme pricing toggle bg */
+    
+    /* Text Colors */
+    --color-text-primary: hsl(var(--hsl-ref-005));
+    --color-text-secondary: hsl(var(--hsl-ref-006));
+    --color-text-muted: hsl(var(--hsl-ref-007));
+    --color-text-disabled: hsl(var(--hsl-ref-008));
+    --color-text-heading: hsl(var(--hsl-ref-005));
+    --color-text-description: hsl(var(--hsl-ref-006)); /* Description/subheading text */
+    --color-text-feature: hsl(var(--hsl-ref-006)); /* Pricing features text */
+    
+    /* Interactive Colors */
+    --color-interactive: hsl(var(--hsl-ref-009));
+    --color-interactive-hover: hsl(var(--hsl-ref-010));
+    --color-interactive-active: hsl(var(--hsl-ref-011));
+    --color-interactive-disabled: hsl(var(--hsl-ref-008));
+    
+    /* Border Colors */
+    --color-border: hsl(var(--hsl-ref-012));
+    --color-border-hover: hsl(var(--hsl-ref-013));
+    --color-divider: hsl(var(--hsl-ref-013));
+    --border: var(--hsl-ref-012);
+    --color-recommended-border-bottom: transparent; /* Dark theme - no bottom border */
+    
+    /* Status Colors */
+    --color-success: hsl(var(--hsl-ref-014));
+    --color-success-bg: hsl(var(--hsl-ref-014) / 0.1);
+    --color-warning: hsl(var(--hsl-ref-015));
+    --color-warning-bg: hsl(var(--hsl-ref-015) / 0.1);
+    --color-error: hsl(var(--hsl-ref-016));
+    --color-error-bg: hsl(var(--hsl-ref-016) / 0.1);
+    --color-info: hsl(var(--hsl-ref-017));
+    --color-info-bg: hsl(var(--hsl-ref-017) / 0.1);
+    
+    /* Utility Colors */
+    --color-focus-outline: hsl(var(--hsl-ref-009));
+    --color-selection: hsl(var(--hsl-ref-009) / 0.2);
+    --color-overlay: hsl(var(--hsl-ref-001) / 0.5);
+    --color-overlay-light: hsl(var(--hsl-ref-001) / 0.3);
+    
+    /* Grid/Dot Patterns */
+    --color-dot: var(--color-ref-031);
+    --color-grid: var(--color-ref-030);
+    --color-grid-strong: var(--color-ref-031);
   }
 
+  /* ========================================
+     DARK THEME (Explicit)
+     Explicitly defines all tokens for clarity.
+     ======================================== */
   .dark {
+    /* Page & Surface Colors - same as :root */
+    --color-page-background: hsl(var(--hsl-ref-001));
+    --color-surface: hsl(var(--hsl-ref-002));
+    --color-surface-elevated: hsl(var(--hsl-ref-003));
+    --color-surface-hover: hsl(var(--hsl-ref-004));
+    --color-card-bg: rgba(0, 0, 0, 0.6); /* Dark theme card background */
+    --color-button-bg: #ffffff; /* Dark theme button/card accent background */
+    --color-footer-bg: hsl(var(--hsl-ref-001)); /* Dark theme footer background */
+    --color-faq-card-hover: hsl(var(--hsl-ref-004)); /* Dark theme FAQ card hover */
+    --color-recommended-bg: hsl(var(--hsl-ref-004)); /* Dark theme recommended banner bg */
+    --color-recommended-text: hsl(var(--hsl-ref-005)); /* Dark theme recommended banner text */
+    --color-pricing-toggle-bg: #0a0a0a; /* Dark theme pricing toggle bg */
+    --blog-card-bg: #1d1d1d; /* Dark theme blog card background */
+    --blog-card-border: #242424; /* Dark theme blog card border */
+    --blog-card-border-hover: #333333; /* Dark theme blog card hover border */
+    
+    /* Text Colors */
+    --color-text-primary: hsl(var(--hsl-ref-005));
+    --color-text-secondary: hsl(var(--hsl-ref-006));
+    --color-text-muted: hsl(var(--hsl-ref-007));
+    --color-text-disabled: hsl(var(--hsl-ref-008));
+    --color-text-heading: hsl(var(--hsl-ref-005));
+    --color-text-button: hsl(var(--hsl-ref-001)); /* Black text on white button in dark mode */
+    
+    /* Interactive Colors */
+    --color-interactive: hsl(var(--hsl-ref-009));
+    --color-interactive-hover: hsl(var(--hsl-ref-010));
+    --color-interactive-active: hsl(var(--hsl-ref-011));
+    --color-interactive-disabled: hsl(var(--hsl-ref-008));
+    
+    /* Border Colors */
+    --color-border: hsl(var(--hsl-ref-025)); /* #242424 */
+    --color-border-hover: hsl(var(--hsl-ref-013));
+    --color-divider: hsl(var(--hsl-ref-013));
+    --border: var(--hsl-ref-025);
+    --color-recommended-border-bottom: transparent; /* Dark theme - no bottom border */
+    
+    /* Status Colors */
+    --color-success: hsl(var(--hsl-ref-014));
+    --color-success-bg: hsl(var(--hsl-ref-014) / 0.1);
+    --color-warning: hsl(var(--hsl-ref-015));
+    --color-warning-bg: hsl(var(--hsl-ref-015) / 0.1);
+    --color-error: hsl(var(--hsl-ref-016));
+    --color-error-bg: hsl(var(--hsl-ref-016) / 0.1);
+    --color-info: hsl(var(--hsl-ref-017));
+    --color-info-bg: hsl(var(--hsl-ref-017) / 0.1);
+    
+    /* Utility Colors */
+    --color-focus-outline: hsl(var(--hsl-ref-009));
+    --color-selection: hsl(var(--hsl-ref-009) / 0.2);
+    --color-overlay: hsl(var(--hsl-ref-001) / 0.5);
+    --color-overlay-light: hsl(var(--hsl-ref-001) / 0.3);
+    
+    /* Grid/Dot Patterns */
+    --color-dot: var(--color-ref-031);
+    --color-grid: var(--color-ref-030);
+    --color-grid-strong: var(--color-ref-031);
+    
+    /* shadcn/ui Tokens */
     --background: var(--hsl-ref-018);
     --foreground: var(--hsl-ref-019);
     --card: var(--hsl-ref-018);
@@ -50,29 +145,111 @@
     --accent-foreground: var(--hsl-ref-019);
     --destructive: var(--hsl-ref-023);
     --destructive-foreground: var(--hsl-ref-019);
-    --border: var(--hsl-ref-021);
     --input: var(--hsl-ref-021);
     --ring: var(--hsl-ref-024);
   }
-}
 
-@layer base {
+  /* ========================================
+     LIGHT THEME
+     ======================================== */
+  :root.light, .light {
+    /* Page & Surface Colors */
+    --color-page-background: #F2F2F2; /* Light theme background */
+    --color-surface: hsl(var(--hsl-ref-020));
+    --color-surface-elevated: hsl(var(--hsl-ref-019)); 
+    --color-surface-hover: hsl(var(--hsl-ref-024));
+    --color-card-bg: #ffffff; /* Light theme card background - pure white */
+    --color-button-bg: #F2F2F2; /* Light theme button/card accent background */
+    --color-footer-bg: #080808; /* Light theme footer background */
+    --color-faq-card-hover: var(--color-ref-039); /* Light theme FAQ card hover */
+    --color-recommended-bg: #cac8c8; /* Light theme recommended banner bg */
+    --color-recommended-text: #524f4f; /* Light theme recommended banner text */
+    --color-pricing-toggle-bg: var(--color-ref-038); /* Light theme pricing toggle bg currently 555555, approx ref-038 */
+    --blog-card-bg: #ffffff; /* Light theme blog card background */
+    --blog-card-border: var(--color-border); /* Light theme blog card border */
+    --blog-card-border-hover: var(--color-border); /* Light theme blog card hover border (no change) */
+    
+    /* Text Colors */
+    --color-text-primary: #525252; /* Light theme primary text */
+    --color-text-secondary: hsl(var(--hsl-ref-008));
+    --color-text-muted: hsl(var(--hsl-ref-007)); 
+    --color-text-disabled: hsl(0 0% 60%);
+    --color-text-heading: #525252; /* Light theme headings */
+    --color-text-button: #525252; /* Light theme button text */
+    --color-text-description: #808080; /* Light theme description/subheading text */
+    --color-text-feature: #3D3D3D; /* Pricing features text */
+    
+    /* Interactive Colors */
+    --color-interactive: hsl(var(--hsl-ref-009));
+    --color-interactive-hover: hsl(var(--hsl-ref-010));
+    --color-interactive-active: hsl(var(--hsl-ref-011));
+    --color-interactive-disabled: hsl(0 0% 70%);
+    
+    /* Border Colors */
+    --color-border: #DBDBDB; /* Light theme border */
+    --color-border-hover: hsl(var(--hsl-ref-023));
+    --color-divider: hsl(0 0% 85%);
+    --border: 0 0% 86%; /* #DBDBDB in HSL */
+    --color-recommended-border-bottom: #DBDBDB; /* Light theme recommended plan bottom border */
+    
+    /* Status Colors */
+    --color-success: hsl(var(--hsl-ref-014));
+    --color-success-bg: hsl(var(--hsl-ref-014) / 0.15);
+    --color-warning: hsl(var(--hsl-ref-015));
+    --color-warning-bg: hsl(var(--hsl-ref-015) / 0.15);
+    --color-error: hsl(var(--hsl-ref-016));
+    --color-error-bg: hsl(var(--hsl-ref-016) / 0.15);
+    --color-info: hsl(var(--hsl-ref-017));
+    --color-info-bg: hsl(var(--hsl-ref-017) / 0.15);
+    
+    /* Utility Colors */
+    --color-focus-outline: hsl(var(--hsl-ref-009));
+    --color-selection: hsl(var(--hsl-ref-009) / 0.3);
+    --color-overlay: hsl(var(--hsl-ref-001) / 0.3);
+    --color-overlay-light: hsl(var(--hsl-ref-001) / 0.15);
+    
+    /* Grid/Dot Patterns */
+    --color-dot: rgba(0, 0, 0, 0.25);
+    --color-grid: var(--color-ref-036);
+    --color-grid-strong: var(--color-ref-035);
+    
+    /* shadcn/ui Tokens */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --input: 0 0% 90%;
+    --ring: 217 91% 60%;
+  }
+
+  /* ========================================
+     GLOBAL BASE STYLES
+     ======================================== */
   * {
     border-color: hsl(var(--border));
   }
-}
-
-@layer base {
 
   html,
   body,
   section {
-    background-color: var(--color-ref-001) !important;
+    background-color: var(--color-page-background);
   }
 
   body,
   section {
-    color: var(--color-ref-026);
+    color: var(--color-text-primary);
   }
 }
 
@@ -137,12 +314,12 @@
 }
 
 .trusted-by-text {
-  color: var(--color-ref-032) !important;
+  color: var(--color-text-primary) !important;
   background: none !important;
   background-image: none !important;
   -webkit-background-clip: unset !important;
   background-clip: unset !important;
-  -webkit-text-fill-color: var(--color-ref-032) !important;
+  -webkit-text-fill-color: var(--color-text-primary) !important;
 }
 
 ::-webkit-scrollbar {
@@ -150,16 +327,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-ref-008);
+  background: var(--color-surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-ref-013);
+  background: var(--color-border);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-ref-016);
+  background: var(--color-border-hover);
 }
 
 .focus-visible:focus {
@@ -178,8 +355,8 @@ html {
 }
 
 .mask-fade-horizontal {
-  -webkit-mask-image: linear-gradient(90deg, transparent, var(--color-ref-027) 12%, var(--color-ref-027) 88%, transparent);
-  mask-image: linear-gradient(90deg, transparent, var(--color-ref-027) 12%, var(--color-ref-027) 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
 }
 
 .animation-delay-1500 {
@@ -188,14 +365,14 @@ html {
 
 .grid-overlay-muted {
   background-image:
-    linear-gradient(var(--color-ref-028) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-ref-028) 1px, transparent 1px);
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
   background-size: 80px 80px;
   animation: gridMove 20s linear infinite;
 }
 
 .text-shadow-muted {
-  text-shadow: 0 0 20px var(--color-ref-029);
+  text-shadow: 0 0 20px var(--color-border);
 }
 
 .filter-muted-base {
@@ -225,7 +402,7 @@ html {
   top: 100%;
   bottom: 0;
   width: 1px;
-  background-color: var(--color-ref-015);
+  background-color: var(--color-border);
 }
 
 .faq-card-partial-borders::before {
@@ -238,14 +415,14 @@ html {
 
 @layer utilities {
   .bg-grid-pattern {
-    background-image: linear-gradient(var(--color-ref-030) 1px, transparent 1px),
-      linear-gradient(90deg, var(--color-ref-030) 1px, transparent 1px);
+    background-image: linear-gradient(var(--color-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 
   .bg-grid-pattern-opacity-02 {
-    background-image: linear-gradient(var(--color-ref-031) 1px, transparent 1px),
-      linear-gradient(90deg, var(--color-ref-031) 1px, transparent 1px);
+    background-image: linear-gradient(var(--color-grid-strong) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-grid-strong) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 
@@ -272,7 +449,7 @@ html {
   }
 
   .bg-dot-grid {
-    background-image: radial-gradient(circle at 1px 1px, var(--color-ref-031) 1px, transparent 0);
+    background-image: radial-gradient(circle at 1px 1px, var(--color-dot) 1px, transparent 0);
     background-size: 24px 24px;
   }
 
@@ -280,6 +457,113 @@ html {
     mask-image: linear-gradient(to bottom, black 50%, transparent 95%);
     -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 95%);
   }
+
+  .text-text-heading {
+    color: var(--color-text-heading);
+  }
+
+  .text-text-button {
+    color: var(--color-text-button);
+  }
+
+  .text-text-description {
+    color: var(--color-text-description);
+  }
+
+  .bg-button-bg {
+    background-color: var(--color-button-bg) !important;
+  }
+}
+
+/* AI Platform Rotator - Light Theme Visibility Fix */
+.light .ai-platform-text {
+  filter: invert(1) brightness(0.3);
+}
+
+.light .ai-platform-icon {
+  filter: brightness(0.8);
+}
+
+/* AI Platform Rotator - Text Name Visibility (ChatGPT, Copilot) */
+.ai-platform-name {
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: currentColor !important;
+  color: var(--color-text-primary) !important;
+}
+
+.light .ai-platform-name {
+  color: var(--color-text-heading) !important;
+}
+
+/* Navbar Get Started button - light theme */
+.light .navbar-get-started {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Footer divider - light theme */
+.light .footer-divider,
+.light footer .bg-divider,
+.light footer > div.bg-divider {
+  background-color: #3D3D3D !important;
+}
+
+/* Footer background - light theme */
+.light footer {
+  background-color: #080808 !important;
+  --color-text-primary: #868686;
+  --color-text-muted: #868686;
+  --color-text-heading: #B6B6B6;
+}
+
+.light footer a,
+.light footer p,
+.light footer span {
+  color: var(--color-ref-041);
+}
+
+.light footer h3 {
+  color: var(--color-ref-042) !important;
+}
+
+/* Footer - Dark theme text overrides (match light theme text colors) */
+.dark footer,
+footer {
+  --color-text-primary: var(--color-ref-041);
+  --color-text-muted: var(--color-ref-041);
+  --color-text-heading: var(--color-ref-042);
+}
+
+.dark footer a,
+.dark footer p,
+.dark footer span,
+footer a,
+footer p,
+footer span {
+  color: var(--color-ref-041);
+}
+
+.dark footer h3,
+footer h3 {
+  color: var(--color-ref-042) !important;
+}
+
+/* Policy Pages Subheadings - light theme */
+.light .policy-content h2,
+.light .policy-content h3 {
+  color: var(--color-ref-020) !important;
+}
+
+/* Policy Pages Description Text - light theme */
+.light .policy-content p,
+.light .policy-content li {
+  color: var(--color-ref-041) !important;
+}
+
+/* Hide dark mode gradients in light theme */
+.light .dark-mode-gradient {
+  display: none !important;
 }
 
 html {
