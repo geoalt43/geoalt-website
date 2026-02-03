@@ -111,13 +111,13 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
 
       <div className={`${plan.isRecommended ? 'p-4 sm:p-6 md:p-[1.75rem] lg:p-[2rem] pt-3.5 sm:pt-5 md:pt-[1.5rem] lg:pt-[1.75rem]' : 'p-4 sm:p-6 md:p-[2rem] lg:p-[2.25rem]'} flex flex-col ${plan.isRecommended ? 'gap-4 sm:gap-6 md:gap-[1.75rem] lg:gap-[2rem]' : 'gap-4 sm:gap-6 md:gap-[2rem] lg:gap-[2.25rem]'} ${plan.isRecommended ? '' : 'flex-1'}`}>
         <div className={plan.isRecommended ? 'mt-auto' : ''}>
-          <p className={`text-sm sm:text-base md:text-base font-semibold ${plan.isRecommended ? 'mb-1.5 sm:mb-2.5 md:mb-2.5' : 'mb-1.5 sm:mb-2.5 md:mb-2.5'}`}>{plan.name}</p>
-          <p className={`${plan.isRecommended ? 'text-2xl sm:text-[2.2rem] md:text-[2.25rem] lg:text-[2.25rem]' : 'text-2xl sm:text-3xl md:text-3xl lg:text-[2.3rem]'} font-normal leading-none ${plan.name === 'Basic' ? 'mb-4 sm:mb-5 md:mb-5 lg:mb-6' : ''}`}>
+          <p className={`text-sm sm:text-base md:text-base font-semibold ${plan.isRecommended ? 'mb-1.5 sm:mb-2.5 md:mb-2.5' : 'mb-1.5 sm:mb-2.5 md:mb-2.5'} ${isLightTheme ? 'text-[var(--color-ref-001)]' : ''}`}>{plan.name}</p>
+          <p className={`${plan.isRecommended ? 'text-2xl sm:text-[2.2rem] md:text-[2.25rem] lg:text-[2.25rem]' : 'text-2xl sm:text-3xl md:text-3xl lg:text-[2.3rem]'} font-normal leading-none ${plan.name === 'Basic' ? 'mb-4 sm:mb-5 md:mb-5 lg:mb-6' : ''} ${isLightTheme ? 'text-[var(--color-ref-001)]' : ''}`}>
             {displayPrice}
             {period && <span className="text-sm sm:text-base md:text-base font-light">{period}{billingNote}</span>}
           </p>
         </div>
-        {plan.description && <p className={`text-xs sm:text-sm md:text-sm ${isLightTheme ? 'text-[var(--color-text-feature)]' : 'text-text-description'}`}>{plan.description}</p>}
+        {plan.description && <p className={`text-xs sm:text-sm md:text-sm ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-description'}`}>{plan.description}</p>}
         <div className={`flex flex-col ${plan.isRecommended ? 'gap-2 sm:gap-2.5 md:gap-2.5' : 'gap-2.5 sm:gap-3.5 md:gap-3.5'} text-[11px] sm:text-xs md:text-sm ${isLightTheme ? 'text-[var(--color-text-feature)]' : 'text-text-description'}`}>
           {plan.features.map((feature) => (
             <div
@@ -174,6 +174,14 @@ export function PricingSection() {
   const [isBelow1088, setIsBelow1088] = useState(false)
   const [isBelow680, setIsBelow680] = useState(false)
   const [isBetween1080And1350, setIsBetween1080And1350] = useState(false)
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
 
   useEffect(() => {
     const checkWidth = () => {
@@ -203,7 +211,7 @@ export function PricingSection() {
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
           className="text-center mb-0 sm:mb-0 md:mb-0 lg:mb-12 xl:mb-16"
         >
-          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-text-heading mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-2 sm:px-0 md:px-0">Pricing</h2>
+          <h2 className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-2 sm:px-0 md:px-0 ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-heading'}`}>Pricing</h2>
 
           {/* Payment Frequency Toggle */}
           <div

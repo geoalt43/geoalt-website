@@ -4,19 +4,24 @@ import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useTheme } from 'next-themes'
+import dynamic from 'next/dynamic'
 import { containerVariants, headerVariants, cardVariantsSmooth, iconVariantsSmooth } from '@/lib/animations/variants'
 import { colorClasses } from '@/constants/colors'
-import { HeroSection } from '@/components/homepage/hero-section'
-import { FeaturesSection } from '@/components/homepage/features-section'
-import { FAQSection } from '@/components/homepage/faq-section'
-import { CTASection } from '@/components/homepage/cta-section'
-import { TestimonialsCarousel } from '@/components/homepage/testimonials-carousel'
-import { Footer } from '@/components/layout/footer'
-import { Navbar } from '@/components/layout/navbar'
-import { AISearchMetricsSection } from '@/components/homepage/ai-search-metrics'
-import { DashboardSection } from '@/components/homepage/dashboard-section'
-import { PricingSection } from '@/components/homepage/pricing-section'
 import { useScrollRestoration } from '@/app/hooks/use-scroll-restoration'
+
+// Critical path - load immediately
+import { HeroSection } from '@/components/homepage/hero-section'
+import { Navbar } from '@/components/layout/navbar'
+
+// Below-fold sections - lazy load for faster initial render
+const FeaturesSection = dynamic(() => import('@/components/homepage/features-section').then(m => ({ default: m.FeaturesSection })))
+const FAQSection = dynamic(() => import('@/components/homepage/faq-section').then(m => ({ default: m.FAQSection })))
+const CTASection = dynamic(() => import('@/components/homepage/cta-section').then(m => ({ default: m.CTASection })))
+const TestimonialsCarousel = dynamic(() => import('@/components/homepage/testimonials-carousel').then(m => ({ default: m.TestimonialsCarousel })))
+const Footer = dynamic(() => import('@/components/layout/footer').then(m => ({ default: m.Footer })))
+const AISearchMetricsSection = dynamic(() => import('@/components/homepage/ai-search-metrics').then(m => ({ default: m.AISearchMetricsSection })))
+const DashboardSection = dynamic(() => import('@/components/homepage/dashboard-section').then(m => ({ default: m.DashboardSection })))
+const PricingSection = dynamic(() => import('@/components/homepage/pricing-section').then(m => ({ default: m.PricingSection })))
 
 const trustedBrands = [
   { 
@@ -56,6 +61,14 @@ function EmpoweringBusinessesSection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
   const [isBelow1088, setIsBelow1088] = useState(false)
   const [isBelow680, setIsBelow680] = useState(false)
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
 
   useEffect(() => {
     const checkWidth = () => {
@@ -91,7 +104,7 @@ function EmpoweringBusinessesSection() {
         >
           <motion.h2 
             variants={headerVariants}
-            className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-text-heading mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0"
+            className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-heading'}`}
           >
             Empowering businesses of all sizes
           </motion.h2>

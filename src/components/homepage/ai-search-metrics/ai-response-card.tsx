@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { AIResponseData } from './types'
 import { CompanyName } from './company-name'
 import { useTheme } from 'next-themes'
-import { colorClasses } from '@/constants/colors'
+
 
 interface AIResponseCardProps {
   data: AIResponseData

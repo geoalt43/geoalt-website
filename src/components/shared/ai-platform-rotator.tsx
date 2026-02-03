@@ -61,36 +61,36 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
     },
     {
       name: 'Claude',
-      icon: isLightTheme ? '/ai-icons/claude-light.svg' : '/ai-icons/claude-color.webp',
-      text: isLightTheme ? '/ai-icons/claude-text-light.svg' : '/ai-icons/claude-text.webp',
+      icon: isLightTheme ? '/ai-icons/claude-dark.svg' : '/ai-icons/claude-light.svg',
+      text: isLightTheme ? '/ai-icons/claude-text-dark.svg' : '/ai-icons/claude-text-light.svg',
       hasText: true
     },
     {
       name: 'Gemini',
-      icon: isLightTheme ? '/ai-icons/gemini-light mode.svg' : '/ai-icons/gemini-color.webp',
-      text: isLightTheme ? '/ai-icons/gemini-text-light.svg' : '/ai-icons/gemini-text.webp',
+      icon: isLightTheme ? '/ai-icons/gemini-light mode copy.svg' : '/ai-icons/gemini-light mode.svg',
+      text: isLightTheme ? '/ai-icons/gemini-text-light.svg' : '/ai-icons/gemini-text-light.svg',
       hasText: true
     },
     {
       name: copilotNameOverride || 'Microsoft Copilot',
-      icon: isLightTheme ? '/ai-icons/copilot-light.svg' : '/ai-icons/copilot-color.webp',
+      icon: isLightTheme ? '/ai-icons/copilot-dark.svg' : '/ai-icons/copilot-light.svg',
       hasText: false
     },
     {
       name: 'Google AI Overviews',
-      icon: isLightTheme ? '/ai-icons/gemini-light mode.svg' : '/ai-icons/gemini-color.webp',
+      icon: isLightTheme ? '/ai-icons/gemini-light mode copy.svg' : '/ai-icons/gemini-light mode.svg',
       hasText: false
     },
     {
       name: '',
-      icon: isLightTheme ? '/ai-icons/deepseek-light.svg' : '/ai-icons/deepseek.webp',
-      text: isLightTheme ? '/ai-icons/deepseek-text-light.svg' : '/ai-icons/deepseek-text.webp',
+      icon: isLightTheme ? '/ai-icons/deepseek-dark.svg' : '/ai-icons/deepseek-light.svg',
+      text: isLightTheme ? '/ai-icons/deepseek-text-dark.svg' : '/ai-icons/deepseek-text-light.svg',
       hasText: true
     },
     {
       name: '',
-      icon: isLightTheme ? '/ai-icons/metaai-light.svg' : '/ai-icons/metaai-color.webp',
-      text: isLightTheme ? '/ai-icons/metaai-text-light.svg' : '/ai-icons/metaai-text.webp',
+      icon: isLightTheme ? '/ai-icons/metaai-dark.svg' : '/ai-icons/metaai-light.svg',
+      text: isLightTheme ? '/ai-icons/metaai-text-dark.svg' : '/ai-icons/metaai-text-light.svg',
       hasText: true
     },
     {

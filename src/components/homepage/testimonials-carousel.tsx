@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import { containerVariants, headerVariants, badgeVariants, cardVariantsSmooth } from '@/lib/animations/variants'
 
@@ -37,6 +38,14 @@ export function TestimonialsCarousel() {
   const [failedImages, setFailedImages] = useState<Set<number>>(new Set())
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
 
   return (
     <section className="pt-9 sm:pt-12 md:pt-13 lg:pt-[4vh] xl:pt-[6vh] pb-6 sm:pb-8 md:pb-8 lg:pb-[4vh] xl:pb-[6vh] bg-page-background relative overflow-hidden bg-transparent-text bg-clip-text">
@@ -64,7 +73,7 @@ export function TestimonialsCarousel() {
           </motion.div>
           <motion.h2
             variants={headerVariants}
-            className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-text-primary mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0"
+            className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-primary'}`}
           >
             See what industry leaders say<br className="hidden sm:block" />
             <motion.span

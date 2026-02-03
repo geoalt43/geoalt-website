@@ -222,7 +222,7 @@ export function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => triggerSignUpInitiatedEvent("navbar-sign-in")}
-              className={`hover:opacity-80 px-3 md:px-3.5 lg:px-3.5 py-1.5 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer rounded-full border border-border text-text-primary ${
+              className={`navbar-sign-in hover:opacity-80 px-3 md:px-3.5 lg:px-3.5 py-1.5 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer rounded-full border border-border text-text-primary ${
                 (!isScrolled && pathname === '/') ? 'bg-[var(--color-page-background)]' : 'bg-transparent'
               }`}
             >

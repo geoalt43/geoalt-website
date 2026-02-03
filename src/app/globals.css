@@ -322,6 +322,11 @@
   -webkit-text-fill-color: var(--color-text-primary) !important;
 }
 
+.light .trusted-by-text {
+  color: var(--color-ref-001) !important;
+  -webkit-text-fill-color: var(--color-ref-001) !important;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -475,13 +480,13 @@ html {
   }
 }
 
-/* AI Platform Rotator - Light Theme Visibility Fix */
+/* AI Platform Rotator - Light Theme: Fully Black */
 .light .ai-platform-text {
-  filter: invert(1) brightness(0.3);
+  filter: brightness(0) saturate(100%) !important;
 }
 
 .light .ai-platform-icon {
-  filter: brightness(0.8);
+  filter: brightness(0) saturate(100%) !important;
 }
 
 /* AI Platform Rotator - Text Name Visibility (ChatGPT, Copilot) */
@@ -493,13 +498,20 @@ html {
 }
 
 .light .ai-platform-name {
-  color: var(--color-text-heading) !important;
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
 }
 
 /* Navbar Get Started button - light theme */
 .light .navbar-get-started {
   background-color: #000000 !important;
   color: #ffffff !important;
+}
+
+/* Navbar Sign in button - light theme */
+.light .navbar-sign-in {
+  color: #000000 !important;
+  border-color: #000000 !important;
 }
 
 /* Footer divider - light theme */
@@ -552,18 +564,29 @@ footer h3 {
 /* Policy Pages Subheadings - light theme */
 .light .policy-content h2,
 .light .policy-content h3 {
-  color: var(--color-ref-020) !important;
+  color: var(--color-ref-001) !important;
 }
 
 /* Policy Pages Description Text - light theme */
 .light .policy-content p,
 .light .policy-content li {
-  color: var(--color-ref-041) !important;
+  color: var(--color-text-feature) !important;
 }
 
 /* Hide dark mode gradients in light theme */
 .light .dark-mode-gradient {
   display: none !important;
+}
+
+/* Policy Pages Title - light theme */
+.light .policy-page-title {
+  color: var(--color-ref-001) !important;
+}
+
+/* Policy Page Effective Date/Last Updated - light theme */
+.light .policy-effective-date,
+.light .policy-effective-date p {
+  color: var(--color-text-feature) !important;
 }
 
 html {

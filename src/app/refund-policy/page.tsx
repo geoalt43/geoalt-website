@@ -6,7 +6,7 @@ function getEffectiveDate() {
   return new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
 }
 
-export default function PrivacyPolicyPage() {
+export default function RefundPolicyPage() {
   const effectiveDate = getEffectiveDate()
 
   return (
@@ -16,10 +16,10 @@ export default function PrivacyPolicyPage() {
         <div className="max-w-4xl mx-auto px-3 xs:px-4 sm:px-6 md:px-8 py-6 xs:py-8 sm:py-12 md:py-16 relative z-10">
           {/* Header */}
           <div className="mb-4 xs:mb-6 sm:mb-8 md:mb-10">
-            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-normal mt-4 xs:mt-6 sm:mt-8 md:mt-10 max-[680px]:mt-20 mb-10 xs:mb-12 sm:mb-10 md:mb-16 text-text-primary text-center">
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-normal mt-4 xs:mt-6 sm:mt-8 md:mt-10 max-[680px]:mt-20 mb-10 xs:mb-12 sm:mb-10 md:mb-16 text-text-primary text-center policy-page-title">
               Refund Policy
             </h1>
-            <div className="text-xs xs:text-sm sm:text-base text-text-muted space-y-1">
+            <div className="text-xs xs:text-sm sm:text-base text-text-muted space-y-1 policy-effective-date">
               <p>Effective date: {effectiveDate}</p>
             </div>
           </div>
@@ -38,7 +38,7 @@ export default function PrivacyPolicyPage() {
               </h2>
               <div className="space-y-2 xs:space-y-0 text-xs xs:text-sm sm:text-base md:text-base text-text-description md:leading-normal xs:leading-snug mt-1 xs:mt-0.5 sm:mt-0.5">
                 <p>
-                  If you’re not satisfied with your purchase, you may be eligible for a refund under the conditions outlined below:
+                  If you&apos;re not satisfied with your purchase, you may be eligible for a refund under the conditions outlined below:
                 </p>
                 <ul className="list-disc list-outside ml-4 space-y-1 pl-1">
                   <li>Refund requests must be made within fourteen (14) days of the original purchase date.</li>
@@ -56,7 +56,7 @@ export default function PrivacyPolicyPage() {
                 <p>To request a refund:</p>
                 <ul className="list-disc list-outside ml-4 space-y-1 pl-1">
                   <li>
-                    Contact us at <a href="mailto:contact@geoalt.in" className="text-blue-400 hover:text-blue-300 underline transition-colors break-all">contact@geoalt.in</a>, or
+                    Contact us at <a href="mailto:contact@geoalt.in" className="text-interactive hover:text-interactive-hover underline transition-colors break-all">contact@geoalt.in</a>, or
                   </li>
                   <li>Submit a refund request directly through Paddle.</li>
                 </ul>

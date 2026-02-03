@@ -1,7 +1,7 @@
 'use client'
 
 import { AIPlatformRotator } from '@/components/shared/ai-platform-rotator'
-import Image from 'next/image'
+
 import { motion, useInView, useAnimation } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
 import { containerVariantsFast, wordVariants, headingContainerVariants, textVariants } from '@/lib/animations/variants'
@@ -51,7 +51,7 @@ export function HeroSection() {
               animate={controls}
               className={`text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal mt-4 sm:mt-0 md:mt-0 leading-tight tracking-tight ${
                 isLightTheme 
-                  ? 'text-[#525252]' 
+                  ? 'text-[var(--color-ref-001)]' 
                   : 'bg-gradient-to-r from-[var(--color-ref-011)] via-[var(--color-ref-021)] to-[var(--color-ref-025)] bg-clip-text text-transparent'
               }`}
             >
@@ -74,7 +74,7 @@ export function HeroSection() {
               variants={textVariants}
               initial="hidden"
               animate={controls}
-              className={`text-xs sm:text-base md:text-lg text-center ${isLightTheme ? 'text-[var(--color-text-feature)]' : colorClasses.textDescription} px-4 sm:px-0 md:px-0 flex items-center justify-center gap-2 flex-wrap mt-[-20px] sm:mt-[-40px] md:mt-[-60px] lg:mt-[-84px]`}
+              className={`text-xs sm:text-base md:text-lg text-center ${isLightTheme ? 'text-[var(--color-ref-001)]' : colorClasses.textDescription} px-4 sm:px-0 md:px-0 flex items-center justify-center gap-2 flex-wrap mt-[-20px] sm:mt-[-40px] md:mt-[-60px] lg:mt-[-84px]`}
             >
               <span>Geoalt</span>
               <span>helps your business stand out across AI platforms</span>

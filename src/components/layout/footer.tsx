@@ -4,6 +4,8 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import { useTheme } from 'next-themes'
+import { useState, useEffect } from 'react'
 
 const scrollToHero = (e: React.MouseEvent<HTMLAnchorElement>) => {
   e.preventDefault()
@@ -50,6 +52,14 @@ const scrollToHero = (e: React.MouseEvent<HTMLAnchorElement>) => {
 export function Footer() {
   const pathname = usePathname()
   const isPolicyPage = pathname?.includes('/privacy-policy') || pathname?.includes('/terms-of-service') || pathname?.includes('/cookie-policy')
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
 
   return (
     <footer className="bg-[var(--color-footer-bg)] w-full text-text-primary flex flex-col visible block relative z-10 min-h-[200px]">
@@ -176,22 +186,22 @@ export function Footer() {
             </h3>
             <ul className="mt-3 sm:mt-4 md:mt-5 space-y-2 sm:space-y-3 md:space-y-4">
               <li>
-                <Link href="/privacy-policy" className="text-[9px] sm:text-xs md:text-sm text-text-muted hover:text-text-primary transition-none">
+                <Link href="/privacy-policy" prefetch={false} className={`text-[9px] sm:text-xs md:text-sm ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-muted hover:text-text-primary'} transition-none`}>
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms-of-service" className="text-[9px] sm:text-xs md:text-sm text-text-muted hover:text-text-primary transition-none">
+                <Link href="/terms-of-service" prefetch={false} className={`text-[9px] sm:text-xs md:text-sm ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-muted hover:text-text-primary'} transition-none`}>
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="/refund-policy" className="text-[9px] sm:text-xs md:text-sm text-text-muted hover:text-text-primary transition-none">
+                <Link href="/refund-policy" prefetch={false} className={`text-[9px] sm:text-xs md:text-sm ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-muted hover:text-text-primary'} transition-none`}>
                   Refund Policy
                 </Link>
               </li>
               <li>
-                <Link href="/cookie-policy" className="text-[9px] sm:text-xs md:text-sm text-text-muted hover:text-text-primary transition-none">
+                <Link href="/cookie-policy" prefetch={false} className={`text-[9px] sm:text-xs md:text-sm ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-muted hover:text-text-primary'} transition-none`}>
                   Cookie Policy
                 </Link>
               </li>
@@ -220,25 +230,29 @@ export function Footer() {
             <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
               <Link
                 href="/privacy-policy"
-                className="text-[9px] sm:text-xs md:text-sm text-text-muted hover:text-text-primary transition-none whitespace-nowrap"
+                prefetch={false}
+                className={`text-[9px] sm:text-xs md:text-sm ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-muted hover:text-text-primary'} transition-none whitespace-nowrap`}
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms-of-service"
-                className="text-[9px] sm:text-xs md:text-sm text-text-muted hover:text-text-primary transition-none whitespace-nowrap"
+                prefetch={false}
+                className={`text-[9px] sm:text-xs md:text-sm ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-muted hover:text-text-primary'} transition-none whitespace-nowrap`}
               >
                 Terms of Service
               </Link>
               <Link
                 href="/refund-policy"
-                className="text-[9px] sm:text-xs md:text-sm text-text-muted hover:text-text-primary transition-none whitespace-nowrap"
+                prefetch={false}
+                className={`text-[9px] sm:text-xs md:text-sm ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-muted hover:text-text-primary'} transition-none whitespace-nowrap`}
               >
                 Refund Policy
               </Link>
               <Link
                 href="/cookie-policy"
-                className="text-[9px] sm:text-xs md:text-sm text-text-muted hover:text-text-primary transition-none whitespace-nowrap"
+                prefetch={false}
+                className={`text-[9px] sm:text-xs md:text-sm ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-muted hover:text-text-primary'} transition-none whitespace-nowrap`}
               >
                 Cookie Policy
               </Link>

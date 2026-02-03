@@ -16,10 +16,10 @@ export default function PrivacyPolicyPage() {
         <div className="max-w-4xl mx-auto px-3 xs:px-4 sm:px-6 md:px-8 py-6 xs:py-8 sm:py-12 md:py-16 relative z-10">
           {/* Header */}
         <div className="mb-4 xs:mb-6 sm:mb-8 md:mb-10 mt-1 xs:mt-2 sm:mt-2 md:mt-1">
-          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-normal mt-4 xs:mt-6 sm:mt-8 md:mt-10 max-[680px]:mt-20 mb-10 xs:mb-12 sm:mb-10 md:mb-16 text-text-primary text-center">
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-normal mt-4 xs:mt-6 sm:mt-8 md:mt-10 max-[680px]:mt-20 mb-10 xs:mb-12 sm:mb-10 md:mb-16 text-text-primary text-center policy-page-title">
             Privacy Policy
           </h1>
-            <div className="text-xs xs:text-sm sm:text-base text-text-muted space-y-1 xs:space-y-0">
+            <div className="text-xs xs:text-sm sm:text-base text-text-muted space-y-1 xs:space-y-0 policy-effective-date">
               <p className="break-words">Effective date: {effectiveDate}</p>
             </div>
           </div>
