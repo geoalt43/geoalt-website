@@ -5,11 +5,21 @@ import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { triggerSignUpInitiatedEvent } from '@/lib/mixpanel'
+import { ModeToggle } from '@/components/ui/mode-toggle'
+import { useTheme } from 'next-themes'
 
 export function Navbar() {
   const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
 
   useEffect(() => {
     // On pages other than home, always show the solid background
@@ -131,7 +141,7 @@ export function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 overflow-x-hidden ${
       isScrolled 
-        ? "bg-brand-black/90 backdrop-blur-sm border-b border-[var(--color-ref-006)]" 
+        ? "bg-page-background/90 backdrop-blur-sm border-b border-border" 
         : "bg-transparent border-b border-transparent"
     }`}>
       {!isScrolled && (
@@ -143,10 +153,10 @@ export function Navbar() {
             <Link
               href="/"
               onClick={handleHomeClick}
-              className="flex items-center text-lg sm:text-xl md:text-xl font-semibold text-brand-white"
+              className="flex items-center text-lg sm:text-xl md:text-xl font-semibold text-text-primary"
             >
               <Image
-                src="/logos/GeoAlt_Logo.png"
+                src={isLightTheme ? '/geoalt-logo/logo-navbar-.svg' : '/geoalt-logo/logo-nav-white.svg'}
                 alt="GEOAlt logo"
                 width={100}
                 height={24}
@@ -163,26 +173,34 @@ export function Navbar() {
             <Link
               href="/"
               onClick={handleHomeClick}
-              className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[var(--color-ref-023)] hover:border-[var(--color-ref-012)] hover:bg-[var(--color-ref-012)] hover:text-white transition-all duration-150 ease-out"
+              className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border bg-[var(--color-page-background)] hover:bg-surface-hover transition-all duration-150 ease-out ${
+                isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
+              }`}
             >
               Home
             </Link>
             <Link
               href="/pricing"
-              className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[var(--color-ref-023)] hover:border-[var(--color-ref-012)] hover:bg-[var(--color-ref-012)] hover:text-white transition-all duration-150 ease-out"
+              className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border bg-[var(--color-page-background)] hover:bg-surface-hover transition-all duration-150 ease-out ${
+                isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
+              }`}
             >
               Pricing
             </Link>
             <Link
               href="/#features"
               onClick={handleFeaturesClick}
-              className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[var(--color-ref-023)] hover:border-[var(--color-ref-012)] hover:bg-[var(--color-ref-012)] hover:text-white transition-all duration-150 ease-out"
+              className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border bg-[var(--color-page-background)] hover:bg-surface-hover transition-all duration-150 ease-out ${
+                isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
+              }`}
             >
               Features
             </Link>
             <Link
               href="/blog"
-              className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[var(--color-ref-023)] hover:border-[var(--color-ref-012)] hover:bg-[var(--color-ref-012)] hover:text-white transition-all duration-150 ease-out"
+              className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border bg-[var(--color-page-background)] hover:bg-surface-hover transition-all duration-150 ease-out ${
+                isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
+              }`}
             >
               Blog
             </Link>
@@ -190,12 +208,13 @@ export function Navbar() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center space-x-3 md:space-x-3.5 lg:space-x-4 flex-shrink-0 z-10">
+            <ModeToggle />
             <a
               href="https://app.geoalt.in/login"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => triggerSignUpInitiatedEvent("navbar-sign-in")}
-              className="text-white hover:text-brand-gray-300 hover:opacity-80 px-2 md:px-2.5 lg:px-3 py-2 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer"
+              className="hover:opacity-80 px-3 md:px-3.5 lg:px-3.5 py-1.5 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer rounded-full border border-border bg-[var(--color-page-background)] text-text-primary"
             >
               Sign in
             </a>
@@ -204,7 +223,7 @@ export function Navbar() {
               target="_blank"
               onClick={() => triggerSignUpInitiatedEvent("navbar-get-started")}
               rel="noopener noreferrer"
-              className="bg-white text-black border border-white px-3 md:px-3.5 lg:px-3.5 py-1.5 rounded-full text-sm font-normal hover:bg-white/90 hover:opacity-90 transition-all duration-150 whitespace-nowrap cursor-pointer"
+              className="navbar-get-started bg-black text-white dark:bg-white dark:text-black border border-border px-3 md:px-3.5 lg:px-3.5 py-1.5 rounded-full text-sm font-normal hover:opacity-90 transition-all duration-150 whitespace-nowrap cursor-pointer"
             >
               Get Started
             </a>
@@ -212,12 +231,13 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-1.5 sm:space-x-2 flex-shrink-0">
+             <div className="scale-75"><ModeToggle /></div>
             <a
               href="https://app.geoalt.in/login"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => triggerSignUpInitiatedEvent("navbar-sign-in-mobile")}
-              className="text-white hover:text-brand-gray-300 hover:opacity-80 px-1.5 sm:px-2 py-1.5 text-xs sm:text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer"
+              className="text-text-primary hover:text-text-secondary hover:opacity-80 px-1.5 sm:px-2 py-1.5 text-xs sm:text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer"
             >
               Sign in
             </a>
@@ -227,13 +247,13 @@ export function Navbar() {
               aria-label="Toggle menu"
             >
               <span
-                className={`absolute block w-5 h-[2px] bg-white rounded-full transition-all duration-300 ease-in-out origin-center ${isMobileMenuOpen
+                className={`absolute block w-5 h-[2px] bg-text-primary rounded-full transition-all duration-300 ease-in-out origin-center ${isMobileMenuOpen
                   ? 'rotate-45 translate-y-0'
                   : '-translate-y-1.5'
                   }`}
               />
               <span
-                className={`absolute block w-5 h-[2px] bg-white rounded-full transition-all duration-300 ease-in-out origin-center ${isMobileMenuOpen
+                className={`absolute block w-5 h-[2px] bg-text-primary rounded-full transition-all duration-300 ease-in-out origin-center ${isMobileMenuOpen
                   ? '-rotate-45 translate-y-0'
                   : 'translate-y-1.5'
                   }`}
@@ -244,28 +264,42 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-[var(--color-ref-006)] py-4">
+          <div className="md:hidden border-t border-border dark:border-[#242424] py-4 bg-page-background">
             <div className="flex flex-col space-y-2">
               <Link
                 href="/"
                 onClick={handleHomeClick}
-                className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[var(--color-ref-023)] hover:border-[var(--color-ref-012)] hover:bg-[var(--color-ref-012)] hover:text-white active:bg-[var(--color-ref-014)] active:border-[var(--color-ref-014)] active:text-white transition-all duration-150 ease-out"
+                className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border hover:bg-surface-hover active:bg-surface-hover transition-all duration-150 ease-out ${
+                  isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
+                }`}
               >
                 Home
               </Link>
               <Link
                 href="/pricing"
                 onClick={handlePricingClick}
-                className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[var(--color-ref-023)] hover:border-[var(--color-ref-012)] hover:bg-[var(--color-ref-012)] hover:text-white active:bg-[var(--color-ref-014)] active:border-[var(--color-ref-014)] active:text-white transition-all duration-150 ease-out"
+                className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border hover:bg-surface-hover active:bg-surface-hover transition-all duration-150 ease-out ${
+                  isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
+                }`}
               >
                 Pricing
               </Link>
               <Link
                 href="/#features"
                 onClick={handleFeaturesClick}
-                className="px-4 py-2 text-sm font-medium rounded-full border border-transparent text-[var(--color-ref-023)] hover:border-[var(--color-ref-012)] hover:bg-[var(--color-ref-012)] hover:text-white active:bg-[var(--color-ref-014)] active:border-[var(--color-ref-014)] active:text-white transition-all duration-150 ease-out"
+                className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border hover:bg-surface-hover active:bg-surface-hover transition-all duration-150 ease-out ${
+                  isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
+                }`}
               >
                 Features
+              </Link>
+              <Link
+                href="/blog"
+                className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border hover:bg-surface-hover active:bg-surface-hover transition-all duration-150 ease-out ${
+                  isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
+                }`}
+              >
+                Blog
               </Link>
               <a
                 href="https://app.geoalt.in/register"
@@ -276,7 +310,7 @@ export function Navbar() {
                   handleLinkClick()
                   triggerSignUpInitiatedEvent("navbar-get-started")
                 }}
-                className="mt-2 bg-white text-black border border-white px-4 py-2 rounded-full text-sm font-normal hover:bg-white/90 hover:opacity-90 transition-all duration-150 text-center cursor-pointer"
+                className="navbar-get-started mt-2 bg-black text-white dark:bg-white dark:text-black border border-border px-4 py-2 rounded-full text-sm font-normal hover:opacity-90 transition-all duration-150 text-center cursor-pointer"
               >
                 Get Started
               </a>
