@@ -26,6 +26,13 @@
   --color-ref-024: #d4d4d4;
   --color-ref-025: #ea4335;
   --color-ref-026: #fff;
+  --color-ref-037: #C4C4C4; /* Light gray for light theme borders */
+  --color-ref-038: #525252; /* Light theme heading color */
+  --color-ref-039: #E7E7E7; /* Navbar text (dark mode) & Light theme FAQ card hover */
+  --color-ref-040: #0D0D0D; /* Dark mode card background */
+  --color-ref-041: #868686; /* Footer text */
+  --color-ref-042: #B6B6B6; /* Footer headings */
+  --color-ref-043: #080808; /* Dark mode card background for CTA */
   
   /* RGBA Colors */
   --color-ref-027: rgba(0, 0, 0, 0.9);
@@ -60,6 +67,7 @@
   --hsl-ref-022: 215 20.2% 65.1%;
   --hsl-ref-023: 0 62.8% 30.6%;
   --hsl-ref-024: 212.7 26.8% 83.9%;
+  --hsl-ref-025: 0 0% 14%; /* #242424 - Dark mode border color */
   
   /* Shadow Colors */
   --color-ref-033: rgba(0, 0, 0, 0.4);

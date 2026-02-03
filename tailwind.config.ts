@@ -28,6 +28,7 @@ const config: Config = {
         'text-secondary': 'var(--color-text-secondary)',
         'text-muted': 'var(--color-text-muted)',
         'text-disabled': 'var(--color-text-disabled)',
+        'text-heading': 'var(--color-text-heading)',
         'interactive': 'var(--color-interactive)',
         'interactive-hover': 'var(--color-interactive-hover)',
         'interactive-active': 'var(--color-interactive-active)',
