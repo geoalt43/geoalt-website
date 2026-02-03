@@ -186,7 +186,7 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
           className="text-center mb-8 sm:mb-12 md:mb-14 lg:mb-16"
         >
           <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-text-heading mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0">FAQ</h2>
-          <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textMuted} font-light px-4 sm:px-0 md:px-0 pt-0`}>Generative Engine Optimization is still<br className="leading-none" /><span className="block -mt-0.5 sm:-mt-0.5 md:-mt-0.5 lg:-mt-2">very new. We&apos;ve got you covered.</span></p>
+          <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textDescription} font-light px-4 sm:px-0 md:px-0 pt-0`}>Generative Engine Optimization is still<br className="leading-none" /><span className="block -mt-0.5 sm:-mt-0.5 md:-mt-0.5 lg:-mt-2">very new. We&apos;ve got you covered.</span></p>
         </motion.div>
         
         <motion.div

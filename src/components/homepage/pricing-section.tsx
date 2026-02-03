@@ -138,8 +138,10 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
               onClick={() => triggerBookDemoEvent('pricing-section')}
               target="_blank"
               rel="noopener noreferrer"
-              className={`w-full max-w-[120px] sm:max-w-none md:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full border border-border text-text-primary py-2 sm:py-3 md:py-3 text-[11px] sm:text-sm md:text-sm font-semibold whitespace-nowrap block text-center transition-all duration-200 ease-in-out hover:border-border-hover hover:bg-black/5 dark:hover:bg-white/5 ${
-                isLightTheme ? 'bg-[#CFCFCF]' : ''
+              className={`w-full max-w-[120px] sm:max-w-none md:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full border border-border py-2 sm:py-3 md:py-3 text-[11px] sm:text-sm md:text-sm font-semibold whitespace-nowrap block text-center transition-all duration-200 ease-in-out ${
+                isLightTheme
+                  ? 'bg-[#CFCFCF] text-text-primary hover:border-border-hover hover:bg-black/5'
+                  : 'bg-white text-black hover:bg-gray-100'
               }`}
             >
               Contact Us

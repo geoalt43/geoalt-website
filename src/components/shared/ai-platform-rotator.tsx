@@ -61,8 +61,8 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
     },
     {
       name: 'Claude',
-      icon: isLightTheme ? '/ai-icons/claude-light.svg' : '/ai-icons/claude-dark.svg',
-      text: isLightTheme ? '/ai-icons/claude-text-light.svg' : '/ai-icons/claude-text-dark.svg',
+      icon: isLightTheme ? '/ai-icons/claude-light.svg' : '/ai-icons/claude-color.webp',
+      text: isLightTheme ? '/ai-icons/claude-text-light.svg' : '/ai-icons/claude-text.webp',
       hasText: true
     },
     {
@@ -73,25 +73,24 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
     },
     {
       name: copilotNameOverride || 'Microsoft Copilot',
-      icon: isLightTheme ? '/ai-icons/copilot-light.svg' : '/ai-icons/copilot-dark.svg',
+      icon: isLightTheme ? '/ai-icons/copilot-light.svg' : '/ai-icons/copilot-color.webp',
       hasText: false
     },
     {
       name: 'Google AI Overviews',
       icon: isLightTheme ? '/ai-icons/gemini-light mode.svg' : '/ai-icons/gemini-color.webp',
-      text: isLightTheme ? '/ai-icons/gemini-text-light.svg' : '/ai-icons/gemini-text.webp',
+      hasText: false
+    },
+    {
+      name: '',
+      icon: isLightTheme ? '/ai-icons/deepseek-light.svg' : '/ai-icons/deepseek.webp',
+      text: isLightTheme ? '/ai-icons/deepseek-text-light.svg' : '/ai-icons/deepseek-text.webp',
       hasText: true
     },
     {
       name: '',
-      icon: isLightTheme ? '/ai-icons/deepseek-light.svg' : '/ai-icons/deepseek-dark.svg',
-      text: isLightTheme ? '/ai-icons/deepseek-text-light.svg' : '/ai-icons/deepseek-text-dark.svg',
-      hasText: true
-    },
-    {
-      name: '',
-      icon: isLightTheme ? '/ai-icons/metaai-light.svg' : '/ai-icons/metaai-dark.svg',
-      text: isLightTheme ? '/ai-icons/metaai-text-light.svg' : '/ai-icons/metaai-text-dark.svg',
+      icon: isLightTheme ? '/ai-icons/metaai-light.svg' : '/ai-icons/metaai-color.webp',
+      text: isLightTheme ? '/ai-icons/metaai-text-light.svg' : '/ai-icons/metaai-text.webp',
       hasText: true
     },
     {

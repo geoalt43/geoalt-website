@@ -173,7 +173,9 @@ export function Navbar() {
             <Link
               href="/"
               onClick={handleHomeClick}
-              className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border bg-[var(--color-page-background)] hover:bg-surface-hover transition-all duration-150 ease-out ${
+              className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border hover:bg-surface-hover transition-all duration-150 ease-out ${
+                (!isScrolled && pathname === '/') ? 'bg-[var(--color-page-background)]' : 'bg-transparent'
+              } ${
                 isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
               }`}
             >
@@ -181,7 +183,9 @@ export function Navbar() {
             </Link>
             <Link
               href="/pricing"
-              className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border bg-[var(--color-page-background)] hover:bg-surface-hover transition-all duration-150 ease-out ${
+              className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border hover:bg-surface-hover transition-all duration-150 ease-out ${
+                (!isScrolled && pathname === '/') ? 'bg-[var(--color-page-background)]' : 'bg-transparent'
+              } ${
                 isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
               }`}
             >
@@ -190,7 +194,9 @@ export function Navbar() {
             <Link
               href="/#features"
               onClick={handleFeaturesClick}
-              className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border bg-[var(--color-page-background)] hover:bg-surface-hover transition-all duration-150 ease-out ${
+              className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border hover:bg-surface-hover transition-all duration-150 ease-out ${
+                (!isScrolled && pathname === '/') ? 'bg-[var(--color-page-background)]' : 'bg-transparent'
+              } ${
                 isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
               }`}
             >
@@ -198,7 +204,9 @@ export function Navbar() {
             </Link>
             <Link
               href="/blog"
-              className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border bg-[var(--color-page-background)] hover:bg-surface-hover transition-all duration-150 ease-out ${
+              className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border hover:bg-surface-hover transition-all duration-150 ease-out ${
+                (!isScrolled && pathname === '/') ? 'bg-[var(--color-page-background)]' : 'bg-transparent'
+              } ${
                 isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
               }`}
             >
@@ -208,13 +216,15 @@ export function Navbar() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center space-x-3 md:space-x-3.5 lg:space-x-4 flex-shrink-0 z-10">
-            <ModeToggle />
+            <ModeToggle className={(!isScrolled && pathname === '/') ? 'bg-[var(--color-page-background)]' : 'bg-transparent'} />
             <a
               href="https://app.geoalt.in/login"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => triggerSignUpInitiatedEvent("navbar-sign-in")}
-              className="hover:opacity-80 px-3 md:px-3.5 lg:px-3.5 py-1.5 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer rounded-full border border-border bg-[var(--color-page-background)] text-text-primary"
+              className={`hover:opacity-80 px-3 md:px-3.5 lg:px-3.5 py-1.5 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer rounded-full border border-border text-text-primary ${
+                (!isScrolled && pathname === '/') ? 'bg-[var(--color-page-background)]' : 'bg-transparent'
+              }`}
             >
               Sign in
             </a>

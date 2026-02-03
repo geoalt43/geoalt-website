@@ -279,12 +279,6 @@ export function HomePage() {
 
       <DashboardImageSection />
 
-      <DashboardSection />
-
-      <AISearchMetricsSection />
-
-      <FeaturesSection />
-
       <section className="pt-[45.6px] sm:pt-[60.8px] md:pt-[65px] lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-18 lg:pb-[4vh] xl:pb-[6vh]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
           <div className="relative overflow-hidden rounded-[0px] border-b border-[var(--color-border)] bg-transparent px-4 pt-5 pb-5 sm:px-6 sm:pt-9 sm:pb-9 md:px-8 md:pt-10 md:pb-10 lg:px-10 lg:pt-12 lg:pb-12">
@@ -327,6 +321,12 @@ export function HomePage() {
           </div>
         </div>
       </section>
+
+      <DashboardSection />
+
+      <AISearchMetricsSection />
+
+      <FeaturesSection />
 
       <EmpoweringBusinessesSection />
 
