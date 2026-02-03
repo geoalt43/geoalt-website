@@ -1,137 +1,94 @@
-// FeatureText component - extracted from pricing-section
-// Maintains exact same functionality and output
-
 'use client'
 
+import { useState, useEffect } from 'react'
 import type { ReactElement } from 'react'
 import Image from 'next/image'
 import { getPlatformIcon } from '@/lib/utils/platform-icons'
+import { useTheme } from 'next-themes'
 
 interface FeatureTextProps {
   text: string
 }
 
 export function FeatureText({ text }: FeatureTextProps) {
-  // Special handling for "Access to all models" - show icons only with blur effect
-  if (text === 'Access to all models') {
-    const iconSize = 18
-    
-    return (
-      <span className="flex items-center gap-2">
-        <span>Access to all models</span>
-        {/* Icons only - very small gap between them */}
-        <div className="flex items-center gap-0.5">
-          <Image
-            src="/ai-icons/openai.webp"
-            alt="OpenAI"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          <Image
-            src="/ai-icons/perplexity.webp"
-            alt="Perplexity"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          <Image
-            src="/ai-icons/grok.webp"
-            alt="Grok"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          <Image
-            src="/ai-icons/claude-color.webp"
-            alt="Claude"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          <Image
-            src="/ai-icons/gemini-color.webp"
-            alt="Gemini"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          {/* 3+ text */}
-          <span className="text-xs font-semibold text-white/90 ml-0.5">
-            3+
-          </span>
-        </div>
-      </span>
-    )
-  }
-  
-  // Special handling for "Access to 3 models (ChatGPT, Gemini, Perplexity)"
-  if (text.includes('Access to 3 models') && text.includes('ChatGPT') && text.includes('Gemini') && text.includes('Perplexity')) {
-    const iconSize = 18
-    
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
+
+  if (text === 'Access to 3 models') {
     return (
       <span className="flex items-center gap-2">
         <span>Access to 3 models</span>
-        {/* Icons only - same style as "Access to all models" */}
         <div className="flex items-center gap-0.5">
           <Image
-            src="/ai-icons/openai.webp"
+            src={isLightTheme ? '/ai-icons/openai-light.svg' : '/ai-icons/openai.webp'}
             alt="OpenAI"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
+            width={18}
+            height={18}
+            className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-[18px] md:h-[18px] opacity-80 hover:opacity-100 transition-opacity"
           />
           <Image
-            src="/ai-icons/gemini-color.webp"
-            alt="Gemini"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          <Image
-            src="/ai-icons/perplexity.webp"
+            src={isLightTheme ? '/ai-icons/perplexity-light.svg' : '/ai-icons/perplexity.webp'}
             alt="Perplexity"
-            width={iconSize}
-            height={iconSize}
-            className="opacity-80 hover:opacity-100 transition-opacity"
-            unoptimized
+            width={18}
+            height={18}
+            className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-[18px] md:h-[18px] opacity-80 hover:opacity-100 transition-opacity"
+          />
+          <Image
+            src={isLightTheme ? '/ai-icons/gemini-light mode.svg' : '/ai-icons/gemini-color.webp'}
+            alt="Gemini"
+            width={18}
+            height={18}
+            className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-[18px] md:h-[18px] opacity-80 hover:opacity-100 transition-opacity"
           />
         </div>
       </span>
     )
   }
   
-  // Default handling for other features
-  // Split text by platform names (case-insensitive)
+  if (text.includes('Access to 1 model') && text.includes('ChatGPT')) {
+    return (
+      <span className="flex items-center gap-2">
+        <span>Access to 1 model</span>
+        <div className="flex items-center gap-0.5">
+          <Image
+            src={isLightTheme ? '/ai-icons/openai-light.svg' : '/ai-icons/openai.webp'}
+            alt="OpenAI"
+            width={18}
+            height={18}
+            className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-[18px] md:h-[18px] opacity-80 hover:opacity-100 transition-opacity"
+          />
+        </div>
+      </span>
+    )
+  }
+  
   const platformRegex = /(ChatGPT|Gemini|Perplexity)/gi
   const parts: (string | ReactElement)[] = []
   let lastIndex = 0
   let match
   
-  // Reset regex
   platformRegex.lastIndex = 0
   
   while ((match = platformRegex.exec(text)) !== null) {
-    // Add text before the match
     if (match.index > lastIndex) {
       parts.push(text.substring(lastIndex, match.index))
     }
     
-    // Add icon and platform name
     const platformName = match[0]
     const icon = getPlatformIcon(platformName)
     
     if (icon) {
       parts.push(
         <span key={`${match.index}-${platformName}`} className="inline-flex items-center gap-1.5">
-          {icon}
+          <span className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 flex-shrink-0">
+            {icon}
+          </span>
           <span>{platformName}</span>
         </span>
       )
@@ -142,12 +99,10 @@ export function FeatureText({ text }: FeatureTextProps) {
     lastIndex = match.index + match[0].length
   }
   
-  // Add remaining text
   if (lastIndex < text.length) {
     parts.push(text.substring(lastIndex))
   }
   
-  // If we found platforms, return the parts, otherwise return original text
   return parts.length > 1 ? <span>{parts}</span> : <span>{text}</span>
 }
 

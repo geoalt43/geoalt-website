@@ -4,6 +4,8 @@ import { RefObject, useRef, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { containerVariants, cardVariantsSmooth } from '@/lib/animations/variants'
 import { colorClasses } from '@/constants/colors'
+import { useTheme } from 'next-themes'
+import { useState } from 'react'
 
 interface FAQSectionProps {
   openFaq: number | null
@@ -20,6 +22,14 @@ interface FAQCardProps {
 function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
   const cardRef = useRef(null)
   const cardInView = useInView(cardRef, { once: true, margin: '-150px' })
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
 
   return (
     <motion.div
@@ -27,26 +37,20 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
       variants={cardVariantsSmooth}
       initial="hidden"
       animate={cardInView ? 'visible' : 'hidden'}
-      className={`bg-black border-b ${colorClasses.borderGray} shadow-sm faq-card-partial-borders rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl overflow-hidden relative`}
+      className={`border-b ${colorClasses.borderGray} shadow-sm faq-card-partial-borders rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl overflow-hidden relative cursor-pointer`}
+      style={{ backgroundColor: 'var(--color-page-background)' }}
       whileHover={{
-        backgroundColor: 'rgba(20, 20, 20, 1)',
-        borderColor: 'rgba(120, 120, 120, 0.6)',
+        backgroundColor: 'var(--color-faq-card-hover)',
+        borderColor: 'var(--color-border)',
         transition: { duration: 0.4, ease: 'easeInOut' }
       }}
     >
-      <motion.div
-        className="absolute inset-0 bg-white/[0.02] opacity-0 pointer-events-none rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl"
-        whileHover={{
-          opacity: 1,
-          transition: { duration: 0.3, ease: 'easeOut' }
-        }}
-      />
       <motion.button
-        className="w-full pl-3 sm:pl-4 md:pl-4 pr-5 sm:pr-7 md:pr-7 py-2.5 sm:py-3.5 md:py-3.5 text-left flex items-start sm:items-center md:items-center gap-2 sm:gap-4 md:gap-4"
+        className="w-full pl-3 sm:pl-4 md:pl-4 pr-5 sm:pr-7 md:pr-7 py-2.5 sm:py-3.5 md:py-3.5 text-left flex items-start sm:items-center md:items-center gap-2 sm:gap-4 md:gap-4 cursor-pointer"
         onClick={onToggle}
       >
-        <motion.span
-          className="text-white text-sm sm:text-base md:text-base font-light inline-block flex-shrink-0 mt-0.5 sm:mt-0 md:mt-0"
+        <motion.svg
+          className="text-text-muted w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 flex-shrink-0 mt-0.5 sm:mt-0 md:mt-0"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ 
             scale: 1,
@@ -54,10 +58,16 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
             rotate: isOpen ? 90 : 0,
           }}
           transition={{ duration: 0.2, ease: 'easeOut' }}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
-          &gt;
-        </motion.span>
-        <span className="font-medium text-white text-xs sm:text-sm md:text-sm lg:text-base leading-relaxed flex-1 text-left">{faq.question}</span>
+          <path d="M8 6l8 6-8 6" />
+        </motion.svg>
+        <span className={`font-medium text-xs sm:text-sm md:text-sm lg:text-base leading-relaxed flex-1 text-left ${isLightTheme ? 'text-[#3D3D3D]' : colorClasses.textDescription}`}>{faq.question}</span>
       </motion.button>
       <AnimatePresence initial={false}>
         {isOpen && (
@@ -67,16 +77,16 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
               height: 'auto', 
               opacity: 1,
               transition: {
-                height: { duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] },
-                opacity: { duration: 0.3, ease: 'easeOut', delay: 0.1 }
+                height: { duration: 0.2, ease: [0.04, 0.62, 0.23, 0.98] },
+                opacity: { duration: 0.15, ease: 'easeOut' }
               }
             }}
             exit={{ 
               height: 0, 
               opacity: 0,
               transition: {
-                height: { duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] },
-                opacity: { duration: 0.2, ease: 'easeIn' }
+                height: { duration: 0.15, ease: [0.04, 0.62, 0.23, 0.98] },
+                opacity: { duration: 0.1, ease: 'easeIn' }
               }
             }}
             className="overflow-hidden bg-transparent"
@@ -87,14 +97,14 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
                 animate={{ 
                   y: 0, 
                   opacity: 1,
-                  transition: { duration: 0.3, ease: 'easeOut', delay: 0.15 }
+                  transition: { duration: 0.15, ease: 'easeOut' }
                 }}
                 exit={{ 
                   y: -10, 
                   opacity: 0,
-                  transition: { duration: 0.2, ease: 'easeIn' }
+                  transition: { duration: 0.1, ease: 'easeIn' }
                 }}
-                className="text-gray-400 leading-relaxed text-xs sm:text-sm md:text-sm font-light bg-transparent"
+                className={`leading-relaxed text-xs sm:text-sm md:text-sm font-light bg-transparent ${isLightTheme ? 'text-[#3D3D3D]' : colorClasses.textDescription}`}
               >
                 {faq.answer}
               </motion.p>
@@ -109,35 +119,42 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
 export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
   const faqs = useMemo(() => [
     {
-      question: "What does GeoAlt do?",
-      answer: "GeoAlt shows how your website appears in AI search, delivering insights and recommendations to improve visibility, credibility, and performance across generative engines effectively."
+      question: "What does Geoalt do?",
+      answer: "Geoalt shows how your website appears in AI search, delivering insights and recommendations to improve visibility, credibility, and performance across generative engines effectively."
     },
     {
-      question: "How does GeoAlt help my brand?",
-      answer: "GeoAlt analyzes your content's presence in AI answers, highlights missing visibility opportunities, and provides clear guidance to strengthen trust, authority, and competitive advantage across generative platforms."
+      question: "How does Geoalt help my brand?",
+      answer: "Geoalt analyzes your content's presence in AI answers, highlights missing visibility opportunities, and provides clear guidance to strengthen trust, authority, and competitive advantage across generative platforms."
     },
     {
-      question: "Who should use GeoAlt?",
-      answer: "Brands, marketers, founders, and SEO teams wanting stronger AI search presence benefit from GeoAlt's insights, optimization recommendations, competitive analysis, and structured visibility reporting across generative engines."
+      question: "Who should use Geoalt?",
+      answer: "Brands, marketers, founders, and SEO teams wanting stronger AI search presence benefit from Geoalt's insights, optimization recommendations, competitive analysis, and structured visibility reporting across generative engines."
     },
     {
-      question: "What data does GeoAlt analyze?",
-      answer: "GeoAlt scans website content, competitor pages, AI-generated answers, semantic patterns, and topic coverage to identify gaps, strengths, weaknesses, and actionable optimization steps for improved AI search visibility."
+      question: "What data does Geoalt analyze?",
+      answer: "Geoalt scans website content, competitor pages, AI-generated answers, semantic patterns, and topic coverage to identify gaps, strengths, weaknesses, and actionable optimization steps for improved AI search visibility."
     },
     {
-      question: "How is GeoAlt different from SEO tools?",
-      answer: "GeoAlt focuses specifically on generative engines, evaluating AI summary visibility rather than traditional keyword rankings, offering intent-driven recommendations tailored for modern answer-engine ecosystems and behaviors."
+      question: "How is Geoalt different from SEO tools?",
+      answer: "Geoalt focuses specifically on generative engines, evaluating AI summary visibility rather than traditional keyword rankings, offering intent-driven recommendations tailored for modern answer-engine ecosystems and behaviors."
     },
     {
-      question: "Does GeoAlt work for any website?",
-      answer: "Yes, GeoAlt supports nearly all websites by analyzing content structure, clarity, authority, and relevance, offering optimization suggestions designed to improve AI search performance and generative visibility."
+      question: "Does Geoalt work for any website?",
+      answer: "Yes, Geoalt supports nearly all websites by analyzing content structure, clarity, authority, and relevance, offering optimization suggestions designed to improve AI search performance and generative visibility."
     }
   ], [])
 
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
 
-  // Add FAQ structured data for SEO
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
+
   useEffect(() => {
     const script = document.createElement('script')
     script.type = 'application/ld+json'
@@ -168,7 +185,7 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
   }, [faqs])
 
   return (
-    <section className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh]">
+    <section className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh] bg-transparent-text bg-clip-text">
       <div ref={sectionRef} className="max-w-4xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -176,8 +193,8 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
           className="text-center mb-8 sm:mb-12 md:mb-14 lg:mb-16"
         >
-          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0">FAQ</h2>
-          <p className={`text-sm sm:text-lg md:text-lg ${colorClasses.textMuted} font-light px-4 sm:px-0 md:px-0 pt-0`}>Generative Engine Optimization is still<br />very new. We&apos;ve got you covered.</p>
+          <h2 className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-heading'}`}>FAQ</h2>
+          <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textDescription} font-light px-4 sm:px-0 md:px-0 pt-0`}>Generative Engine Optimization is still<br className="leading-none" /><span className="block -mt-0.5 sm:-mt-0.5 md:-mt-0.5 lg:-mt-2">very new. We&apos;ve got you covered.</span></p>
         </motion.div>
         
         <motion.div

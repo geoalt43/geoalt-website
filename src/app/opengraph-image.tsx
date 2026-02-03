@@ -1,10 +1,8 @@
 import { ImageResponse } from 'next/og'
 
-// Route segment config
 export const runtime = 'edge'
 
-// Image metadata
-export const alt = 'GEOAlt - Get Your Brand Recommended by AI'
+export const alt = 'Geoalt - Get Your Brand Recommended by AI'
 export const size = {
   width: 1200,
   height: 630,
@@ -12,7 +10,6 @@ export const size = {
 
 export const contentType = 'image/png'
 
-// Image generation
 export default async function Image() {
   return new ImageResponse(
     (
@@ -30,7 +27,7 @@ export default async function Image() {
           fontFamily: 'system-ui',
         }}
       >
-        <div style={{ fontSize: 64, marginBottom: 20 }}>GEOAlt</div>
+        <div style={{ fontSize: 64, marginBottom: 20 }}>Geoalt</div>
         <div style={{ fontSize: 32, opacity: 0.8 }}>
           Get Your Brand Recommended by AI
         </div>

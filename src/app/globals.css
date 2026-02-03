@@ -1,86 +1,265 @@
 @import "tailwindcss";
+@import "../styles/design-tokens.css";
 
 @layer base {
   :root {
-    /* Semantic theme tokens - single source of truth */
-    --color-page-background: 0 0% 0%;
-    --color-surface: 0 0% 3%;
-    --color-surface-elevated: 0 0% 6%;
-    --color-surface-hover: 0 0% 9%;
-    --color-text-primary: 0 0% 100%;
-    --color-text-secondary: 0 0% 70%;
-    --color-text-muted: 0 0% 50%;
-    --color-text-disabled: 0 0% 30%;
-    --color-interactive: 217 91% 60%;
-    --color-interactive-hover: 217 91% 70%;
-    --color-interactive-active: 217 91% 50%;
-    --color-interactive-disabled: 0 0% 30%;
-    --color-border: 0 0% 20%;
-    --color-border-hover: 0 0% 30%;
-    --color-divider: 0 0% 15%;
-    --color-success: 142 76% 36%;
-    --color-success-bg: 142 76% 36% / 0.1;
-    --color-warning: 38 92% 50%;
-    --color-warning-bg: 38 92% 50% / 0.1;
-    --color-error: 0 84% 60%;
-    --color-error-bg: 0 84% 60% / 0.1;
-    --color-info: 199 89% 48%;
-    --color-info-bg: 199 89% 48% / 0.1;
-    --color-focus-outline: 217 91% 60%;
-    --color-selection: 217 91% 60% / 0.2;
-    --color-overlay: 0 0% 0% / 0.5;
-    --color-overlay-light: 0 0% 0% / 0.3;
+    /* ========================================
+       DEFAULT THEME (Dark Mode)
+       These are the fallback values when no theme class is applied.
+       ======================================== */
+    
+    /* Page & Surface Colors */
+    --color-page-background: hsl(var(--hsl-ref-001));
+    --color-surface: hsl(var(--hsl-ref-002));
+    --color-surface-elevated: hsl(var(--hsl-ref-003));
+    --color-surface-hover: hsl(var(--hsl-ref-004));
+    --color-card-bg: rgba(0, 0, 0, 0.6); /* Dark theme card background */
+    --color-button-bg: #ffffff; /* Dark theme button/card accent background */
+    --color-footer-bg: hsl(var(--hsl-ref-001)); /* Dark theme footer background */
+    --color-faq-card-hover: hsl(var(--hsl-ref-004)); /* Dark theme FAQ card hover */
+    --color-recommended-bg: hsl(var(--hsl-ref-004)); /* Dark theme recommended banner bg */
+    --color-recommended-text: hsl(var(--hsl-ref-005)); /* Dark theme recommended banner text */
+    --color-pricing-toggle-bg: #0a0a0a; /* Dark theme pricing toggle bg */
+    
+    /* Text Colors */
+    --color-text-primary: hsl(var(--hsl-ref-005));
+    --color-text-secondary: hsl(var(--hsl-ref-006));
+    --color-text-muted: hsl(var(--hsl-ref-007));
+    --color-text-disabled: hsl(var(--hsl-ref-008));
+    --color-text-heading: hsl(var(--hsl-ref-005));
+    --color-text-description: hsl(var(--hsl-ref-006)); /* Description/subheading text */
+    --color-text-feature: hsl(var(--hsl-ref-006)); /* Pricing features text */
+    
+    /* Interactive Colors */
+    --color-interactive: hsl(var(--hsl-ref-009));
+    --color-interactive-hover: hsl(var(--hsl-ref-010));
+    --color-interactive-active: hsl(var(--hsl-ref-011));
+    --color-interactive-disabled: hsl(var(--hsl-ref-008));
+    
+    /* Border Colors */
+    --color-border: hsl(var(--hsl-ref-012));
+    --color-border-hover: hsl(var(--hsl-ref-013));
+    --color-divider: hsl(var(--hsl-ref-013));
+    --border: var(--hsl-ref-012);
+    --color-recommended-border-bottom: transparent; /* Dark theme - no bottom border */
+    
+    /* Status Colors */
+    --color-success: hsl(var(--hsl-ref-014));
+    --color-success-bg: hsl(var(--hsl-ref-014) / 0.1);
+    --color-warning: hsl(var(--hsl-ref-015));
+    --color-warning-bg: hsl(var(--hsl-ref-015) / 0.1);
+    --color-error: hsl(var(--hsl-ref-016));
+    --color-error-bg: hsl(var(--hsl-ref-016) / 0.1);
+    --color-info: hsl(var(--hsl-ref-017));
+    --color-info-bg: hsl(var(--hsl-ref-017) / 0.1);
+    
+    /* Utility Colors */
+    --color-focus-outline: hsl(var(--hsl-ref-009));
+    --color-selection: hsl(var(--hsl-ref-009) / 0.2);
+    --color-overlay: hsl(var(--hsl-ref-001) / 0.5);
+    --color-overlay-light: hsl(var(--hsl-ref-001) / 0.3);
+    
+    /* Grid/Dot Patterns */
+    --color-dot: var(--color-ref-031);
+    --color-grid: var(--color-ref-030);
+    --color-grid-strong: var(--color-ref-031);
   }
 
+  /* ========================================
+     DARK THEME (Explicit)
+     Explicitly defines all tokens for clarity.
+     ======================================== */
   .dark {
-    /* Shadcn/ui dark mode variables */
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    /* Page & Surface Colors - same as :root */
+    --color-page-background: hsl(var(--hsl-ref-001));
+    --color-surface: hsl(var(--hsl-ref-002));
+    --color-surface-elevated: hsl(var(--hsl-ref-003));
+    --color-surface-hover: hsl(var(--hsl-ref-004));
+    --color-card-bg: rgba(0, 0, 0, 0.6); /* Dark theme card background */
+    --color-button-bg: #ffffff; /* Dark theme button/card accent background */
+    --color-footer-bg: hsl(var(--hsl-ref-001)); /* Dark theme footer background */
+    --color-faq-card-hover: hsl(var(--hsl-ref-004)); /* Dark theme FAQ card hover */
+    --color-recommended-bg: hsl(var(--hsl-ref-004)); /* Dark theme recommended banner bg */
+    --color-recommended-text: hsl(var(--hsl-ref-005)); /* Dark theme recommended banner text */
+    --color-pricing-toggle-bg: #0a0a0a; /* Dark theme pricing toggle bg */
+    --blog-card-bg: #1d1d1d; /* Dark theme blog card background */
+    --blog-card-border: #242424; /* Dark theme blog card border */
+    --blog-card-border-hover: #333333; /* Dark theme blog card hover border */
+    
+    /* Text Colors */
+    --color-text-primary: hsl(var(--hsl-ref-005));
+    --color-text-secondary: hsl(var(--hsl-ref-006));
+    --color-text-muted: hsl(var(--hsl-ref-007));
+    --color-text-disabled: hsl(var(--hsl-ref-008));
+    --color-text-heading: hsl(var(--hsl-ref-005));
+    --color-text-button: hsl(var(--hsl-ref-001)); /* Black text on white button in dark mode */
+    
+    /* Interactive Colors */
+    --color-interactive: hsl(var(--hsl-ref-009));
+    --color-interactive-hover: hsl(var(--hsl-ref-010));
+    --color-interactive-active: hsl(var(--hsl-ref-011));
+    --color-interactive-disabled: hsl(var(--hsl-ref-008));
+    
+    /* Border Colors */
+    --color-border: hsl(var(--hsl-ref-025)); /* #242424 */
+    --color-border-hover: hsl(var(--hsl-ref-013));
+    --color-divider: hsl(var(--hsl-ref-013));
+    --border: var(--hsl-ref-025);
+    --color-recommended-border-bottom: transparent; /* Dark theme - no bottom border */
+    
+    /* Status Colors */
+    --color-success: hsl(var(--hsl-ref-014));
+    --color-success-bg: hsl(var(--hsl-ref-014) / 0.1);
+    --color-warning: hsl(var(--hsl-ref-015));
+    --color-warning-bg: hsl(var(--hsl-ref-015) / 0.1);
+    --color-error: hsl(var(--hsl-ref-016));
+    --color-error-bg: hsl(var(--hsl-ref-016) / 0.1);
+    --color-info: hsl(var(--hsl-ref-017));
+    --color-info-bg: hsl(var(--hsl-ref-017) / 0.1);
+    
+    /* Utility Colors */
+    --color-focus-outline: hsl(var(--hsl-ref-009));
+    --color-selection: hsl(var(--hsl-ref-009) / 0.2);
+    --color-overlay: hsl(var(--hsl-ref-001) / 0.5);
+    --color-overlay-light: hsl(var(--hsl-ref-001) / 0.3);
+    
+    /* Grid/Dot Patterns */
+    --color-dot: var(--color-ref-031);
+    --color-grid: var(--color-ref-030);
+    --color-grid-strong: var(--color-ref-031);
+    
+    /* shadcn/ui Tokens */
+    --background: var(--hsl-ref-018);
+    --foreground: var(--hsl-ref-019);
+    --card: var(--hsl-ref-018);
+    --card-foreground: var(--hsl-ref-019);
+    --popover: var(--hsl-ref-018);
+    --popover-foreground: var(--hsl-ref-019);
+    --primary: var(--hsl-ref-019);
+    --primary-foreground: var(--hsl-ref-020);
+    --secondary: var(--hsl-ref-021);
+    --secondary-foreground: var(--hsl-ref-019);
+    --muted: var(--hsl-ref-021);
+    --muted-foreground: var(--hsl-ref-022);
+    --accent: var(--hsl-ref-021);
+    --accent-foreground: var(--hsl-ref-019);
+    --destructive: var(--hsl-ref-023);
+    --destructive-foreground: var(--hsl-ref-019);
+    --input: var(--hsl-ref-021);
+    --ring: var(--hsl-ref-024);
   }
-}
 
-@layer base {
+  /* ========================================
+     LIGHT THEME
+     ======================================== */
+  :root.light, .light {
+    /* Page & Surface Colors */
+    --color-page-background: #F2F2F2; /* Light theme background */
+    --color-surface: hsl(var(--hsl-ref-020));
+    --color-surface-elevated: hsl(var(--hsl-ref-019)); 
+    --color-surface-hover: hsl(var(--hsl-ref-024));
+    --color-card-bg: #ffffff; /* Light theme card background - pure white */
+    --color-button-bg: #F2F2F2; /* Light theme button/card accent background */
+    --color-footer-bg: #080808; /* Light theme footer background */
+    --color-faq-card-hover: var(--color-ref-039); /* Light theme FAQ card hover */
+    --color-recommended-bg: #cac8c8; /* Light theme recommended banner bg */
+    --color-recommended-text: #524f4f; /* Light theme recommended banner text */
+    --color-pricing-toggle-bg: var(--color-ref-038); /* Light theme pricing toggle bg currently 555555, approx ref-038 */
+    --blog-card-bg: #ffffff; /* Light theme blog card background */
+    --blog-card-border: var(--color-border); /* Light theme blog card border */
+    --blog-card-border-hover: var(--color-border); /* Light theme blog card hover border (no change) */
+    
+    /* Text Colors */
+    --color-text-primary: #525252; /* Light theme primary text */
+    --color-text-secondary: hsl(var(--hsl-ref-008));
+    --color-text-muted: hsl(var(--hsl-ref-007)); 
+    --color-text-disabled: hsl(0 0% 60%);
+    --color-text-heading: #525252; /* Light theme headings */
+    --color-text-button: #525252; /* Light theme button text */
+    --color-text-description: #808080; /* Light theme description/subheading text */
+    --color-text-feature: #3D3D3D; /* Pricing features text */
+    
+    /* Interactive Colors */
+    --color-interactive: hsl(var(--hsl-ref-009));
+    --color-interactive-hover: hsl(var(--hsl-ref-010));
+    --color-interactive-active: hsl(var(--hsl-ref-011));
+    --color-interactive-disabled: hsl(0 0% 70%);
+    
+    /* Border Colors */
+    --color-border: #DBDBDB; /* Light theme border */
+    --color-border-hover: hsl(var(--hsl-ref-023));
+    --color-divider: hsl(0 0% 85%);
+    --border: 0 0% 86%; /* #DBDBDB in HSL */
+    --color-recommended-border-bottom: #DBDBDB; /* Light theme recommended plan bottom border */
+    
+    /* Status Colors */
+    --color-success: hsl(var(--hsl-ref-014));
+    --color-success-bg: hsl(var(--hsl-ref-014) / 0.15);
+    --color-warning: hsl(var(--hsl-ref-015));
+    --color-warning-bg: hsl(var(--hsl-ref-015) / 0.15);
+    --color-error: hsl(var(--hsl-ref-016));
+    --color-error-bg: hsl(var(--hsl-ref-016) / 0.15);
+    --color-info: hsl(var(--hsl-ref-017));
+    --color-info-bg: hsl(var(--hsl-ref-017) / 0.15);
+    
+    /* Utility Colors */
+    --color-focus-outline: hsl(var(--hsl-ref-009));
+    --color-selection: hsl(var(--hsl-ref-009) / 0.3);
+    --color-overlay: hsl(var(--hsl-ref-001) / 0.3);
+    --color-overlay-light: hsl(var(--hsl-ref-001) / 0.15);
+    
+    /* Grid/Dot Patterns */
+    --color-dot: rgba(0, 0, 0, 0.25);
+    --color-grid: var(--color-ref-036);
+    --color-grid-strong: var(--color-ref-035);
+    
+    /* shadcn/ui Tokens */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --input: 0 0% 90%;
+    --ring: 217 91% 60%;
+  }
+
+  /* ========================================
+     GLOBAL BASE STYLES
+     ======================================== */
   * {
-    /* Tailwind v4 may not generate `border-border`; set color directly */
     border-color: hsl(var(--border));
   }
+
+  html,
+  body,
+  section {
+    background-color: var(--color-page-background);
+  }
+
+  body,
+  section {
+    color: var(--color-text-primary);
+  }
 }
 
-
-/* Force black background across the app and all sections */
-@layer base {
-  html, body, section {
-    background-color: #000 !important;
-  }
-  body, section {
-    color: #fff;
-  }
-}
-
-/* Restored legacy animations/utilities used in the original React app */
 @layer utilities {
   @keyframes fadeIn {
     from {
       opacity: 0;
       transform: translateY(10px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -92,6 +271,7 @@
       opacity: 1;
       transform: translateY(0);
     }
+
     to {
       opacity: 0;
       transform: translateY(-10px);
@@ -107,16 +287,21 @@
   }
 }
 
-/* Custom animations */
 @keyframes gridMove {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(80px, 80px); }
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(80px, 80px);
+  }
 }
 
 @keyframes trusted-marquee {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -128,55 +313,55 @@
   }
 }
 
-/* Trusted by text - no gradient, solid white */
 .trusted-by-text {
-  color: rgba(255, 255, 255, 1) !important;
+  color: var(--color-text-primary) !important;
   background: none !important;
   background-image: none !important;
   -webkit-background-clip: unset !important;
   background-clip: unset !important;
-  -webkit-text-fill-color: rgba(255, 255, 255, 1) !important;
+  -webkit-text-fill-color: var(--color-text-primary) !important;
 }
 
-/* Utility classes */
+.light .trusted-by-text {
+  color: var(--color-ref-001) !important;
+  -webkit-text-fill-color: var(--color-ref-001) !important;
+}
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1f2937;
+  background: var(--color-surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4b5563;
+  background: var(--color-border);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
+  background: var(--color-border-hover);
 }
 
-/* Focus styles */
 .focus-visible:focus {
   outline: 2px solid hsl(var(--ring));
   outline-offset: 2px;
 }
 
-/* Selection styles */
 ::selection {
   background: hsl(var(--primary) / 0.2);
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scroll-padding-top: 0;
 }
 
 .mask-fade-horizontal {
-  -webkit-mask-image: linear-gradient(90deg, transparent, rgba(0,0,0,0.9) 12%, rgba(0,0,0,0.9) 88%, transparent);
-  mask-image: linear-gradient(90deg, transparent, rgba(0,0,0,0.9) 12%, rgba(0,0,0,0.9) 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
 }
 
 .animation-delay-1500 {
@@ -185,14 +370,14 @@ html {
 
 .grid-overlay-muted {
   background-image:
-    linear-gradient(rgba(130, 130, 130, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(130, 130, 130, 0.1) 1px, transparent 1px);
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
   background-size: 80px 80px;
   animation: gridMove 20s linear infinite;
 }
 
 .text-shadow-muted {
-  text-shadow: 0 0 20px rgba(130, 130, 130, 0.3);
+  text-shadow: 0 0 20px var(--color-border);
 }
 
 .filter-muted-base {
@@ -211,8 +396,6 @@ html {
   filter: none;
 }
 
-
-/* FAQ card with partial left and right borders */
 .faq-card-partial-borders {
   position: relative;
 }
@@ -224,7 +407,7 @@ html {
   top: 100%;
   bottom: 0;
   width: 1px;
-  background-color: #656565;
+  background-color: var(--color-border);
 }
 
 .faq-card-partial-borders::before {
@@ -235,45 +418,177 @@ html {
   right: 0;
 }
 
-/* Utility classes for inline styles - maintaining exact same output */
 @layer utilities {
-  /* Grid background patterns */
   .bg-grid-pattern {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-image: linear-gradient(var(--color-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 
   .bg-grid-pattern-opacity-02 {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-image: linear-gradient(var(--color-grid-strong) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-grid-strong) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 
-  /* Fix for dashboard images - smooth transitions between breakpoints */
-  /* Mobile (<640px): exact original value */
   .dashboard-image-transform {
     transform: rotateX(15deg) rotateY(0deg) translateZ(20px) translateY(40px);
   }
 
-  /* sm (640px+): exact original value - MUST match original sm: breakpoint */
   @media (min-width: 640px) {
     .dashboard-image-transform {
       transform: rotateX(18deg) rotateY(0deg) translateZ(30px) translateY(60px);
     }
   }
 
-  /* md (768px): intermediate value for smooth transition - only affects tablet sizes */
   @media (min-width: 768px) {
     .dashboard-image-transform {
       transform: rotateX(18.5deg) rotateY(0deg) translateZ(32px) translateY(70px);
     }
   }
 
-  /* lg (1024px+): exact original value - MUST match original lg: breakpoint */
   @media (min-width: 1024px) {
     .dashboard-image-transform {
       transform: rotateX(20deg) rotateY(0deg) translateZ(40px) translateY(90px);
     }
   }
+
+  .bg-dot-grid {
+    background-image: radial-gradient(circle at 1px 1px, var(--color-dot) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  .mask-fade-out {
+    mask-image: linear-gradient(to bottom, black 50%, transparent 95%);
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 95%);
+  }
+
+  .text-text-heading {
+    color: var(--color-text-heading);
+  }
+
+  .text-text-button {
+    color: var(--color-text-button);
+  }
+
+  .text-text-description {
+    color: var(--color-text-description);
+  }
+
+  .bg-button-bg {
+    background-color: var(--color-button-bg) !important;
+  }
+}
+
+/* AI Platform Rotator - Light Theme: Fully Black */
+.light .ai-platform-text {
+  filter: brightness(0) saturate(100%) !important;
+}
+
+.light .ai-platform-icon {
+  filter: brightness(0) saturate(100%) !important;
+}
+
+/* AI Platform Rotator - Text Name Visibility (ChatGPT, Copilot) */
+.ai-platform-name {
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: currentColor !important;
+  color: var(--color-text-primary) !important;
+}
+
+.light .ai-platform-name {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Navbar Get Started button - light theme */
+.light .navbar-get-started {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Navbar Sign in button - light theme */
+.light .navbar-sign-in {
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+/* Footer divider - light theme */
+.light .footer-divider,
+.light footer .bg-divider,
+.light footer > div.bg-divider {
+  background-color: #3D3D3D !important;
+}
+
+/* Footer background - light theme */
+.light footer {
+  background-color: #080808 !important;
+  --color-text-primary: #868686;
+  --color-text-muted: #868686;
+  --color-text-heading: #B6B6B6;
+}
+
+.light footer a,
+.light footer p,
+.light footer span {
+  color: var(--color-ref-041);
+}
+
+.light footer h3 {
+  color: var(--color-ref-042) !important;
+}
+
+/* Footer - Dark theme text overrides (match light theme text colors) */
+.dark footer,
+footer {
+  --color-text-primary: var(--color-ref-041);
+  --color-text-muted: var(--color-ref-041);
+  --color-text-heading: var(--color-ref-042);
+}
+
+.dark footer a,
+.dark footer p,
+.dark footer span,
+footer a,
+footer p,
+footer span {
+  color: var(--color-ref-041);
+}
+
+.dark footer h3,
+footer h3 {
+  color: var(--color-ref-042) !important;
+}
+
+/* Policy Pages Subheadings - light theme */
+.light .policy-content h2,
+.light .policy-content h3 {
+  color: var(--color-ref-001) !important;
+}
+
+/* Policy Pages Description Text - light theme */
+.light .policy-content p,
+.light .policy-content li {
+  color: var(--color-text-feature) !important;
+}
+
+/* Hide dark mode gradients in light theme */
+.light .dark-mode-gradient {
+  display: none !important;
+}
+
+/* Policy Pages Title - light theme */
+.light .policy-page-title {
+  color: var(--color-ref-001) !important;
+}
+
+/* Policy Page Effective Date/Last Updated - light theme */
+.light .policy-effective-date,
+.light .policy-effective-date p {
+  color: var(--color-text-feature) !important;
+}
+
+html {
+  height: 100%;
 }

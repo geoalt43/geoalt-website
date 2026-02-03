@@ -9,28 +9,32 @@ interface DemoCTAProps {
   variant?: 'outline' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   className?: string
+  onClick?: () => void
   showModal?: boolean
+  href?: string
 }
 
-export function DemoCTA({ 
-  text, 
-  variant = 'outline', 
-  size = 'md', 
+export function DemoCTA({
+  text,
+  variant = 'outline',
+  size = 'md',
   className,
-  showModal = true 
+  onClick,
+  showModal = true,
+  href
 }: DemoCTAProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   const baseClasses = 'inline-flex items-center justify-center rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none'
 
   const variants = {
-    outline: 'border-2 border-gray-600 text-white hover:bg-[#d4d4d4] hover:text-black transition-all duration-200 ease-in-out',
-    ghost: 'text-white hover:bg-gray-800',
+    outline: 'border border-border text-text-primary hover:bg-surface-hover transition-all duration-200 ease-in-out',
+    ghost: 'text-text-primary hover:bg-surface-hover',
   }
 
   const sizes = {
     sm: 'h-8 px-3 text-sm',
-    md: 'h-8 px-3.5 py-2 sm:h-10 sm:px-4 sm:py-2.5 md:px-5 text-xs sm:text-sm md:text-base',
+    md: 'h-8 px-3.5 py-4 sm:h-10 sm:px-4 sm:py-6 rounded-full md:px-5 text-xs sm:text-sm md:text-base',
     lg: 'h-12 px-8 text-lg',
   }
 
@@ -59,12 +63,12 @@ export function DemoCTA({
         {/* Demo Modal */}
         {isOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center">
-            <div 
+            <div
               className="absolute inset-0 bg-black/50 backdrop-blur-sm"
               onClick={() => setIsOpen(false)}
             />
             <div className="relative bg-white rounded-lg p-8 max-w-md w-full mx-4">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              <h3 className="text-xl font-semibold text-text-heading mb-4">
                 Schedule a Demo
               </h3>
               <p className="text-gray-600 mb-6 flex items-center">
@@ -82,6 +86,25 @@ export function DemoCTA({
           </div>
         )}
       </>
+    )
+  }
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target='_blank'
+        onClick={onClick}
+        className={cn(
+          baseClasses,
+          variants[variant],
+          sizes[size],
+          'text-center',
+          className
+        )}
+      >
+        {text}
+      </a>
     )
   }
 

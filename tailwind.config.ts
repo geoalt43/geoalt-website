@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import typography from '@tailwindcss/typography'
 
 const config: Config = {
   content: [
@@ -8,6 +9,14 @@ const config: Config = {
   ],
   darkMode: 'class',
   theme: {
+    screens: {
+      'xs': '475px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
     extend: {
       colors: {
         // Semantic theme tokens - single source of truth
@@ -19,6 +28,7 @@ const config: Config = {
         'text-secondary': 'var(--color-text-secondary)',
         'text-muted': 'var(--color-text-muted)',
         'text-disabled': 'var(--color-text-disabled)',
+        'text-heading': 'var(--color-text-heading)',
         'interactive': 'var(--color-interactive)',
         'interactive-hover': 'var(--color-interactive-hover)',
         'interactive-active': 'var(--color-interactive-active)',
@@ -140,7 +150,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [typography],
 }
 
 export default config
