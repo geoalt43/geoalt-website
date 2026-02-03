@@ -39,8 +39,8 @@ export function InsightCard({
       onMouseEnter={onHover}
       onClick={handleInteraction}
       whileTap={{ scale: 0.98 }}
-      className={`mx-4 sm:mx-0 rounded-lg p-2 sm:p-3.5 text-white/80 h-[150px] sm:h-[150px] md:h-[170px] flex flex-col overflow-hidden relative group border-l-2 cursor-pointer active:opacity-80 ${
-        isActive ? 'border-white' : type === 'position' || type === 'sentiment' ? 'border-white/5' : 'border-transparent'
+      className={`mx-4 sm:mx-0 rounded-lg p-2 sm:p-3.5 text-text-secondary h-[150px] sm:h-[150px] md:h-[170px] flex flex-col overflow-hidden relative group border-l cursor-pointer active:opacity-80 ${
+        isActive ? 'bg-[var(--color-card-bg)] border-text-primary' : 'bg-transparent border-border'
       }`}
       animate={{
         borderLeftColor: isActive ? 'var(--color-ref-014)' : type === 'position' || type === 'sentiment' ? 'var(--color-ref-008)' : 'var(--color-ref-011)',
@@ -55,7 +55,7 @@ export function InsightCard({
         <div className="flex-shrink-0">
           <IconComponent />
         </div>
-        <h3 className="text-xs sm:text-sm md:text-sm lg:text-base font-normal text-white flex-shrink-0">{title}</h3>
+        <h3 className="text-xs sm:text-sm md:text-sm lg:text-base font-normal text-text-primary flex-shrink-0">{title}</h3>
         </div>
         <AnimatePresence mode="wait">
           {!isActive ? (
@@ -65,7 +65,7 @@ export function InsightCard({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="text-[11px] sm:text-sm md:text-base text-white/60 leading-relaxed overflow-hidden line-clamp-2 sm:line-clamp-none md:line-clamp-none"
+              className="text-[11px] sm:text-sm md:text-base text-text-description leading-relaxed overflow-hidden line-clamp-2 sm:line-clamp-none md:line-clamp-none"
             >
               {description}
             </motion.p>
@@ -115,7 +115,7 @@ export function InsightCard({
                   <div className="flex-shrink-0 min-w-0">
                     <CompanyName name={item.companyName} size="sm" />
                   </div>
-                  <span className="text-white/50 text-[10px] sm:text-xs md:text-sm font-normal flex-shrink-0">#{item.rank}</span>
+                  <span className="text-text-muted text-[10px] sm:text-xs md:text-sm font-normal flex-shrink-0">#{item.rank}</span>
                 </motion.div>
               ))}
             </>
@@ -134,7 +134,7 @@ export function InsightCard({
                     <CompanyName name={item.companyName} size="sm" />
                   </div>
                   <div className="flex items-center gap-1 sm:gap-2 md:gap-2 flex-shrink-0">
-                    <div className="w-10 sm:w-14 md:w-[3.5rem] lg:w-16 h-1 sm:h-1.5 md:h-1.5 bg-white/10 rounded-full overflow-hidden">
+                    <div className="w-10 sm:w-14 md:w-[3.5rem] lg:w-16 h-1 sm:h-1.5 md:h-1.5 bg-black/10 dark:bg-white/10 rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${item.percentage}%` }}
@@ -142,7 +142,7 @@ export function InsightCard({
                         className="h-full bg-green-400 rounded-full"
                       />
                     </div>
-                    <span className="text-white/70 text-[10px] sm:text-xs md:text-xs w-7 sm:w-10 md:w-10 text-right">{item.percentage}%</span>
+                    <span className="text-text-muted text-[10px] sm:text-xs md:text-xs w-7 sm:w-10 md:w-10 text-right">{item.percentage}%</span>
                   </div>
                 </motion.div>
               ))}

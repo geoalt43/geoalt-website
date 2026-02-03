@@ -28,8 +28,8 @@ export function DemoCTA({
   const baseClasses = 'inline-flex items-center justify-center rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none'
 
   const variants = {
-    outline: 'border-2 border-gray-600 text-white hover:bg-[var(--color-ref-024)] hover:text-black transition-all duration-200 ease-in-out',
-    ghost: 'text-white hover:bg-gray-800',
+    outline: 'border border-border text-text-primary hover:bg-surface-hover transition-all duration-200 ease-in-out',
+    ghost: 'text-text-primary hover:bg-surface-hover',
   }
 
   const sizes = {
@@ -68,7 +68,7 @@ export function DemoCTA({
               onClick={() => setIsOpen(false)}
             />
             <div className="relative bg-white rounded-lg p-8 max-w-md w-full mx-4">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              <h3 className="text-xl font-semibold text-text-heading mb-4">
                 Schedule a Demo
               </h3>
               <p className="text-gray-600 mb-6 flex items-center">

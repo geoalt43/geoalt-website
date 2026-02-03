@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { useTheme } from 'next-themes'
 
 interface AIPlatformRotatorProps {
   variant?: 'default' | 'muted'
@@ -14,6 +15,14 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
   const [currentPlatform, setCurrentPlatform] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
   const [isBlurring, setIsBlurring] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
 
   const getResponsiveSizes = () => {
     if (size === 'large') {
@@ -41,54 +50,54 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
   const platforms = [
     {
       name: 'ChatGPT',
-      icon: '/ai-icons/openai.webp',
+      icon: isLightTheme ? '/ai-icons/openai-light.svg' : '/ai-icons/openai.webp',
       hasText: false
     },
     {
       name: 'Perplexity',
-      icon: '/ai-icons/perplexity.webp',
-      text: '/ai-icons/perplexity-text.webp',
+      icon: isLightTheme ? '/ai-icons/perplexity-light.svg' : '/ai-icons/perplexity.webp',
+      text: isLightTheme ? '/ai-icons/perplexity-text-light.svg' : '/ai-icons/perplexity-text.webp',
       hasText: true
     },
     {
       name: 'Claude',
-      icon: '/ai-icons/claude-color.webp',
-      text: '/ai-icons/claude-text.webp',
+      icon: isLightTheme ? '/ai-icons/claude-light.svg' : '/ai-icons/claude-dark.svg',
+      text: isLightTheme ? '/ai-icons/claude-text-light.svg' : '/ai-icons/claude-text-dark.svg',
       hasText: true
     },
     {
       name: 'Gemini',
-      icon: '/ai-icons/gemini-color.webp',
-      text: '/ai-icons/gemini-text.webp',
+      icon: isLightTheme ? '/ai-icons/gemini-light mode.svg' : '/ai-icons/gemini-color.webp',
+      text: isLightTheme ? '/ai-icons/gemini-text-light.svg' : '/ai-icons/gemini-text.webp',
       hasText: true
     },
     {
       name: copilotNameOverride || 'Microsoft Copilot',
-      icon: '/ai-icons/copilot-color.webp',
+      icon: isLightTheme ? '/ai-icons/copilot-light.svg' : '/ai-icons/copilot-dark.svg',
       hasText: false
     },
     {
       name: 'Google AI Overviews',
-      icon: '/ai-icons/gemini-color.webp',
-      text: '/ai-icons/gemini-text.webp',
+      icon: isLightTheme ? '/ai-icons/gemini-light mode.svg' : '/ai-icons/gemini-color.webp',
+      text: isLightTheme ? '/ai-icons/gemini-text-light.svg' : '/ai-icons/gemini-text.webp',
       hasText: true
     },
     {
       name: '',
-      icon: '/ai-icons/deepseek.webp',
-      text: '/ai-icons/deepseek-text.webp',
+      icon: isLightTheme ? '/ai-icons/deepseek-light.svg' : '/ai-icons/deepseek-dark.svg',
+      text: isLightTheme ? '/ai-icons/deepseek-text-light.svg' : '/ai-icons/deepseek-text-dark.svg',
       hasText: true
     },
     {
       name: '',
-      icon: '/ai-icons/metaai-color.webp',
-      text: '/ai-icons/metaai-text.webp',
+      icon: isLightTheme ? '/ai-icons/metaai-light.svg' : '/ai-icons/metaai-dark.svg',
+      text: isLightTheme ? '/ai-icons/metaai-text-light.svg' : '/ai-icons/metaai-text-dark.svg',
       hasText: true
     },
     {
       name: '',
-      icon: '/ai-icons/grok.webp',
-      text: '/ai-icons/grok-text.webp',
+      icon: isLightTheme ? '/ai-icons/grok-light.svg' : '/ai-icons/grok.webp',
+      text: isLightTheme ? '/ai-icons/grok-text-light.svg' : '/ai-icons/grok-text.webp',
       hasText: true
     }
   ]
@@ -115,11 +124,11 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
       } ${isVisible ? 'animate-fadeIn' : 'animate-fadeOut'} ${
         variant === 'muted'
           ? isBlurring
-            ? 'filter-muted-blur text-[var(--color-ref-010)]'
-            : 'filter-muted-base text-[var(--color-ref-010)]'
+            ? 'filter-muted-blur text-text-muted'
+            : 'filter-muted-base text-text-muted'
           : isBlurring
-              ? 'filter-default-blur text-white'
-              : 'filter-none text-white'
+              ? 'filter-default-blur text-text-primary'
+              : 'filter-none text-text-primary'
       }`}
     >
       {current.icon && (
@@ -130,7 +139,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
             alt={`${current.name || 'AI platform'} icon`}
             width={iconWidth}
             height={iconHeight}
-            className="object-contain w-auto h-[20px] sm:h-[24px] md:h-[26px] lg:h-[36px] xl:h-[42px] max-w-full"
+            className="ai-platform-icon object-contain w-auto h-[20px] sm:h-[24px] md:h-[26px] lg:h-[36px] xl:h-[42px] max-w-full"
           />
           {current.hasText && current.text && (
             <Image
@@ -138,16 +147,22 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
               alt={`${current.name || 'AI platform'} logo text`}
               width={textWidth}
               height={textHeight}
-              className="object-contain w-auto h-[20px] sm:h-[24px] md:h-[26px] lg:h-[36px] xl:h-[42px] max-w-full"
+              className="ai-platform-text object-contain w-auto h-[20px] sm:h-[24px] md:h-[26px] lg:h-[36px] xl:h-[42px] max-w-full"
             />
           )}
         </div>
       )}
       {current.name && !current.hasText && (
         <span
-          className={`h-[20px] sm:h-[24px] md:h-[26px] lg:h-[30px] flex items-center text-sm sm:text-base md:text-lg lg:text-3xl xl:text-4xl font-medium leading-tight tracking-tight whitespace-nowrap ${
-            variant === 'muted' ? 'text-[var(--color-ref-010)]' : 'text-white'
+          className={`ai-platform-name h-[20px] sm:h-[24px] md:h-[26px] lg:h-[30px] flex items-center text-sm sm:text-base md:text-lg lg:text-3xl xl:text-4xl font-medium leading-tight tracking-tight whitespace-nowrap ${
+            variant === 'muted' ? 'text-text-muted' : 'text-text-primary'
           }`}
+          style={{ 
+            WebkitBackgroundClip: 'unset', 
+            backgroundClip: 'unset',
+            WebkitTextFillColor: 'inherit',
+            color: isLightTheme ? '#525252' : 'inherit'
+          }}
         >
           {current.name}
         </span>

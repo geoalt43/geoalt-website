@@ -1,35 +1,46 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import type { ReactElement } from 'react'
 import Image from 'next/image'
 import { getPlatformIcon } from '@/lib/utils/platform-icons'
+import { useTheme } from 'next-themes'
 
 interface FeatureTextProps {
   text: string
 }
 
 export function FeatureText({ text }: FeatureTextProps) {
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
+
   if (text === 'Access to 3 models') {
     return (
       <span className="flex items-center gap-2">
         <span>Access to 3 models</span>
         <div className="flex items-center gap-0.5">
           <Image
-            src="/ai-icons/openai.webp"
+            src={isLightTheme ? '/ai-icons/openai-light.svg' : '/ai-icons/openai.webp'}
             alt="OpenAI"
             width={18}
             height={18}
             className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-[18px] md:h-[18px] opacity-80 hover:opacity-100 transition-opacity"
           />
           <Image
-            src="/ai-icons/perplexity.webp"
+            src={isLightTheme ? '/ai-icons/perplexity-light.svg' : '/ai-icons/perplexity.webp'}
             alt="Perplexity"
             width={18}
             height={18}
             className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-[18px] md:h-[18px] opacity-80 hover:opacity-100 transition-opacity"
           />
           <Image
-            src="/ai-icons/gemini-color.webp"
+            src={isLightTheme ? '/ai-icons/gemini-light mode.svg' : '/ai-icons/gemini-color.webp'}
             alt="Gemini"
             width={18}
             height={18}
@@ -46,7 +57,7 @@ export function FeatureText({ text }: FeatureTextProps) {
         <span>Access to 1 model</span>
         <div className="flex items-center gap-0.5">
           <Image
-            src="/ai-icons/openai.webp"
+            src={isLightTheme ? '/ai-icons/openai-light.svg' : '/ai-icons/openai.webp'}
             alt="OpenAI"
             width={18}
             height={18}
