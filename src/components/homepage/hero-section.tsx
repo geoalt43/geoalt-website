@@ -4,7 +4,7 @@ import { AIPlatformRotator } from '@/components/shared/ai-platform-rotator'
 import Image from 'next/image'
 import { motion, useInView, useAnimation } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
-import { containerVariantsFast, wordVariants, headingContainerVariants, rotatorVariants, textVariants } from '@/lib/animations/variants'
+import { containerVariantsFast, wordVariants, headingContainerVariants, textVariants } from '@/lib/animations/variants'
 import { colorClasses } from '@/constants/colors'
 import { triggerBookDemoEvent, triggerSignUpInitiatedEvent } from '@/lib/mixpanel'
 import { useTheme } from 'next-themes'
@@ -66,14 +66,9 @@ export function HeroSection() {
               ))}
             </motion.h1>
 
-            <motion.div
-              variants={rotatorVariants}
-              initial="hidden"
-              animate={controls}
-              className="flex justify-center w-full"
-            >
+            <div className="flex justify-center w-full">
               <AIPlatformRotator size="large" centered={true} />
-            </motion.div>
+            </div>
 
             <motion.p
               variants={textVariants}

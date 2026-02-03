@@ -22,14 +22,19 @@ const trustedBrands = [
   { 
     label: 'dabble', 
     logo: '/logos/dabble.png',
+    textImage: '/images/dabble-text.png',
   },
   { 
     label: 'Modo', 
+    displayLabel: 'MODO',
     logo: '/logos/modo.png',
+    lightWeight: true,
   },
   { 
     label: 'SuperPen', 
     logo: '/logos/Superpen.png',
+    boldPart: 'Super',
+    normalPart: 'Pen',
   },
   { 
     label: 'NimbleDesk', 
@@ -38,6 +43,11 @@ const trustedBrands = [
   { 
     label: 'TreeTech Digi', 
     logo: '/logos/treetechdigi.png',
+  },
+  { 
+    label: 'Oktaa', 
+    logo: '/images/oktaa.png',
+    fullImage: true,
   },
 ]
 
@@ -247,8 +257,16 @@ function DashboardImageSection() {
 export function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const faqRef = useRef<HTMLDivElement>(null)
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme()
   
   useScrollRestoration()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -280,42 +298,87 @@ export function HomePage() {
       <DashboardImageSection />
 
       <section className="pt-[45.6px] sm:pt-[60.8px] md:pt-[65px] lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-18 lg:pb-[4vh] xl:pb-[6vh]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
-          <div className="relative overflow-hidden rounded-[0px] border-b border-[var(--color-border)] bg-transparent px-4 pt-5 pb-5 sm:px-6 sm:pt-9 sm:pb-9 md:px-8 md:pt-10 md:pb-10 lg:px-10 lg:pt-12 lg:pb-12">
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute w-32 h-32 bg-white/0 rounded-full blur-3xl -top-10 -left-6" />
-              <div className="absolute w-40 h-40 bg-white/0 rounded-full blur-3xl -bottom-16 right-6" />
-            </div>
-            <div className="relative flex flex-col items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
-              <p className="text-base sm:text-lg md:text-lg font-base tracking-wide -mt-6 sm:-mt-8 md:-mt-9 lg:-mt-11 trusted-by-text">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
+          <div className="relative overflow-hidden bg-transparent px-4 pt-5 pb-5 sm:px-6 sm:pt-9 sm:pb-9 md:px-8 md:pt-10 md:pb-10 lg:px-10 lg:pt-12 lg:pb-12">
+            <div className="relative flex flex-col items-center gap-6 sm:gap-8 md:gap-10">
+              <p className="text-xl sm:text-2xl md:text-3xl font-light sm:font-normal md:font-normal tracking-wide -mt-6 sm:-mt-8 md:-mt-9 lg:-mt-11 trusted-by-text">
                 Trusted by
               </p>
-              <div className="w-full overflow-hidden mask-fade-horizontal">
-                <div className="trusted-marquee flex items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-20">
-                  {[...trustedBrands, ...trustedBrands].map((brand, index) => (
-                    <div
-                      key={`${brand.label}-${index}`}
-                      className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 lg:gap-3 whitespace-nowrap flex-shrink-0"
-                    >
-                      <div className="relative h-[1rem] w-[1rem] sm:h-[1.5rem] sm:w-[1.5rem] md:h-[2rem] md:w-[2rem] lg:h-[2.5rem] lg:w-[2.5rem] flex-shrink-0">
+              <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-0">
+                {trustedBrands.map((brand, index) => (
+                  <div
+                    key={`${brand.label}-${index}`}
+                    className={`flex items-center justify-center gap-3 sm:gap-4 py-8 sm:py-10 md:py-12 px-24 sm:px-32 md:px-40 lg:px-48 border ${
+                      isLightTheme ? 'border-border' : 'border-[#121212]'
+                    } transition-colors duration-200 ${
+                      index >= 3 ? 'border-t-0' : ''
+                    } ${
+                      isLightTheme 
+                        ? 'bg-[var(--color-card-bg)]' 
+                        : 'bg-[var(--color-ref-043)]'
+                    }`}
+                  >
+                    {brand.fullImage ? (
+                      <div className="relative h-10 sm:h-12 md:h-14 w-28 sm:w-32 md:w-40 flex-shrink-0">
                         <Image
                           src={brand.logo}
-                          alt={`${brand.label} logo`}
+                          alt={brand.label}
                           fill
-                          className="object-contain"
+                          className={`object-contain ${isLightTheme ? 'invert' : ''}`}
                           quality={90}
-                          sizes="(max-width: 640px) 1rem, (max-width: 768px) 1.5rem, (max-width: 1024px) 2rem, 2.5rem"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none'
-                          }}
+                          sizes="(max-width: 640px) 7rem, (max-width: 768px) 8rem, 10rem"
                         />
                       </div>
-                      <span className="text-sm sm:text-xl md:text-2xl lg:text-[2.1rem] font-normal text-text-primary">
-                        {brand.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+                    ) : (
+                      <>
+                        <div className="relative h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex-shrink-0">
+                          <Image
+                            src={brand.logo}
+                            alt={`${brand.label} logo`}
+                            fill
+                            className="object-contain"
+                            quality={90}
+                            sizes="(max-width: 640px) 2rem, (max-width: 768px) 2.5rem, 3rem"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none'
+                            }}
+                          />
+                        </div>
+                        {brand.textImage ? (
+                          <div className="relative h-6 sm:h-8 md:h-10 w-20 sm:w-24 md:w-32 flex-shrink-0">
+                            <Image
+                              src={brand.textImage}
+                              alt={brand.label}
+                              fill
+                              className={`object-contain ${isLightTheme ? 'invert' : ''}`}
+                              quality={90}
+                              sizes="(max-width: 640px) 5rem, (max-width: 768px) 6rem, 8rem"
+                            />
+                          </div>
+                        ) : brand.boldPart && brand.normalPart ? (
+                          <span className={`text-2xl sm:text-3xl md:text-4xl ${
+                            isLightTheme ? 'text-black' : 'text-white'
+                          }`}>
+                            <span className="font-bold">{brand.boldPart}</span>
+                            <span className="font-normal">{brand.normalPart}</span>
+                          </span>
+                        ) : brand.lightWeight ? (
+                          <span className={`text-2xl sm:text-3xl md:text-4xl font-light tracking-wide ${
+                            isLightTheme ? 'text-black' : 'text-white'
+                          }`}>
+                            {brand.displayLabel || brand.label}
+                          </span>
+                        ) : (
+                          <span className={`text-xl sm:text-2xl md:text-3xl font-bold ${
+                            isLightTheme ? 'text-black' : 'text-white'
+                          }`}>
+                            {brand.displayLabel || brand.label}
+                          </span>
+                        )}
+                      </>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
