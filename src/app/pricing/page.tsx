@@ -41,7 +41,7 @@ export default function PricingPage() {
     }
 
     return (
-        <div className="min-h-screen bg-brand-black">
+        <div className="min-h-screen bg-page-background">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingStructuredData) }}

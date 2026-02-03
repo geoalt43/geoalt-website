@@ -43,8 +43,8 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
     if (headings.length === 0) return null
 
     return (
-        <nav className="border p-6 rounded-xl border-[#1e1e1e] pr-8">
-            <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
+        <nav className="border p-6 rounded-xl border-border pr-8">
+            <h4 className="text-sm font-semibold text-text-primary mb-4 uppercase tracking-wider">
                 On this page
             </h4>
             <ul className="space-y-3 text-sm">
@@ -56,10 +56,10 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
                         <a
                             href={`#${heading.slug}`}
                             className={cn(
-                                "block transition-colors hover:text-blue-400",
+                                "block transition-colors hover:text-blue-500 dark:hover:text-blue-400",
                                 activeId === heading.slug
-                                    ? "text-blue-400 font-medium"
-                                    : "text-gray-400"
+                                    ? "text-blue-500 dark:text-blue-400 font-medium"
+                                    : "text-text-muted"
                             )}
                             onClick={(e) => {
                                 e.preventDefault()

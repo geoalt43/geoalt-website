@@ -1,11 +1,11 @@
 export const colorClasses = {
-  surfaceDark: 'bg-[#090909]',
-  surfaceDarker: 'bg-[#0a0a0a]',
-  borderDark: 'border-[#1d1d1d]',
-  borderGray: 'border-[#656565]',
-  textSecondary: 'text-[#9b9b9b]',
-  textMuted: 'text-[#898989]',
-  hoverGray: 'hover:bg-[#d4d4d4]',
-  hoverGrayLight: 'hover:bg-[#a0a0a0]',
+  surfaceDark: 'bg-surface',
+  surfaceDarker: 'bg-surface-elevated',
+  borderDark: 'border-border',
+  borderGray: 'border-border', // ref-015 (#656565) is close to border adaptation
+  textSecondary: 'text-text-secondary',
+  textMuted: 'text-text-muted',
+  textDescription: 'text-text-description', // Description/subheading text (#808080 in light theme)
+  hoverGray: 'hover:bg-surface-hover',
+  hoverGrayLight: 'hover:bg-surface-hover',
 } as const
-

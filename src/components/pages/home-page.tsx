@@ -3,32 +3,43 @@
 import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { useTheme } from 'next-themes'
+import dynamic from 'next/dynamic'
 import { containerVariants, headerVariants, cardVariantsSmooth, iconVariantsSmooth } from '@/lib/animations/variants'
 import { colorClasses } from '@/constants/colors'
-import { HeroSection } from '@/components/homepage/hero-section'
-import { FeaturesSection } from '@/components/homepage/features-section'
-import { FAQSection } from '@/components/homepage/faq-section'
-import { CTASection } from '@/components/homepage/cta-section'
-import { TestimonialsCarousel } from '@/components/homepage/testimonials-carousel'
-import { Footer } from '@/components/layout/footer'
-import { Navbar } from '@/components/layout/navbar'
-import { AISearchMetricsSection } from '@/components/homepage/ai-search-metrics'
-import { DashboardSection } from '@/components/homepage/dashboard-section'
-import { PricingSection } from '@/components/homepage/pricing-section'
 import { useScrollRestoration } from '@/app/hooks/use-scroll-restoration'
+
+// Critical path - load immediately
+import { HeroSection } from '@/components/homepage/hero-section'
+import { Navbar } from '@/components/layout/navbar'
+
+// Below-fold sections - lazy load for faster initial render
+const FeaturesSection = dynamic(() => import('@/components/homepage/features-section').then(m => ({ default: m.FeaturesSection })))
+const FAQSection = dynamic(() => import('@/components/homepage/faq-section').then(m => ({ default: m.FAQSection })))
+const CTASection = dynamic(() => import('@/components/homepage/cta-section').then(m => ({ default: m.CTASection })))
+const TestimonialsCarousel = dynamic(() => import('@/components/homepage/testimonials-carousel').then(m => ({ default: m.TestimonialsCarousel })))
+const Footer = dynamic(() => import('@/components/layout/footer').then(m => ({ default: m.Footer })))
+const AISearchMetricsSection = dynamic(() => import('@/components/homepage/ai-search-metrics').then(m => ({ default: m.AISearchMetricsSection })))
+const DashboardSection = dynamic(() => import('@/components/homepage/dashboard-section').then(m => ({ default: m.DashboardSection })))
+const PricingSection = dynamic(() => import('@/components/homepage/pricing-section').then(m => ({ default: m.PricingSection })))
 
 const trustedBrands = [
   { 
     label: 'dabble', 
     logo: '/logos/dabble.png',
+    textImage: '/images/dabble-text.png',
   },
   { 
     label: 'Modo', 
+    displayLabel: 'MODO',
     logo: '/logos/modo.png',
+    lightWeight: true,
   },
   { 
     label: 'SuperPen', 
     logo: '/logos/Superpen.png',
+    boldPart: 'Super',
+    normalPart: 'Pen',
   },
   { 
     label: 'NimbleDesk', 
@@ -38,6 +49,11 @@ const trustedBrands = [
     label: 'TreeTech Digi', 
     logo: '/logos/treetechdigi.png',
   },
+  { 
+    label: 'Oktaa', 
+    logo: '/images/oktaa.png',
+    fullImage: true,
+  },
 ]
 
 function EmpoweringBusinessesSection() {
@@ -45,6 +61,14 @@ function EmpoweringBusinessesSection() {
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
   const [isBelow1088, setIsBelow1088] = useState(false)
   const [isBelow680, setIsBelow680] = useState(false)
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
 
   useEffect(() => {
     const checkWidth = () => {
@@ -67,8 +91,8 @@ function EmpoweringBusinessesSection() {
 
       {/* Subtle gradient overlays */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-[22rem] md:h-[22rem] lg:w-96 lg:h-96 bg-white/5 blur-3xl opacity-20" />
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-[22rem] md:h-[22rem] lg:w-96 lg:h-96 bg-white/5 rounded-full blur-3xl opacity-20" />
+        <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-[22rem] md:h-[22rem] lg:w-96 lg:h-96 bg-black/5 dark:bg-white/5 blur-3xl opacity-20" />
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-[22rem] md:h-[22rem] lg:w-96 lg:h-96 bg-black/5 dark:bg-white/5 rounded-full blur-3xl opacity-20" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8 relative z-10">
@@ -80,13 +104,13 @@ function EmpoweringBusinessesSection() {
         >
           <motion.h2 
             variants={headerVariants}
-            className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0"
+            className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-heading'}`}
           >
             Empowering businesses of all sizes
           </motion.h2>
           <motion.p 
             variants={headerVariants}
-            className={`text-xs sm:text-sm md:text-base ${colorClasses.textSecondary} px-4 sm:px-0 md:px-0 leading-tight`}
+            className={`text-xs sm:text-sm md:text-base ${colorClasses.textDescription} px-4 sm:px-0 md:px-0 leading-tight`}
           >
             Geoalt caters to a wide range of businesses,<br className="leading-none" />
             <span className="block -mt-0.5">from startups to enterprises, seeking<br className="leading-none" /></span>
@@ -103,10 +127,10 @@ function EmpoweringBusinessesSection() {
           {/* Marketing Teams Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-[calc(50%-0.5rem)] max-w-none mx-auto' : ''}`}
+            className={`bg-[var(--color-card-bg)] border border-border rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-[calc(50%-0.5rem)] max-w-none mx-auto' : ''}`}
           >
             {/* Background glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />
             
             <div className="flex items-center gap-3 sm:gap-4 md:gap-4 mb-3 sm:mb-4 md:mb-4 relative z-10">
               <motion.div
@@ -114,16 +138,16 @@ function EmpoweringBusinessesSection() {
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
               >
-                <svg className="w-7 h-7 sm:w-8 sm:h-8 md:w-8.5 md:h-8.5 lg:w-9 lg:h-9 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg className="w-7 h-7 sm:w-8 sm:h-8 md:w-8.5 md:h-8.5 lg:w-9 lg:h-9 text-text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/>
                   <circle cx="9" cy="7" r="4"/>
                   <path d="M22 21v-2a4 4 0 00-3-3.87"/>
                   <path d="M16 3.13a4 4 0 010 7.75"/>
                 </svg>
               </motion.div>
-              <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-white">Marketing Teams</h3>
+              <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-text-heading">Marketing Teams</h3>
             </div>
-            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textMuted} relative z-10 pt-1.5 sm:pt-2 md:pt-2`}>
+            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textDescription} relative z-10 pt-1.5 sm:pt-2 md:pt-2`}>
               Track campaign performance and optimize content for AI-driven search across priority markets.  
               Identify which campaigns influence AI-generated answers and reallocate spend toward the highest-impact initiatives.  
             </p>
@@ -134,10 +158,10 @@ function EmpoweringBusinessesSection() {
           {/* Content Creators Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
+            className={`bg-[var(--color-card-bg)] border border-border rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
           >
             {/* Background glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />
             
             <div className="flex items-center gap-3 sm:gap-4 md:gap-4 mb-3 sm:mb-4 md:mb-4 relative z-10">
               <motion.div
@@ -145,14 +169,14 @@ function EmpoweringBusinessesSection() {
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
               >
-                <svg className="w-7 h-7 sm:w-8 sm:h-8 md:w-8.5 md:h-8.5 lg:w-9 lg:h-9 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg className="w-7 h-7 sm:w-8 sm:h-8 md:w-8.5 md:h-8.5 lg:w-9 lg:h-9 text-text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 20h9"/>
                   <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/>
                 </svg>
               </motion.div>
-              <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-white">Content Creators</h3>
+              <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-text-heading">Content Creators</h3>
             </div>
-            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textMuted} relative z-10 pt-1.5 sm:pt-2 md:pt-2`}>
+            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textDescription} relative z-10 pt-1.5 sm:pt-2 md:pt-2`}>
               Create content that resonates with AI algorithms and drives qualified, organic pipeline.  
               See which formats, topics, and angles AI prefers so every article, playbook, or landing page is built for discovery.  
             </p>
@@ -161,10 +185,10 @@ function EmpoweringBusinessesSection() {
           {/* SEO Specialists Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className={`bg-black/60 border border-white/10 rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-white/25 transition-colors duration-300 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
+            className={`bg-[var(--color-card-bg)] border border-border rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
           >
             {/* Background glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />
             
             <div className="flex items-center gap-3 sm:gap-4 md:gap-4 mb-3 sm:mb-4 md:mb-4 relative z-10">
               <motion.div
@@ -172,14 +196,14 @@ function EmpoweringBusinessesSection() {
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
               >
-                <svg className="w-7 h-7 sm:w-8 sm:h-8 md:w-8.5 md:h-8.5 lg:w-9 lg:h-9 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg className="w-7 h-7 sm:w-8 sm:h-8 md:w-8.5 md:h-8.5 lg:w-9 lg:h-9 text-text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="11" cy="11" r="8"/>
                   <path d="M21 21l-4.3-4.3"/>
                 </svg>
               </motion.div>
-              <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-white">SEO Specialists</h3>
+              <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-text-heading">SEO Specialists</h3>
             </div>
-            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textMuted} relative z-10 pt-1.5 sm:pt-2 md:pt-2`}>
+            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textDescription} relative z-10 pt-1.5 sm:pt-2 md:pt-2`}>
               Adapt SEO strategies to the evolving landscape of AI-powered search for complex B2B journeys.  
               Understand which entities, sources, and citations AI trusts most in your category and markets.  
             </p>
@@ -191,104 +215,44 @@ function EmpoweringBusinessesSection() {
   )
 }
 
-function AnimatedGridBackground() {
-  const gridSize = 40
-  const lineThickness = 1 // Thickness of grid lines
-  const lineOpacity = 0.35 // Same opacity for both horizontal and vertical lines
-  
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-      {/* Static Grid Lines - Horizontal lines have increased height, vertical lines unchanged */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(255, 255, 255, ${lineOpacity}) ${lineThickness}px, transparent ${lineThickness}px),
-            linear-gradient(90deg, rgba(255, 255, 255, ${lineOpacity}) ${lineThickness}px, transparent ${lineThickness}px)
-          `,
-          backgroundSize: `${gridSize}px ${gridSize}px`,
-        }}
-      />
-      
-      {/* Additional static grid overlay for depth */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(255, 255, 255, ${lineOpacity * 0.58}) ${lineThickness}px, transparent ${lineThickness}px),
-            linear-gradient(90deg, rgba(255, 255, 255, ${lineOpacity * 0.48}) ${lineThickness}px, transparent ${lineThickness}px)
-          `,
-          backgroundSize: `${gridSize * 10}px ${gridSize * 10}px`,
-        }}
-      />
-      
-      {/* Fade effect overlays on edges - positioned above grid but below image */}
-      <div className="absolute top-0 left-0 right-0 h-32 sm:h-48 md:h-56 lg:h-64 xl:h-80 bg-gradient-to-b from-black via-black/30 to-transparent pointer-events-none z-[5]" />
-      <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-48 md:h-56 lg:h-64 xl:h-80 bg-gradient-to-t from-black via-black/30 to-transparent pointer-events-none z-[5]" />
-      <div className="absolute top-0 bottom-0 left-0 w-20 sm:w-32 md:w-36 lg:w-40 bg-gradient-to-r from-black via-black/30 to-transparent pointer-events-none z-[5]" />
-      <div className="absolute top-0 bottom-0 right-0 w-20 sm:w-32 md:w-36 lg:w-40 bg-gradient-to-l from-black via-black/30 to-transparent pointer-events-none z-[5]" />
-      
-      {/* Animated gradient overlay for depth */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-blue-500/8 via-transparent to-purple-500/8"
-        animate={{
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
-      
-      {/* Subtle corner glows */}
-      <motion.div
-        className="absolute top-0 left-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
-      <motion.div
-        className="absolute bottom-0 right-0 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
-    </div>
-  )
-}
 
 function DashboardImageSection() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-50px' })
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const dashboardImage = mounted && resolvedTheme === 'light' 
+    ? '/images/Dashboard-light-theme.png' 
+    : '/images/Dasboard-dark-theme.png'
 
   return (
-    <section ref={sectionRef} className="pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh]">
+    <section ref={sectionRef} className="mt-0 sm:mt-0 md:mt-0 lg:mt-0 pt-6 sm:pt-8 md:pt-10 lg:pt-12 pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.98 }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="p-4 sm:p-6 md:p-7 lg:p-8 xl:p-12 relative overflow-hidden bg-black rounded-lg"
+          className="p-4 sm:p-6 md:p-7 lg:p-8 xl:p-12 relative overflow-hidden rounded-lg"
         >
-          {/* Animated Grid Background */}
-          <AnimatedGridBackground />
+          {/* Background Image */}
+          <div className="absolute inset-x-[2%] inset-y-0 z-0">
+            <Image
+              src="/images/dash-BGimg.jpeg"
+              alt=""
+              fill
+              className="object-cover rounded-lg"
+              priority
+            />
+          </div>
           
-          {/* Image */}
+          {/* Dashboard Image */}
           <Image
-            src="/images/img-2.jpeg"
+            src={dashboardImage}
             alt="Geoalt analytics dashboard"
             width={1280}
             height={720}
@@ -306,8 +270,16 @@ function DashboardImageSection() {
 export function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const faqRef = useRef<HTMLDivElement>(null)
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme()
   
   useScrollRestoration()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -331,12 +303,100 @@ export function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-brand-black">
+    <div className="min-h-screen bg-page-background">
       <Navbar />
 
       <HeroSection />
 
       <DashboardImageSection />
+
+      <section className="pt-[45.6px] sm:pt-[60.8px] md:pt-[65px] lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-18 lg:pb-[4vh] xl:pb-[6vh]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
+          <div className="relative overflow-hidden bg-transparent px-4 pt-5 pb-5 sm:px-6 sm:pt-9 sm:pb-9 md:px-8 md:pt-10 md:pb-10 lg:px-10 lg:pt-12 lg:pb-12">
+            <div className="relative flex flex-col items-center gap-6 sm:gap-8 md:gap-10">
+              <p className="text-xl sm:text-2xl md:text-3xl font-light sm:font-normal md:font-normal tracking-wide -mt-6 sm:-mt-8 md:-mt-9 lg:-mt-11 trusted-by-text">
+                Trusted by
+              </p>
+              <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-0">
+                {trustedBrands.map((brand, index) => (
+                  <div
+                    key={`${brand.label}-${index}`}
+                    className={`flex items-center justify-center gap-3 sm:gap-4 py-8 sm:py-10 md:py-12 px-24 sm:px-32 md:px-40 lg:px-48 border ${
+                      isLightTheme ? 'border-border' : 'border-[#121212]'
+                    } transition-colors duration-200 ${
+                      index >= 3 ? 'border-t-0' : ''
+                    } ${
+                      isLightTheme 
+                        ? 'bg-[var(--color-card-bg)]' 
+                        : 'bg-[var(--color-ref-043)]'
+                    }`}
+                  >
+                    {brand.fullImage ? (
+                      <div className="relative h-10 sm:h-12 md:h-14 w-28 sm:w-32 md:w-40 flex-shrink-0">
+                        <Image
+                          src={brand.logo}
+                          alt={brand.label}
+                          fill
+                          className={`object-contain ${isLightTheme ? 'invert' : ''}`}
+                          quality={90}
+                          sizes="(max-width: 640px) 7rem, (max-width: 768px) 8rem, 10rem"
+                        />
+                      </div>
+                    ) : (
+                      <>
+                        <div className="relative h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex-shrink-0">
+                          <Image
+                            src={brand.logo}
+                            alt={`${brand.label} logo`}
+                            fill
+                            className="object-contain"
+                            quality={90}
+                            sizes="(max-width: 640px) 2rem, (max-width: 768px) 2.5rem, 3rem"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none'
+                            }}
+                          />
+                        </div>
+                        {brand.textImage ? (
+                          <div className="relative h-6 sm:h-8 md:h-10 w-20 sm:w-24 md:w-32 flex-shrink-0">
+                            <Image
+                              src={brand.textImage}
+                              alt={brand.label}
+                              fill
+                              className={`object-contain ${isLightTheme ? 'invert' : ''}`}
+                              quality={90}
+                              sizes="(max-width: 640px) 5rem, (max-width: 768px) 6rem, 8rem"
+                            />
+                          </div>
+                        ) : brand.boldPart && brand.normalPart ? (
+                          <span className={`text-2xl sm:text-3xl md:text-4xl ${
+                            isLightTheme ? 'text-black' : 'text-white'
+                          }`}>
+                            <span className="font-bold">{brand.boldPart}</span>
+                            <span className="font-normal">{brand.normalPart}</span>
+                          </span>
+                        ) : brand.lightWeight ? (
+                          <span className={`text-2xl sm:text-3xl md:text-4xl font-light tracking-wide ${
+                            isLightTheme ? 'text-black' : 'text-white'
+                          }`}>
+                            {brand.displayLabel || brand.label}
+                          </span>
+                        ) : (
+                          <span className={`text-xl sm:text-2xl md:text-3xl font-bold ${
+                            isLightTheme ? 'text-black' : 'text-white'
+                          }`}>
+                            {brand.displayLabel || brand.label}
+                          </span>
+                        )}
+                      </>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <DashboardSection />
 
@@ -344,58 +404,15 @@ export function HomePage() {
 
       <FeaturesSection />
 
-      <section className="pt-[45.6px] sm:pt-[60.8px] md:pt-[65px] lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-18 lg:pb-[4vh] xl:pb-[6vh]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
-          <div className="relative overflow-hidden rounded-[0px] border-b border-white/10 bg-transparent px-4 pt-5 pb-5 sm:px-6 sm:pt-9 sm:pb-9 md:px-8 md:pt-10 md:pb-10 lg:px-10 lg:pt-12 lg:pb-12">
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute w-32 h-32 bg-white/0 rounded-full blur-3xl -top-10 -left-6" />
-              <div className="absolute w-40 h-40 bg-white/0 rounded-full blur-3xl -bottom-16 right-6" />
-            </div>
-            <div className="relative flex flex-col items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
-              <p className="text-base sm:text-lg md:text-lg font-base tracking-wide -mt-6 sm:-mt-8 md:-mt-9 lg:-mt-11 trusted-by-text">
-                Trusted by
-              </p>
-              <div className="w-full overflow-hidden mask-fade-horizontal">
-                <div className="trusted-marquee flex items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-20">
-                  {[...trustedBrands, ...trustedBrands].map((brand, index) => (
-                    <div
-                      key={`${brand.label}-${index}`}
-                      className="flex items-center gap-1.5 sm:gap-2 md:gap-2.5 lg:gap-3 whitespace-nowrap flex-shrink-0"
-                    >
-                      <div className="relative h-[1rem] w-[1rem] sm:h-[1.5rem] sm:w-[1.5rem] md:h-[2rem] md:w-[2rem] lg:h-[2.5rem] lg:w-[2.5rem] flex-shrink-0">
-                        <Image
-                          src={brand.logo}
-                          alt={`${brand.label} logo`}
-                          fill
-                          className="object-contain"
-                          quality={90}
-                          sizes="(max-width: 640px) 1rem, (max-width: 768px) 1.5rem, (max-width: 1024px) 2rem, 2.5rem"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none'
-                          }}
-                        />
-                      </div>
-                      <span className="text-sm sm:text-xl md:text-2xl lg:text-[2.1rem] font-normal text-white">
-                        {brand.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <EmpoweringBusinessesSection />
 
       <TestimonialsCarousel />
 
       <PricingSection />
 
-      <CTASection />
-
       <FAQSection openFaq={openFaq} toggleFaq={toggleFaq} faqRef={faqRef} />
+
+      <CTASection />
 
       <Footer />
     </div>

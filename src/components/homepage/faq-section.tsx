@@ -4,6 +4,8 @@ import { RefObject, useRef, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { containerVariants, cardVariantsSmooth } from '@/lib/animations/variants'
 import { colorClasses } from '@/constants/colors'
+import { useTheme } from 'next-themes'
+import { useState } from 'react'
 
 interface FAQSectionProps {
   openFaq: number | null
@@ -20,6 +22,14 @@ interface FAQCardProps {
 function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
   const cardRef = useRef(null)
   const cardInView = useInView(cardRef, { once: true, margin: '-150px' })
+  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
 
   return (
     <motion.div
@@ -27,26 +37,20 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
       variants={cardVariantsSmooth}
       initial="hidden"
       animate={cardInView ? 'visible' : 'hidden'}
-      className={`bg-black border-b ${colorClasses.borderGray} shadow-sm faq-card-partial-borders rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl overflow-hidden relative cursor-pointer`}
+      className={`border-b ${colorClasses.borderGray} shadow-sm faq-card-partial-borders rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl overflow-hidden relative cursor-pointer`}
+      style={{ backgroundColor: 'var(--color-page-background)' }}
       whileHover={{
-        backgroundColor: 'rgba(20, 20, 20, 1)',
-        borderColor: 'rgba(120, 120, 120, 0.6)',
+        backgroundColor: 'var(--color-faq-card-hover)',
+        borderColor: 'var(--color-border)',
         transition: { duration: 0.4, ease: 'easeInOut' }
       }}
     >
-      <motion.div
-        className="absolute inset-0 bg-white/[0.02] opacity-0 pointer-events-none rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl"
-        whileHover={{
-          opacity: 1,
-          transition: { duration: 0.3, ease: 'easeOut' }
-        }}
-      />
       <motion.button
         className="w-full pl-3 sm:pl-4 md:pl-4 pr-5 sm:pr-7 md:pr-7 py-2.5 sm:py-3.5 md:py-3.5 text-left flex items-start sm:items-center md:items-center gap-2 sm:gap-4 md:gap-4 cursor-pointer"
         onClick={onToggle}
       >
         <motion.svg
-          className="text-white/60 w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 flex-shrink-0 mt-0.5 sm:mt-0 md:mt-0"
+          className="text-text-muted w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 flex-shrink-0 mt-0.5 sm:mt-0 md:mt-0"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ 
             scale: 1,
@@ -63,7 +67,7 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
         >
           <path d="M8 6l8 6-8 6" />
         </motion.svg>
-        <span className="font-medium text-white text-xs sm:text-sm md:text-sm lg:text-base leading-relaxed flex-1 text-left">{faq.question}</span>
+        <span className={`font-medium text-xs sm:text-sm md:text-sm lg:text-base leading-relaxed flex-1 text-left ${isLightTheme ? 'text-[#3D3D3D]' : colorClasses.textDescription}`}>{faq.question}</span>
       </motion.button>
       <AnimatePresence initial={false}>
         {isOpen && (
@@ -100,7 +104,7 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
                   opacity: 0,
                   transition: { duration: 0.1, ease: 'easeIn' }
                 }}
-                className="text-gray-400 leading-relaxed text-xs sm:text-sm md:text-sm font-light bg-transparent"
+                className={`leading-relaxed text-xs sm:text-sm md:text-sm font-light bg-transparent ${isLightTheme ? 'text-[#3D3D3D]' : colorClasses.textDescription}`}
               >
                 {faq.answer}
               </motion.p>
@@ -142,6 +146,14 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
 
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
 
   useEffect(() => {
     const script = document.createElement('script')
@@ -181,8 +193,8 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
           className="text-center mb-8 sm:mb-12 md:mb-14 lg:mb-16"
         >
-          <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0">FAQ</h2>
-          <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textMuted} font-light px-4 sm:px-0 md:px-0 pt-0`}>Generative Engine Optimization is still<br className="leading-none" /><span className="block -mt-0.5 sm:-mt-0.5 md:-mt-0.5 lg:-mt-2">very new. We&apos;ve got you covered.</span></p>
+          <h2 className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-heading'}`}>FAQ</h2>
+          <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textDescription} font-light px-4 sm:px-0 md:px-0 pt-0`}>Generative Engine Optimization is still<br className="leading-none" /><span className="block -mt-0.5 sm:-mt-0.5 md:-mt-0.5 lg:-mt-2">very new. We&apos;ve got you covered.</span></p>
         </motion.div>
         
         <motion.div

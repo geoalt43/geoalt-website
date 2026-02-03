@@ -126,7 +126,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     const headings = extractHeadings(post.content)
 
     return (
-        <div className="min-h-screen bg-brand-black flex flex-col">
+        <div className="min-h-screen bg-page-background flex flex-col">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
@@ -138,14 +138,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <Navbar />
 
             <header className="mb-10 text-center max-w-2xl mx-auto pt-[120px]">
-                <div className="flex items-center justify-center gap-3 text-sm text-gray-400 mb-6">
-                    <span className="bg-white/10 px-3 py-1 rounded-full text-xs uppercase tracking-wider text-white">
+                <div className="flex items-center justify-center gap-3 text-sm text-text-muted mb-6">
+                    <span className="bg-black/10 dark:bg-white/10 px-3 py-1 rounded-full text-xs uppercase tracking-wider text-text-primary">
                         {post.tags?.[0] || 'Article'}
                     </span>
                     <span>{format(new Date(post.date), 'MMMM d, yyyy')}</span>
                 </div>
 
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-6 leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-text-primary mb-6 leading-tight">
                     {post.title}
                 </h1>
 
@@ -160,20 +160,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         />
                     </div>
                     <div className="text-left">
-                        <p className="text-white font-medium">{post.author}</p>
-                        <p className="text-xs text-gray-400">Author</p>
+                        <p className="text-text-primary font-medium">{post.author}</p>
+                        <p className="text-xs text-text-muted">Author</p>
                     </div>
                 </div>
             </header>
 
 
-            <main className="flex-grow pb-20 bg-black z-10 pt-8 border-t border-[#1e1e1e]">
+            <main className="flex-grow pb-20 bg-page-background z-10 pt-8 border-t border-border">
                 <div className="max-w-[70rem] mx-auto px-4 sm:px-6 md:px-8 flex lg:gap-12 relative">
 
                     <div className="lg:hidden">
                         <Link
                             href="/blog"
-                            className="inline-flex items-center text-gray-400 hover:text-white mb-8 transition-colors group"
+                            className="inline-flex items-center text-text-muted hover:text-text-primary mb-8 transition-colors group"
                         >
                             <svg
                                 className="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform"
@@ -197,7 +197,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     >
                         <Link
                             href="/blog"
-                            className="inline-flex items-center text-gray-400 hover:text-white transition-colors group"
+                            className="inline-flex items-center text-text-muted hover:text-text-primary transition-colors group"
                         >
                             <svg
                                 className="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform"
@@ -215,7 +215,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <div className="min-w-0 flex-1 mx-auto">
                         <article className="mb-20">
                             {post.image && (
-                                <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-12 border border-white/10 shadow-2xl">
+                                <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-12 border border-black/10 dark:border-[#242424] shadow-2xl">
                                     <Image
                                         src={post.image}
                                         alt={post.title}
@@ -226,15 +226,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                 </div>
                             )}
 
-                            <div className="prose prose-invert prose-lg max-w-none 
-                    prose-headings:text-white prose-headings:font-medium prose-headings:scroll-mt-32
-                    prose-p:text-gray-300 prose-p:leading-8
-                    prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
-                    prose-strong:text-white
-                    prose-ul:text-gray-300 prose-ol:text-gray-300
+                            <div className="prose prose-lg dark:prose-invert max-w-none 
+                    prose-headings:text-text-primary prose-headings:font-medium prose-headings:scroll-mt-32
+                    prose-p:text-text-description prose-p:leading-8
+                    prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
+                    prose-strong:text-text-primary
+                    prose-ul:text-text-description prose-ol:text-text-description
                     prose-li:marker:text-blue-500
-                    prose-blockquote:border-l-blue-500 prose-blockquote:bg-white/5 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-lg
-                    prose-code:text-blue-300 prose-code:bg-blue-900/30 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+                    prose-blockquote:border-l-blue-500 prose-blockquote:bg-black/5 dark:prose-blockquote:bg-white/5 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-lg
+                    prose-code:text-blue-600 dark:prose-code:text-blue-300 prose-code:bg-blue-100 dark:prose-code:bg-blue-900/30 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
                     ">
                                 <ReactMarkdown
                                     components={{
@@ -275,12 +275,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </div>
 
             </main>
-            <main className="flex-grow pb-20 backdrop-blur-xs z-10 pt-8 border-t border-[#1e1e1e]">
+            <main className="flex-grow pb-20 backdrop-blur-xs z-10 pt-8 border-t border-border">
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
                     <div className="flex items-center gap-4 mb-12">
-                        <h3 className="text-2xl font-bold text-white">More Stories</h3>
-                        <div className="h-px bg-white/10 flex-grow" />
+                        <h3 className="text-2xl font-bold text-text-primary">More Stories</h3>
+                        <div className="h-px bg-black/10 dark:bg-white/10 flex-grow" />
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -289,7 +289,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                             .slice(0, 3)
                             .map((relatedPost) => (
                                 <Link key={relatedPost.slug} href={`/blog/${relatedPost.slug}`} className="group relative">
-                                    <div className="relative bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 h-full flex flex-col backdrop-blur-sm">
+                                    <div className="relative bg-surface border border-black/10 dark:border-[#242424] rounded-xl overflow-hidden hover:bg-surface-hover transition-all duration-300 h-full flex flex-col backdrop-blur-sm">
                                         {relatedPost.image && (
                                             <div className="relative h-40 w-full overflow-hidden">
                                                 <Image
@@ -301,16 +301,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                             </div>
                                         )}
                                         <div className="p-5 flex flex-col flex-grow">
-                                            <div className="flex items-center gap-2 text-xs text-gray-400 mb-3">
+                                            <div className="flex items-center gap-2 text-xs text-text-muted mb-3">
                                                 <span>{format(new Date(relatedPost.date), 'MMM d, yyyy')}</span>
                                             </div>
-                                            <h2 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors line-clamp-2">
+                                            <h2 className="text-lg font-semibold text-text-primary mb-2 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
                                                 {relatedPost.title}
                                             </h2>
-                                            <p className="text-gray-400 flex-grow line-clamp-2 text-xs leading-relaxed mb-4">
+                                            <p className="text-text-muted flex-grow line-clamp-2 text-xs leading-relaxed mb-4">
                                                 {relatedPost.description}
                                             </p>
-                                            <div className="flex items-center text-xs font-medium text-blue-400 mt-auto">
+                                            <div className="flex items-center text-xs font-medium text-blue-500 dark:text-blue-400 mt-auto">
                                                 Read more
                                             </div>
                                         </div>

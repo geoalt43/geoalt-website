@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import { useTheme } from 'next-themes'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { InsightCard } from './ai-search-metrics/insight-card'
 import { AIResponseCard } from './ai-search-metrics/ai-response-card'
@@ -41,6 +42,14 @@ export function AISearchMetricsSection() {
   const [activeType, setActiveType] = useState<InsightType | null>('visibility')
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
 
   const currentData = activeType ? aiResponseData[activeType] : aiResponseData.sentiment
 
@@ -49,7 +58,7 @@ export function AISearchMetricsSection() {
   }
 
   return (
-    <section ref={sectionRef} className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh] bg-[#090909]">
+    <section ref={sectionRef} className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh] bg-surface-elevated">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
         <motion.div
           variants={containerVariants}
@@ -57,10 +66,10 @@ export function AISearchMetricsSection() {
           animate={isInView ? 'visible' : 'hidden'}
           className="text-center max-w-3xl mx-auto"
         >
-          <motion.h2 variants={headerVariants} className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-white mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0">
+          <motion.h2 variants={headerVariants} className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-primary'}`}>
             How AI actually sees your brand
           </motion.h2>
-          <motion.p variants={subtitleVariants} className="text-xs sm:text-sm md:text-base text-[#9b9b9b] px-4 sm:px-0 md:px-0">
+          <motion.p variants={subtitleVariants} className="text-xs sm:text-sm md:text-base text-text-description px-4 sm:px-0 md:px-0">
             Everything that matters in one place
           </motion.p>
         </motion.div>

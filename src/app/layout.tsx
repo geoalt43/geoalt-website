@@ -189,7 +189,7 @@ export default function RootLayout({
     ],
   }
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className}`}>
         <script
           type="application/ld+json"
@@ -205,11 +205,6 @@ export default function RootLayout({
         />
         <ScrollRestorationScript />
         <MixpanelProvider />
-        <div className='h-full w-full overflow-hidden fixed z-0'>
-          <div id='stars'></div>
-          <div id='stars2'></div>
-          <div id='stars3'></div>
-        </div>
         <ErrorBoundary>
           <Providers>
             <div className='z-10'>
