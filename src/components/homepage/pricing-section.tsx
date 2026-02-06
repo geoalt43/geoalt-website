@@ -85,7 +85,7 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
       className={`
         ${isLightTheme ? plan.bgColor : 'bg-[var(--color-ref-043)]'} flex flex-col text-text-primary
         relative overflow-hidden group transition-colors duration-300
-        border border-border
+        border border-[var(--color-card-border)]
         ${plan.isRecommended ? 'lg:-mt-[3.5rem] rounded-[0.89rem_0.89rem_0.5rem_0.5rem] lg:scale-[1.02]' : 'rounded-lg'}
         ${className}
       `}
@@ -140,8 +140,8 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
               rel="noopener noreferrer"
               className={`w-full max-w-[120px] sm:max-w-none md:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full border border-border py-2 sm:py-3 md:py-3 text-[11px] sm:text-sm md:text-sm font-semibold whitespace-nowrap block text-center transition-all duration-200 ease-in-out ${
                 isLightTheme
-                  ? 'bg-[#CFCFCF] text-text-primary hover:border-border-hover hover:bg-black/5'
-                  : 'bg-white text-black hover:bg-gray-100'
+                  ? 'bg-[#CFCFCF] text-text-primary hover:bg-[#BEBEBE]'
+                  : 'bg-white text-black hover:bg-[var(--color-ref-041)]'
               }`}
             >
               Contact Us
@@ -156,7 +156,7 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
             className={`${plan.isRecommended ? '' : 'mt-auto'} w-full max-w-[120px] sm:max-w-none md:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full py-2 sm:py-3 md:py-3 text-[11px] sm:text-sm md:text-sm font-semibold text-center whitespace-nowrap block transition-all duration-200 ease-in-out hover:opacity-90 border border-border ${
               isLightTheme 
                 ? (plan.isRecommended ? 'bg-[#080808] text-white hover:bg-[#080808]/90' : 'bg-[#CFCFCF] text-[#3D3D3D]')
-                : 'bg-white text-text-button dark:text-black dark:bg-white hover:bg-gray-100'
+                : 'bg-white text-text-button dark:text-black dark:bg-white hover:bg-[var(--color-ref-041)]'
             }`}
           >
             Start free trial

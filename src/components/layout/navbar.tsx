@@ -141,7 +141,7 @@ export function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 overflow-x-hidden ${
       isScrolled 
-        ? "bg-page-background/90 backdrop-blur-sm border-b border-border" 
+        ? "bg-page-background/90 backdrop-blur-sm border-b border-[var(--color-card-border)]" 
         : "bg-transparent border-b border-transparent"
     }`}>
       {!isScrolled && (
@@ -174,7 +174,9 @@ export function Navbar() {
               href="/"
               onClick={handleHomeClick}
               className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border hover:bg-surface-hover transition-all duration-150 ease-out ${
-                (!isScrolled && pathname === '/') ? 'bg-[var(--color-page-background)]' : 'bg-transparent'
+                isLightTheme
+                  ? (!isScrolled && pathname === '/' ? 'bg-[var(--color-page-background)]' : 'bg-transparent')
+                  : 'bg-transparent'
               } ${
                 isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
               }`}
@@ -184,7 +186,9 @@ export function Navbar() {
             <Link
               href="/pricing"
               className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border hover:bg-surface-hover transition-all duration-150 ease-out ${
-                (!isScrolled && pathname === '/') ? 'bg-[var(--color-page-background)]' : 'bg-transparent'
+                isLightTheme
+                  ? (!isScrolled && pathname === '/' ? 'bg-[var(--color-page-background)]' : 'bg-transparent')
+                  : 'bg-transparent'
               } ${
                 isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
               }`}
@@ -195,7 +199,9 @@ export function Navbar() {
               href="/#features"
               onClick={handleFeaturesClick}
               className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border hover:bg-surface-hover transition-all duration-150 ease-out ${
-                (!isScrolled && pathname === '/') ? 'bg-[var(--color-page-background)]' : 'bg-transparent'
+                isLightTheme
+                  ? (!isScrolled && pathname === '/' ? 'bg-[var(--color-page-background)]' : 'bg-transparent')
+                  : 'bg-transparent'
               } ${
                 isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
               }`}
@@ -205,7 +211,9 @@ export function Navbar() {
             <Link
               href="/blog"
               className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border hover:bg-surface-hover transition-all duration-150 ease-out ${
-                (!isScrolled && pathname === '/') ? 'bg-[var(--color-page-background)]' : 'bg-transparent'
+                isLightTheme
+                  ? (!isScrolled && pathname === '/' ? 'bg-[var(--color-page-background)]' : 'bg-transparent')
+                  : 'bg-transparent'
               } ${
                 isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
               }`}
@@ -216,14 +224,20 @@ export function Navbar() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center space-x-3 md:space-x-3.5 lg:space-x-4 flex-shrink-0 z-10">
-            <ModeToggle className={(!isScrolled && pathname === '/') ? 'bg-[var(--color-page-background)]' : 'bg-transparent'} />
+            <ModeToggle className={
+              isLightTheme
+                ? (!isScrolled && pathname === '/' ? 'bg-[var(--color-page-background)]' : 'bg-transparent')
+                : 'bg-transparent'
+            } />
             <a
               href="https://app.geoalt.in/login"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => triggerSignUpInitiatedEvent("navbar-sign-in")}
               className={`navbar-sign-in hover:opacity-80 px-3 md:px-3.5 lg:px-3.5 py-1.5 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer rounded-full border border-border text-text-primary ${
-                (!isScrolled && pathname === '/') ? 'bg-[var(--color-page-background)]' : 'bg-transparent'
+                isLightTheme
+                  ? (!isScrolled && pathname === '/' ? 'bg-[var(--color-page-background)]' : 'bg-transparent')
+                  : 'bg-transparent'
               }`}
             >
               Sign in

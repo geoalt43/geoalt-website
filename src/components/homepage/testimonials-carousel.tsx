@@ -95,7 +95,7 @@ export function TestimonialsCarousel() {
             <motion.div
               key={`${testimonial.name}-${index}`}
               variants={cardVariantsSmooth}
-              className="bg-[var(--color-card-bg)] border border-border rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 shadow-lg min-h-[168px] sm:min-h-0 sm:h-full flex flex-col relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)]"
+              className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)] rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 shadow-lg min-h-[168px] sm:min-h-0 sm:h-full flex flex-col relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)]"
             >
               {/* Background glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />

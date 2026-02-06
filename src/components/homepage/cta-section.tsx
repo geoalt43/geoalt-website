@@ -38,7 +38,7 @@ export function CTASection() {
         variants={containerVariantsSimple}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
-        className={`relative overflow-hidden max-w-6xl max-[1250px]:mx-4 min-[1251px]:mx-auto px-4 sm:px-6 md:px-7 pt-3 pb-3 md:pt-3 md:pb-3 lg:px-8 border ${colorClasses.borderDark} rounded-lg ${
+        className={`relative overflow-hidden max-w-6xl max-[1250px]:mx-4 min-[1251px]:mx-auto px-4 sm:px-6 md:px-7 pt-3 pb-3 md:pt-3 md:pb-3 lg:px-8 border border-[var(--color-card-border)] rounded-lg ${
           isLightTheme ? 'bg-[#080808]' : 'bg-[var(--color-ref-043)]'
         }`}
       >
@@ -53,7 +53,7 @@ export function CTASection() {
         <div className="relative z-10 rounded-lg p-3 sm:p-4 md:p-5 lg:p-7 flex flex-col lg:flex-row items-center lg:items-center gap-4 sm:gap-5 md:gap-5 lg:gap-0">
           {/* Left Section - Text Content */}
           <div className="w-full max-w-[320px] sm:flex-1 sm:max-w-none md:flex-1 md:max-w-none lg:pr-8 lg:w-auto text-center lg:text-left mb-2 sm:mb-3 md:mb-4 lg:mb-0 mx-auto sm:mx-0">
-            <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal text-[#555555] mb-2 sm:mb-3 md:mb-4 leading-tight tracking-wide px-2 sm:px-0 md:px-0">
+            <h2 className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal ${colorClasses.textDescription} mb-2 sm:mb-3 md:mb-4 leading-tight tracking-wide px-2 sm:px-0 md:px-0`}>
               <span className="pb-2 inline-block">
                 Start Growing Your
               </span>
@@ -62,7 +62,7 @@ export function CTASection() {
                 AI Visibility Today
               </span>
             </h2>
-            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textDescription} px-4 sm:px-0 md:px-0 text-center lg:text-left mb-3 sm:mb-4 md:mb-5 lg:mb-8`}>
+            <p className={`text-xs sm:text-sm md:text-base text-[#555555] px-4 sm:px-0 md:px-0 text-center lg:text-left mb-3 sm:mb-4 md:mb-5 lg:mb-8`}>
               <span className="block sm:inline">Geoalt helps you lead in AI search</span>
               <span className="block sm:inline">and scale your brand faster.</span>
             </p>
