@@ -40,7 +40,7 @@ export function InsightCard({
       onClick={handleInteraction}
       whileTap={{ scale: 0.98 }}
       className={`mx-4 sm:mx-0 rounded-lg p-2 sm:p-3.5 text-text-secondary h-[150px] sm:h-[150px] md:h-[170px] flex flex-col overflow-hidden relative group border-l cursor-pointer active:opacity-80 ${
-        isActive ? 'bg-[var(--color-card-bg)] border-text-primary' : 'bg-transparent border-border'
+        isActive ? 'bg-[var(--color-card-bg)] border-text-primary' : 'bg-transparent border-[var(--color-card-border)]'
       }`}
       animate={{
         borderLeftColor: isActive ? 'var(--color-ref-014)' : type === 'position' || type === 'sentiment' ? 'var(--color-ref-008)' : 'var(--color-ref-011)',

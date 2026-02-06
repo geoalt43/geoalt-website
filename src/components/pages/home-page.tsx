@@ -20,20 +20,37 @@ const CTASection = dynamic(() => import('@/components/homepage/cta-section').the
 const TestimonialsCarousel = dynamic(() => import('@/components/homepage/testimonials-carousel').then(m => ({ default: m.TestimonialsCarousel })))
 const Footer = dynamic(() => import('@/components/layout/footer').then(m => ({ default: m.Footer })))
 const AISearchMetricsSection = dynamic(() => import('@/components/homepage/ai-search-metrics').then(m => ({ default: m.AISearchMetricsSection })))
-const DashboardSection = dynamic(() => import('@/components/homepage/dashboard-section').then(m => ({ default: m.DashboardSection })))
 const PricingSection = dynamic(() => import('@/components/homepage/pricing-section').then(m => ({ default: m.PricingSection })))
+const GeoReportSection = dynamic(() => import('@/components/homepage/geo-report-section').then(m => ({ default: m.GeoReportSection })))
+const FeatureTabsSection = dynamic(() => import('@/components/homepage/feature-tabs-section').then(m => ({ default: m.FeatureTabsSection })))
 
-const trustedBrands = [
+interface TrustedBrand {
+  label: string;
+  logo: string;
+  displayLabel?: string;
+  textImage?: string;
+  preserveDetail?: boolean;
+  lightWeight?: boolean;
+  boldPart?: string;
+  normalPart?: string;
+  smallText?: boolean;
+  mediumText?: boolean;
+  fullImage?: boolean;
+}
+
+const trustedBrands: TrustedBrand[] = [
   { 
     label: 'dabble', 
     logo: '/logos/dabble.png',
     textImage: '/images/dabble-text.png',
+    preserveDetail: true,
   },
   { 
     label: 'Modo', 
     displayLabel: 'MODO',
     logo: '/logos/modo.png',
     lightWeight: true,
+    preserveDetail: true,
   },
   { 
     label: 'SuperPen', 
@@ -48,6 +65,10 @@ const trustedBrands = [
   { 
     label: 'TreeTech Digi', 
     logo: '/logos/treetechdigi.png',
+    preserveDetail: true,
+    lightWeight: true,
+    // smallText: true,
+    mediumText: true,
   },
   { 
     label: 'Oktaa', 
@@ -127,7 +148,7 @@ function EmpoweringBusinessesSection() {
           {/* Marketing Teams Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className={`bg-[var(--color-card-bg)] border border-border rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-[calc(50%-0.5rem)] max-w-none mx-auto' : ''}`}
+            className={`bg-[var(--color-card-bg)] border border-[var(--color-card-border)] rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-[calc(50%-0.5rem)] max-w-none mx-auto' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />
@@ -158,7 +179,7 @@ function EmpoweringBusinessesSection() {
           {/* Content Creators Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className={`bg-[var(--color-card-bg)] border border-border rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
+            className={`bg-[var(--color-card-bg)] border border-[var(--color-card-border)] rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />
@@ -185,7 +206,7 @@ function EmpoweringBusinessesSection() {
           {/* SEO Specialists Card */}
           <motion.div
             variants={cardVariantsSmooth}
-            className={`bg-[var(--color-card-bg)] border border-border rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
+            className={`bg-[var(--color-card-bg)] border border-[var(--color-card-border)] rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />
@@ -306,9 +327,11 @@ export function HomePage() {
     <div className="min-h-screen bg-page-background">
       <Navbar />
 
-      <HeroSection />
+      {/* Unified gradient zone: Hero → DashboardImage → TrustedBy → GeoReport */}
+      <div className="bg-hero-gradient">
+        <HeroSection />
 
-      <DashboardImageSection />
+        <DashboardImageSection />
 
       <section className="pt-[45.6px] sm:pt-[60.8px] md:pt-[65px] lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-18 lg:pb-[4vh] xl:pb-[6vh]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
@@ -321,14 +344,12 @@ export function HomePage() {
                 {trustedBrands.map((brand, index) => (
                   <div
                     key={`${brand.label}-${index}`}
-                    className={`flex items-center justify-center gap-3 sm:gap-4 py-8 sm:py-10 md:py-12 px-24 sm:px-32 md:px-40 lg:px-48 border ${
-                      isLightTheme ? 'border-border' : 'border-[#121212]'
-                    } transition-colors duration-200 ${
+                    className={`flex items-center justify-center gap-3 sm:gap-4 py-8 sm:py-10 md:py-12 px-24 sm:px-32 md:px-40 lg:px-48 border border-[var(--color-card-border)] transition-colors duration-200 ${
                       index >= 3 ? 'border-t-0' : ''
                     } ${
                       isLightTheme 
                         ? 'bg-[var(--color-card-bg)]' 
-                        : 'bg-[var(--color-ref-043)]'
+                        : 'bg-[#060606]'
                     }`}
                   >
                     {brand.fullImage ? (
@@ -337,7 +358,11 @@ export function HomePage() {
                           src={brand.logo}
                           alt={brand.label}
                           fill
-                          className={`object-contain ${isLightTheme ? 'invert' : ''}`}
+                          className={`object-contain grayscale ${
+                            brand.preserveDetail 
+                              ? (isLightTheme ? '' : 'invert') 
+                              : (isLightTheme ? 'brightness-0' : 'brightness-0 invert')
+                          }`}
                           quality={90}
                           sizes="(max-width: 640px) 7rem, (max-width: 768px) 8rem, 10rem"
                         />
@@ -349,7 +374,11 @@ export function HomePage() {
                             src={brand.logo}
                             alt={`${brand.label} logo`}
                             fill
-                            className="object-contain"
+                            className={`object-contain grayscale ${
+                              brand.preserveDetail 
+                                ? (isLightTheme ? '' : 'invert') 
+                                : (isLightTheme ? 'brightness-0' : 'brightness-0 invert')
+                            }`}
                             quality={90}
                             sizes="(max-width: 640px) 2rem, (max-width: 768px) 2.5rem, 3rem"
                             onError={(e) => {
@@ -363,7 +392,7 @@ export function HomePage() {
                               src={brand.textImage}
                               alt={brand.label}
                               fill
-                              className={`object-contain ${isLightTheme ? 'invert' : ''}`}
+                              className={`object-contain grayscale ${isLightTheme ? 'brightness-0' : 'brightness-0 invert'}`}
                               quality={90}
                               sizes="(max-width: 640px) 5rem, (max-width: 768px) 6rem, 8rem"
                             />
@@ -376,7 +405,9 @@ export function HomePage() {
                             <span className="font-normal">{brand.normalPart}</span>
                           </span>
                         ) : brand.lightWeight ? (
-                          <span className={`text-2xl sm:text-3xl md:text-4xl font-light tracking-wide ${
+                          <span className={`${
+                            brand.smallText ? 'text-lg sm:text-xl md:text-2xl' : 'text-xl sm:text-2xl md:text-3xl'
+                          } font-light tracking-wide ${
                             isLightTheme ? 'text-black' : 'text-white'
                           }`}>
                             {brand.displayLabel || brand.label}
@@ -398,7 +429,11 @@ export function HomePage() {
         </div>
       </section>
 
-      <DashboardSection />
+      <GeoReportSection />
+      </div>
+      {/* End gradient zone */}
+
+      <FeatureTabsSection />
 
       <AISearchMetricsSection />
 
@@ -409,6 +444,8 @@ export function HomePage() {
       <TestimonialsCarousel />
 
       <PricingSection />
+
+
 
       <FAQSection openFaq={openFaq} toggleFaq={toggleFaq} faqRef={faqRef} />
 

@@ -37,11 +37,14 @@ function FAQCard({ faq, isOpen, onToggle }: FAQCardProps) {
       variants={cardVariantsSmooth}
       initial="hidden"
       animate={cardInView ? 'visible' : 'hidden'}
-      className={`border-b ${colorClasses.borderGray} shadow-sm faq-card-partial-borders rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl overflow-hidden relative cursor-pointer`}
-      style={{ backgroundColor: 'var(--color-page-background)' }}
+      className="border-b shadow-sm faq-card-partial-borders rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl overflow-hidden relative cursor-pointer"
+      style={{ 
+        backgroundColor: 'var(--color-page-background)',
+        borderColor: 'var(--color-faq-border)'
+      }}
       whileHover={{
         backgroundColor: 'var(--color-faq-card-hover)',
-        borderColor: 'var(--color-border)',
+        borderColor: 'var(--color-faq-border)',
         transition: { duration: 0.4, ease: 'easeInOut' }
       }}
     >
@@ -217,4 +220,3 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
     </section>
   )
 }
-

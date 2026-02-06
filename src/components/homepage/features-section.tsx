@@ -80,7 +80,7 @@ function FeaturesSection() {
           <motion.div
             variants={cardVariantsSmooth}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className={`bg-[var(--color-card-bg)] border border-border rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-[calc(50%-0.5rem)] max-w-none mx-auto' : ''}`}
+            className={`bg-[var(--color-card-bg)] border border-[var(--color-card-border)] rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-[calc(50%-0.5rem)] max-w-none mx-auto' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />
@@ -112,7 +112,7 @@ function FeaturesSection() {
           <motion.div
             variants={cardVariantsSmooth}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className={`bg-[var(--color-card-bg)] border border-border rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
+            className={`bg-[var(--color-card-bg)] border border-[var(--color-card-border)] rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />
@@ -142,7 +142,7 @@ function FeaturesSection() {
           <motion.div
             variants={cardVariantsSmooth}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className={`bg-[var(--color-card-bg)] border border-border rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
+            className={`bg-[var(--color-card-bg)] border border-[var(--color-card-border)] rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />
