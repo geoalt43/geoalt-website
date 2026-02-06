@@ -37,7 +37,7 @@ export function GeoReportSection() {
             variants={headerVariants}
             className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-heading'}`}
           >
-            We Believe in Proof, <br /> <span className="inline-block">Backed by Data</span>
+            We Believe in <span className="text-green-600">Proof</span>, <br /> <span className="inline-block">Backed by Data</span>
           </motion.h2>
         </motion.div>
 
