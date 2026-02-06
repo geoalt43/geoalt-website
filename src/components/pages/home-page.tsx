@@ -24,7 +24,21 @@ const PricingSection = dynamic(() => import('@/components/homepage/pricing-secti
 const GeoReportSection = dynamic(() => import('@/components/homepage/geo-report-section').then(m => ({ default: m.GeoReportSection })))
 const FeatureTabsSection = dynamic(() => import('@/components/homepage/feature-tabs-section').then(m => ({ default: m.FeatureTabsSection })))
 
-const trustedBrands = [
+interface TrustedBrand {
+  label: string;
+  logo: string;
+  displayLabel?: string;
+  textImage?: string;
+  preserveDetail?: boolean;
+  lightWeight?: boolean;
+  boldPart?: string;
+  normalPart?: string;
+  smallText?: boolean;
+  mediumText?: boolean;
+  fullImage?: boolean;
+}
+
+const trustedBrands: TrustedBrand[] = [
   { 
     label: 'dabble', 
     logo: '/logos/dabble.png',
@@ -345,7 +359,6 @@ export function HomePage() {
                           alt={brand.label}
                           fill
                           className={`object-contain grayscale ${
-                            // @ts-ignore
                             brand.preserveDetail 
                               ? (isLightTheme ? '' : 'invert') 
                               : (isLightTheme ? 'brightness-0' : 'brightness-0 invert')
@@ -362,7 +375,6 @@ export function HomePage() {
                             alt={`${brand.label} logo`}
                             fill
                             className={`object-contain grayscale ${
-                              // @ts-ignore
                               brand.preserveDetail 
                                 ? (isLightTheme ? '' : 'invert') 
                                 : (isLightTheme ? 'brightness-0' : 'brightness-0 invert')
@@ -394,7 +406,6 @@ export function HomePage() {
                           </span>
                         ) : brand.lightWeight ? (
                           <span className={`${
-                            // @ts-ignore
                             brand.smallText ? 'text-lg sm:text-xl md:text-2xl' : 'text-xl sm:text-2xl md:text-3xl'
                           } font-light tracking-wide ${
                             isLightTheme ? 'text-black' : 'text-white'

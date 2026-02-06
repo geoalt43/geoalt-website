@@ -6,7 +6,6 @@ import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import { TrendingUp, PieChart, BarChart3, Lightbulb } from 'lucide-react'
 import { containerVariants, headerVariants } from '@/lib/animations/variants'
-import { colorClasses } from '@/constants/colors'
 
 
 

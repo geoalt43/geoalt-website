@@ -1,24 +1,14 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import type { ReactElement } from 'react'
 import Image from 'next/image'
 import { getPlatformIcon } from '@/lib/utils/platform-icons'
-import { useTheme } from 'next-themes'
 
 interface FeatureTextProps {
   text: string
 }
 
 export function FeatureText({ text }: FeatureTextProps) {
-  const [mounted, setMounted] = useState(false)
-  const { resolvedTheme } = useTheme()
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const isLightTheme = mounted && resolvedTheme === 'light'
 
   if (text === 'Access to 3 models') {
     return (

@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { useTheme } from 'next-themes'
-import { colorClasses } from '@/constants/colors'
 import { headingVariants } from '@/lib/animations/variants'
 
 // Constants
