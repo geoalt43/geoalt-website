@@ -49,7 +49,7 @@ export function HeroSection() {
               variants={headingContainerVariants}
               initial="hidden"
               animate={controls}
-              className={`text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal mt-4 sm:mt-0 md:mt-0 leading-tight tracking-tight ${
+              className={`text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal mt-4 sm:mt-0 md:mt-0 mb-2 sm:mb-4 md:mb-6 leading-tight tracking-tight ${
                 isLightTheme 
                   ? 'text-[var(--color-ref-001)]' 
                   : 'text-white'
