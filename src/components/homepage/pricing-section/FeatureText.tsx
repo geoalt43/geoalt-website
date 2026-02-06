@@ -1,51 +1,50 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import type { ReactElement } from 'react'
 import Image from 'next/image'
 import { getPlatformIcon } from '@/lib/utils/platform-icons'
-import { useTheme } from 'next-themes'
 
 interface FeatureTextProps {
   text: string
 }
 
 export function FeatureText({ text }: FeatureTextProps) {
-  const [mounted, setMounted] = useState(false)
-  const { resolvedTheme } = useTheme()
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const isLightTheme = mounted && resolvedTheme === 'light'
 
   if (text === 'Access to 3 models') {
     return (
       <span className="flex items-center gap-2">
         <span>Access to 3 models</span>
-        <div className="flex items-center gap-0.5">
-          <Image
-            src={isLightTheme ? '/ai-icons/openai-light.svg' : '/ai-icons/openai.webp'}
-            alt="OpenAI"
-            width={18}
-            height={18}
-            className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-[18px] md:h-[18px] opacity-80 hover:opacity-100 transition-opacity"
-          />
-          <Image
-            src={isLightTheme ? '/ai-icons/perplexity-light.svg' : '/ai-icons/perplexity.webp'}
-            alt="Perplexity"
-            width={18}
-            height={18}
-            className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-[18px] md:h-[18px] opacity-80 hover:opacity-100 transition-opacity"
-          />
-          <Image
-            src={isLightTheme ? '/ai-icons/gemini-light mode.svg' : '/ai-icons/gemini-color.webp'}
-            alt="Gemini"
-            width={18}
-            height={18}
-            className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-[18px] md:h-[18px] opacity-80 hover:opacity-100 transition-opacity"
-          />
+        <div className="flex items-center -space-x-1.5">
+          <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-10">
+            <Image
+              src='/ai-icons/openai-light.svg'
+              alt="OpenAI"
+              width={18}
+              height={18}
+              unoptimized
+              className="w-5 h-5 sm:w-[20px] sm:h-[20px] brightness-0"
+            />
+          </div>
+          <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-20 shadow-[-2px_0_4px_rgba(0,0,0,0.15)]">
+            <Image
+              src='/ai-icons/perplexity-light.svg'
+              alt="Perplexity"
+              width={18}
+              height={18}
+              unoptimized
+              className="w-5 h-5 sm:w-[20px] sm:h-[20px] brightness-0"
+            />
+          </div>
+          <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-30 shadow-[-2px_0_4px_rgba(0,0,0,0.15)]">
+            <Image
+              src='/ai-icons/gemini-color.webp'
+              alt="Gemini"
+              width={18}
+              height={18}
+              unoptimized
+              className="w-5 h-5 sm:w-[20px] sm:h-[20px]"
+            />
+          </div>
         </div>
       </span>
     )
@@ -55,14 +54,17 @@ export function FeatureText({ text }: FeatureTextProps) {
     return (
       <span className="flex items-center gap-2">
         <span>Access to 1 model</span>
-        <div className="flex items-center gap-0.5">
-          <Image
-            src={isLightTheme ? '/ai-icons/openai-light.svg' : '/ai-icons/openai.webp'}
-            alt="OpenAI"
-            width={18}
-            height={18}
-            className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-[18px] md:h-[18px] opacity-80 hover:opacity-100 transition-opacity"
-          />
+        <div className="flex items-center">
+          <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white flex items-center justify-center border border-gray-200">
+            <Image
+              src='/ai-icons/openai-light.svg'
+              alt="OpenAI"
+              width={18}
+              height={18}
+              unoptimized
+              className="w-5 h-5 sm:w-[20px] sm:h-[20px] brightness-0"
+            />
+          </div>
         </div>
       </span>
     )
