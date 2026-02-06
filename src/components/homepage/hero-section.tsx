@@ -52,7 +52,7 @@ export function HeroSection() {
               className={`text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal mt-4 sm:mt-0 md:mt-0 leading-tight tracking-tight ${
                 isLightTheme 
                   ? 'text-[var(--color-ref-001)]' 
-                  : 'bg-gradient-to-r from-[var(--color-ref-011)] via-[var(--color-ref-021)] to-[var(--color-ref-025)] bg-clip-text text-transparent'
+                  : 'text-white'
               }`}
             >
               {words.map((word, index) => (

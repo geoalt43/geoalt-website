@@ -123,7 +123,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
       } ${isVisible ? 'animate-fadeIn' : 'animate-fadeOut'} ${
         variant === 'muted'
           ? isBlurring
-            ? 'filter-muted-blur text-text-muted'
+            ? 'filter-muted-blur text-text-white'
             : 'filter-muted-base text-text-muted'
           : isBlurring
               ? 'filter-default-blur text-text-primary'
@@ -131,7 +131,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
       }`}
     >
       {current.icon && (
-        <div aria-hidden className="flex-shrink-0 flex items-center gap-0.5 sm:gap-1 md:gap-1.5 lg:gap-2">
+        <div aria-hidden className={`flex-shrink-0 flex items-center gap-0.5 sm:gap-1 md:gap-1.5 lg:gap-2 ${variant === 'muted' && isLightTheme ? 'opacity-75 invert' : ''}`}>
           {/* Icon: ~10% larger than text height */}
           <Image
             src={current.icon}
@@ -154,13 +154,13 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
       {current.name && !current.hasText && (
         <span
           className={`ai-platform-name h-[20px] sm:h-[24px] md:h-[26px] lg:h-[30px] flex items-center text-sm sm:text-base md:text-lg lg:text-3xl xl:text-4xl font-medium leading-tight tracking-tight whitespace-nowrap ${
-            variant === 'muted' ? 'text-text-muted' : 'text-text-primary'
+            variant === 'muted' ? 'text-text-description' : 'text-text-primary'
           }`}
           style={{ 
             WebkitBackgroundClip: 'unset', 
             backgroundClip: 'unset',
             WebkitTextFillColor: 'inherit',
-            color: isLightTheme ? '#525252' : 'inherit'
+            color: isLightTheme ? (variant === 'muted' ? '#C0C0C0' : '#525252') : 'inherit'
           }}
         >
           {current.name}
