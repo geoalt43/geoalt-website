@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { headingVariants } from '@/lib/animations/variants'
-import { Check } from 'lucide-react'
 
 // Constants
 const TABS = [
@@ -48,39 +47,6 @@ const TABS = [
     headingDark: 'text-white/80',
   }
 ]
-
-// Step Circle Component - no shaking animation, always white text
-function StepCircle({ 
-  stepNumber, 
-  isCompleted, 
-  isActive,
-  isLightTheme 
-}: { 
-  stepNumber: number
-  isCompleted: boolean
-  isActive: boolean
-  isLightTheme: boolean 
-}) {
-  return (
-    <div
-      className={`relative w-8 h-8 rounded-full flex items-center justify-center border-2 transition-all duration-500 z-10 ${
-        isCompleted || isActive
-          ? 'bg-green-700 border-white/50'
-          : isLightTheme
-            ? 'bg-gray-100 border-gray-300'
-            : 'bg-zinc-800 border-zinc-600'
-      }`}
-    >
-      {isCompleted ? (
-        <Check className="w-4 h-4 text-white" strokeWidth={3} />
-      ) : (
-        <span className="text-xs font-bold text-white">
-          {stepNumber}
-        </span>
-      )}
-    </div>
-  )
-}
 
 export function FeatureTabsSection() {
   const [activeTab, setActiveTab] = useState(0)
@@ -166,60 +132,41 @@ unlock actionable insights</span>
           </motion.div>
 
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 xl:gap-20 items-stretch h-auto lg:h-[520px]">
-            {/* LEFT SIDE: Progress Timeline + Tabs */}
-            <div className="w-full lg:w-1/3 flex gap-4">
-              {/* Progress Timeline - matches painting height */}
-              <div className="hidden lg:flex flex-col items-center h-[520px]">
-                {TABS.map((_, index) => (
-                  <div key={index} className={`flex flex-col items-center ${index < TABS.length - 1 ? 'flex-1' : ''}`}>
-                    {/* Circle */}
-                    <StepCircle
-                      stepNumber={index + 1}
-                      isCompleted={completedSteps.includes(index)}
-                      isActive={activeTab === index}
-                      isLightTheme={isLightTheme}
-                    />
-                    {/* Line Segment (not after last circle) - uses flex-1 to fill space */}
-                    {index < TABS.length - 1 && (
-                      <div className="flex-1 w-0.5 relative">
-                        <div className={`absolute inset-0 ${isLightTheme ? 'bg-gray-200' : 'bg-zinc-700'}`} />
-                        <div
-                          className="absolute top-0 left-0 w-full bg-green-600 origin-top transition-all duration-150"
-                          style={{
-                            height: `${Math.min(100, Math.max(0, segmentProgresses[index] * 100))}%`
-                          }}
-                        />
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              {/* Tabs Container - Cards appear one by one, no clicking allowed */}
-              <div className="flex-1 flex flex-col justify-between h-[520px]">
+            {/* LEFT SIDE: Tabs with Progress Border */}
+            <div className="w-full lg:w-1/3 flex flex-col justify-between h-auto lg:h-[520px]">
                 {TABS.map((tab, index) => {
-                  const isVisible = visibleCards.includes(index)
                   const isActive = activeTab === index
-                  const isExpanded = index <= activeTab // Visited/Active cards remain open
+                  const isExpanded = index <= activeTab // Visited/Active cards are "Expanded" with full style
+                  const isCompleted = completedSteps.includes(index)
+                  const progress = segmentProgresses[index]
                   
                   return (
                     <div
                       key={tab.id}
-                      className={`relative text-left p-5 sm:p-4 rounded-lg transition-all duration-500 border border-[var(--color-card-border)] ${
-                        isLightTheme ? 'bg-[var(--color-card-bg)]' : 'bg-[var(--color-ref-043)]'
-                      } ${
-                        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
-                      }`}
+                      className={`relative text-left p-5 sm:p-4 rounded-r-lg rounded-l-none transition-all duration-500 border-y border-r border-l-0 ${
+                        isLightTheme 
+                          ? 'bg-[var(--color-card-bg)] border-[var(--color-card-border)]' 
+                          : 'bg-[var(--color-ref-043)] border-[var(--color-card-border)]'
+                      } overflow-hidden`}
                     >
-                      <span className="relative z-10 flex flex-col gap-1">
-                        <h3 className={`text-base sm:text-lg font-medium transition-colors duration-200 flex items-center gap-2 ${
-                          isActive 
+                      {/* Left Progress Border - Fills based on scroll */}
+                      <div className={`absolute left-0 top-0 bottom-0 w-1 z-10 ${isLightTheme ? 'bg-gray-200' : 'bg-white/5'}`} /> {/* Track */}
+                      <div 
+                        className="absolute left-0 top-0 w-1 bg-white z-20 transition-all duration-100 ease-linear origin-top"
+                        style={{ height: `${Math.min(100, Math.max(0, progress * 100))}%` }}
+                      />
+
+                      <span className="relative z-10 flex flex-col gap-1 pl-2"> {/* Added padding-left to offset visually from border */}
+                        <h3 className={`text-base sm:text-lg font-medium transition-colors duration-500 flex items-center gap-2 ${
+                          isCompleted || (isActive && progress > 0.05) // Heading becomes active early in the segment
                             ? isLightTheme ? 'text-black' : 'text-white'
-                            : isLightTheme ? 'text-gray-500' : 'text-zinc-400'
+                            : isLightTheme ? 'text-gray-500' : 'text-zinc-500' // Muted initially
                         }`}>
                           {tab.title}
                           {tab.id === 'model-region' && (
-                            <div className="flex items-center -space-x-1.5 ml-1">
+                            <div className={`flex items-center -space-x-1.5 ml-1 transition-opacity duration-500 ${
+                              isCompleted || (isActive && progress > 0.05) ? 'opacity-100' : 'opacity-40'
+                            }`}>
                               <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-10 shrink-0">
                                 <Image
                                   src='/ai-icons/openai-light.svg'
@@ -255,21 +202,33 @@ unlock actionable insights</span>
                         </h3>
                         
                         <div
-                          className={`overflow-hidden transition-all duration-300 ${
-                            isExpanded ? 'max-h-20 opacity-100 mt-1.5' : 'max-h-0 opacity-0 mt-0'
-                          }`}
+                          className="overflow-hidden transition-all duration-500 ease-in-out max-h-24 mt-1.5"
                         >
-                          <p className={`text-sm leading-relaxed font-light whitespace-pre-line ${
-                            isLightTheme ? 'text-gray-600' : 'text-gray-400'
-                          }`}>
-                            {tab.description}
-                          </p>
+                          {/* Split description by newline to animate lines separately */}
+                          {tab.description.split('\n').map((line, i) => {
+                             // Line 1 (index 0) aligns with mid-progress (~0.4)
+                             // Line 2 (index 1) aligns with end-progress (~0.8)
+                             const threshold = i === 0 ? 0.35 : 0.75
+                             const isLineVisible = isCompleted || (isActive && progress > threshold)
+                             
+                             return (
+                               <p 
+                                key={i}
+                                className={`text-sm leading-relaxed font-light transition-opacity duration-500 ${
+                                  isLightTheme ? 'text-gray-600' : 'text-gray-400'
+                                } ${
+                                  isLineVisible ? 'opacity-100' : 'opacity-10'
+                                }`}
+                               >
+                                 {line}
+                               </p>
+                             )
+                          })}
                         </div>
                       </span>
                     </div>
                   )
                 })}
-              </div>
             </div>
 
             {/* RIGHT SIDE: Dynamic Display */}
