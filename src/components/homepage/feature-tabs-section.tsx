@@ -152,7 +152,7 @@ unlock actionable insights</span>
                       {/* Left Progress Border - Fills based on scroll */}
                       <div className={`absolute left-0 top-0 bottom-0 w-1 z-10 ${isLightTheme ? 'bg-gray-200' : 'bg-white/5'}`} /> {/* Track */}
                       <div 
-                        className="absolute left-0 top-0 w-1 bg-white z-20 transition-all duration-100 ease-linear origin-top"
+                        className="absolute left-0 top-0 w-1 z-20 transition-all duration-100 ease-linear origin-top bg-green-600"
                         style={{ height: `${Math.min(100, Math.max(0, progress * 100))}%` }}
                       />
 
