@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { headingVariants } from '@/lib/animations/variants'
+import { DemoCanvas } from './demo/demo-canvas'
 
 // Constants
 const TABS = [
@@ -56,7 +57,7 @@ export function FeatureTabsSection() {
   const [mounted, setMounted] = useState(false)
   const [completedSteps, setCompletedSteps] = useState<number[]>([])
   const [segmentProgresses, setSegmentProgresses] = useState([0, 0, 0, 0])
-  const [visibleCards, setVisibleCards] = useState<number[]>([0]) // Start with first card visible
+
 
   // Scroll tracking - using the tall scroll container
   const { scrollYProgress } = useScroll({
@@ -88,13 +89,6 @@ export function FeatureTabsSection() {
     if (latest >= 0.95) newCompleted.push(3)
     setCompletedSteps(newCompleted)
 
-    // Update visible cards - cards appear one by one
-    const newVisibleCards: number[] = [0] // First card always visible
-    if (latest >= 0.15) newVisibleCards.push(1)
-    if (latest >= 0.4) newVisibleCards.push(2)
-    if (latest >= 0.65) newVisibleCards.push(3)
-    setVisibleCards(newVisibleCards)
-
     // Update segment progresses
     const seg1 = Math.min(1, Math.max(0, (latest - 0) / 0.2))
     const seg2 = Math.min(1, Math.max(0, (latest - 0.2) / 0.25))
@@ -104,6 +98,38 @@ export function FeatureTabsSection() {
   })
 
   const isLightTheme = mounted && resolvedTheme === 'light'
+
+  // Auto-advance mechanism
+  const handleStepComplete = useCallback(() => {
+    if (activeTab >= 3) return // No next step (or handle loop back to 0?)
+    
+    const container = scrollContainerRef.current
+    if (!container) return
+
+    // Target progress values based on scrollYProgress logic
+    // 0 -> 1: > 0.2. Aim for 0.25
+    // 1 -> 2: > 0.45. Aim for 0.50
+    // 2 -> 3: > 0.7. Aim for 0.75
+    let targetProgress = 0
+    if (activeTab === 0) targetProgress = 0.25
+    else if (activeTab === 1) targetProgress = 0.50
+    else if (activeTab === 2) targetProgress = 0.75
+    else return
+
+    const scrollHeight = container.offsetHeight
+    const windowHeight = window.innerHeight
+    const scrollDistance = scrollHeight - windowHeight
+    
+    // Calculate absolute scroll position
+    // We use getBoundingClientRect().top + window.scrollY for absolute top
+    const containerTop = container.getBoundingClientRect().top + window.scrollY
+    const targetScrollY = containerTop + (scrollDistance * targetProgress)
+    
+    window.scrollTo({
+      top: targetScrollY,
+      behavior: 'smooth'
+    })
+  }, [activeTab])
 
   return (
     // Outer scroll container - creates the "scroll space" for the sticky effect
@@ -136,7 +162,6 @@ unlock actionable insights</span>
             <div className="w-full lg:w-1/3 flex flex-col justify-between h-auto lg:h-[520px]">
                 {TABS.map((tab, index) => {
                   const isActive = activeTab === index
-                  const isExpanded = index <= activeTab // Visited/Active cards are "Expanded" with full style
                   const isCompleted = completedSteps.includes(index)
                   const progress = segmentProgresses[index]
                   
@@ -245,38 +270,13 @@ unlock actionable insights</span>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent opacity-60" />
               </div>
 
-              {/* Dynamic Content Area */}
-              <div className="absolute inset-0 z-10 p-6 sm:p-8 md:p-10 flex items-center justify-center">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeTab}
-                    initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="relative w-full h-full flex items-center justify-center"
-                  >
-                    {/* Content Container matching the "Dashboard Card" look inside the painting */}
-                    <div className={`w-full max-w-[90%] lg:max-w-[96%] h-fit max-h-full rounded-lg overflow-hidden relative shadow-2xl ${
-                      isLightTheme ? 'bg-white' : 'bg-[#121212]'
-                    }`}>
-                      {/* Image Content */}
-                      <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-[420px]">
-                        <Image
-                          src={isLightTheme ? TABS[activeTab].imageLight : TABS[activeTab].imageDark}
-                          alt={TABS[activeTab].title}
-                          fill
-                          className={`object-contain object-top ${
-                            TABS[activeTab].darkDropShadow && !isLightTheme 
-                              ? 'drop-shadow-[0_0_15px_rgba(0,0,0,0.5)]' 
-                              : ''
-                          }`}
-                        />
-                      </div>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
+              {/* Interactive Demo Canvas Overlay */}
+              <DemoCanvas 
+                activeStep={activeTab} 
+                isLightTheme={isLightTheme} 
+                tabData={TABS[activeTab]} 
+                onStepComplete={handleStepComplete}
+              />
             </div>
           </div>
         </div>
