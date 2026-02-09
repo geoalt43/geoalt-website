@@ -8,14 +8,16 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { isValidElement } from 'react'
+import { isValidElement, ReactNode } from 'react'
 import ReactMarkdown from 'react-markdown'
 
-function getText(children: any): string {
+function getText(children: ReactNode): string {
     if (typeof children === 'string') return children
     if (typeof children === 'number') return children.toString()
     if (Array.isArray(children)) return children.map((child) => getText(child)).join('')
-    if (isValidElement(children) && (children.props as any).children) return getText((children.props as any).children)
+    if (isValidElement(children) && (children.props as { children?: ReactNode }).children) {
+        return getText((children.props as { children?: ReactNode }).children)
+    }
     return ''
 }
 
