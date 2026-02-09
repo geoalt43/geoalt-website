@@ -14,7 +14,7 @@ const TABS = [
     title: 'Add your brand',
     description: `We use your brand name and website\nURL to identify your top competitors.`,
     imageLight: '/images/add-your-brand.png',
-    imageDark: '/images/ShareOfVoice_.jpeg', 
+    imageDark: '/images/ShareOfVoice_.jpeg',
     headingLight: 'text-[var(--color-ref-001)]',
     headingDark: 'text-text-muted',
   },
@@ -50,13 +50,13 @@ const TABS = [
 ]
 
 // Step Circle Component - no shaking animation, always white text
-function StepCircle({ 
-  stepNumber, 
-  isCompleted, 
+function StepCircle({
+  stepNumber,
+  isCompleted,
   isActive,
   isLightTheme,
   isSmall
-}: { 
+}: {
   stepNumber: number
   isCompleted: boolean
   isActive: boolean
@@ -65,13 +65,12 @@ function StepCircle({
 }) {
   return (
     <div
-      className={`relative ${isSmall ? 'w-0 h-0' : 'w-8 h-8'} rounded-full flex items-center justify-center border-2 transition-all duration-500 z-10 ${
-        isCompleted || isActive
-          ? 'bg-green-700 border-white/50'
-          : isLightTheme
-            ? 'bg-gray-100 border-gray-300'
-            : 'bg-zinc-800 border-zinc-600'
-      }`}
+      className={`relative ${isSmall ? 'w-0 h-0' : 'w-8 h-8'} rounded-full flex items-center justify-center border-2 transition-all duration-500 z-10 ${isCompleted || isActive
+        ? 'bg-green-700 border-white/50'
+        : isLightTheme
+          ? 'bg-gray-100 border-gray-300'
+          : 'bg-zinc-800 border-zinc-600'
+        }`}
     >
       {isCompleted ? (
         <Check className="w-4 h-4 text-white" strokeWidth={3} />
@@ -92,7 +91,7 @@ export function FeatureTabsSection() {
   const [mounted, setMounted] = useState(false)
   const [completedSteps, setCompletedSteps] = useState<number[]>([])
   const [segmentProgresses, setSegmentProgresses] = useState([0, 0, 0, 0])
-  const [visibleCards, setVisibleCards] = useState<number[]>([0]) // Start with first card visible
+
 
   // Scroll tracking - using the tall scroll container
   const { scrollYProgress } = useScroll({
@@ -113,9 +112,9 @@ export function FeatureTabsSection() {
     else if (latest >= 0.45) step = 2
     else if (latest >= 0.2) step = 1
     else step = 0
-    
+
     setActiveTab(step)
-    
+
     // Mark steps as completed
     const newCompleted: number[] = []
     if (latest >= 0.2) newCompleted.push(0)
@@ -124,12 +123,7 @@ export function FeatureTabsSection() {
     if (latest >= 0.95) newCompleted.push(3)
     setCompletedSteps(newCompleted)
 
-    // Update visible cards - cards appear one by one
-    const newVisibleCards: number[] = [0] // First card always visible
-    if (latest >= 0.15) newVisibleCards.push(1)
-    if (latest >= 0.4) newVisibleCards.push(2)
-    if (latest >= 0.65) newVisibleCards.push(3)
-    setVisibleCards(newVisibleCards)
+
 
     // Update segment progresses
     const seg1 = Math.min(1, Math.max(0, (latest - 0) / 0.2))
@@ -143,13 +137,13 @@ export function FeatureTabsSection() {
 
   return (
     // Outer scroll container - creates the "scroll space" for the sticky effect
-    <div 
-      ref={scrollContainerRef} 
+    <div
+      ref={scrollContainerRef}
       className="relative"
       style={{ height: '300vh' }} // Tall container for scroll space
     >
       {/* Sticky content that stays in viewport */}
-      <div 
+      <div
         ref={stickyContentRef}
         className="sticky top-0 h-screen flex items-center bg-page-background overflow-hidden"
       >
@@ -163,7 +157,7 @@ export function FeatureTabsSection() {
             <h2 className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-1 ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-heading'}`}>
               <span className="block sm:inline text-orange-500 dark:text-orange-400">We provide streamlined onboarding to</span>{' '}
               <span className="block sm:inline lg:block ">
-unlock actionable insights</span>
+                unlock actionable insights</span>
             </h2>
           </motion.div>
 
@@ -181,7 +175,7 @@ unlock actionable insights</span>
                       isActive={activeTab === index}
                       isLightTheme={isLightTheme}
                     />
-                    
+
                     {/* Line Segment - Always render, fills space */}
                     <div className="flex-1 w-0.5 relative">
                       <div className={`absolute inset-0 ${isLightTheme ? 'bg-gray-200' : 'bg-zinc-700'}`} />
@@ -201,30 +195,26 @@ unlock actionable insights</span>
               <div className="flex-1 flex flex-col justify-between h-[520px]">
                 {TABS.map((tab, index) => {
                   const isActive = activeTab === index
-                  const isExpanded = index <= activeTab // Visited/Active cards are "Expanded" with full style
                   const isCompleted = completedSteps.includes(index)
                   const progress = segmentProgresses[index]
-                  
+
                   return (
                     <div
                       key={tab.id}
-                      className={`relative text-left p-5 sm:p-4 rounded-lg transition-all duration-500 border ${
-                        isLightTheme 
-                          ? 'bg-[var(--color-card-bg)] border-[var(--color-card-border)]' 
-                          : 'bg-[var(--color-ref-043)] border-[var(--color-card-border)]'
-                      }`}
+                      className={`relative text-left p-5 sm:p-4 rounded-lg transition-all duration-500 border ${isLightTheme
+                        ? 'bg-[var(--color-card-bg)] border-[var(--color-card-border)]'
+                        : 'bg-[var(--color-ref-043)] border-[var(--color-card-border)]'
+                        }`}
                     >
                       <span className="relative z-10 flex flex-col gap-1">
-                        <h3 className={`text-base sm:text-lg font-medium transition-colors duration-500 flex items-center gap-2 ${
-                          isCompleted || (isActive && progress > 0.05) // Heading becomes active early in the segment
-                            ? isLightTheme ? 'text-black' : 'text-white'
-                            : isLightTheme ? 'text-gray-500' : 'text-zinc-500' // Muted initially
-                        }`}>
+                        <h3 className={`text-base sm:text-lg font-medium transition-colors duration-500 flex items-center gap-2 ${isCompleted || (isActive && progress > 0.05) // Heading becomes active early in the segment
+                          ? isLightTheme ? 'text-black' : 'text-white'
+                          : isLightTheme ? 'text-gray-500' : 'text-zinc-500' // Muted initially
+                          }`}>
                           {tab.title}
                           {tab.id === 'model-region' && (
-                            <div className={`flex items-center -space-x-1.5 ml-1 transition-opacity duration-500 ${
-                              isCompleted || (isActive && progress > 0.05) ? 'opacity-100' : 'opacity-40'
-                            }`}>
+                            <div className={`flex items-center -space-x-1.5 ml-1 transition-opacity duration-500 ${isCompleted || (isActive && progress > 0.05) ? 'opacity-100' : 'opacity-40'
+                              }`}>
                               <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-10 shrink-0">
                                 <Image
                                   src='/ai-icons/openai-light.svg'
@@ -258,29 +248,27 @@ unlock actionable insights</span>
                             </div>
                           )}
                         </h3>
-                        
+
                         <div
                           className="overflow-hidden transition-all duration-500 ease-in-out max-h-24 mt-1.5"
                         >
                           {/* Split description by newline to animate lines separately */}
                           {tab.description.split('\n').map((line, i) => {
-                             // Line 1 (index 0) aligns with mid-progress (~0.4)
-                             // Line 2 (index 1) aligns with end-progress (~0.8)
-                             const threshold = i === 0 ? 0.35 : 0.75
-                             const isLineVisible = isCompleted || (isActive && progress > threshold)
-                             
-                             return (
-                               <p 
+                            // Line 1 (index 0) aligns with mid-progress (~0.4)
+                            // Line 2 (index 1) aligns with end-progress (~0.8)
+                            const threshold = i === 0 ? 0.35 : 0.75
+                            const isLineVisible = isCompleted || (isActive && progress > threshold)
+
+                            return (
+                              <p
                                 key={i}
-                                className={`text-sm leading-relaxed font-light transition-opacity duration-500 ${
-                                  isLightTheme ? 'text-gray-600' : 'text-gray-400'
-                                } ${
-                                  isLineVisible ? 'opacity-100' : 'opacity-10'
-                                }`}
-                               >
-                                 {line}
-                               </p>
-                             )
+                                className={`text-sm leading-relaxed font-light transition-opacity duration-500 ${isLightTheme ? 'text-gray-600' : 'text-gray-400'
+                                  } ${isLineVisible ? 'opacity-100' : 'opacity-10'
+                                  }`}
+                              >
+                                {line}
+                              </p>
+                            )
                           })}
                         </div>
                       </span>
@@ -316,20 +304,18 @@ unlock actionable insights</span>
                     className="relative w-full h-full flex items-center justify-center"
                   >
                     {/* Content Container matching the "Dashboard Card" look inside the painting */}
-                    <div className={`w-full max-w-[90%] lg:max-w-[96%] h-fit max-h-full rounded-lg overflow-hidden relative shadow-2xl ${
-                      isLightTheme ? 'bg-white' : 'bg-[#121212]'
-                    }`}>
+                    <div className={`w-full max-w-[90%] lg:max-w-[96%] h-fit max-h-full rounded-lg overflow-hidden relative shadow-2xl ${isLightTheme ? 'bg-white' : 'bg-[#121212]'
+                      }`}>
                       {/* Image Content */}
                       <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-[420px]">
                         <Image
                           src={isLightTheme ? TABS[activeTab].imageLight : TABS[activeTab].imageDark}
                           alt={TABS[activeTab].title}
                           fill
-                          className={`object-contain object-top ${
-                            TABS[activeTab].darkDropShadow && !isLightTheme 
-                              ? 'drop-shadow-[0_0_15px_rgba(0,0,0,0.5)]' 
-                              : ''
-                          }`}
+                          className={`object-contain object-top ${TABS[activeTab].darkDropShadow && !isLightTheme
+                            ? 'drop-shadow-[0_0_15px_rgba(0,0,0,0.5)]'
+                            : ''
+                            }`}
                         />
                       </div>
                     </div>
