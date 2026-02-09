@@ -17,7 +17,7 @@ import { Navbar } from '@/components/layout/navbar'
 const FeaturesSection = dynamic(() => import('@/components/homepage/features-section').then(m => ({ default: m.FeaturesSection })))
 const FAQSection = dynamic(() => import('@/components/homepage/faq-section').then(m => ({ default: m.FAQSection })))
 const CTASection = dynamic(() => import('@/components/homepage/cta-section').then(m => ({ default: m.CTASection })))
-const TestimonialsCarousel = dynamic(() => import('@/components/homepage/testimonials-carousel').then(m => ({ default: m.TestimonialsCarousel })))
+// const TestimonialsCarousel = dynamic(() => import('@/components/homepage/testimonials-carousel').then(m => ({ default: m.TestimonialsCarousel })))
 const Footer = dynamic(() => import('@/components/layout/footer').then(m => ({ default: m.Footer })))
 const AISearchMetricsSection = dynamic(() => import('@/components/homepage/ai-search-metrics').then(m => ({ default: m.AISearchMetricsSection })))
 const PricingSection = dynamic(() => import('@/components/homepage/pricing-section').then(m => ({ default: m.PricingSection })))
@@ -39,39 +39,39 @@ interface TrustedBrand {
 }
 
 const trustedBrands: TrustedBrand[] = [
-  { 
-    label: 'dabble', 
+  {
+    label: 'dabble',
     logo: '/logos/dabble.png',
     textImage: '/images/dabble-text.png',
     preserveDetail: true,
   },
-  { 
-    label: 'Modo', 
+  {
+    label: 'Modo',
     displayLabel: 'MODO',
     logo: '/logos/modo.png',
     lightWeight: true,
     preserveDetail: true,
   },
-  { 
-    label: 'SuperPen', 
+  {
+    label: 'SuperPen',
     logo: '/logos/Superpen.png',
     boldPart: 'Super',
     normalPart: 'Pen',
   },
-  { 
-    label: 'NimbleDesk', 
+  {
+    label: 'NimbleDesk',
     logo: '/logos/nimbledesk.png',
   },
-  { 
-    label: 'TreeTech Digi', 
+  {
+    label: 'TreeTech Digi',
     logo: '/logos/treetechdigi.png',
     preserveDetail: true,
     lightWeight: true,
     // smallText: true,
     mediumText: true,
   },
-  { 
-    label: 'Oktaa', 
+  {
+    label: 'Oktaa',
     logo: '/images/oktaa.png',
     fullImage: true,
   },
@@ -96,10 +96,10 @@ function EmpoweringBusinessesSection() {
       setIsBelow1088(window.innerWidth < 1088)
       setIsBelow680(window.innerWidth < 680)
     }
-    
+
     checkWidth()
     window.addEventListener('resize', checkWidth)
-    
+
     return () => window.removeEventListener('resize', checkWidth)
   }, [])
 
@@ -123,13 +123,13 @@ function EmpoweringBusinessesSection() {
           animate={isInView ? 'visible' : 'hidden'}
           className="pt-6 sm:pt-8 md:pt-8 lg:pt-10 pb-6 sm:pb-8 md:pb-8 text-center"
         >
-          <motion.h2 
+          <motion.h2
             variants={headerVariants}
             className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-heading'}`}
           >
             Empowering businesses of all sizes
           </motion.h2>
-          <motion.p 
+          <motion.p
             variants={headerVariants}
             className={`text-xs sm:text-sm md:text-base ${colorClasses.textDescription} px-4 sm:px-0 md:px-0 leading-tight`}
           >
@@ -152,7 +152,7 @@ function EmpoweringBusinessesSection() {
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />
-            
+
             <div className="flex items-center gap-3 sm:gap-4 md:gap-4 mb-3 sm:mb-4 md:mb-4 relative z-10">
               <motion.div
                 variants={iconVariantsSmooth}
@@ -160,75 +160,75 @@ function EmpoweringBusinessesSection() {
                 animate={isInView ? 'visible' : 'hidden'}
               >
                 <svg className="w-7 h-7 sm:w-8 sm:h-8 md:w-8.5 md:h-8.5 lg:w-9 lg:h-9 text-text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M22 21v-2a4 4 0 00-3-3.87"/>
-                  <path d="M16 3.13a4 4 0 010 7.75"/>
+                  <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 00-3-3.87" />
+                  <path d="M16 3.13a4 4 0 010 7.75" />
                 </svg>
               </motion.div>
               <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-text-heading">Marketing Teams</h3>
             </div>
             <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textDescription} relative z-10 pt-1.5 sm:pt-2 md:pt-2`}>
-              Track campaign performance and optimize content for AI-driven search across priority markets.  
-              Identify which campaigns influence AI-generated answers and reallocate spend toward the highest-impact initiatives.  
+              Track campaign performance and optimize content for AI-driven search across priority markets.
+              Identify which campaigns influence AI-generated answers and reallocate spend toward the highest-impact initiatives.
             </p>
           </motion.div>
 
           {/* Wrapper for Content Creators and SEO Specialists - 2 columns below 1088px but above 680px */}
           <div className={isBelow680 ? 'contents' : isBelow1088 ? 'grid grid-cols-2 gap-4 col-span-1 w-full max-w-full mx-auto' : 'contents'}>
-          {/* Content Creators Card */}
-          <motion.div
-            variants={cardVariantsSmooth}
-            className={`bg-[var(--color-card-bg)] border border-[var(--color-card-border)] rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
-          >
-            {/* Background glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />
-            
-            <div className="flex items-center gap-3 sm:gap-4 md:gap-4 mb-3 sm:mb-4 md:mb-4 relative z-10">
-              <motion.div
-                variants={iconVariantsSmooth}
-                initial="hidden"
-                animate={isInView ? 'visible' : 'hidden'}
-              >
-                <svg className="w-7 h-7 sm:w-8 sm:h-8 md:w-8.5 md:h-8.5 lg:w-9 lg:h-9 text-text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 20h9"/>
-                  <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/>
-                </svg>
-              </motion.div>
-              <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-text-heading">Content Creators</h3>
-            </div>
-            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textDescription} relative z-10 pt-1.5 sm:pt-2 md:pt-2`}>
-              Create content that resonates with AI algorithms and drives qualified, organic pipeline.  
-              See which formats, topics, and angles AI prefers so every article, playbook, or landing page is built for discovery.  
-            </p>
-          </motion.div>
+            {/* Content Creators Card */}
+            <motion.div
+              variants={cardVariantsSmooth}
+              className={`bg-[var(--color-card-bg)] border border-[var(--color-card-border)] rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
+            >
+              {/* Background glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />
 
-          {/* SEO Specialists Card */}
-          <motion.div
-            variants={cardVariantsSmooth}
-            className={`bg-[var(--color-card-bg)] border border-[var(--color-card-border)] rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
-          >
-            {/* Background glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />
-            
-            <div className="flex items-center gap-3 sm:gap-4 md:gap-4 mb-3 sm:mb-4 md:mb-4 relative z-10">
-              <motion.div
-                variants={iconVariantsSmooth}
-                initial="hidden"
-                animate={isInView ? 'visible' : 'hidden'}
-              >
-                <svg className="w-7 h-7 sm:w-8 sm:h-8 md:w-8.5 md:h-8.5 lg:w-9 lg:h-9 text-text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="11" cy="11" r="8"/>
-                  <path d="M21 21l-4.3-4.3"/>
-                </svg>
-              </motion.div>
-              <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-text-heading">SEO Specialists</h3>
-            </div>
-            <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textDescription} relative z-10 pt-1.5 sm:pt-2 md:pt-2`}>
-              Adapt SEO strategies to the evolving landscape of AI-powered search for complex B2B journeys.  
-              Understand which entities, sources, and citations AI trusts most in your category and markets.  
-            </p>
-          </motion.div>
+              <div className="flex items-center gap-3 sm:gap-4 md:gap-4 mb-3 sm:mb-4 md:mb-4 relative z-10">
+                <motion.div
+                  variants={iconVariantsSmooth}
+                  initial="hidden"
+                  animate={isInView ? 'visible' : 'hidden'}
+                >
+                  <svg className="w-7 h-7 sm:w-8 sm:h-8 md:w-8.5 md:h-8.5 lg:w-9 lg:h-9 text-text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 20h9" />
+                    <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z" />
+                  </svg>
+                </motion.div>
+                <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-text-heading">Content Creators</h3>
+              </div>
+              <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textDescription} relative z-10 pt-1.5 sm:pt-2 md:pt-2`}>
+                Create content that resonates with AI algorithms and drives qualified, organic pipeline.
+                See which formats, topics, and angles AI prefers so every article, playbook, or landing page is built for discovery.
+              </p>
+            </motion.div>
+
+            {/* SEO Specialists Card */}
+            <motion.div
+              variants={cardVariantsSmooth}
+              className={`bg-[var(--color-card-bg)] border border-[var(--color-card-border)] rounded-lg p-3 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] ${isBelow680 ? 'w-full' : isBelow1088 ? 'w-full' : ''}`}
+            >
+              {/* Background glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />
+
+              <div className="flex items-center gap-3 sm:gap-4 md:gap-4 mb-3 sm:mb-4 md:mb-4 relative z-10">
+                <motion.div
+                  variants={iconVariantsSmooth}
+                  initial="hidden"
+                  animate={isInView ? 'visible' : 'hidden'}
+                >
+                  <svg className="w-7 h-7 sm:w-8 sm:h-8 md:w-8.5 md:h-8.5 lg:w-9 lg:h-9 text-text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="M21 21l-4.3-4.3" />
+                  </svg>
+                </motion.div>
+                <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-medium md:font-medium text-text-heading">SEO Specialists</h3>
+              </div>
+              <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textDescription} relative z-10 pt-1.5 sm:pt-2 md:pt-2`}>
+                Adapt SEO strategies to the evolving landscape of AI-powered search for complex B2B journeys.
+                Understand which entities, sources, and citations AI trusts most in your category and markets.
+              </p>
+            </motion.div>
           </div>
         </motion.div>
       </div>
@@ -247,8 +247,8 @@ function DashboardImageSection() {
     setMounted(true)
   }, [])
 
-  const dashboardImage = mounted && resolvedTheme === 'light' 
-    ? '/images/Dashboard-light-theme.png' 
+  const dashboardImage = mounted && resolvedTheme === 'light'
+    ? '/images/Dashboard-light-theme.png'
     : '/images/Dasboard-dark-theme.png'
 
   return (
@@ -270,7 +270,7 @@ function DashboardImageSection() {
               priority
             />
           </div>
-          
+
           {/* Dashboard Image */}
           <Image
             src={dashboardImage}
@@ -293,7 +293,7 @@ export function HomePage() {
   const faqRef = useRef<HTMLDivElement>(null)
   const [mounted, setMounted] = useState(false)
   const { resolvedTheme } = useTheme()
-  
+
   useScrollRestoration()
 
   useEffect(() => {
@@ -333,103 +333,95 @@ export function HomePage() {
 
         <DashboardImageSection />
 
-      <section className="pt-[45.6px] sm:pt-[60.8px] md:pt-[65px] lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-18 lg:pb-[4vh] xl:pb-[6vh]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
-          <div className="relative overflow-hidden bg-transparent px-4 pt-5 pb-5 sm:px-6 sm:pt-9 sm:pb-9 md:px-8 md:pt-10 md:pb-10 lg:px-10 lg:pt-12 lg:pb-12">
-            <div className="relative flex flex-col items-center gap-6 sm:gap-8 md:gap-10">
-              <p className="text-xl sm:text-2xl md:text-3xl font-light sm:font-normal md:font-normal tracking-wide -mt-6 sm:-mt-8 md:-mt-9 lg:-mt-11 trusted-by-text">
-                Trusted by
-              </p>
-              <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-0">
-                {trustedBrands.map((brand, index) => (
-                  <div
-                    key={`${brand.label}-${index}`}
-                    className={`flex items-center justify-center gap-3 sm:gap-4 py-8 sm:py-10 md:py-12 px-24 sm:px-32 md:px-40 lg:px-48 border border-[var(--color-card-border)] transition-colors duration-200 ${
-                      index >= 3 ? 'border-t-0' : ''
-                    } ${
-                      isLightTheme 
-                        ? 'bg-[var(--color-card-bg)]' 
-                        : 'bg-[#060606]'
-                    }`}
-                  >
-                    {brand.fullImage ? (
-                      <div className="relative h-10 sm:h-12 md:h-14 w-28 sm:w-32 md:w-40 flex-shrink-0">
-                        <Image
-                          src={brand.logo}
-                          alt={brand.label}
-                          fill
-                          className={`object-contain grayscale ${
-                            brand.preserveDetail 
-                              ? (isLightTheme ? '' : 'invert') 
-                              : (isLightTheme ? 'brightness-0' : 'brightness-0 invert')
-                          }`}
-                          quality={90}
-                          sizes="(max-width: 640px) 7rem, (max-width: 768px) 8rem, 10rem"
-                        />
-                      </div>
-                    ) : (
-                      <>
-                        <div className="relative h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex-shrink-0">
+        <section className="pt-[45.6px] sm:pt-[60.8px] md:pt-[65px] lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-18 lg:pb-[4vh] xl:pb-[6vh]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
+            <div className="relative overflow-hidden bg-transparent px-4 pt-5 pb-5 sm:px-6 sm:pt-9 sm:pb-9 md:px-8 md:pt-10 md:pb-10 lg:px-10 lg:pt-12 lg:pb-12">
+              <div className="relative flex flex-col items-center gap-6 sm:gap-8 md:gap-10">
+                <p className="text-xl sm:text-2xl md:text-3xl font-light sm:font-normal md:font-normal tracking-wide -mt-6 sm:-mt-8 md:-mt-9 lg:-mt-11 trusted-by-text">
+                  Trusted by
+                </p>
+                <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-0">
+                  {trustedBrands.map((brand, index) => (
+                    <div
+                      key={`${brand.label}-${index}`}
+                      className={`flex items-center justify-center gap-3 sm:gap-4 py-8 sm:py-10 md:py-12 px-24 sm:px-32 md:px-40 lg:px-48 border border-[var(--color-card-border)] transition-colors duration-200 ${index >= 3 ? 'border-t-0' : ''
+                        } ${isLightTheme
+                          ? 'bg-[var(--color-card-bg)]'
+                          : 'bg-[#060606]'
+                        }`}
+                    >
+                      {brand.fullImage ? (
+                        <div className="relative h-10 sm:h-12 md:h-14 w-28 sm:w-32 md:w-40 flex-shrink-0">
                           <Image
                             src={brand.logo}
-                            alt={`${brand.label} logo`}
+                            alt={brand.label}
                             fill
-                            className={`object-contain grayscale ${
-                              brand.preserveDetail 
-                                ? (isLightTheme ? '' : 'invert') 
-                                : (isLightTheme ? 'brightness-0' : 'brightness-0 invert')
-                            }`}
+                            className={`object-contain grayscale ${brand.preserveDetail
+                              ? (isLightTheme ? '' : 'invert')
+                              : (isLightTheme ? 'brightness-0' : 'brightness-0 invert')
+                              }`}
                             quality={90}
-                            sizes="(max-width: 640px) 2rem, (max-width: 768px) 2.5rem, 3rem"
-                            onError={(e) => {
-                              e.currentTarget.style.display = 'none'
-                            }}
+                            sizes="(max-width: 640px) 7rem, (max-width: 768px) 8rem, 10rem"
                           />
                         </div>
-                        {brand.textImage ? (
-                          <div className="relative h-6 sm:h-8 md:h-10 w-20 sm:w-24 md:w-32 flex-shrink-0">
+                      ) : (
+                        <>
+                          <div className="relative h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex-shrink-0">
                             <Image
-                              src={brand.textImage}
-                              alt={brand.label}
+                              src={brand.logo}
+                              alt={`${brand.label} logo`}
                               fill
-                              className={`object-contain grayscale ${isLightTheme ? 'brightness-0' : 'brightness-0 invert'}`}
+                              className={`object-contain grayscale ${brand.preserveDetail
+                                ? (isLightTheme ? '' : 'invert')
+                                : (isLightTheme ? 'brightness-0' : 'brightness-0 invert')
+                                }`}
                               quality={90}
-                              sizes="(max-width: 640px) 5rem, (max-width: 768px) 6rem, 8rem"
+                              sizes="(max-width: 640px) 2rem, (max-width: 768px) 2.5rem, 3rem"
+                              onError={(e) => {
+                                e.currentTarget.style.display = 'none'
+                              }}
                             />
                           </div>
-                        ) : brand.boldPart && brand.normalPart ? (
-                          <span className={`text-2xl sm:text-3xl md:text-4xl ${
-                            isLightTheme ? 'text-black' : 'text-white'
-                          }`}>
-                            <span className="font-bold">{brand.boldPart}</span>
-                            <span className="font-normal">{brand.normalPart}</span>
-                          </span>
-                        ) : brand.lightWeight ? (
-                          <span className={`${
-                            brand.smallText ? 'text-lg sm:text-xl md:text-2xl' : 'text-xl sm:text-2xl md:text-3xl'
-                          } font-light tracking-wide ${
-                            isLightTheme ? 'text-black' : 'text-white'
-                          }`}>
-                            {brand.displayLabel || brand.label}
-                          </span>
-                        ) : (
-                          <span className={`text-xl sm:text-2xl md:text-3xl font-bold ${
-                            isLightTheme ? 'text-black' : 'text-white'
-                          }`}>
-                            {brand.displayLabel || brand.label}
-                          </span>
-                        )}
-                      </>
-                    )}
-                  </div>
-                ))}
+                          {brand.textImage ? (
+                            <div className="relative h-6 sm:h-8 md:h-10 w-20 sm:w-24 md:w-32 flex-shrink-0">
+                              <Image
+                                src={brand.textImage}
+                                alt={brand.label}
+                                fill
+                                className={`object-contain grayscale ${isLightTheme ? 'brightness-0' : 'brightness-0 invert'}`}
+                                quality={90}
+                                sizes="(max-width: 640px) 5rem, (max-width: 768px) 6rem, 8rem"
+                              />
+                            </div>
+                          ) : brand.boldPart && brand.normalPart ? (
+                            <span className={`text-2xl sm:text-3xl md:text-4xl ${isLightTheme ? 'text-black' : 'text-white'
+                              }`}>
+                              <span className="font-bold">{brand.boldPart}</span>
+                              <span className="font-normal">{brand.normalPart}</span>
+                            </span>
+                          ) : brand.lightWeight ? (
+                            <span className={`${brand.smallText ? 'text-lg sm:text-xl md:text-2xl' : 'text-xl sm:text-2xl md:text-3xl'
+                              } font-light tracking-wide ${isLightTheme ? 'text-black' : 'text-white'
+                              }`}>
+                              {brand.displayLabel || brand.label}
+                            </span>
+                          ) : (
+                            <span className={`text-xl sm:text-2xl md:text-3xl font-bold ${isLightTheme ? 'text-black' : 'text-white'
+                              }`}>
+                              {brand.displayLabel || brand.label}
+                            </span>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <GeoReportSection />
+        <GeoReportSection />
       </div>
       {/* End gradient zone */}
 
@@ -441,7 +433,7 @@ export function HomePage() {
 
       <EmpoweringBusinessesSection />
 
-      <TestimonialsCarousel />
+      {/* <TestimonialsCarousel /> */}
 
       <PricingSection />
 
