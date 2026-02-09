@@ -2,16 +2,17 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
-import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { headingVariants } from '@/lib/animations/variants'
+import { Check } from 'lucide-react'
 
 // Constants
 const TABS = [
   {
     id: 'brand',
     title: 'Add your brand',
-    description: 'Track brand presence in AI answers and monitor visibility',
+    description: `We use your brand name and website\nURL to identify your top competitors.`,
     imageLight: '/images/add-your-brand.png',
     imageDark: '/images/ShareOfVoice_.jpeg', 
     headingLight: 'text-[var(--color-ref-001)]',
@@ -19,8 +20,8 @@ const TABS = [
   },
   {
     id: 'competitors',
-    title: 'Add Business Competitors',
-    description: 'Add competitors so Geoalt can map landscape for growth',
+    title: 'Add custom Competitors',
+    description: `Finalize the competitors you want to track.\nEnsures accurate and relevant analysis.`,
     imageLight: '/images/add-competitor.png',
     imageDark: '/images/Competitor-.png',
     headingLight: 'text-[var(--color-ref-001)]',
@@ -29,8 +30,8 @@ const TABS = [
   },
   {
     id: 'model-region',
-    title: 'Pick Model and Region',
-    description: 'Pick model and region to get AI insights for growth...',
+    title: 'Select AI Model and Region',
+    description: `Choose the AI models and region\nto generate prompts for insights.`,
     imageLight: '/images/choose-ai-model.png',
     imageDark: '/images/Region_Selector-1.png',
     headingLight: 'text-[var(--color-ref-001)]',
@@ -40,7 +41,7 @@ const TABS = [
   {
     id: 'prompts',
     title: 'Customize Your Prompts',
-    description: 'Prompts are the foundation of your AI search strategy',
+    description: `Prompts are the foundation of insights,\nCustomize prompts to shape your analysis.`,
     imageLight: '/prompt-studio-n.png',
     imageDark: '/images/Prompts_.jpg',
     headingLight: 'text-[var(--color-ref-001)]',
@@ -48,161 +49,297 @@ const TABS = [
   }
 ]
 
+// Step Circle Component - no shaking animation, always white text
+function StepCircle({ 
+  stepNumber, 
+  isCompleted, 
+  isActive,
+  isLightTheme,
+  isSmall
+}: { 
+  stepNumber: number
+  isCompleted: boolean
+  isActive: boolean
+  isLightTheme: boolean
+  isSmall?: boolean
+}) {
+  return (
+    <div
+      className={`relative ${isSmall ? 'w-0 h-0' : 'w-8 h-8'} rounded-full flex items-center justify-center border-2 transition-all duration-500 z-10 ${
+        isCompleted || isActive
+          ? 'bg-green-700 border-white/50'
+          : isLightTheme
+            ? 'bg-gray-100 border-gray-300'
+            : 'bg-zinc-800 border-zinc-600'
+      }`}
+    >
+      {isCompleted ? (
+        <Check className="w-4 h-4 text-white" strokeWidth={3} />
+      ) : (
+        <span className={`${isSmall ? 'text-[10px]' : 'text-xs'} font-bold text-white`}>
+          {stepNumber}
+        </span>
+      )}
+    </div>
+  )
+}
+
 export function FeatureTabsSection() {
   const [activeTab, setActiveTab] = useState(0)
-  const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const stickyContentRef = useRef<HTMLDivElement>(null)
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const [completedSteps, setCompletedSteps] = useState<number[]>([])
+  const [segmentProgresses, setSegmentProgresses] = useState([0, 0, 0, 0])
+  const [visibleCards, setVisibleCards] = useState<number[]>([0]) // Start with first card visible
+
+  // Scroll tracking - using the tall scroll container
+  const { scrollYProgress } = useScroll({
+    target: scrollContainerRef,
+    offset: ["start start", "end end"]
+  })
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
+  // Update active tab and completed steps based on scroll ONLY
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    // Calculate step based on scroll progress
+    let step = 0
+    if (latest >= 0.95) step = 3
+    else if (latest >= 0.7) step = 3
+    else if (latest >= 0.45) step = 2
+    else if (latest >= 0.2) step = 1
+    else step = 0
+    
+    setActiveTab(step)
+    
+    // Mark steps as completed
+    const newCompleted: number[] = []
+    if (latest >= 0.2) newCompleted.push(0)
+    if (latest >= 0.45) newCompleted.push(1)
+    if (latest >= 0.7) newCompleted.push(2)
+    if (latest >= 0.95) newCompleted.push(3)
+    setCompletedSteps(newCompleted)
+
+    // Update visible cards - cards appear one by one
+    const newVisibleCards: number[] = [0] // First card always visible
+    if (latest >= 0.15) newVisibleCards.push(1)
+    if (latest >= 0.4) newVisibleCards.push(2)
+    if (latest >= 0.65) newVisibleCards.push(3)
+    setVisibleCards(newVisibleCards)
+
+    // Update segment progresses
+    const seg1 = Math.min(1, Math.max(0, (latest - 0) / 0.2))
+    const seg2 = Math.min(1, Math.max(0, (latest - 0.2) / 0.25))
+    const seg3 = Math.min(1, Math.max(0, (latest - 0.45) / 0.25))
+    const seg4 = Math.min(1, Math.max(0, (latest - 0.7) / 0.25))
+    setSegmentProgresses([seg1, seg2, seg3, seg4])
+  })
+
   const isLightTheme = mounted && resolvedTheme === 'light'
 
-  // Auto-rotate tabs (optional, can remove if manual-only is preferred)
-  // useEffect(() => {
-  //   if (!isInView) return
-  //   const interval = setInterval(() => {
-  //     setActiveTab((prev) => (prev + 1) % TABS.length)
-  //   }, 5000)
-  //   return () => clearInterval(interval)
-  // }, [isInView])
-
   return (
-    <section ref={sectionRef} className="pt-8 sm:pt-10 md:pt-12 lg:pt-[6vh] pb-12 sm:pb-16 md:pb-20 lg:pb-[6vh] bg-page-background overflow-hidden relative">
-       {/* Background Grid Effect - Optional, reuse if needed */}
-       {/* <div className="absolute inset-0 pointer-events-none opacity-[0.02]">
-        <div className="absolute inset-0 bg-grid-pattern" />
-      </div> */}
+    // Outer scroll container - creates the "scroll space" for the sticky effect
+    <div 
+      ref={scrollContainerRef} 
+      className="relative"
+      style={{ height: '300vh' }} // Tall container for scroll space
+    >
+      {/* Sticky content that stays in viewport */}
+      <div 
+        ref={stickyContentRef}
+        className="sticky top-0 h-screen flex items-center bg-page-background overflow-hidden"
+      >
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8 relative z-10 py-8">
+          <motion.div
+            variants={headingVariants}
+            initial="hidden"
+            animate="visible"
+            className="text-left sm:text-center mb-10 sm:mb-14 md:mb-16"
+          >
+            <h2 className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-1 ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-heading'}`}>
+              <span className="block sm:inline text-orange-500 dark:text-orange-400">We provide streamlined onboarding to</span>{' '}
+              <span className="block sm:inline lg:block ">
+unlock actionable insights</span>
+            </h2>
+          </motion.div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8 relative z-10">
-        <motion.div
-           variants={headingVariants}
-           initial="hidden"
-           animate={isInView ? 'visible' : 'hidden'}
-           className="text-left sm:text-center mb-10 sm:mb-14 md:mb-16"
-        >
-           <h2 className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-1 ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-heading'}`}>
-            <span className="block sm:inline">Unlock AI-powered search insights</span>{' '}
-            <span className="block sm:inline lg:block">that bring the right customers to Geoalt</span>
-          </h2>
-        </motion.div>
-
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 xl:gap-20 items-stretch h-auto lg:h-[520px]">
-          {/* LEFT SIDE: Tabs */}
-          <div className="w-full lg:w-1/3 flex flex-col gap-4 lg:gap-6">
-            <AnimatePresence mode="wait">
-              {TABS.map((tab, index) => {
-                const isActive = activeTab === index;
-                
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(index)}
-                    className={`relative text-left p-6 sm:p-5 rounded-2xl transition-all duration-300 group outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 ${
-                      isActive ? 'z-10' : 'z-0 hover:bg-white/5 dark:hover:bg-white/5'
-                    }`}
-                  >
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeTabBackground"
-                        className={`absolute inset-0 rounded-2xl shadow-sm ${
-                          isLightTheme 
-                            ? 'bg-white shadow-[0_4px_20px_-2px_rgba(0,0,0,0.1)] border border-gray-100' 
-                            : 'bg-[#27272a] shadow-[0_4px_20px_-2px_rgba(0,0,0,0.5)] border border-white/5'
-                        }`}
-                        initial={false}
-                        transition={{
-                          type: "spring",
-                          stiffness: 300,
-                          damping: 30
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 xl:gap-20 items-stretch h-auto lg:h-[520px]">
+            {/* LEFT SIDE: Progress Timeline + Tabs */}
+            <div className="w-full lg:w-1/3 flex gap-4">
+              {/* Progress Timeline - matches painting height */}
+              <div className="hidden lg:flex flex-col items-center h-[520px]">
+                {TABS.map((_, index) => (
+                  <div key={index} className={`flex flex-col items-center ${index < TABS.length - 1 ? 'flex-1' : 'flex-1'}`}>
+                    {/* Circle */}
+                    <StepCircle
+                      stepNumber={index + 1}
+                      isCompleted={completedSteps.includes(index)}
+                      isActive={activeTab === index}
+                      isLightTheme={isLightTheme}
+                    />
+                    
+                    {/* Line Segment - Always render, fills space */}
+                    <div className="flex-1 w-0.5 relative">
+                      <div className={`absolute inset-0 ${isLightTheme ? 'bg-gray-200' : 'bg-zinc-700'}`} />
+                      <div
+                        className="absolute top-0 left-0 w-full bg-green-600 origin-top transition-all duration-150"
+                        style={{
+                          height: `${Math.min(100, Math.max(0, segmentProgresses[index] * 100))}%`
                         }}
                       />
-                    )}
-                    
-                    <span className="relative z-10 flex flex-col gap-1">
-                      <h3 className={`text-lg sm:text-xl font-medium transition-colors duration-200 ${
-                        isActive 
-                          ? isLightTheme ? 'text-black' : 'text-white'
-                          : isLightTheme ? 'text-gray-500 group-hover:text-gray-800' : 'text-zinc-500 group-hover:text-zinc-300'
-                      }`}>
-                        {tab.title}
-                      </h3>
-                      
-                      <motion.div
-                        initial={false}
-                        animate={{
-                          height: isActive ? "auto" : 0,
-                          opacity: isActive ? 1 : 0,
-                          marginTop: isActive ? 8 : 0
-                        }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="overflow-hidden"
-                      >
-                         <p className={`text-[15px] leading-relaxed font-light ${
-                           isLightTheme ? 'text-gray-600' : 'text-gray-400'
-                         }`}>
-                          {tab.description}
-                         </p>
-                      </motion.div>
-                    </span>
-                  </button>
-                );
-              })}
-            </AnimatePresence>
-          </div>
+                    </div>
 
-          {/* RIGHT SIDE: Dynamic Display */}
-          <div className="w-full lg:w-2/3 relative h-[350px] sm:h-[400px] lg:h-auto rounded-2xl overflow-hidden border border-[var(--color-card-border)] bg-[#080808]">
-            {/* Background "Painting" Image */}
-            <div className="absolute inset-0 z-0">
-               <Image
-                 src="/images/dash-BGimg.jpeg"
-                 alt="Background"
-                 fill
-                 className="object-cover opacity-80"
-                 priority
-               />
-               <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent opacity-60" />
+                  </div>
+                ))}
+              </div>
+
+              {/* Tabs Container - Cards appear one by one, no clicking allowed */}
+              <div className="flex-1 flex flex-col justify-between h-[520px]">
+                {TABS.map((tab, index) => {
+                  const isActive = activeTab === index
+                  const isExpanded = index <= activeTab // Visited/Active cards are "Expanded" with full style
+                  const isCompleted = completedSteps.includes(index)
+                  const progress = segmentProgresses[index]
+                  
+                  return (
+                    <div
+                      key={tab.id}
+                      className={`relative text-left p-5 sm:p-4 rounded-lg transition-all duration-500 border ${
+                        isLightTheme 
+                          ? 'bg-[var(--color-card-bg)] border-[var(--color-card-border)]' 
+                          : 'bg-[var(--color-ref-043)] border-[var(--color-card-border)]'
+                      }`}
+                    >
+                      <span className="relative z-10 flex flex-col gap-1">
+                        <h3 className={`text-base sm:text-lg font-medium transition-colors duration-500 flex items-center gap-2 ${
+                          isCompleted || (isActive && progress > 0.05) // Heading becomes active early in the segment
+                            ? isLightTheme ? 'text-black' : 'text-white'
+                            : isLightTheme ? 'text-gray-500' : 'text-zinc-500' // Muted initially
+                        }`}>
+                          {tab.title}
+                          {tab.id === 'model-region' && (
+                            <div className={`flex items-center -space-x-1.5 ml-1 transition-opacity duration-500 ${
+                              isCompleted || (isActive && progress > 0.05) ? 'opacity-100' : 'opacity-40'
+                            }`}>
+                              <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-10 shrink-0">
+                                <Image
+                                  src='/ai-icons/openai-light.svg'
+                                  alt="OpenAI"
+                                  width={12}
+                                  height={12}
+                                  unoptimized
+                                  className="w-3.5 h-3.5 brightness-0"
+                                />
+                              </div>
+                              <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-20 shrink-0 shadow-[-2px_0_4px_rgba(0,0,0,0.15)]">
+                                <Image
+                                  src='/ai-icons/perplexity-light.svg'
+                                  alt="Perplexity"
+                                  width={12}
+                                  height={12}
+                                  unoptimized
+                                  className="w-3.5 h-3.5 brightness-0"
+                                />
+                              </div>
+                              <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-30 shrink-0 shadow-[-2px_0_4px_rgba(0,0,0,0.15)]">
+                                <Image
+                                  src='/ai-icons/gemini-color.webp'
+                                  alt="Gemini"
+                                  width={12}
+                                  height={12}
+                                  unoptimized
+                                  className="w-3.5 h-3.5"
+                                />
+                              </div>
+                            </div>
+                          )}
+                        </h3>
+                        
+                        <div
+                          className="overflow-hidden transition-all duration-500 ease-in-out max-h-24 mt-1.5"
+                        >
+                          {/* Split description by newline to animate lines separately */}
+                          {tab.description.split('\n').map((line, i) => {
+                             // Line 1 (index 0) aligns with mid-progress (~0.4)
+                             // Line 2 (index 1) aligns with end-progress (~0.8)
+                             const threshold = i === 0 ? 0.35 : 0.75
+                             const isLineVisible = isCompleted || (isActive && progress > threshold)
+                             
+                             return (
+                               <p 
+                                key={i}
+                                className={`text-sm leading-relaxed font-light transition-opacity duration-500 ${
+                                  isLightTheme ? 'text-gray-600' : 'text-gray-400'
+                                } ${
+                                  isLineVisible ? 'opacity-100' : 'opacity-10'
+                                }`}
+                               >
+                                 {line}
+                               </p>
+                             )
+                          })}
+                        </div>
+                      </span>
+                    </div>
+                  )
+                })}
+              </div>
             </div>
 
-            {/* Dynamic Content Area */}
-            <div className="absolute inset-0 z-10 p-6 sm:p-8 md:p-10 flex items-center justify-center">
-               <AnimatePresence mode="wait">
-                 <motion.div
-                   key={activeTab}
-                   initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                   animate={{ opacity: 1, y: 0, scale: 1 }}
-                   exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                   transition={{ duration: 0.4, ease: "easeOut" }}
-                   className="relative w-full h-full flex items-center justify-center"
-                 >
+            {/* RIGHT SIDE: Dynamic Display */}
+            <div className="w-full lg:w-2/3 relative h-[350px] sm:h-[400px] lg:h-auto rounded-2xl overflow-hidden border border-[var(--color-card-border)] bg-[#080808]">
+              {/* Background "Painting" Image */}
+              <div className="absolute inset-0 z-0">
+                <Image
+                  src="/images/dash-BGimg.jpeg"
+                  alt="Background"
+                  fill
+                  className="object-cover opacity-80"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent opacity-60" />
+              </div>
+
+              {/* Dynamic Content Area */}
+              <div className="absolute inset-0 z-10 p-6 sm:p-8 md:p-10 flex items-center justify-center">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="relative w-full h-full flex items-center justify-center"
+                  >
                     {/* Content Container matching the "Dashboard Card" look inside the painting */}
-                    <div className={`w-full max-w-[90%] lg:max-w-none h-fit max-h-full rounded-lg overflow-hidden relative shadow-2xl ${
-                      isLightTheme ? 'bg-white' : 'bg-[#121212]' // Inner card bg
+                    <div className={`w-full max-w-[90%] lg:max-w-[96%] h-fit max-h-full rounded-lg overflow-hidden relative shadow-2xl ${
+                      isLightTheme ? 'bg-white' : 'bg-[#121212]'
                     }`}>
                       {/* Image Content */}
-                       <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-[380px]">
-                         <Image
-                           src={isLightTheme ? TABS[activeTab].imageLight : TABS[activeTab].imageDark}
-                           alt={TABS[activeTab].title}
-                           fill
-                           className={`object-contain object-top ${
-                             TABS[activeTab].darkDropShadow && !isLightTheme 
-                               ? 'drop-shadow-[0_0_15px_rgba(0,0,0,0.5)]' 
-                               : ''
-                           }`}
-                         />
-                       </div>
+                      <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-[420px]">
+                        <Image
+                          src={isLightTheme ? TABS[activeTab].imageLight : TABS[activeTab].imageDark}
+                          alt={TABS[activeTab].title}
+                          fill
+                          className={`object-contain object-top ${
+                            TABS[activeTab].darkDropShadow && !isLightTheme 
+                              ? 'drop-shadow-[0_0_15px_rgba(0,0,0,0.5)]' 
+                              : ''
+                          }`}
+                        />
+                      </div>
                     </div>
-                 </motion.div>
-               </AnimatePresence>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
