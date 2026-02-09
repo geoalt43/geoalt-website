@@ -517,9 +517,9 @@ html {
     background: transparent !important;
   }
 
-  /* GeoReportSection background override for light theme - gradient from dark to light */
+  /* GeoReportSection background override for light theme - use geo-bg image */
   .light .geo-report-section {
-    background: linear-gradient(to bottom, #9E9E9E 0%, #8A8A8A 50%, #9E9E9E 100%) !important;
+    background: url('/images/geo-bg.jpeg') center/cover no-repeat !important;
   }
 }
 
