@@ -52,6 +52,7 @@ export function useCompetitorsDemoController({
     const [adidasSelected, setAdidasSelected] = useState(false)
 
     const abortControllerRef = useRef<AbortController | null>(null)
+    const hasCompleted = useRef(false)
 
     // Effect to manage sequence lifecycle
     useEffect(() => {
@@ -62,20 +63,10 @@ export function useCompetitorsDemoController({
                 abortControllerRef.current.abort()
                 abortControllerRef.current = null
             }
-
-            // Reset state
-            if (activeStep !== 1) {
-                setSearchValue('')
-                setUrlValue('')
-                setActiveField(null)
-                setCursorPos({ x: -100, y: -100 })
-                setIsCursorVisible(false)
-                setShowAdidas(false)
-                setAdidasSelected(false)
-                setCompetitors(INITIAL_COMPETITORS)
-            }
             return
         }
+
+        if (hasCompleted.current) return
 
         // Start Sequence
         const controller = new AbortController()
@@ -215,22 +206,17 @@ export function useCompetitorsDemoController({
                 setAdidasSelected(true)
                 await delay(2000, signal)
 
-                // Reset for loop
-                setActiveField(null)
-                setSearchValue('')
-                setUrlValue('')
-                setShowAdidas(false)
-                setAdidasSelected(false)
-                setIsCursorVisible(false)
-                setCursorPos({ x: window.innerWidth, y: window.innerHeight })
+                // Reset for loop - REMOVED to persist data
+                // setActiveField(null)
+                // setSearchValue('')
+                // ...
 
                 await delay(800, signal)
 
                 // Instead of looping, call onComplete if provided
+                hasCompleted.current = true
                 if (onComplete) {
                     onComplete()
-                } else {
-                    runStep1Sequence(signal)
                 }
 
             } catch (error: unknown) {

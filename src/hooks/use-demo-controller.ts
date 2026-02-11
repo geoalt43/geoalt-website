@@ -33,6 +33,7 @@ export function useDemoController({
     const [activeField, setActiveField] = useState<'brand' | 'website' | 'aliases' | null>(null)
 
     const abortControllerRef = useRef<AbortController | null>(null)
+    const hasCompleted = useRef(false)
 
     // Effect to manage sequence lifecycle
     useEffect(() => {
@@ -43,16 +44,10 @@ export function useDemoController({
                 abortControllerRef.current.abort()
                 abortControllerRef.current = null
             }
-
-            // Reset state
-            if (activeStep !== 0) {
-                setTypingState({ brand: '', website: '', aliases: '' })
-                setActiveField(null)
-                setCursorPos({ x: -100, y: -100 })
-                setIsCursorVisible(false)
-            }
             return
         }
+
+        if (hasCompleted.current) return
 
         // Start Sequence
         const controller = new AbortController()
@@ -170,18 +165,12 @@ export function useDemoController({
                 await typeText('Nike Shoes, Nike Sportswear', 'aliases', signal)
                 await delay(1500, signal)
 
-                // Reset for loop
-                setActiveField(null)
-                setTypingState({ brand: '', website: '', aliases: '' })
-                setIsCursorVisible(false)
-                setCursorPos({ x: window.innerWidth, y: window.innerHeight })
-
                 await delay(800, signal)
+
                 // Instead of looping, call onComplete if provided
+                hasCompleted.current = true
                 if (onComplete) {
                     onComplete()
-                } else {
-                    runStep0Sequence(signal)
                 }
 
             } catch (error: unknown) {
