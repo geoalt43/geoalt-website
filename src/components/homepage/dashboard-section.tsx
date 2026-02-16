@@ -63,7 +63,7 @@ function AIVisibilityCarousel({ isInView }: { isInView: boolean }) {
                 alt="AI visibility interface"
                 width={800}
                 height={1900}
-                quality={85}
+                quality={100}
                 className="w-full h-full object-contain object-bottom"
                 sizes="(max-width: 375px) 100vw, (max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 90vw, (max-width: 1280px) 50vw, 800px"
                 priority={false}
@@ -200,7 +200,7 @@ export function DashboardSection() {
                   alt="Region Selector interface"
                   width={800}
                   height={600}
-                  quality={85}
+                  quality={100}
                   className={`w-full h-full object-contain object-bottom rounded-lg ${!isLightTheme ? 'dark:drop-shadow-[0_0_15px_rgba(0,0,0,0.3)]' : ''}`}
                   sizes="(max-width: 375px) 98vw, (max-width: 640px) 98vw, (max-width: 768px) 43vw, (max-width: 1024px) 43vw, (max-width: 1280px) 48vw, 588px"
                   priority={false}

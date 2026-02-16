@@ -1,7 +1,8 @@
 'use client'
 
-import React from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import React, { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { useTheme } from 'next-themes'
 import { InsightType, SentimentData, PositionData, VisibilityData } from './types'
 import { CompanyName } from './company-name'
 
@@ -26,6 +27,15 @@ export function InsightCard({
   type,
   data,
 }: InsightCardProps) {
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
+
   const handleInteraction = () => {
     if (onClick) {
       onClick()
@@ -39,53 +49,40 @@ export function InsightCard({
       onMouseEnter={onHover}
       onClick={handleInteraction}
       whileTap={{ scale: 0.98 }}
-      className={`mx-4 sm:mx-0 rounded-lg p-2 sm:p-3.5 text-text-secondary h-[150px] sm:h-[150px] md:h-[170px] flex flex-col overflow-hidden relative group border-l cursor-pointer active:opacity-80 ${
-        isActive ? 'bg-[var(--color-card-bg)] border-text-primary' : 'bg-transparent border-[var(--color-card-border)]'
+      className={`mx-4 sm:mx-0 p-2 sm:p-3.5 text-text-secondary h-[130px] sm:h-[165px] md:h-[185px] flex flex-col overflow-hidden relative group rounded-r-lg rounded-l-none border-y border-r border-l-0 cursor-pointer active:opacity-80 ${isLightTheme
+        ? 'bg-[var(--color-card-bg)] border-neutral-300'
+        : 'bg-[var(--color-ref-043)] border-[var(--color-card-border)]'
       }`}
-      animate={{
-        borderLeftColor: isActive ? 'var(--color-ref-014)' : type === 'position' || type === 'sentiment' ? 'var(--color-ref-008)' : 'var(--color-ref-011)',
-      }}
-      transition={{
-        duration: 0.3,
-        ease: 'easeInOut',
-      }}
     >
-      <div className="relative z-10 flex flex-col h-full">
-        <div className="flex items-center gap-2 sm:gap-3 md:gap-3 mb-1.5 sm:mb-2 md:mb-2 min-h-[24px] sm:min-h-[28px] md:min-h-[28px]">
-        <div className="flex-shrink-0">
-          <IconComponent />
+      {/* Left Active Indicator */}
+      <div
+        className={`absolute left-0 top-0 bottom-0 w-1 z-10 transition-colors duration-300 ${
+          isActive ? 'bg-green-600' : isLightTheme ? 'bg-neutral-400' : 'bg-white/5'
+        }`} 
+      />
+
+      <div className="relative z-10 flex flex-col h-full pl-2">
+        <div className="flex items-center gap-2 mb-1.5 sm:mb-2 min-h-[24px] sm:min-h-[28px]">
+          <div className="flex-shrink-0 w-4 h-4 sm:w-5 sm:h-5 [&>svg]:w-full [&>svg]:h-full text-text-secondary">
+            <IconComponent />
+          </div>
+          <h3 className={`text-base sm:text-lg font-medium flex-shrink-0 ${isLightTheme ? 'text-black' : 'text-white'}`}>{title}</h3>
         </div>
-        <h3 className="text-xs sm:text-sm md:text-sm lg:text-base font-normal text-text-primary flex-shrink-0">{title}</h3>
-        </div>
-        <AnimatePresence mode="wait">
-          {!isActive ? (
-            <motion.p
-              key="description"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="text-[11px] sm:text-sm md:text-base text-text-description leading-relaxed overflow-hidden line-clamp-2 sm:line-clamp-none md:line-clamp-none"
-            >
-              {description}
-            </motion.p>
-          ) : (
-            <motion.div
-              key="data"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="-mt-2 pb-2 sm:pb-0 md:pb-0 sm:-mt-2 md:-mt-2 sm:flex-1 md:flex-1 space-y-0 sm:space-y-2 md:space-y-2 lg:space-y-0"
-            >
-          {type === 'sentiment' && data && (
+        {!isActive ? (
+          <p
+            className="text-sm leading-relaxed font-light text-gray-600 dark:text-gray-400 overflow-hidden line-clamp-2 sm:line-clamp-none"
+          >
+            {description}
+          </p>
+        ) : (
+          <div
+            className="-mt-2 pb-2 sm:pb-0 md:pb-0 sm:-mt-2 md:-mt-2 sm:flex-1 md:flex-1 space-y-0 sm:space-y-2 md:space-y-2 lg:space-y-0"
+          >
+          {(type === 'sentiment' && data) && (
             <>
               {(data as SentimentData[]).map((item, index) => (
-                <motion.div
+                <div
                   key={item.companyName}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.05, ease: 'easeOut' }}
                   className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0 md:mt-0 lg:-mt-4' : ''} ${index === (data as SentimentData[]).length - 1 ? 'pb-2' : ''}`}
                 >
                   <div className="flex-shrink-0 min-w-0">
@@ -98,36 +95,30 @@ export function InsightCard({
                   >
                     {item.score > 0 ? '+' : ''}{item.score}
                   </span>
-                </motion.div>
+                </div>
               ))}
             </>
           )}
-          {type === 'position' && data && (
+          {(type === 'position' && data) && (
             <>
               {(data as PositionData[]).map((item, index) => (
-                <motion.div
+                <div
                   key={item.rank}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.05, ease: 'easeOut' }}
                   className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0 md:mt-0 lg:-mt-4' : ''} ${index === (data as PositionData[]).length - 1 ? 'pb-2' : ''}`}
                 >
                   <div className="flex-shrink-0 min-w-0">
                     <CompanyName name={item.companyName} size="sm" />
                   </div>
                   <span className="text-text-muted text-[10px] sm:text-xs md:text-sm font-normal flex-shrink-0">#{item.rank}</span>
-                </motion.div>
+                </div>
               ))}
             </>
           )}
-          {type === 'visibility' && data && (
+          {(type === 'visibility' && data) && (
             <>
               {(data as VisibilityData[]).map((item, index) => (
-                <motion.div
+                <div
                   key={item.companyName}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.05, ease: 'easeOut' }}
                   className={`flex items-center justify-between gap-2 ${index > 0 ? '-mt-3 sm:mt-0 md:mt-0 lg:-mt-4' : ''} ${index === (data as VisibilityData[]).length - 1 ? 'pb-2' : ''}`}
                 >
                   <div className="flex-shrink-0 min-w-0">
@@ -144,13 +135,12 @@ export function InsightCard({
                     </div>
                     <span className="text-text-muted text-[10px] sm:text-xs md:text-xs w-7 sm:w-10 md:w-10 text-right">{item.percentage}%</span>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </>
           )}
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </div>
+        )}
       </div>
     </motion.div>
   )

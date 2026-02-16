@@ -9,7 +9,7 @@ interface CompanyNameProps {
 const sizeClasses = {
   sm: { icon: 20 },
   md: { icon: 32 },
-  lg: { icon: 70 },
+  lg: { icon: 56 },
 }
 
 export function CompanyName({ name, size = 'md', showIcon = true }: CompanyNameProps) {
