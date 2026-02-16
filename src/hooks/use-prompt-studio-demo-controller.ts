@@ -290,7 +290,7 @@ export function usePromptStudioDemoController({
         return () => {
             controller.abort()
         }
-    }, [activeStep, isVisible, isDemoActive, getTabElement, onComplete])
+    }, [activeStep, isVisible, isDemoActive, getTabElement, getCheckElement, onComplete])
 
     return {
         cursorPos,

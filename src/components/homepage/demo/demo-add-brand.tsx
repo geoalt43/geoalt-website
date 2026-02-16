@@ -49,7 +49,7 @@ export function DemoAddBrand({
     <div 
       className={`w-full h-full p-6 rounded-t-lg shadow-lg ${bgClass} flex flex-col select-none
         transition-all duration-700 ease-out
-        ${isAnimating ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}
+        ${isAnimating ? 'opacity-100' : 'opacity-0'}
       `}
     >
       {/* Title with margin-bottom (reduced slightly from mb-16 to mb-12) */}

@@ -224,9 +224,9 @@ export function DemoCanvas({ activeStep, isLightTheme, tabData, onStepComplete }
           </div>
         )}
 
-        {/* STEP 4: Static Fallback (if added later) */}
+      {/* STEP 4: Static Fallback (if added later) */}
         {activeStep >= 4 && (
-          <div className={`w-full max-w-[90%] lg:max-w-[96%] h-fit max-h-full rounded-lg overflow-hidden relative shadow-2xl ${
+          <div className={`w-full max-w-[95%] sm:max-w-[90%] lg:max-w-[96%] h-fit max-h-full rounded-lg overflow-hidden relative shadow-2xl ${
             isLightTheme ? 'bg-white' : 'bg-[#121212]'
           }`}>
              <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-[420px]">

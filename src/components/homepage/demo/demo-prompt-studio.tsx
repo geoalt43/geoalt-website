@@ -44,7 +44,7 @@ export function DemoPromptStudio({
         <div 
             className={`w-full h-full p-6 rounded-t-lg shadow-lg ${bgClass} flex flex-col select-none
                 transition-all duration-700 ease-out
-                ${isAnimating ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}
+                ${isAnimating ? 'opacity-100' : 'opacity-0'}
             `}
         >
             <h2 className={`text-2xl font-semibold text-center mt-4 mb-10 ${textClass}`}>
