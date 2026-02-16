@@ -33,12 +33,12 @@ export function CTASection() {
   const isLightTheme = mounted && resolvedTheme === 'light'
 
   return (
-    <section ref={sectionRef} className="pt-4 sm:pt-5 md:pt-6 lg:pt-[4vh] xl:pt-[6vh] pb-4 sm:pb-5 md:pb-6 lg:pb-[4vh] xl:pb-[6vh] mb-8 sm:mb-12 md:mb-16 lg:mb-20 bg-transparent-text bg-clip-text">
+    <section ref={sectionRef} className="pt-4 sm:pt-5 md:pt-6 pb-4 sm:pb-5 md:pb-6 mb-8 sm:mb-12 md:mb-16 lg:mb-20 bg-transparent-text bg-clip-text">
       <motion.div
         variants={containerVariantsSimple}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
-        className={`relative overflow-hidden max-w-6xl max-[1250px]:mx-4 min-[1251px]:mx-auto px-4 sm:px-6 md:px-7 pt-3 pb-3 md:pt-3 md:pb-3 lg:px-8 border border-[var(--color-card-border)] rounded-lg ${
+        className={`relative overflow-hidden max-w-6xl mx-4 xl:mx-auto px-4 sm:px-6 md:px-8 pt-4 pb-4 border border-[var(--color-card-border)] rounded-lg ${
           isLightTheme ? 'bg-[#080808]' : 'bg-[var(--color-ref-043)]'
         }`}
       >
@@ -50,10 +50,10 @@ export function CTASection() {
             className="object-cover"
           />
         </div>
-        <div className="relative z-10 rounded-lg p-3 sm:p-4 md:p-5 lg:p-7 flex flex-col lg:flex-row items-center lg:items-center gap-4 sm:gap-5 md:gap-5 lg:gap-0">
+        <div className="relative z-10 rounded-lg p-4 sm:p-5 lg:p-7 flex flex-col lg:flex-row items-center lg:items-center gap-4 sm:gap-5 lg:gap-8">
           {/* Left Section - Text Content */}
-          <div className="w-full max-w-[320px] sm:flex-1 sm:max-w-none md:flex-1 md:max-w-none lg:pr-8 lg:w-auto text-center lg:text-left mb-2 sm:mb-3 md:mb-4 lg:mb-0 mx-auto sm:mx-0">
-            <h2 className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal ${colorClasses.textDescription} mb-2 sm:mb-3 md:mb-4 leading-tight tracking-wide px-2 sm:px-0 md:px-0`}>
+          <div className="w-full max-w-sm sm:max-w-md lg:max-w-none lg:flex-1 text-center lg:text-left mb-2 sm:mb-3 lg:mb-0 mx-auto lg:mx-0">
+            <h2 className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal ${colorClasses.textDescription} mb-3 sm:mb-4 leading-tight tracking-wide`}>
               <span className="pb-2 inline-block">
                 Start Growing Your
               </span>
@@ -62,21 +62,21 @@ export function CTASection() {
                 AI Visibility Today
               </span>
             </h2>
-            <p className={`text-xs sm:text-sm md:text-base text-[#555555] px-4 sm:px-0 md:px-0 text-center lg:text-left mb-3 sm:mb-4 md:mb-5 lg:mb-8`}>
+            <p className="text-xs sm:text-sm md:text-base text-[#555555] text-center lg:text-left mb-4 sm:mb-5 lg:mb-8">
               <span className="block sm:inline">Geoalt helps you lead in AI search</span>
-              <span className="block sm:inline">and scale your brand faster.</span>
+              <span className="block sm:inline"> and scale your brand faster.</span>
             </p>
             {/* Buttons - Hidden on mobile, shown on larger screens */}
-            <div className="hidden sm:flex flex-row gap-2 sm:gap-4 md:gap-4 justify-center lg:justify-start items-center">
+            <div className="hidden sm:flex flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center">
               <a
                 href="https://app.geoalt.in/"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => triggerStartTrialEvent('cta-section')}
-                className={`group bg-white text-text-button dark:text-black px-4 sm:pl-6 sm:pr-4 md:pl-6 md:pr-4 py-2 sm:py-3 md:py-3 rounded-full text-[11px] sm:text-base md:text-base font-semibold whitespace-nowrap ${colorClasses.hoverGrayLight} transition-all duration-200 ease-in-out inline-flex items-center justify-center text-center flex-shrink-0 sm:min-w-[160px] md:min-w-[160px] cursor-pointer border border-border`}
+                className={`group bg-white text-text-button dark:text-black px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${colorClasses.hoverGrayLight} transition-all duration-200 ease-in-out inline-flex items-center justify-center text-center flex-shrink-0 cursor-pointer border border-border`}
               >
                 <span className="text-black">Start Free Trial</span>
-                <div className="relative flex items-center justify-center w-5 h-5 ml-1 sm:ml-1.5 md:ml-1.5 overflow-hidden">
+                <div className="relative flex items-center justify-center w-5 h-5 ml-1.5 overflow-hidden">
                   {/* Chevron Icon - Default */}
                   <svg 
                     className="absolute transition-all duration-300 transform opacity-100 group-hover:opacity-0 group-hover:translate-x-4" 
@@ -109,15 +109,15 @@ export function CTASection() {
           </div>
 
           {/* Right Section - AI Platform Rotator with Buttons on Mobile */}
-          <div className="flex-shrink-0 w-full sm:w-auto sm:min-w-[240px] md:min-w-[280px] lg:w-[380px] flex flex-col items-center gap-3 sm:gap-3 md:gap-4 lg:gap-0">
-            <div className="h-[140px] sm:h-[170px] md:h-[200px] lg:h-[300px] w-full flex items-center justify-center lg:justify-end relative overflow-hidden">
+          <div className="flex-shrink-0 w-full sm:w-auto sm:min-w-[240px] lg:w-[380px] flex flex-col items-center gap-3 sm:gap-4">
+            <div className="h-36 sm:h-44 md:h-52 lg:h-72 w-full flex items-center justify-center lg:justify-end relative overflow-hidden">
               <div className="relative w-full h-full max-w-full">
                 <div className="relative w-full h-full">
                   {/* Card Container */}
                   <div
-                    className={`relative w-full h-full bg-transparent rounded-lg pt-2 pb-2 pl-3 sm:pl-4 md:pl-6 lg:pl-10 pr-2 sm:pr-4 md:pr-4 lg:pr-0 overflow-hidden flex items-center justify-center`}
+                    className="relative w-full h-full bg-transparent rounded-lg pt-2 pb-2 pl-3 sm:pl-4 lg:pl-10 pr-2 sm:pr-4 overflow-hidden flex items-center justify-center"
                   >
-                    <div className="scale-100 sm:scale-[0.9] md:scale-[1.0] lg:scale-[1.1] xl:scale-[1.2] origin-center overflow-hidden w-full h-full flex items-center justify-center">
+                    <div className="scale-90 sm:scale-95 lg:scale-110 origin-center overflow-hidden w-full h-full flex items-center justify-center">
                       <AIPlatformRotator variant="muted" size="default" copilotNameOverride="Copilot" />
                     </div>
                   </div>
@@ -131,18 +131,16 @@ export function CTASection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => triggerStartTrialEvent('cta-section')}
-                className={`group bg-white text-text-button dark:text-black pl-3.5 pr-2.5 py-2 rounded-full text-[11px] font-semibold whitespace-nowrap ${colorClasses.hoverGrayLight} transition-all duration-200 ease-in-out inline-flex items-center justify-center text-center flex-shrink-0 cursor-pointer border border-border`}
+                className={`group bg-white text-text-button dark:text-black pl-3 pr-2 py-2 rounded-full text-xs font-semibold whitespace-nowrap ${colorClasses.hoverGrayLight} transition-all duration-200 ease-in-out inline-flex items-center justify-center text-center flex-shrink-0 cursor-pointer border border-border`}
               >
                 <span className="text-black">Start Free Trial</span>
                 <div className="relative flex items-center justify-center w-4 h-4 ml-1 overflow-hidden">
-                  {/* Chevron Icon - Default */}
                   <svg 
                     className="absolute transition-all duration-300 transform opacity-100 group-hover:opacity-0 group-hover:translate-x-4" 
                     width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
                   >
                     <polyline points="9 18 15 12 9 6" />
                   </svg>
-                  {/* Arrow Icon - Hover */}
                   <svg 
                     className="absolute transition-all duration-300 transform -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5" 
                     width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
@@ -170,4 +168,3 @@ export function CTASection() {
     </section>
   )
 }
-

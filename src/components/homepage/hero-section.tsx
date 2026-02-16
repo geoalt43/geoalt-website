@@ -33,23 +33,23 @@ export function HeroSection() {
   const headingText = 'Get Your Brand Recommended by'
   const words = splitText(headingText)
   return (
-    <section ref={sectionRef} id="home" className="pt-16 sm:pt-20 md:pt-22 lg:pt-24 relative overflow-hidden bg-clip-text text-transparent ">
+    <section ref={sectionRef} id="home" className="pt-16 sm:pt-20 lg:pt-24 relative overflow-hidden bg-clip-text text-transparent">
       {/* Subtle Dot Pattern Background */}
       <div className="absolute inset-0 z-0 bg-dot-grid mask-fade-out pointer-events-none" aria-hidden="true" />
       <motion.div
         variants={containerVariantsFast}
         initial="hidden"
         animate={controls}
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8 relative z-10"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
       >
-        <div className="flex flex-col items-center text-center mt-4 sm:mt-8 md:mt-8">
+        <div className="flex flex-col items-center text-center mt-4 sm:mt-8">
           <div className="max-w-4xl">
             <motion.h1
               id="navbar-trigger"
               variants={headingContainerVariants}
               initial="hidden"
               animate={controls}
-              className={`text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal mt-4 sm:mt-0 md:mt-0 mb-2 sm:mb-4 md:mb-6 leading-tight tracking-tight ${
+              className={`text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal mt-4 sm:mt-0 mb-3 sm:mb-6 leading-tight tracking-tight ${
                 isLightTheme 
                   ? 'text-[var(--color-ref-001)]' 
                   : 'text-white'
@@ -59,7 +59,7 @@ export function HeroSection() {
                 <motion.span
                   key={index}
                   variants={wordVariants}
-                  className="inline-block mr-2 sm:mr-3 md:mr-3"
+                  className="inline-block mr-2 sm:mr-3"
                 >
                   {word}
                 </motion.span>
@@ -74,16 +74,16 @@ export function HeroSection() {
               variants={textVariants}
               initial="hidden"
               animate={controls}
-              className={`text-xs sm:text-base md:text-lg text-center ${isLightTheme ? 'text-[var(--color-ref-001)]' : colorClasses.textDescription} px-4 sm:px-0 md:px-0 flex items-center justify-center gap-2 flex-wrap mt-[-20px] sm:mt-[-40px] md:mt-[-60px] lg:mt-[-84px]`}
+              className={`text-sm sm:text-base md:text-lg text-center ${isLightTheme ? 'text-[var(--color-ref-001)]' : colorClasses.textDescription} px-4 sm:px-0 flex items-center justify-center gap-2 flex-wrap mt-[-20px] sm:mt-[-40px] md:mt-[-60px] lg:mt-[-80px]`}
             >
-              <span>Geoalt</span>
-              <span>helps your business stand out across AI platforms</span>
+              <span className="lg:whitespace-nowrap">Geoalt</span>
+              <span className="lg:whitespace-nowrap">helps your business stand out across AI platforms</span>
             </motion.p>
             <motion.p
               variants={textVariants}
               initial="hidden"
               animate={controls}
-              className={`text-xs sm:text-sm md:text-base mb-6 sm:mb-8 md:mb-8 pb-2 sm:pb-4 md:pb-4 text-center ${isLightTheme ? 'text-[var(--color-text-feature)]' : colorClasses.textDescription} px-4 sm:px-0 md:px-0`}
+              className={`text-xs sm:text-sm md:text-base mb-6 sm:mb-8 pb-2 sm:pb-4 text-center ${isLightTheme ? 'text-[var(--color-text-feature)]' : colorClasses.textDescription} px-4 sm:px-0`}
             >
               <em>— Turning AI visibility into traffic</em>
             </motion.p>
@@ -97,13 +97,13 @@ export function HeroSection() {
                 </p>
             </div>
 
-            <div className="flex flex-row gap-2.5 sm:gap-4 md:gap-4 items-center justify-center px-4 sm:px-0 md:px-0">
+            <div className="flex flex-row gap-3 sm:gap-4 items-center justify-center px-4 sm:px-0">
               <a
                 href="https://app.geoalt.in/register"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => triggerSignUpInitiatedEvent('hero-section')}
-                className={`group inline-flex items-center justify-center pl-3.5 pr-2.5 py-2.5 sm:pl-4.5 sm:pr-3.5 sm:py-3 rounded-full text-[14px] sm:text-[16px] font-bold tracking-wide transition-all duration-300 ease-in-out text-center cursor-pointer border border-border ${isLightTheme ? 'bg-[#080808] text-white' : 'bg-white text-black'}`}
+                className={`group inline-flex items-center justify-center pl-4 pr-2 py-2 sm:py-3 rounded-full text-[11px] sm:text-sm font-semibold tracking-wide transition-all duration-300 ease-in-out text-center cursor-pointer border border-border ${isLightTheme ? 'bg-[#080808] text-white' : 'bg-white text-black'}`}
               >
                 <span className={isLightTheme ? 'text-white' : 'text-black'}>Start Free Trial</span>
                 <div className={`relative flex items-center justify-center w-5 h-5 ml-1.5 overflow-hidden ${isLightTheme ? 'text-white' : 'text-black'}`}>
@@ -129,7 +129,7 @@ export function HeroSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => triggerBookDemoEvent('hero-section')}
-                className="group inline-flex items-center justify-center bg-button-bg border border-[#6E6E6E] pl-3.5 pr-3.5 py-2.5 sm:pl-4.5 sm:pr-4.5 sm:py-3 rounded-full text-[14px] sm:text-[16px] font-bold tracking-wide transition-all duration-300 ease-in-out hover:opacity-90 text-center cursor-pointer"
+                className="group inline-flex items-center justify-center bg-button-bg border border-[#6E6E6E] px-4 py-2 sm:py-3 rounded-full text-[11px] sm:text-sm font-semibold tracking-wide transition-all duration-300 ease-in-out hover:opacity-90 text-center cursor-pointer"
               >
                 <span className={isLightTheme ? 'text-text-heading' : 'text-black'}>Book a Demo</span>
               </a>

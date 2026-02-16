@@ -35,7 +35,7 @@ export function GeoReportSection() {
         >
           <motion.h2 
             variants={headerVariants}
-            className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-heading'}`}
+            className={`text-lg sm:text-2xl md:text-3xl lg:text-[2.6rem] font-light sm:font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 text-text-heading`}
           >
             We Believe in <span className="">Proof</span>, <br /> <span className="inline-block">Backed by Data</span>
           </motion.h2>
@@ -92,7 +92,7 @@ export function GeoReportSection() {
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                quality={90}
+                quality={100}
               />
             </motion.div>
           </div>
@@ -103,7 +103,7 @@ export function GeoReportSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-0 gap-x-8 gap-y-8 sm:gap-y-10 lg:gap-0"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-0 gap-0"
         >
           {[
             {
