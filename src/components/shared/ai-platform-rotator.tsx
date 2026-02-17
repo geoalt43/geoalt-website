@@ -11,7 +11,7 @@ interface AIPlatformRotatorProps {
   centered?: boolean
 }
 
-export function AIPlatformRotator({ variant = 'default', size = 'large', copilotNameOverride, centered = false }: AIPlatformRotatorProps) {
+export function AIPlatformRotator({ variant = 'default', size = 'large', copilotNameOverride }: AIPlatformRotatorProps) {
   const [currentPlatform, setCurrentPlatform] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
   const [isBlurring, setIsBlurring] = useState(false)

@@ -174,14 +174,7 @@ export function PricingSection() {
   const [isBelow1088, setIsBelow1088] = useState(false)
   const [isBelow680, setIsBelow680] = useState(false)
   const [isBetween1080And1350, setIsBetween1080And1350] = useState(false)
-  const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const isLightTheme = mounted && resolvedTheme === 'light'
 
   useEffect(() => {
     const checkWidth = () => {

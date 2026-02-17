@@ -6,7 +6,6 @@ import { motion, useInView } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import dynamic from 'next/dynamic'
 import { containerVariants, headerVariants, cardVariantsSmooth, iconVariantsSmooth } from '@/lib/animations/variants'
-import { colorClasses } from '@/constants/colors'
 import { useScrollRestoration } from '@/app/hooks/use-scroll-restoration'
 
 // Critical path - load immediately
@@ -85,14 +84,6 @@ const trustedBrands: TrustedBrand[] = [
 function EmpoweringBusinessesSection() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
-  const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const isLightTheme = mounted && resolvedTheme === 'light'
 
   const features = [
     {
@@ -158,13 +149,13 @@ function EmpoweringBusinessesSection() {
         >
           <motion.h2
             variants={headerVariants}
-            className={`text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-0 sm:mb-10 md:mb-12 text-text-heading`}
+            className={`text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 text-text-heading`}
           >
             Built for every team
           </motion.h2>
           <motion.p
             variants={headerVariants}
-            className="hidden sm:block text-base sm:text-lg md:text-xl text-text-description max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
+            className="hidden sm:block text-sm sm:text-base md:text-lg text-text-description max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
           >
             Geoalt empowers marketing, content,<br className="hidden md:block" /> and SEO teams to dominate<br className="hidden md:block" /> AI-driven discovery
           </motion.p>
@@ -176,7 +167,7 @@ function EmpoweringBusinessesSection() {
           animate={isInView ? 'visible' : 'hidden'}
           className="grid gap-4 sm:gap-6 md:gap-8 pt-2 sm:pt-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
         >
-          {features.map((card, index) => (
+          {features.map((card) => (
             <motion.div
               key={card.title}
               variants={cardVariantsSmooth}
