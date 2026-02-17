@@ -62,11 +62,11 @@ export function AISearchMetricsSection() {
           animate={isInView ? 'visible' : 'hidden'}
           className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-12"
         >
-          <motion.h2 variants={headerVariants} className={`text-lg sm:text-2xl md:text-3xl lg:text-[2.6rem] font-light sm:font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 text-text-heading`}>
+          <motion.h2 variants={headerVariants} className={`text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 text-text-heading`}>
             How AI actually sees your brand
           </motion.h2>
           <motion.p variants={subtitleVariants} className="text-sm sm:text-base md:text-lg text-text-description max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
-            See how AI platforms position your brand vs competitors, with clear insight <br className="hidden sm:block" /> into sentiment, strengths, and gaps that influence buyer decisions. 
+            Understand how AI positions your brand vs competitors,<br className="hidden sm:block" /> highlighting sentiment and gaps.
           </motion.p>
         </motion.div>
 

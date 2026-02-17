@@ -49,7 +49,7 @@ export function HeroSection() {
               variants={headingContainerVariants}
               initial="hidden"
               animate={controls}
-              className={`text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal mt-4 sm:mt-0 mb-3 sm:mb-6 leading-tight tracking-tight ${
+              className={`text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal mt-1 sm:mt-0 mb-1 sm:mb-2 md:mb-0 leading-tight tracking-tight ${
                 isLightTheme 
                   ? 'text-[var(--color-ref-001)]' 
                   : 'text-white'
@@ -74,10 +74,9 @@ export function HeroSection() {
               variants={textVariants}
               initial="hidden"
               animate={controls}
-              className={`text-sm sm:text-base md:text-lg text-center ${isLightTheme ? 'text-[var(--color-ref-001)]' : colorClasses.textDescription} px-4 sm:px-0 flex items-center justify-center gap-2 flex-wrap mt-[-20px] sm:mt-[-40px] md:mt-[-60px] lg:mt-[-80px]`}
+              className={`text-sm sm:text-base md:text-lg text-center ${isLightTheme ? 'text-[var(--color-ref-001)]' : colorClasses.textDescription} px-4 sm:px-0 mt-1 sm:mt-2 md:mt-0`}
             >
-              <span className="lg:whitespace-nowrap">Geoalt</span>
-              <span className="lg:whitespace-nowrap">helps your business stand out across AI platforms</span>
+              Geoalt helps your business stand out across AI platforms
             </motion.p>
             <motion.p
               variants={textVariants}

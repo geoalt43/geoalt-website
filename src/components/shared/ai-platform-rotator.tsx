@@ -170,7 +170,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
   )
 
   return (
-    <div className="relative w-full flex items-center justify-center py-2 sm:py-4 md:py-6 lg:py-16 xl:py-20 mt-4 sm:mt-6 md:mt-8 lg:mt-0 mb-4 sm:mb-6 md:mb-8 lg:mb-0">
+    <div className="relative w-full flex items-center justify-center py-1 sm:py-1 md:py-0 lg:py-0 xl:py-1 mt-1 sm:mt-1 md:mt-0 lg:mt-0 mb-1 sm:mb-1 md:mb-0 lg:mb-0">
       {/* Animated Background Elements (only for default variant) */}
       {variant === 'default' && (
         <div className="absolute inset-0 overflow-hidden -z-10">
@@ -188,7 +188,7 @@ export function AIPlatformRotator({ variant = 'default', size = 'large', copilot
       )}
       
       {/* Responsive width container to prevent shaking */}
-      <div className={centered ? "absolute top-[17%] -translate-y-1/2 w-full flex justify-center z-10" : "flex justify-center w-full"}>
+      <div className="flex justify-center w-full">
         <div className="w-full max-w-[200px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[400px] xl:max-w-[480px] h-8 sm:h-10 md:h-12 lg:h-20 xl:h-24 flex items-center justify-center">
           {rotatorContent}
         </div>

@@ -288,94 +288,110 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className={`md:hidden fixed top-14 sm:top-16 left-0 right-0 w-full border-t border-border dark:border-[#242424] py-6 z-[100] ${isLightTheme ? 'bg-[#F2F2F2]' : 'bg-[#111111]'}`}>
-            <div className="max-w-md mx-auto">
-              {/* Navigation Links */}
-              <div className="flex flex-col space-y-2">
-                <Link
-                  href="/"
-                  onClick={handleHomeClick}
-                  className={`flex items-center gap-3 py-3 text-sm font-medium transition-all duration-200 ease-out cursor-pointer group ${
-                    isLightTheme 
-                      ? 'text-gray-800 hover:text-gray-600' 
-                      : 'text-gray-200 hover:text-white'
-                  }`}
-                >
-                  <svg className="w-4 h-4 opacity-60 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-                    <polyline points="9 22 9 12 15 12 15 22" />
-                  </svg>
-                  Home
-                </Link>
-                <Link
-                  href="/pricing"
-                  onClick={handlePricingClick}
-                  className={`flex items-center gap-3 py-3 text-sm font-medium transition-all duration-200 ease-out cursor-pointer group ${
-                    isLightTheme 
-                      ? 'text-gray-800 hover:text-gray-600' 
-                      : 'text-gray-200 hover:text-white'
-                  }`}
-                >
-                  <svg className="w-4 h-4 opacity-60 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M12 6v6l4 2" />
-                  </svg>
-                  Pricing
-                </Link>
-                <Link
-                  href="/#features"
-                  onClick={handleFeaturesClick}
-                  className={`flex items-center gap-3 py-3 text-sm font-medium transition-all duration-200 ease-out cursor-pointer group ${
-                    isLightTheme 
-                      ? 'text-gray-800 hover:text-gray-600' 
-                      : 'text-gray-200 hover:text-white'
-                  }`}
-                >
-                  <svg className="w-4 h-4 opacity-60 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                    <line x1="3" y1="9" x2="21" y2="9" />
-                    <line x1="9" y1="21" x2="9" y2="9" />
-                  </svg>
-                  Features
-                </Link>
-                <Link
-                  href="/blog"
-                  onClick={handleLinkClick}
-                  className={`flex items-center gap-3 py-3 text-sm font-medium transition-all duration-200 ease-out cursor-pointer group ${
-                    isLightTheme 
-                      ? 'text-gray-800 hover:text-gray-600' 
-                      : 'text-gray-200 hover:text-white'
-                  }`}
-                >
-                  <svg className="w-4 h-4 opacity-60 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
-                    <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
-                  </svg>
-                  Blog
-                </Link>
-              </div>
+          <div className={`md:hidden fixed top-14 sm:top-16 left-0 right-0 w-full border-t border-border dark:border-[#242424] py-6 px-6 sm:px-8 z-[100] ${isLightTheme ? 'bg-[#F2F2F2]' : 'bg-[#111111]'}`}>
+            <div className="w-full mx-auto">
+              <div className="flex flex-col w-full">
+                
+                {/* Navigation Links - Left Aligned */}
+                <div className="flex flex-col space-y-2 items-start w-full">
+                  <Link
+                    href="/"
+                    onClick={handleHomeClick}
+                    className={`flex items-center gap-3 py-3 text-sm sm:text-base font-normal transition-all duration-200 ease-out cursor-pointer group w-full ${
+                      isLightTheme 
+                        ? 'text-gray-800 hover:text-gray-600' 
+                        : 'text-gray-200 hover:text-white'
+                    }`}
+                  >
+                    <svg className="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                      <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                    Home
+                  </Link>
+                  <Link
+                    href="/pricing"
+                    onClick={handlePricingClick}
+                    className={`flex items-center gap-3 py-3 text-sm sm:text-base font-normal transition-all duration-200 ease-out cursor-pointer group w-full ${
+                      isLightTheme 
+                        ? 'text-gray-800 hover:text-gray-600' 
+                        : 'text-gray-200 hover:text-white'
+                    }`}
+                  >
+                    <svg className="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M12 6v6l4 2" />
+                    </svg>
+                    Pricing
+                  </Link>
+                  <Link
+                    href="/#features"
+                    onClick={handleFeaturesClick}
+                    className={`flex items-center gap-3 py-3 text-sm sm:text-base font-normal transition-all duration-200 ease-out cursor-pointer group w-full ${
+                      isLightTheme 
+                        ? 'text-gray-800 hover:text-gray-600' 
+                        : 'text-gray-200 hover:text-white'
+                    }`}
+                  >
+                    <svg className="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                      <line x1="3" y1="9" x2="21" y2="9" />
+                      <line x1="9" y1="21" x2="9" y2="9" />
+                    </svg>
+                    Features
+                  </Link>
+                  <Link
+                    href="/blog"
+                    onClick={handleLinkClick}
+                    className={`flex items-center gap-3 py-3 text-sm sm:text-base font-normal transition-all duration-200 ease-out cursor-pointer group w-full ${
+                      isLightTheme 
+                        ? 'text-gray-800 hover:text-gray-600' 
+                        : 'text-gray-200 hover:text-white'
+                    }`}
+                  >
+                    <svg className="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                    </svg>
+                    Blog
+                  </Link>
+                </div>
 
-              {/* CTA Section */}
-              <div className="px-2 pt-4">
-                <a
-                  href="https://app.geoalt.in/register"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => {
-                    handleLinkClick()
-                    triggerSignUpInitiatedEvent("navbar-get-started")
-                  }}
-                  className={`flex items-center justify-center gap-2 py-3 px-4 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer mx-auto ${
-                    isLightTheme
-                      ? 'bg-gray-900 text-white hover:bg-gray-800'
-                      : 'bg-white text-gray-900 hover:bg-gray-100'
-                  }`}
-                >
-                  Get Started
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </a>
+                {/* CTA Section - Left Aligned Stack */}
+                <div className="flex flex-col gap-3 w-full mt-6 items-center">
+                  <a
+                    href="https://app.geoalt.in/login"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => {
+                        handleLinkClick()
+                        triggerSignUpInitiatedEvent("navbar-sign-in")
+                    }}
+                    className={`w-[90%] py-1.5 rounded-full text-center text-sm font-medium transition-colors border ${
+                      isLightTheme
+                        ? 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                        : 'border-gray-700 text-gray-200 hover:bg-white/5'
+                    }`}
+                  >
+                    Sign In
+                  </a>
+                  <a
+                    href="https://app.geoalt.in/register"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => {
+                        handleLinkClick()
+                        triggerSignUpInitiatedEvent("navbar-get-started")
+                    }}
+                    className={`w-[90%] py-1.5 rounded-full text-center text-sm font-medium transition-colors ${
+                      isLightTheme
+                        ? 'bg-black text-white hover:bg-gray-800'
+                        : 'bg-white text-black hover:bg-gray-200'
+                    }`}
+                  >
+                    Get Started
+                  </a>
+                </div>
               </div>
             </div>
           </div>

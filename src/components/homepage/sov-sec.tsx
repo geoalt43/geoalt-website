@@ -67,7 +67,7 @@ export function SovSection() {
             variants={imageContainerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className={`lg:col-span-3 relative w-full lg:w-[85%] aspect-video overflow-hidden border border-[var(--color-card-border)] rounded-tl-lg rounded-tr-lg rounded-bl-lg ${isDark ? 'bg-[#080808]/50' : 'bg-white'}`}
+            className={`order-2 lg:order-1 lg:col-span-3 relative w-full lg:w-[85%] aspect-video overflow-hidden border border-[var(--color-card-border)] rounded-tl-lg rounded-tr-lg rounded-bl-lg ${isDark ? 'bg-[#080808]/50' : 'bg-white'}`}
           >
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
@@ -147,12 +147,12 @@ export function SovSection() {
             variants={textContainerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="lg:col-span-2 lg:pl-29"
+            className="order-1 lg:order-2 lg:col-span-2 lg:pl-29"
           >
             {/* Heading */}
             <motion.h2
               variants={textItemVariants}
-              className="text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-[400] tracking-tight mb-4 sm:mb-6 text-text-heading "
+              className="text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-[400] tracking-tight mb-2 text-text-heading "
             >
               Benchmark Your AI Visibility 
             </motion.h2>

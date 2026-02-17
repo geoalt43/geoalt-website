@@ -46,17 +46,17 @@ export function VisibilitySection() {
               {/* Heading */}
               <motion.h2 
                 variants={headerVariants}
-                className="text-lg sm:text-2xl md:text-3xl lg:text-[2.6rem] font-light sm:font-normal md:font-normal tracking-tight mb-4 sm:mb-6 text-text-heading max-w-4xl mx-auto"
+                className="text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal tracking-tight mb-1 sm:mb-2 text-text-heading max-w-4xl mx-auto"
               >
-                Track Your Brand&apos;s Visibility and Position Across the AI Landscape<br className="hidden sm:block" />
+                Track Your Brand&apos;s Visibility Across<br className="hidden sm:block" /> the AI Landscape
               </motion.h2>
 
-              {/* Subheading */}
+              {/* Subheading - constrained width for natural taper */}
               <motion.p 
                 variants={headerVariants}
-                className="text-sm sm:text-base md:text-lg text-text-description max-w-3xl mx-auto leading-relaxed"
+                className="text-sm sm:text-base md:text-lg text-text-description max-w-md mx-auto leading-relaxed"
               >
-                Measure visibility, benchmark competitors, and identify the <br className="hidden sm:block" /> sources shaping your brand&apos;s AI presence.
+                Measure visibility, benchmark competitors, <br className="hidden max-[435px]:block" /> and identify competitive gaps.
               </motion.p>
          </motion.div>
 

@@ -150,7 +150,7 @@ export function DemoCanvas({ activeStep, isLightTheme, tabData, onStepComplete }
   return (
     <div 
       ref={containerRef} 
-      className="absolute top-[5%] left-[5%] right-[5%] bottom-0 z-10 flex items-start justify-center"
+      className="absolute top-[1%] left-[1%] right-[1%] bottom-0 z-10 flex items-start justify-center"
     >
       <div className={`relative w-full h-full flex items-center justify-center transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         

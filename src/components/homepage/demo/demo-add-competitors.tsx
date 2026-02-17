@@ -51,28 +51,27 @@ export function DemoAddCompetitors({
 
   return (
     <div 
-      className={`w-full h-full p-6 rounded-t-lg shadow-lg ${bgClass} flex flex-col select-none
+      className={`w-full h-full p-3 sm:p-4 md:p-6 rounded-2xl shadow-lg ${bgClass} flex flex-col select-none
         transition-all duration-700 ease-out
         ${isAnimating ? 'opacity-100' : 'opacity-0'}
       `}
     >
-      {/* Title with same margin as Add Your Brand */}
-      <h2 className={`text-2xl font-semibold text-center mt-4 mb-12 ${textClass}`}>
+      <h2 className={`text-base sm:text-lg md:text-2xl font-semibold text-center mt-2 sm:mt-3 md:mt-4 mb-4 sm:mb-8 md:mb-12 ${textClass}`}>
         Add your competitors
       </h2>
 
-      <div className="space-y-6 flex flex-col items-center">
+      <div className="space-y-3 sm:space-y-4 md:space-y-6 flex flex-col items-center">
         
         {/* Add Custom Competitor Section */}
-        <div className="w-[85%]">
-          <label className={`text-sm font-medium ${labelClass} mb-2 block`}>
+        <div className="w-[95%] sm:w-[90%] md:w-[85%]">
+          <label className={`text-xs sm:text-sm font-medium ${labelClass} mb-1.5 sm:mb-2 block`}>
             Add Custom Competitor
           </label>
           
           {/* Search Input */}
-          <div className="relative mb-3">
+          <div className="relative mb-2 sm:mb-3">
             {searchValue.length === 0 && (
-              <Search className={`absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 ${iconClass}`} />
+              <Search className={`absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 ${iconClass}`} />
             )}
             <input
               ref={inputRefs.search}
@@ -81,7 +80,7 @@ export function DemoAddCompetitors({
               disabled
               tabIndex={-1}
               placeholder="Search competitors..."
-              className={`w-full ${searchValue.length === 0 ? 'pl-10' : 'pl-3'} pr-3 py-2 text-sm rounded-xl border transition-all duration-200 outline-none cursor-default select-none
+              className={`w-full ${searchValue.length === 0 ? 'pl-8 sm:pl-10' : 'pl-2 sm:pl-3'} pr-2 sm:pr-3 py-1.5 sm:py-2 text-xs sm:text-sm rounded-xl border transition-all duration-200 outline-none cursor-default select-none
                 ${activeField === 'search' ? activeBorderClass : borderClass}
                 ${inputBgClass} ${textClass} ${placeholderClass}
                 pointer-events-none
@@ -92,7 +91,7 @@ export function DemoAddCompetitors({
           
           {/* URL Input */}
           <div className="relative">
-            <span className={`absolute left-3 top-1/2 -translate-y-1/2 text-sm ${
+            <span className={`absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 text-xs sm:text-sm ${
               urlValue.length > 0
                 ? textClass
                 : (isLightTheme ? 'text-gray-400' : 'text-zinc-500')
@@ -106,7 +105,7 @@ export function DemoAddCompetitors({
               disabled
               tabIndex={-1}
               placeholder="competitor.com"
-              className={`w-full pl-[68px] pr-3 py-2 text-sm rounded-xl border transition-all duration-200 outline-none cursor-default select-none
+              className={`w-full pl-[52px] sm:pl-[68px] pr-2 sm:pr-3 py-1.5 sm:py-2 text-xs sm:text-sm rounded-xl border transition-all duration-200 outline-none cursor-default select-none
                 ${activeField === 'url' ? activeBorderClass : borderClass}
                 ${inputBgClass} ${textClass} ${placeholderClass}
                 pointer-events-none
@@ -117,26 +116,26 @@ export function DemoAddCompetitors({
         </div>
 
         {/* Competitors Section */}
-        <div className="w-[85%]">
-          <label className={`text-sm font-medium ${labelClass} mb-3 block`}>
+        <div className="w-[95%] sm:w-[90%] md:w-[85%]">
+          <label className={`text-xs sm:text-sm font-medium ${labelClass} mb-2 sm:mb-3 block`}>
             Competitors
           </label>
           
           {/* Competitors Grid */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {competitors.map((competitor, index) => (
               <div
                 key={`${competitor.name}-${index}`}
                 data-competitor={competitor.name}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm border transition-all duration-200 cursor-default select-none
+                className={`inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm border transition-all duration-200 cursor-default select-none
                   ${competitor.isSelected ? selectedChipClass : unselectedChipClass}
                 `}
               >
                 <span>{competitor.name}</span>
                 {competitor.isSelected ? (
-                  <Check className="w-3.5 h-3.5" />
+                  <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 ) : (
-                  <Plus className="w-3.5 h-3.5" />
+                  <Plus className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 )}
               </div>
             ))}

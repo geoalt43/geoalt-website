@@ -64,7 +64,7 @@ export function PromptSection() {
             variants={textContainerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="order-2 lg:order-1 lg:col-span-2 "
+            className="order-1 lg:order-1 lg:col-span-2 "
           >
             {/* Step Label */}
             <motion.div
@@ -80,7 +80,7 @@ export function PromptSection() {
             {/* Heading */}
             <motion.h2
               variants={textItemVariants}
-              className="text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-[400] tracking-tight mb-4 sm:mb-6 text-text-heading"
+              className="text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-[400] tracking-tight mb-2 text-text-heading"
             >
              Monitor visibility Across User Queries
             </motion.h2>
@@ -99,7 +99,7 @@ export function PromptSection() {
             variants={imageContainerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="order-1 lg:order-2 lg:col-span-3 relative w-full lg:w-[85%] ml-auto aspect-video overflow-hidden border border-[var(--color-card-border)] bg-[#080808] dark:bg-[#080808]/50 rounded-tl-lg rounded-tr-lg rounded-bl-lg"
+            className="order-2 lg:order-2 lg:col-span-3 relative w-full lg:w-[85%] ml-auto aspect-video overflow-hidden border border-[var(--color-card-border)] bg-[#080808] dark:bg-[#080808]/50 rounded-tl-lg rounded-tr-lg rounded-bl-lg"
           >
             {/* Background Image */}
             <div className="absolute inset-0 z-0">

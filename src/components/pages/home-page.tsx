@@ -85,6 +85,14 @@ const trustedBrands: TrustedBrand[] = [
 function EmpoweringBusinessesSection() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isLightTheme = mounted && resolvedTheme === 'light'
 
   const features = [
     {
@@ -140,7 +148,7 @@ function EmpoweringBusinessesSection() {
   ]
 
   return (
-    <section ref={sectionRef} className="empowering-section pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-20 sm:pb-24 md:pb-32 relative overflow-hidden transition-colors duration-300">
+    <section ref={sectionRef} className="empowering-section pt-2 sm:pt-3 md:pt-4 lg:pt-5 pb-6 sm:pb-8 md:pb-10 relative overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           variants={containerVariants}
@@ -150,15 +158,15 @@ function EmpoweringBusinessesSection() {
         >
           <motion.h2
             variants={headerVariants}
-            className="text-2xl sm:text-2xl md:text-3xl lg:text-[2.6rem] font-light sm:font-normal md:font-normal tracking-tight text-text-heading mb-4"
+            className={`text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-0 sm:mb-10 md:mb-12 text-text-heading`}
           >
             Built for every team
           </motion.h2>
           <motion.p
             variants={headerVariants}
-            className="text-base sm:text-lg md:text-xl text-text-description max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
+            className="hidden sm:block text-base sm:text-lg md:text-xl text-text-description max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
           >
-            Geoalt empowers marketing, content, and SEO<br /> teams to dominate AI-driven discovery
+            Geoalt empowers marketing, content,<br className="hidden md:block" /> and SEO teams to dominate<br className="hidden md:block" /> AI-driven discovery
           </motion.p>
         </motion.div>
 
@@ -166,18 +174,18 @@ function EmpoweringBusinessesSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid gap-6 sm:gap-8 pt-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
+          className="grid gap-4 sm:gap-6 md:gap-8 pt-2 sm:pt-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
         >
           {features.map((card, index) => (
             <motion.div
               key={card.title}
               variants={cardVariantsSmooth}
-              className="empowering-card relative bg-[var(--color-card-bg)] dark:bg-[var(--color-ref-043)] border border-[var(--color-card-border)] rounded-lg p-6 sm:p-8 overflow-hidden shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)]"
+              className="empowering-card relative bg-[var(--color-card-bg)] dark:bg-[var(--color-ref-043)] border border-[var(--color-card-border)] rounded-lg p-4 sm:p-6 md:p-8 overflow-hidden shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)]"
             >
               {/* Content */}
               <div className="relative z-10">
                 {/* Header */}
-                <div className="flex items-start gap-4 mb-6">
+                <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
                   <motion.div
                     variants={iconVariantsSmooth}
                     initial="hidden"
@@ -187,24 +195,24 @@ function EmpoweringBusinessesSection() {
                     {card.icon}
                   </motion.div>
                   <div>
-                    <h3 className="text-lg sm:text-xl font-medium text-text-heading mb-1 tracking-tight">{card.title}</h3>
-                    <p className="text-sm text-text-description">{card.subtitle}</p>
+                    <h3 className="text-base sm:text-lg md:text-xl font-medium text-text-heading mb-0.5 sm:mb-1 tracking-tight">{card.title}</h3>
+                    <p className="text-xs sm:text-sm text-text-description">{card.subtitle}</p>
                   </div>
                 </div>
 
                 {/* Features Grid */}
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   {card.features.map((feature, fIndex) => (
                     <div
                       key={fIndex}
-                      className="flex items-start gap-3 p-3 rounded-lg bg-[var(--color-ref-035)]/30"
+                      className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 border-b border-[var(--color-card-border)] last:border-b-0"
                     >
                       <svg className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
                       <div>
-                        <p className="text-sm font-medium text-text-heading/90 tracking-tight">{feature.label}</p>
-                        <p className="text-xs text-text-description mt-0.5">{feature.desc}</p>
+                        <p className="text-xs sm:text-sm font-medium text-text-heading/90 tracking-tight">{feature.label}</p>
+                        <p className="text-[11px] sm:text-xs text-text-description mt-0.5">{feature.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -262,7 +270,7 @@ function DashboardImageSection() {
             priority
             quality={90}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 88vw"
-            className="w-full sm:w-[94%] md:w-[94%] lg:w-[94%] mx-auto h-auto object-contain relative z-10"
+            className="w-[92%] sm:w-[94%] md:w-[94%] lg:w-[94%] mx-auto h-auto object-contain relative z-10"
           />
         </motion.div>
       </div>
@@ -306,7 +314,7 @@ export function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-page-background">
+    <div className="min-h-screen bg-page-background" style={{ overflowX: 'clip' }}>
       <Navbar />
 
       {/* Unified gradient zone: Hero → DashboardImage → TrustedBy → GeoReport */}
@@ -317,7 +325,7 @@ export function HomePage() {
 
         <section className="pt-[45.6px] sm:pt-[60.8px] md:pt-[65px] lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-18 lg:pb-[4vh] xl:pb-[6vh]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
-            <div className="relative overflow-hidden bg-transparent px-4 pt-5 pb-5 sm:px-6 sm:pt-9 sm:pb-9 md:px-8 md:pt-10 md:pb-10 lg:px-10 lg:pt-12 lg:pb-12">
+            <div className="relative overflow-hidden bg-transparent px-0 pt-5 pb-5 sm:px-4 sm:pt-9 sm:pb-9 md:px-8 md:pt-10 md:pb-10 lg:px-10 lg:pt-12 lg:pb-12">
               <div className="relative flex flex-col items-center gap-6 sm:gap-8 md:gap-10">
                 <p className="text-xl sm:text-2xl md:text-3xl font-light sm:font-normal md:font-normal tracking-wide -mt-6 sm:-mt-8 md:-mt-9 lg:-mt-11 trusted-by-text">
                   Trusted by
@@ -326,14 +334,14 @@ export function HomePage() {
                   {trustedBrands.map((brand, index) => (
                     <div
                       key={`${brand.label}-${index}`}
-                      className={`flex items-center justify-center gap-3 sm:gap-4 py-8 sm:py-10 md:py-12 px-6 sm:px-12 md:px-20 lg:px-48 border border-[var(--color-card-border)] transition-colors duration-200 ${index >= 3 ? 'border-t-0' : ''
+                      className={`flex items-center justify-center gap-2 sm:gap-3 md:gap-4 py-6 sm:py-8 md:py-10 lg:py-12 px-3 sm:px-8 md:px-12 lg:px-16 xl:px-20 border border-[var(--color-card-border)] transition-colors duration-200 ${index >= 3 ? 'border-t-0' : ''
                         } ${isLightTheme
                           ? 'bg-[var(--color-card-bg)]'
                           : 'bg-[#060606]'
                         }`}
                     >
                       {brand.fullImage ? (
-                        <div className="relative h-10 sm:h-12 md:h-14 w-28 sm:w-32 md:w-40 flex-shrink-0">
+                        <div className="relative h-8 sm:h-10 md:h-12 lg:h-14 w-20 sm:w-28 md:w-32 lg:w-40 flex-shrink-0">
                           <Image
                             src={brand.logo}
                             alt={brand.label}
@@ -343,12 +351,12 @@ export function HomePage() {
                               : (isLightTheme ? 'brightness-0' : 'brightness-0 invert')
                               }`}
                             quality={90}
-                            sizes="(max-width: 640px) 7rem, (max-width: 768px) 8rem, 10rem"
+                            sizes="(max-width: 640px) 5rem, (max-width: 768px) 7rem, (max-width: 1024px) 8rem, 10rem"
                           />
                         </div>
                       ) : (
                         <>
-                          <div className="relative h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex-shrink-0">
+                          <div className="relative h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 flex-shrink-0">
                             <Image
                               src={brand.logo}
                               alt={`${brand.label} logo`}
@@ -358,37 +366,37 @@ export function HomePage() {
                                 : (isLightTheme ? 'brightness-0' : 'brightness-0 invert')
                                 }`}
                               quality={90}
-                              sizes="(max-width: 640px) 2rem, (max-width: 768px) 2.5rem, 3rem"
+                              sizes="(max-width: 640px) 1.5rem, (max-width: 768px) 2rem, (max-width: 1024px) 2.5rem, 3rem"
                               onError={(e) => {
                                 e.currentTarget.style.display = 'none'
                               }}
                             />
                           </div>
                           {brand.textImage ? (
-                            <div className="relative h-6 sm:h-8 md:h-10 w-20 sm:w-24 md:w-32 flex-shrink-0">
+                            <div className="relative h-5 sm:h-6 md:h-8 lg:h-10 w-14 sm:w-20 md:w-24 lg:w-32 flex-shrink-0">
                               <Image
                                 src={brand.textImage}
                                 alt={brand.label}
                                 fill
                                 className={`object-contain grayscale ${isLightTheme ? 'brightness-0' : 'brightness-0 invert'}`}
                                 quality={90}
-                                sizes="(max-width: 640px) 5rem, (max-width: 768px) 6rem, 8rem"
+                                sizes="(max-width: 640px) 3.5rem, (max-width: 768px) 5rem, (max-width: 1024px) 6rem, 8rem"
                               />
                             </div>
                           ) : brand.boldPart && brand.normalPart ? (
-                            <span className={`text-2xl sm:text-3xl md:text-4xl ${isLightTheme ? 'text-black' : 'text-white'
+                            <span className={`text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl ${isLightTheme ? 'text-black' : 'text-white'
                               }`}>
                               <span className="font-bold">{brand.boldPart}</span>
                               <span className="font-normal">{brand.normalPart}</span>
                             </span>
                           ) : brand.lightWeight ? (
-                            <span className={`${brand.smallText ? 'text-lg sm:text-xl md:text-2xl' : 'text-xl sm:text-2xl md:text-3xl'
+                            <span className={`${brand.smallText ? 'text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl' : 'text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl'
                               } font-light tracking-wide ${isLightTheme ? 'text-black' : 'text-white'
                               }`}>
                               {brand.displayLabel || brand.label}
                             </span>
                           ) : (
-                            <span className={`text-xl sm:text-2xl md:text-3xl font-bold ${isLightTheme ? 'text-black' : 'text-white'
+                            <span className={`text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold ${isLightTheme ? 'text-black' : 'text-white'
                               }`}>
                               {brand.displayLabel || brand.label}
                             </span>

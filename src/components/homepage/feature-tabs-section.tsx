@@ -57,6 +57,7 @@ export function FeatureTabsSection() {
   const [mounted, setMounted] = useState(false)
   const [completedSteps, setCompletedSteps] = useState<number[]>([])
   const [segmentProgresses, setSegmentProgresses] = useState([0, 0, 0, 0])
+  const [isMobile, setIsMobile] = useState(false)
 
 
   // Scroll tracking - using the tall scroll container
@@ -67,33 +68,36 @@ export function FeatureTabsSection() {
 
   useEffect(() => {
     setMounted(true)
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
   // Update active tab and completed steps based on scroll ONLY
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    // Calculate step based on scroll progress
+    // Tighter thresholds to reduce dead scroll space
     let step = 0
-    if (latest >= 0.95) step = 3
-    else if (latest >= 0.7) step = 3
-    else if (latest >= 0.45) step = 2
-    else if (latest >= 0.2) step = 1
+    if (latest >= 0.75) step = 3
+    else if (latest >= 0.50) step = 2
+    else if (latest >= 0.25) step = 1
     else step = 0
 
     setActiveTab(step)
 
     // Mark steps as completed
     const newCompleted: number[] = []
-    if (latest >= 0.2) newCompleted.push(0)
-    if (latest >= 0.45) newCompleted.push(1)
-    if (latest >= 0.7) newCompleted.push(2)
-    if (latest >= 0.95) newCompleted.push(3)
+    if (latest >= 0.25) newCompleted.push(0)
+    if (latest >= 0.50) newCompleted.push(1)
+    if (latest >= 0.75) newCompleted.push(2)
+    if (latest >= 0.90) newCompleted.push(3)
     setCompletedSteps(newCompleted)
 
     // Update segment progresses
-    const seg1 = Math.min(1, Math.max(0, (latest - 0) / 0.2))
-    const seg2 = Math.min(1, Math.max(0, (latest - 0.2) / 0.25))
-    const seg3 = Math.min(1, Math.max(0, (latest - 0.45) / 0.25))
-    const seg4 = Math.min(1, Math.max(0, (latest - 0.7) / 0.25))
+    const seg1 = Math.min(1, Math.max(0, (latest - 0) / 0.25))
+    const seg2 = Math.min(1, Math.max(0, (latest - 0.25) / 0.25))
+    const seg3 = Math.min(1, Math.max(0, (latest - 0.50) / 0.25))
+    const seg4 = Math.min(1, Math.max(0, (latest - 0.75) / 0.15))
     setSegmentProgresses([seg1, seg2, seg3, seg4])
   })
 
@@ -107,13 +111,13 @@ export function FeatureTabsSection() {
     if (!container) return
 
     // Target progress values based on scrollYProgress logic
-    // 0 -> 1: > 0.2. Aim for 0.25
-    // 1 -> 2: > 0.45. Aim for 0.50
-    // 2 -> 3: > 0.7. Aim for 0.75
+    // 0 -> 1: > 0.25. Aim for 0.30
+    // 1 -> 2: > 0.50. Aim for 0.55
+    // 2 -> 3: > 0.75. Aim for 0.80
     let targetProgress = 0
-    if (activeTab === 0) targetProgress = 0.25
-    else if (activeTab === 1) targetProgress = 0.50
-    else if (activeTab === 2) targetProgress = 0.75
+    if (activeTab === 0) targetProgress = 0.30
+    else if (activeTab === 1) targetProgress = 0.55
+    else if (activeTab === 2) targetProgress = 0.80
     else return
 
     const scrollHeight = container.offsetHeight
@@ -131,35 +135,38 @@ export function FeatureTabsSection() {
     })
   }, [activeTab])
 
+  // Scroll container height: smaller on mobile since the layout is stacked
+  const scrollHeight = isMobile ? '180vh' : '250vh'
+
   return (
     // Outer scroll container - creates the "scroll space" for the sticky effect
     <div
       ref={scrollContainerRef}
       className="relative"
-      style={{ height: '300vh' }} // Tall container for scroll space
+      style={{ height: scrollHeight }}
     >
       {/* Sticky content that stays in viewport */}
       <div
         ref={stickyContentRef}
-        className="sticky top-0 h-screen flex items-center bg-page-background overflow-hidden"
+        className="sticky top-0 min-h-screen lg:h-screen flex items-start lg:items-center bg-page-background overflow-hidden py-16 sm:py-12 lg:py-0"
       >
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8 relative z-10 py-8">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8 relative z-10">
           <motion.div
             variants={headingVariants}
             initial="hidden"
             animate="visible"
-            className="text-left sm:text-center mb-10 sm:mb-14 md:mb-16"
+            className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-14"
           >
-            <h2 className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-1 ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-heading'}`}>
+            <h2 className={`text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-2 sm:mb-4 md:mb-6 px-1 text-text-heading`}>
               <span className="block sm:inline text-orange-500 dark:text-orange-400">We provide streamlined onboarding to</span>{' '}
               <span className="block sm:inline lg:block ">
                 unlock actionable insights</span>
             </h2>
           </motion.div>
 
-          <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 xl:gap-20 items-stretch h-auto lg:h-[520px]">
+          <div className="flex flex-col lg:flex-row gap-4 sm:gap-5 lg:gap-12 xl:gap-20 items-stretch h-auto lg:h-[520px]">
             {/* LEFT SIDE: Tabs with Progress Border */}
-            <div className="w-full lg:w-1/3 flex flex-col justify-between h-auto lg:h-[520px]">
+            <div className="w-full lg:w-1/3 flex flex-col gap-0 justify-between h-auto lg:h-[520px]">
               {TABS.map((tab, index) => {
                 const isActive = activeTab === index
                 const isCompleted = completedSteps.includes(index)
@@ -168,7 +175,7 @@ export function FeatureTabsSection() {
                 return (
                   <div
                     key={tab.id}
-                    className={`relative text-left p-5 sm:p-4 rounded-r-lg rounded-l-none transition-all duration-500 border-y border-r border-l-0 ${isLightTheme
+                    className={`relative text-left p-3 sm:p-4 rounded-r-lg rounded-l-none transition-all duration-500 border-y border-r border-l-0 ${isLightTheme
                         ? 'bg-[var(--color-card-bg)] border-[var(--color-card-border)]'
                         : 'bg-[var(--color-ref-043)] border-[var(--color-card-border)]'
                       } overflow-hidden`}
@@ -180,43 +187,43 @@ export function FeatureTabsSection() {
                       style={{ height: `${Math.min(100, Math.max(0, progress * 100))}%` }}
                     />
 
-                    <span className="relative z-10 flex flex-col gap-1 pl-2"> {/* Added padding-left to offset visually from border */}
-                      <h3 className={`text-base sm:text-lg font-medium transition-colors duration-500 flex items-center gap-2 ${isCompleted || (isActive && progress > 0.05) // Heading becomes active early in the segment
+                    <span className="relative z-10 flex flex-col gap-0.5 sm:gap-1 pl-2">
+                      <h3 className={`text-sm sm:text-base lg:text-lg font-medium transition-colors duration-500 flex items-center gap-2 ${isCompleted || (isActive && progress > 0.05)
                           ? isLightTheme ? 'text-black' : 'text-white'
-                          : isLightTheme ? 'text-gray-500' : 'text-zinc-500' // Muted initially
+                          : isLightTheme ? 'text-gray-500' : 'text-zinc-500'
                         }`}>
                         {tab.title}
                         {tab.id === 'model-region' && (
                           <div className={`flex items-center -space-x-1.5 ml-1 transition-opacity duration-500 ${isCompleted || (isActive && progress > 0.05) ? 'opacity-100' : 'opacity-40'
                             }`}>
-                            <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-10 shrink-0">
+                            <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-10 shrink-0">
                               <Image
                                 src='/ai-icons/openai-light.svg'
                                 alt="OpenAI"
                                 width={12}
                                 height={12}
                                 unoptimized
-                                className="w-3.5 h-3.5 brightness-0"
+                                className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 brightness-0"
                               />
                             </div>
-                            <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-20 shrink-0 shadow-[-2px_0_4px_rgba(0,0,0,0.15)]">
+                            <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-20 shrink-0 shadow-[-2px_0_4px_rgba(0,0,0,0.15)]">
                               <Image
                                 src='/ai-icons/perplexity-light.svg'
                                 alt="Perplexity"
                                 width={12}
                                 height={12}
                                 unoptimized
-                                className="w-3.5 h-3.5 brightness-0"
+                                className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 brightness-0"
                               />
                             </div>
-                            <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-30 shrink-0 shadow-[-2px_0_4px_rgba(0,0,0,0.15)]">
+                            <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-30 shrink-0 shadow-[-2px_0_4px_rgba(0,0,0,0.15)]">
                               <Image
                                 src='/ai-icons/gemini-color.webp'
                                 alt="Gemini"
                                 width={12}
                                 height={12}
                                 unoptimized
-                                className="w-3.5 h-3.5"
+                                className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5"
                               />
                             </div>
                           </div>
@@ -224,19 +231,17 @@ export function FeatureTabsSection() {
                       </h3>
 
                       <div
-                        className="overflow-hidden transition-all duration-500 ease-in-out max-h-24 mt-1.5"
+                        className="overflow-hidden transition-all duration-500 ease-in-out max-h-20 sm:max-h-24 mt-0.5 sm:mt-1.5"
                       >
                         {/* Split description by newline to animate lines separately */}
                         {tab.description.split('\n').map((line, i) => {
-                          // Line 1 (index 0) aligns with mid-progress (~0.4)
-                          // Line 2 (index 1) aligns with end-progress (~0.8)
                           const threshold = i === 0 ? 0.35 : 0.75
                           const isLineVisible = isCompleted || (isActive && progress > threshold)
 
                           return (
                             <p
                               key={i}
-                              className={`text-sm leading-relaxed font-light transition-opacity duration-500 ${isLightTheme ? 'text-gray-600' : 'text-gray-400'
+                              className={`text-xs sm:text-sm leading-relaxed font-light transition-opacity duration-500 ${isLightTheme ? 'text-gray-600' : 'text-gray-400'
                                 } ${isLineVisible ? 'opacity-100' : 'opacity-10'
                                 }`}
                             >
@@ -252,14 +257,14 @@ export function FeatureTabsSection() {
             </div>
 
             {/* RIGHT SIDE: Dynamic Display */}
-            <div className="w-full lg:w-2/3 relative h-[350px] sm:h-[400px] lg:h-auto rounded-2xl overflow-hidden border border-[var(--color-card-border)] bg-[#080808]">
+            <div className="w-full lg:w-2/3 relative h-[380px] sm:h-[420px] md:h-[460px] lg:h-auto rounded-2xl overflow-hidden border border-[var(--color-card-border)] bg-[#080808]">
               {/* Background "Painting" Image */}
               <div className="absolute inset-0 z-0">
                 <Image
                   src="/images/dash-BGimg.jpeg"
                   alt="Background"
                   fill
-                  className="object-cover opacity-80"
+                  className="object-cover opacity-80 rounded-2xl"
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent opacity-60" />

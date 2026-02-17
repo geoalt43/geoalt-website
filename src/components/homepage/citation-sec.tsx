@@ -70,16 +70,16 @@ export function CitationSection() {
         >
           <motion.h2
             variants={textItemVariants}
-            className="text-2xl sm:text-2xl md:text-3xl lg:text-[2.6rem] font-light sm:font-normal md:font-normal tracking-tight text-text-heading mb-4"
+            className="text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal tracking-tight text-text-heading mb-4"
           >
-           Own Your Brand&apos;s Presence Across <br />AI Platforms
+           Own Your Brand&apos;s Presence Across <br className="hidden sm:block" />AI Platforms
           </motion.h2>
 
           <motion.p
             variants={textItemVariants}
-            className="text-sm sm:text-base md:text-lg text-text-description max-w-2xl mx-auto leading-relaxed"
+            className="hidden sm:block text-sm sm:text-base md:text-lg text-text-description max-w-2xl mx-auto leading-relaxed"
           >
-            Track mentions, benchmark competitors, monitor prompts, and <br />create content that earns citations in AI recommendations.
+            Track mentions, benchmark competitors, monitor prompts, and <br className="hidden sm:block" />create content that earns citations in AI recommendations.
           </motion.p>
         </motion.div>
 
@@ -91,13 +91,13 @@ export function CitationSection() {
             variants={textContainerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="order-2 lg:order-1 lg:col-span-2"
+            className="order-1 lg:order-1 lg:col-span-2"
           >
 
             {/* Heading */}
             <motion.h2
               variants={textItemVariants}
-              className="text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-[400] tracking-tight mb-4 sm:mb-6 text-text-heading"
+              className="text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-[400] tracking-tight mb-2 text-text-heading"
             >
              Track Your Brand’s Presence
             </motion.h2>
@@ -116,7 +116,7 @@ export function CitationSection() {
             variants={imageContainerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className={`order-1 lg:order-2 lg:col-span-3 relative w-full lg:w-[85%] ml-auto aspect-video overflow-hidden border border-[var(--color-card-border)] rounded-tl-lg rounded-tr-lg rounded-bl-lg ${isDark ? 'bg-[#080808]/50' : 'bg-white'}`}
+            className={`order-2 lg:order-2 lg:col-span-3 relative w-full lg:w-[85%] ml-auto aspect-video overflow-hidden border border-[var(--color-card-border)] rounded-tl-lg rounded-tr-lg rounded-bl-lg ${isDark ? 'bg-[#080808]/50' : 'bg-white'}`}
           >
             {/* Background Image */}
             <div className="absolute inset-0 z-0">

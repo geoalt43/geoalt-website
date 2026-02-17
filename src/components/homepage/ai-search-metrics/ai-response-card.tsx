@@ -155,7 +155,7 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
 
   return (
     <div
-      className={`bg-[var(--color-card-bg)] border ${isLightTheme ? 'border-neutral-300' : 'border-transparent'} rounded-lg shadow-2xl shadow-[var(--color-ref-036)] p-4 sm:p-6 lg:p-8 mt-0 relative overflow-hidden h-full`}
+      className={`bg-[var(--color-card-bg)] border ${isLightTheme ? 'border-neutral-300' : 'border-transparent'} rounded-lg shadow-2xl shadow-[var(--color-ref-036)] p-2 sm:p-6 lg:p-8 mt-0 relative overflow-hidden h-full`}
     >
       <div className="absolute inset-0 pointer-events-none z-[5] overflow-hidden">
         <AnimatePresence>
@@ -182,7 +182,7 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
         <div className="mb-3 sm:mb-4 md:mb-4">
           <div className="mb-2 sm:mb-2 md:mb-2">
             <div className="flex flex-col items-end">
-              <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-3 pb-2 sm:pb-3 md:pb-3 justify-end">
+              <div className="flex flex-row items-center gap-1 sm:gap-3 md:gap-3 pb-2 sm:pb-3 md:pb-3 justify-end">
                 {/* AI Platform Icons */}
                 <div className="flex flex-row items-center gap-1 sm:gap-2 md:gap-2 flex-shrink-0 -mt-0.5 sm:-mt-1 md:-mt-1">
                   {/* Gemini Icon */}
@@ -205,7 +205,7 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
                 </div>
 
                 {/* Search Input Style Question */}
-                <div className={`flex items-center gap-1.5 sm:gap-2 border ${isLightTheme ? 'border-neutral-300' : 'border-white/15'} rounded-full px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 md:py-1.5 bg-black/5 dark:bg-white/5`}>
+                <div className={`flex items-center gap-1.5 sm:gap-2 border ${isLightTheme ? 'border-neutral-300' : 'border-white/15'} rounded-full px-1.5 sm:px-2.5 md:px-3 py-1 sm:py-1.5 md:py-1.5 bg-black/5 dark:bg-white/5`}>
                   {/* Plus icon - left */}
                   <div className="flex-shrink-0 text-text-secondary">
                     <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" strokeWidth={1.5} />
