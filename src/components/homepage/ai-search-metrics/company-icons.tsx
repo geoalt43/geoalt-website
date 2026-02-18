@@ -7,37 +7,37 @@ interface CompanyIconProps {
   className?: string
 }
 
-export const AsanaIcon = ({ size = 20, className = '' }: CompanyIconProps) => {
+export const AsanaIcon = ({ className = '' }: CompanyIconProps) => {
   return (
     <Image
       src="/images/asanas.png"
       alt="Asana logo"
-      width={size}
-      height={size}
+      width={100}
+      height={100}
       className={`${className} object-contain brightness-0 dark:brightness-100`}
     />
   )
 }
 
-export const TrelloIcon = ({ size = 20, className = '' }: CompanyIconProps) => {
+export const TrelloIcon = ({ className = '' }: CompanyIconProps) => {
   return (
     <Image
       src="/images/trello_.png"
       alt="Trello logo"
-      width={size}
-      height={size}
+      width={100}
+      height={100}
       className={`${className} object-contain brightness-0 dark:brightness-100`}
     />
   )
 }
 
-export const MondayIcon = ({ size = 20, className = '' }: CompanyIconProps) => {
+export const MondayIcon = ({ className = '' }: CompanyIconProps) => {
   return (
     <Image
       src="/images/mondayy.png"
       alt="Monday.com logo"
-      width={size}
-      height={size}
+      width={100}
+      height={100}
       className={`${className} object-contain brightness-0 dark:brightness-100`}
     />
   )

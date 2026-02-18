@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import { useScroll, useMotionValueEvent } from 'framer-motion'
-import { useTheme } from 'next-themes'
+
 // import { headingVariants } from '@/lib/animations/variants'
 import { DemoCanvas } from './demo/demo-canvas'
 
@@ -53,8 +53,8 @@ export function FeatureTabsSection() {
   const [activeTab, setActiveTab] = useState(0)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const stickyContentRef = useRef<HTMLDivElement>(null)
-  const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
+
+
   const [completedSteps, setCompletedSteps] = useState<number[]>([])
   const [segmentProgresses, setSegmentProgresses] = useState([0, 0, 0, 0])
   const [isMobile, setIsMobile] = useState(false)
@@ -67,7 +67,7 @@ export function FeatureTabsSection() {
   })
 
   useEffect(() => {
-    setMounted(true)
+
     const checkMobile = () => setIsMobile(window.innerWidth < 1024)
     checkMobile()
     window.addEventListener('resize', checkMobile)
@@ -101,7 +101,7 @@ export function FeatureTabsSection() {
     setSegmentProgresses([seg1, seg2, seg3, seg4])
   })
 
-  const isLightTheme = mounted && resolvedTheme === 'light'
+
 
   // Auto-advance mechanism
   const handleStepComplete = useCallback(() => {

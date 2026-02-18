@@ -45,7 +45,7 @@ export function CitationSection() {
   }, [])
 
   const bgSrc = mounted && resolvedTheme === 'dark'
-    ? '/images/BG-dark-green.jpeg'
+    ? '/images/bg-green.jpeg'
     : '/images/dash-BGimg.jpeg'
 
   const isDark = mounted && resolvedTheme === 'dark'
@@ -72,7 +72,7 @@ export function CitationSection() {
             variants={textItemVariants}
             className="text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal tracking-tight text-text-heading mb-4"
           >
-           Own Your Brand&apos;s Presence Across <br className="hidden sm:block" />AI Platforms
+           Track Your Brand&apos;s Visibility Across <br className="hidden sm:block" />the AI Landscape
           </motion.h2>
 
           <motion.p

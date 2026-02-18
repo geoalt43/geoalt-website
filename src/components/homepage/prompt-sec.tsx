@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useTheme } from 'next-themes'
@@ -36,20 +36,12 @@ const imageContainerVariants = {
 export function PromptSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-10% 0px -10% 0px' })
-  const { theme, resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  // Determine which images to show based on theme
-  // Default to dark theme images to prevent hydration mismatch or flash
-  const isLight = mounted && (theme === 'light' || resolvedTheme === 'light')
-  
-  const bgImage = isLight ? '/images/dash-BGimg.jpeg' : '/images/BG-dark-green.jpeg'
-  const innerImage = isLight ? '/images/PromptsLight.png' : '/images/Prompt-dark.png'
+  const innerImageLight = '/images/PromptsLight.png'
+  const innerImageDark = '/images/Prompt-dark.png'
+  const modalImage = resolvedTheme === 'light' ? innerImageLight : innerImageDark
 
   return (
     <section
@@ -82,7 +74,7 @@ export function PromptSection() {
               variants={textItemVariants}
               className="text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-[400] tracking-tight mb-2 text-text-heading"
             >
-             Track Visibility Across Queries
+             Track Visibility Across User Queries
             </motion.h2>
 
             {/* Subheading */}
@@ -104,24 +96,24 @@ export function PromptSection() {
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
               <Image
-                key={bgImage} // Re-render when image changes
-                src={bgImage}
+                src="/images/dash-BGimg.jpeg"
                 alt=""
                 fill
-                className={`object-cover transition-opacity duration-500 ${isLight ? 'opacity-100' : 'opacity-80'}`}
+                className="object-cover opacity-80 transition-opacity duration-500 block dark:hidden"
                 priority={false}
               />
-              {/* Dark mode overlays - hide in light mode */}
-              {!isLight && (
-                <>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent opacity-90" />
-                  <div className="absolute inset-0 bg-black/20" />
-                </>
-              )}
-              {/* Light mode overlays (optional, for readability if needed) */}
-              {isLight && (
-                 <div className="absolute inset-0 bg-white/10" />
-              )}
+              <Image
+                src="/images/bg-green.jpeg"
+                alt=""
+                fill
+                className="object-cover opacity-80 transition-opacity duration-500 hidden dark:block"
+                priority={false}
+              />
+              
+              <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent opacity-40 hidden dark:block" />
+              <div className="absolute inset-0 bg-black/20 hidden dark:block" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-transparent opacity-90 block dark:hidden" />
+              <div className="absolute inset-0 bg-white/10 block dark:hidden" />
             </div>
 
             {/* Content Layer */}
@@ -131,15 +123,25 @@ export function PromptSection() {
                 className="relative w-full h-full group cursor-pointer"
                 onClick={() => setIsModalOpen(true)}
               >
+                {/* Light Theme Inner Image */}
                 <Image
-                  key={innerImage} // Re-render when image changes
-                  src={innerImage}
+                  src="/images/PromptsLight.png"
                   alt="Prompt analytics"
                   fill
-                  className="object-cover object-left-bottom rounded-tl-lg transition-opacity duration-500"
+                  className="object-cover object-left-bottom rounded-tl-lg transition-opacity duration-500 block dark:hidden"
                   quality={100}
                   priority
                 />
+                {/* Dark Theme Inner Image */}
+                <Image
+                  src="/images/Prompt-dark.png"
+                  alt="Prompt analytics"
+                  fill
+                  className="object-cover object-left-bottom rounded-tl-lg transition-opacity duration-500 hidden dark:block"
+                  quality={100}
+                  priority
+                />
+
                 
                 {/* Permanent Overlay */}
                 <div className="absolute inset-0 bg-black/5 rounded-tl-lg" />
@@ -155,7 +157,7 @@ export function PromptSection() {
             <ImageModal 
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
-                src={innerImage}
+                src={modalImage}
                 alt="Prompt analytics"
             />
           </motion.div>

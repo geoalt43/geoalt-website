@@ -49,7 +49,7 @@ export function CreateContentSection() {
     : '/images/content-img-2.png'
 
   const bgSrc = mounted && resolvedTheme === 'dark'
-    ? '/images/BG-blue.jpeg'
+    ? '/images/BG-Greens.jpeg'
     : '/images/dash-BGimg.jpeg'
 
   const isDark = mounted && resolvedTheme === 'dark'
@@ -80,7 +80,7 @@ export function CreateContentSection() {
                 quality={100}
                 priority={false}
               />
-              <div className={`absolute inset-0 bg-gradient-to-t ${isDark ? 'from-[#080808]' : 'from-white/60'} via-transparent to-transparent opacity-90`} />
+              <div className={`absolute inset-0 bg-gradient-to-t ${isDark ? 'from-[#080808]' : 'from-white/60'} via-transparent to-transparent opacity-40`} />
               <div className={`absolute inset-0 ${isDark ? 'bg-black/20' : 'bg-white/10'}`} />
             </div>
 
@@ -147,7 +147,7 @@ export function CreateContentSection() {
               variants={textItemVariants}
               className="text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-[400] tracking-tight mb-2 text-text-heading"
             >
-              Create content that earns citations in AI answers
+              Create AI-optimized content
             </motion.h2>
 
             {/* Subheading */}

@@ -663,7 +663,22 @@ footer h3 {
 
 /* Brand Presence section group - dark mode bg matching pricing cards */
 .dark .brand-presence-section {
-  background-color: var(--color-ref-043) !important;
+  position: relative;
+  z-index: 0;
+}
+
+.dark .brand-presence-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    #090909 0%,
+    #090909 100%
+  );
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 150px, black calc(100% - 150px), transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 150px, black calc(100% - 150px), transparent);
 }
 
 .dark .brand-presence-section > section {

@@ -49,7 +49,7 @@ export function SovSection() {
     : '/images/sov-light.png'
 
   const bgSrc = mounted && resolvedTheme === 'dark'
-    ? '/images/BG-blue.jpeg'
+    ? '/images/BG-Greens.jpeg'
     : '/images/dash-BGimg.jpeg'
 
   const isDark = mounted && resolvedTheme === 'dark'
@@ -80,7 +80,7 @@ export function SovSection() {
                 quality={100}
                 priority={false}
               />
-              <div className={`absolute inset-0 bg-gradient-to-t ${isDark ? 'from-[#080808]' : 'from-white/60'} via-transparent to-transparent opacity-90`} />
+              <div className={`absolute inset-0 bg-gradient-to-t ${isDark ? 'from-[#080808]' : 'from-white/60'} via-transparent to-transparent opacity-40`} />
               <div className={`absolute inset-0 ${isDark ? 'bg-black/20' : 'bg-white/10'}`} />
             </div>
 
@@ -131,7 +131,7 @@ export function SovSection() {
             variants={textContainerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="order-1 lg:order-2 lg:col-span-2 lg:pl-29"
+            className="order-1 lg:order-2 lg:col-span-2 lg:pl-29 pt-5 lg:pt-0"
           >
             {/* Heading */}
             <motion.h2

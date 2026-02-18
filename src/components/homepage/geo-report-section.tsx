@@ -65,8 +65,9 @@ export function GeoReportSection() {
                 untapped opportunities to lead your competition.
               </p>
 
-              {/* Input and Button - Stacked */}
-              <div className="flex flex-col gap-2 sm:gap-2.5 md:gap-3 mb-3 sm:mb-5 w-full sm:max-w-xs">
+
+              {/* Input and Button - Stacked (Desktop) */}
+              <div className="hidden lg:flex flex-col gap-2 sm:gap-2.5 md:gap-3 mb-3 sm:mb-5 w-full sm:max-w-xs">
                 <input
                   type="url"
                   placeholder="Enter your website URL"
@@ -94,6 +95,20 @@ export function GeoReportSection() {
                 quality={100}
               />
             </motion.div>
+
+            {/* Input and Button - Stacked (Mobile) */}
+             <div className="order-3 lg:hidden flex flex-col gap-2 sm:gap-2.5 md:gap-3 p-4 sm:p-5 md:p-6 w-full">
+                <input
+                  type="url"
+                  placeholder="Enter your website URL"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 rounded-full border border-[#333333] text-xs sm:text-sm transition-colors outline-none focus:outline-none hover:border-[#666666] bg-[#1a1a1a] text-white placeholder:text-neutral-500 focus:border-white"
+                />
+                <button
+                  className="w-full px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 ease-in-out border border-[#333333] cursor-pointer bg-white text-black hover:bg-gray-200"
+                >
+                  Analyze My Brand
+                </button>
+              </div>
           </div>
         </motion.div>
 
