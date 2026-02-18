@@ -82,7 +82,7 @@ export function PromptSection() {
               variants={textItemVariants}
               className="text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-[400] tracking-tight mb-2 text-text-heading"
             >
-             Monitor visibility Across User Queries
+             Track Visibility Across Queries
             </motion.h2>
 
             {/* Subheading */}

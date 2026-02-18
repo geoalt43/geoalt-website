@@ -6,20 +6,11 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { triggerSignUpInitiatedEvent } from '@/lib/mixpanel'
 import { ModeToggle } from '@/components/ui/mode-toggle'
-import { useTheme } from 'next-themes'
 
 export function Navbar() {
   const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [mounted, setMounted] = useState(false)
-  const { resolvedTheme } = useTheme()
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const isLightTheme = mounted && resolvedTheme === 'light'
 
   useEffect(() => {
     // On pages other than home, always show the solid background
@@ -138,6 +129,9 @@ export function Navbar() {
     setIsMobileMenuOpen(false)
   }
 
+  // Determine if nav links should have the page-bg pill on homepage before scroll
+  const showNavPill = !isScrolled && pathname === '/'
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       isScrolled 
@@ -155,13 +149,25 @@ export function Navbar() {
               onClick={handleHomeClick}
               className="flex items-center text-lg sm:text-xl md:text-xl font-semibold text-text-primary"
             >
+              {/* Light logo — hidden in dark mode */}
               <Image
-                src={isLightTheme ? '/geoalt-logo/logo-navbar-.svg' : '/geoalt-logo/logo-nav-white.svg'}
+                src="/geoalt-logo/logo-navbar-.svg"
                 alt="GEOAlt logo"
                 width={80}
                 height={20}
                 quality={90}
-                className="h-5 sm:h-6 md:h-6 w-auto"
+                className="h-5 sm:h-6 md:h-6 w-auto block dark:hidden"
+                priority
+                sizes="80px"
+              />
+              {/* Dark logo — hidden in light mode */}
+              <Image
+                src="/geoalt-logo/logo-nav-white.svg"
+                alt="GEOAlt logo"
+                width={80}
+                height={20}
+                quality={90}
+                className="h-5 sm:h-6 md:h-6 w-auto hidden dark:block"
                 priority
                 sizes="80px"
               />
@@ -174,24 +180,16 @@ export function Navbar() {
               href="/"
               onClick={handleHomeClick}
               className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border hover:bg-surface-hover transition-all duration-150 ease-out ${
-                isLightTheme
-                  ? (!isScrolled && pathname === '/' ? 'bg-[var(--color-page-background)]' : 'bg-transparent')
-                  : 'bg-transparent'
-              } ${
-                isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
-              }`}
+                showNavPill ? 'bg-[var(--color-page-background)] dark:bg-transparent' : 'bg-transparent'
+              } text-[var(--color-text-feature)] dark:text-[var(--color-ref-039)]`}
             >
               Home
             </Link>
             <Link
               href="/pricing"
               className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border hover:bg-surface-hover transition-all duration-150 ease-out ${
-                isLightTheme
-                  ? (!isScrolled && pathname === '/' ? 'bg-[var(--color-page-background)]' : 'bg-transparent')
-                  : 'bg-transparent'
-              } ${
-                isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
-              }`}
+                showNavPill ? 'bg-[var(--color-page-background)] dark:bg-transparent' : 'bg-transparent'
+              } text-[var(--color-text-feature)] dark:text-[var(--color-ref-039)]`}
             >
               Pricing
             </Link>
@@ -199,24 +197,16 @@ export function Navbar() {
               href="/#features"
               onClick={handleFeaturesClick}
               className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border hover:bg-surface-hover transition-all duration-150 ease-out ${
-                isLightTheme
-                  ? (!isScrolled && pathname === '/' ? 'bg-[var(--color-page-background)]' : 'bg-transparent')
-                  : 'bg-transparent'
-              } ${
-                isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
-              }`}
+                showNavPill ? 'bg-[var(--color-page-background)] dark:bg-transparent' : 'bg-transparent'
+              } text-[var(--color-text-feature)] dark:text-[var(--color-ref-039)]`}
             >
               Features
             </Link>
             <Link
               href="/blog"
               className={`px-4 py-2 text-sm font-medium rounded-full border border-transparent hover:border-border hover:bg-surface-hover transition-all duration-150 ease-out ${
-                isLightTheme
-                  ? (!isScrolled && pathname === '/' ? 'bg-[var(--color-page-background)]' : 'bg-transparent')
-                  : 'bg-transparent'
-              } ${
-                isLightTheme ? 'text-[var(--color-text-feature)] hover:text-[var(--color-text-feature)]' : 'text-[var(--color-ref-039)]'
-              }`}
+                showNavPill ? 'bg-[var(--color-page-background)] dark:bg-transparent' : 'bg-transparent'
+              } text-[var(--color-text-feature)] dark:text-[var(--color-ref-039)]`}
             >
               Blog
             </Link>
@@ -225,9 +215,7 @@ export function Navbar() {
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center space-x-3 md:space-x-3.5 lg:space-x-4 flex-shrink-0 z-10">
             <ModeToggle className={
-              isLightTheme
-                ? (!isScrolled && pathname === '/' ? 'bg-[var(--color-page-background)]' : 'bg-transparent')
-                : 'bg-transparent'
+              showNavPill ? 'bg-[var(--color-page-background)] dark:bg-transparent' : 'bg-transparent'
             } />
             <a
               href="https://app.geoalt.in/login"
@@ -235,9 +223,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               onClick={() => triggerSignUpInitiatedEvent("navbar-sign-in")}
               className={`navbar-sign-in hover:opacity-80 px-3 md:px-3.5 lg:px-3.5 py-1.5 text-sm font-normal tracking-wide transition-all duration-150 whitespace-nowrap cursor-pointer rounded-full border border-border text-text-primary ${
-                isLightTheme
-                  ? (!isScrolled && pathname === '/' ? 'bg-[var(--color-page-background)]' : 'bg-transparent')
-                  : 'bg-transparent'
+                showNavPill ? 'bg-[var(--color-page-background)] dark:bg-transparent' : 'bg-transparent'
               }`}
             >
               Sign in
@@ -288,7 +274,7 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className={`md:hidden fixed top-14 sm:top-16 left-0 right-0 w-full border-t border-border dark:border-[#242424] py-6 px-6 sm:px-8 z-[100] ${isLightTheme ? 'bg-[#F2F2F2]' : 'bg-[#111111]'}`}>
+          <div className="md:hidden fixed top-14 sm:top-16 left-0 right-0 w-full border-t border-border dark:border-[#242424] py-6 px-6 sm:px-8 z-[100] bg-[#F2F2F2] dark:bg-[#111111]">
             <div className="w-full mx-auto">
               <div className="flex flex-col w-full">
                 
@@ -297,11 +283,7 @@ export function Navbar() {
                   <Link
                     href="/"
                     onClick={handleHomeClick}
-                    className={`flex items-center gap-3 py-3 text-sm sm:text-base font-normal transition-all duration-200 ease-out cursor-pointer group w-full ${
-                      isLightTheme 
-                        ? 'text-gray-800 hover:text-gray-600' 
-                        : 'text-gray-200 hover:text-white'
-                    }`}
+                    className="flex items-center gap-3 py-3 text-sm sm:text-base font-normal transition-all duration-200 ease-out cursor-pointer group w-full text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-white"
                   >
                     <svg className="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
@@ -312,11 +294,7 @@ export function Navbar() {
                   <Link
                     href="/pricing"
                     onClick={handlePricingClick}
-                    className={`flex items-center gap-3 py-3 text-sm sm:text-base font-normal transition-all duration-200 ease-out cursor-pointer group w-full ${
-                      isLightTheme 
-                        ? 'text-gray-800 hover:text-gray-600' 
-                        : 'text-gray-200 hover:text-white'
-                    }`}
+                    className="flex items-center gap-3 py-3 text-sm sm:text-base font-normal transition-all duration-200 ease-out cursor-pointer group w-full text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-white"
                   >
                     <svg className="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <circle cx="12" cy="12" r="10" />
@@ -327,11 +305,7 @@ export function Navbar() {
                   <Link
                     href="/#features"
                     onClick={handleFeaturesClick}
-                    className={`flex items-center gap-3 py-3 text-sm sm:text-base font-normal transition-all duration-200 ease-out cursor-pointer group w-full ${
-                      isLightTheme 
-                        ? 'text-gray-800 hover:text-gray-600' 
-                        : 'text-gray-200 hover:text-white'
-                    }`}
+                    className="flex items-center gap-3 py-3 text-sm sm:text-base font-normal transition-all duration-200 ease-out cursor-pointer group w-full text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-white"
                   >
                     <svg className="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
@@ -343,11 +317,7 @@ export function Navbar() {
                   <Link
                     href="/blog"
                     onClick={handleLinkClick}
-                    className={`flex items-center gap-3 py-3 text-sm sm:text-base font-normal transition-all duration-200 ease-out cursor-pointer group w-full ${
-                      isLightTheme 
-                        ? 'text-gray-800 hover:text-gray-600' 
-                        : 'text-gray-200 hover:text-white'
-                    }`}
+                    className="flex items-center gap-3 py-3 text-sm sm:text-base font-normal transition-all duration-200 ease-out cursor-pointer group w-full text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-white"
                   >
                     <svg className="w-5 h-5 opacity-60 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
@@ -367,11 +337,7 @@ export function Navbar() {
                         handleLinkClick()
                         triggerSignUpInitiatedEvent("navbar-sign-in")
                     }}
-                    className={`w-[90%] py-1.5 rounded-full text-center text-sm font-medium transition-colors border ${
-                      isLightTheme
-                        ? 'border-gray-300 text-gray-700 hover:bg-gray-50'
-                        : 'border-gray-700 text-gray-200 hover:bg-white/5'
-                    }`}
+                    className="w-[90%] py-1.5 rounded-full text-center text-sm font-medium transition-colors border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/5"
                   >
                     Sign In
                   </a>
@@ -383,11 +349,7 @@ export function Navbar() {
                         handleLinkClick()
                         triggerSignUpInitiatedEvent("navbar-get-started")
                     }}
-                    className={`w-[90%] py-1.5 rounded-full text-center text-sm font-medium transition-colors ${
-                      isLightTheme
-                        ? 'bg-black text-white hover:bg-gray-800'
-                        : 'bg-white text-black hover:bg-gray-200'
-                    }`}
+                    className="w-[90%] py-1.5 rounded-full text-center text-sm font-medium transition-colors bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200"
                   >
                     Get Started
                   </a>
@@ -400,4 +362,3 @@ export function Navbar() {
     </nav>
   )
 }
-

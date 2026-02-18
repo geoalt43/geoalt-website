@@ -82,7 +82,7 @@ export function DemoSelectModelRegion({
                     alt={model.name}
                     width={14}
                     height={14}
-                    unoptimized
+                    unoptimized={model.icon.endsWith('.svg')}
                     className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${model.iconClass} ${model.iconClass === 'brightness-0' ? 'dark:invert' : ''}`}
                   />
                   <span>{model.name}</span>

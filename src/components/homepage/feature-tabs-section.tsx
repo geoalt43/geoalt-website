@@ -216,7 +216,6 @@ export function FeatureTabsSection() {
                                 alt="Gemini"
                                 width={12}
                                 height={12}
-                                unoptimized
                                 className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5"
                               />
                             </div>

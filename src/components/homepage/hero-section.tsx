@@ -1,91 +1,40 @@
 'use client'
 
 import { AIPlatformRotator } from '@/components/shared/ai-platform-rotator'
-
-import { motion, useInView, useAnimation } from 'framer-motion'
-import { useRef, useEffect, useState } from 'react'
-import { containerVariantsFast, wordVariants, headingContainerVariants, textVariants } from '@/lib/animations/variants'
-import { colorClasses } from '@/constants/colors'
 import { triggerBookDemoEvent, triggerSignUpInitiatedEvent } from '@/lib/mixpanel'
-import { useTheme } from 'next-themes'
-
-const splitText = (text: string) => text.split(' ')
 
 export function HeroSection() {
-  const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-50px' })
-  const controls = useAnimation()
-  const [mounted, setMounted] = useState(false)
-  const { resolvedTheme } = useTheme()
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const isLightTheme = mounted && resolvedTheme === 'light'
-
-  useEffect(() => {
-    if (isInView) {
-      controls.start('visible')
-    }
-  }, [isInView, controls])
-
-  const headingText = 'Get Your Brand Recommended by'
-  const words = splitText(headingText)
   return (
-    <section ref={sectionRef} id="home" className="pt-16 sm:pt-20 lg:pt-24 relative overflow-hidden bg-clip-text text-transparent">
+    <section id="home" className="pt-16 sm:pt-20 lg:pt-24 relative overflow-hidden">
       {/* Subtle Dot Pattern Background */}
       <div className="absolute inset-0 z-0 bg-dot-grid mask-fade-out pointer-events-none" aria-hidden="true" />
-      <motion.div
-        variants={containerVariantsFast}
-        initial="hidden"
-        animate={controls}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
-      >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col items-center text-center mt-4 sm:mt-8">
           <div className="max-w-4xl">
-            <motion.h1
+            {/* Heading — CSS animation, visible from first paint */}
+            <h1
               id="navbar-trigger"
-              variants={headingContainerVariants}
-              initial="hidden"
-              animate={controls}
-              className={`text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal mt-1 sm:mt-0 mb-1 sm:mb-2 md:mb-0 leading-tight tracking-tight ${
-                isLightTheme 
-                  ? 'text-[var(--color-ref-001)]' 
-                  : 'text-white'
-              }`}
+              className="hero-fade-in text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] font-normal mt-1 sm:mt-0 mb-1 sm:mb-2 md:mb-0 leading-tight tracking-tight text-[var(--color-ref-001)] dark:text-white"
             >
-              {words.map((word, index) => (
-                <motion.span
-                  key={index}
-                  variants={wordVariants}
-                  className="inline-block mr-2 sm:mr-3"
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </motion.h1>
+              Get Your Brand Recommended by
+            </h1>
 
-            <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full hero-fade-in" style={{ animationDelay: '0.15s' }}>
               <AIPlatformRotator size="large" centered={true} />
             </div>
 
-            <motion.p
-              variants={textVariants}
-              initial="hidden"
-              animate={controls}
-              className={`text-sm sm:text-base md:text-lg text-center ${isLightTheme ? 'text-[var(--color-ref-001)]' : colorClasses.textDescription} px-4 sm:px-0 mt-1 sm:mt-2 md:mt-0`}
+            <p
+              className="hero-fade-in text-sm sm:text-base md:text-lg text-center text-text-description px-4 sm:px-0 mt-1 sm:mt-2 md:mt-0"
+              style={{ animationDelay: '0.25s' }}
             >
               Geoalt helps your business stand out across AI platforms
-            </motion.p>
-            <motion.p
-              variants={textVariants}
-              initial="hidden"
-              animate={controls}
-              className={`text-xs sm:text-sm md:text-base mb-6 sm:mb-8 pb-2 sm:pb-4 text-center ${isLightTheme ? 'text-[var(--color-text-feature)]' : colorClasses.textDescription} px-4 sm:px-0`}
+            </p>
+            <p
+              className="hero-fade-in text-xs sm:text-sm md:text-base mb-6 sm:mb-8 pb-2 sm:pb-4 text-center text-text-description px-4 sm:px-0"
+              style={{ animationDelay: '0.35s' }}
             >
               <em>— Turning AI visibility into traffic</em>
-            </motion.p>
+            </p>
 
             {/* AEO (Answer Engine Optimization) Definition Block */}
             <div className="sr-only">
@@ -96,16 +45,17 @@ export function HeroSection() {
                 </p>
             </div>
 
-            <div className="flex flex-row gap-3 sm:gap-4 items-center justify-center px-4 sm:px-0">
+            {/* CTA Buttons — visible from first paint */}
+            <div className="hero-fade-in flex flex-row gap-3 sm:gap-4 items-center justify-center px-4 sm:px-0" style={{ animationDelay: '0.4s' }}>
               <a
                 href="https://app.geoalt.in/register"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => triggerSignUpInitiatedEvent('hero-section')}
-                className={`group inline-flex items-center justify-center pl-4 pr-2 py-2 sm:py-3 rounded-full text-[11px] sm:text-sm font-semibold tracking-wide transition-all duration-300 ease-in-out text-center cursor-pointer border border-border ${isLightTheme ? 'bg-[#080808] text-white' : 'bg-white text-black'}`}
+                className="group inline-flex items-center justify-center pl-4 pr-2 py-2 sm:py-3 rounded-full text-[11px] sm:text-sm font-semibold tracking-wide transition-all duration-300 ease-in-out text-center cursor-pointer border border-border bg-[#080808] dark:bg-white text-white dark:text-black"
               >
-                <span className={isLightTheme ? 'text-white' : 'text-black'}>Start Free Trial</span>
-                <div className={`relative flex items-center justify-center w-5 h-5 ml-1.5 overflow-hidden ${isLightTheme ? 'text-white' : 'text-black'}`}>
+                <span className="text-white dark:text-black">Start Free Trial</span>
+                <div className="relative flex items-center justify-center w-5 h-5 ml-1.5 overflow-hidden text-white dark:text-black">
                   {/* Chevron Icon - Default */}
                   <svg 
                     className="absolute transition-all duration-300 transform opacity-100 group-hover:opacity-0 group-hover:translate-x-4" 
@@ -130,12 +80,12 @@ export function HeroSection() {
                 onClick={() => triggerBookDemoEvent('hero-section')}
                 className="group inline-flex items-center justify-center bg-button-bg border border-[#6E6E6E] px-4 py-2 sm:py-3 rounded-full text-[11px] sm:text-sm font-semibold tracking-wide transition-all duration-300 ease-in-out hover:opacity-90 text-center cursor-pointer"
               >
-                <span className={isLightTheme ? 'text-text-heading' : 'text-black'}>Book a Demo</span>
+                <span className="text-text-heading dark:!text-black">Book a Demo</span>
               </a>
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }

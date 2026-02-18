@@ -673,3 +673,19 @@ footer h3 {
 html {
   height: 100%;
 }
+
+/* Hero section entrance animation — CSS only, works from first paint */
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-fade-in {
+  animation: heroFadeIn 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+}

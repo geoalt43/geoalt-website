@@ -41,7 +41,6 @@ export function FeatureText({ text }: FeatureTextProps) {
               alt="Gemini"
               width={18}
               height={18}
-              unoptimized
               className="w-5 h-5 sm:w-[20px] sm:h-[20px]"
             />
           </div>

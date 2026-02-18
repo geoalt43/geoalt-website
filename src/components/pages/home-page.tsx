@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { useTheme } from 'next-themes'
 import dynamic from 'next/dynamic'
 import { containerVariants, headerVariants, cardVariantsSmooth, iconVariantsSmooth } from '@/lib/animations/variants'
 import { useScrollRestoration } from '@/app/hooks/use-scroll-restoration'
@@ -14,19 +13,22 @@ import { Navbar } from '@/components/layout/navbar'
 
 // Below-fold sections - lazy load for faster initial render
 // const FeaturesSection = dynamic(() => import('@/components/homepage/features-section').then(m => ({ default: m.FeaturesSection })))
-const FAQSection = dynamic(() => import('@/components/homepage/faq-section').then(m => ({ default: m.FAQSection })))
-const CTASection = dynamic(() => import('@/components/homepage/cta-section').then(m => ({ default: m.CTASection })))
+const SectionSkeleton = ({ height = 'h-96' }: { height?: string }) => (
+  <div className={`${height} w-full animate-pulse bg-page-background`} />
+)
+const FAQSection = dynamic(() => import('@/components/homepage/faq-section').then(m => ({ default: m.FAQSection })), { loading: () => <SectionSkeleton height="h-[500px]" /> })
+const CTASection = dynamic(() => import('@/components/homepage/cta-section').then(m => ({ default: m.CTASection })), { loading: () => <SectionSkeleton height="h-64" /> })
 // const TestimonialsCarousel = dynamic(() => import('@/components/homepage/testimonials-carousel').then(m => ({ default: m.TestimonialsCarousel })))
-const Footer = dynamic(() => import('@/components/layout/footer').then(m => ({ default: m.Footer })))
-const AISearchMetricsSection = dynamic(() => import('@/components/homepage/ai-search-metrics').then(m => ({ default: m.AISearchMetricsSection })))
-const PricingSection = dynamic(() => import('@/components/homepage/pricing-section').then(m => ({ default: m.PricingSection })))
-const GeoReportSection = dynamic(() => import('@/components/homepage/geo-report-section').then(m => ({ default: m.GeoReportSection })))
-const FeatureTabsSection = dynamic(() => import('@/components/homepage/feature-tabs-section').then(m => ({ default: m.FeatureTabsSection })))
-const VisibilitySection = dynamic(() => import('@/components/homepage/overview-sec').then(m => ({ default: m.VisibilitySection })))
-const CitationSection = dynamic(() => import('@/components/homepage/citation-sec').then(m => ({ default: m.CitationSection })))
-const SovSection = dynamic(() => import('@/components/homepage/sov-sec').then(m => ({ default: m.SovSection })))
-const PromptSection = dynamic(() => import('@/components/homepage/prompt-sec').then(m => ({ default: m.PromptSection })))
-const CreateContentSection = dynamic(() => import('@/components/homepage/create-content-section').then(m => ({ default: m.CreateContentSection })))
+const Footer = dynamic(() => import('@/components/layout/footer').then(m => ({ default: m.Footer })), { loading: () => <SectionSkeleton height="h-48" /> })
+const AISearchMetricsSection = dynamic(() => import('@/components/homepage/ai-search-metrics').then(m => ({ default: m.AISearchMetricsSection })), { loading: () => <SectionSkeleton height="h-[600px]" /> })
+const PricingSection = dynamic(() => import('@/components/homepage/pricing-section').then(m => ({ default: m.PricingSection })), { loading: () => <SectionSkeleton height="h-[700px]" /> })
+const GeoReportSection = dynamic(() => import('@/components/homepage/geo-report-section').then(m => ({ default: m.GeoReportSection })), { loading: () => <SectionSkeleton height="h-96" /> })
+const FeatureTabsSection = dynamic(() => import('@/components/homepage/feature-tabs-section').then(m => ({ default: m.FeatureTabsSection })), { loading: () => <SectionSkeleton height="h-[800px]" /> })
+const VisibilitySection = dynamic(() => import('@/components/homepage/overview-sec').then(m => ({ default: m.VisibilitySection })), { loading: () => <SectionSkeleton height="h-96" /> })
+const CitationSection = dynamic(() => import('@/components/homepage/citation-sec').then(m => ({ default: m.CitationSection })), { loading: () => <SectionSkeleton height="h-96" /> })
+const SovSection = dynamic(() => import('@/components/homepage/sov-sec').then(m => ({ default: m.SovSection })), { loading: () => <SectionSkeleton height="h-96" /> })
+const PromptSection = dynamic(() => import('@/components/homepage/prompt-sec').then(m => ({ default: m.PromptSection })), { loading: () => <SectionSkeleton height="h-96" /> })
+const CreateContentSection = dynamic(() => import('@/components/homepage/create-content-section').then(m => ({ default: m.CreateContentSection })), { loading: () => <SectionSkeleton height="h-96" /> })
 
 interface TrustedBrand {
   label: string;
@@ -221,16 +223,6 @@ function EmpoweringBusinessesSection() {
 function DashboardImageSection() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-50px' })
-  const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const dashboardImage = mounted && resolvedTheme === 'light'
-    ? '/images/Dashboard-light-theme.png'
-    : '/images/Dasboard-dark-theme.png'
 
   return (
     <section ref={sectionRef} className="mt-0 sm:mt-0 md:mt-0 lg:mt-0 pt-6 sm:pt-8 md:pt-10 lg:pt-12 pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh]">
@@ -252,16 +244,27 @@ function DashboardImageSection() {
             />
           </div>
 
-          {/* Dashboard Image */}
+          {/* Dashboard Image — Light theme */}
           <Image
-            src={dashboardImage}
+            src="/images/Dashboard-light-theme.png"
             alt="Geoalt analytics dashboard"
             width={1280}
             height={720}
             priority
             quality={90}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 88vw"
-            className="w-[92%] sm:w-[94%] md:w-[94%] lg:w-[94%] mx-auto h-auto object-contain relative z-10"
+            className="w-[92%] sm:w-[94%] md:w-[94%] lg:w-[94%] mx-auto h-auto object-contain relative z-10 block dark:hidden"
+          />
+          {/* Dashboard Image — Dark theme */}
+          <Image
+            src="/images/Dasboard-dark-theme.png"
+            alt="Geoalt analytics dashboard"
+            width={1280}
+            height={720}
+            priority
+            quality={90}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 88vw"
+            className="w-[92%] sm:w-[94%] md:w-[94%] lg:w-[94%] mx-auto h-auto object-contain relative z-10 hidden dark:block"
           />
         </motion.div>
       </div>
@@ -272,16 +275,8 @@ function DashboardImageSection() {
 export function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const faqRef = useRef<HTMLDivElement>(null)
-  const [mounted, setMounted] = useState(false)
-  const { resolvedTheme } = useTheme()
 
   useScrollRestoration()
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const isLightTheme = mounted && resolvedTheme === 'light'
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
