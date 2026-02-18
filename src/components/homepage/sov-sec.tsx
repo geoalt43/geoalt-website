@@ -45,7 +45,7 @@ export function SovSection() {
   }, [])
 
   const imageSrc = mounted && resolvedTheme === 'dark'
-    ? '/images/sov-dark.png'
+    ? '/images/share-of-voice-1dark.png'
     : '/images/sov-light.png'
 
   const bgSrc = mounted && resolvedTheme === 'dark'
@@ -67,7 +67,7 @@ export function SovSection() {
             variants={imageContainerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className={`order-2 lg:order-1 lg:col-span-3 relative w-full lg:w-[85%] aspect-video overflow-hidden border border-[var(--color-card-border)] rounded-tl-lg rounded-tr-lg rounded-bl-lg ${isDark ? 'bg-[#080808]/50' : 'bg-white'}`}
+            className={`order-2 lg:order-1 lg:col-span-3 relative w-full lg:w-[85%] aspect-video overflow-hidden rounded-tl-lg rounded-tr-lg rounded-bl-lg ${isDark ? 'bg-[#080808]/50' : 'bg-white'}`}
           >
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
@@ -123,23 +123,7 @@ export function SovSection() {
               alt="Share of Voice analytics"
             />
 
-            {/* Floating Citations Rank card — bottom-left overlay */}
-            {/* <motion.div
-              initial={{ opacity: 0, y: 40, x: -20 }}
-              animate={isInView ? { opacity: 1, y: 0, x: 0 } : { opacity: 0, y: 40, x: -20 }}
-              transition={{ duration: 0.7, delay: 0.7, ease: smoothEase }}
-              className="absolute z-20 bottom-[-2%] left-[0%] w-[35%] max-w-[260px] rounded-lg overflow-hidden border border-white/1"
-              style={{ boxShadow: '-1px -1px 16px rgba(255,255,255,0.08), -6px 6px 15px rgba(255,255,255,0.08)' }}
-            >
-              <Image
-                src="/images/sov-ranks.png"
-                alt="Citations rank table"
-                width={640}
-                height={540}
-                className="w-full h-auto block"
-                quality={100}
-              />
-            </motion.div> */}
+         
           </motion.div>
 
           {/* Right Column - Text Content */}

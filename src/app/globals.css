@@ -659,6 +659,15 @@ footer h3 {
   background-color: var(--color-card-bg) !important;
 }
 
+/* Brand Presence section group - dark mode bg matching pricing cards */
+.dark .brand-presence-section {
+  background-color: var(--color-ref-043) !important;
+}
+
+.dark .brand-presence-section > section {
+  background-color: transparent !important;
+}
+
 html {
   height: 100%;
 }

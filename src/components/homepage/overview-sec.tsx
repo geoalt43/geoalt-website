@@ -20,7 +20,7 @@ export function VisibilitySection() {
   }, [])
 
   const imageSrc = mounted && resolvedTheme === 'dark' 
-    ? "/images/visibility-dark_.png" 
+    ? "/images/visibilitys_dark.png" 
     : "/images/Overview-visibility-light.png"
 
   const bgSrc = mounted && resolvedTheme === 'dark'

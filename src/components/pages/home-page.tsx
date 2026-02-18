@@ -410,13 +410,15 @@ export function HomePage() {
 
       <VisibilitySection />
 
-      <CitationSection />
+      <div className="brand-presence-section transition-colors duration-300">
+        <CitationSection />
 
-      <SovSection />
+        <SovSection />
 
-      <PromptSection />
+        <PromptSection />
 
-      <CreateContentSection />
+        <CreateContentSection />
+      </div>
 
       <AISearchMetricsSection />
 

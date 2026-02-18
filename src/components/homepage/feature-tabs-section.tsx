@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
-import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
+import { useScroll, useMotionValueEvent } from 'framer-motion'
 import { useTheme } from 'next-themes'
-import { headingVariants } from '@/lib/animations/variants'
+// import { headingVariants } from '@/lib/animations/variants'
 import { DemoCanvas } from './demo/demo-canvas'
 
 // Constants
@@ -151,10 +151,7 @@ export function FeatureTabsSection() {
         className="sticky top-0 min-h-screen lg:h-screen flex items-start lg:items-center bg-page-background overflow-hidden py-16 sm:py-12 lg:py-0"
       >
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8 relative z-10">
-          <motion.div
-            variants={headingVariants}
-            initial="hidden"
-            animate="visible"
+          <div
             className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-14"
           >
             <h2 className={`text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-2 sm:mb-4 md:mb-6 px-1 text-text-heading`}>
@@ -162,7 +159,7 @@ export function FeatureTabsSection() {
               <span className="block sm:inline lg:block ">
                 unlock actionable insights</span>
             </h2>
-          </motion.div>
+          </div>
 
           <div className="flex flex-col lg:flex-row gap-4 sm:gap-5 lg:gap-12 xl:gap-20 items-stretch h-auto lg:h-[520px]">
             {/* LEFT SIDE: Tabs with Progress Border */}

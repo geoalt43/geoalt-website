@@ -49,7 +49,7 @@ export function PromptSection() {
   const isLight = mounted && (theme === 'light' || resolvedTheme === 'light')
   
   const bgImage = isLight ? '/images/dash-BGimg.jpeg' : '/images/BG-dark-green.jpeg'
-  const innerImage = isLight ? '/images/PromptsLight.png' : '/images/PromptsDark.png'
+  const innerImage = isLight ? '/images/PromptsLight.png' : '/images/Prompt-dark.png'
 
   return (
     <section
@@ -99,7 +99,7 @@ export function PromptSection() {
             variants={imageContainerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="order-2 lg:order-2 lg:col-span-3 relative w-full lg:w-[85%] ml-auto aspect-video overflow-hidden border border-[var(--color-card-border)] bg-[#080808] dark:bg-[#080808]/50 rounded-tl-lg rounded-tr-lg rounded-bl-lg"
+            className="order-2 lg:order-2 lg:col-span-3 relative w-full lg:w-[85%] ml-auto aspect-video overflow-hidden bg-[#080808] dark:bg-[#080808]/50 rounded-tl-lg rounded-tr-lg rounded-bl-lg"
           >
             {/* Background Image */}
             <div className="absolute inset-0 z-0">

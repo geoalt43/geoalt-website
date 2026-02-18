@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback } from 'react'
 import Image from 'next/image'
-import { useVisibilityObserver } from '@/hooks/use-visibility-observer'
+// import { useVisibilityObserver } from '@/hooks/use-visibility-observer'
 import { useDemoController } from '@/hooks/use-demo-controller'
 import { useCompetitorsDemoController } from '@/hooks/use-competitors-demo-controller'
 import { useModelRegionDemoController } from '@/hooks/use-model-region-demo-controller'
@@ -34,7 +34,8 @@ export function DemoCanvas({ activeStep, isLightTheme, tabData, onStepComplete }
   const competitorsContainerRef = useRef<HTMLDivElement>(null)
   const modelRegionContainerRef = useRef<HTMLDivElement>(null)
   const promptStudioContainerRef = useRef<HTMLDivElement>(null)
-  const isVisible = useVisibilityObserver(containerRef, { threshold: 0.5 })
+  // const isVisible = useVisibilityObserver(containerRef, { threshold: 0.5 })
+  const isVisible = true
   const [isDemoActive, setIsDemoActive] = useState(DEMO_MODE)
 
   // 2. Refs for Inputs - Step 0 (Brand)

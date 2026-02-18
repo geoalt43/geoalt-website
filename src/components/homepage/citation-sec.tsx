@@ -51,7 +51,7 @@ export function CitationSection() {
   const isDark = mounted && resolvedTheme === 'dark'
 
   const innerImageSrc = isDark
-    ? '/images/citations-darks.png'
+    ? '/images/1st-citation-dark-.png'
     : '/images/citations_light.png'
 
   return (
@@ -116,7 +116,7 @@ export function CitationSection() {
             variants={imageContainerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className={`order-2 lg:order-2 lg:col-span-3 relative w-full lg:w-[85%] ml-auto aspect-video overflow-hidden border border-[var(--color-card-border)] rounded-tl-lg rounded-tr-lg rounded-bl-lg ${isDark ? 'bg-[#080808]/50' : 'bg-white'}`}
+            className={`order-2 lg:order-2 lg:col-span-3 relative w-full lg:w-[85%] ml-auto aspect-video overflow-hidden rounded-tl-lg rounded-tr-lg rounded-bl-lg ${isDark ? 'bg-[#080808]/50' : 'bg-white'}`}
           >
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
