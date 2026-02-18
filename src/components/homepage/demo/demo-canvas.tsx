@@ -17,7 +17,6 @@ const DEMO_MODE = true
 
 interface DemoCanvasProps {
   activeStep: number
-  isLightTheme: boolean
   tabData: {
     id: string
     title: string
@@ -28,7 +27,7 @@ interface DemoCanvasProps {
   onStepComplete?: () => void
 }
 
-export function DemoCanvas({ activeStep, isLightTheme, tabData, onStepComplete }: DemoCanvasProps) {
+export function DemoCanvas({ activeStep, tabData, onStepComplete }: DemoCanvasProps) {
   // 1. Visibility & Activation
   const containerRef = useRef<HTMLDivElement>(null)
   const competitorsContainerRef = useRef<HTMLDivElement>(null)
@@ -164,7 +163,6 @@ export function DemoCanvas({ activeStep, isLightTheme, tabData, onStepComplete }
               aliasesValue={step0Controller.typingState.aliases}
               activeField={step0Controller.activeField}
               inputRefs={step0InputRefs}
-              isLightTheme={isLightTheme}
               onUserInteraction={handleUserInteraction}
               isDemoActive={isDemoActive}
               isAnimating={isVisible}
@@ -184,7 +182,6 @@ export function DemoCanvas({ activeStep, isLightTheme, tabData, onStepComplete }
               activeField={step1Controller.activeField}
               competitors={step1Controller.competitors}
               inputRefs={step1InputRefs}
-              isLightTheme={isLightTheme}
               isAnimating={isVisible}
             />
           </div>
@@ -203,7 +200,6 @@ export function DemoCanvas({ activeStep, isLightTheme, tabData, onStepComplete }
               selectedRegion={step2Controller.selectedRegion}
               isRegionInputActive={step2Controller.isRegionInputActive}
               hoveredCountry={step2Controller.hoveredCountry}
-              isLightTheme={isLightTheme}
               isAnimating={isVisible}
             />
           </div>
@@ -219,7 +215,6 @@ export function DemoCanvas({ activeStep, isLightTheme, tabData, onStepComplete }
               activeTab={step3Controller.activeTab}
               modifyingPromptIndex={step3Controller.modifyingPromptIndex}
               modifiedPromptText={step3Controller.modifiedPromptText}
-              isLightTheme={isLightTheme}
               isAnimating={isVisible}
             />
           </div>
@@ -227,17 +222,15 @@ export function DemoCanvas({ activeStep, isLightTheme, tabData, onStepComplete }
 
       {/* STEP 4: Static Fallback (if added later) */}
         {activeStep >= 4 && (
-          <div className={`w-full max-w-[95%] sm:max-w-[90%] lg:max-w-[96%] h-fit max-h-full rounded-lg overflow-hidden relative shadow-2xl ${
-            isLightTheme ? 'bg-white' : 'bg-[#121212]'
-          }`}>
+          <div className={`w-full max-w-[95%] sm:max-w-[90%] lg:max-w-[96%] h-fit max-h-full rounded-lg overflow-hidden relative shadow-2xl bg-white dark:bg-[#121212]`}>
              <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-[420px]">
                <Image
-                 src={isLightTheme ? tabData.imageLight : tabData.imageDark}
+                 src={tabData.imageDark}
                  alt={tabData.title}
                  fill
                  className={`object-contain object-top ${
-                   tabData.darkDropShadow && !isLightTheme 
-                     ? 'drop-shadow-[0_0_15px_rgba(0,0,0,0.5)]' 
+                   tabData.darkDropShadow 
+                     ? 'dark:drop-shadow-[0_0_15px_rgba(0,0,0,0.5)]' 
                      : ''
                  }`}
                />

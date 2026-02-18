@@ -19,7 +19,6 @@ interface DemoSelectModelRegionProps {
   selectedRegion: { name: string; flag: string } | null
   isRegionInputActive: boolean
   hoveredCountry: string | null
-  isLightTheme: boolean
   isAnimating: boolean
 }
 
@@ -30,7 +29,6 @@ export function DemoSelectModelRegion({
   selectedRegion,
   isRegionInputActive,
   hoveredCountry,
-  isLightTheme,
   isAnimating,
 }: DemoSelectModelRegionProps) {
 
@@ -43,34 +41,14 @@ export function DemoSelectModelRegion({
     }
   }, [dropdownScrollTop])
 
-  // Theme-aware design tokens (matching other demo cards exactly)
-  const bgClass = isLightTheme ? 'bg-white' : 'bg-black'
-  const textClass = isLightTheme ? 'text-gray-900' : 'text-white'
-  const labelClass = isLightTheme ? 'text-gray-600' : 'text-gray-300'
-  const borderClass = isLightTheme ? 'border-[var(--color-card-border)]' : 'border-[var(--color-card-border)]'
-  const inputBgClass = isLightTheme ? 'bg-white' : 'bg-[var(--color-ref-043)]'
-  const activeBorderClass = isLightTheme ? 'border-gray-500' : 'border-zinc-700'
-
-  // Model button styles
-  const selectedModelClass = isLightTheme
-    ? 'bg-gray-100 border-gray-400 text-gray-900'
-    : 'bg-zinc-800 border-zinc-500 text-white'
-  const unselectedModelClass = isLightTheme
-    ? 'bg-white border-gray-300 text-gray-700 hover:border-gray-400'
-    : 'bg-zinc-900 border-zinc-700 text-zinc-300'
-
-  // Dropdown styles
-  const dropdownBgClass = isLightTheme ? 'bg-white' : 'bg-zinc-900'
-  const dropdownBorderClass = isLightTheme ? 'border-gray-200' : 'border-zinc-700'
-
   return (
     <div
-      className={`w-full h-full p-3 sm:p-4 md:p-6 rounded-2xl shadow-lg ${bgClass} flex flex-col select-none
+      className={`w-full h-full p-3 sm:p-4 md:p-6 rounded-2xl shadow-lg bg-white dark:bg-black flex flex-col select-none
         transition-all duration-700 ease-out
         ${isAnimating ? 'opacity-100' : 'opacity-0'}
       `}
     >
-      <h2 className={`text-base sm:text-lg md:text-2xl font-semibold text-center mt-2 sm:mt-3 md:mt-4 mb-3 sm:mb-4 md:mb-6 ${textClass}`}>
+      <h2 className="text-base sm:text-lg md:text-2xl font-semibold text-center mt-2 sm:mt-3 md:mt-4 mb-3 sm:mb-4 md:mb-6 text-gray-900 dark:text-white">
         Choose AI models & region
       </h2>
 
@@ -78,10 +56,10 @@ export function DemoSelectModelRegion({
 
         {/* AI Models Section */}
         <div className="w-[95%] sm:w-[90%] md:w-[85%]">
-          <label className={`text-xs sm:text-sm font-medium ${labelClass} mb-0.5 sm:mb-1 block`}>
+          <label className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-300 mb-0.5 sm:mb-1 block">
             AI Models
           </label>
-          <p className={`text-[10px] sm:text-xs ${isLightTheme ? 'text-gray-400' : 'text-zinc-500'} mb-2 sm:mb-3`}>
+          <p className="text-[10px] sm:text-xs text-gray-400 dark:text-zinc-500 mb-2 sm:mb-3">
             3 models available in India
           </p>
 
@@ -94,7 +72,9 @@ export function DemoSelectModelRegion({
                   key={model.name}
                   data-model={model.name}
                   className={`inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs border transition-all duration-200 cursor-default select-none
-                    ${isSelected ? selectedModelClass : unselectedModelClass}
+                    ${isSelected 
+                      ? 'bg-gray-100 dark:bg-zinc-800 border-gray-400 dark:border-zinc-500 text-gray-900 dark:text-white' 
+                      : 'bg-white dark:bg-zinc-900 border-gray-300 dark:border-zinc-700 text-gray-700 dark:text-zinc-300 hover:border-gray-400'}
                   `}
                 >
                   <Image
@@ -103,7 +83,7 @@ export function DemoSelectModelRegion({
                     width={14}
                     height={14}
                     unoptimized
-                    className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${model.iconClass} ${!isLightTheme && model.iconClass === 'brightness-0' ? 'invert' : ''}`}
+                    className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${model.iconClass} ${model.iconClass === 'brightness-0' ? 'dark:invert' : ''}`}
                   />
                   <span>{model.name}</span>
                   {isSelected && (
@@ -117,7 +97,7 @@ export function DemoSelectModelRegion({
 
         {/* Region Section */}
         <div className="w-[95%] sm:w-[90%] md:w-[85%] relative">
-          <label className={`text-xs sm:text-sm font-medium ${labelClass} mb-1.5 sm:mb-2 block`}>
+          <label className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-300 mb-1.5 sm:mb-2 block">
             Region
           </label>
 
@@ -125,8 +105,8 @@ export function DemoSelectModelRegion({
           <div
             data-region-input="true"
             className={`w-full px-3 sm:px-4 py-1.5 sm:py-2.5 text-xs sm:text-sm rounded-full border transition-all duration-200 cursor-default select-none flex items-center justify-between
-              ${isRegionInputActive ? activeBorderClass : borderClass}
-              ${inputBgClass} ${textClass}
+              ${isRegionInputActive ? 'border-gray-500 dark:border-zinc-700' : 'border-[var(--color-card-border)]'}
+              bg-white dark:bg-[var(--color-ref-043)] text-gray-900 dark:text-white
             `}
           >
             {selectedRegion ? (
@@ -135,20 +115,17 @@ export function DemoSelectModelRegion({
                 <span>{selectedRegion.name}</span>
               </span>
             ) : (
-              <span className={isLightTheme ? 'text-gray-400' : 'text-zinc-500'}>
+              <span className="text-gray-400 dark:text-zinc-500">
                 Select a region
               </span>
             )}
-            <ChevronDown className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isLightTheme ? 'text-gray-400' : 'text-zinc-500'} transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+            <ChevronDown className={`w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 dark:text-zinc-500 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
           </div>
 
           {/* Dropdown */}
           {isDropdownOpen && (
             <div
-              className={`absolute left-0 right-0 mt-1 rounded-2xl border shadow-lg overflow-hidden z-50
-                ${dropdownBgClass} ${dropdownBorderClass}
-                animate-in fade-in slide-in-from-top-1 duration-200
-              `}
+              className="absolute left-0 right-0 mt-1 rounded-2xl border shadow-lg overflow-hidden z-50 bg-white dark:bg-zinc-900 border-gray-200 dark:border-zinc-700 animate-in fade-in slide-in-from-top-1 duration-200"
             >
               <div
                 ref={dropdownRef}
@@ -156,7 +133,7 @@ export function DemoSelectModelRegion({
                 className="max-h-[100px] sm:max-h-[140px] overflow-y-auto"
                 style={{
                   scrollbarWidth: 'thin',
-                  scrollbarColor: isLightTheme ? '#d1d5db transparent' : '#3f3f46 transparent',
+                  scrollbarColor: 'var(--scrollbar-thumb, #3f3f46) transparent',
                 }}
               >
                 {COUNTRIES.map((country) => (
@@ -165,9 +142,9 @@ export function DemoSelectModelRegion({
                     data-country={country.name}
                     className={`flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm cursor-default select-none transition-colors duration-100
                       ${hoveredCountry === country.name 
-                        ? (isLightTheme ? 'bg-gray-100' : 'bg-zinc-700') 
+                        ? 'bg-gray-100 dark:bg-zinc-700' 
                         : ''}
-                      ${textClass}
+                      text-gray-900 dark:text-white
                     `}
                   >
                     <span className="text-sm sm:text-base shrink-0">{country.flag}</span>
@@ -179,7 +156,7 @@ export function DemoSelectModelRegion({
           )}
 
           {/* Helper text */}
-          <p className={`text-[10px] sm:text-xs mt-1.5 sm:mt-2 ${isLightTheme ? 'text-orange-500' : 'text-orange-400'}`}>
+          <p className="text-[10px] sm:text-xs mt-1.5 sm:mt-2 text-orange-500 dark:text-orange-400">
             Selected region may affect model availability and performance
           </p>
         </div>

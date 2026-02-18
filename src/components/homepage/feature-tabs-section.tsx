@@ -172,13 +172,10 @@ export function FeatureTabsSection() {
                 return (
                   <div
                     key={tab.id}
-                    className={`relative text-left p-3 sm:p-4 rounded-r-lg rounded-l-none transition-all duration-500 border-y border-r border-l-0 ${isLightTheme
-                        ? 'bg-[var(--color-card-bg)] border-[var(--color-card-border)]'
-                        : 'bg-[var(--color-ref-043)] border-[var(--color-card-border)]'
-                      } overflow-hidden`}
+                    className={`relative text-left p-3 sm:p-4 rounded-r-lg rounded-l-none transition-all duration-500 border-y border-r border-l-0 bg-[var(--color-card-bg)] dark:bg-[var(--color-ref-043)] border-[var(--color-card-border)] overflow-hidden`}
                   >
                     {/* Left Progress Border - Fills based on scroll */}
-                    <div className={`absolute left-0 top-0 bottom-0 w-1 z-10 ${isLightTheme ? 'bg-gray-200' : 'bg-white/5'}`} /> {/* Track */}
+                    <div className="absolute left-0 top-0 bottom-0 w-1 z-10 bg-gray-200 dark:bg-white/5" /> {/* Track */}
                     <div
                       className="absolute left-0 top-0 w-1 z-20 transition-all duration-100 ease-linear origin-top bg-green-600"
                       style={{ height: `${Math.min(100, Math.max(0, progress * 100))}%` }}
@@ -186,8 +183,8 @@ export function FeatureTabsSection() {
 
                     <span className="relative z-10 flex flex-col gap-0.5 sm:gap-1 pl-2">
                       <h3 className={`text-sm sm:text-base lg:text-lg font-medium transition-colors duration-500 flex items-center gap-2 ${isCompleted || (isActive && progress > 0.05)
-                          ? isLightTheme ? 'text-black' : 'text-white'
-                          : isLightTheme ? 'text-gray-500' : 'text-zinc-500'
+                          ? 'text-black dark:text-white'
+                          : 'text-gray-500 dark:text-zinc-500'
                         }`}>
                         {tab.title}
                         {tab.id === 'model-region' && (
@@ -238,8 +235,7 @@ export function FeatureTabsSection() {
                           return (
                             <p
                               key={i}
-                              className={`text-xs sm:text-sm leading-relaxed font-light transition-opacity duration-500 ${isLightTheme ? 'text-gray-600' : 'text-gray-400'
-                                } ${isLineVisible ? 'opacity-100' : 'opacity-10'
+                              className={`text-xs sm:text-sm leading-relaxed font-light transition-opacity duration-500 text-gray-600 dark:text-gray-400 ${isLineVisible ? 'opacity-100' : 'opacity-10'
                                 }`}
                             >
                               {line}
@@ -270,7 +266,6 @@ export function FeatureTabsSection() {
               {/* Interactive Demo Canvas Overlay */}
               <DemoCanvas
                 activeStep={activeTab}
-                isLightTheme={isLightTheme}
                 tabData={TABS[activeTab]}
                 onStepComplete={handleStepComplete}
               />

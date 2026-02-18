@@ -325,11 +325,7 @@ export function HomePage() {
                   {trustedBrands.map((brand, index) => (
                     <div
                       key={`${brand.label}-${index}`}
-                      className={`flex items-center justify-center gap-2 sm:gap-3 md:gap-4 py-6 sm:py-8 md:py-10 lg:py-12 px-3 sm:px-8 md:px-12 lg:px-16 xl:px-20 border border-[var(--color-card-border)] transition-colors duration-200 ${index >= 3 ? 'border-t-0' : ''
-                        } ${isLightTheme
-                          ? 'bg-[var(--color-card-bg)]'
-                          : 'bg-[#060606]'
-                        }`}
+                      className={`flex items-center justify-center gap-2 sm:gap-3 md:gap-4 py-6 sm:py-8 md:py-10 lg:py-12 px-3 sm:px-8 md:px-12 lg:px-16 xl:px-20 border border-[var(--color-card-border)] transition-colors duration-200 bg-[var(--color-card-bg)] dark:bg-[#060606] ${index >= 3 ? 'border-t-0' : ''}`}
                     >
                       {brand.fullImage ? (
                         <div className="relative h-8 sm:h-10 md:h-12 lg:h-14 w-20 sm:w-28 md:w-32 lg:w-40 flex-shrink-0">
@@ -338,8 +334,8 @@ export function HomePage() {
                             alt={brand.label}
                             fill
                             className={`object-contain grayscale ${brand.preserveDetail
-                              ? (isLightTheme ? '' : 'invert')
-                              : (isLightTheme ? 'brightness-0' : 'brightness-0 invert')
+                              ? 'dark:invert'
+                              : 'brightness-0 dark:invert'
                               }`}
                             quality={90}
                             sizes="(max-width: 640px) 5rem, (max-width: 768px) 7rem, (max-width: 1024px) 8rem, 10rem"
@@ -353,8 +349,8 @@ export function HomePage() {
                               alt={`${brand.label} logo`}
                               fill
                               className={`object-contain grayscale ${brand.preserveDetail
-                                ? (isLightTheme ? '' : 'invert')
-                                : (isLightTheme ? 'brightness-0' : 'brightness-0 invert')
+                                ? 'dark:invert'
+                                : 'brightness-0 dark:invert'
                                 }`}
                               quality={90}
                               sizes="(max-width: 640px) 1.5rem, (max-width: 768px) 2rem, (max-width: 1024px) 2.5rem, 3rem"
@@ -369,26 +365,23 @@ export function HomePage() {
                                 src={brand.textImage}
                                 alt={brand.label}
                                 fill
-                                className={`object-contain grayscale ${isLightTheme ? 'brightness-0' : 'brightness-0 invert'}`}
+                                className="object-contain grayscale brightness-0 dark:invert"
                                 quality={90}
                                 sizes="(max-width: 640px) 3.5rem, (max-width: 768px) 5rem, (max-width: 1024px) 6rem, 8rem"
                               />
                             </div>
                           ) : brand.boldPart && brand.normalPart ? (
-                            <span className={`text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl ${isLightTheme ? 'text-black' : 'text-white'
-                              }`}>
+                            <span className="text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-black dark:text-white">
                               <span className="font-bold">{brand.boldPart}</span>
                               <span className="font-normal">{brand.normalPart}</span>
                             </span>
                           ) : brand.lightWeight ? (
                             <span className={`${brand.smallText ? 'text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl' : 'text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl'
-                              } font-light tracking-wide ${isLightTheme ? 'text-black' : 'text-white'
-                              }`}>
+                              } font-light tracking-wide text-black dark:text-white`}>
                               {brand.displayLabel || brand.label}
                             </span>
                           ) : (
-                            <span className={`text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold ${isLightTheme ? 'text-black' : 'text-white'
-                              }`}>
+                            <span className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-black dark:text-white">
                               {brand.displayLabel || brand.label}
                             </span>
                           )}
