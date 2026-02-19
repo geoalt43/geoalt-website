@@ -1,13 +1,29 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { containerVariantsMedium, headerVariants, cardVariantsSmooth, iconVariantsSmooth } from '@/lib/animations/variants'
+import { useRef, useState, useEffect } from 'react'
 import { colorClasses } from '@/constants/colors'
 
 function FeaturesSection() {
   const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+  const [isInView, setIsInView] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1, rootMargin: '-100px' }
+    )
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+    
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section ref={sectionRef} className="pt-6 sm:pt-8 md:pt-10 lg:pt-12 pb-16 sm:pb-20 md:pb-24 relative overflow-hidden bg-transparent-text bg-clip-text">
@@ -23,56 +39,45 @@ function FeaturesSection() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          variants={containerVariantsMedium}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="mb-8 sm:mb-12 pb-4 sm:pb-6 text-center"
+        <div
+          className={`mb-8 sm:mb-12 pb-4 sm:pb-6 text-center transition-all duration-500 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
         >
-          <motion.h2 
-            variants={headerVariants}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal mb-4 sm:mb-6 text-text-heading"
+          <h2 
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal mb-4 sm:mb-6 text-text-heading transition-all duration-700 ease-out"
+            style={{ transitionDelay: '100ms' }}
           >
             Own your visibility on AI Search
-          </motion.h2>
-          <motion.p 
-            variants={headerVariants}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="text-sm sm:text-base md:text-lg text-text-description max-w-2xl mx-auto leading-relaxed px-4 sm:px-0"
+          </h2>
+          <p 
+            className="text-sm sm:text-base md:text-lg text-text-description max-w-2xl mx-auto leading-relaxed px-4 sm:px-0 transition-all duration-700 ease-out"
+            style={{ transitionDelay: '200ms' }}
           >
             Geoalt offers unparalleled accuracy, real-time insights, <br className="hidden lg:block" />
             and a commitment to data security.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
-        <motion.div
-          variants={containerVariantsMedium}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="grid gap-4 sm:gap-5 lg:gap-8 pt-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        <div
+          className={`grid gap-4 sm:gap-5 lg:gap-8 pt-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 transition-all duration-500 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          style={{ transitionDelay: '300ms' }}
         >
           {/* Accurate Data */}
-          <motion.div
-            variants={cardVariantsSmooth}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)] rounded-lg p-4 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)]"
+          <div
+            className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)] rounded-lg p-4 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-all duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] hover:shadow-lg"
+            style={{ transitionDelay: '400ms' }}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />
             
             <div className="flex items-center gap-2.5 sm:gap-4 mb-3 sm:mb-4 relative z-10">
-              <motion.div
-                variants={iconVariantsSmooth}
-                initial="hidden"
-                animate={isInView ? 'visible' : 'hidden'}
-                transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
+              <div
+                className="transition-all duration-500 ease-out"
               >
                 <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 text-text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 3v18h18" />
                   <path d="M7 13l3-3 4 4 5-6" />
                 </svg>
-              </motion.div>
+              </div>
               <h3 className="text-base sm:text-lg md:text-xl font-medium text-text-heading">Accurate Data</h3>
             </div>
             <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textDescription} relative z-10 pt-1.5 sm:pt-2`}>
@@ -80,29 +85,25 @@ function FeaturesSection() {
               <br className="hidden sm:block" />
               Get reliable metrics that help you make data-driven decisions.
             </p>
-          </motion.div>
+          </div>
 
           {/* Real-time Insights */}
-          <motion.div
-            variants={cardVariantsSmooth}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)] rounded-lg p-4 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)]"
+          <div
+            className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)] rounded-lg p-4 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-all duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] hover:shadow-lg"
+            style={{ transitionDelay: '500ms' }}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />
             
             <div className="flex items-center gap-2.5 sm:gap-4 mb-3 sm:mb-4 relative z-10">
-              <motion.div
-                variants={iconVariantsSmooth}
-                initial="hidden"
-                animate={isInView ? 'visible' : 'hidden'}
-                transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
+              <div
+                className="transition-all duration-500 ease-out"
               >
                 <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 text-text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="10" />
                   <path d="M12 6v6l4 2" />
                 </svg>
-              </motion.div>
+              </div>
               <h3 className="text-base sm:text-lg md:text-xl font-medium text-text-heading">Real-time Insights</h3>
             </div>
             <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textDescription} relative z-10 pt-1.5 sm:pt-2`}>
@@ -110,28 +111,24 @@ function FeaturesSection() {
               <br className="hidden sm:block" />
               Monitor changes as they happen and respond quickly to opportunities.
             </p>
-          </motion.div>
+          </div>
 
           {/* Secure & Reliable */}
-          <motion.div
-            variants={cardVariantsSmooth}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)] rounded-lg p-4 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-colors duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] md:col-span-2 lg:col-span-1"
+          <div
+            className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)] rounded-lg p-4 sm:p-5 md:p-6 lg:p-7 relative overflow-hidden group hover:border-border-hover transition-all duration-300 shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] hover:shadow-lg md:col-span-2 lg:col-span-1"
+            style={{ transitionDelay: '600ms' }}
           >
             {/* Background glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-black/5 dark:from-white/5 to-transparent pointer-events-none" />
             
             <div className="flex items-center gap-2.5 sm:gap-4 mb-3 sm:mb-4 relative z-10">
-              <motion.div
-                variants={iconVariantsSmooth}
-                initial="hidden"
-                animate={isInView ? 'visible' : 'hidden'}
-                transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
+              <div
+                className="transition-all duration-500 ease-out"
               >
                 <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 text-text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 22s8-4 8-10V7l-8-4-8 4v5c0 6 8 10 8 10z" />
                 </svg>
-              </motion.div>
+              </div>
               <h3 className="text-base sm:text-lg md:text-xl font-medium text-text-heading">Secure & Reliable</h3>
             </div>
             <p className={`text-xs sm:text-sm md:text-base ${colorClasses.textDescription} relative z-10 pt-1.5 sm:pt-2`}>
@@ -139,8 +136,8 @@ function FeaturesSection() {
               <br className="hidden sm:block" />
               Your information is protected with enterprise-grade security measures.
             </p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   )

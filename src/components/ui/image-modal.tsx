@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import Image from 'next/image'
 
@@ -15,11 +14,23 @@ interface ImageModalProps {
 
 export function ImageModal({ isOpen, onClose, src, alt }: ImageModalProps) {
   const [mounted, setMounted] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     setMounted(true)
     return () => setMounted(false)
   }, [])
+
+  // Handle visibility for animations
+  useEffect(() => {
+    if (isOpen) {
+      // Small delay to allow animation
+      const timer = setTimeout(() => setIsVisible(true), 10)
+      return () => clearTimeout(timer)
+    } else {
+      setIsVisible(false)
+    }
+  }, [isOpen])
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -45,14 +56,10 @@ export function ImageModal({ isOpen, onClose, src, alt }: ImageModalProps) {
   if (!mounted) return null
 
   return createPortal(
-    <AnimatePresence>
+    <>
       {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-8"
+        <div
+          className={`fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-8 transition-opacity duration-200 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
           onClick={onClose}
         >
           {/* Close button */}
@@ -63,12 +70,8 @@ export function ImageModal({ isOpen, onClose, src, alt }: ImageModalProps) {
             <X className="w-6 h-6" />
           </button>
 
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative max-w-[90vw] max-h-[90vh] w-full h-full flex items-center justify-center p-2"
+          <div
+            className={`relative max-w-[90vw] max-h-[90vh] w-full h-full flex items-center justify-center p-2 transition-all duration-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking image wrapper
           >
              <div className="relative w-full h-full max-w-7xl max-h-[85vh]">
@@ -81,10 +84,10 @@ export function ImageModal({ isOpen, onClose, src, alt }: ImageModalProps) {
                 priority
               />
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       )}
-    </AnimatePresence>,
+    </>,
     document.body
   )
 }

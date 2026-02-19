@@ -1,8 +1,6 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { containerVariants, cardVariantsSmooth } from '@/lib/animations/variants'
 import { FeatureText } from './pricing-section/FeatureText'
 import { triggerBookDemoEvent, triggerStartTrialEvent } from '@/lib/mixpanel'
 import { useTheme } from 'next-themes'
@@ -56,12 +54,28 @@ const pricingPlans = [
 
 function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingPlans[0]; isYearly: boolean; className?: string }) {
   const cardRef = useRef(null)
-  const isInView = useInView(cardRef, { once: true, margin: '-100px' })
+  const [isInView, setIsInView] = useState(false)
   const [mounted, setMounted] = useState(false)
   const { resolvedTheme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
+    
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1, rootMargin: '-100px' }
+    )
+    
+    if (cardRef.current) {
+      observer.observe(cardRef.current)
+    }
+    
+    return () => observer.disconnect()
   }, [])
 
   const isLightTheme = mounted && resolvedTheme === 'light'
@@ -77,33 +91,23 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
   const billingNote = ''
 
   return (
-    <motion.div
+    <div
       ref={cardRef}
-      variants={cardVariantsSmooth}
-      initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
       className={`
         ${isLightTheme ? plan.bgColor : 'bg-[var(--color-ref-043)]'} flex flex-col text-text-primary
-        relative overflow-hidden group transition-colors duration-300
+        relative overflow-hidden group transition-all duration-500 ease-out
         border border-[var(--color-card-border)]
         ${plan.isRecommended ? 'lg:-mt-[3.5rem] rounded-[0.89rem_0.89rem_0.5rem_0.5rem] lg:scale-[1.02]' : 'rounded-lg'}
         ${className}
+        ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
       `}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       {plan.isRecommended && (
         <div className="bg-[var(--color-recommended-bg)] px-4 sm:px-6 md:px-8 lg:px-10 pt-3 sm:pt-4 md:pt-4 pb-4 sm:pb-5 md:pb-5 text-xs sm:text-sm md:text-sm lg:text-base font-medium text-[var(--color-recommended-text)] text-center rounded-t-[18px] flex-shrink-0 relative overflow-hidden -mx-[1px] -mt-[2px] border-t-[2px] border-l border-r border-border border-b-[1px] border-b-[var(--color-recommended-border-bottom)]">
-          <motion.div
-            className="absolute top-0 left-0 bg-gradient-to-r from-transparent via-white/30 to-transparent w-1/2 h-full"
-            animate={{
-              x: ['-100%', '200%'],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
+          <div
+            className="absolute top-0 left-0 bg-gradient-to-r from-transparent via-white/30 to-transparent w-1/2 h-full animate-shimmer"
           />
           <span className="relative z-10">Recommended plan</span>
         </div>
@@ -163,13 +167,13 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
           </a>
         )}
       </div>
-    </motion.div>
+    </div>
   )
 }
 
 export function PricingSection() {
   const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
+  const [isInView, setIsInView] = useState(false)
   const [isYearly, setIsYearly] = useState(true)
   const [isBelow1088, setIsBelow1088] = useState(false)
   const [isBelow680, setIsBelow680] = useState(false)
@@ -190,6 +194,24 @@ export function PricingSection() {
     return () => window.removeEventListener('resize', checkWidth)
   }, [])
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1, rootMargin: '-150px' }
+    )
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+    
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section id="pricing" className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-6 sm:pb-8 md:pb-8 lg:pb-[6vh] xl:pb-[8vh] min-h-[90vh] sm:min-h-[95vh] md:min-h-[100vh] scroll-mt-16 relative overflow-hidden  bg-transparent-text bg-clip-text">
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-grid-pattern-opacity-02" />
@@ -198,13 +220,10 @@ export function PricingSection() {
       <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 md:h-28 lg:h-32 bg-gradient-to-t from-page-background via-page-background/50 to-transparent pointer-events-none z-10" />
 
       <div ref={sectionRef} className="max-w-[1500px] mx-auto px-4 sm:px-6 md:px-10 lg:px-14 relative z-20 pt-12 sm:pt-16 md:pt-20 lg:pt-0">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-          className="text-center mb-0 sm:mb-0 md:mb-0 lg:mb-12 xl:mb-16"
+        <div
+          className={`text-center mb-0 sm:mb-0 md:mb-0 lg:mb-12 xl:mb-16 transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'}`}
         >
-          <h2 className={`text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-2 sm:px-0 md:px-0 text-text-heading`}>Pricing</h2>
+          <h2 className="text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-2 sm:px-0 md:px-0 text-text-heading">Pricing</h2>
 
           {/* Payment Frequency Toggle */}
           <div
@@ -237,13 +256,11 @@ export function PricingSection() {
               Save up to 15% with yearly
             </span>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className={`grid gap-4 sm:gap-6 md:gap-7 lg:gap-8 mt-4 sm:mt-6 md:mt-6 lg:mt-8 xl:mt-10 items-start ${isBelow680 ? 'grid-cols-1' : isBelow1088 ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'}`}
+        <div
+          className={`grid gap-4 sm:gap-6 md:gap-7 lg:gap-8 mt-4 sm:mt-6 md:mt-6 lg:mt-8 xl:mt-10 items-start transition-all duration-500 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} ${isBelow680 ? 'grid-cols-1' : isBelow1088 ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'}`}
+          style={{ transitionDelay: '200ms' }}
         >
           {isBelow680 ? (
             <>
@@ -292,9 +309,8 @@ export function PricingSection() {
               <PricingCard key={plan.name} plan={plan} isYearly={isYearly} />
             ))
           )}
-        </motion.div>
+        </div>
       </div>
     </section>
   )
 }
-

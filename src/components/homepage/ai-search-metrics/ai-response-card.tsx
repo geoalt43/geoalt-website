@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, Mic, ArrowUp } from 'lucide-react'
 import { AIResponseData } from './types'
 import { CompanyName } from './company-name'
@@ -80,22 +79,14 @@ const aiPlatformsLight = [
 
 function FloatingBubble({ icon, alt, left, delay, drift }: { icon: string; alt: string; left: number; delay: number; drift: number }) {
   return (
-    <motion.div
-      className="absolute pointer-events-none"
-      style={{ left: `${left}%`, bottom: 0 }}
-      initial={{ y: 0, opacity: 0, scale: 0.4, x: 0 }}
-      animate={{
-        y: -600,
-        opacity: [0, 0.7, 0.9, 0.7, 0],
-        scale: [0.4, 0.6, 0.8, 0.7, 0.5],
-        x: [0, drift, 0]
-      }}
-      transition={{
-        duration: 12,
-        delay: delay,
-        repeat: Infinity,
-        ease: 'easeOut'
-      }}
+    <div
+      className="absolute pointer-events-none animate-float-up"
+      style={{ 
+        left: `${left}%`, 
+        bottom: 0,
+        animationDelay: `${delay}s`,
+        '--drift': `${drift}px`
+      } as React.CSSProperties}
     >
       <div className="relative">
         <div className="absolute inset-0 bg-white/10 rounded-full blur-md sm:blur-lg"></div>
@@ -108,7 +99,7 @@ function FloatingBubble({ icon, alt, left, delay, drift }: { icon: string; alt: 
           className="relative z-10 w-6 h-6 sm:w-10 sm:h-10"
         />
       </div>
-    </motion.div>
+    </div>
   )
 }
 
@@ -158,11 +149,9 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
       className={`bg-[var(--color-card-bg)] border ${isLightTheme ? 'border-neutral-300' : 'border-transparent'} rounded-lg shadow-2xl shadow-[var(--color-ref-036)] p-2 sm:p-6 lg:p-8 mt-0 relative overflow-hidden h-full`}
     >
       <div className="absolute inset-0 pointer-events-none z-[5] overflow-hidden">
-        <AnimatePresence>
-          {bubbles.map((bubble) => (
-            <FloatingBubble key={bubble.id} {...bubble} />
-          ))}
-        </AnimatePresence>
+        {bubbles.map((bubble) => (
+          <FloatingBubble key={bubble.id} {...bubble} />
+        ))}
       </div>
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/10 to-transparent"></div>
@@ -279,4 +268,3 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
     </div>
   )
 }
-

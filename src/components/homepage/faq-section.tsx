@@ -1,8 +1,6 @@
 'use client'
 
 import { RefObject, useRef, useEffect, useMemo, useState } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { containerVariants } from '@/lib/animations/variants'
 import { colorClasses } from '@/constants/colors'
 import { useTheme } from 'next-themes'
 
@@ -149,7 +147,25 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
   ], [])
 
   const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
+  const [isInView, setIsInView] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1, rootMargin: '-150px' }
+    )
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+    
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     const script = document.createElement('script')
@@ -183,22 +199,17 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
   return (
     <section className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh] bg-transparent-text bg-clip-text">
       <div ref={sectionRef} className="max-w-3xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-          className="text-center mb-8 sm:mb-12 md:mb-14 lg:mb-16"
+        <div
+          className={`text-center mb-8 sm:mb-12 md:mb-14 lg:mb-16 transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'}`}
         >
-          <h2 className={`text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 text-text-heading`}>FAQ</h2>
+          <h2 className="text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 text-text-heading">FAQ</h2>
           <p className="text-sm sm:text-base md:text-lg text-text-description max-w-2xl mx-auto leading-relaxed px-4 sm:px-0 pt-0">Generative Engine Optimization is still <br className="hidden sm:block" /> very new. We&apos;ve got you covered.</p>
-        </motion.div>
+        </div>
         
-        <motion.div
+        <div
           ref={faqRef}
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="space-y-4"
+          className={`space-y-4 transition-all duration-500 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          style={{ transitionDelay: '200ms' }}
         >
           {faqs.map((faq, index) => (
             <FAQCard
@@ -209,7 +220,7 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
               onToggle={() => toggleFaq(index)}
             />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
-import { useScroll, useMotionValueEvent, AnimatePresence, motion } from 'framer-motion'
 import { Check } from 'lucide-react'
 
 // import { headingVariants } from '@/lib/animations/variants'
@@ -62,11 +61,51 @@ export function FeatureTabsSection() {
   const [isNarrow, setIsNarrow] = useState(false)
 
 
-  // Scroll tracking - using the tall scroll container
-  const { scrollYProgress } = useScroll({
-    target: scrollContainerRef,
-    offset: ["start start", "end end"]
-  })
+  // Scroll tracking - using native scroll events instead of framer-motion
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!scrollContainerRef.current) return
+      
+      const container = scrollContainerRef.current
+      const rect = container.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+      const scrollHeight = container.offsetHeight
+      const scrollDistance = scrollHeight - windowHeight
+      
+      // Calculate progress (0 to 1)
+      const scrollTop = -rect.top
+      const progress = Math.max(0, Math.min(1, scrollTop / scrollDistance))
+      
+      // Update active tab based on scroll progress
+      let step = 0
+      if (progress >= 0.75) step = 3
+      else if (progress >= 0.50) step = 2
+      else if (progress >= 0.25) step = 1
+      else step = 0
+
+      setActiveTab(step)
+
+      // Mark steps as completed
+      const newCompleted: number[] = []
+      if (progress >= 0.25) newCompleted.push(0)
+      if (progress >= 0.50) newCompleted.push(1)
+      if (progress >= 0.75) newCompleted.push(2)
+      if (progress >= 0.90) newCompleted.push(3)
+      setCompletedSteps(newCompleted)
+
+      // Update segment progresses
+      const seg1 = Math.min(1, Math.max(0, (progress - 0) / 0.25))
+      const seg2 = Math.min(1, Math.max(0, (progress - 0.25) / 0.25))
+      const seg3 = Math.min(1, Math.max(0, (progress - 0.50) / 0.25))
+      const seg4 = Math.min(1, Math.max(0, (progress - 0.75) / 0.15))
+      setSegmentProgresses([seg1, seg2, seg3, seg4])
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll() // Initial call
+    
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     const checkBreakpoints = () => {
@@ -78,34 +117,6 @@ export function FeatureTabsSection() {
     return () => window.removeEventListener('resize', checkBreakpoints)
   }, [])
 
-  // Update active tab and completed steps based on scroll ONLY
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    // Tighter thresholds to reduce dead scroll space
-    let step = 0
-    if (latest >= 0.75) step = 3
-    else if (latest >= 0.50) step = 2
-    else if (latest >= 0.25) step = 1
-    else step = 0
-
-    setActiveTab(step)
-
-    // Mark steps as completed
-    const newCompleted: number[] = []
-    if (latest >= 0.25) newCompleted.push(0)
-    if (latest >= 0.50) newCompleted.push(1)
-    if (latest >= 0.75) newCompleted.push(2)
-    if (latest >= 0.90) newCompleted.push(3)
-    setCompletedSteps(newCompleted)
-
-    // Update segment progresses
-    const seg1 = Math.min(1, Math.max(0, (latest - 0) / 0.25))
-    const seg2 = Math.min(1, Math.max(0, (latest - 0.25) / 0.25))
-    const seg3 = Math.min(1, Math.max(0, (latest - 0.50) / 0.25))
-    const seg4 = Math.min(1, Math.max(0, (latest - 0.75) / 0.15))
-    setSegmentProgresses([seg1, seg2, seg3, seg4])
-  })
-
-
 
   // Auto-advance mechanism
   const handleStepComplete = useCallback(() => {
@@ -114,7 +125,7 @@ export function FeatureTabsSection() {
     const container = scrollContainerRef.current
     if (!container) return
 
-    // Target progress values based on scrollYProgress logic
+    // Target progress values based on scroll logic
     // 0 -> 1: > 0.25. Aim for 0.30
     // 1 -> 2: > 0.50. Aim for 0.55
     // 2 -> 3: > 0.75. Aim for 0.80
@@ -283,51 +294,32 @@ export function FeatureTabsSection() {
             {isNarrow && (
               <div className="w-full flex flex-col gap-2 max-h-[320px] overflow-y-auto">
                 {/* Visited/Completed Cards - Compact with checkmark */}
-                <AnimatePresence mode="popLayout">
-                  {completedSteps.map((index) => (
-                    <motion.div
-                      key={`visited-${index}`}
-                      layout
-                      initial={{ opacity: 0, y: -8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
-                      transition={{ 
-                        duration: 0.2,
-                        ease: "easeOut"
-                      }}
-                      onClick={() => navigateToStep(index)}
-                      className="relative p-2 sm:p-2.5 rounded-r-lg rounded-l-none border-y border-r border-l-0 bg-[var(--color-card-bg)] dark:bg-[var(--color-ref-043)] border-[var(--color-card-border)] cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 transition-colors duration-150 overflow-hidden group"
-                    >
-                      {/* Left border indicator - completed */}
-                      <div className="absolute left-0 top-0 bottom-0 w-1 z-10 bg-green-600" />
+                {completedSteps.map((index) => (
+                  <div
+                    key={`visited-${index}`}
+                    onClick={() => navigateToStep(index)}
+                    className="relative p-2 sm:p-2.5 rounded-r-lg rounded-l-none border-y border-r border-l-0 bg-[var(--color-card-bg)] dark:bg-[var(--color-ref-043)] border-[var(--color-card-border)] cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-150 overflow-hidden group"
+                  >
+                    {/* Left border indicator - completed */}
+                    <div className="absolute left-0 top-0 bottom-0 w-1 z-10 bg-green-600" />
+                    
+                    <div className="flex items-center justify-between pl-2">
+                      <h3 className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors duration-150">
+                        {TABS[index].title}
+                      </h3>
                       
-                      <div className="flex items-center justify-between pl-2">
-                        <h3 className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors duration-150">
-                          {TABS[index].title}
-                        </h3>
-                        
-                        <div className="flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-green-100 dark:bg-green-900/30 shrink-0">
-                          <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-700 dark:text-green-400" strokeWidth={2.5} />
-                        </div>
+                      <div className="flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-green-100 dark:bg-green-900/30 shrink-0">
+                        <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-700 dark:text-green-400" strokeWidth={2.5} />
                       </div>
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
+                    </div>
+                  </div>
+                ))}
                 
                 {/* Active Card - Full content with progress (only if not completed) */}
                 {!completedSteps.includes(activeTab) && (
-                <AnimatePresence mode="wait">
-                  <motion.div
+                  <div
                     key={activeTab}
-                    layout
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ 
-                      duration: 0.15,
-                      ease: "easeOut"
-                    }}
-                    className="relative text-left p-3 sm:p-4 rounded-r-lg rounded-l-none border-y border-r border-l-0 bg-[var(--color-card-bg)] dark:bg-[var(--color-ref-043)] border-[var(--color-card-border)] overflow-hidden"
+                    className="relative text-left p-3 sm:p-4 rounded-r-lg rounded-l-none border-y border-r border-l-0 bg-[var(--color-card-bg)] dark:bg-[var(--color-ref-043)] border-[var(--color-card-border)] overflow-hidden transition-all duration-150"
                   >
                     {/* Left Progress Border */}
                     <div className="absolute left-0 top-0 bottom-0 w-1 z-10 bg-gray-200 dark:bg-white/5" />
@@ -390,8 +382,7 @@ export function FeatureTabsSection() {
                         })}
                       </div>
                     </span>
-                  </motion.div>
-                </AnimatePresence>
+                  </div>
                 )}
               </div>
             )}
