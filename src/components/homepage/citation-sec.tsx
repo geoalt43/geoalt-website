@@ -2,20 +2,15 @@
 
 import { useRef, useState, useEffect } from 'react'
 import Image from 'next/image'
-import { useTheme } from 'next-themes'
 import { Plus } from 'lucide-react'
 import { ImageModal } from '@/components/ui/image-modal'
 
 export function CitationSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [isInView, setIsInView] = useState(false)
-  const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
-    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -32,16 +27,6 @@ export function CitationSection() {
     
     return () => observer.disconnect()
   }, [])
-
-  const bgSrc = mounted && resolvedTheme === 'dark'
-    ? '/images/bg-green.jpeg'
-    : '/images/dash-BGimg.jpeg'
-
-  const isDark = mounted && resolvedTheme === 'dark'
-
-  const innerImageSrc = isDark
-    ? '/images/1st-citation-dark-.png'
-    : '/images/citations_light.png'
 
   return (
     <section
@@ -98,37 +83,56 @@ export function CitationSection() {
 
           {/* Right Column - Painting Image Container */}
           <div
-            className={`order-2 lg:order-2 relative w-full aspect-video overflow-hidden rounded-lg ${isDark ? 'bg-[#080808]/50' : 'bg-white'}`}
+            className="order-2 lg:order-2 relative w-full aspect-video overflow-hidden rounded-lg bg-white dark:bg-[#080808]/50"
           >
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
+              {/* Light theme background */}
               <Image
-                key={bgSrc}
-                src={bgSrc}
+                src="/images/dash-BGimg.jpeg"
                 alt=""
                 fill
-                className="object-cover opacity-80"
+                className="object-cover opacity-80 block dark:hidden"
                 quality={100}
                 priority={false}
               />
-              <div className={`absolute inset-0 bg-gradient-to-t ${isDark ? 'from-[#080808]' : 'from-white/60'} via-transparent to-transparent opacity-90`} />
-              <div className={`absolute inset-0 ${isDark ? 'bg-black/20' : 'bg-white/10'}`} />
+              {/* Dark theme background */}
+              <Image
+                src="/images/bg-green.jpeg"
+                alt=""
+                fill
+                className="object-cover opacity-80 hidden dark:block"
+                quality={100}
+                priority={false}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/60 dark:from-[#080808] via-transparent to-transparent opacity-90" />
+              <div className="absolute inset-0 bg-white/10 dark:bg-black/20" />
             </div>
 
             {/* Content Layer */}
             <div className="relative z-10 pl-[3%] pt-[0%] pb-0 pr-0 h-full flex flex-col justify-end">
-              {/* Main Image (prompts.png) */}
+              {/* Main Image */}
               <div
                 className="w-full relative group cursor-pointer"
                 onClick={() => setIsModalOpen(true)}
               >
+                {/* Light theme image */}
                 <Image
-                  key={innerImageSrc}
-                  src={innerImageSrc}
+                  src="/images/citations_light.png"
                   alt="Citation analytics"
                   width={1200}
                   height={700}
-                  className="w-full h-auto object-contain rounded-tl-lg rounded-bl-lg"
+                  className="w-full h-auto object-contain rounded-tl-lg rounded-bl-lg block dark:hidden"
+                  quality={100}
+                  priority
+                />
+                {/* Dark theme image */}
+                <Image
+                  src="/images/1st-citation-dark-.png"
+                  alt="Citation analytics"
+                  width={1200}
+                  height={700}
+                  className="w-full h-auto object-contain rounded-tl-lg rounded-bl-lg hidden dark:block"
                   quality={100}
                   priority
                 />
@@ -147,7 +151,7 @@ export function CitationSection() {
             <ImageModal 
               isOpen={isModalOpen}
               onClose={() => setIsModalOpen(false)}
-              src={innerImageSrc}
+              src="/images/1st-citation-dark-.png"
               alt="Citation analytics"
             />
           </div>

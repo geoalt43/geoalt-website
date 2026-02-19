@@ -2,20 +2,15 @@
 
 import { useRef, useState, useEffect } from 'react'
 import Image from 'next/image'
-import { useTheme } from 'next-themes'
 import { Plus } from 'lucide-react'
 import { ImageModal } from '@/components/ui/image-modal'
 
 export function SovSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [isInView, setIsInView] = useState(false)
-  const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
-    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -33,16 +28,6 @@ export function SovSection() {
     return () => observer.disconnect()
   }, [])
 
-  const imageSrc = mounted && resolvedTheme === 'dark'
-    ? '/images/share-of-voice-1dark.png'
-    : '/images/sov-light.png'
-
-  const bgSrc = mounted && resolvedTheme === 'dark'
-    ? '/images/BG-Greens.jpeg'
-    : '/images/dash-BGimg.jpeg'
-
-  const isDark = mounted && resolvedTheme === 'dark'
-
   return (
     <section
       ref={sectionRef}
@@ -53,21 +38,30 @@ export function SovSection() {
 
           {/* Left Column - Painting Image Container */}
           <div
-            className={`order-2 lg:order-1 relative w-full aspect-video overflow-hidden rounded-lg ${isDark ? 'bg-[#080808]/50' : 'bg-white'}`}
+            className="order-2 lg:order-1 relative w-full aspect-video overflow-hidden rounded-lg bg-white dark:bg-[#080808]/50"
           >
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
+              {/* Light theme background */}
               <Image
-                key={bgSrc}
-                src={bgSrc}
+                src="/images/dash-BGimg.jpeg"
                 alt=""
                 fill
-                className="object-cover opacity-80"
+                className="object-cover opacity-80 block dark:hidden"
                 quality={100}
                 priority={false}
               />
-              <div className={`absolute inset-0 bg-gradient-to-t ${isDark ? 'from-[#080808]' : 'from-white/60'} via-transparent to-transparent opacity-40`} />
-              <div className={`absolute inset-0 ${isDark ? 'bg-black/20' : 'bg-white/10'}`} />
+              {/* Dark theme background */}
+              <Image
+                src="/images/BG-Greens.jpeg"
+                alt=""
+                fill
+                className="object-cover opacity-80 hidden dark:block"
+                quality={100}
+                priority={false}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/60 dark:from-[#080808] via-transparent to-transparent opacity-40" />
+              <div className="absolute inset-0 bg-white/10 dark:bg-black/20" />
             </div>
 
             {/* Content Layer - touches left and bottom borders */}
@@ -76,11 +70,21 @@ export function SovSection() {
               onClick={() => setIsModalOpen(true)}
             >
               <div className="relative w-full h-full">
+                {/* Light theme image */}
                 <Image
-                  key={imageSrc}
-                  src={imageSrc}
+                  src="/images/sov-light.png"
                   alt="Share of Voice analytics"
-                  className="object-contain object-left-bottom rounded-tr-lg"
+                  className="object-contain object-left-bottom rounded-tr-lg block dark:hidden"
+                  quality={100}
+                  width={2220}
+                  height={280}
+                  priority
+                />
+                {/* Dark theme image */}
+                <Image
+                  src="/images/share-of-voice-1dark.png"
+                  alt="Share of Voice analytics"
+                  className="object-contain object-left-bottom rounded-tr-lg hidden dark:block"
                   quality={100}
                   width={2220}
                   height={280}
@@ -101,7 +105,7 @@ export function SovSection() {
             <ImageModal 
               isOpen={isModalOpen}
               onClose={() => setIsModalOpen(false)}
-              src={imageSrc}
+              src="/images/share-of-voice-1dark.png"
               alt="Share of Voice analytics"
             />
 

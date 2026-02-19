@@ -1,30 +1,13 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import Image from 'next/image'
-import { useTheme } from 'next-themes'
 import { Plus } from 'lucide-react'
 import { ImageModal } from '@/components/ui/image-modal'
 
 export function CreateContentSection() {
   const sectionRef = useRef<HTMLElement>(null)
-  const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const imageSrc = mounted && resolvedTheme === 'dark'
-    ? '/images/content-img.png'
-    : '/images/content-img-2.png'
-
-  const bgSrc = mounted && resolvedTheme === 'dark'
-    ? '/images/BG-Greens.jpeg'
-    : '/images/dash-BGimg.jpeg'
-
-  const isDark = mounted && resolvedTheme === 'dark'
 
   return (
     <section
@@ -36,21 +19,30 @@ export function CreateContentSection() {
 
           {/* Left Column - Painting Image Container */}
           <div
-            className={`order-2 lg:order-1 relative w-full aspect-video overflow-hidden rounded-lg ${isDark ? 'bg-[#080808]/50' : 'bg-white'}`}
+            className="order-2 lg:order-1 relative w-full aspect-video overflow-hidden rounded-lg bg-white dark:bg-[#080808]/50"
           >
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
+              {/* Light theme background */}
               <Image
-                key={bgSrc}
-                src={bgSrc}
+                src="/images/dash-BGimg.jpeg"
                 alt=""
                 fill
-                className="object-cover opacity-80"
+                className="object-cover opacity-80 block dark:hidden"
                 quality={100}
                 priority={false}
               />
-              <div className={`absolute inset-0 bg-gradient-to-t ${isDark ? 'from-[#080808]' : 'from-white/60'} via-transparent to-transparent opacity-40`} />
-              <div className={`absolute inset-0 ${isDark ? 'bg-black/20' : 'bg-white/10'}`} />
+              {/* Dark theme background */}
+              <Image
+                src="/images/BG-Greens.jpeg"
+                alt=""
+                fill
+                className="object-cover opacity-80 hidden dark:block"
+                quality={100}
+                priority={false}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/60 dark:from-[#080808] via-transparent to-transparent opacity-40" />
+              <div className="absolute inset-0 bg-white/10 dark:bg-black/20" />
             </div>
 
             {/* Content Layer - touches left and bottom borders */}
@@ -59,11 +51,21 @@ export function CreateContentSection() {
               onClick={() => setIsModalOpen(true)}
             >
               <div className="relative w-full h-full">
+                {/* Light theme image */}
                 <Image
-                  key={imageSrc}
-                  src={imageSrc}
+                  src="/images/content-img-2.png"
                   alt="Create Content analytics"
-                  className="object-contain object-left-bottom rounded-tr-lg transition-all duration-700"
+                  className="object-contain object-left-bottom rounded-tr-lg transition-all duration-700 block dark:hidden"
+                  quality={100}
+                  width={2220}
+                  height={280}
+                  priority
+                />
+                {/* Dark theme image */}
+                <Image
+                  src="/images/content-img.png"
+                  alt="Create Content analytics"
+                  className="object-contain object-left-bottom rounded-tr-lg transition-all duration-700 hidden dark:block"
                   quality={100}
                   width={2220}
                   height={280}
@@ -84,7 +86,7 @@ export function CreateContentSection() {
             <ImageModal 
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
-                src={imageSrc}
+                src="/images/content-img.png"
                 alt="Create Content analytics"
             />
           </div>
