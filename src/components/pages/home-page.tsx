@@ -45,7 +45,7 @@ export function HomePage() {
 
       <FeatureTabsSection />
 
-      <VisibilitySection />
+      {/* <VisibilitySection /> */}
 
       <div className="brand-presence-section transition-colors duration-300">
         <CitationSection />
