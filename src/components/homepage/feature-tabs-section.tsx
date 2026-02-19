@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
-import { useScroll, useMotionValueEvent } from 'framer-motion'
+import { useScroll, useMotionValueEvent, AnimatePresence, motion } from 'framer-motion'
+import { Check } from 'lucide-react'
 
 // import { headingVariants } from '@/lib/animations/variants'
 import { DemoCanvas } from './demo/demo-canvas'
@@ -58,6 +59,7 @@ export function FeatureTabsSection() {
   const [completedSteps, setCompletedSteps] = useState<number[]>([])
   const [segmentProgresses, setSegmentProgresses] = useState([0, 0, 0, 0])
   const [isMobile, setIsMobile] = useState(false)
+  const [isNarrow, setIsNarrow] = useState(false)
 
 
   // Scroll tracking - using the tall scroll container
@@ -67,11 +69,13 @@ export function FeatureTabsSection() {
   })
 
   useEffect(() => {
-
-    const checkMobile = () => setIsMobile(window.innerWidth < 1024)
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
+    const checkBreakpoints = () => {
+      setIsMobile(window.innerWidth < 1024)
+      setIsNarrow(window.innerWidth < 1080)
+    }
+    checkBreakpoints()
+    window.addEventListener('resize', checkBreakpoints)
+    return () => window.removeEventListener('resize', checkBreakpoints)
   }, [])
 
   // Update active tab and completed steps based on scroll ONLY
@@ -135,6 +139,30 @@ export function FeatureTabsSection() {
     })
   }, [activeTab])
 
+  // Navigation to specific step (for clicking on visited cards)
+  const navigateToStep = useCallback((stepIndex: number) => {
+    const container = scrollContainerRef.current
+    if (!container) return
+
+    // Calculate target progress for the step
+    // Use midpoint of each segment for better UX
+    const targetProgress = stepIndex === 0 ? 0.125 : 
+                          stepIndex === 1 ? 0.375 : 
+                          stepIndex === 2 ? 0.625 : 
+                          stepIndex === 3 ? 0.875 : 0
+
+    const scrollHeight = container.offsetHeight
+    const windowHeight = window.innerHeight
+    const scrollDistance = scrollHeight - windowHeight
+    const containerTop = container.getBoundingClientRect().top + window.scrollY
+    const targetScrollY = containerTop + (scrollDistance * targetProgress)
+
+    window.scrollTo({
+      top: targetScrollY,
+      behavior: 'smooth'
+    })
+  }, [])
+
   // Scroll container height: smaller on mobile since the layout is stacked
   const scrollHeight = isMobile ? '180vh' : '250vh'
 
@@ -163,33 +191,156 @@ export function FeatureTabsSection() {
 
           <div className="flex flex-col lg:flex-row gap-4 sm:gap-5 lg:gap-12 xl:gap-20 items-stretch h-auto lg:h-[520px]">
             {/* LEFT SIDE: Tabs with Progress Border */}
-            <div className="w-full lg:w-1/3 flex flex-col gap-0 justify-between h-auto lg:h-[520px]">
-              {TABS.map((tab, index) => {
-                const isActive = activeTab === index
-                const isCompleted = completedSteps.includes(index)
-                const progress = segmentProgresses[index]
+            {/* Desktop (>=1080px): Show all 4 cards */}
+            {!isNarrow && (
+              <div className="w-full lg:w-1/3 flex flex-col gap-0 justify-between h-auto lg:h-[520px]">
+                {TABS.map((tab, index) => {
+                  const isActive = activeTab === index
+                  const isCompleted = completedSteps.includes(index)
+                  const progress = segmentProgresses[index]
 
-                return (
-                  <div
-                    key={tab.id}
-                    className={`relative text-left p-3 sm:p-4 rounded-r-lg rounded-l-none transition-all duration-500 border-y border-r border-l-0 bg-[var(--color-card-bg)] dark:bg-[var(--color-ref-043)] border-[var(--color-card-border)] overflow-hidden`}
-                  >
-                    {/* Left Progress Border - Fills based on scroll */}
-                    <div className="absolute left-0 top-0 bottom-0 w-1 z-10 bg-gray-200 dark:bg-white/5" /> {/* Track */}
+                  return (
                     <div
-                      className="absolute left-0 top-0 w-1 z-20 transition-all duration-100 ease-linear origin-top bg-green-600"
-                      style={{ height: `${Math.min(100, Math.max(0, progress * 100))}%` }}
+                      key={tab.id}
+                      className={`relative text-left p-3 sm:p-4 rounded-r-lg rounded-l-none transition-all duration-500 border-y border-r border-l-0 bg-[var(--color-card-bg)] dark:bg-[var(--color-ref-043)] border-[var(--color-card-border)] overflow-hidden`}
+                    >
+                      {/* Left Progress Border - Fills based on scroll */}
+                      <div className="absolute left-0 top-0 bottom-0 w-1 z-10 bg-gray-200 dark:bg-white/5" /> {/* Track */}
+                      <div
+                        className="absolute left-0 top-0 w-1 z-20 transition-all duration-100 ease-linear origin-top bg-green-600"
+                        style={{ height: `${Math.min(100, Math.max(0, progress * 100))}%` }}
+                      />
+
+                      <span className="relative z-10 flex flex-col gap-0.5 sm:gap-1 pl-2">
+                        <h3 className={`text-sm sm:text-base lg:text-lg font-medium transition-colors duration-500 flex items-center gap-2 ${isCompleted || (isActive && progress > 0.05)
+                            ? 'text-black dark:text-white'
+                            : 'text-gray-500 dark:text-zinc-500'
+                          }`}>
+                          {tab.title}
+                          {tab.id === 'model-region' && (
+                            <div className={`flex items-center -space-x-1.5 ml-1 transition-opacity duration-500 ${isCompleted || (isActive && progress > 0.05) ? 'opacity-100' : 'opacity-40'
+                              }`}>
+                              <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-10 shrink-0">
+                                <Image
+                                  src='/ai-icons/openai-light.svg'
+                                  alt="OpenAI"
+                                  width={12}
+                                  height={12}
+                                  unoptimized
+                                  className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 brightness-0"
+                                />
+                              </div>
+                              <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-20 shrink-0 shadow-[-2px_0_4px_rgba(0,0,0,0.15)]">
+                                <Image
+                                  src='/ai-icons/perplexity-light.svg'
+                                  alt="Perplexity"
+                                  width={12}
+                                  height={12}
+                                  unoptimized
+                                  className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 brightness-0"
+                                />
+                              </div>
+                              <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-30 shrink-0 shadow-[-2px_0_4px_rgba(0,0,0,0.15)]">
+                                <Image
+                                  src='/ai-icons/gemini-color.webp'
+                                  alt="Gemini"
+                                  width={12}
+                                  height={12}
+                                  className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5"
+                                />
+                              </div>
+                            </div>
+                          )}
+                        </h3>
+
+                        <div
+                          className="overflow-hidden transition-all duration-500 ease-in-out max-h-20 sm:max-h-24 mt-0.5 sm:mt-1.5"
+                        >
+                          {/* Split description by newline to animate lines separately */}
+                          {tab.description.split('\n').map((line, i) => {
+                            const threshold = i === 0 ? 0.35 : 0.75
+                            const isLineVisible = isCompleted || (isActive && progress > threshold)
+
+                            return (
+                              <p
+                                key={i}
+                                className={`text-xs sm:text-sm leading-relaxed font-light transition-opacity duration-500 text-gray-600 dark:text-gray-400 ${isLineVisible ? 'opacity-100' : 'opacity-10'
+                                  }`}
+                              >
+                                {line}
+                              </p>
+                            )
+                          })}
+                        </div>
+                      </span>
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+
+            {/* Mobile/Tablet (<1080px): Stacking cards with visited history */}
+            {isNarrow && (
+              <div className="w-full flex flex-col gap-2 max-h-[320px] overflow-y-auto">
+                {/* Visited/Completed Cards - Compact with checkmark */}
+                <AnimatePresence mode="popLayout">
+                  {completedSteps.map((index) => (
+                    <motion.div
+                      key={`visited-${index}`}
+                      layout
+                      initial={{ opacity: 0, y: -8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ 
+                        duration: 0.2,
+                        ease: "easeOut"
+                      }}
+                      onClick={() => navigateToStep(index)}
+                      className="relative p-2 sm:p-2.5 rounded-r-lg rounded-l-none border-y border-r border-l-0 bg-[var(--color-card-bg)] dark:bg-[var(--color-ref-043)] border-[var(--color-card-border)] cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 transition-colors duration-150 overflow-hidden group"
+                    >
+                      {/* Left border indicator - completed */}
+                      <div className="absolute left-0 top-0 bottom-0 w-1 z-10 bg-green-600" />
+                      
+                      <div className="flex items-center justify-between pl-2">
+                        <h3 className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors duration-150">
+                          {TABS[index].title}
+                        </h3>
+                        
+                        <div className="flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-green-100 dark:bg-green-900/30 shrink-0">
+                          <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-700 dark:text-green-400" strokeWidth={2.5} />
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+                
+                {/* Active Card - Full content with progress (only if not completed) */}
+                {!completedSteps.includes(activeTab) && (
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeTab}
+                    layout
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ 
+                      duration: 0.15,
+                      ease: "easeOut"
+                    }}
+                    className="relative text-left p-3 sm:p-4 rounded-r-lg rounded-l-none border-y border-r border-l-0 bg-[var(--color-card-bg)] dark:bg-[var(--color-ref-043)] border-[var(--color-card-border)] overflow-hidden"
+                  >
+                    {/* Left Progress Border */}
+                    <div className="absolute left-0 top-0 bottom-0 w-1 z-10 bg-gray-200 dark:bg-white/5" />
+                    <div
+                      className="absolute left-0 top-0 w-1 z-20 bg-green-600 transition-all duration-75"
+                      style={{ height: `${Math.min(100, Math.max(0, segmentProgresses[activeTab] * 100))}%` }}
                     />
 
                     <span className="relative z-10 flex flex-col gap-0.5 sm:gap-1 pl-2">
-                      <h3 className={`text-sm sm:text-base lg:text-lg font-medium transition-colors duration-500 flex items-center gap-2 ${isCompleted || (isActive && progress > 0.05)
-                          ? 'text-black dark:text-white'
-                          : 'text-gray-500 dark:text-zinc-500'
-                        }`}>
-                        {tab.title}
-                        {tab.id === 'model-region' && (
-                          <div className={`flex items-center -space-x-1.5 ml-1 transition-opacity duration-500 ${isCompleted || (isActive && progress > 0.05) ? 'opacity-100' : 'opacity-40'
-                            }`}>
+                      <h3 className="text-sm sm:text-base font-medium text-black dark:text-white flex items-center gap-2">
+                        {TABS[activeTab].title}
+                        {TABS[activeTab].id === 'model-region' && (
+                          <div className="flex items-center -space-x-1.5 ml-1 opacity-100">
                             <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white flex items-center justify-center border border-gray-200 relative z-10 shrink-0">
                               <Image
                                 src='/ai-icons/openai-light.svg'
@@ -223,19 +374,15 @@ export function FeatureTabsSection() {
                         )}
                       </h3>
 
-                      <div
-                        className="overflow-hidden transition-all duration-500 ease-in-out max-h-20 sm:max-h-24 mt-0.5 sm:mt-1.5"
-                      >
-                        {/* Split description by newline to animate lines separately */}
-                        {tab.description.split('\n').map((line, i) => {
+                      <div className="overflow-hidden max-h-20 sm:max-h-24 mt-0.5 sm:mt-1.5">
+                        {TABS[activeTab].description.split('\n').map((line, i) => {
                           const threshold = i === 0 ? 0.35 : 0.75
-                          const isLineVisible = isCompleted || (isActive && progress > threshold)
+                          const isLineVisible = completedSteps.includes(activeTab) || segmentProgresses[activeTab] > threshold
 
                           return (
                             <p
                               key={i}
-                              className={`text-xs sm:text-sm leading-relaxed font-light transition-opacity duration-500 text-gray-600 dark:text-gray-400 ${isLineVisible ? 'opacity-100' : 'opacity-10'
-                                }`}
+                              className={`text-xs sm:text-sm leading-relaxed font-light transition-opacity duration-150 text-gray-600 dark:text-gray-400 ${isLineVisible ? 'opacity-100' : 'opacity-20'}`}
                             >
                               {line}
                             </p>
@@ -243,10 +390,11 @@ export function FeatureTabsSection() {
                         })}
                       </div>
                     </span>
-                  </div>
-                )
-              })}
-            </div>
+                  </motion.div>
+                </AnimatePresence>
+                )}
+              </div>
+            )}
 
             {/* RIGHT SIDE: Dynamic Display */}
             <div className="w-full lg:w-2/3 relative h-[380px] sm:h-[420px] md:h-[460px] lg:h-auto rounded-2xl overflow-hidden border border-[var(--color-card-border)] bg-[#080808]">

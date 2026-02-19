@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 // import { useTheme } from 'next-themes'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
@@ -41,8 +41,19 @@ const insightCards = [
 
 export function AISearchMetricsSection() {
   const [activeType, setActiveType] = useState<InsightType | null>('visibility')
+  const [expandedCard, setExpandedCard] = useState<InsightType | null>('visibility')
+  const [isNarrow, setIsNarrow] = useState(false)
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+
+  useEffect(() => {
+    const checkBreakpoint = () => {
+      setIsNarrow(window.innerWidth < 680)
+    }
+    checkBreakpoint()
+    window.addEventListener('resize', checkBreakpoint)
+    return () => window.removeEventListener('resize', checkBreakpoint)
+  }, [])
 
 
 
@@ -50,7 +61,19 @@ export function AISearchMetricsSection() {
   const currentData = activeType ? aiResponseData[activeType] : aiResponseData.sentiment
 
   const handleCardHover = (cardId: InsightType) => {
-    setActiveType(cardId)
+    if (!isNarrow) {
+      setActiveType(cardId)
+    }
+  }
+
+  const handleCardClick = (cardId: InsightType) => {
+    if (isNarrow) {
+      // Toggle expanded state for mobile
+      setExpandedCard(expandedCard === cardId ? null : cardId)
+      setActiveType(cardId)
+    } else {
+      setActiveType(cardId)
+    }
   }
 
   return (
@@ -73,7 +96,7 @@ export function AISearchMetricsSection() {
         <div className="mt-8 sm:mt-12 md:mt-12 max-w-7xl mx-auto relative">
           <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_2fr] gap-4 sm:gap-5 md:gap-6">
             {/* Left Column - Three stacked cards */}
-            <div className="flex flex-col gap-3 sm:gap-4 md:gap-4 lg:mt-">
+            <div className="flex flex-col gap-3 sm:gap-4 md:gap-4">
               {insightCards.map((card) => (
                 <InsightCard
                   key={card.id}
@@ -81,8 +104,10 @@ export function AISearchMetricsSection() {
                   description={card.description}
                   icon={card.icon}
                   isActive={activeType === card.id}
+                  isExpanded={isNarrow ? expandedCard === card.id : undefined}
+                  isNarrow={isNarrow}
                   onHover={() => handleCardHover(card.id)}
-                  onClick={() => handleCardHover(card.id)}
+                  onClick={() => handleCardClick(card.id)}
                   type={card.id}
                   data={
                     activeType && currentData
@@ -97,27 +122,51 @@ export function AISearchMetricsSection() {
               ))}
             </div>
 
-            {/* Right Column - Bigger AI Response Card */}
-            <div>
+            {/* Right Column - Bigger AI Response Card (hidden on mobile) */}
+            {!isNarrow && (
+              <div>
+                <AnimatePresence mode="wait">
+                  {currentData && activeType && (
+                    <motion.div
+                      key={activeType}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2, ease: 'easeOut' }}
+                      className="h-full"
+                    >
+                      <AIResponseCard
+                        data={currentData}
+                        activeType={activeType}
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            )}
+          </div>
+
+          {/* Mobile: AI Response Card below the cards */}
+          {isNarrow && expandedCard && (
+            <div className="mt-4">
               <AnimatePresence mode="wait">
-                {currentData && activeType && (
+                {currentData && (
                   <motion.div
                     key={activeType}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.4, ease: 'easeInOut' }}
-                    className="h-full"
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
                   >
                     <AIResponseCard
                       data={currentData}
-                      activeType={activeType}
+                      activeType={activeType || 'visibility'}
                     />
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </section>
