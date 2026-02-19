@@ -59,15 +59,15 @@ export function SovSection() {
       ref={sectionRef}
       className="pt-4"
     >
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
 
           {/* Left Column - Painting Image Container */}
           <motion.div
             variants={imageContainerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className={`order-2 lg:order-1 lg:col-span-3 relative w-full lg:w-[85%] aspect-video overflow-hidden rounded-tl-lg rounded-tr-lg rounded-bl-lg ${isDark ? 'bg-[#080808]/50' : 'bg-white'}`}
+            className={`order-2 lg:order-1 relative w-full aspect-video overflow-hidden rounded-lg ${isDark ? 'bg-[#080808]/50' : 'bg-white'}`}
           >
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
@@ -131,12 +131,12 @@ export function SovSection() {
             variants={textContainerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="order-1 lg:order-2 lg:col-span-2 lg:pl-29 pt-5 lg:pt-0"
+            className="order-1 lg:order-2 lg:pl-16 pt-5 lg:pt-0"
           >
             {/* Heading */}
             <motion.h2
               variants={textItemVariants}
-              className="text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-[400] tracking-tight mb-2 text-text-heading "
+              className="text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-light tracking-tight mb-2 text-text-heading "
             >
               Benchmark Your AI Visibility 
             </motion.h2>
@@ -144,7 +144,7 @@ export function SovSection() {
             {/* Subheading */}
             <motion.p
               variants={textItemVariants}
-              className="text-sm sm:text-base md:text-lg text-text-description max-w-md leading-relaxed"
+              className="text-sm sm:text-base md:text-lg text-text-description max-w-md leading-relaxed font-light"
             >
               Gain clear insights into your AI market share and competitive standing over time.
             </motion.p>

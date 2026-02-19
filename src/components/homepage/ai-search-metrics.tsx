@@ -55,7 +55,7 @@ export function AISearchMetricsSection() {
 
   return (
     <section ref={sectionRef} className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh] bg-surface-elevated">
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -71,7 +71,7 @@ export function AISearchMetricsSection() {
         </motion.div>
 
         <div className="mt-8 sm:mt-12 md:mt-12 max-w-7xl mx-auto relative">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2.5fr] gap-4 sm:gap-5 md:gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_2fr] gap-4 sm:gap-5 md:gap-6">
             {/* Left Column - Three stacked cards */}
             <div className="flex flex-col gap-3 sm:gap-4 md:gap-4 lg:mt-">
               {insightCards.map((card) => (

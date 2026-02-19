@@ -48,15 +48,15 @@ export function PromptSection() {
       ref={sectionRef}
       className="pt-4"
     >
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
 
           {/* Left Column - Text Content */}
           <motion.div
             variants={textContainerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="order-1 lg:order-1 lg:col-span-2 "
+            className="order-1 lg:order-1"
           >
             {/* Step Label */}
             <motion.div
@@ -72,18 +72,20 @@ export function PromptSection() {
             {/* Heading */}
             <motion.h2
               variants={textItemVariants}
-              className="text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-[400] tracking-tight mb-2 text-text-heading"
+              className="text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-light tracking-tight mb-2 text-text-heading"
             >
-             Track Visibility Across User Queries
+             Track Visibility Across Queries
             </motion.h2>
 
             {/* Subheading */}
             <motion.p
               variants={textItemVariants}
-              className="text-sm sm:text-base md:text-lg text-text-description max-w-md leading-relaxed"
+              className="text-sm sm:text-base md:text-lg text-text-description max-w-md leading-relaxed font-light"
             >
               Track how your brand performs in answers to real user queries across AI platforms.
             </motion.p>
+            
+
           </motion.div>
 
           {/* Right Column - Painting Image Container */}
@@ -91,7 +93,7 @@ export function PromptSection() {
             variants={imageContainerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="order-2 lg:order-2 lg:col-span-3 relative w-full lg:w-[85%] ml-auto aspect-video overflow-hidden bg-[#080808] dark:bg-[#080808]/50 rounded-tl-lg rounded-tr-lg rounded-bl-lg"
+            className="order-2 lg:order-2 relative w-full aspect-video overflow-hidden bg-[#080808] dark:bg-[#080808]/50 rounded-lg"
           >
             {/* Background Image */}
             <div className="absolute inset-0 z-0">

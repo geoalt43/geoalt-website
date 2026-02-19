@@ -59,7 +59,7 @@ export function CitationSection() {
       ref={sectionRef}
       className="pt-12 sm:pt-16 md:pt-20 lg:pt-[6vh] pb-0"
     >
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
         
         {/* Centered Heading */}
         <motion.div
@@ -75,29 +75,29 @@ export function CitationSection() {
            Track Your Brand&apos;s Visibility Across <br className="hidden sm:block" />the AI Landscape
           </motion.h2>
 
-          <motion.p
+          {/* <motion.p
             variants={textItemVariants}
             className="hidden sm:block text-sm sm:text-base md:text-lg text-text-description max-w-2xl mx-auto leading-relaxed"
           >
             Track mentions, benchmark competitors, monitor prompts, and <br className="hidden sm:block" />create content that earns citations in AI recommendations.
-          </motion.p>
+          </motion.p> */}
         </motion.div>
 
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
 
           {/* Left Column - Text Content */}
           <motion.div
             variants={textContainerVariants}
             initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            className="order-1 lg:order-1 lg:col-span-2"
+            animate={isInView ? 'visible' : 'hidden'} // Fixed: Check isInView directly if needed or keep existing logic
+            className="order-1 lg:order-1"
           >
 
             {/* Heading */}
             <motion.h2
               variants={textItemVariants}
-              className="text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-[400] tracking-tight mb-2 text-text-heading"
+              className="text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-light tracking-tight mb-2 text-text-heading"
             >
              Track Your Brand’s Presence
             </motion.h2>
@@ -105,10 +105,12 @@ export function CitationSection() {
             {/* Subheading */}
             <motion.p
               variants={textItemVariants}
-              className="text-sm sm:text-base md:text-lg text-text-description max-w-md leading-relaxed"
+              className="text-sm sm:text-base md:text-lg text-text-description max-w-md leading-relaxed font-light"
             >
-              We show how your product is increasingly mentioned by AI.
+              Track how your brand performs in answers to real user queries across AI platforms.
             </motion.p>
+            
+
           </motion.div>
 
           {/* Right Column - Painting Image Container */}
@@ -116,7 +118,7 @@ export function CitationSection() {
             variants={imageContainerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className={`order-2 lg:order-2 lg:col-span-3 relative w-full lg:w-[85%] ml-auto aspect-video overflow-hidden rounded-tl-lg rounded-tr-lg rounded-bl-lg ${isDark ? 'bg-[#080808]/50' : 'bg-white'}`}
+            className={`order-2 lg:order-2 relative w-full aspect-video overflow-hidden rounded-lg ${isDark ? 'bg-[#080808]/50' : 'bg-white'}`}
           >
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
