@@ -37,7 +37,7 @@ export function DashboardImageSection() {
             priority
             quality={90}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 88vw"
-            className="w-[92%] sm:w-[94%] md:w-[94%] lg:w-[94%] mx-auto h-auto object-contain relative z-10 block dark:hidden"
+            className="w-[92%] sm:w-[94%] md:w-[94%] lg:w-[94%] mx-auto h-auto object-contain relative z-10 block dark:hidden rounded-lg"
           />
           {/* Dashboard Image — Dark theme */}
           <Image
@@ -48,7 +48,7 @@ export function DashboardImageSection() {
             priority
             quality={90}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 88vw"
-            className="w-[92%] sm:w-[94%] md:w-[94%] lg:w-[94%] mx-auto h-auto object-contain relative z-10 hidden dark:block"
+            className="w-[92%] sm:w-[94%] md:w-[94%] lg:w-[94%] mx-auto h-auto object-contain relative z-10 hidden dark:block rounded-lg"
           />
         </motion.div>
       </div>
