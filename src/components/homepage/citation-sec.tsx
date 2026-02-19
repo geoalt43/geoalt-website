@@ -67,7 +67,7 @@ export function CitationSection() {
               className={`text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-light tracking-tight mb-2 text-text-heading transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-[30px]'}`}
               style={{ transitionDelay: '200ms' }}
             >
-             Track Your Brand's Presence
+             Track Your Brand&apos;s Presence
             </h2>
 
             {/* Subheading */}

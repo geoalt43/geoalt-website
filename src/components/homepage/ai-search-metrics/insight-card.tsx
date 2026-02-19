@@ -51,9 +51,6 @@ export function InsightCard({
   // For mobile: show content when expanded
   const showContent = isNarrow ? isExpanded : isActive
 
-  // For mobile expanded state - show ONLY content, no header
-  const isMobileExpanded = isNarrow && isExpanded
-
   return (
     <motion.div
       onMouseEnter={onHover}
