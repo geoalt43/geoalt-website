@@ -1,4 +1,7 @@
+'use client'
+
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 interface TrustedBrand {
   label: string;
@@ -57,7 +60,13 @@ export function TrustedBySection() {
   return (
     <section className="pt-[45.6px] sm:pt-[60.8px] md:pt-[65px] lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-18 lg:pb-[4vh] xl:pb-[6vh]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
-        <div className="relative overflow-hidden bg-transparent px-0 pt-5 pb-5 sm:px-4 sm:pt-9 sm:pb-9 md:px-8 md:pt-10 md:pb-10 lg:px-10 lg:pt-12 lg:pb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+          className="relative overflow-hidden bg-transparent px-0 pt-5 pb-5 sm:px-4 sm:pt-9 sm:pb-9 md:px-8 md:pt-10 md:pb-10 lg:px-10 lg:pt-12 lg:pb-12"
+        >
           <div className="relative flex flex-col items-center gap-6 sm:gap-8 md:gap-10">
             <p className="text-xl sm:text-2xl md:text-3xl font-light sm:font-normal md:font-normal tracking-wide -mt-6 sm:-mt-8 md:-mt-9 lg:-mt-11 trusted-by-text">
               Trusted by
@@ -130,7 +139,7 @@ export function TrustedBySection() {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )
