@@ -13,7 +13,6 @@ interface DemoAddBrandProps {
     website: RefObject<HTMLInputElement | null>
     aliases: RefObject<HTMLTextAreaElement | null>
   }
-  isLightTheme: boolean
   onUserInteraction: () => void
   isDemoActive: boolean
   isAnimating: boolean
@@ -25,44 +24,26 @@ export function DemoAddBrand({
   aliasesValue,
   activeField,
   inputRefs,
-  isLightTheme,
   isAnimating,
 }: DemoAddBrandProps) {
-  
-  // Theme-aware design tokens
-  // Light theme: standard light colors
-  // Dark theme: pure black and white combination
-  const bgClass = isLightTheme ? 'bg-white' : 'bg-black'
-  const textClass = isLightTheme ? 'text-gray-900' : 'text-white'
-  const labelClass = isLightTheme ? 'text-gray-600' : 'text-gray-300'
-  // Match card border color: var(--color-card-border) - same as left side cards
-  const borderClass = isLightTheme ? 'border-[var(--color-card-border)]' : 'border-[var(--color-card-border)]'
-  // Match left side cards background color
-  const inputBgClass = isLightTheme ? 'bg-white' : 'bg-[var(--color-ref-043)]'
-  const placeholderClass = isLightTheme ? 'placeholder-gray-400' : 'placeholder-zinc-500'
-  // Darker icons
-  const iconClass = isLightTheme ? 'text-gray-600' : 'text-zinc-400'
-  // When clicked: slightly darker/more visible border
-  const activeBorderClass = isLightTheme ? 'border-gray-500' : 'border-zinc-700'
 
   return (
     <div 
-      className={`w-full h-full p-6 rounded-t-lg shadow-lg ${bgClass} flex flex-col select-none
+      className={`w-full h-full p-3 sm:p-4 md:p-6 rounded-2xl shadow-lg bg-white dark:bg-black flex flex-col select-none
         transition-all duration-700 ease-out
-        ${isAnimating ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}
+        ${isAnimating ? 'opacity-100' : 'opacity-0'}
       `}
     >
-      {/* Title with margin-bottom (reduced slightly from mb-16 to mb-12) */}
-      <h2 className={`text-2xl font-semibold text-center mt-4 mb-12 ${isLightTheme ? 'text-gray-900' : 'text-white'}`}>
+      <h2 className="text-base sm:text-lg md:text-2xl font-semibold text-center mt-2 sm:mt-3 md:mt-4 mb-4 sm:mb-8 md:mb-12 text-gray-900 dark:text-white">
         Add your Brand
       </h2>
 
-      <div className="space-y-8 flex flex-col items-center">
+      <div className="space-y-4 sm:space-y-6 md:space-y-8 flex flex-col items-center">
         
         {/* Brand Name Input */}
-        <div className="w-[85%]">
-          <label className={`text-xs font-medium ${labelClass} flex items-center gap-1.5 mb-2`}>
-            <Building2 className={`w-3.5 h-3.5 ${iconClass}`} />
+        <div className="w-[95%] sm:w-[90%] md:w-[85%]">
+          <label className="text-[10px] sm:text-xs font-medium text-gray-600 dark:text-gray-300 flex items-center gap-1 sm:gap-1.5 mb-1 sm:mb-2">
+            <Building2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-gray-600 dark:text-zinc-400" />
             Brand Name <span className="text-red-500">*</span>
           </label>
           <input
@@ -72,9 +53,9 @@ export function DemoAddBrand({
             disabled
             tabIndex={-1}
             placeholder="Enter your company or brand name"
-            className={`w-full px-3 py-2 text-sm rounded-xl border transition-all duration-200 outline-none cursor-default select-none
-              ${activeField === 'brand' ? activeBorderClass : borderClass}
-              ${inputBgClass} ${textClass} ${placeholderClass}
+            className={`w-full px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm rounded-xl border transition-all duration-200 outline-none cursor-default select-none
+              ${activeField === 'brand' ? 'border-gray-500 dark:border-zinc-700' : 'border-[var(--color-card-border)]'}
+              bg-white dark:bg-[var(--color-ref-043)] text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-zinc-500
               pointer-events-none
             `}
             onChange={() => {}}
@@ -82,16 +63,16 @@ export function DemoAddBrand({
         </div>
 
         {/* Website URL Input */}
-        <div className="w-[85%]">
-          <label className={`text-xs font-medium ${labelClass} flex items-center gap-1.5 mb-2`}>
-            <Globe className={`w-3.5 h-3.5 ${iconClass}`} />
+        <div className="w-[95%] sm:w-[90%] md:w-[85%]">
+          <label className="text-[10px] sm:text-xs font-medium text-gray-600 dark:text-gray-300 flex items-center gap-1 sm:gap-1.5 mb-1 sm:mb-2">
+            <Globe className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-gray-600 dark:text-zinc-400" />
             Website URL <span className="text-red-500">*</span>
           </label>
           <div className="relative">
-            <span className={`absolute left-3 top-1/2 -translate-y-1/2 text-sm ${
+            <span className={`absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 text-xs sm:text-sm ${
               websiteValue.length > 0
-                ? textClass
-                : (isLightTheme ? 'text-gray-400' : 'text-gray-500')
+                ? 'text-gray-900 dark:text-white'
+                : 'text-gray-400 dark:text-gray-500'
             }`}>
               https://
             </span>
@@ -102,9 +83,9 @@ export function DemoAddBrand({
               disabled
               tabIndex={-1}
               placeholder="yourcompany.com"
-              className={`w-full pl-[68px] pr-3 py-2 text-sm rounded-xl border transition-all duration-200 outline-none cursor-default select-none
-                ${activeField === 'website' ? activeBorderClass : borderClass}
-                ${inputBgClass} ${textClass} ${placeholderClass}
+              className={`w-full pl-[52px] sm:pl-[68px] pr-2 sm:pr-3 py-1.5 sm:py-2 text-xs sm:text-sm rounded-xl border transition-all duration-200 outline-none cursor-default select-none
+                ${activeField === 'website' ? 'border-gray-500 dark:border-zinc-700' : 'border-[var(--color-card-border)]'}
+                bg-white dark:bg-[var(--color-ref-043)] text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-zinc-500
                 pointer-events-none
               `}
               onChange={() => {}}
@@ -113,10 +94,10 @@ export function DemoAddBrand({
         </div>
 
         {/* Brand Aliases Textarea */}
-        <div className="w-[85%]">
-          <label className={`text-xs font-medium ${labelClass} flex items-center gap-1.5 mb-2`}>
-            <Tag className={`w-3.5 h-3.5 ${iconClass}`} />
-            Brand Aliases <span className={`font-normal ${isLightTheme ? 'text-gray-400' : 'text-gray-500'}`}>(Optional)</span>
+        <div className="w-[95%] sm:w-[90%] md:w-[85%]">
+          <label className="text-[10px] sm:text-xs font-medium text-gray-600 dark:text-gray-300 flex items-center gap-1 sm:gap-1.5 mb-1 sm:mb-2">
+            <Tag className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-gray-600 dark:text-zinc-400" />
+            Brand Aliases <span className="font-normal text-gray-400 dark:text-gray-500">(Optional)</span>
           </label>
           <div className="relative">
             <textarea
@@ -126,14 +107,14 @@ export function DemoAddBrand({
               tabIndex={-1}
               maxLength={200}
               placeholder="Alternative names, nicknames (comma separated)"
-              className={`w-full h-[112px] px-3 py-1.5 text-sm rounded-xl border transition-all duration-200 outline-none resize-none cursor-default select-none
-                ${activeField === 'aliases' ? activeBorderClass : borderClass}
-                ${inputBgClass} ${textClass} ${placeholderClass}
+              className={`w-full h-[60px] sm:h-[80px] md:h-[112px] px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm rounded-xl border transition-all duration-200 outline-none resize-none cursor-default select-none
+                ${activeField === 'aliases' ? 'border-gray-500 dark:border-zinc-700' : 'border-[var(--color-card-border)]'}
+                bg-white dark:bg-[var(--color-ref-043)] text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-zinc-500
                 pointer-events-none
               `}
               onChange={() => {}}
             />
-            <span className={`absolute bottom-2 right-3 text-[10px] ${isLightTheme ? 'text-gray-400' : 'text-gray-500'}`}>
+            <span className="absolute bottom-1 sm:bottom-2 right-2 sm:right-3 text-[8px] sm:text-[10px] text-gray-400 dark:text-gray-500">
               {aliasesValue.length}/200
             </span>
           </div>

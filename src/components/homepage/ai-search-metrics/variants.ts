@@ -32,12 +32,10 @@ export const subtitleVariants = {
   hidden: {
     opacity: 0,
     y: 20,
-    clipPath: 'inset(0 0 100% 0)',
   },
   visible: {
     opacity: 1,
     y: 0,
-    clipPath: 'inset(0 0 0% 0)',
     transition: {
       type: 'spring' as const,
       stiffness: 100,

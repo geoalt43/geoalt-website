@@ -174,14 +174,7 @@ export function PricingSection() {
   const [isBelow1088, setIsBelow1088] = useState(false)
   const [isBelow680, setIsBelow680] = useState(false)
   const [isBetween1080And1350, setIsBetween1080And1350] = useState(false)
-  const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const isLightTheme = mounted && resolvedTheme === 'light'
 
   useEffect(() => {
     const checkWidth = () => {
@@ -211,7 +204,7 @@ export function PricingSection() {
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
           className="text-center mb-0 sm:mb-0 md:mb-0 lg:mb-12 xl:mb-16"
         >
-          <h2 className={`text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light sm:font-normal md:font-normal mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-2 sm:px-0 md:px-0 ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-heading'}`}>Pricing</h2>
+          <h2 className={`text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-2 sm:px-0 md:px-0 text-text-heading`}>Pricing</h2>
 
           {/* Payment Frequency Toggle */}
           <div

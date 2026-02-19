@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Geoalt - Get Your Brand Recommended by AI',
     description: 'Optimize your brand visibility across AI platforms. Turn AI mentions into traffic and customers with Geoalt.',
-    url: 'https://geoalt.com',
+    url: 'https://www.geoalt.in',
     siteName: 'Geoalt',
     images: [
       {

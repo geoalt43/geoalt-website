@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Plus, Mic, ArrowUp } from 'lucide-react'
 import { AIResponseData } from './types'
 import { CompanyName } from './company-name'
 import { useTheme } from 'next-themes'
@@ -103,7 +104,7 @@ function FloatingBubble({ icon, alt, left, delay, drift }: { icon: string; alt: 
           alt={alt}
           width={40}
           height={40}
-          quality={85}
+          quality={100}
           className="relative z-10 w-6 h-6 sm:w-10 sm:h-10"
         />
       </div>
@@ -154,7 +155,7 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
 
   return (
     <div
-      className="bg-[var(--color-card-bg)] border border-transparent rounded-lg shadow-2xl shadow-[var(--color-ref-036)] p-4 sm:p-6 lg:p-8 mt-4 relative overflow-hidden"
+      className={`bg-[var(--color-card-bg)] border ${isLightTheme ? 'border-neutral-300' : 'border-transparent'} rounded-lg shadow-2xl shadow-[var(--color-ref-036)] p-2 sm:p-6 lg:p-8 mt-0 relative overflow-hidden h-full`}
     >
       <div className="absolute inset-0 pointer-events-none z-[5] overflow-hidden">
         <AnimatePresence>
@@ -177,13 +178,12 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
         <div className="absolute top-0 bottom-0 right-0 w-20 bg-gradient-to-l from-[var(--color-card-bg)] to-transparent"></div>
       </div>
       <div className="relative z-20">
-        {/* Question */}
+        {/* Question - Search Input Style */}
         <div className="mb-3 sm:mb-4 md:mb-4">
           <div className="mb-2 sm:mb-2 md:mb-2">
-            {/* Question Text with AI Platform Icons */}
             <div className="flex flex-col items-end">
-              <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-3 pl-0 sm:pl-0 md:pl-0 lg:pl-0 pb-2 sm:pb-3 md:pb-3 justify-end">
-                {/* Icons Container - Left side of question text */}
+              <div className="flex flex-row items-center gap-1 sm:gap-3 md:gap-3 pb-2 sm:pb-3 md:pb-3 justify-end">
+                {/* AI Platform Icons */}
                 <div className="flex flex-row items-center gap-1 sm:gap-2 md:gap-2 flex-shrink-0 -mt-0.5 sm:-mt-1 md:-mt-1">
                   {/* Gemini Icon */}
                   <div className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5">
@@ -204,8 +204,26 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
                   </div>
                 </div>
 
-                {/* Question Text */}
-                <span className="text-text-primary text-xs sm:text-sm md:text-sm min-w-0 leading-tight sm:leading-normal md:leading-normal break-words text-right border border-black/20 dark:border-white/20 rounded-full px-3 sm:px-4 md:px-4 py-2 sm:py-2.5 md:py-2.5">{data.question}</span>
+                {/* Search Input Style Question */}
+                <div className={`flex items-center gap-1.5 sm:gap-2 border ${isLightTheme ? 'border-neutral-300' : 'border-white/15'} rounded-full px-1.5 sm:px-2.5 md:px-3 py-1 sm:py-1.5 md:py-1.5 bg-black/5 dark:bg-white/5`}>
+                  {/* Plus icon - left */}
+                  <div className="flex-shrink-0 text-text-secondary">
+                    <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" strokeWidth={1.5} />
+                  </div>
+
+                  {/* Question Text */}
+                  <span className="text-text-primary text-[11px] sm:text-xs md:text-sm leading-normal">{data.question}</span>
+
+                  {/* Right icons - mic & send */}
+                  <div className="flex items-center gap-1 sm:gap-1.5 flex-shrink-0">
+                    <div className="text-text-secondary">
+                      <Mic className="w-3.5 h-3.5 sm:w-4 sm:h-4" strokeWidth={1.5} />
+                    </div>
+                    <div className="bg-black dark:bg-white rounded-full p-0.5 sm:p-1">
+                      <ArrowUp className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white dark:text-black" strokeWidth={2} />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -223,9 +241,9 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
             return (
               <div
                 key={`${company.name}-${activeType}`}
-                className="rounded-xl px-4 sm:px-6 md:px-6 pt-4 sm:pt-5 md:pt-5 pb-4 sm:pb-5 md:pb-5 text-text-primary relative mb-0"
+                className="rounded-xl px-4 sm:px-6 md:px-6 pt-2 sm:pt-3 md:pt-3 pb-2 sm:pb-3 md:pb-3 text-text-primary relative mb-0"
               >
-                <div className="flex items-center gap-2 sm:gap-3 md:gap-3 mb-2 sm:mb-3 md:mb-3 flex-wrap">
+                <div className="flex items-center gap-2 sm:gap-3 md:gap-3 mb-1">
                   <div className="flex-shrink-0 min-w-0">
                     <CompanyName name={company.name} size="lg" />
                   </div>
