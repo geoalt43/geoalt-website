@@ -1,18 +1,11 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
-// import { useTheme } from 'next-themes'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { InsightCard } from './ai-search-metrics/insight-card'
 import { AIResponseCard } from './ai-search-metrics/ai-response-card'
 import { VisibilityIcon, PositionIcon, SentimentIcon } from './ai-search-metrics/icons'
 import { aiResponseData } from './ai-search-metrics/data'
-import {
-  containerVariants,
-  headerVariants,
-  subtitleVariants,
-} from './ai-search-metrics/variants'
 import type { InsightType } from './ai-search-metrics/types'
 
 const insightCards = [
@@ -41,39 +34,67 @@ const insightCards = [
 
 export function AISearchMetricsSection() {
   const [activeType, setActiveType] = useState<InsightType | null>('visibility')
+  const [expandedCard, setExpandedCard] = useState<InsightType | null>(null)
+  const [isNarrow, setIsNarrow] = useState<boolean | null>(null)
   const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
-
-
+  useEffect(() => {
+    const checkWidth = () => {
+      const narrow = window.innerWidth < 1080
+      setIsNarrow(narrow)
+    }
+    
+    checkWidth()
+    window.addEventListener('resize', checkWidth)
+    return () => window.removeEventListener('resize', checkWidth)
+  }, [])
 
   const currentData = activeType ? aiResponseData[activeType] : aiResponseData.sentiment
 
   const handleCardHover = (cardId: InsightType) => {
-    setActiveType(cardId)
+    const currentlyNarrow = isNarrow !== null ? isNarrow : window.innerWidth < 1080
+    if (!currentlyNarrow) {
+      setActiveType(cardId)
+    }
+  }
+
+  const handleCardClick = (cardId: InsightType) => {
+    console.log('CLICK:', cardId, 'isNarrow:', isNarrow, 'width:', window.innerWidth)
+    // If isNarrow hasn't been determined yet, check current width
+    const currentlyNarrow = isNarrow !== null ? isNarrow : window.innerWidth < 1080
+    console.log('currentlyNarrow:', currentlyNarrow)
+    
+    if (currentlyNarrow) {
+      // Toggle expanded state for narrow screens
+      if (expandedCard === cardId) {
+        console.log('Collapsing:', cardId)
+        setExpandedCard(null)
+      } else {
+        console.log('Expanding:', cardId)
+        setExpandedCard(cardId)
+        setActiveType(cardId)
+      }
+    } else {
+      setActiveType(cardId)
+    }
   }
 
   return (
     <section ref={sectionRef} className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh] bg-surface-elevated">
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-12"
-        >
-          <motion.h2 variants={headerVariants} className={`text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 text-text-heading`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-12">
+          <h2 className="text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 text-text-heading">
             How AI actually sees your brand
-          </motion.h2>
-          <motion.p variants={subtitleVariants} className="text-sm sm:text-base md:text-lg text-text-description max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
+          </h2>
+          <p className="text-sm sm:text-base md:text-lg text-text-description max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
             Understand how AI positions your brand vs competitors,<br className="hidden sm:block" /> highlighting sentiment and gaps.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         <div className="mt-8 sm:mt-12 md:mt-12 max-w-7xl mx-auto relative">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2.5fr] gap-4 sm:gap-5 md:gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_2fr] gap-4 sm:gap-5 md:gap-6">
             {/* Left Column - Three stacked cards */}
-            <div className="flex flex-col gap-3 sm:gap-4 md:gap-4 lg:mt-">
+            <div className="flex flex-col gap-3 sm:gap-4 md:gap-4">
               {insightCards.map((card) => (
                 <InsightCard
                   key={card.id}
@@ -81,8 +102,10 @@ export function AISearchMetricsSection() {
                   description={card.description}
                   icon={card.icon}
                   isActive={activeType === card.id}
+                  isExpanded={isNarrow === true ? expandedCard === card.id : undefined}
+                  isNarrow={isNarrow === true}
                   onHover={() => handleCardHover(card.id)}
-                  onClick={() => handleCardHover(card.id)}
+                  onClick={() => handleCardClick(card.id)}
                   type={card.id}
                   data={
                     activeType && currentData
@@ -97,30 +120,42 @@ export function AISearchMetricsSection() {
               ))}
             </div>
 
-            {/* Right Column - Bigger AI Response Card */}
-            <div>
-              <AnimatePresence mode="wait">
+            {/* Right Column - Bigger AI Response Card (hidden on narrow screens) */}
+            {isNarrow === false && (
+              <div>
                 {currentData && activeType && (
-                  <motion.div
+                  <div
                     key={activeType}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.4, ease: 'easeInOut' }}
-                    className="h-full"
+                    className="h-full transition-opacity duration-200"
                   >
                     <AIResponseCard
                       data={currentData}
                       activeType={activeType}
                     />
-                  </motion.div>
+                  </div>
                 )}
-              </AnimatePresence>
-            </div>
+              </div>
+            )}
           </div>
+
+          {/* Mobile/Narrow: AI Response Card below the cards */}
+          {isNarrow === true && expandedCard && (
+            <div className="mt-4">
+              {currentData && (
+                <div
+                  key={activeType}
+                  className="transition-all duration-200"
+                >
+                  <AIResponseCard
+                    data={currentData}
+                    activeType={activeType || 'visibility'}
+                  />
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </section>
   )
 }
-

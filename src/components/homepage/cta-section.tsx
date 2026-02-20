@@ -1,7 +1,6 @@
 'use client'
 
 import { DemoCTA } from '@/components/shared/demo-cta'
-import { motion, useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import { AIPlatformRotator } from '@/components/shared/ai-platform-rotator'
 import { colorClasses } from '@/constants/colors'
@@ -9,38 +8,40 @@ import { triggerBookDemoEvent, triggerStartTrialEvent } from '@/lib/mixpanel'
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
 
-const containerVariantsSimple = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut' as const,
-    },
-  },
-}
-
 export function CTASection() {
   const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
+  const [isInView, setIsInView] = useState(false)
   const [mounted, setMounted] = useState(false)
   const { resolvedTheme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
+    
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1, rootMargin: '-150px' }
+    )
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+    
+    return () => observer.disconnect()
   }, [])
 
   const isLightTheme = mounted && resolvedTheme === 'light'
 
   return (
     <section ref={sectionRef} className="pt-4 sm:pt-5 md:pt-6 pb-4 sm:pb-5 md:pb-6 mb-8 sm:mb-12 md:mb-16 lg:mb-20 bg-transparent-text bg-clip-text">
-      <motion.div
-        variants={containerVariantsSimple}
-        initial="hidden"
-        animate={isInView ? 'visible' : 'hidden'}
+      <div
         className={`relative overflow-hidden max-w-6xl mx-4 xl:mx-auto px-4 sm:px-6 md:px-8 pt-4 pb-4 border border-[var(--color-card-border)] rounded-lg ${
           isLightTheme ? 'bg-[#080808]' : 'bg-[var(--color-ref-043)]'
-        }`}
+        } transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
       >
         <div className="absolute inset-0 z-0">
           <Image
@@ -164,7 +165,7 @@ export function CTASection() {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }

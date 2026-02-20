@@ -2,32 +2,31 @@
 
 import { useRef, useState, useEffect } from 'react'
 import Image from 'next/image'
-import { motion, useInView } from 'framer-motion'
-import { useTheme } from 'next-themes'
-import { containerVariants, headerVariants } from '@/lib/animations/variants'
 import { Plus } from 'lucide-react'
 import { ImageModal } from '@/components/ui/image-modal'
 
 export function VisibilitySection() {
   const sectionRef = useRef<HTMLElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-10% 0px -10% 0px' })
-  const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
+  const [isInView, setIsInView] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1, rootMargin: '-10% 0px -10% 0px' }
+    )
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+    
+    return () => observer.disconnect()
   }, [])
-
-  const imageSrc = mounted && resolvedTheme === 'dark' 
-    ? "/images/visibilitys_dark.png" 
-    : "/images/Overview-visibility-light.png"
-
-  const bgSrc = mounted && resolvedTheme === 'dark'
-    ? '/images/bg-green.jpeg'
-    : '/images/dash-BGimg.jpeg'
-
-  const isDark = mounted && resolvedTheme === 'dark'
 
   return (
     <section 
@@ -37,68 +36,80 @@ export function VisibilitySection() {
       <div className="max-w-8xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
         
          {/* Text Outside - Above the Image Container */}
-         <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            className="text-center mb-8 sm:mb-12 md:mb-16"
+         <div
+            className={`text-center mb-8 sm:mb-12 md:mb-16 transition-all duration-500 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
          >
               {/* Heading */}
-              <motion.h2 
-                variants={headerVariants}
-                className="text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal tracking-tight mb-1 sm:mb-2 text-text-heading max-w-4xl mx-auto"
+              <h2 
+                className={`text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal tracking-tight mb-1 sm:mb-2 text-text-heading max-w-4xl mx-auto transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                style={{ transitionDelay: '100ms' }}
               >
                 Track Your Brand&apos;s Visibility Across<br className="hidden sm:block" /> the AI Landscape
-              </motion.h2>
+              </h2>
 
               {/* Subheading - constrained width for natural taper */}
-              <motion.p 
-                variants={headerVariants}
-                className="text-sm sm:text-base md:text-lg text-text-description max-w-md mx-auto leading-relaxed"
+              <p 
+                className={`text-sm sm:text-base md:text-lg text-text-description max-w-md mx-auto leading-relaxed transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                style={{ transitionDelay: '200ms' }}
               >
                 Measure visibility, benchmark competitors, <br className="hidden max-[435px]:block" /> and identify competitive gaps.
-              </motion.p>
-         </motion.div>
+              </p>
+         </div>
 
         {/* Painting Container - Just for the Image */}
-        <motion.div
-           variants={containerVariants}
-           initial="hidden"
-           animate={isInView ? 'visible' : 'hidden'}
-           className="relative w-full max-w-6xl mx-auto rounded-2xl overflow-hidden border border-[var(--color-card-border)]"
+        <div
+            className={`relative w-full max-w-6xl mx-auto rounded-2xl overflow-hidden border border-[var(--color-card-border)] transition-all duration-500 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            style={{ transitionDelay: '300ms' }}
         >
-          {/* Background Image */}
-           <div className="absolute inset-0 z-0">
-             <Image
-               key={bgSrc}
-               src={bgSrc}
-               alt=""
-               fill
-               className="object-cover opacity-80"
-               quality={100}
-               priority={false}
-             />
-             <div className={`absolute inset-0 bg-gradient-to-t ${isDark ? 'from-[#080808]' : 'from-white/60'} via-transparent to-transparent opacity-90`} />
-             <div className={`absolute inset-0 ${isDark ? 'bg-black/20' : 'bg-white/10'}`} />
-           </div>
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0">
+              {/* Light theme background */}
+              <Image
+                src="/images/dash-BGimg.jpeg"
+                alt=""
+                fill
+                className="object-cover opacity-80 block dark:hidden"
+                quality={100}
+                priority={false}
+              />
+              {/* Dark theme background */}
+              <Image
+                src="/images/bg-green.jpeg"
+                alt=""
+                fill
+                className="object-cover opacity-80 hidden dark:block"
+                quality={100}
+                priority={false}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/60 dark:from-[#080808] via-transparent to-transparent opacity-90" />
+              <div className="absolute inset-0 bg-white/10 dark:bg-black/20" />
+            </div>
 
           <div className="relative z-10 flex flex-col items-center text-center px-[3%] pt-[3%] pb-0">
-             
+              
               {/* Main Image */}
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="w-full relative group cursor-pointer"
+              <div
+                className={`w-full relative group cursor-pointer transition-all duration-800 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[40px]'}`}
+                style={{ transitionDelay: '0.4s', transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)' }}
                 onClick={() => setIsModalOpen(true)}
               >
+                {/* Light theme image */}
                 <Image 
-                  key={imageSrc}
-                  src={imageSrc}
+                  src="/images/Overview-visibility-light.png"
                   alt="Overview visibility dashboard"
                   width={1200}
                   height={600}
-                  className="w-full h-auto object-contain drop-shadow-2xl rounded-t-lg"
+                  className="w-full h-auto object-contain drop-shadow-2xl rounded-t-lg block dark:hidden"
+                  quality={100}
+                  priority
+                />
+                {/* Dark theme image */}
+                <Image 
+                  src="/images/visibilitys_dark.png"
+                  alt="Overview visibility dashboard"
+                  width={1200}
+                  height={600}
+                  className="w-full h-auto object-contain drop-shadow-2xl rounded-t-lg hidden dark:block"
                   quality={100}
                   priority
                 />
@@ -109,16 +120,16 @@ export function VisibilitySection() {
                     <Plus className="w-6 h-6 text-white" />
                   </div>
                 </div>
-              </motion.div>
+              </div>
            </div>
            
-           <ImageModal 
-             isOpen={isModalOpen}
-             onClose={() => setIsModalOpen(false)}
-             src={imageSrc}
-             alt="Overview visibility dashboard"
-           />
-        </motion.div>
+            <ImageModal 
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              src="/images/visibilitys_dark.png"
+              alt="Overview visibility dashboard"
+            />
+        </div>
       </div>
     </section>
   )

@@ -1,13 +1,4 @@
-'use client'
-
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { containerVariants, headerVariants, cardVariantsSmooth, iconVariantsSmooth } from '@/lib/animations/variants'
-
 export function EmpoweringBusinessesSection() {
-  const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-150px' })
-
   const features = [
     {
       icon: (
@@ -62,52 +53,30 @@ export function EmpoweringBusinessesSection() {
   ]
 
   return (
-    <section ref={sectionRef} className="empowering-section pt-2 sm:pt-3 md:pt-4 lg:pt-5 pb-6 sm:pb-8 md:pb-10 relative overflow-hidden transition-colors duration-300">
+    <section className="empowering-section pt-2 sm:pt-3 md:pt-4 lg:pt-5 pb-6 sm:pb-8 md:pb-10 relative overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="pt-6 sm:pt-8 lg:pt-10 pb-10 sm:pb-12 md:pb-16 text-center"
-        >
-          <motion.h2
-            variants={headerVariants}
-            className={`text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 text-text-heading`}
-          >
+        <div className="pt-6 sm:pt-8 lg:pt-10 pb-10 sm:pb-12 md:pb-16 text-center">
+          <h2 className="text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 text-text-heading">
             Built for every team
-          </motion.h2>
-          <motion.p
-            variants={headerVariants}
-            className="hidden sm:block text-sm sm:text-base md:text-lg text-text-description max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
-          >
+          </h2>
+          <p className="hidden sm:block text-sm sm:text-base md:text-lg text-text-description max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
             Geoalt empowers marketing, content,<br className="hidden md:block" /> and SEO teams to dominate<br className="hidden md:block" /> AI-driven discovery
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="grid gap-4 sm:gap-6 md:gap-8 pt-2 sm:pt-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
-        >
+        <div className="grid gap-4 sm:gap-6 md:gap-8 pt-2 sm:pt-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {features.map((card) => (
-            <motion.div
+            <div
               key={card.title}
-              variants={cardVariantsSmooth}
-              className="empowering-card relative bg-[var(--color-card-bg)] dark:bg-[var(--color-ref-043)] border border-[var(--color-card-border)] rounded-lg p-4 sm:p-6 md:p-8 overflow-hidden shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)]"
+              className="empowering-card relative bg-[var(--color-card-bg)] dark:bg-[var(--color-ref-043)] border border-[var(--color-card-border)] rounded-lg p-4 sm:p-6 md:p-8 overflow-hidden shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] transition-all duration-500 hover:shadow-lg"
             >
               {/* Content */}
               <div className="relative z-10">
                 {/* Header */}
                 <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
-                  <motion.div
-                    variants={iconVariantsSmooth}
-                    initial="hidden"
-                    animate={isInView ? 'visible' : 'hidden'}
-                    className="flex-shrink-0 w-8 h-8 rounded-lg bg-text-primary/10 flex items-center justify-center text-text-primary"
-                  >
+                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-text-primary/10 flex items-center justify-center text-text-primary transition-transform duration-300 hover:scale-110">
                     {card.icon}
-                  </motion.div>
+                  </div>
                   <div>
                     <h3 className="text-base sm:text-lg md:text-xl font-medium text-text-heading mb-0.5 sm:mb-1 tracking-tight">{card.title}</h3>
                     <p className="text-xs sm:text-sm text-text-description">{card.subtitle}</p>
@@ -132,9 +101,9 @@ export function EmpoweringBusinessesSection() {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

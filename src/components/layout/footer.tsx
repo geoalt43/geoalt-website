@@ -216,7 +216,7 @@ export function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 xl:px-10">
           <div className="flex flex-wrap justify-between items-center gap-4 sm:gap-6 md:gap-8">
             <p className="text-[9px] sm:text-xs md:text-sm flex items-center gap-2 text-text-muted">
-              <span>&copy; 2025</span>
+              <span>&copy; 2026</span>
               <span className="inline-flex items-center leading-none">
                 <Image
                   src="/geoalt-logo/logo-light.svg"
