@@ -45,9 +45,6 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL('https://www.geoalt.in'),
-  alternates: {
-    canonical: '/',
-  },
   verification: {
     google: 'JpEm31MndXatk-tntHUwEl6zCu51029QkImRWoJQOFM',
     yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,

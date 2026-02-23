@@ -30,6 +30,7 @@ export function VisibilitySection() {
 
   return (
     <section 
+      id="features"
       ref={sectionRef} 
       className="py-12 sm:py-16 md:py-20 lg:py-[6vh]"
     >

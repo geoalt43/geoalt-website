@@ -38,8 +38,8 @@ export function HeroSection() {
             <div className="sr-only">
               <h2>What is Geoalt?</h2>
               <p>
-                Geoalt is a Generative Engine Optimization (GEO) platform that helps businesses optimize their brand visibility across AI platforms like ChatGPT, Perplexity, Claude, and Gemini.
-                It analyzes how AI recommends brands and provides actionable insights to increase mentions, traffic, and citation share in AI-driven search results.
+                Track and grow your brand’s visibility across AI search platforms including ChatGPT, Perplexity, Gemini, and Claude. 
+                Geoalt monitors real-time mentions, uncovers citation gaps, and helps you create trusted content that gets cited and recommended in AI-generated answers.
               </p>
             </div>
 
