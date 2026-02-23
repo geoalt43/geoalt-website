@@ -92,7 +92,7 @@ export function DashboardSection() {
   const isLightTheme = mounted && resolvedTheme === 'light'
 
   return (
-    <section id="features" ref={sectionRef} className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh] bg-page-background">
+    <section ref={sectionRef} className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh] bg-page-background">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
         <div
           className={`pt-[5%] mb-8 sm:mb-12 md:mb-12 text-left sm:text-center md:text-center transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}

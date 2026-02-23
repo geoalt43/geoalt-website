@@ -10,6 +10,9 @@ import { format } from 'date-fns'
 export const metadata: Metadata = {
     title: 'Blog | GEOAlt',
     description: 'Insights and strategies for optimizing your brand visibility in the age of AI search.',
+    alternates: {
+        canonical: 'https://www.geoalt.in/blog',
+    },
 }
 
 export default function BlogPage() {

@@ -1,6 +1,5 @@
 import { ImageResponse } from 'next/og'
 
-export const runtime = 'edge'
 
 export const alt = 'Geoalt - Get Your Brand Recommended by AI'
 export const size = {

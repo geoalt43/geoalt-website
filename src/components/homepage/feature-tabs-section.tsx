@@ -180,6 +180,7 @@ export function FeatureTabsSection() {
   return (
     // Outer scroll container - creates the "scroll space" for the sticky effect
     <div
+      id="features"
       ref={scrollContainerRef}
       className="relative"
       style={{ height: scrollHeight }}
