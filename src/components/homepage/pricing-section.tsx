@@ -96,8 +96,8 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
       className={`
         ${isLightTheme ? plan.bgColor : 'bg-[var(--color-ref-043)]'} flex flex-col text-text-primary
         relative overflow-hidden group transition-all duration-500 ease-out
-        border border-[var(--color-card-border)]
-        ${plan.isRecommended ? 'lg:-mt-[3.5rem] rounded-[0.89rem_0.89rem_0.5rem_0.5rem] lg:scale-[1.02]' : 'rounded-lg'}
+        border border-[var(--color-card-border)] rounded-[0.89rem]
+        ${plan.isRecommended ? 'lg:-mt-[3.5rem] lg:scale-[1.02]' : ''}
         ${className}
         ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
       `}
@@ -142,10 +142,10 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
               onClick={() => triggerBookDemoEvent('pricing-section')}
               target="_blank"
               rel="noopener noreferrer"
-              className={`w-full max-w-[120px] sm:max-w-none md:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full border border-border py-2 sm:py-3 md:py-3 text-[11px] sm:text-sm md:text-sm font-semibold whitespace-nowrap block text-center transition-all duration-200 ease-in-out ${
+              className={`w-full max-w-[120px] sm:max-w-none md:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full border py-2 sm:py-3 md:py-3 text-[11px] sm:text-sm md:text-sm font-semibold whitespace-nowrap block text-center transition-all duration-200 ease-in-out ${
                 isLightTheme
-                  ? 'bg-[#CFCFCF] text-text-primary hover:bg-[#BEBEBE]'
-                  : 'bg-white text-black hover:bg-[var(--color-ref-041)]'
+                  ? 'bg-[#F2F2F2] text-text-primary hover:bg-[#E5E5E5] border-[#DBDBDB]'
+                  : 'bg-white text-black hover:bg-[var(--color-ref-041)] border-border'
               }`}
             >
               Contact Us
@@ -157,10 +157,10 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => triggerStartTrialEvent('pricing-section')}
-            className={`${plan.isRecommended ? '' : 'mt-auto'} w-full max-w-[120px] sm:max-w-none md:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full py-2 sm:py-3 md:py-3 text-[11px] sm:text-sm md:text-sm font-semibold text-center whitespace-nowrap block transition-all duration-200 ease-in-out hover:opacity-90 border border-border ${
+            className={`${plan.isRecommended ? '' : 'mt-auto'} w-full max-w-[120px] sm:max-w-none md:max-w-none sm:w-full mx-auto sm:mx-0 rounded-full py-2 sm:py-3 md:py-3 text-[11px] sm:text-sm md:text-sm font-semibold text-center whitespace-nowrap block transition-all duration-200 ease-in-out hover:opacity-90 border ${
               isLightTheme 
-                ? (plan.isRecommended ? 'bg-[#080808] text-white hover:bg-[#080808]/90' : 'bg-[#CFCFCF] text-[#3D3D3D]')
-                : 'bg-white text-text-button dark:text-black dark:bg-white hover:bg-[var(--color-ref-041)]'
+                ? (plan.isRecommended ? 'bg-[#080808] text-white hover:bg-[#080808]/90 border-transparent' : 'bg-[#F2F2F2] text-text-primary hover:bg-[#E5E5E5] border-[#DBDBDB]')
+                : 'bg-white text-text-button dark:text-black dark:bg-white hover:bg-[var(--color-ref-041)] border-border'
             }`}
           >
             Start free trial
