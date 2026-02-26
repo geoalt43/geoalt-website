@@ -60,7 +60,7 @@ export function EmpoweringBusinessesSection() {
             Built for every team
           </h2>
           <p className="hidden sm:block text-sm sm:text-base md:text-lg text-text-description max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
-            Geoalt empowers marketing, content,<br className="hidden md:block" /> and SEO teams to dominate<br className="hidden md:block" /> AI-driven discovery
+            GEOAlt empowers marketing, content,<br className="hidden md:block" /> and SEO teams to dominate<br className="hidden md:block" /> AI-driven discovery
           </p>
         </div>
 

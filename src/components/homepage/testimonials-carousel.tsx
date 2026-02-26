@@ -13,19 +13,19 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    quote: "Geoalt offers key insights on AI visibility, helping brands stay at the forefront of discovery in the age of AI and generative search. As ChatGPT, Perplexity, and Deepseek drive traffic and conversions, Geoalt measures the growth.",
+    quote: "GEOAlt offers key insights on AI visibility, helping brands stay at the forefront of discovery in the age of AI and generative search. As ChatGPT, Perplexity, and Deepseek drive traffic and conversions, GEOAlt measures the growth.",
     name: "Crystal Carter",
     designation: "Head of SEO Comms, Wix",
     image: "https://i.pravatar.cc/150?img=1"
   },
   {
-    quote: "Geoalt avoids the issues we see with other SEO/AEO platforms, where there's often an overload of features and information that isn't of primary importance. It keeps things simple - set up your prompts, see your AI visibility, and act on top citations.",
+    quote: "GEOAlt avoids the issues we see with other SEO/AEO platforms, where there's often an overload of features and information that isn't of primary importance. It keeps things simple - set up your prompts, see your AI visibility, and act on top citations.",
     name: "Ethan Smith",
     designation: "CEO, Graphite",
     image: "https://i.pravatar.cc/150?img=2"
   },
   {
-    quote: "As European leaders in travel and search innovation for the vacation rental industry, staying ahead is crucial - Geoalt empowers our team to proactively manage & enhance our visibility across emerging search platforms.",
+    quote: "As European leaders in travel and search innovation for the vacation rental industry, staying ahead is crucial - GEOAlt empowers our team to proactively manage & enhance our visibility across emerging search platforms.",
     name: "Felix Welckenbach",
     designation: "Director Organic Growth, HomeToGo",
     image: "https://i.pravatar.cc/150?img=3"
@@ -89,7 +89,7 @@ export function TestimonialsCarousel() {
             <span
               className="inline-block"
             >
-              about Geoalt
+              about GEOAlt
             </span>
           </h2>
         </div>

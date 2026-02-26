@@ -52,7 +52,7 @@ function FeaturesSection() {
             className="text-sm sm:text-base md:text-lg text-text-description max-w-2xl mx-auto leading-relaxed px-4 sm:px-0 transition-all duration-700 ease-out"
             style={{ transitionDelay: '200ms' }}
           >
-            Geoalt offers unparalleled accuracy, real-time insights, <br className="hidden lg:block" />
+            GEOAlt offers unparalleled accuracy, real-time insights, <br className="hidden lg:block" />
             and a commitment to data security.
           </p>
         </div>

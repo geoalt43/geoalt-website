@@ -102,7 +102,7 @@ export function DashboardSection() {
             <span className="block sm:hidden">
               <span className="block text-center">Unlock AI-powered search insights</span>
               <span className="block text-center">
-                that bring the right customers to Geoalt
+                that bring the right customers to GEOAlt
               </span>
             </span>
             {/* Desktop version */}
@@ -110,7 +110,7 @@ export function DashboardSection() {
               <span>Unlock AI-powered search insights that bring</span>
               <br />
               <span className="block">
-                the right customers to Geoalt
+                the right customers to GEOAlt
               </span>
             </span>
           </h2>
@@ -135,7 +135,7 @@ export function DashboardSection() {
             >
               <h3 className="text-base sm:text-xl md:text-xl font-light sm:font-normal md:font-normal text-text-heading dark:text-white/80">Add Business Competitors</h3>
             <p className="text-xs sm:text-xs md:text-sm text-text-description mb-3 sm:mb-4">
-                <span>Add competitors so Geoalt can map landscape for growth</span>
+                <span>Add competitors so GEOAlt can map landscape for growth</span>
               </p>
             </div>
             

@@ -121,28 +121,28 @@ function FAQCard({ faq, isOpen, onToggle, index }: FAQCardProps) {
 export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
   const faqs = useMemo(() => [
     {
-      question: "What does Geoalt do?",
-      answer: "Geoalt shows how your website appears in AI search, delivering insights and recommendations to improve visibility, credibility, and performance across generative engines effectively."
+      question: "What does GEOAlt do?",
+      answer: "GEOAlt shows how your website appears in AI search, delivering insights and recommendations to improve visibility, credibility, and performance across generative engines effectively."
     },
     {
-      question: "How does Geoalt help my brand?",
-      answer: "Geoalt analyzes your content's presence in AI answers, highlights missing visibility opportunities, and provides clear guidance to strengthen trust, authority, and competitive advantage across generative platforms."
+      question: "How does GEOAlt help my brand?",
+      answer: "GEOAlt analyzes your content's presence in AI answers, highlights missing visibility opportunities, and provides clear guidance to strengthen trust, authority, and competitive advantage across generative platforms."
     },
     {
-      question: "Who should use Geoalt?",
-      answer: "Brands, marketers, founders, and SEO teams wanting stronger AI search presence benefit from Geoalt's insights, optimization recommendations, competitive analysis, and structured visibility reporting across generative engines."
+      question: "Who should use GEOAlt?",
+      answer: "Brands, marketers, founders, and SEO teams wanting stronger AI search presence benefit from GEOAlt's insights, optimization recommendations, competitive analysis, and structured visibility reporting across generative engines."
     },
     {
-      question: "What data does Geoalt analyze?",
-      answer: "Geoalt scans website content, competitor pages, AI-generated answers, semantic patterns, and topic coverage to identify gaps, strengths, weaknesses, and actionable optimization steps for improved AI search visibility."
+      question: "What data does GEOAlt analyze?",
+      answer: "GEOAlt scans website content, competitor pages, AI-generated answers, semantic patterns, and topic coverage to identify gaps, strengths, weaknesses, and actionable optimization steps for improved AI search visibility."
     },
     {
-      question: "How is Geoalt different from SEO tools?",
-      answer: "Geoalt focuses specifically on generative engines, evaluating AI summary visibility rather than traditional keyword rankings, offering intent-driven recommendations tailored for modern answer-engine ecosystems and behaviors."
+      question: "How is GEOAlt different from SEO tools?",
+      answer: "GEOAlt focuses specifically on generative engines, evaluating AI summary visibility rather than traditional keyword rankings, offering intent-driven recommendations tailored for modern answer-engine ecosystems and behaviors."
     },
     {
-      question: "Does Geoalt work for any website?",
-      answer: "Yes, Geoalt supports nearly all websites by analyzing content structure, clarity, authority, and relevance, offering optimization suggestions designed to improve AI search performance and generative visibility."
+      question: "Does GEOAlt work for any website?",
+      answer: "Yes, GEOAlt supports nearly all websites by analyzing content structure, clarity, authority, and relevance, offering optimization suggestions designed to improve AI search performance and generative visibility."
     }
   ], [])
 

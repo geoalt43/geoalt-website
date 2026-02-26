@@ -84,11 +84,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         datePublished: post.date,
         author: {
             '@type': 'Person',
-            name: post.author || 'Geoalt Team',
+            name: post.author || 'GEOAlt Team',
         },
         publisher: {
             '@type': 'Organization',
-            name: 'Geoalt',
+            name: 'GEOAlt',
             logo: {
                 '@type': 'ImageObject',
                 url: 'https://www.geoalt.in/logos/GeoAlt_Logo.png',
