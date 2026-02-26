@@ -45,7 +45,7 @@ export function GeoReportSection() {
         <div
           className="pb-4 sm:pb-6 md:pb-8 text-center"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-6 sm:mb-8 md:mb-8 px-2 sm:px-0 md:px-0 leading-tight text-text-heading"
+          <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-semibold md:font-medium tracking-tight mb-6 sm:mb-8 md:mb-8 px-2 sm:px-0 md:px-0 leading-tight text-text-heading"
           >
             We Believe in <span>Proof</span>, <br /> <span className="inline-block">Backed by Data</span>
           </h2>

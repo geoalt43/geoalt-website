@@ -6,7 +6,7 @@ import { triggerBookDemoEvent, triggerStartTrialEvent } from '@/lib/mixpanel'
 import { useTheme } from 'next-themes'
 
 const CheckIcon = ({ isLightTheme }: { isLightTheme?: boolean }) => (
-  <span className={`flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-border text-xs font-semibold ${isLightTheme ? 'text-[var(--color-text-feature)]' : 'text-text-primary'}`}>
+  <span className={`flex h-5 w-5 flex-shrink-0 items-center justify-center text-xs font-semibold text-[#60A5FA]`}>
     ✓
   </span>
 )
@@ -97,7 +97,9 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
         ${isLightTheme ? plan.bgColor : 'bg-[var(--color-ref-043)]'} flex flex-col text-text-primary
         relative overflow-hidden group transition-all duration-500 ease-out
         border border-[var(--color-card-border)] rounded-[0.89rem]
-        ${plan.isRecommended ? 'lg:-mt-[3.5rem] lg:scale-[1.02]' : ''}
+        ${plan.isRecommended ? 'lg:-mt-[3.5rem] lg:scale-[1.02] min-h-[560px] lg:min-h-[590px]' : ''}
+        ${plan.name === 'Basic' ? 'min-h-[520px] lg:min-h-[540px]' : ''}
+        ${plan.name === 'Enterprise' ? 'min-h-[520px] lg:min-h-[540px]' : ''}
         ${className}
         ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
       `}
@@ -113,7 +115,7 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
         </div>
       )}
 
-      <div className={`${plan.isRecommended ? 'p-4 sm:p-6 md:p-[1.75rem] lg:p-[2rem] pt-3.5 sm:pt-5 md:pt-[1.5rem] lg:pt-[1.75rem]' : 'p-4 sm:p-6 md:p-[2rem] lg:p-[2.25rem]'} flex flex-col ${plan.isRecommended ? 'gap-4 sm:gap-6 md:gap-[1.75rem] lg:gap-[2rem]' : 'gap-4 sm:gap-6 md:gap-[2rem] lg:gap-[2.25rem]'} ${plan.isRecommended ? '' : 'flex-1'}`}>
+      <div className={`p-4 sm:p-6 md:p-[2rem] lg:p-[2.25rem] ${plan.isRecommended ? 'pt-3.5 sm:pt-5 md:pt-[1.5rem] lg:pt-[1.75rem]' : ''} flex flex-col gap-4 sm:gap-6 md:gap-[2rem] lg:gap-[2.25rem] flex-1`}>
         <div className={plan.isRecommended ? 'mt-auto' : ''}>
           <p className={`text-sm sm:text-base md:text-base font-semibold ${plan.isRecommended ? 'mb-1.5 sm:mb-2.5 md:mb-2.5' : 'mb-1.5 sm:mb-2.5 md:mb-2.5'} ${isLightTheme ? 'text-[var(--color-ref-001)]' : ''}`}>{plan.name}</p>
           <p className={`${plan.isRecommended ? 'text-2xl sm:text-[2.2rem] md:text-[2.25rem] lg:text-[2.25rem]' : 'text-2xl sm:text-3xl md:text-3xl lg:text-[2.3rem]'} font-normal leading-none ${plan.name === 'Basic' ? 'mb-4 sm:mb-5 md:mb-5 lg:mb-6' : ''} ${isLightTheme ? 'text-[var(--color-ref-001)]' : ''}`}>
@@ -122,7 +124,7 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
           </p>
         </div>
         {plan.description && <p className={`text-xs sm:text-sm md:text-sm ${isLightTheme ? 'text-[var(--color-ref-001)]' : 'text-text-description'}`}>{plan.description}</p>}
-        <div className={`flex flex-col ${plan.isRecommended ? 'gap-2 sm:gap-2.5 md:gap-2.5' : 'gap-2.5 sm:gap-3.5 md:gap-3.5'} text-[11px] sm:text-xs md:text-sm ${isLightTheme ? 'text-[var(--color-text-feature)]' : 'text-text-description'}`}>
+          <div className={`flex flex-col ${plan.isRecommended ? 'gap-3.5 sm:gap-4.5 md:gap-5' : 'gap-5 sm:gap-6 md:gap-7'} ${plan.name !== 'Basic' ? '-mt-2 md:-mt-3' : ''} text-[11px] sm:text-xs md:text-sm ${isLightTheme ? 'text-[var(--color-text-feature)]' : 'text-text-description'}`}>
           {plan.features.map((feature) => (
             <div
               key={feature}
@@ -223,31 +225,34 @@ export function PricingSection() {
         <div
           className={`text-center mb-0 sm:mb-0 md:mb-0 lg:mb-12 xl:mb-16 transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'}`}
         >
-          <h2 className="text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-2 sm:px-0 md:px-0 text-text-heading">Pricing</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-semibold md:font-medium tracking-tight mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-2 sm:px-0 md:px-0 text-text-heading">Pricing</h2>
 
           {/* Payment Frequency Toggle */}
           <div
             className="flex flex-col items-center justify-center mb-2 sm:mb-3 md:mb-2 lg:mb-3 xl:mb-4 mt-2 sm:mt-3 md:mt-3 w-full"
             style={isBetween1080And1350 ? { paddingBottom: '2.5rem' } : {}}
           >
-            <div className="flex items-center rounded-full p-0.5 border border-white dark:border-[#242424] flex-shrink-0 relative z-10" style={{ backgroundColor: 'var(--color-pricing-toggle-bg)' }}>
+            <div className="flex items-center rounded-full p-0.5 flex-shrink-0 relative z-10 border border-white/10 dark:border-white/[0.06]" style={{ backgroundColor: 'var(--color-pricing-toggle-bg)' }}>
               <button
                 onClick={() => setIsYearly(false)}
-                className={`px-2.5 sm:px-3.5 md:px-4 py-1 sm:py-1.5 md:py-1.5 rounded-full text-[10px] sm:text-xs md:text-xs font-medium transition-all duration-300 cursor-pointer ${!isYearly
-                  ? 'bg-white text-text-button dark:bg-white dark:text-black'
-                  : 'text-white hover:text-gray-200'
+                className={`px-3 sm:px-4 md:px-5 py-1 sm:py-1.5 md:py-1.5 rounded-full text-[10px] sm:text-xs md:text-xs font-medium transition-all duration-300 cursor-pointer ${!isYearly
+                  ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.18)]'
+                  : 'text-white/60 hover:text-white/90'
                   }`}
               >
-                Pay monthly
+                Monthly
               </button>
               <button
                 onClick={() => setIsYearly(true)}
-                className={`px-2.5 sm:px-3.5 md:px-4 py-1 sm:py-1.5 md:py-1.5 rounded-full text-[10px] sm:text-xs md:text-xs font-medium transition-all duration-300 cursor-pointer ${isYearly
-                  ? 'bg-white text-text-button dark:bg-white dark:text-black'
-                  : 'text-white hover:text-gray-200'
+                className={`flex items-center gap-1.5 px-3 sm:px-4 md:px-5 py-1 sm:py-1.5 md:py-1.5 rounded-full text-[10px] sm:text-xs md:text-xs font-medium transition-all duration-300 cursor-pointer ${isYearly
+                  ? 'bg-white text-black shadow-[0_2px_8px_rgba(0,0,0,0.18)]'
+                  : 'text-white/60 hover:text-white/90'
                   }`}
               >
-                Pay yearly
+                Yearly
+                <span className={`text-[9px] sm:text-[10px] font-semibold px-1.5 py-0.5 rounded-full transition-all duration-300 ${isYearly ? 'bg-emerald-500/15 text-emerald-400' : 'bg-white/10 text-white/50'}`}>
+                  −15%
+                </span>
               </button>
             </div>
             <span

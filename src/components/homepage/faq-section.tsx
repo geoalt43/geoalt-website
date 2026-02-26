@@ -202,7 +202,7 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
         <div
           className={`text-center mb-8 sm:mb-12 md:mb-14 lg:mb-16 transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'}`}
         >
-          <h2 className="text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 text-text-heading">FAQ</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-semibold md:font-medium tracking-tight mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 text-text-heading">FAQ</h2>
           <p className="text-sm sm:text-base md:text-lg text-text-description max-w-2xl mx-auto leading-relaxed px-4 sm:px-0 pt-0">Generative Engine Optimization is still <br className="hidden sm:block" /> very new. We&apos;ve got you covered.</p>
         </div>
         

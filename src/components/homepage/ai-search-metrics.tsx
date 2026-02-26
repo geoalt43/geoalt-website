@@ -83,7 +83,7 @@ export function AISearchMetricsSection() {
     <section ref={sectionRef} className="pt-6 sm:pt-8 md:pt-10 lg:pt-[4vh] xl:pt-[6vh] pb-12 sm:pb-16 md:pb-20 lg:pb-[4vh] xl:pb-[6vh] bg-surface-elevated">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-12">
-          <h2 className="text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 text-text-heading">
+          <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-semibold md:font-medium tracking-tight mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 text-text-heading">
             How AI actually sees your brand
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-text-description max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">

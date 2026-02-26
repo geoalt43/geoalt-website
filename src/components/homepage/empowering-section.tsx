@@ -56,7 +56,7 @@ export function EmpoweringBusinessesSection() {
     <section className="empowering-section pt-2 sm:pt-3 md:pt-4 lg:pt-5 pb-6 sm:pb-8 md:pb-10 relative overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="pt-6 sm:pt-8 lg:pt-10 pb-10 sm:pb-12 md:pb-16 text-center">
-          <h2 className="text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 text-text-heading">
+          <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-semibold md:font-medium tracking-tight mb-2 sm:mb-6 md:mb-6 text-text-heading">
             Built for every team
           </h2>
           <p className="hidden sm:block text-sm sm:text-base md:text-lg text-text-description max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
