@@ -97,9 +97,9 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
         ${isLightTheme ? plan.bgColor : 'bg-[var(--color-ref-043)]'} flex flex-col text-text-primary
         relative overflow-hidden group transition-all duration-500 ease-out
         border border-[var(--color-card-border)] rounded-[0.89rem]
-        ${plan.isRecommended ? 'lg:-mt-[3.5rem] lg:scale-[1.02] min-h-[560px] lg:min-h-[590px]' : ''}
-        ${plan.name === 'Basic' ? 'min-h-[520px] lg:min-h-[540px]' : ''}
-        ${plan.name === 'Enterprise' ? 'min-h-[520px] lg:min-h-[540px]' : ''}
+        ${plan.isRecommended ? 'lg:-mt-[3.5rem] lg:scale-[1.02] sm:min-h-[560px] lg:min-h-[590px]' : ''}
+        ${plan.name === 'Basic' ? 'sm:min-h-[520px] lg:min-h-[540px]' : ''}
+        ${plan.name === 'Enterprise' ? 'sm:min-h-[520px] lg:min-h-[540px]' : ''}
         ${className}
         ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
       `}
@@ -256,7 +256,7 @@ export function PricingSection() {
               </button>
             </div>
             <span
-              className="my-1 sm:my-1.5 md:my-1.5 lg:my-2.5 pt-3 sm:pt-4 md:pt-4 lg:pt-0 text-[10px] sm:text-xs md:text-xs text-text-primary whitespace-nowrap text-center"
+              className="my-1 sm:my-1.5 md:my-1.5 lg:my-2.5 pt-3 sm:pt-4 md:pt-4 lg:pt-0 text-[11px] sm:text-[13px] md:text-[14px] text-text-primary whitespace-nowrap text-center"
             >
               Save up to 15% with yearly
             </span>
