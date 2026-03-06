@@ -5,7 +5,7 @@ import { FeatureText } from './pricing-section/FeatureText'
 import { triggerBookDemoEvent, triggerStartTrialEvent } from '@/lib/mixpanel'
 import { useTheme } from 'next-themes'
 
-const CheckIcon = ({ isLightTheme }: { isLightTheme?: boolean }) => (
+const CheckIcon = () => (
   <span className={`flex h-5 w-5 flex-shrink-0 items-center justify-center text-xs font-semibold text-[#60A5FA]`}>
     ✓
   </span>
@@ -130,7 +130,7 @@ function PricingCard({ plan, isYearly, className = '' }: { plan: typeof pricingP
               key={feature}
               className="flex items-center gap-3"
             >
-              <CheckIcon isLightTheme={isLightTheme} />
+              <CheckIcon />
               <div className="flex-1">
                 <FeatureText text={feature} />
               </div>

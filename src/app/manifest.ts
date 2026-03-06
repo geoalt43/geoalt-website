@@ -11,7 +11,7 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: '#000000',
     icons: [
       {
-        src: '/favicon.png',
+        src: '/logos/Favicon-light.png',
         sizes: '512x512',
         type: 'image/png',
         purpose: 'any',
@@ -20,9 +20,9 @@ export default function manifest(): MetadataRoute.Manifest {
     categories: ['business', 'productivity', 'marketing'],
     screenshots: [
       {
-        src: '/images/img-2.jpeg',
-        sizes: '1280x720',
-        type: 'image/jpeg',
+        src: '/images/og-image.png',
+        sizes: '1200x630',
+        type: 'image/png',
         label: 'GEOAlt Dashboard',
       },
     ],

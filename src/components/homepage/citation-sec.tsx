@@ -43,7 +43,7 @@ export function CitationSection() {
             className={`text-3xl md:text-4xl lg:text-[2.75rem] font-semibold md:font-medium tracking-tight text-text-heading mb-4 transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
             style={{ transitionDelay: '100ms' }}
           >
-           Track Your Brand&apos;s Visibility Across <br className="hidden sm:block" />the AI Landscape
+           We don’t just track AI visibility.<br className="hidden sm:block" /> We get you cited. 
           </h2>
 
           {/* <motion.p

@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     siteName: 'GEOAlt',
     images: [
       {
-        url: '/images/img-2.jpeg',
+        url: '/images/og-image.png',
         width: 1200,
         height: 630,
         alt: 'GEOAlt - AI Visibility Platform',
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'GEOAlt - Get Your Brand Recommended by AI',
     description: 'GEOAlt helps your business stand out across AI platforms. Turning AI visibility into traffic.',
-    images: ['/images/img-2.jpeg'],
+    images: ['/images/og-image.png'],
     creator: '@geoalt',
     site: '@geoalt',
   },
@@ -90,17 +90,17 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/logos/Favicon.png', sizes: '32x32', type: 'image/png' },
-      { url: '/logos/Favicon.png', sizes: '64x64', type: 'image/png' },
-      { url: '/logos/Favicon.png', sizes: '96x96', type: 'image/png' },
-      { url: '/logos/Favicon.png', sizes: '128x128', type: 'image/png' },
-      { url: '/logos/Favicon.png', sizes: '192x192', type: 'image/png' },
-      { url: '/logos/Favicon.png', sizes: '256x256', type: 'image/png' },
+      { url: '/logos/Favicon-light.png', sizes: '32x32', type: 'image/png', media: '(prefers-color-scheme: light)' },
+      { url: '/logos/Favicon-light.png', sizes: '96x96', type: 'image/png', media: '(prefers-color-scheme: light)' },
+      { url: '/logos/Favicon-light.png', sizes: '192x192', type: 'image/png', media: '(prefers-color-scheme: light)' },
+      { url: '/logos/Favicon.png', sizes: '32x32', type: 'image/png', media: '(prefers-color-scheme: dark)' },
+      { url: '/logos/Favicon.png', sizes: '96x96', type: 'image/png', media: '(prefers-color-scheme: dark)' },
+      { url: '/logos/Favicon.png', sizes: '192x192', type: 'image/png', media: '(prefers-color-scheme: dark)' },
     ],
     apple: [
-      { url: '/logos/Favicon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/logos/Favicon-light.png', sizes: '180x180', type: 'image/png' },
     ],
-    shortcut: '/logos/Favicon.png',
+    shortcut: '/logos/Favicon-light.png',
   },
   appleWebApp: {
     capable: true,

@@ -9,28 +9,11 @@ import { TrendingUp, PieChart, BarChart3, Lightbulb } from 'lucide-react'
 
 export function GeoReportSection() {
   const sectionRef = useRef(null)
-  const [isInView, setIsInView] = useState(false)
   const [mounted, setMounted] = useState(false)
   const { resolvedTheme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
-    
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.1, rootMargin: '-100px' }
-    )
-    
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-    
-    return () => observer.disconnect()
   }, [])
 
   const isLightTheme = mounted && resolvedTheme === 'light'
@@ -174,7 +157,7 @@ export function GeoReportSection() {
             return (
               <div
                 key={index}
-                className={`relative group p-4 sm:p-5 md:p-6 h-full ${borderClasses} ${roundedClasses} bg-black transition-all duration-300 hover:bg-neutral-900`}
+                className={`relative group p-4 sm:p-5 md:p-6 h-full ${borderClasses} ${roundedClasses} bg-black transition-all duration-300`}
                 style={{ transitionDelay: `${500 + index * 100}ms` }}
               >
                 <div className="flex flex-col h-full items-start text-left sm:items-center sm:text-center justify-center">
