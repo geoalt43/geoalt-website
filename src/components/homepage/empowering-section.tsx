@@ -56,49 +56,53 @@ export function EmpoweringBusinessesSection() {
     <section className="empowering-section pt-2 sm:pt-3 md:pt-4 lg:pt-5 pb-6 sm:pb-8 md:pb-10 relative overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="pt-6 sm:pt-8 lg:pt-10 pb-10 sm:pb-12 md:pb-16 text-center">
-          <h2 className="text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 text-text-heading">
+          <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-semibold md:font-medium tracking-tight mb-2 sm:mb-6 md:mb-6 text-text-heading">
             Built for every team
           </h2>
           <p className="hidden sm:block text-sm sm:text-base md:text-lg text-text-description max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
-            Geoalt empowers marketing, content,<br className="hidden md:block" /> and SEO teams to dominate<br className="hidden md:block" /> AI-driven discovery
+            GEOAlt empowers marketing, content,<br className="hidden md:block" /> and SEO teams to dominate<br className="hidden md:block" /> AI-driven discovery
           </p>
         </div>
 
         <div className="grid gap-4 sm:gap-6 md:gap-8 pt-2 sm:pt-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {features.map((card) => (
-            <div
-              key={card.title}
-              className="empowering-card relative bg-[var(--color-card-bg)] dark:bg-[var(--color-ref-043)] border border-[var(--color-card-border)] rounded-lg p-4 sm:p-6 md:p-8 overflow-hidden shadow-[0_4px_6px_-1px_var(--color-ref-035),0_2px_4px_-1px_var(--color-ref-036)] transition-all duration-500 hover:shadow-lg"
+            <div 
+              key={`${card.title}-parent`}
+              className="dark:bg-[var(--color-ref-043)] rounded-[20px] sm:rounded-[24px] p-1.5 sm:p-2 relative shadow-[inset_0_0_8px_rgba(0,0,0,0.5)] dark:shadow-[inset_0_0_10px_rgba(0,0,0,0.6)]"
             >
-              {/* Content */}
-              <div className="relative z-10">
-                {/* Header */}
-                <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-text-primary/10 flex items-center justify-center text-text-primary transition-transform duration-300 hover:scale-110">
-                    {card.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-base sm:text-lg md:text-xl font-medium text-text-heading mb-0.5 sm:mb-1 tracking-tight">{card.title}</h3>
-                    <p className="text-xs sm:text-sm text-text-description">{card.subtitle}</p>
-                  </div>
-                </div>
-
-                {/* Features Grid */}
-                <div className="space-y-2 sm:space-y-3">
-                  {card.features.map((feature, fIndex) => (
-                    <div
-                      key={fIndex}
-                      className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3"
-                    >
-                      <svg className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
-                      <div>
-                        <p className="text-xs sm:text-sm font-medium text-text-heading/90 tracking-tight">{feature.label}</p>
-                        <p className="text-[11px] sm:text-xs text-text-description mt-0.5">{feature.desc}</p>
-                      </div>
+              <div
+                className="empowering-card relative h-full bg-white/10 dark:bg-[var(--color-ref-043)] border border-[var(--color-card-border)] rounded-2xl p-4 sm:p-6 md:p-8 overflow-hidden backdrop-blur-md"
+              >
+                {/* Content */}
+                <div className="relative z-10">
+                  {/* Header */}
+                  <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-text-primary/10 flex items-center justify-center text-text-primary">
+                      {card.icon}
                     </div>
-                  ))}
+                    <div>
+                      <h3 className="text-base sm:text-lg md:text-xl font-medium text-text-heading mb-0.5 sm:mb-1 tracking-tight">{card.title}</h3>
+                      <p className="text-xs sm:text-sm text-text-description">{card.subtitle}</p>
+                    </div>
+                  </div>
+
+                  {/* Features Grid */}
+                  <div className="space-y-2 sm:space-y-3">
+                    {card.features.map((feature, fIndex) => (
+                      <div
+                        key={fIndex}
+                        className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3"
+                      >
+                        <svg className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        <div>
+                          <p className="text-xs sm:text-sm font-medium text-text-heading/90 tracking-tight">{feature.label}</p>
+                          <p className="text-[11px] sm:text-xs text-text-description mt-0.5">{feature.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

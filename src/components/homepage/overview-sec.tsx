@@ -42,7 +42,7 @@ export function VisibilitySection() {
          >
               {/* Heading */}
               <h2 
-                className={`text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal tracking-tight mb-1 sm:mb-2 text-text-heading max-w-4xl mx-auto transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                className={`text-3xl md:text-4xl lg:text-[2.75rem] font-semibold md:font-medium tracking-tight mb-2 sm:mb-4 lg:mb-6 text-text-heading max-w-4xl mx-auto transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                 style={{ transitionDelay: '100ms' }}
               >
                 Track Your Brand&apos;s Visibility Across<br className="hidden sm:block" /> the AI Landscape

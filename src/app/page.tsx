@@ -4,8 +4,8 @@ import { HomePage } from '@/components/pages/home-page'
 import { LoadingSpinner } from '@/components/ui/loading-spinner'
 
 export const metadata: Metadata = {
-  title: 'Geoalt - Get Your Brand Recommended by AI | AI Visibility Optimization',
-  description: 'Optimize your brand visibility across AI platforms like ChatGPT, Perplexity, and Claude. Geoalt helps businesses get recommended by AI, turning AI mentions into traffic and customers. Start your free trial today.',
+  title: 'GEOAlt - Get Your Brand Recommended by AI | AI Visibility Optimization',
+  description: 'Optimize your brand visibility across AI platforms like ChatGPT, Perplexity, and Claude. GEOAlt helps businesses get recommended by AI, turning AI mentions into traffic and customers. Start your free trial today.',
   keywords: [
     'AI visibility',
     'Generative Engine Optimization',
@@ -21,16 +21,16 @@ export const metadata: Metadata = {
     'AI search engine optimization',
   ],
   openGraph: {
-    title: 'Geoalt - Get Your Brand Recommended by AI',
-    description: 'Optimize your brand visibility across AI platforms. Turn AI mentions into traffic and customers with Geoalt.',
+    title: 'GEOAlt - Get Your Brand Recommended by AI',
+    description: 'Optimize your brand visibility across AI platforms. Turn AI mentions into traffic and customers with GEOAlt.',
     url: 'https://www.geoalt.in',
-    siteName: 'Geoalt',
+    siteName: 'GEOAlt',
     images: [
       {
-        url: '/images/img-2.jpeg',
+        url: '/images/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Geoalt - AI Visibility Optimization Platform Dashboard',
+        alt: 'GEOAlt - AI Visibility Optimization Platform Dashboard',
       },
     ],
     locale: 'en_US',
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Geoalt - Get Your Brand Recommended by AI',
+    title: 'GEOAlt - Get Your Brand Recommended by AI',
     description: 'Optimize your brand visibility across AI platforms. Turn AI mentions into traffic and customers.',
-    images: ['/images/img-2.jpeg'],
+    images: ['/images/og-image.png'],
   },
   alternates: {
     canonical: 'https://www.geoalt.in',
@@ -65,10 +65,10 @@ export default function Home() {
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'What is Geoalt?',
+        name: 'What is GEOAlt?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Geoalt is a Generative Engine Optimization (GEO) platform that helps businesses optimize their brand visibility across AI search engines like ChatGPT, Perplexity, and Claude.',
+          text: 'GEOAlt is a Generative Engine Optimization (GEO) platform that helps businesses optimize their brand visibility across AI search engines like ChatGPT, Perplexity, and Claude.',
         },
       },
       {

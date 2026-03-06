@@ -146,7 +146,7 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
 
   return (
     <div
-      className={`bg-[var(--color-card-bg)] border ${isLightTheme ? 'border-neutral-300' : 'border-transparent'} rounded-lg shadow-2xl shadow-[var(--color-ref-036)] p-2 sm:p-6 lg:p-8 mt-0 relative overflow-hidden h-full`}
+      className={`bg-[var(--color-card-bg)] border ${isLightTheme ? 'border-neutral-300' : 'border-transparent'} rounded-lg shadow-2xl shadow-[var(--color-ref-036)] p-2 sm:p-6 lg:p-8 mt-0 relative overflow-hidden h-full max-h-[572px]`}
     >
       <div className="absolute inset-0 pointer-events-none z-[5] overflow-hidden">
         {bubbles.map((bubble) => (
@@ -168,7 +168,7 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
       </div>
       <div className="relative z-20">
         {/* Question - Search Input Style */}
-        <div className="mb-3 sm:mb-4 md:mb-4">
+        <div className="mb-0 sm:mb-0 md:mb-0">
           <div className="mb-2 sm:mb-2 md:mb-2">
             <div className="flex flex-col items-end">
               <div className="flex flex-row items-center gap-1 sm:gap-3 md:gap-3 pb-2 sm:pb-3 md:pb-3 justify-end">
@@ -230,7 +230,7 @@ export function AIResponseCard({ data, activeType }: AIResponseCardProps) {
             return (
               <div
                 key={`${company.name}-${activeType}`}
-                className="rounded-xl px-4 sm:px-6 md:px-6 pt-2 sm:pt-3 md:pt-3 pb-2 sm:pb-3 md:pb-3 text-text-primary relative mb-0"
+                className="rounded-xl px-4 sm:px-6 md:px-6 pt-2 pb-0 text-text-primary relative mb-0"
               >
                 <div className="flex items-center gap-2 sm:gap-3 md:gap-3 mb-1">
                   <div className="flex-shrink-0 min-w-0">

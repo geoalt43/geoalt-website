@@ -9,28 +9,11 @@ import { TrendingUp, PieChart, BarChart3, Lightbulb } from 'lucide-react'
 
 export function GeoReportSection() {
   const sectionRef = useRef(null)
-  const [isInView, setIsInView] = useState(false)
   const [mounted, setMounted] = useState(false)
   const { resolvedTheme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
-    
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.1, rootMargin: '-100px' }
-    )
-    
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-    
-    return () => observer.disconnect()
   }, [])
 
   const isLightTheme = mounted && resolvedTheme === 'light'
@@ -43,10 +26,9 @@ export function GeoReportSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 lg:px-8">
         <div
-          className={`pb-4 sm:pb-6 md:pb-8 text-center transition-all duration-500 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          className="pb-4 sm:pb-6 md:pb-8 text-center"
         >
-          <h2 className={`text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-6 sm:mb-8 md:mb-8 px-2 sm:px-0 md:px-0 leading-tight text-text-heading transition-all duration-600`}
-            style={{ transitionDelay: '100ms' }}
+          <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-semibold md:font-medium tracking-tight mb-6 sm:mb-8 md:mb-8 px-2 sm:px-0 md:px-0 leading-tight text-text-heading"
           >
             We Believe in <span>Proof</span>, <br /> <span className="inline-block">Backed by Data</span>
           </h2>
@@ -54,13 +36,12 @@ export function GeoReportSection() {
 
         {/* Main Card: Content + Image */}
         <div
-          className={`rounded-t-lg rounded-b-none border overflow-hidden bg-black ${borderColor} transition-all duration-500 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-          style={{ borderBottomStyle: 'dashed', borderBottomColor: isLightTheme ? '#555555' : '#121212', transitionDelay: '200ms' }}
+          className={`rounded-t-lg rounded-b-none border overflow-hidden bg-black ${borderColor}`}
+          style={{ borderBottomStyle: 'dashed', borderBottomColor: isLightTheme ? '#555555' : '#121212' }}
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
             {/* Left Column - Content */}
-            <div className={`order-1 lg:order-1 py-5 sm:py-6 md:py-8 lg:py-10 xl:py-12 px-4 sm:px-5 md:px-6 lg:px-8 transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-              style={{ transitionDelay: '300ms' }}
+            <div className="order-1 lg:order-1 py-5 sm:py-6 md:py-8 lg:py-10 xl:py-12 px-4 sm:px-5 md:px-6 lg:px-8"
             >
               <h2
                 className="text-base sm:text-lg md:text-2xl lg:text-[2rem] font-light sm:font-normal md:font-normal leading-tight mb-3 sm:mb-4 md:mb-5 text-white"
@@ -93,8 +74,7 @@ export function GeoReportSection() {
 
             {/* Right Column - Image */}
             <div
-              className={`order-2 lg:order-2 relative min-h-[200px] sm:min-h-[260px] md:min-h-[300px] lg:min-h-full transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}
-              style={{ transitionDelay: '400ms' }}
+              className="order-2 lg:order-2 relative min-h-[200px] sm:min-h-[260px] md:min-h-[300px] lg:min-h-full"
             >
               <Image
                 src="/ai-icons/GEO-Report.jpeg"
@@ -124,8 +104,7 @@ export function GeoReportSection() {
 
         {/* Features Grid */}
         <div
-          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-0 gap-0 transition-all duration-500 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-          style={{ transitionDelay: '500ms' }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-0 gap-0"
         >
           {[
             {
@@ -178,7 +157,7 @@ export function GeoReportSection() {
             return (
               <div
                 key={index}
-                className={`relative group p-4 sm:p-5 md:p-6 h-full ${borderClasses} ${roundedClasses} bg-black transition-all duration-300 hover:bg-neutral-900`}
+                className={`relative group p-4 sm:p-5 md:p-6 h-full ${borderClasses} ${roundedClasses} bg-black transition-all duration-300`}
                 style={{ transitionDelay: `${500 + index * 100}ms` }}
               >
                 <div className="flex flex-col h-full items-start text-left sm:items-center sm:text-center justify-center">

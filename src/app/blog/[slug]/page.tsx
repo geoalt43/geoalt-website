@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
             url: `https://www.geoalt.in/blog/${slug}`,
             images: [
                 {
-                    url: post.image || '/images/img-2.jpeg',
+                    url: post.image || '/images/og-image.png',
                     width: 1200,
                     height: 630,
                     alt: post.title,
@@ -80,15 +80,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         '@type': 'BlogPosting',
         headline: post.title,
         description: post.description,
-        image: post.image || 'https://www.geoalt.in/images/img-2.jpeg',
+        image: post.image || 'https://www.geoalt.in/images/og-image.png',
         datePublished: post.date,
         author: {
             '@type': 'Person',
-            name: post.author || 'Geoalt Team',
+            name: post.author || 'GEOAlt Team',
         },
         publisher: {
             '@type': 'Organization',
-            name: 'Geoalt',
+            name: 'GEOAlt',
             logo: {
                 '@type': 'ImageObject',
                 url: 'https://www.geoalt.in/logos/GeoAlt_Logo.png',

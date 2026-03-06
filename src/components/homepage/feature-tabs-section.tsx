@@ -194,7 +194,7 @@ export function FeatureTabsSection() {
           <div
             className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-14"
           >
-            <h2 className={`text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-2 sm:mb-4 md:mb-6 px-1 text-text-heading`}>
+            <h2 className={`text-3xl md:text-4xl lg:text-[2.75rem] font-semibold md:font-medium tracking-tight mb-2 sm:mb-4 md:mb-6 px-1 text-text-heading`}>
               <span className="block sm:inline text-orange-500 dark:text-orange-400">We provide streamlined onboarding to</span>{' '}
               <span className="block sm:inline lg:block ">
                 unlock actionable insights</span>

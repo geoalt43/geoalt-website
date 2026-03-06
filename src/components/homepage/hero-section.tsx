@@ -25,7 +25,7 @@ export function HeroSection() {
               className="hero-fade-in text-sm sm:text-base md:text-lg text-center text-text-description px-4 sm:px-0 mt-1 sm:mt-2 md:mt-0"
               style={{ animationDelay: '0.25s' }}
             >
-              Geoalt helps your business stand out across AI platforms
+              GEOAlt helps your business stand out across AI platforms
             </p>
             <p
               className="hero-fade-in text-xs sm:text-sm md:text-base mb-6 sm:mb-8 pb-2 sm:pb-4 text-center text-text-description px-4 sm:px-0"
@@ -36,10 +36,10 @@ export function HeroSection() {
 
             {/* AEO (Answer Engine Optimization) Definition Block */}
             <div className="sr-only">
-              <h2>What is Geoalt?</h2>
+              <h2>What is GEOAlt?</h2>
               <p>
                 Track and grow your brand’s visibility across AI search platforms including ChatGPT, Perplexity, Gemini, and Claude. 
-                Geoalt monitors real-time mentions, uncovers citation gaps, and helps you create trusted content that gets cited and recommended in AI-generated answers.
+                GEOAlt monitors real-time mentions, uncovers citation gaps, and helps you create trusted content that gets cited and recommended in AI-generated answers.
               </p>
             </div>
 

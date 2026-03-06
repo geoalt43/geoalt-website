@@ -21,7 +21,7 @@ export function ModeToggle({ className }: { className?: string }) {
 
   if (!mounted) {
     return (
-      <Button variant="outline" size="icon" className={`h-9 w-9 border-0 hover:bg-surface-hover ${className || 'bg-[var(--color-page-background)]'}`}>
+      <Button variant="outline" size="icon" className={`h-9 w-9 rounded-full border-[0.5px] border-[#969696] dark:border-[#242424] hover:bg-surface-hover ${className || 'bg-[#0D0D0D]'}`}>
         <span className="sr-only">Toggle theme</span>
       </Button>
     )
@@ -31,13 +31,13 @@ export function ModeToggle({ className }: { className?: string }) {
     <Button
       variant="outline"
       size="icon"
-      className={`h-9 w-9 border-0 hover:bg-surface-hover cursor-pointer ${className || 'bg-[var(--color-page-background)]'}`}
+      className={`h-9 w-9 rounded-full border-[0.5px] border-[#969696] dark:border-[#242424] hover:bg-surface-hover cursor-pointer ${className || 'bg-[#0D0D0D]'}`}
       onClick={toggleTheme}
     >
       {theme === "dark" ? (
         <Sun className="h-[1.2rem] w-[1.2rem] text-text-primary transition-transform" />
       ) : (
-        <Moon className="h-[1.2rem] w-[1.2rem] text-black transition-transform" />
+        <Moon className="h-[1.2rem] w-[1.2rem] text-[#3B3B3B] transition-transform" />
       )}
       <span className="sr-only">Toggle theme</span>
     </Button>

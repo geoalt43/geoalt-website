@@ -4,8 +4,8 @@ import { PricingSection } from '@/components/homepage/pricing-section'
 import { Footer } from '@/components/layout/footer'
 
 export const metadata: Metadata = {
-    title: 'Pricing - Geoalt',
-    description: 'Choose the right plan for your business. Geoalt offers flexible pricing for AI visibility optimization.',
+    title: 'Pricing - GEOAlt',
+    description: 'Choose the right plan for your business. GEOAlt offers flexible pricing for AI visibility optimization.',
     alternates: {
         canonical: 'https://www.geoalt.in/pricing',
     },
@@ -15,7 +15,7 @@ export default function PricingPage() {
     const pricingStructuredData = {
         '@context': 'https://schema.org',
         '@type': 'SoftwareApplication',
-        name: 'Geoalt AI Visibility Platform',
+        name: 'GEOAlt AI Visibility Platform',
         applicationCategory: 'BusinessApplication',
         operatingSystem: 'Web',
         offers: [

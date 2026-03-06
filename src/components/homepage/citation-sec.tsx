@@ -40,10 +40,10 @@ export function CitationSection() {
           className={`mb-8 sm:mb-12 md:mb-14 lg:mb-16 text-center max-w-3xl mx-auto transition-all duration-500 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
         >
           <h2
-            className={`text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal tracking-tight text-text-heading mb-4 transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            className={`text-3xl md:text-4xl lg:text-[2.75rem] font-semibold md:font-medium tracking-tight text-text-heading mb-4 transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
             style={{ transitionDelay: '100ms' }}
           >
-           Track Your Brand&apos;s Visibility Across <br className="hidden sm:block" />the AI Landscape
+           We don’t just track AI visibility.<br className="hidden sm:block" /> We get you cited. 
           </h2>
 
           {/* <motion.p
@@ -64,7 +64,7 @@ export function CitationSection() {
 
             {/* Heading */}
             <h2
-              className={`text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-light tracking-tight mb-2 text-text-heading transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-[30px]'}`}
+              className={`text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-[450] tracking-tight mb-2 text-[#4682B4] dark:text-[#525252] transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-[30px]'}`}
               style={{ transitionDelay: '200ms' }}
             >
              Track Your Brand&apos;s Presence
@@ -72,7 +72,7 @@ export function CitationSection() {
 
             {/* Subheading */}
             <p
-              className={`text-sm sm:text-base md:text-lg text-text-description max-w-md leading-relaxed font-light transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-[30px]'}`}
+              className={`text-sm sm:text-base md:text-lg text-[#525252] max-w-md leading-relaxed font-light transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-[30px]'}`}
               style={{ transitionDelay: '350ms' }}
             >
               Track how your brand performs in answers to real user queries across AI platforms.

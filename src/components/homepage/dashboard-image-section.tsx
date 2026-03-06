@@ -33,7 +33,7 @@ export function DashboardImageSection() {
           style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)' }}
         >
           {/* Background Image */}
-          <div className="absolute inset-x-[4%] inset-y-0 z-0">
+          <div className="absolute inset-x-[1%] inset-y-0 z-0">
             <Image
               src="/images/dash-BGimg.jpeg"
               alt=""
@@ -46,7 +46,7 @@ export function DashboardImageSection() {
           {/* Dashboard Image — Light theme */}
           <Image
             src="/images/Dashboard-light-theme.png"
-            alt="Geoalt analytics dashboard"
+            alt="GEOAlt analytics dashboard"
             width={1280}
             height={720}
             priority
@@ -57,7 +57,7 @@ export function DashboardImageSection() {
           {/* Dashboard Image — Dark theme */}
           <Image
             src="/images/Dasboard-dark-theme.png"
-            alt="Geoalt analytics dashboard"
+            alt="GEOAlt analytics dashboard"
             width={1280}
             height={720}
             priority

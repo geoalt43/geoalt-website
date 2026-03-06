@@ -102,12 +102,12 @@ export function CreateContentSection() {
             </div>
 
             {/* Heading */}
-            <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-light tracking-tight mb-2 text-text-heading">
+            <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-[2rem] font-[450] tracking-tight mb-2 text-[#4682B4] dark:text-[#525252]">
               Create AI-optimized content
             </h2>
 
             {/* Subheading */}
-            <p className="text-sm sm:text-base md:text-lg text-text-description max-w-md leading-relaxed font-light">
+            <p className="text-sm sm:text-base md:text-lg text-[#525252] max-w-md leading-relaxed font-light">
               We create AI-optimized content that positions your brand as a trusted source in answers.
             </p>
           </div>

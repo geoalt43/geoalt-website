@@ -121,28 +121,28 @@ function FAQCard({ faq, isOpen, onToggle, index }: FAQCardProps) {
 export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
   const faqs = useMemo(() => [
     {
-      question: "What does Geoalt do?",
-      answer: "Geoalt shows how your website appears in AI search, delivering insights and recommendations to improve visibility, credibility, and performance across generative engines effectively."
+      question: "What does GEOAlt do?",
+      answer: "GEOAlt shows how your website appears in AI search, delivering insights and recommendations to improve visibility, credibility, and performance across generative engines effectively."
     },
     {
-      question: "How does Geoalt help my brand?",
-      answer: "Geoalt analyzes your content's presence in AI answers, highlights missing visibility opportunities, and provides clear guidance to strengthen trust, authority, and competitive advantage across generative platforms."
+      question: "How does GEOAlt help my brand?",
+      answer: "GEOAlt analyzes your content's presence in AI answers, highlights missing visibility opportunities, and provides clear guidance to strengthen trust, authority, and competitive advantage across generative platforms."
     },
     {
-      question: "Who should use Geoalt?",
-      answer: "Brands, marketers, founders, and SEO teams wanting stronger AI search presence benefit from Geoalt's insights, optimization recommendations, competitive analysis, and structured visibility reporting across generative engines."
+      question: "Who should use GEOAlt?",
+      answer: "Brands, marketers, founders, and SEO teams wanting stronger AI search presence benefit from GEOAlt's insights, optimization recommendations, competitive analysis, and structured visibility reporting across generative engines."
     },
     {
-      question: "What data does Geoalt analyze?",
-      answer: "Geoalt scans website content, competitor pages, AI-generated answers, semantic patterns, and topic coverage to identify gaps, strengths, weaknesses, and actionable optimization steps for improved AI search visibility."
+      question: "What data does GEOAlt analyze?",
+      answer: "GEOAlt scans website content, competitor pages, AI-generated answers, semantic patterns, and topic coverage to identify gaps, strengths, weaknesses, and actionable optimization steps for improved AI search visibility."
     },
     {
-      question: "How is Geoalt different from SEO tools?",
-      answer: "Geoalt focuses specifically on generative engines, evaluating AI summary visibility rather than traditional keyword rankings, offering intent-driven recommendations tailored for modern answer-engine ecosystems and behaviors."
+      question: "How is GEOAlt different from SEO tools?",
+      answer: "GEOAlt focuses specifically on generative engines, evaluating AI summary visibility rather than traditional keyword rankings, offering intent-driven recommendations tailored for modern answer-engine ecosystems and behaviors."
     },
     {
-      question: "Does Geoalt work for any website?",
-      answer: "Yes, Geoalt supports nearly all websites by analyzing content structure, clarity, authority, and relevance, offering optimization suggestions designed to improve AI search performance and generative visibility."
+      question: "Does GEOAlt work for any website?",
+      answer: "Yes, GEOAlt supports nearly all websites by analyzing content structure, clarity, authority, and relevance, offering optimization suggestions designed to improve AI search performance and generative visibility."
     }
   ], [])
 
@@ -202,7 +202,7 @@ export function FAQSection({ openFaq, toggleFaq, faqRef }: FAQSectionProps) {
         <div
           className={`text-center mb-8 sm:mb-12 md:mb-14 lg:mb-16 transition-all duration-600 ease-out ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'}`}
         >
-          <h2 className="text-2xl md:text-3xl lg:text-[2.6rem] font-normal md:font-normal mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 text-text-heading">FAQ</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-semibold md:font-medium tracking-tight mb-2 sm:mb-6 md:mb-6 px-2 sm:px-0 md:px-0 text-text-heading">FAQ</h2>
           <p className="text-sm sm:text-base md:text-lg text-text-description max-w-2xl mx-auto leading-relaxed px-4 sm:px-0 pt-0">Generative Engine Optimization is still <br className="hidden sm:block" /> very new. We&apos;ve got you covered.</p>
         </div>
         

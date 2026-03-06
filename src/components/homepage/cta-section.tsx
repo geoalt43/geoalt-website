@@ -64,7 +64,7 @@ export function CTASection() {
               </span>
             </h2>
             <p className="text-xs sm:text-sm md:text-base text-[#555555] text-center lg:text-left mb-4 sm:mb-5 lg:mb-8">
-              <span className="block sm:inline">Geoalt helps you lead in AI search</span>
+              <span className="block sm:inline">GEOAlt helps you lead in AI search</span>
               <span className="block sm:inline"> and scale your brand faster.</span>
             </p>
             {/* Buttons - Hidden on mobile, shown on larger screens */}

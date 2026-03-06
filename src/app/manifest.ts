@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Geoalt - AI Visibility Optimization Platform',
-    short_name: 'Geoalt',
+    name: 'GEOAlt - AI Visibility Optimization Platform',
+    short_name: 'GEOAlt',
     description: 'Get your brand recommended by AI. Optimize your visibility across AI platforms like ChatGPT, Perplexity, and Claude.',
     start_url: '/',
     display: 'standalone',
@@ -11,7 +11,7 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: '#000000',
     icons: [
       {
-        src: '/favicon.png',
+        src: '/logos/Favicon-light.png',
         sizes: '512x512',
         type: 'image/png',
         purpose: 'any',
@@ -20,10 +20,10 @@ export default function manifest(): MetadataRoute.Manifest {
     categories: ['business', 'productivity', 'marketing'],
     screenshots: [
       {
-        src: '/images/img-2.jpeg',
-        sizes: '1280x720',
-        type: 'image/jpeg',
-        label: 'Geoalt Dashboard',
+        src: '/images/og-image.png',
+        sizes: '1200x630',
+        type: 'image/png',
+        label: 'GEOAlt Dashboard',
       },
     ],
   }
