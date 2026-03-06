@@ -90,14 +90,17 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/logos/Favicon-final.png', sizes: '32x32', type: 'image/png' },
-      { url: '/logos/Favicon-final.png', sizes: '96x96', type: 'image/png' },
-      { url: '/logos/Favicon-final.png', sizes: '192x192', type: 'image/png' },
+      { url: '/logos/Favicon-light.png', sizes: '32x32', type: 'image/png', media: '(prefers-color-scheme: light)' },
+      { url: '/logos/Favicon-light.png', sizes: '96x96', type: 'image/png', media: '(prefers-color-scheme: light)' },
+      { url: '/logos/Favicon-light.png', sizes: '192x192', type: 'image/png', media: '(prefers-color-scheme: light)' },
+      { url: '/logos/Favicon.png', sizes: '32x32', type: 'image/png', media: '(prefers-color-scheme: dark)' },
+      { url: '/logos/Favicon.png', sizes: '96x96', type: 'image/png', media: '(prefers-color-scheme: dark)' },
+      { url: '/logos/Favicon.png', sizes: '192x192', type: 'image/png', media: '(prefers-color-scheme: dark)' },
     ],
     apple: [
-      { url: '/logos/Favicon-final.png', sizes: '180x180', type: 'image/png' },
+      { url: '/logos/Favicon-light.png', sizes: '180x180', type: 'image/png' },
     ],
-    shortcut: '/logos/Favicon-final.png',
+    shortcut: '/logos/Favicon-light.png',
   },
   appleWebApp: {
     capable: true,
