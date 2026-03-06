@@ -98,9 +98,9 @@ export const metadata: Metadata = {
       { url: '/logos/Favicon.png', sizes: '192x192', type: 'image/png', media: '(prefers-color-scheme: dark)' },
     ],
     apple: [
-      { url: '/logos/Favicon-light.png', sizes: '180x180', type: 'image/png' },
+      { url: '/logos/Favicon.png', sizes: '180x180', type: 'image/png' },
     ],
-    shortcut: '/logos/Favicon-light.png',
+    shortcut: '/logos/Favicon.png',
   },
   appleWebApp: {
     capable: true,
